@@ -1,5 +1,6 @@
 package com.cuisanzhang.mincreafting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
@@ -15,18 +16,31 @@ public class MainActivity extends AppCompatActivity {
     
     String name[] = { "常用物品", "武器","常用物品", "武器", "常用物品", "武器", "红石", "生活用品", "建筑方块", "铁路",
     "装饰", "食物" };
-    int icon[] = {R.drawable.diamond, R.drawable.diamond,  R.drawable.diamond, R.drawable.diamond, R.drawable.diamond,
-    R.drawable.diamond, R.drawable.diamond, R.drawable.diamond,
-    R.drawable.diamond, R.drawable.diamond, R.drawable.diamond,
+    int icon[] = {
+            R.drawable.diamond,
+            R.drawable.diamond,
+            R.drawable.diamond,
+            R.drawable.diamond,
+            R.drawable.diamond,
+    R.drawable.diamond,
+            R.drawable.diamond,
+            R.drawable.diamond,
+    R.drawable.diamond,
+            R.drawable.diamond,
+            R.drawable.diamond,
     R.drawable.diamond, };
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+///     setContentView(R.layout.activity_main);
         
          setContentView(R.layout.activity_main_gridview);
-            
+
+
+//        Intent intent = new Intent(getApplicationContext(), ActivityListViewShowDetailDatas.class);
+//        startActivity(intent );
+
             GridView gridView = (GridView) findViewById(R.id.gridview);
             data_list = new ArrayList<Map<String, Object>>();
             

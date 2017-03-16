@@ -19,12 +19,29 @@ android {
     }
 }
 
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
     testCompile 'junit:junit:4.12'
-    compile files('libs/glide-3.7.0.jar')
+}
+
+repositories {
+    mavenCentral() // jcenter() works as well because it pulls from Maven Central
+}
+
+dependencies {
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:support-v4:25.3.0'
+}
+
+repositories {
+    jcenter()
+}
+dependencies {
+    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
 }
