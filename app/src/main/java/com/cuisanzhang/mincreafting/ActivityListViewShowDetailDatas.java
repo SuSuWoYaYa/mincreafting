@@ -116,7 +116,7 @@ public class ActivityListViewShowDetailDatas extends Activity {
 
 				holder = new ViewHolder();
 
-				convertView = mInflater.inflate(R.layout.listview_item, null);
+				convertView = mInflater.inflate(R.layout.layout_listview_item, null);
 				holder.textViewName = (TextView) convertView
 						.findViewById(R.id.name);
 				holder.textViewMaterial = (TextView) convertView
@@ -125,8 +125,8 @@ public class ActivityListViewShowDetailDatas extends Activity {
 						.findViewById(R.id.imageView1);
 				holder.textViewUse = (TextView) convertView
 						.findViewById(R.id.use);
-				holder.textViewDetail = (TextView) convertView
-						.findViewById(R.id.textViewDetail);
+//				holder.textViewDetail = (TextView) convertView
+//						.findViewById(R.id.textViewDetail);
 				holder.textViewShowBlockDetail = (TextView) convertView
 						.findViewById(R.id.textViewShowBlockDetail);
 				holder.checkBox = (CheckBox) convertView
@@ -176,10 +176,10 @@ public class ActivityListViewShowDetailDatas extends Activity {
 			boolean ischecked = checkBoxStateList.get(position);
 			holder.checkBox.setChecked(ischecked);
 			if (ischecked) {
-				holder.textViewDetail.setVisibility(View.VISIBLE);
+//				holder.textViewDetail.setVisibility(View.VISIBLE);
 				holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
 			} else {
-				holder.textViewDetail.setVisibility(View.GONE);
+//				holder.textViewDetail.setVisibility(View.GONE);
 				holder.textViewShowBlockDetail.setVisibility(View.GONE);
 			}
 

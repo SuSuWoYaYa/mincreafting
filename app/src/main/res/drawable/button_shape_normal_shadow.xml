@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 灰⾊色阴影 -->
+    <item
+        android:left="2dp" android:top="2dp"> <shape>
+        <solid android:color="@android:color/darker_gray" />
+        <corners android:radius="4dp" /> </shape>
+    </item>
+    <!-- ⽩白⾊色前景 --> <item
+    android:bottom="2dp" android:right="2dp">
+        <shape>
+            <solid android:color="#dedede" />
+            <corners android:radius="4dp" />
+         </shape>
+    </item>
+</layer-list>
