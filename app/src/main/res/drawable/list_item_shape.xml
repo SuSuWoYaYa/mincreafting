@@ -7,11 +7,10 @@
         <corners android:radius="4dp" /> </shape>
     </item>
     <!-- ⽩白⾊色前景 --> <item
-        android:left="1dp" android:top="1dp"
-        android:bottom="1dp" android:right="1dp">
-            <shape>
-                <solid android:color="@color/main_page_button_pressed" />
-                <corners android:radius="4dp" />
-            </shape>
-    </item>
+    android:bottom="2dp" android:right="2dp">
+    <shape>
+        <solid android:color="@color/list_item_background" />
+        <corners android:radius="4dp" />
+    </shape>
+</item>
 </layer-list>

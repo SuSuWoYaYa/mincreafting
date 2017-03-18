@@ -10,7 +10,7 @@
             "isgif": "false"
         },
         {
-            "file_name": "tangchekuangche",
+            "file_name": "tangchetiegui",
             "name": "探测铁轨",
             "material": "铁锭 + 石质压力板 + 红石粉",
             "use": "一种功能类似于压力板的铁轨，它也是第一个铁轨开关。\n当任何一种矿车在探测铁轨的上方时，探测铁轨会让其本身以及之下的非透明方块充能。",

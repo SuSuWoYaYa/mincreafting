@@ -7,4 +7,10 @@
     <string name="Loading">正在载入</string>
     <string name="show_detail">显示详细信息</string>
     <string name="detail">详细信息:</string>
+    <string name="toolbar_search">搜索</string>
+    <string name="menu_change_theme">切换主题</string>
+    <string name="menu_yijian">意见反馈</string>
+    <string name="menu_share">分享</string>
+    <string name="menu_about">关于</string>
+    <string name="toolbar_title">我的世界合成表大全</string>
 </resources>

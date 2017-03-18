@@ -3,13 +3,13 @@
     <!-- 灰⾊色阴影 -->
     <item
         android:left="2dp" android:top="2dp"> <shape>
-        <solid android:color="@android:color/darker_gray" />
+        <solid android:color="@color/main_page_button_shadow" />
         <corners android:radius="4dp" /> </shape>
     </item>
     <!-- ⽩白⾊色前景 --> <item
     android:bottom="2dp" android:right="2dp">
         <shape>
-            <solid android:color="#dedede" />
+            <solid android:color="@color/main_page_button_normal" />
             <corners android:radius="4dp" />
          </shape>
     </item>

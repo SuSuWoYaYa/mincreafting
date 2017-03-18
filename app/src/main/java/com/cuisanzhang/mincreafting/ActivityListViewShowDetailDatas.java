@@ -3,11 +3,11 @@ package com.cuisanzhang.mincreafting;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-public class ActivityListViewShowDetailDatas extends Activity {
+public class ActivityListViewShowDetailDatas extends AppCompatActivity {
 
 	public static String savefile = "save.txt";
 	public static String jianzhulei = "jianzhulei";
@@ -36,7 +36,7 @@ public class ActivityListViewShowDetailDatas extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.listview_of_blocks);
+		setContentView(R.layout.layout_listview_of_blocks);
 
 		checkBoxStateList = new ArrayList<Boolean>();
 		SharedPreferences preferences = getSharedPreferences(savefile,
@@ -54,17 +54,23 @@ public class ActivityListViewShowDetailDatas extends Activity {
 		}
 
 		blocks = dbManage.getDatasFormTable(MyDatabaseHelper.TABLE_NAME_YUNSHU);
+		if(blocks == null){
+			System.out.println("getDatabase is null");
+		}else
+		{
+			System.out.println("blocks.size="+blocks.size());
+		}
 
 		ListView listView = (ListView) findViewById(R.id.listView1);
 		adapter = new MyAdapter(getApplicationContext());
 		listView.setAdapter(adapter);
-		if (blocks != null) {
-
-			 System.out.println("blocks.size()="+blocks.size());
-		} else {
-			// System.out.println("blocks == null");
-			//
-		}
+//		if (blocks != null) {
+//
+//			 System.out.println("blocks.size()="+blocks.size());
+//		} else {
+//			// System.out.println("blocks == null");
+//			//
+//		}
 
 	}
 
@@ -139,16 +145,16 @@ public class ActivityListViewShowDetailDatas extends Activity {
 			}
 			Block block = blocks.get(position);
 			holder.textViewName.setText(block.getName());
-			holder.textViewMaterial.setText(block.getMaterial());
+			holder.textViewMaterial.setText(block.getMaterial()+block.getFileName());
 
 			boolean isgif = block.isgif();
 			int resId = block.getResId();
 			if (isgif) {
 
-				Glide.with(getApplicationContext()).load(resId).asGif()
+				Glide.with(getApplicationContext()).load(resId).asGif().placeholder(R.drawable.loading)
 						.into(holder.imageView);
 			} else {
-				Glide.with(getApplicationContext()).load(resId)
+				Glide.with(getApplicationContext()).load(resId).placeholder(R.drawable.loading)
 						.into(holder.imageView);
 			}
 			holder.textViewUse.setText(block.getUse());

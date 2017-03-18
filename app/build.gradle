@@ -26,14 +26,15 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
+    compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support:support-v4:25.3.0'
     testCompile 'junit:junit:4.12'
 }
 
-dependencies {
-    compile 'com.android.support:gridlayout-v7:25.3.0'
-    compile 'com.android.support:support-v4:25.3.0'
-}
+//dependencies {
+//    compile 'com.android.support:gridlayout-v7:25.3.0'
+//    compile 'com.android.support:support-v4:25.3.0'
+//}
 
 
 repositories {
@@ -47,7 +48,7 @@ dependencies {
 repositories {
     jcenter()
 }
-dependencies {
-    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
-}
+//dependencies {
+//    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
+//}
 

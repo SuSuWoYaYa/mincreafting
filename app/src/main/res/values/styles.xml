@@ -1,11 +1,29 @@
-<resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<resources>
+<!-- Base application theme. -->
+<style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
+<!-- Customize your theme here. -->
+<style name="AppTheme" parent="Base.Theme.Design">
+</style>
+
+<style name="Base.Theme.Design" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- colorPrimary 定义 ActionBar 的背景色 -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <!-- colorPrimaryDark 定义状态栏的背景色 -->
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <!-- textColor 定义标题文字的颜色 -->
+    <item name="android:textColorPrimary">@color/textColorPrimary</item>
+    <!-- colorAccent 为 colorControlActivated 的默认值，该值用户显示控件的高亮状态 -->
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:windowBackground">@color/window_background</item>
+    <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+</style>
+
+
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
+        <item name="android:popupBackground">?attr/colorPrimary</item>
+        <item name="android:dropDownVerticalOffset">0dip</item>
     </style>
 
 </resources>
