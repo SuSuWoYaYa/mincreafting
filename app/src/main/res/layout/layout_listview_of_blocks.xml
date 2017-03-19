@@ -9,7 +9,15 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:background="?attr/myToolbarColor">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/toolbar_title"
+            android:textSize="24sp"
+            android:textColor="@color/textColorPrimary_white"/>
     </android.support.v7.widget.Toolbar>
 
     <ListView

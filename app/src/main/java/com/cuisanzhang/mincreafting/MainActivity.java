@@ -1,17 +1,27 @@
 package com.cuisanzhang.mincreafting;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,20 +51,44 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
+    private PopupWindow mPopupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int theme = ChangeTheme.getTheme(getApplicationContext());
+        setTheme(theme);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
         initActionBar();
 
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                item.setChecked(true);
+//                Toast.makeText(getApplicationContext(), "change theme", Toast.LENGTH_SHORT).show();
+                switch (item.getItemId()) {
+                    case R.id.menu_changeTheme:
+                        initPopupWindow();
+                        break;
+
+                    case R.id.menu_feedback:
+                        Intent intent = new Intent(getApplicationContext(), ActivityWebViewFeedback.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.menu_about:
+                        showAboutDialog();
+                        break;
+                }
+
+//                Toast.makeText(getApplicationContext(), "change theme", Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawers();
+
                 return true;
             }
         });
@@ -104,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_menu_white_2x);
+        toolbar.setNavigationIcon(R.drawable.ic_settings_white_2x);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,4 +161,98 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    public static void ReStartActivity(Activity activity) {
+
+
+        Intent intent = activity.getIntent();
+//        overridePendingTransition(0, 0);//不设置进入退出动画
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        activity.finish();
+//        overridePendingTransition(0, 0);
+        activity.startActivity(intent);
+    }
+
+
+    protected void initPopupWindow() {
+
+        if (mPopupWindow != null && mPopupWindow.isShowing())
+            return;
+
+        View layout = getLayoutInflater().inflate(R.layout.layout_pop_changetheme, null);
+        //内容，高度，宽度
+        mPopupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mPopupWindow.setAnimationStyle(R.style.PopupwindowStyle);
+
+        //自动退出
+        mPopupWindow.setBackgroundDrawable(new PaintDrawable());
+        mPopupWindow.setFocusable(true);
+        mPopupWindow.setOutsideTouchable(true);
+
+        mPopupWindow.showAtLocation(findViewById(R.id.drawer_layout), Gravity.BOTTOM, 0, 0);
+
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+
+            }
+        });
+
+
+        TextView textViewBlack = (TextView) layout.findViewById(R.id.textViewPopChangeToBlack);
+        TextView textViewGray = (TextView) layout.findViewById(R.id.textViewPopChangeToGray);
+        TextView textViewPink = (TextView) layout.findViewById(R.id.textViewPopChangeToPink);
+        TextView textViewRed = (TextView) layout.findViewById(R.id.textViewPopChangeToRed);
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int theme;
+                switch (v.getId()) {
+                    case R.id.textViewPopChangeToBlack:
+                        theme = ChangeTheme.THEME_BLACK;
+                        break;
+                    case R.id.textViewPopChangeToGray:
+                        theme = ChangeTheme.THEME_GRAY;
+                        break;
+                    case R.id.textViewPopChangeToPink:
+                        theme = ChangeTheme.THEME_PINK;
+                        break;
+                    case R.id.textViewPopChangeToRed:
+                        theme = ChangeTheme.THEME_RED;
+                        break;
+                    default:
+                        theme = ChangeTheme.THEME_GRAY;
+                }
+                ChangeTheme.setTheme(getApplicationContext(), theme);
+                mPopupWindow.dismiss();
+                ReStartActivity(MainActivity.this);
+
+            }
+        };
+        textViewBlack.setOnClickListener(onClickListener);
+        textViewGray.setOnClickListener(onClickListener);
+        textViewPink.setOnClickListener(onClickListener);
+        textViewRed.setOnClickListener(onClickListener);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mPopupWindow != null && mPopupWindow.isShowing()) {
+            mPopupWindow.dismiss();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void showAboutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialog);
+        builder.setTitle("关于 Mincreafting");
+        builder.setMessage("这是一个Mincreaft合成表的APP, 所有内容来自于Mincratft 中文WIKI");
+//        builder.setNegativeButton("取消", null);
+        builder.setPositiveButton("确定", null);
+        builder.show();
+    }
 }
+

@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#c20600</color>
-    <color name="colorPrimaryDark">#c10a0a</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="colorPrimary_red">#f44336</color>
+    <color name="colorPrimaryDark_red">#f44336</color>
+    <color name="colorAccent_red">#f44336</color>
+    <!---->
+    <!--<color name="colorPrimary_red">#c20600</color>-->
+    <!--<color name="colorPrimaryDark_red">#c10a0a</color>-->
+    <!--<color name="colorAccent_red">#FF4081</color>-->
+    <color name="textColorPrimary_white">#FFFFFF</color>
+    <color name="textColorPrimary_black">#000000</color>
+
+
+    <color name="colorPrimary_purple">#673AB7</color>
+    <color name="colorPrimary_orange">#ff5722</color>
+    <color name="colorPrimary_brown">#795548</color>
+
+    <color name="colorPrimary_black">#080808</color>
+    <color name="colorPrimaryDark_black">#262626</color>
+    <color name="colorAccent_black">#1d1c1c</color>
+
+    <!--<color name="colorPrimary_pink">#ff4081</color>-->
+    <color name="colorPrimary_pink">#e91e63</color>
+    <!--<color name="colorPrimaryDark_pink">#f7397a</color>-->
+    <color name="colorPrimaryDark_pink">#e91e63</color>
+    <!--<color name="colorAccent_pink">#FF4081</color>-->
+    <color name="colorAccent_pink">#e91e63</color>
+
+
+    <!--<color name="colorPrimary_gray">#414040</color>-->
+    <!--<color name="colorPrimaryDark_gray">#414040</color>-->
+    <!--<color name="colorAccent_gray">#414040</color>-->
+    <color name="colorPrimary_gray">#262626</color>
+    <color name="colorPrimaryDark_gray">#262626</color>
+    <color name="colorAccent_gray">#262626</color>
+
     <color name="window_background">#FFFFFF</color>
     <color name="list_item_background">#c7c5c7</color>
     <color name="list_background">#f4f1f1</color>

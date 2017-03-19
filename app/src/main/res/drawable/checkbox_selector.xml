@@ -3,12 +3,12 @@
     <!-- 点击之后的图标 -->
     <item
         android:state_checked="true"
-        android:drawable="@drawable/ic_expand_less_2x"
+        android:drawable="@drawable/ic_expand_more_2x"
         />
     <!-- 点击之前的图标 -->
     <item
         android:state_checked="false"
-        android:drawable="@drawable/ic_expand_more_2x"
+        android:drawable="@drawable/ic_expand_less_2x"
         />
 </selector>
 

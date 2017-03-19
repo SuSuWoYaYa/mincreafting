@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/list_background"
+    android:orientation="vertical"    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="@string/color_black"
+            android:textSize="15sp"
+            android:padding="20dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPopChangeToBlack"
+            android:textColor="@color/colorPrimary_black"
+            android:background="@drawable/pop_stroke"
+            android:layout_weight="1" />
+
+        <TextView
+            android:text="@string/color_gray"
+            android:textSize="15sp"
+            android:padding="20dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPopChangeToGray"
+            android:textColor="@color/colorPrimary_gray"
+            android:background="@drawable/pop_stroke"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="@string/color_pink"
+            android:textSize="15sp"
+            android:padding="20dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary_pink"
+            android:id="@+id/textViewPopChangeToPink"
+            android:background="@drawable/pop_stroke"
+            android:layout_weight="1" />
+
+        <TextView
+            android:text="@string/color_red"
+            android:textSize="15sp"
+            android:padding="20dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPopChangeToRed"
+            android:textColor="@color/colorPrimary_red"
+            android:background="@drawable/pop_stroke"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none">
          <item
-            android:id="@+id/menuChangeTheme"
+            android:id="@+id/menu_changeTheme"
             android:icon="@drawable/ic_brightness_6_2x"
 
             android:title="@string/menu_change_theme" />
         <item
-            android:id="@+id/menu_yijian"
+            android:id="@+id/menu_feedback"
             android:icon="@drawable/ic_receipt_2x"
-            android:title="@string/menu_yijian" />
+            android:title="@string/menu_feedback" />
          <item
             android:id="@+id/menu_share"
             android:icon="@drawable/ic_share_2x"
