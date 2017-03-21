@@ -4,26 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/webView_toolbar"
+    //标题栏
+    <LinearLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:popupTheme="@style/OverflowMenuStyle">
-
+        android:layout_height="45dp"
+        android:background="?attr/colorPrimary">
+        <ImageView
+            android:id="@+id/imageViewToolbar_menu"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:src="?attr/navigationIcon_back"
+            android:scaleType="centerInside"/>
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/feedback"
-            android:textSize="24sp"
-            android:textColor="@color/textColorPrimary_white"/>
-    </android.support.v7.widget.Toolbar>
+            android:text="@string/toolbar_title"
+            android:textColor="?attr/textColorPrimary"/>
+        <ImageView
+            android:id="@+id/imageViewToolbar_search"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:src="?attr/toolbar_search"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/webView_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--app:popupTheme="@style/OverflowMenuStyle">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/feedback"-->
+            <!--android:textSize="24sp"-->
+            <!--android:textColor="@color/textColorPrimary_white"/>-->
+    <!--</android.support.v7.widget.Toolbar>-->
     <WebView
         android:id="@+id/webView"
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

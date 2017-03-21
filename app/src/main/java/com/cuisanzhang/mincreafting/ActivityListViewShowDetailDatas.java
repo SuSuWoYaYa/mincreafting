@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class ActivityListViewShowDetailDatas extends AppCompatActivity {
         // TODO Auto-generated method stub
         int theme = ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_listview_of_blocks);
         initActionBar();
@@ -198,9 +200,24 @@ public class ActivityListViewShowDetailDatas extends AppCompatActivity {
     }
 
     public void initActionBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.listview_toolbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
+            ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
+            ImageView imageViewSaerch = (ImageView)findViewById(R.id.imageViewToolbar_search);
+            imageViewMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.listview_toolbar);
+//        toolbar.setTitle("");
+//
+//        setSupportActionBar(toolbar);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
     }
 
 }

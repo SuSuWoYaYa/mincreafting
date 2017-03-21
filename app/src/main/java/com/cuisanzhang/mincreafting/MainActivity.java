@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -126,41 +127,57 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
 
     public void initActionBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-
-        toolbar.setNavigationIcon(R.drawable.ic_settings_white_2x);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
+        ImageView imageViewSaerch = (ImageView)findViewById(R.id.imageViewToolbar_search);
+        imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
-        toolbar.inflateMenu(R.menu.toolbar_menu);//设置右上角的填充菜单
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int menuItemId = item.getItemId();
-                if (menuItemId == R.id.menu_search) {
-                    Toast.makeText(MainActivity.this, "menu1", Toast.LENGTH_SHORT).show();
-
-                }
-                return true;
-            }
-        });
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+////        toolbar.setTitle("");
+//        setSupportActionBar(toolbar);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                mDrawerLayout.openDrawer(GravityCompat.START);
+//            }
+//        });
+//
+//        toolbar.inflateMenu(R.menu.toolbar_menu);//设置右上角的填充菜单
+//        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                int menuItemId = item.getItemId();
+//                if (menuItemId == R.id.menu_search) {
+//                    Toast.makeText(MainActivity.this, "menu1", Toast.LENGTH_SHORT).show();
+//
+//                }
+//                return true;
+//            }
+//        });
     }
 
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int menuItemId = item.getItemId();
+//        if (menuItemId == R.id.menu_search) {
+//            Toast.makeText(MainActivity.this, "menu1", Toast.LENGTH_SHORT).show();
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public static void ReStartActivity(Activity activity) {
 
@@ -199,9 +216,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        TextView textViewBlack = (TextView) layout.findViewById(R.id.textViewPopChangeToBlack);
         TextView textViewGray = (TextView) layout.findViewById(R.id.textViewPopChangeToGray);
         TextView textViewPink = (TextView) layout.findViewById(R.id.textViewPopChangeToPink);
+        TextView textViewBlown = (TextView) layout.findViewById(R.id.textViewPopChangeToBlown);
+        TextView textViewOrange = (TextView) layout.findViewById(R.id.textViewPopChangeToOrange);
+        TextView textViewBlue = (TextView) layout.findViewById(R.id.textViewPopChangeToBlue);
+        TextView textViewPurple = (TextView) layout.findViewById(R.id.textViewPopChangeToPurple);
         TextView textViewRed = (TextView) layout.findViewById(R.id.textViewPopChangeToRed);
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -210,9 +230,6 @@ public class MainActivity extends AppCompatActivity {
 
                 int theme;
                 switch (v.getId()) {
-                    case R.id.textViewPopChangeToBlack:
-                        theme = ChangeTheme.THEME_BLACK;
-                        break;
                     case R.id.textViewPopChangeToGray:
                         theme = ChangeTheme.THEME_GRAY;
                         break;
@@ -221,6 +238,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.textViewPopChangeToRed:
                         theme = ChangeTheme.THEME_RED;
+                        break;
+                    case R.id.textViewPopChangeToBlown:
+                        theme = ChangeTheme.THEME_BROWN;
+                        break;
+                    case R.id.textViewPopChangeToBlue:
+                        theme = ChangeTheme.THEME_BLUE;
+                        break;
+                    case R.id.textViewPopChangeToOrange:
+                        theme = ChangeTheme.THEME_ORANGE;
+                        break;
+                    case R.id.textViewPopChangeToPurple:
+                        theme = ChangeTheme.THEME_PURPLE;
                         break;
                     default:
                         theme = ChangeTheme.THEME_GRAY;
@@ -231,10 +260,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-        textViewBlack.setOnClickListener(onClickListener);
         textViewGray.setOnClickListener(onClickListener);
         textViewPink.setOnClickListener(onClickListener);
         textViewRed.setOnClickListener(onClickListener);
+        textViewBlue.setOnClickListener(onClickListener);
+        textViewBlown.setOnClickListener(onClickListener);
+        textViewOrange.setOnClickListener(onClickListener);
+        textViewPurple.setOnClickListener(onClickListener);
     }
 
     @Override

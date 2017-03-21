@@ -12,6 +12,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -97,9 +98,16 @@ public class ActivityWebViewFeedback extends  AppCompatActivity {
     }
 
     public void initActionBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.webView_toolbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
+        ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
+        imageViewMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.webView_toolbar);
+//        toolbar.setTitle("");
+//        setSupportActionBar(toolbar);
     }
 
 }

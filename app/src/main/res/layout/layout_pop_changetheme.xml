@@ -7,61 +7,171 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
 
-        <TextView
-            android:text="@string/color_black"
-            android:textSize="15sp"
-            android:padding="20dp"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewPopChangeToBlack"
-            android:textColor="@color/colorPrimary_black"
-            android:background="@drawable/pop_stroke"
-            android:layout_weight="1" />
-
+        <ImageView
+            android:layout_marginLeft="100dp"
+            android:padding="5dp"
+            android:src="@color/colorPrimary_gray"
+            android:layout_width="140dp"
+            android:layout_height="45dp" />
         <TextView
             android:text="@string/color_gray"
             android:textSize="15sp"
-            android:padding="20dp"
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/textViewPopChangeToGray"
             android:textColor="@color/colorPrimary_gray"
-            android:background="@drawable/pop_stroke"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="center"
+            />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
 
-        <TextView
-            android:text="@string/color_pink"
-            android:textSize="15sp"
-            android:padding="20dp"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary_pink"
-            android:id="@+id/textViewPopChangeToPink"
-            android:background="@drawable/pop_stroke"
-            android:layout_weight="1" />
-
+        <ImageView
+            android:padding="5dp"
+            android:layout_marginLeft="100dp"
+            android:src="@color/colorPrimary_red"
+            android:layout_width="140dp"
+            android:layout_height="45dp" />
         <TextView
             android:text="@string/color_red"
             android:textSize="15sp"
-            android:padding="20dp"
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/textViewPopChangeToRed"
             android:textColor="@color/colorPrimary_red"
-            android:background="@drawable/pop_stroke"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:padding="5dp"
+            android:layout_marginLeft="100dp"
+            android:src="@color/colorPrimary_orange"
+            android:layout_width="140dp"
+            android:layout_height="45dp" />
+        <TextView
+            android:text="@string/color_orange"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textViewPopChangeToOrange"
+            android:textColor="@color/colorPrimary_orange"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:padding="5dp"
+            android:layout_marginLeft="100dp"
+            android:src="@color/colorPrimary_purple"
+            android:layout_width="140dp"
+            android:layout_height="45dp" />
+        <TextView
+            android:text="@string/color_purple"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textViewPopChangeToPurple"
+            android:textColor="@color/colorPrimary_purple"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:padding="5dp"
+            android:layout_marginLeft="100dp"
+            android:src="@color/colorPrimary_blue"
+            android:layout_width="140dp"
+            android:layout_height="45dp" />
+        <TextView
+            android:text="@string/color_blue"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textViewPopChangeToBlue"
+            android:textColor="@color/colorPrimary_blue"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:padding="5dp"
+            android:layout_marginLeft="100dp"
+            android:src="@color/colorPrimary_brown"
+            android:layout_width="140dp"
+            android:layout_height="45dp" />
+        <TextView
+            android:text="@string/color_brown"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textViewPopChangeToBlown"
+            android:textColor="@color/colorPrimary_brown"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:padding="5dp"
+            android:layout_marginLeft="100dp"
+            android:src="@color/colorPrimary_pink"
+            android:layout_width="140dp"
+            android:layout_height="45dp" />
+        <TextView
+            android:text="@string/color_pink"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textViewPopChangeToPink"
+            android:textColor="@color/colorPrimary_pink"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
     </LinearLayout>
 
 

@@ -3,21 +3,21 @@
     <group android:checkableBehavior="none">
          <item
             android:id="@+id/menu_changeTheme"
-            android:icon="@drawable/ic_brightness_6_2x"
+            android:icon="@drawable/ic_change_theme"
 
             android:title="@string/menu_change_theme" />
         <item
             android:id="@+id/menu_feedback"
-            android:icon="@drawable/ic_receipt_2x"
+            android:icon="@drawable/ic_feedback"
             android:title="@string/menu_feedback" />
          <item
             android:id="@+id/menu_share"
-            android:icon="@drawable/ic_share_2x"
+            android:icon="@drawable/ic_share"
             android:title="@string/menu_share" />
 
          <item
             android:id="@+id/menu_about"
-            android:icon="@drawable/ic_android_2x"
+            android:icon="@drawable/ic_android"
             android:title="@string/menu_about" />
     </group>
 </menu>

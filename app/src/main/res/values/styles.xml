@@ -2,70 +2,56 @@
     <!-- Base application theme. -->
     <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
     <!-- Customize your theme here. -->
-    <style name="AppTheme" parent="Base.Theme.Design.black"></style>
+    <style name="AppTheme" parent="Base.Theme.Design.gray">
 
-    <style name="Base.Theme.Design.red" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- colorPrimary 定义 ActionBar 的背景色 -->
-        <item name="myToolbarColor">@color/colorPrimary_red</item>
-        <item name="colorPrimary">@color/colorPrimary_red</item>
-        <!-- colorPrimaryDark 定义状态栏的背景色 -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark_red</item>
+        <item name="navigationIcon_back">@drawable/ic_left_back_white</item>
+        <item name="navigationIcon_menu">@drawable/ic_settings_white</item>
+        <item name="toolbar_search">@drawable/ic_search_white</item>
         <!-- textColor 定义标题文字的颜色 -->
-        <item name="android:textColorPrimary">@color/textColorPrimary_white</item>
-        <!-- colorAccent 为 colorControlActivated 的默认值，该值用户显示控件的高亮状态 -->
-        <item name="colorAccent">@color/colorAccent_red</item>
-        <item name="android:windowBackground">@color/window_background</item>
-        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+        <item name="textColorPrimary">@color/textColorPrimary_white</item>
     </style>
 
-    <style name="Base.Theme.Design.black" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- colorPrimary 定义 ActionBar 的背景色 -->
-        <item name="myToolbarColor">@color/colorPrimary_black</item>
-        <item name="colorPrimary">@color/colorPrimary_black</item>
-        <!-- colorPrimaryDark 定义状态栏的背景色 -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark_black</item>
-        <!-- textColor 定义标题文字的颜色 -->
-        <item name="android:textColorPrimary">@color/textColorPrimary_white</item>
-        <!-- colorAccent 为 colorControlActivated 的默认值，该值用户显示控件的高亮状态 -->
-        <item name="colorAccent">@color/colorAccent_black</item>
-        <item name="android:windowBackground">@color/window_background</item>
-        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    //紫色
+    <style name="Base.Theme.Design.purple" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_purple</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_purple</item>
+    </style>
+    //蓝色
+    <style name="Base.Theme.Design.blue" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_blue</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_blue</item>
+    </style>
+    //橙色
+    <style name="Base.Theme.Design.orange" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_orange</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_orange</item>
+    </style>
+    //棕色
+    <style name="Base.Theme.Design.brown" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_brown</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_brown</item>
     </style>
 
-    <style name="Base.Theme.Design.pink" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- colorPrimary 定义 ActionBar 的背景色 -->
-        <item name="myToolbarColor">@color/colorPrimary_pink</item>
-        <item name="colorPrimary">@color/colorPrimary_pink</item>
-        <!-- colorPrimaryDark 定义状态栏的背景色 -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark_pink</item>
-        <!-- textColor 定义标题文字的颜色 -->
-        <item name="android:textColorPrimary">@color/textColorPrimary_white</item>
-        <!-- colorAccent 为 colorControlActivated 的默认值，该值用户显示控件的高亮状态 -->
-        <item name="colorAccent">@color/colorAccent_pink</item>
-        <item name="android:windowBackground">@color/window_background</item>
-        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
-    </style>
-
+    //灰色
     <style name="Base.Theme.Design.gray" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- colorPrimary 定义 ActionBar 的背景色 -->
-        <item name="myToolbarColor">@color/colorPrimary_gray</item>
         <item name="colorPrimary">@color/colorPrimary_gray</item>
-        <!-- colorPrimaryDark 定义状态栏的背景色 -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark_gray</item>
-        <!-- textColor 定义标题文字的颜色 -->
-        <item name="android:textColorPrimary">@color/textColorPrimary_white</item>
-        <!-- colorAccent 为 colorControlActivated 的默认值，该值用户显示控件的高亮状态 -->
-        <item name="colorAccent">@color/colorAccent_gray</item>
-        <item name="android:windowBackground">@color/window_background</item>
-        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    //粉红
+    <style name="Base.Theme.Design.pink" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_pink</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_pink</item>
+    </style>
+
+    //红色
+    <style name="Base.Theme.Design.red" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_red</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_red</item>
+
     </style>
 
 
-    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
-        <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
-        <item name="android:popupBackground">?attr/colorPrimary</item>
-        <item name="android:dropDownVerticalOffset">0dip</item>
-    </style>
 
     <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
         <!-- 这里设置背景为透明，为了隐藏边框 -->
@@ -77,4 +63,5 @@
         <item name="android:centerDark">@color/list_background</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
 </resources>

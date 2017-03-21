@@ -14,25 +14,58 @@
         android:background="@color/main_page_background"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/activity_main_toolbar"
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="?attr/myToolbarColor"
-            android:minHeight="?attr/actionBarSize"
-            app:popupTheme="@style/OverflowMenuStyle">
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/activity_main_toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="?attr/colorPrimary"-->
+            <!--android:title="@string/toolbar_title"-->
+            <!--android:navigationIcon="?attr/navigationIcon_menu"-->
+            <!--app:navigationIcon="?attr/navigationIcon_menu"-->
+            <!--app:title="@string/toolbar_title"-->
+            <!--app:popupTheme="@style/OverflowMenuStyle"-->
+            <!--app:contentInsetEnd="0dp"-->
+            <!--app:contentInsetLeft="0dp"-->
+            <!--app:contentInsetRight="0dp"-->
+            <!--app:contentInsetStart="0dp"-->
+            <!--app:paddingEnd="0dp"-->
+            <!--app:paddingStart="0dp"-->
+            <!--app:titleMarginStart="0dp"-->
+            <!--&gt;-->
 
+        <!--</android.support.v7.widget.Toolbar>-->
+        //标题栏
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="?attr/colorPrimary">
+            <ImageView
+                android:id="@+id/imageViewToolbar_menu"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:src="?attr/navigationIcon_menu"
+                android:scaleType="centerInside"/>
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/toolbar_title"
-                android:textSize="20sp"
-                android:textColor="@color/textColorPrimary_white"/>
-        </android.support.v7.widget.Toolbar>
-
+                android:textColor="?attr/textColorPrimary"/>
+            <ImageView
+                android:id="@+id/imageViewToolbar_search"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:src="?attr/toolbar_search"
+                android:scaleType="centerInside"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

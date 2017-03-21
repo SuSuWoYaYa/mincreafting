@@ -18,4 +18,8 @@
     <string name="color_pink">粉色</string>
     <string name="color_red">红色</string>
     <string name="feedback">意见反馈</string>
+    <string name="color_orange">橙色</string>
+    <string name="color_purple">紫色</string>
+    <string name="color_blue">蓝色</string>
+    <string name="color_brown">棕色</string>
 </resources>

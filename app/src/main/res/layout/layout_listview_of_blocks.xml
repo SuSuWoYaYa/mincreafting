@@ -1,24 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/listview_toolbar"
-        android:layout_height="wrap_content"
+    //标题栏
+    <LinearLayout
         android:layout_width="match_parent"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/myToolbarColor">
-
+        android:layout_height="45dp"
+        android:background="?attr/colorPrimary">
+        <ImageView
+            android:id="@+id/imageViewToolbar_menu"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:src="?attr/navigationIcon_back"
+            android:scaleType="centerInside"/>
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/toolbar_title"
-            android:textSize="24sp"
-            android:textColor="@color/textColorPrimary_white"/>
-    </android.support.v7.widget.Toolbar>
+            android:textColor="?attr/textColorPrimary"/>
+        <ImageView
+            android:id="@+id/imageViewToolbar_search"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:src="?attr/toolbar_search"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/listview_toolbar"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--app:navigationIcon="?attr/navigationIcon_back"-->
+        <!--&gt;-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/toolbar_title"-->
+            <!--android:textSize="24sp"-->
+            <!--android:textColor="@color/textColorPrimary_white"/>-->
+    <!--</android.support.v7.widget.Toolbar>-->
 
     <ListView
         android:id="@+id/listView1"
