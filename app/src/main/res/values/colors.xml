@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <color name="textColorPrimary_white">#FFFFFF</color>
     <color name="textColorPrimary_black">#212121</color>
 
@@ -33,12 +34,12 @@
     <color name="colorAccent_gray">#262626</color>
 
     <color name="window_background">#FFFFFF</color>
-    <color name="list_item_background">#c7c5c7</color>
-    <color name="list_background">#f4f1f1</color>
     <color name="main_page_background">#ebebeb</color>
     <color name="main_page_button_normal">#dedede</color>
     <color name="main_page_button_pressed">#e0e0e0</color>
     <color name="main_page_button_shadow">@android:color/darker_gray</color>
+    <color name="list_item_background">#c7c5c7</color>
+    <color name="list_background">#f4f1f1</color>
     <color name="list_item_title_background">#444444</color>
     <color name="list_item_title_textColor">#e4e0e0</color>
     <color name="list_item_material_textColor">#212121</color>

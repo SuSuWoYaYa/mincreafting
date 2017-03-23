@@ -2,6 +2,7 @@ package com.cuisanzhang.mincreafting;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.PaintDrawable;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -34,21 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Map<String, Object>> data_list;
 
-    String name[] = {"常用物品", "武器", "常用物品", "武器", "常用物品", "武器", "红石", "生活用品", "建筑方块", "铁路",
-            "装饰", "食物"};
-    int icon[] = {
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,
-            R.drawable.diamond,};
+    public static String EXTRA_TABLE_NAME = "table_name";
+    public static String EXTRA_CATEGORY = "category";
 
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -79,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu_feedback:
-                        Intent intent = new Intent(getApplicationContext(), ActivityWebViewFeedback.class );
+                        Intent intent = new Intent(getApplicationContext(), ActivityWebViewFeedback.class);
                         startActivity(intent);
                         break;
                     case R.id.menu_about:
@@ -98,14 +87,93 @@ public class MainActivity extends AppCompatActivity {
 
 
         LinearLayout layoutBtn1 = (LinearLayout) findViewById(R.id.layout_btn_1);
-        layoutBtn1.setOnClickListener(new View.OnClickListener() {
+        LinearLayout layoutBtn2 = (LinearLayout) findViewById(R.id.layout_btn_2);
+        LinearLayout layoutBtn3 = (LinearLayout) findViewById(R.id.layout_btn_3);
+        LinearLayout layoutBtn4 = (LinearLayout) findViewById(R.id.layout_btn_4);
+        LinearLayout layoutBtn5 = (LinearLayout) findViewById(R.id.layout_btn_5);
+        LinearLayout layoutBtn6 = (LinearLayout) findViewById(R.id.layout_btn_6);
+        LinearLayout layoutBtn7 = (LinearLayout) findViewById(R.id.layout_btn_7);
+        LinearLayout layoutBtn8 = (LinearLayout) findViewById(R.id.layout_btn_8);
+        LinearLayout layoutBtn9 = (LinearLayout) findViewById(R.id.layout_btn_9);
+        LinearLayout layoutBtn10 = (LinearLayout) findViewById(R.id.layout_btn_10);
+        LinearLayout layoutBtn11 = (LinearLayout) findViewById(R.id.layout_btn_11);
+        LinearLayout layoutBtn12 = (LinearLayout) findViewById(R.id.layout_btn_12);
+
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), ActivityListViewShowDetailDatas.class);
+
+                switch (v.getId()) {
+                    case R.id.layout_btn_1:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_BUILDING);
+                        intent.putExtra(EXTRA_CATEGORY, "建筑类");
+                        break;
+                    case R.id.layout_btn_2:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_DAILY);
+                        intent.putExtra(EXTRA_CATEGORY, "日常类");
+                        break;
+                    case R.id.layout_btn_3:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_DECORATION);
+                        intent.putExtra(EXTRA_CATEGORY, "装饰类");
+                        break;
+                    case R.id.layout_btn_4:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_DYE);
+                        intent.putExtra(EXTRA_CATEGORY, "染料类" );
+                        break;
+                    case R.id.layout_btn_5:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_FOOD);
+                        intent.putExtra(EXTRA_CATEGORY, "食物类");
+                        break;
+                    case R.id.layout_btn_6:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_LIGHTING);
+                        intent.putExtra(EXTRA_CATEGORY, "照明类");
+                        break;
+                    case R.id.layout_btn_7:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_ORE);
+                        intent.putExtra(EXTRA_CATEGORY, "矿石类");
+                        break;
+                    case R.id.layout_btn_8:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_REDSTONE);
+                        intent.putExtra(EXTRA_CATEGORY, "红石类");
+                        break;
+                    case R.id.layout_btn_9:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_TANNSPORT);
+                        intent.putExtra(EXTRA_CATEGORY, "运输类");
+                        break;
+                    case R.id.layout_btn_10:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_TOOLS);
+                        intent.putExtra(EXTRA_CATEGORY, "工具类");
+                        break;
+                    case R.id.layout_btn_11:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_WEAPON);
+                        intent.putExtra(EXTRA_CATEGORY, "武器类");
+                        break;
+                    case R.id.layout_btn_12:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_OTHERS);
+                        intent.putExtra(EXTRA_CATEGORY, "其他类");
+                        break;
+                    default:
+                        intent = new Intent(getApplicationContext(), ActivityListViewShowDetailDatas.class);
+                        break;
+                }
                 startActivity(intent);
             }
-        });
+        };
+        layoutBtn1.setOnClickListener(onClickListener);
+        layoutBtn2.setOnClickListener(onClickListener);
+        layoutBtn3.setOnClickListener(onClickListener);
+        layoutBtn4.setOnClickListener(onClickListener);
+        layoutBtn5.setOnClickListener(onClickListener);
+        layoutBtn6.setOnClickListener(onClickListener);
+        layoutBtn7.setOnClickListener(onClickListener);
+        layoutBtn8.setOnClickListener(onClickListener);
+        layoutBtn9.setOnClickListener(onClickListener);
+        layoutBtn10.setOnClickListener(onClickListener);
+        layoutBtn11.setOnClickListener(onClickListener);
+        layoutBtn12.setOnClickListener(onClickListener);
 
 
 //            GridView gridView = (GridView) findViewById(R.id.gridview);
@@ -135,8 +203,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void initActionBar() {
-        ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
-        ImageView imageViewSaerch = (ImageView)findViewById(R.id.imageViewToolbar_search);
+        ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
+        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -216,13 +284,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        TextView textViewGray = (TextView) layout.findViewById(R.id.textViewPopChangeToGray);
-        TextView textViewPink = (TextView) layout.findViewById(R.id.textViewPopChangeToPink);
-        TextView textViewBlown = (TextView) layout.findViewById(R.id.textViewPopChangeToBlown);
-        TextView textViewOrange = (TextView) layout.findViewById(R.id.textViewPopChangeToOrange);
-        TextView textViewBlue = (TextView) layout.findViewById(R.id.textViewPopChangeToBlue);
-        TextView textViewPurple = (TextView) layout.findViewById(R.id.textViewPopChangeToPurple);
-        TextView textViewRed = (TextView) layout.findViewById(R.id.textViewPopChangeToRed);
+        LinearLayout layoutGray = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToGray);
+        LinearLayout layoutPink = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToPink);
+        LinearLayout layoutBlown = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToBlown);
+        LinearLayout layoutOrange = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToOrange);
+        LinearLayout layoutBlue = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToBlue);
+        LinearLayout layoutPurple = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToPurple);
+        LinearLayout layoutRed = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToRed);
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
@@ -230,25 +298,25 @@ public class MainActivity extends AppCompatActivity {
 
                 int theme;
                 switch (v.getId()) {
-                    case R.id.textViewPopChangeToGray:
+                    case R.id.layoutPopChangeToGray:
                         theme = ChangeTheme.THEME_GRAY;
                         break;
-                    case R.id.textViewPopChangeToPink:
+                    case R.id.layoutPopChangeToPink:
                         theme = ChangeTheme.THEME_PINK;
                         break;
-                    case R.id.textViewPopChangeToRed:
+                    case R.id.layoutPopChangeToRed:
                         theme = ChangeTheme.THEME_RED;
                         break;
-                    case R.id.textViewPopChangeToBlown:
+                    case R.id.layoutPopChangeToBlown:
                         theme = ChangeTheme.THEME_BROWN;
                         break;
-                    case R.id.textViewPopChangeToBlue:
+                    case R.id.layoutPopChangeToBlue:
                         theme = ChangeTheme.THEME_BLUE;
                         break;
-                    case R.id.textViewPopChangeToOrange:
+                    case R.id.layoutPopChangeToOrange:
                         theme = ChangeTheme.THEME_ORANGE;
                         break;
-                    case R.id.textViewPopChangeToPurple:
+                    case R.id.layoutPopChangeToPurple:
                         theme = ChangeTheme.THEME_PURPLE;
                         break;
                     default:
@@ -260,31 +328,35 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-        textViewGray.setOnClickListener(onClickListener);
-        textViewPink.setOnClickListener(onClickListener);
-        textViewRed.setOnClickListener(onClickListener);
-        textViewBlue.setOnClickListener(onClickListener);
-        textViewBlown.setOnClickListener(onClickListener);
-        textViewOrange.setOnClickListener(onClickListener);
-        textViewPurple.setOnClickListener(onClickListener);
+        layoutGray.setOnClickListener(onClickListener);
+        layoutPink.setOnClickListener(onClickListener);
+        layoutRed.setOnClickListener(onClickListener);
+        layoutBlue.setOnClickListener(onClickListener);
+        layoutBlown.setOnClickListener(onClickListener);
+        layoutOrange.setOnClickListener(onClickListener);
+        layoutPurple.setOnClickListener(onClickListener);
     }
 
     @Override
     public void onBackPressed() {
         if (mPopupWindow != null && mPopupWindow.isShowing()) {
             mPopupWindow.dismiss();
-        } else {
+        } else if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+            mDrawerLayout.closeDrawers();
+        }else {
             super.onBackPressed();
         }
     }
 
     private void showAboutDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setTitle("关于 Mincreafting");
         builder.setMessage("这是一个Mincreaft合成表的APP, 所有内容来自于Mincratft 中文WIKI");
 //        builder.setNegativeButton("取消", null);
         builder.setPositiveButton("确定", null);
         builder.show();
     }
+
+
 }
 

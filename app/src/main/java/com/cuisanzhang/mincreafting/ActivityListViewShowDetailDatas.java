@@ -45,21 +45,18 @@ public class ActivityListViewShowDetailDatas extends AppCompatActivity {
         initActionBar();
 
         checkBoxStateList = new ArrayList<Boolean>();
-        SharedPreferences preferences = getSharedPreferences(savefile,
-                MODE_APPEND);
 
         DbManage dbManage = new DbManage(getApplicationContext());
 
-        if (preferences.getBoolean(jianzhulei, false) == false) {
+        String table_name = getIntent().getStringExtra(MainActivity.EXTRA_TABLE_NAME);
+        String category = getIntent().getStringExtra(MainActivity.EXTRA_CATEGORY);
 
-            System.out.println("dbManage.insertDataToTable");
-            dbManage.insertDataToTable(MyDatabaseHelper.TABLE_NAME_YUNSHU,
-                    "josns/yunshu.josn");
-            Editor editor = preferences.edit();
-            editor.putBoolean(jianzhulei, true).commit();
-        }
+        TextView listViewTitle = (TextView)findViewById(R.id.listViewTitle);
+        listViewTitle.setText(category);
 
-        blocks = dbManage.getDatasFormTable(MyDatabaseHelper.TABLE_NAME_YUNSHU);
+        blocks = dbManage.getDatasFormTable(table_name);
+        dbManage.closeDatabase();
+
         if (blocks == null) {
             System.out.println("getDatabase is null");
         } else {

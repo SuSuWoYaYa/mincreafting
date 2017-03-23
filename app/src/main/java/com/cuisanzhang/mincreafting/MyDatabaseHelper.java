@@ -7,12 +7,36 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
-	public static final String DATABASE_NAME = "DataBase.db";
-	public static final String TABLE_NAME_JIANZHULEI = "table_jianzhulei";
-	public static final String TABLE_NAME_ZHUANGSHIXIGN = "table_zhuangshixing";
-	public static final String TABLE_NAME_ZHUANGZHI_REDSHONE = "table_zhuanzhi_redstone";
-	public static final String TABLE_NAME_FOOD = "table_food";
-	public static final String TABLE_NAME_YUNSHU = "table_yunshu";
+	public static final String DATABASE_NAME = "DataBase.sqlite";
+
+	public static final String TABLE_BUILDING =  "table_building";	//建筑 building
+	public static final String TABLE_DAILY =  "table_daily";		//日常 daily
+	public static final String TABLE_DECORATION =  "table_decoration";	//装饰 decoration
+	public static final String TABLE_DYE =  "table_dye";		//染料类 dye
+	public static final String TABLE_FOOD =  "table_food";		//食物 food
+	public static final String TABLE_LIGHTING =  "table_lighting";	//照明 lighting
+	public static final String TABLE_ORE =  "table_ore";		//矿石 ore
+	public static final String TABLE_REDSTONE =  "table_redstone";	//红石 redstone
+	public static final String TABLE_TANNSPORT =  "table_tannsport";	//运输 tannsport
+	public static final String TABLE_TOOLS =  "table_tools";		//工具 tools
+	public static final String TABLE_WEAPON =  "table_weapon";		//武器 weapon
+	public static final String TABLE_OTHERS =  "table_others";		//杂项类 others
+
+	public static final String TABLE_NAMES []= {
+			"table_building", 	//建筑 building
+			"table_daily",		//日常 daily
+			"table_decoration",	//装饰 decoration
+			"table_dye",		//染料类 dye
+			"table_food",		//食物 food
+			"table_lighting",	//照明 lighting
+			"table_ore",		//矿石 ore
+			"table_redstone",	//红石 redstone
+			"table_tannsport",	//运输 tannsport
+			"table_tools",		//工具 tools
+			"table_weapon",		//武器 weapon
+			"table_others",		//杂项类 others
+
+	};
 	
 	
 	public MyDatabaseHelper(Context context) {
@@ -23,55 +47,18 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		db.execSQL("CREATE TABLE " + TABLE_NAME_JIANZHULEI 
-				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT," 
-				+ " res_id INTEGER,"
-				+ " file_name TEXT,"
-				+ " name TEXT,"
-				+ " material TEXT,"
-				+ " use TEXT,"
-				+ " detail TEXT,"
-				+ " isgif INTEGER)");
-		
-		db.execSQL("CREATE TABLE " + TABLE_NAME_ZHUANGSHIXIGN
-				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT," 
-				+ " res_id INTEGER,"
-				+ " file_name TEXT,"
-				+ " name TEXT,"
-				+ " material TEXT,"
-				+ " use TEXT,"
-				+ " detail TEXT,"
-				+ " isgif INTEGER)");
-		
-		db.execSQL("CREATE TABLE " + TABLE_NAME_ZHUANGZHI_REDSHONE 
-				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT," 
-				+ " res_id INTEGER,"
-				+ " file_name TEXT,"
-				+ " name TEXT,"
-				+ " material TEXT,"
-				+ " use TEXT,"
-				+ " detail TEXT,"
-				+ " isgif INTEGER)");
-		
-		db.execSQL("CREATE TABLE " + TABLE_NAME_FOOD 
-				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT," 
-				+ " res_id INTEGER,"
-				+ " file_name TEXT,"
-				+ " name TEXT,"
-				+ " material TEXT,"
-				+ " use TEXT,"
-				+ " detail TEXT,"
-				+ " isgif INTEGER)");
-		
-		db.execSQL("CREATE TABLE " + TABLE_NAME_YUNSHU
-				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT," 
-				+ " res_id INTEGER,"
-				+ " file_name TEXT,"
-				+ " name TEXT,"
-				+ " material TEXT,"
-				+ " use TEXT,"
-				+ " detail TEXT,"
-				+ " isgif INTEGER)");
+		for (int i = 0; i < TABLE_NAMES.length; i++) {
+			db.execSQL("CREATE TABLE " + TABLE_NAMES[i]
+					+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+					+ " res_id INTEGER,"
+					+ " file_name TEXT,"
+					+ " name TEXT,"
+					+ " material TEXT,"
+					+ " use TEXT,"
+					+ " detail TEXT,"
+					+ " isgif INTEGER)");
+		}
+
 	}
 
 	@Override

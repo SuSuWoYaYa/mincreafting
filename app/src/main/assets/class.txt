@@ -11,3 +11,5 @@
 红石 redstone
 药水 syrup
 武器 weapon
+染料类 dye
+杂项类 others

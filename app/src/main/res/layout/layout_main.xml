@@ -38,7 +38,7 @@
         //标题栏
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:background="?attr/colorPrimary">
             <ImageView
                 android:id="@+id/imageViewToolbar_menu"
@@ -55,6 +55,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/toolbar_title"
+                android:textSize="16sp"
                 android:textColor="?attr/textColorPrimary"/>
             <ImageView
                 android:id="@+id/imageViewToolbar_search"
@@ -110,6 +111,7 @@
 
 
             <LinearLayout
+                android:id="@+id/layout_btn_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -149,6 +151,7 @@
 
 
             <LinearLayout
+                android:id="@+id/layout_btn_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -180,76 +183,7 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="工具"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="工具"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-
-            <LinearLayout
+                android:id="@+id/layout_btn_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -289,6 +223,7 @@
 
 
             <LinearLayout
+                android:id="@+id/layout_btn_5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -320,76 +255,7 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="工具"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="工具"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-
-            <LinearLayout
+                android:id="@+id/layout_btn_6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -429,6 +295,7 @@
 
 
             <LinearLayout
+                android:id="@+id/layout_btn_7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -460,6 +327,151 @@
 
 
             <LinearLayout
+                android:id="@+id/layout_btn_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:src="@drawable/diamond_50" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="工具"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/layout_btn_9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:src="@drawable/diamond_50" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="工具"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_btn_10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:src="@drawable/diamond_50" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="工具"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/layout_btn_11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:src="@drawable/diamond_50" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="工具"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_btn_12"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"

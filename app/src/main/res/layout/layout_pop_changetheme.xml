@@ -5,6 +5,7 @@
     android:background="@color/list_background"
     android:orientation="vertical"    >
     <LinearLayout
+        android:id="@+id/layoutPopChangeToGray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -22,7 +23,6 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textViewPopChangeToGray"
             android:textColor="@color/colorPrimary_gray"
             android:layout_weight="1"
             android:gravity="center"
@@ -30,6 +30,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutPopChangeToRed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -47,13 +48,13 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textViewPopChangeToRed"
             android:textColor="@color/colorPrimary_red"
             android:layout_weight="1"
             android:gravity="center"
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layoutPopChangeToOrange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -71,13 +72,13 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textViewPopChangeToOrange"
             android:textColor="@color/colorPrimary_orange"
             android:layout_weight="1"
             android:gravity="center"
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layoutPopChangeToPurple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -95,13 +96,13 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textViewPopChangeToPurple"
             android:textColor="@color/colorPrimary_purple"
             android:layout_weight="1"
             android:gravity="center"
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layoutPopChangeToBlue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -119,13 +120,13 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textViewPopChangeToBlue"
             android:textColor="@color/colorPrimary_blue"
             android:layout_weight="1"
             android:gravity="center"
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layoutPopChangeToBlown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -143,13 +144,13 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textViewPopChangeToBlown"
             android:textColor="@color/colorPrimary_brown"
             android:layout_weight="1"
             android:gravity="center"
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layoutPopChangeToPink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -167,7 +168,6 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/textViewPopChangeToPink"
             android:textColor="@color/colorPrimary_pink"
             android:layout_weight="1"
             android:gravity="center"
