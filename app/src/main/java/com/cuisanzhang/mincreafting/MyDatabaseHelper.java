@@ -50,7 +50,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 		for (int i = 0; i < TABLE_NAMES.length; i++) {
 			db.execSQL("CREATE TABLE " + TABLE_NAMES[i]
 					+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-					+ " res_id INTEGER,"
+//					+ " res_id INTEGER,"
 					+ " file_name TEXT,"
 					+ " name TEXT,"
 					+ " material TEXT,"

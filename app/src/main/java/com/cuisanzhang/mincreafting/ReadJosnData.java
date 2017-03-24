@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import android.R.array;
 import android.R.color;
 import android.content.Context;
+import android.util.Log;
 
 import com.cuisanzhang.mincreafting.Block;
 
@@ -22,7 +23,7 @@ public class ReadJosnData {
 
 	private static Context context;
 
-	public static List<Block> ReadDataformJosnFile(Context c, String fileName) {
+	public static List<Block> ReadBlockformJosnFile(Context c, String fileName) {
 
 		context = c;
 		List<Block> blocks = new ArrayList<Block>() {
@@ -60,26 +61,27 @@ public class ReadJosnData {
 				String use = item.getString(Block.USE);
 				String detail = item.getString(Block.DETAIL);
 				boolean isgif = item.getBoolean(Block.ISGIF);
-				int res_id = getResourceId(file_name);
-				Block block = new Block(res_id, file_name, name, material, use,
+//				int res_id = getResourceId(file_name);
+				Block block = new Block( file_name, name, material, use,
 						detail, isgif);
 				blocks.add(block);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			Log.e("ReadJosnData", "read josn file "+  fileName + " error");
 		}
 
 		System.out.println(blocks.size());
 
 		return blocks;
 	}
-
-	private static int getResourceId(String file_name) {
-		// Context ctx=context.getBaseContext();
-		int resId = context.getResources().getIdentifier(file_name, "drawable",
-				context.getPackageName());
-		return resId;
-	}
+//
+//	private static int getResourceId(String file_name) {
+//		// Context ctx=context.getBaseContext();
+//		int resId = context.getResources().getIdentifier(file_name, "drawable",
+//				context.getPackageName());
+//		return resId;
+//	}
 
 }

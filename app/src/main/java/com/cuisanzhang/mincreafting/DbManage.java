@@ -78,12 +78,11 @@ public class DbManage {
 
     public void insertDataToTable(String TableName, String JosnfileName) {
         List<Block> list = null;
-        list = ReadJosnData.ReadDataformJosnFile(context, JosnfileName);
+        list = ReadJosnData.ReadBlockformJosnFile(context, JosnfileName);
         for (int i = 0; i < list.size(); i++) {
 
             Block item = list.get(i);
 
-            int res_id = item.getResId();
             String file_name = item.getFileName();
             String name = item.getName();
             String material = item.getMaterial();
@@ -92,7 +91,7 @@ public class DbManage {
             boolean isgif = item.isgif();
 
             ContentValues values = new ContentValues();
-            values.put(Block.RES_ID, res_id);
+//            values.put(Block.RES_ID, res_id);
             values.put(Block.FILE_NAME, file_name);
             values.put(Block.NAME, name);
             values.put(Block.MATERIAL, material);
@@ -120,7 +119,7 @@ public class DbManage {
         for (int i = 0; i < cursor.getCount(); i++) {
 
 
-            int res_id = cursor.getInt((cursor.getColumnIndex(Block.RES_ID)));
+//            int res_id = cursor.getInt((cursor.getColumnIndex(Block.RES_ID)));
             String file_name = cursor.getString((cursor.getColumnIndex(Block.FILE_NAME)));
             String name = cursor.getString((cursor.getColumnIndex(Block.NAME)));
             String material = cursor.getString((cursor.getColumnIndex(Block.MATERIAL)));
@@ -137,7 +136,7 @@ public class DbManage {
             ;
 
 //			Log.e(TAG , "getDatasFormTable " + name);
-            Block block = new Block(res_id, file_name, name, material, use, detail, boolIsGif);
+            Block block = new Block(file_name, name, material, use, detail, boolIsGif);
 
             list.add(block);
             cursor.moveToNext();

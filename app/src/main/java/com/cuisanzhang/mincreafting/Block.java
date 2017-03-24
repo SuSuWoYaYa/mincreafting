@@ -3,7 +3,7 @@ package com.cuisanzhang.mincreafting;
 public class Block {
 
 	
-	public static String RES_ID = "res_id";
+//	public static String RES_ID = "res_id";
 	public static String FILE_NAME = "file_name";
 	public static String NAME = "name";
 	public static String MATERIAL = "material";
@@ -11,7 +11,7 @@ public class Block {
 	public static String DETAIL = "detail";
 	public static String ISGIF = "isgif";
 	
-	private int res_id = 0;
+//	private int res_id = 0;
 	private String file_name = null;
 	private String name = null;
 	private String material = null;
@@ -19,10 +19,10 @@ public class Block {
 	private String detail = null;
 	private Boolean isgif = false;
 
-	public Block(int res_id, String file_name, String name, String material,
+	public Block(String file_name, String name, String material,
 			String use, String detail, Boolean isgif) {
 		// TODO Auto-generated constructor stub
-		this.res_id = res_id;
+//		this.res_id = res_id;
 		this.file_name = file_name;
 		this.name = name;
 		this.material = material;
@@ -31,9 +31,9 @@ public class Block {
 		this.isgif = isgif;
 	}
 
-	public int getResId() {
-		return res_id;
-	}
+//	public int getResId() {
+//		return res_id;
+//	}
 
 	public String getFileName() {
 		return file_name;

@@ -1,15 +1,20 @@
 package com.cuisanzhang.mincreafting;
 
+import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +32,7 @@ public class ActivityListViewShowDetailDatas extends AppCompatActivity {
 
     public static String savefile = "save.txt";
     public static String jianzhulei = "jianzhulei";
-    public static String food = "food";
+    public static String TAG = "getView";
 
     List<Block> blocks = null;
     // checkbox状态
@@ -51,7 +56,7 @@ public class ActivityListViewShowDetailDatas extends AppCompatActivity {
         String table_name = getIntent().getStringExtra(MainActivity.EXTRA_TABLE_NAME);
         String category = getIntent().getStringExtra(MainActivity.EXTRA_CATEGORY);
 
-        TextView listViewTitle = (TextView)findViewById(R.id.listViewTitle);
+        TextView listViewTitle = (TextView) findViewById(R.id.listViewTitle);
         listViewTitle.setText(category);
 
         blocks = dbManage.getDatasFormTable(table_name);
@@ -147,22 +152,32 @@ public class ActivityListViewShowDetailDatas extends AppCompatActivity {
             }
             Block block = blocks.get(position);
             holder.textViewName.setText(block.getName());
+            TextView textViewBuilding = (TextView)findViewById(R.id.textViewBuilding);
+//            Typeface typeFace =Typeface.createFromAsset(getAssets(),"fonts/font.ttf");
+//            holder.textViewName.setTypeface(typeFace);
+
             holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());
             boolean isgif = block.isgif();
-            int resId = block.getResId();
-            if (isgif) {
+            int resId = getResources().getIdentifier(block.getFileName(), "drawable",
+                    getPackageName());
 
-                Glide.with(ActivityListViewShowDetailDatas.this).load(resId).asGif().placeholder(R.drawable.loading)
-                        .into(holder.imageView);
-              // Glide.with(getApplicationContext()).load(resId).asGif().placeholder(R.drawable.loading)
-               //         .into(holder.imageView);
-            } else {
+//            Uri path = Uri.parse("android.resource://" + getPackageName() + "/res/drawable/" + block.getFileName());
+//            Log.e(TAG, path);
+//
+
+//            if (isgif) {
+//
+//                Glide.with(ActivityListViewShowDetailDatas.this).load(resId).asGif().placeholder(R.drawable.loading)
+//                        .into(holder.imageView);
+//                // Glide.with(getApplicationContext()).load(resId).asGif().placeholder(R.drawable.loading)
+//                //         .into(holder.imageView);
+//            } else {
                 Glide.with(ActivityListViewShowDetailDatas.this).load(resId).placeholder(R.drawable.loading)
                         .into(holder.imageView);
-                
+
                 //Glide.with(getApplicationContext()).load(resId).placeholder(R.drawable.loading)
-                  //      .into(holder.imageView);
-            }
+                //      .into(holder.imageView);
+//            }
             holder.textViewUse.setText(block.getUse());
             holder.textViewShowBlockDetail.setText(block.getDetail());
 
@@ -201,14 +216,14 @@ public class ActivityListViewShowDetailDatas extends AppCompatActivity {
     }
 
     public void initActionBar() {
-            ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
-            ImageView imageViewSaerch = (ImageView)findViewById(R.id.imageViewToolbar_search);
-            imageViewMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+        ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
+        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
+        imageViewMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.listview_toolbar);
 //        toolbar.setTitle("");
 //

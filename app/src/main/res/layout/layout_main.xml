@@ -50,6 +50,7 @@
                 android:src="?attr/navigationIcon_menu"
                 android:scaleType="centerInside"/>
             <TextView
+                android:id="@+id/textView_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -77,7 +78,7 @@
 
 
             <LinearLayout
-                android:id="@+id/layout_btn_1"
+                android:id="@+id/layout_btn_building"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -94,24 +95,26 @@
                     android:clickable="false"
                     android:focusable="false"
                     android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
+                    android:src="@drawable/icon_builging"
+                    />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewBuilding"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:clickable="false"
                     android:focusable="false"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="工具"
+                    android:text="@string/category_building"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/layout_btn_2"
+                android:id="@+id/layout_btn_daily"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -127,90 +130,18 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
+                    android:src="@drawable/icon_dayle1" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:clickable="false"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="工具"
+                    android:text="@string/category_daily"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:id="@+id/layout_btn_3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="工具"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/layout_btn_4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="工具"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -223,7 +154,7 @@
 
 
             <LinearLayout
-                android:id="@+id/layout_btn_5"
+                android:id="@+id/layout_btn_decoration"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -239,23 +170,23 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
+                    android:src="@drawable/icon_dandelion" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:clickable="false"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="工具"
+                    android:text="@string/category_decoration"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/layout_btn_6"
+                android:id="@+id/layout_btn_dye"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -271,90 +202,18 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
+                    android:src="@drawable/icon_dye" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:clickable="false"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="工具"
+                    android:text="@string/category_dye"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:id="@+id/layout_btn_7"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="工具"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/layout_btn_8"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="false"
-                    android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="工具"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -367,7 +226,7 @@
 
 
             <LinearLayout
-                android:id="@+id/layout_btn_9"
+                android:id="@+id/layout_btn_food"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -383,23 +242,23 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
+                    android:src="@drawable/icon_food2" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:clickable="false"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="工具"
+                    android:text="@string/category_food"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/layout_btn_10"
+                android:id="@+id/layout_btn_lighting"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -415,18 +274,18 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
+                    android:src="@drawable/icon_lighting1" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:clickable="false"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="工具"
+                    android:text="@string/category_lighting"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -439,7 +298,7 @@
 
 
             <LinearLayout
-                android:id="@+id/layout_btn_11"
+                android:id="@+id/layout_btn_ore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -455,23 +314,23 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
+                    android:src="@drawable/icon_ore" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:clickable="false"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="工具"
+                    android:text="@string/category_ore"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/layout_btn_12"
+                android:id="@+id/layout_btn_redstone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
@@ -487,18 +346,164 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/diamond_50" />
+                    android:src="@drawable/icon_redstone" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:clickable="false"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="工具"
+                    android:text="@string/category_redstone"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/layout_btn_tannsport"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:src="@drawable/icon_tannsport" />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="@string/category_tannsport"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_btn_tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageViewTools"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:src="@drawable/icon_tools" />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="@string/category_tools"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/layout_btn_weapon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageViewWeapon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:src="@drawable/icon_weapon" />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="@string/category_weapon"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_btn_others"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:src="@drawable/icon_others" />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="@string/category_others"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
