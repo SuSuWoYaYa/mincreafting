@@ -95,15 +95,15 @@
             "material": "地狱砖块",
             "use": "地狱砖楼梯自然生成在下界要塞里。 所有楼梯类的属性基本相同.",
             "detail": "看上面",
-			"isgif": "false"
+	    "isgif": "false"
         },
         {
             "file_name": "shashilouti",
-            "name": "沙石楼梯",
-            "material": "任何沙石",
+            "name": "砂岩楼梯",
+            "material": "任何砂岩",
             "use": "行走, 放置, 燃料. 所有楼梯类的属性基本相同.",
             "detail": "看上面",
-            "isgif": "false"
+            "isgif": "true"
         },
         {
             "file_name": "shiyinglouti",
