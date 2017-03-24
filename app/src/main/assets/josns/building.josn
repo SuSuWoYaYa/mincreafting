@@ -98,7 +98,7 @@
 	    "isgif": "false"
         },
         {
-            "file_name": "shashilouti",
+            "file_name": "shayanglouti",
             "name": "砂岩楼梯",
             "material": "任何砂岩",
             "use": "行走, 放置, 燃料. 所有楼梯类的属性基本相同.",
