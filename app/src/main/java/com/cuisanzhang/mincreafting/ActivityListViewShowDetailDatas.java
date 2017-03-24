@@ -148,16 +148,20 @@ public class ActivityListViewShowDetailDatas extends AppCompatActivity {
             Block block = blocks.get(position);
             holder.textViewName.setText(block.getName());
             holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());
-
             boolean isgif = block.isgif();
             int resId = block.getResId();
             if (isgif) {
 
-                Glide.with(getApplicationContext()).load(resId).asGif().placeholder(R.drawable.loading)
+                Glide.with(ActivityListViewShowDetailDatas.this).load(resId).asGif().placeholder(R.drawable.loading)
                         .into(holder.imageView);
+              // Glide.with(getApplicationContext()).load(resId).asGif().placeholder(R.drawable.loading)
+               //         .into(holder.imageView);
             } else {
-                Glide.with(getApplicationContext()).load(resId).placeholder(R.drawable.loading)
+                Glide.with(ActivityListViewShowDetailDatas.this).load(resId).placeholder(R.drawable.loading)
                         .into(holder.imageView);
+                
+                //Glide.with(getApplicationContext()).load(resId).placeholder(R.drawable.loading)
+                  //      .into(holder.imageView);
             }
             holder.textViewUse.setText(block.getUse());
             holder.textViewShowBlockDetail.setText(block.getDetail());
