@@ -84,7 +84,6 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
 
     public class MyAdapter extends BaseAdapter {
 
-        public final class ViewHolder {
             public TextView textViewName;
             public TextView textViewHighLevel;
             public LinearLayout layoutMainView;
@@ -94,10 +93,21 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
             public TextView textViewUse;
             public TextView textViewShowBlockDetail;
             public CheckBox checkBox;
-        }
+
+//        public final class ViewHolder {
+//            public TextView textViewName;
+//            public TextView textViewHighLevel;
+//            public LinearLayout layoutMainView;
+//            public LinearLayout layoutSubView;
+//            public ImageView imageViewMain;
+//            public ImageView imageViewSub;
+//            public TextView textViewUse;
+//            public TextView textViewShowBlockDetail;
+//            public CheckBox checkBox;
+//        }
 
         private LayoutInflater mInflater = getLayoutInflater();
-        private ViewHolder holder = null;
+//        private ViewHolder holder = null;
 
         public MyAdapter(Context context) {
             this.mInflater = LayoutInflater.from(context);
@@ -126,74 +136,66 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
             // TODO Auto-generated method stub
             final int pos = position;
 
-            if (convertView == null) {
-
-                holder = new ViewHolder();
 
 
                 convertView = mInflater.inflate(R.layout.layout_listview_item_enchants, null);
-                holder.textViewName = (TextView) convertView
+                textViewName = (TextView) convertView
                         .findViewById(R.id.name);
-                holder.textViewHighLevel = (TextView) convertView
+                textViewHighLevel = (TextView) convertView
                         .findViewById(R.id.textViewHighLevel);
-                holder.imageViewMain = (ImageView) convertView
+                imageViewMain = (ImageView) convertView
                         .findViewById(R.id.imageViewMain);
-                holder.imageViewSub = (ImageView) convertView
+                imageViewSub = (ImageView) convertView
                         .findViewById(R.id.imageViewsub);
-                holder.layoutMainView = (LinearLayout)convertView.findViewById(R.id.layoutMainView);
-                holder.layoutSubView = (LinearLayout)convertView.findViewById(R.id.layoutSubView);
-                holder.textViewUse = (TextView) convertView
+                layoutMainView = (LinearLayout)convertView.findViewById(R.id.layoutMainView);
+                layoutSubView = (LinearLayout)convertView.findViewById(R.id.layoutSubView);
+                textViewUse = (TextView) convertView
                         .findViewById(R.id.use);
-                holder.textViewShowBlockDetail = (TextView) convertView
+                textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
-                holder.checkBox = (CheckBox) convertView
+                checkBox = (CheckBox) convertView
                         .findViewById(R.id.checkBox1);
-                convertView.setTag(holder);
-
-            } else {
-
-                holder = (ViewHolder) convertView.getTag();
-            }
             Enchant enchant = enchants.get(position);
-            holder.textViewName.setText(enchant.getName());
+            textViewName.setText(enchant.getName());
 
             if (enchant.getHighLevel().equals(" ")) {
-                holder.textViewHighLevel.setVisibility(View.GONE);
+                textViewHighLevel.setVisibility(View.GONE);
             }else {
-                holder.textViewHighLevel.setVisibility(View.VISIBLE);
-                holder.textViewHighLevel.setText("最高等级: " + enchant.getHighLevel());
+                textViewHighLevel.setVisibility(View.VISIBLE);
+                textViewHighLevel.setText("最高等级: " + enchant.getHighLevel());
             }
 //            holder.textViewHighLevel.setText("最高等级: " + enchant.getHighLevel() + " main=" + enchant.getMainFileName() + " sub=" + enchant.getSubFileName());
 
-            holder.imageViewMain.setVisibility(View.GONE);
 
             if (enchant.getMainFileName().equals(" ")) {
-                holder.imageViewMain.setVisibility(View.GONE);
-                holder.layoutMainView.setVisibility(View.GONE);
+                imageViewMain.setVisibility(View.GONE);
+                layoutMainView.setVisibility(View.GONE);
             }else {
-                holder.imageViewMain.setVisibility(View.VISIBLE);
-                holder.layoutMainView.setVisibility(View.VISIBLE);
+                imageViewMain.setVisibility(View.VISIBLE);
+//                imageViewMain.setImageResource(R.drawable.loading_enchant);
+                layoutMainView.setVisibility(View.VISIBLE);
                 int MainFileResId = getResources().getIdentifier(enchant.getMainFileName(), "drawable",
                         getPackageName());
                 Glide.with(ActivityListViewShowEnchants.this).load(MainFileResId).placeholder(R.drawable.loading_enchant)
-                        .into(holder.imageViewMain);
+                        .into(imageViewMain);
             }
 
             if (enchant.getSubFileName().equals(" ")) {
-                holder.imageViewSub.setVisibility(View.GONE);
-                holder.layoutSubView.setVisibility(View.GONE);
+                imageViewSub.setVisibility(View.GONE);
+                layoutSubView.setVisibility(View.GONE);
             }else {
 
-                holder.imageViewSub.setVisibility(View.VISIBLE);
-                holder.layoutSubView.setVisibility(View.VISIBLE);
+                imageViewSub.setVisibility(View.VISIBLE);
+//                imageViewSub.setImageResource(R.drawable.loading_enchant);
+                layoutSubView.setVisibility(View.VISIBLE);
                 int SubFileResId = getResources().getIdentifier(enchant.getSubFileName(), "drawable",
                         getPackageName());
                 Glide.with(ActivityListViewShowEnchants.this).load(SubFileResId).placeholder(R.drawable.loading_enchant)
-                        .into(holder.imageViewSub);
+                        .into(imageViewSub);
             }
 
-            holder.textViewUse.setText(enchant.getUse());
-            holder.textViewShowBlockDetail.setText(enchant.getDetail());
+            textViewUse.setText(enchant.getUse());
+            textViewShowBlockDetail.setText(enchant.getDetail());
 
             // 防止数组越界
             if (checkBoxStateList.size() <= position) {
@@ -201,7 +203,7 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
-            holder.checkBox
+            checkBox
                     .setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
                         @Override
@@ -215,18 +217,124 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
                     });
 
             boolean ischecked = checkBoxStateList.get(position);
-            holder.checkBox.setChecked(ischecked);
+            checkBox.setChecked(ischecked);
             if (ischecked) {
-//				holder.textViewDetail.setVisibility(View.VISIBLE);
-                holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
+//				textViewDetail.setVisibility(View.VISIBLE);
+                textViewShowBlockDetail.setVisibility(View.VISIBLE);
             } else {
-//				holder.textViewDetail.setVisibility(View.GONE);
-                holder.textViewShowBlockDetail.setVisibility(View.GONE);
+//				textViewDetail.setVisibility(View.GONE);
+                textViewShowBlockDetail.setVisibility(View.GONE);
             }
 
             return convertView;
         }
 
+//        @Override
+//        public View getView(int position, View convertView, ViewGroup parent) {
+//            // TODO Auto-generated method stub
+//            final int pos = position;
+//
+//            if (convertView == null) {
+//
+//                holder = new ViewHolder();
+//
+//
+//                convertView = mInflater.inflate(R.layout.layout_listview_item_enchants, null);
+//                holder.textViewName = (TextView) convertView
+//                        .findViewById(R.id.name);
+//                holder.textViewHighLevel = (TextView) convertView
+//                        .findViewById(R.id.textViewHighLevel);
+//                holder.imageViewMain = (ImageView) convertView
+//                        .findViewById(R.id.imageViewMain);
+//                holder.imageViewSub = (ImageView) convertView
+//                        .findViewById(R.id.imageViewsub);
+//                holder.layoutMainView = (LinearLayout)convertView.findViewById(R.id.layoutMainView);
+//                holder.layoutSubView = (LinearLayout)convertView.findViewById(R.id.layoutSubView);
+//                holder.textViewUse = (TextView) convertView
+//                        .findViewById(R.id.use);
+//                holder.textViewShowBlockDetail = (TextView) convertView
+//                        .findViewById(R.id.textViewShowBlockDetail);
+//                holder.checkBox = (CheckBox) convertView
+//                        .findViewById(R.id.checkBox1);
+//                convertView.setTag(holder);
+//
+//            } else {
+//
+//                holder = (ViewHolder) convertView.getTag();
+//            }
+//            Enchant enchant = enchants.get(position);
+//            holder.textViewName.setText(enchant.getName());
+//
+//            if (enchant.getHighLevel().equals(" ")) {
+//                holder.textViewHighLevel.setVisibility(View.GONE);
+//            }else {
+//                holder.textViewHighLevel.setVisibility(View.VISIBLE);
+//                holder.textViewHighLevel.setText("最高等级: " + enchant.getHighLevel());
+//            }
+////            holder.textViewHighLevel.setText("最高等级: " + enchant.getHighLevel() + " main=" + enchant.getMainFileName() + " sub=" + enchant.getSubFileName());
+//
+//
+//            if (enchant.getMainFileName().equals(" ")) {
+//                holder.imageViewMain.setVisibility(View.GONE);
+//                holder.layoutMainView.setVisibility(View.GONE);
+//            }else {
+//                holder.imageViewMain.setVisibility(View.VISIBLE);
+//                holder.imageViewMain.setImageResource(R.drawable.loading_enchant);
+//                holder.layoutMainView.setVisibility(View.VISIBLE);
+//                int MainFileResId = getResources().getIdentifier(enchant.getMainFileName(), "drawable",
+//                        getPackageName());
+//                Glide.with(ActivityListViewShowEnchants.this).load(MainFileResId).placeholder(R.drawable.loading_enchant)
+//                        .into(holder.imageViewMain);
+//            }
+//
+//            if (enchant.getSubFileName().equals(" ")) {
+//                holder.imageViewSub.setVisibility(View.GONE);
+//                holder.layoutSubView.setVisibility(View.GONE);
+//            }else {
+//
+//                holder.imageViewSub.setVisibility(View.VISIBLE);
+//                holder.imageViewSub.setImageResource(R.drawable.loading_enchant);
+//                holder.layoutSubView.setVisibility(View.VISIBLE);
+//                int SubFileResId = getResources().getIdentifier(enchant.getSubFileName(), "drawable",
+//                        getPackageName());
+//                Glide.with(ActivityListViewShowEnchants.this).load(SubFileResId).placeholder(R.drawable.loading_enchant)
+//                        .into(holder.imageViewSub);
+//            }
+//
+//            holder.textViewUse.setText(enchant.getUse());
+//            holder.textViewShowBlockDetail.setText(enchant.getDetail());
+//
+//            // 防止数组越界
+//            if (checkBoxStateList.size() <= position) {
+//                // 保存每个checkBoxState, 用来动态更新
+//                checkBoxStateList.add(false);
+//            }
+//
+//            holder.checkBox
+//                    .setOnCheckedChangeListener(new OnCheckedChangeListener() {
+//
+//                        @Override
+//                        public void onCheckedChanged(CompoundButton buttonView,
+//                                                     boolean isChecked) {
+//                            // TODO Auto-generated method stub
+//                            // 按照列表位置更新checkbox状态
+//                            checkBoxStateList.set(pos, isChecked);
+//                            adapter.notifyDataSetChanged();
+//                        }
+//                    });
+//
+//            boolean ischecked = checkBoxStateList.get(position);
+//            holder.checkBox.setChecked(ischecked);
+//            if (ischecked) {
+////				holder.textViewDetail.setVisibility(View.VISIBLE);
+//                holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
+//            } else {
+////				holder.textViewDetail.setVisibility(View.GONE);
+//                holder.textViewShowBlockDetail.setVisibility(View.GONE);
+//            }
+//
+//            return convertView;
+//        }
     }
 
     public void initActionBar() {

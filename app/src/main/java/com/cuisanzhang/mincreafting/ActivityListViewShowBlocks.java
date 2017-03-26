@@ -28,6 +28,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     List<Boolean> checkBoxStateList = null;
     MyAdapter adapter = null;
     String table_name = null;
+    int layout_of_giveView = 0;
     int loading_of_background = 0;
 
     @Override
@@ -47,10 +48,13 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
          table_name = getIntent().getStringExtra(MainActivity.EXTRA_TABLE_NAME);
         String category = getIntent().getStringExtra(MainActivity.EXTRA_CATEGORY);
 
+        //为了适应药水的图片
         if (table_name.equals(MyDatabaseHelper.TABLE_BREWING)) {
+            layout_of_giveView = R.layout.layout_listview_item_brewing;
             loading_of_background = R.drawable.loading_of_brewing;
         }
         else {
+            layout_of_giveView = R.layout.layout_listview_item_block;
             loading_of_background = R.drawable.loading_of_blocks;
         }
         TextView listViewTitle = (TextView) findViewById(R.id.listViewTitle);
@@ -125,7 +129,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 holder = new ViewHolder();
 
 
-                convertView = mInflater.inflate(R.layout.layout_listview_item_block, null);
+                convertView = mInflater.inflate(layout_of_giveView, null);
                 holder.textViewName = (TextView) convertView
                         .findViewById(R.id.name);
                 holder.textViewMaterial = (TextView) convertView
@@ -148,7 +152,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             holder.textViewName.setText(block.getName());
             TextView textViewBuilding = (TextView)findViewById(R.id.textViewBuilding);
 
-            holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());
+            holder.textViewMaterial.setText(block.getMaterial() );
+//            holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());
 //            boolean isgif = block.isgif();
             int resId = getResources().getIdentifier(block.getFileName(), "drawable",
                     getPackageName());

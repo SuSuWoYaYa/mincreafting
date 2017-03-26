@@ -43,8 +43,8 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"/>

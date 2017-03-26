@@ -1,181 +1,159 @@
 ﻿{
-    "category": "染料配方",
-    "blocks": [
-        {
-            "file_name": "gufeng",
-            "name": "骨粉",
-            "material": "骨头",
-            "use": "可作为染料和大部分植物的肥料",
-            "detail": "骨粉可以用来染色\n对羊使用来给它们的羊毛染色\n对驯服的狼的项圈染色\n与火药结合来合成烟火之星\n与烟火之星结合来制造颜色淡化的效果\n制作染色的皮革盔甲\n给玻璃或硬化粘土染色\n给旗帜加入图案\n\n作为肥料使用\n小麦、马铃薯、胡萝卜会生长2-5生长阶段\n甜菜根有75%几率生长一个生长阶段\n西瓜和南瓜种子：梗会生长2-5生长阶段\n骨粉只会影响梗本身，不会使成熟的梗长出西瓜或南瓜\n如果可以，树苗有45%几率生长到下一个生长阶段。树苗在第3个阶段生长成树前有2个生长阶段（无视觉上的差别）。如果树苗被种在不恰当的地方或上方的空间不足，树不会生长\n草丛和一些花会在草方块和附近7格内随机选取的草方块上长出。长出的花取决于生物群系\n向日葵、欧丁香、玫瑰丛和牡丹：相同的物品会掉落，但不会破坏原本的植物\n在泥土、草方块或耕地上的1格高的草丛或蕨会变成2格高的草丛或蕨\n蘑菇在泥土、草方块、灰化土或菌丝上时有40%几率变成巨型蘑菇\n可可豆会生长1成长阶段\n携带版上使甘蔗生长到最高高度（3格）\n花：在携带版，对一些花使用骨粉会使附近的蒲公英和罂粟生长\n\n骨粉对仙人掌、藤蔓、地狱疣和以上无提及的植物无效",
-            "isgif": "false"
-        },
-        {
-            "file_name": "gufeng_2",
-            "name": "骨粉",
-            "material": "骨块",
-            "use": "可作为染料和大部分植物的肥料",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "huanglvsherangliao",
-            "name": "黄绿色染料",
-            "material": "仙人掌绿 + 骨粉",
-            "use": "二级染料,染料类基本属性相同",
-            "detail": "与其他所有染料一样可以用来：\n对羊使用来给它们的羊毛染色\n对驯服的狼使用来给它们的项圈染色\n与火药结合来合成烟火之星\n与烟火之星结合来制造\"颜色淡化\"的效果\n制作染色的皮革盔甲\n给羊毛或玻璃或硬化粘土染色\n给旗帜加入图案",
-            "isgif": "false"
-        },
-        {
-            "file_name": "chengsherangliao",
-            "name": "橙色染料",
-            "material": "橙色郁金香",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "chengsherangliao_2",
-            "name": "橙色染料",
-            "material": "玫瑰红 + 蒲公英黄",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "huisherangliao",
-            "name": "灰色染料",
-            "material": "墨囊 + 骨粉",
-            "use": "二级染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "zhisherangliao",
-            "name": "紫色染料",
-            "material": "青金石 + 玫瑰红",
-            "use": "二级染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "qingsherangliao",
-            "name": "青色染料",
-            "material": "青金石 + 仙人掌绿",
-            "use": "二级染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "pugongyinghuang",
-            "name": "蒲公英黄",
-            "material": "蒲公英 或向日葵",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "true"
-        },
-        {
-            "file_name": "fenghongsherangliao",
-            "name": "粉红色染料",
-            "material": "粉红色郁金香 或牡丹",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "fenghongsherangliao_2",
-            "name": "粉红色染料",
-            "material": "玫瑰红 + 骨粉",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "meiguihong",
-            "name": "玫瑰红",
-            "material": "罂粟 或红色郁金香 或玫瑰丛 或甜菜根",
-            "use": "主要从花获取的基本染料\n染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "danghuisherangliao",
-            "name": "淡灰色染料",
-            "material": "茜草花 或滨菊 或白色郁金香",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "danghuisherangliao_2",
-            "name": "淡灰色染料",
-            "material": "墨囊 +骨粉",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "danghuisherangliao_3",
-            "name": "淡灰色染料",
-            "material": "灰色染料 + 骨粉",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "danglangsherangliao",
-            "name": "淡蓝色染料",
-            "material": "兰花",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "danglangsherangliao_2",
-            "name": "淡蓝色染料",
-            "material": "青金石 + 骨粉",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "qingjingshi",
-            "name": "青金石",
-            "material": "青金石块",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "pinghongsherangliao",
-            "name": "品红色染料",
-            "material": "绒球葱 或欧丁香",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "pinghongsherangliao_2",
-            "name": "品红色染料",
-            "material": "紫色染料 + 粉红色染料",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "pinghongsherangliao_3",
-            "name": "品红色染料",
-            "material": "青金石 + 骨粉 + 玫瑰红",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        },
-        {
-            "file_name": "pinghongsherangliao_4",
-            "name": "品红色染料",
-            "material": "粉红色染料 + 玫瑰红 + 青金石",
-            "use": "基本染料,染料类基本属性相同",
-            "detail": "看上面",
-            "isgif": "false"
-        }
-    ]
+  "category": "染料配方",
+  "blocks": [
+    {
+      "file_name": "gufeng",
+      "name": "骨粉",
+      "material": "骨头",
+      "use": "可作为染料和大部分植物的肥料",
+      "detail": "骨粉可以用来染色\n对羊使用来给它们的羊毛染色\n对驯服的狼的项圈染色\n与火药结合来合成烟火之星\n与烟火之星结合来制造颜色淡化的效果\n制作染色的皮革盔甲\n给玻璃或硬化粘土染色\n给旗帜加入图案\n\n作为肥料使用\n小麦、马铃薯、胡萝卜会生长2-5生长阶段\n甜菜根有75%几率生长一个生长阶段\n西瓜和南瓜种子：梗会生长2-5生长阶段\n骨粉只会影响梗本身，不会使成熟的梗长出西瓜或南瓜\n如果可以，树苗有45%几率生长到下一个生长阶段。树苗在第3个阶段生长成树前有2个生长阶段（无视觉上的差别）。如果树苗被种在不恰当的地方或上方的空间不足，树不会生长\n草丛和一些花会在草方块和附近7格内随机选取的草方块上长出。长出的花取决于生物群系\n向日葵、欧丁香、玫瑰丛和牡丹：相同的物品会掉落，但不会破坏原本的植物\n在泥土、草方块或耕地上的1格高的草丛或蕨会变成2格高的草丛或蕨\n蘑菇在泥土、草方块、灰化土或菌丝上时有40%几率变成巨型蘑菇\n可可豆会生长1成长阶段\n携带版上使甘蔗生长到最高高度（3格）\n花：在携带版，对一些花使用骨粉会使附近的蒲公英和罂粟生长\n\n骨粉对仙人掌、藤蔓、地狱疣和以上无提及的植物无效"
+    },
+    {
+      "file_name": "gufeng_2",
+      "name": "骨粉",
+      "material": "骨块",
+      "use": "可作为染料和大部分植物的肥料",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "huanglvsherangliao",
+      "name": "黄绿色染料",
+      "material": "仙人掌绿 + 骨粉",
+      "use": "二级染料,染料类基本属性相同",
+      "detail": "与其他所有染料一样可以用来：\n对羊使用来给它们的羊毛染色\n对驯服的狼使用来给它们的项圈染色\n与火药结合来合成烟火之星\n与烟火之星结合来制造颜色淡化的效果\n制作染色的皮革盔甲\n给羊毛或玻璃或硬化粘土染色\n给旗帜加入图案"
+    },
+    {
+      "file_name": "chengsherangliao",
+      "name": "橙色染料",
+      "material": "橙色郁金香",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "chengsherangliao_2",
+      "name": "橙色染料",
+      "material": "玫瑰红 + 蒲公英黄",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "huisherangliao",
+      "name": "灰色染料",
+      "material": "墨囊 + 骨粉",
+      "use": "二级染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "zhisherangliao",
+      "name": "紫色染料",
+      "material": "青金石 + 玫瑰红",
+      "use": "二级染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "qingsherangliao",
+      "name": "青色染料",
+      "material": "青金石 + 仙人掌绿",
+      "use": "二级染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "pugongyinghuang",
+      "name": "蒲公英黄",
+      "material": "蒲公英,向日葵",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "fenghongsherangliao",
+      "name": "粉红色染料",
+      "material": "粉红色郁金香,牡丹",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "fenghongsherangliao_2",
+      "name": "粉红色染料",
+      "material": "玫瑰红 + 骨粉",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "meiguihong",
+      "name": "玫瑰红",
+      "material": "罂粟,红色郁金香,玫瑰丛,甜菜根",
+      "use": "主要从花获取的基本染料\n染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "danghuisherangliao",
+      "name": "淡灰色染料",
+      "material": "茜草花,滨菊,白色郁金香",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "danghuisherangliao_2",
+      "name": "淡灰色染料",
+      "material": "墨囊 +骨粉",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "danghuisherangliao_3",
+      "name": "淡灰色染料",
+      "material": "灰色染料 + 骨粉",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "danglangsherangliao",
+      "name": "淡蓝色染料",
+      "material": "兰花",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "danglangsherangliao_2",
+      "name": "淡蓝色染料",
+      "material": "青金石 + 骨粉",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "qingjingshi",
+      "name": "青金石",
+      "material": "青金石块",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "pinghongsherangliao",
+      "name": "品红色染料",
+      "material": "绒球葱 或欧丁香",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "pinghongsherangliao_2",
+      "name": "品红色染料",
+      "material": "紫色染料 + 粉红色染料",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "pinghongsherangliao_3",
+      "name": "品红色染料",
+      "material": "青金石 + 骨粉 + 玫瑰红",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    },
+    {
+      "file_name": "pinghongsherangliao_4",
+      "name": "品红色染料",
+      "material": "粉红色染料 + 玫瑰红 + 青金石",
+      "use": "基本染料,染料类基本属性相同",
+      "detail": "看上面"
+    }
+  ]
 }
