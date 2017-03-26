@@ -34,4 +34,6 @@
     <string name="category_decoration">装饰</string>
     <string name="category_daily">日常</string>
     <string name="category_building">建筑</string>
+    <string name="category_brewing">药水</string>
+    <string name="category_enchant">附魔</string>
 </resources>

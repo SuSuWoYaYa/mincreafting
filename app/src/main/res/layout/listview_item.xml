@@ -53,7 +53,7 @@
             android:id="@+id/imageView1"
             android:layout_width="220dp"
             android:layout_height="126dp"
-            android:background="@drawable/loading"
+            android:background="@drawable/loading_of_blocks"
             android:scaleType="centerCrop" />
 
         <LinearLayout

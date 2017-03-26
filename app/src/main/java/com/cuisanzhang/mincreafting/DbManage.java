@@ -25,6 +25,7 @@ public class DbManage {
     private static SQLiteDatabase dbWrite = null;
     private static SharedPreferences preferences = null;
 
+    private static String  josnEnchant = "josns/enchant.josn";
     private static String[] josns = {
             "josns/building.josn",    //建筑 building
             "josns/daily.josn",       //日常 daily
@@ -37,8 +38,11 @@ public class DbManage {
             "josns/tannsport.josn",   //运输 tannsport
             "josns/tools.josn",       //工具 tools
             "josns/weapon.josn",      //武器 weapon
-            "josns/others.josn"       //杂项类 others
-    };
+            "josns/others.josn" ,      //杂项类 others
+            "josns/brewing.josn"		//药水类 brewing
+                    //enchant";		//附魔类 enchant
+
+};
 
 
     public DbManage(Context c) {
@@ -66,29 +70,32 @@ public class DbManage {
     public void initDatabase() {
 
         System.out.println("Start dbManage.insertDataToTable");
+
         for (int i = 0; i < josns.length; i++) {
-            insertDataToTable(MyDatabaseHelper.TABLE_NAMES[i],
+            insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
                     josns[i]);
         }
+        insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, josnEnchant);
+
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(HASDADABASE, true);
         editor.apply();
 
     }
 
-    public void insertDataToTable(String TableName, String JosnfileName) {
-        List<Block> list = null;
-        list = ReadJosnData.ReadBlockformJosnFile(context, JosnfileName);
-        for (int i = 0; i < list.size(); i++) {
+    public void insertBlocksToTable(String TableName, String JosnfileName) {
+        List<Block> blocks = null;
+        blocks = ReadJosnData.ReadBlockformJosnFile(context, JosnfileName);
+        for (int i = 0; i < blocks.size(); i++) {
 
-            Block item = list.get(i);
+            Block item = blocks.get(i);
 
             String file_name = item.getFileName();
             String name = item.getName();
             String material = item.getMaterial();
             String use = item.getUse();
             String detail = item.getDetail();
-            boolean isgif = item.isgif();
+//            boolean isgif = item.isgif();
 
             ContentValues values = new ContentValues();
 //            values.put(Block.RES_ID, res_id);
@@ -97,15 +104,45 @@ public class DbManage {
             values.put(Block.MATERIAL, material);
             values.put(Block.USE, use);
             values.put(Block.DETAIL, detail);
-            values.put(Block.ISGIF, isgif);
-            Log.e(TAG, "insertDataToTable " + name);
+//            values.put(Block.ISGIF, isgif);
+//            Log.e(TAG, "insertDataToTable " + name);
             dbWrite.insert(TableName, null, values);
         }
 
 
     }
 
-    public List<Block> getDatasFormTable(String TableName) {
+    public void insertEnchantsToTable(String TableName, String JosnfileName) {
+        List<Enchant> enchants = null;
+        enchants = ReadJosnData.ReadEnchantformJosnFile(context, JosnfileName);
+        for (int i = 0; i < enchants.size(); i++) {
+
+            Enchant item = enchants.get(i);
+
+            String name = item.getName();
+            String high_level = item.getHighLevel();
+            String main_file_name = item.getMainFileName();
+            String sub_file_name = item.getSubFileName();
+            String use = item.getUse();
+            String detail = item.getDetail();
+
+            ContentValues values = new ContentValues();
+//            values.put(Block.RES_ID, res_id);
+            values.put(Enchant.NAME, name);
+            values.put(Enchant.HIGH_LEVEL, high_level);
+            values.put(Enchant.MAIN_FILE_NAME, main_file_name);
+            values.put(Enchant.SUB_FILE_NAME, sub_file_name);
+//            values.put(Enchant.MATERIAL, material);
+            values.put(Enchant.USE, use);
+            values.put(Enchant.DETAIL, detail);
+//            Log.e(TAG, "insertDataToTable " + name);
+            dbWrite.insert(TableName, null, values);
+        }
+
+
+    }
+
+    public List<Block> getBlocksFormTable(String TableName) {
         List<Block> list = new ArrayList<Block>();
 
         Cursor cursor = dbRead.query(TableName, null, null, null, null, null, null);
@@ -125,18 +162,18 @@ public class DbManage {
             String material = cursor.getString((cursor.getColumnIndex(Block.MATERIAL)));
             String use = cursor.getString((cursor.getColumnIndex(Block.USE)));
             String detail = cursor.getString((cursor.getColumnIndex(Block.DETAIL)));
-            int isgif = cursor.getInt((cursor.getColumnIndex(Block.ISGIF)));
+//            int isgif = cursor.getInt((cursor.getColumnIndex(Block.ISGIF)));
 
-            boolean boolIsGif;
-            if (isgif == 0)
-                boolIsGif = false;
-            else {
-                boolIsGif = true;
-            }
+//            boolean boolIsGif;
+//            if (isgif == 0)
+//                boolIsGif = false;
+//            else {
+//                boolIsGif = true;
+//            }
             ;
 
 //			Log.e(TAG , "getDatasFormTable " + name);
-            Block block = new Block(file_name, name, material, use, detail, boolIsGif);
+            Block block = new Block(file_name, name, material, use, detail);
 
             list.add(block);
             cursor.moveToNext();
@@ -145,6 +182,43 @@ public class DbManage {
         cursor.close();
 
         return list;
+    }
+
+    public List<Enchant> getEnchantsFormTable(String TableName) {
+        List<Enchant> enchants = new ArrayList<Enchant>();
+
+        Cursor cursor = dbRead.query(TableName, null, null, null, null, null, null);
+//		int count = cursor.getCount();
+        if (cursor.moveToFirst() == false) {
+            Log.e(TAG, "getDatasFormTable " + TableName + " return cursor getcount = " + cursor.getCount());
+            return enchants;
+        }
+        Log.e(TAG, "getDatasFormTable cursor getcount = " + cursor.getCount());
+
+        for (int i = 0; i < cursor.getCount(); i++) {
+
+
+//            int res_id = cursor.getInt((cursor.getColumnIndex(Block.RES_ID)));
+            String name = cursor.getString((cursor.getColumnIndex(Enchant.NAME)));
+            String high_level = cursor.getString((cursor.getColumnIndex(Enchant.HIGH_LEVEL)));
+            String main_file_name = cursor.getString((cursor.getColumnIndex(Enchant.MAIN_FILE_NAME)));
+            String sub_file_name = cursor.getString((cursor.getColumnIndex(Enchant.SUB_FILE_NAME)));
+//            String material = cursor.getString((cursor.getColumnIndex(Enchant.MATERIAL)));
+            String use = cursor.getString((cursor.getColumnIndex(Enchant.USE)));
+            String detail = cursor.getString((cursor.getColumnIndex(Enchant.DETAIL)));
+//            int isgif = cursor.getInt((cursor.getColumnIndex(Block.ISGIF)));
+
+
+//			Log.e(TAG , "getDatasFormTable " + name);
+            Enchant enchant = new Enchant(name, high_level, main_file_name, sub_file_name, use, detail);
+
+            enchants.add(enchant);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        return enchants;
     }
 
     public  void  closeDatabase(){

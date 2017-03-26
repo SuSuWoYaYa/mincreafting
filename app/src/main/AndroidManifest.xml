@@ -17,7 +17,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityListViewShowDetailDatas">
+            android:name=".ActivityListViewShowBlocks">
+
+        </activity>
+        <activity
+            android:name=".ActivityListViewShowEnchants">
 
         </activity>
         <activity

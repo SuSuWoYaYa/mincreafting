@@ -48,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView imageViewTools = (ImageView)findViewById(R.id.imageViewTools);
         ImageView imageViewWeapon = (ImageView)findViewById(R.id.imageViewWeapon);
+        ImageView imageViewBrewing = (ImageView)findViewById(R.id.imageViewBrewing);
 
         Glide.with(MainActivity.this).load(R.drawable.icon_tools1).placeholder(R.drawable.icon_weapon).into(imageViewTools);
         Glide.with(MainActivity.this).load(R.drawable.icon_weapon).placeholder(R.drawable.icon_weapon).into(imageViewWeapon);
+        Glide.with(MainActivity.this).load(R.drawable.icon_brewing).placeholder(R.drawable.icon_brewing).into(imageViewBrewing);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
@@ -96,13 +98,15 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout layout_btn_tools =     (LinearLayout) findViewById(R.id.layout_btn_tools);
         LinearLayout layout_btn_weapon =    (LinearLayout) findViewById(R.id.layout_btn_weapon);
         LinearLayout layout_btn_others =    (LinearLayout) findViewById(R.id.layout_btn_others);
+        LinearLayout layout_btn_brewing =    (LinearLayout) findViewById(R.id.layout_btn_brewing);
+        LinearLayout layout_btn_enchant =    (LinearLayout) findViewById(R.id.layout_btn_enchant);
 
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), ActivityListViewShowDetailDatas.class);
+                Intent intent = new Intent(getApplicationContext(), ActivityListViewShowBlocks.class);
 
                 switch (v.getId()) {
                     case R.id.layout_btn_building:
@@ -153,8 +157,17 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_OTHERS);
                         intent.putExtra(EXTRA_CATEGORY, "其他类");
                         break;
+                    case R.id.layout_btn_brewing:
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_BREWING);
+                        intent.putExtra(EXTRA_CATEGORY, "药水类");
+                        break;
+                    case R.id.layout_btn_enchant:
+                        intent = new Intent(getApplicationContext(), ActivityListViewShowEnchants.class);
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_ENCHANT);
+                        intent.putExtra(EXTRA_CATEGORY, "附魔类");
+                        break;
                     default:
-                        intent = new Intent(getApplicationContext(), ActivityListViewShowDetailDatas.class);
+                        intent = new Intent(getApplicationContext(), ActivityListViewShowBlocks.class);
                         break;
                 }
                 startActivity(intent);
@@ -172,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
         layout_btn_tools.setOnClickListener(onClickListener);
         layout_btn_weapon.setOnClickListener(onClickListener);
         layout_btn_others.setOnClickListener(onClickListener);
+        layout_btn_brewing.setOnClickListener(onClickListener);
+        layout_btn_enchant.setOnClickListener(onClickListener);
 
 
 //            GridView gridView = (GridView) findViewById(R.id.gridview);

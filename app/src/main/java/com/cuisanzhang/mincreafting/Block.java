@@ -9,7 +9,7 @@ public class Block {
 	public static String MATERIAL = "material";
 	public static String USE = "use";
 	public static String DETAIL = "detail";
-	public static String ISGIF = "isgif";
+//	public static String ISGIF = "isgif";
 	
 //	private int res_id = 0;
 	private String file_name = null;
@@ -17,10 +17,10 @@ public class Block {
 	private String material = null;
 	private String use = null;
 	private String detail = null;
-	private Boolean isgif = false;
+//	private Boolean isgif = false;
 
 	public Block(String file_name, String name, String material,
-			String use, String detail, Boolean isgif) {
+			String use, String detail) {
 		// TODO Auto-generated constructor stub
 //		this.res_id = res_id;
 		this.file_name = file_name;
@@ -28,7 +28,7 @@ public class Block {
 		this.material = material;
 		this.use = use;
 		this.detail = detail;
-		this.isgif = isgif;
+//		this.isgif = isgif;
 	}
 
 //	public int getResId() {
@@ -55,9 +55,9 @@ public class Block {
 		return detail;
 	}
 
-	public Boolean isgif() {
-		return isgif;
-	}
+//	public Boolean isgif() {
+//		return isgif;
+//	}
 	
 	
 	

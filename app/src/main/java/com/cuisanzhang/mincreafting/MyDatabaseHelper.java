@@ -21,6 +21,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	public static final String TABLE_TOOLS =  "table_tools";		//工具 tools
 	public static final String TABLE_WEAPON =  "table_weapon";		//武器 weapon
 	public static final String TABLE_OTHERS =  "table_others";		//杂项类 others
+	public static final String TABLE_BREWING =  "table_brewing";		//药水类 brewing
+	public static final String TABLE_ENCHANT =  "table_enchant";		//附魔类 enchant
 
 	public static final String TABLE_NAMES []= {
 			"table_building", 	//建筑 building
@@ -35,6 +37,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 			"table_tools",		//工具 tools
 			"table_weapon",		//武器 weapon
 			"table_others",		//杂项类 others
+			"table_brewing",		//杂项类 others
 
 	};
 	
@@ -55,9 +58,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 					+ " name TEXT,"
 					+ " material TEXT,"
 					+ " use TEXT,"
-					+ " detail TEXT,"
-					+ " isgif INTEGER)");
+					+ " detail TEXT)");
+//					+ " isgif INTEGER)");
 		}
+		//附魔单独一个表
+		db.execSQL("CREATE TABLE " + TABLE_ENCHANT
+				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+//					+ " res_id INTEGER,"
+				+ " name TEXT,"
+				+ " high_level TEXT,"
+				+ " main_file_name TEXT,"
+				+ " sub_file_name TEXT,"
+//				+ " material TEXT,"
+				+ " use TEXT,"
+				+ " detail TEXT)");
 
 	}
 
