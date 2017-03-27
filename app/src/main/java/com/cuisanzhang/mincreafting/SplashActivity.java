@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 //广告接入
 public class SplashActivity extends Activity implements SplashADListener {
@@ -21,7 +23,7 @@ public class SplashActivity extends Activity implements SplashADListener {
     private String PosID = "8080327134272697";
 
     private int startLogos[] = {
-            R.drawable.start_logo0,
+//            R.drawable.start_logo0,
             R.drawable.start_logo1,
             R.drawable.start_logo2,
             R.drawable.start_logo3,
@@ -49,12 +51,12 @@ public class SplashActivity extends Activity implements SplashADListener {
 
 //        Log.e("Random" , "startlogos length = " + startLogos.length);
 //        for (int i = 0; i < 100; i++) {
-            int splashBackground = new Random().nextInt(9);
+        int splashBackground = new Random().nextInt(startLogos.length);
 //            Log.e("Random" , "new Random int = " + splashBackground);
 //        }
         skipView = (TextView) findViewById(R.id.skip_view);
         splashHolder = (ImageView) findViewById(R.id.splash_holder);
-        splashHolder.setImageResource(splashBackground);
+        splashHolder.setImageResource(startLogos[splashBackground]);
         fetchSplashAD(this, container, skipView, APPID, PosID, this, 0);
     }
 

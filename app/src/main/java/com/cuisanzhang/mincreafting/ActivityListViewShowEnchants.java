@@ -339,7 +339,7 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
 
     public void initActionBar() {
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
-        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
+//        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

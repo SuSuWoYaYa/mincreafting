@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initActionBar() {
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
-        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
+//        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setTitle("关于 Mincreafting");
-        builder.setMessage("这是一个Mincreaft合成表的APP, 所有内容来自于Mincratft 中文WIKI");
+        builder.setMessage("这是一个Mincreaft合成表的APP\n所有内容来自于Mincratft 中文WIKI");
         builder.setPositiveButton("确定", null);
         builder.show();
     }
