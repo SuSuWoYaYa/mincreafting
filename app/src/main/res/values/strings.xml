@@ -36,4 +36,5 @@
     <string name="category_building">建筑</string>
     <string name="category_brewing">药水</string>
     <string name="category_enchant">附魔</string>
+    <string name="click_to_skip">点击跳过</string>
 </resources>
