@@ -15,18 +15,15 @@ import android.util.Log;
 
 
 public class DbManage {
-    private static String SAVE_FILE = "save.txt";
-    private static String HASDADABASE = "hasDatabase";
 
     private static final String TAG = "DbManage";
     private Context context;
     private static MyDatabaseHelper db = null;
     private static SQLiteDatabase dbRead = null;
     private static SQLiteDatabase dbWrite = null;
-    private static SharedPreferences preferences = null;
 
-    private static String  josnEnchant = "josns/enchant.josn";
-    private static String[] josns = {
+    public static String  josnEnchant = "josns/enchant.josn";
+    public static String[] josns = {
             "josns/building.josn",    //建筑 building
             "josns/daily.josn",       //日常 daily
             "josns/decoration.josn",  //装饰 decoration
@@ -55,33 +52,28 @@ public class DbManage {
             dbWrite = db.getWritableDatabase();
         }
 
-        if (preferences == null) {
-            preferences = context.getSharedPreferences(SAVE_FILE,
-                    Context.MODE_APPEND);
-        }
 
-        boolean hasDatabase = preferences.getBoolean(HASDADABASE, false);
-        System.out.println("hasDatabase = " + hasDatabase);
-        if (hasDatabase == false) {
-            initDatabase();
-        }
-    }
 
-    public void initDatabase() {
-
-        System.out.println("Start dbManage.insertDataToTable");
-
-        for (int i = 0; i < josns.length; i++) {
-            insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
-                    josns[i]);
-        }
-        insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, josnEnchant);
-
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(HASDADABASE, true);
-        editor.apply();
 
     }
+
+
+    //移动到MainActivity
+//    public void initDatabase() {
+
+//        System.out.println("Start dbManage.insertDataToTable");
+//
+//        for (int i = 0; i < josns.length; i++) {
+//            insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
+//                    josns[i]);
+//        }
+//        insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, josnEnchant);
+//
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putBoolean(HASDADABASE, true);
+//        editor.apply();
+
+//    }
 
     public void insertBlocksToTable(String TableName, String JosnfileName) {
         List<Block> blocks = null;
