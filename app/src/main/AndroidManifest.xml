@@ -28,6 +28,9 @@
             android:name=".ActivityWebViewFeedback">
 
         </activity>
+        <meta-data
+            android:name="com.cuisanzhang.mincreafting.GlideConfiguration"
+            android:value="GlideModule"/>
     </application>
 
 </manifest>
