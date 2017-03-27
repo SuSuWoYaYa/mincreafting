@@ -45,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
         initActionBar();
-
-        ImageView imageViewTools = (ImageView)findViewById(R.id.imageViewTools);
-        ImageView imageViewWeapon = (ImageView)findViewById(R.id.imageViewWeapon);
-        ImageView imageViewBrewing = (ImageView)findViewById(R.id.imageViewBrewing);
-
-        Glide.with(MainActivity.this).load(R.drawable.icon_tools1).placeholder(R.drawable.icon_weapon).into(imageViewTools);
-        Glide.with(MainActivity.this).load(R.drawable.icon_weapon).placeholder(R.drawable.icon_weapon).into(imageViewWeapon);
-        Glide.with(MainActivity.this).load(R.drawable.icon_brewing).placeholder(R.drawable.icon_brewing).into(imageViewBrewing);
+//
+//        ImageView imageViewTools = (ImageView)findViewById(R.id.imageViewTools);
+//        ImageView imageViewWeapon = (ImageView)findViewById(R.id.imageViewWeapon);
+//        ImageView imageViewBrewing = (ImageView)findViewById(R.id.imageViewBrewing);
+//
+//        Glide.with(MainActivity.this).load(R.drawable.icon_tools1).placeholder(R.drawable.icon_weapon).into(imageViewTools);
+//        Glide.with(MainActivity.this).load(R.drawable.icon_weapon).placeholder(R.drawable.icon_weapon).into(imageViewWeapon);
+//        Glide.with(MainActivity.this).load(R.drawable.icon_brewing).placeholder(R.drawable.icon_brewing).into(imageViewBrewing);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);

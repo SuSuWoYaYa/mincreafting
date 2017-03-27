@@ -3,17 +3,19 @@
     package="com.cuisanzhang.mincreafting">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
-<<<<<<< Updated upstream
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
-=======
-        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
->>>>>>> Stashed changes
         android:label="@string/app_name"
+
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
@@ -23,38 +25,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-<<<<<<< Updated upstream
-            android:name=".ActivityListViewShowBlocks">
-            <meta-data
-                android:name="com.cuisanzhang.mincreafting.GlideConfiguration"
-                android:value="GlideModule"/>
-        </activity>
-        <activity
-            android:name=".ActivityListViewShowEnchants">
-            <meta-data
-                android:name="com.cuisanzhang.mincreafting.GlideConfiguration"
-                android:value="GlideModule"/>
-        </activity>
-        <activity
-            android:name=".ActivityWebViewFeedback">
-=======
-            android:name=".ActivityListViewShowBlocks"
-            android:screenOrientation="portrait">
 
-        </activity>
+        <activity
+            android:name=".ActivityListViewShowBlocks"
+            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ActivityListViewShowEnchants"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"></activity>
 
-        </activity>
         <activity
             android:name=".ActivityWebViewFeedback"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"></activity>
 
->>>>>>> Stashed changes
-        </activity>
-        
+        <meta-data
+            android:name="com.cuisanzhang.mincreafting.GlideConfiguration"
+            android:value="GlideModule" />
+
     </application>
 
 </manifest>
