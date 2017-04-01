@@ -2,6 +2,12 @@
   "category": "红石",
   "blocks": [
     {
+      "file_name": "hongshihuoba",
+      "name": "红石火把",
+      "material": "红石粉 + 木棍",
+      "use": "永久性的为一些导线充能。用于远程控制门，活塞, 铁路等。",
+      "detail": "它表现为一个发出红光的火把，但比火把更暗而且没有火的动画效果。\n它的亮度只有普通的煤炭火把的一半。\n"
+    },{
       "file_name": "lagang",
       "name": "拉杆",
       "material": "木棍 + 圆石",

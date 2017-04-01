@@ -1,6 +1,7 @@
 package com.cuisanzhang.mincreafting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -63,11 +64,11 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
         enchants = dbManage.getEnchantsFormTable(table_name);
         dbManage.closeDatabase();
 
-        if (enchants == null) {
-            System.out.println("getDatabase is null");
-        } else {
-            System.out.println("enchants.size=" + enchants.size());
-        }
+//        if (enchants == null) {
+//            System.out.println("getDatabase is null");
+//        } else {
+//            System.out.println("enchants.size=" + enchants.size());
+//        }
 
         ListView listView = (ListView) findViewById(R.id.listView1);
         adapter = new MyAdapter(getApplicationContext());
@@ -339,11 +340,18 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
 
     public void initActionBar() {
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
-//        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
+        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        imageViewSaerch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityListViewShowEnchants.this, ActivitySearch.class);
+                startActivity(intent );
             }
         });
     }

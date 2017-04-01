@@ -12,45 +12,51 @@
     </style>
 
     //紫色
+
     <style name="Base.Theme.Design.purple" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_purple</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_purple</item>
     </style>
     //蓝色
+
     <style name="Base.Theme.Design.blue" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_blue</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_blue</item>
     </style>
     //橙色
+
     <style name="Base.Theme.Design.orange" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_orange</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_orange</item>
     </style>
     //棕色
+
     <style name="Base.Theme.Design.brown" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_brown</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_brown</item>
     </style>
 
     //灰色
+
     <style name="Base.Theme.Design.gray" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_gray</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_gray</item>
     </style>
 
     //粉红
+
     <style name="Base.Theme.Design.pink" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_pink</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_pink</item>
     </style>
 
     //红色
+
     <style name="Base.Theme.Design.red" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_red</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_red</item>
 
     </style>
-
 
 
     <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
@@ -63,5 +69,9 @@
         <item name="android:centerDark">@color/list_background</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

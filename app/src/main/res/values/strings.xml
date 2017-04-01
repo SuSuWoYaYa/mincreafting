@@ -38,4 +38,6 @@
     <string name="category_enchant">附魔</string>
     <string name="click_to_skip">点击跳过</string>
     <string name="click_to_change_theme">更换标题栏颜色</string>
+    <string name="title_activity_search">ActivitySearch</string>
+    <string name="autocomplete_hint">输入文字进行搜索</string>
 </resources>

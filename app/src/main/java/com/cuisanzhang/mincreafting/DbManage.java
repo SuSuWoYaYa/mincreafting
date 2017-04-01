@@ -22,7 +22,7 @@ public class DbManage {
     private static SQLiteDatabase dbRead = null;
     private static SQLiteDatabase dbWrite = null;
 
-    public static String  josnEnchant = "josns/enchant.josn";
+    public static String josnEnchant = "josns/enchant.josn";
     public static String[] josns = {
             "josns/building.josn",    //建筑 building
             "josns/daily.josn",       //日常 daily
@@ -35,12 +35,27 @@ public class DbManage {
             "josns/tannsport.josn",   //运输 tannsport
             "josns/tools.josn",       //工具 tools
             "josns/weapon.josn",      //武器 weapon
-            "josns/others.josn" ,      //杂项类 others
-            "josns/brewing.josn"		//药水类 brewing
-                    //enchant";		//附魔类 enchant
+            "josns/others.josn",      //杂项类 others
+            "josns/brewing.josn"        //药水类 brewing
+            //enchant";		//附魔类 enchant
 
-};
+    };
 
+    public static String DATA_BASE_CATEGORYS[] = {
+            "建筑类",
+            "日常类",
+            "装饰类",
+            "染料类",
+            "食物类",
+            "照明类",
+            "矿石类",
+            "红石类",
+            "运输类",
+            "工具类",
+            "武器类",
+            "其他类",
+            "药水类",
+    };
 
     public DbManage(Context c) {
         // TODO Auto-generated constructor stub
@@ -51,8 +66,6 @@ public class DbManage {
             dbRead = db.getReadableDatabase();
             dbWrite = db.getWritableDatabase();
         }
-
-
 
 
     }
@@ -143,8 +156,8 @@ public class DbManage {
             Log.e(TAG, "getDatasFormTable " + TableName + " return cursor getcount = " + cursor.getCount());
             return list;
         }
-        Log.e(TAG, "getDatasFormTable cursor getcount = " + cursor.getCount());
-
+//        Log.e(TAG, "getDatasFormTable cursor getcount = " + cursor.getCount());
+//
         for (int i = 0; i < cursor.getCount(); i++) {
 
 
@@ -185,7 +198,7 @@ public class DbManage {
             Log.e(TAG, "getDatasFormTable " + TableName + " return cursor getcount = " + cursor.getCount());
             return enchants;
         }
-        Log.e(TAG, "getDatasFormTable cursor getcount = " + cursor.getCount());
+//        Log.e(TAG, "getDatasFormTable cursor getcount = " + cursor.getCount());
 
         for (int i = 0; i < cursor.getCount(); i++) {
 
@@ -213,8 +226,8 @@ public class DbManage {
         return enchants;
     }
 
-    public  void  closeDatabase(){
-        if (db != null){
+    public void closeDatabase() {
+        if (db != null) {
             dbWrite.close();
             dbRead.close();
             db.close();
@@ -224,11 +237,39 @@ public class DbManage {
         }
     }
 
-    public List<Block> SeachString(String name) {
-        List<Block> list = null;
+    public List<SearchResult> seachString(String searchName) {
+        List<SearchResult> list = new ArrayList<SearchResult>();
 
+        for (int i = 0; i < MyDatabaseHelper.TABLE_NAMES.length; i++) {
+            Cursor cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], new String[]{"file_name", "name", "material"}, "name like '%" + searchName + "%'", null, null, null, null);
+
+//            Log.e(TAG, "SeachString " + MyDatabaseHelper.TABLE_NAMES[i] + " return cursor getcount = " + cursor.getCount());
+            if (!cursor.moveToFirst()) {
+                continue;
+            }
+
+
+            for (int index = 0; index < cursor.getCount(); index++) {
+                String file_name = cursor.getString((cursor.getColumnIndex(Block.FILE_NAME)));
+                String name = cursor.getString((cursor.getColumnIndex(Block.NAME)));
+                String material = cursor.getString((cursor.getColumnIndex(Block.MATERIAL)));
+//            Log.e(TAG, "SeachString " + file_name + name + material);
+                SearchResult result = new SearchResult(DATA_BASE_CATEGORYS[i], file_name, name, material);
+                list.add(result);
+                cursor.moveToNext();
+            }
+            cursor.close();
+
+        }
+
+//        Log.e(TAG, "SeachString End!");
+//        Log.e(TAG, "SeachString End!");
+//        Log.e(TAG, "SeachString End!");
+//        Log.e(TAG, "SeachString has result count for " + list.size());
         return list;
     }
+
+
 
 
 }

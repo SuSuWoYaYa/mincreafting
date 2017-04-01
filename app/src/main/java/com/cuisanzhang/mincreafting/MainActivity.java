@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
     public static String EXTRA_CATEGORY = "category";
 
     private static String SAVE_FILE = "save.txt";
-    private static String HASDADABASE = "hasDatabase";
+    private static String  DB_VERSION = "db_version";
+    private static int   CURRENT_DB_VERSION = 2;
     public static String DATA_BASE_CATEGORYS[] = {
             "建筑类",
             "日常类",
@@ -84,11 +85,6 @@ public class MainActivity extends AppCompatActivity {
         preferences = getSharedPreferences(SAVE_FILE,
                 Context.MODE_APPEND);
 
-        boolean hasDatabase = preferences.getBoolean(HASDADABASE, false);
-        System.out.println("hasDatabase = " + hasDatabase);
-        if (hasDatabase == false) {
-            initDatabase();
-        }
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -222,16 +218,28 @@ public class MainActivity extends AppCompatActivity {
         layout_btn_brewing.setOnClickListener(onClickListener);
         layout_btn_enchant.setOnClickListener(onClickListener);
 
+        int  db_version = preferences.getInt(DB_VERSION, 0);
+        System.out.println("db_version = " + db_version);
+        if (db_version != CURRENT_DB_VERSION) {
+            initDatabase();
+        }
 
     }
 
     public void initActionBar() {
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
-//        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
+        ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        imageViewSaerch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ActivitySearch.class);
+                startActivity(intent );
             }
         });
     }
@@ -351,9 +359,11 @@ public class MainActivity extends AppCompatActivity {
         //  实现handleMessage()方法，用于接收Message，刷新UI
         mHandler = new MyHandler();
 
-        new Runnable() {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
+
 //                System.out.println("Start dbManage.insertDataToTable");
                 DbManage dbManage = new DbManage(MainActivity.this);
 
@@ -376,10 +386,12 @@ public class MainActivity extends AppCompatActivity {
 
                 dbManage.closeDatabase();
             }
-        }.run();
+        };
+        timer.schedule(timerTask,0);
 
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(HASDADABASE, true);
+        editor.putInt(DB_VERSION, 2);
+        editor.commit();
         editor.apply();
     }
 

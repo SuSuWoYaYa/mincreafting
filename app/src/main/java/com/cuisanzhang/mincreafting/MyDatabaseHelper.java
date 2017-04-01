@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	public static final String DATABASE_NAME = "DataBase.sqlite";
+	public static final int DB_VERSION = 2;
 
 	public static final String TABLE_BUILDING =  "table_building";	//建筑 building
 	public static final String TABLE_DAILY =  "table_daily";		//日常 daily
@@ -37,13 +38,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 			"table_tools",		//工具 tools
 			"table_weapon",		//武器 weapon
 			"table_others",		//杂项类 others
-			"table_brewing",		//杂项类 others
+			"table_brewing",		//药水类 brewing
 
 	};
 	
 	
 	public MyDatabaseHelper(Context context) {
-		super(context, DATABASE_NAME, null, 1);
+		super(context, DATABASE_NAME, null, DB_VERSION);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -78,6 +79,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
+		for (int i = 0; i < TABLE_NAMES.length; i++) {
+			db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAMES[i]);
+		}
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENCHANT);
+		onCreate(db);
+
 
 	}
 

@@ -58,15 +58,15 @@
                 android:text="@string/toolbar_title"
                 android:textSize="16sp"
                 android:textColor="?attr/textColorPrimary"/>
-            <!--<ImageView-->
-                <!--android:id="@+id/imageViewToolbar_search"-->
-                <!--android:layout_width="35dp"-->
-                <!--android:layout_height="35dp"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:paddingTop="5dp"-->
-                <!--android:paddingBottom="5dp"-->
-                <!--android:src="?attr/toolbar_search"-->
-                <!--android:scaleType="centerInside"/>-->
+            <ImageView
+                android:id="@+id/imageViewToolbar_search"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:src="?attr/toolbar_search"
+                android:scaleType="centerInside"/>
         </LinearLayout>
 
         <LinearLayout

@@ -3,16 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/list_background"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
     android:orientation="vertical"    >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/click_to_change_theme"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:gravity="center"
-        />
 
     <LinearLayout
         android:id="@+id/layoutPopChangeToGray"
