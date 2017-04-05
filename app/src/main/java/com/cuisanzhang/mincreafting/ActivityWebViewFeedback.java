@@ -69,6 +69,23 @@ public class ActivityWebViewFeedback extends  AppCompatActivity {
             public void onProgressChanged(WebView view, int newProgress) {
             }
         });
+      
+        //点击后退按钮,让WebView后退一页(也可以覆写Activity的onKeyDown方法)  
+        mWebview.setOnKeyListener(new View.OnKeyListener() {  
+            @Override  
+            public boolean onKey(View v, int keyCode, KeyEvent event) {  
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {  
+                    if (keyCode == KeyEvent.KEYCODE_BACK && mWebview.canGoBack()) {  //表示按返回键时的操作
+                        mWebview.goBack();   //后退  
+
+                        //webview.goForward();//前进
+                        return true;    //已处理  
+                    }  
+                }  
+                return false;  
+            }  
+        });
+
     }
 
         //销毁Webview
