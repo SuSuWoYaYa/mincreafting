@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="center|bottom"
         android:layout_weight="1"
-        android:text="v2.0"
+        android:text="v3.0"
         android:textSize="20dp"
         android:textColor="@color/textColorPrimary_white"/>
 

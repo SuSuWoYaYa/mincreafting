@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,19 +72,20 @@ public class ActivityWebViewFeedback extends  AppCompatActivity {
         });
       
         //点击后退按钮,让WebView后退一页(也可以覆写Activity的onKeyDown方法)  
-        mWebview.setOnKeyListener(new View.OnKeyListener() {  
-            @Override  
-            public boolean onKey(View v, int keyCode, KeyEvent event) {  
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {  
+        mWebview.setOnKeyListener(new View.OnKeyListener() {
+
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_BACK && mWebview.canGoBack()) {  //表示按返回键时的操作
-                        mWebview.goBack();   //后退  
+                        mWebview.goBack();   //后退
 
                         //webview.goForward();//前进
-                        return true;    //已处理  
-                    }  
-                }  
-                return false;  
-            }  
+                        return true;    //已处理
+                    }
+                }
+                return false;
+            }
         });
 
     }

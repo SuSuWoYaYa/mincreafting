@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static String SAVE_FILE = "save.txt";
     private static String  DB_VERSION = "db_version";
-    private static int   CURRENT_DB_VERSION = 2;
+    private static int   CURRENT_DB_VERSION = 3;
     public static String DATA_BASE_CATEGORYS[] = {
             "建筑类",
             "日常类",
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
         layout_btn_enchant.setOnClickListener(onClickListener);
 
         int  db_version = preferences.getInt(DB_VERSION, 0);
-        System.out.println("db_version = " + db_version);
+        //System.out.println("db_version = " + db_version);
         if (db_version != CURRENT_DB_VERSION) {
             initDatabase();
         }
@@ -390,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(timerTask,0);
 
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(DB_VERSION, 2);
+        editor.putInt(DB_VERSION, CURRENT_DB_VERSION);
         editor.commit();
         editor.apply();
     }
