@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static String SAVE_FILE = "save.txt";
     private static String  DB_VERSION = "db_version";
-    private static int   CURRENT_DB_VERSION = 3;
+//    private static int   CURRENT_DB_VERSION = 3;
     public static String DATA_BASE_CATEGORYS[] = {
             "建筑类",
             "日常类",
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
         int  db_version = preferences.getInt(DB_VERSION, 0);
         //System.out.println("db_version = " + db_version);
-        if (db_version != CURRENT_DB_VERSION) {
+        if (db_version != MyDatabaseHelper.DB_VERSION) {
             initDatabase();
         }
 
@@ -347,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setTitle("关于 Mincreafting");
-        builder.setMessage("这是一个Mincreaft合成表的APP\n所有内容来自于Mincratft 中文WIKI");
+        builder.setMessage("这是一个Mincreaft合成表的APP\n所有内容来自于Mincratft 中文WIKI\n\n旧版本可能要卸载后再安装新版");
         builder.setPositiveButton("确定", null);
         builder.show();
     }
@@ -390,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(timerTask,0);
 
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(DB_VERSION, CURRENT_DB_VERSION);
+        editor.putInt(DB_VERSION, MyDatabaseHelper.DB_VERSION);
         editor.commit();
         editor.apply();
     }

@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	public static final String DATABASE_NAME = "DataBase.sqlite";
-	public static final int DB_VERSION = 2;
+	public static final int DB_VERSION = 3;
 
 	public static final String TABLE_BUILDING =  "table_building";	//建筑 building
 	public static final String TABLE_DAILY =  "table_daily";		//日常 daily

@@ -156,10 +156,14 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             holder.textViewMaterial.setText(block.getMaterial() );
 //            holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());
 //            boolean isgif = block.isgif();
-            int resId = getResources().getIdentifier(block.getFileName(), "drawable",
-                    getPackageName());
 
-                Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
+//            int resId = getResources().getIdentifier(block.getFileName(), "drawable",
+//                    getPackageName());
+//            Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
+//                        .into(holder.imageView);
+
+            String resId = "android.resource://com.cuisanzhang.mincreafting/drawable/" + block.getFileName();
+            Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
                         .into(holder.imageView);
 
             holder.textViewUse.setText(block.getUse());

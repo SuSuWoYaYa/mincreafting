@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;

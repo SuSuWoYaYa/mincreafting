@@ -175,8 +175,7 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
                 imageViewMain.setVisibility(View.VISIBLE);
 //                imageViewMain.setImageResource(R.drawable.loading_enchant);
                 layoutMainView.setVisibility(View.VISIBLE);
-                int MainFileResId = getResources().getIdentifier(enchant.getMainFileName(), "drawable",
-                        getPackageName());
+                String MainFileResId = "android.resource://com.cuisanzhang.mincreafting/drawable/" + enchant.getMainFileName();
                 Glide.with(ActivityListViewShowEnchants.this).load(MainFileResId).placeholder(R.drawable.loading_enchant)
                         .into(imageViewMain);
             }
@@ -189,8 +188,7 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
                 imageViewSub.setVisibility(View.VISIBLE);
 //                imageViewSub.setImageResource(R.drawable.loading_enchant);
                 layoutSubView.setVisibility(View.VISIBLE);
-                int SubFileResId = getResources().getIdentifier(enchant.getSubFileName(), "drawable",
-                        getPackageName());
+                String SubFileResId = "android.resource://com.cuisanzhang.mincreafting/drawable/" + enchant.getSubFileName();
                 Glide.with(ActivityListViewShowEnchants.this).load(SubFileResId).placeholder(R.drawable.loading_enchant)
                         .into(imageViewSub);
             }
