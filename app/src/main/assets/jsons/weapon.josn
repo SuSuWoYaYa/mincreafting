@@ -119,6 +119,13 @@
       "material": "盾牌 + 对应的旗帜",
       "use": "将旗帜的图案印在盾牌上",
       "detail": "旗帜会被消耗\n被印上图案的盾牌必须是无任何图案的\n恢复盾牌到满耐久度"
+    },
+    {
+      "file_name": "pigemakai",
+      "name": "皮革马铠",
+      "material": "皮革",
+      "use": "皮革合成配方仅携带版",
+      "detail": "马铠（Horse armor）是装备给马的一种特殊盔甲。\n\n铁马铠和金马铠和钻石马铠会在 要塞祭坛,下界要塞,沙漠神殿,村庄铁匠铺,地牢,末地城,丛林神庙的箱子里有几率出现，皆以1份为一组的形式出现。\n\n马穿着不同马铠会有逐渐提升的防御力：\n\n在携带版中有皮革马铠，它像普通的皮革盔甲一样能被染色。\n\n数据值\nID\n物品:ID名称（PC）:ID名称（PE）:数字ID\n皮革马铠:不可用:horsearmorleather:416[仅限携带版]\n铁马铠:iron_horse_armor;horsearmoriron:417\n金马铠:golden_horse_armor:horsearmorgold:418\n钻石马铠:diamond_horse_armor:horsearmordiamond:419"
     }
   ]
 }
