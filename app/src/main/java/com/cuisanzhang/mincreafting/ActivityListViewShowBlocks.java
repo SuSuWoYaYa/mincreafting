@@ -46,13 +46,19 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
         DbManage dbManage = new DbManage(getApplicationContext());
 
-         table_name = getIntent().getStringExtra(MainActivity.EXTRA_TABLE_NAME);
+        table_name = getIntent().getStringExtra(MainActivity.EXTRA_TABLE_NAME);
         String category = getIntent().getStringExtra(MainActivity.EXTRA_CATEGORY);
 
-        //为了适应药水的图片
-        if (table_name.equals(MyDatabaseHelper.TABLE_BREWING)) {
+        //为了适应药水和烧炼的图片
+        if (table_name.equals(MyDatabaseHelper.TABLE_BREWING))
+        {
             layout_of_giveView = R.layout.layout_listview_item_brewing;
             loading_of_background = R.drawable.loading_of_brewing;
+        }
+        else if (table_name.equals(MyDatabaseHelper.TABLE_SMELTING))
+        {
+            layout_of_giveView = R.layout.layout_listview_item_smelting;
+            loading_of_background = R.drawable.loading_of_smelting;
         }
         else {
             layout_of_giveView = R.layout.layout_listview_item_block;

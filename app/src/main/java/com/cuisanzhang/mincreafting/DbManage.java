@@ -7,8 +7,6 @@ import java.util.List;
 
 
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -22,28 +20,29 @@ public class DbManage {
     private static SQLiteDatabase dbRead = null;
     private static SQLiteDatabase dbWrite = null;
 
-    public static String josnEnchant = "josns/enchant.josn";
-    public static String[] josns = {
-            "josns/building.josn",    //建筑 building
-            "josns/daily.josn",       //日常 daily
-            "josns/decoration.josn",  //装饰 decoration
-            "josns/dye.josn",         //染料类 dye
-            "josns/food.josn",        //食物 food
-            "josns/lighting.josn",    //照明 lighting
-            "josns/ore.josn",         //矿石 ore
-            "josns/redstone.josn",    //红石 redstone
-            "josns/tannsport.josn",   //运输 tannsport
-            "josns/tools.josn",       //工具 tools
-            "josns/weapon.josn",      //武器 weapon
-            "josns/others.josn",      //杂项类 others
-            "josns/brewing.josn"        //药水类 brewing
+    public static String jsonEnchant = "jsons/enchant.json";
+    public static String[] jsons = {
+            "jsons/building.json",    //建筑 building
+//            "jsons/daily.json",       //日常 daily
+            "jsons/decoration.json",  //装饰 decoration
+            "jsons/dye.json",         //染料类 dye
+            "jsons/food.json",        //食物 food
+            "jsons/lighting.json",    //照明 lighting
+            "jsons/ore.json",         //矿石 ore
+            "jsons/redstone.json",    //红石 redstone
+            "jsons/tannsport.json",   //运输 tannsport
+            "jsons/tools.json",       //工具 tools
+            "jsons/weapon.json",      //武器 weapon
+            "jsons/others.json",      //杂项类 others
+            "jsons/smelting.json",      //烧炼类 others
+            "jsons/brewing.json"        //药水类 brewing
             //enchant";		//附魔类 enchant
 
     };
 
     public static String DATA_BASE_CATEGORYS[] = {
             "建筑类",
-            "日常类",
+//            "日常类",
             "装饰类",
             "染料类",
             "食物类",
@@ -54,6 +53,7 @@ public class DbManage {
             "工具类",
             "武器类",
             "其他类",
+            "烧炼类",
             "药水类",
     };
 
@@ -76,11 +76,11 @@ public class DbManage {
 
 //        System.out.println("Start dbManage.insertDataToTable");
 //
-//        for (int i = 0; i < josns.length; i++) {
+//        for (int i = 0; i < jsons.length; i++) {
 //            insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
-//                    josns[i]);
+//                    jsons[i]);
 //        }
-//        insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, josnEnchant);
+//        insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, jsonEnchant);
 //
 //        SharedPreferences.Editor editor = preferences.edit();
 //        editor.putBoolean(HASDADABASE, true);
@@ -88,9 +88,9 @@ public class DbManage {
 
 //    }
 
-    public void insertBlocksToTable(String TableName, String JosnfileName) {
+    public void insertBlocksToTable(String TableName, String jsonfileName) {
         List<Block> blocks = null;
-        blocks = ReadJosnData.ReadBlockformJosnFile(context, JosnfileName);
+        blocks = ReadJsonData.ReadBlockformJsonFile(context, jsonfileName);
         for (int i = 0; i < blocks.size(); i++) {
 
             Block item = blocks.get(i);
@@ -117,9 +117,9 @@ public class DbManage {
 
     }
 
-    public void insertEnchantsToTable(String TableName, String JosnfileName) {
+    public void insertEnchantsToTable(String TableName, String jsonfileName) {
         List<Enchant> enchants = null;
-        enchants = ReadJosnData.ReadEnchantformJosnFile(context, JosnfileName);
+        enchants = ReadJsonData.ReadEnchantformJsonFile(context, jsonfileName);
         for (int i = 0; i < enchants.size(); i++) {
 
             Enchant item = enchants.get(i);

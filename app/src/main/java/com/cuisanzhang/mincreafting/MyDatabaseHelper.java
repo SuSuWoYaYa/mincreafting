@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	public static final String DATABASE_NAME = "DataBase.sqlite";
-	public static final int DB_VERSION = 3;
+	public static final int DB_VERSION = 4;
 
 	public static final String TABLE_BUILDING =  "table_building";	//建筑 building
-	public static final String TABLE_DAILY =  "table_daily";		//日常 daily
+//	public static final String TABLE_DAILY =  "table_daily";		//日常 daily
 	public static final String TABLE_DECORATION =  "table_decoration";	//装饰 decoration
 	public static final String TABLE_DYE =  "table_dye";		//染料类 dye
 	public static final String TABLE_FOOD =  "table_food";		//食物 food
@@ -22,12 +22,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	public static final String TABLE_TOOLS =  "table_tools";		//工具 tools
 	public static final String TABLE_WEAPON =  "table_weapon";		//武器 weapon
 	public static final String TABLE_OTHERS =  "table_others";		//杂项类 others
+	public static final String TABLE_SMELTING =  "table_smelting";		//烧炼类 smelting
 	public static final String TABLE_BREWING =  "table_brewing";		//药水类 brewing
 	public static final String TABLE_ENCHANT =  "table_enchant";		//附魔类 enchant
 
 	public static final String TABLE_NAMES []= {
 			"table_building", 	//建筑 building
-			"table_daily",		//日常 daily
+//			"table_daily",		//日常 daily
 			"table_decoration",	//装饰 decoration
 			"table_dye",		//染料类 dye
 			"table_food",		//食物 food
@@ -38,6 +39,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 			"table_tools",		//工具 tools
 			"table_weapon",		//武器 weapon
 			"table_others",		//杂项类 others
+			"table_smelting",		//烧炼类 weapon
 			"table_brewing",		//药水类 brewing
 
 	};

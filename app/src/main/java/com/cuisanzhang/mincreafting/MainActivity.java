@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 //    private static int   CURRENT_DB_VERSION = 3;
     public static String DATA_BASE_CATEGORYS[] = {
             "建筑类",
-            "日常类",
+//            "日常类",
             "装饰类",
             "染料类",
             "食物类",
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             "工具类",
             "武器类",
             "其他类",
+            "烧炼类",
             "药水类",
             "附魔类",
     };
@@ -94,13 +95,18 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent = null;
+
                 switch (item.getItemId()) {
                     case R.id.menu_changeTheme:
                         initPopupWindow();
                         break;
-
                     case R.id.menu_feedback:
-                        Intent intent = new Intent(getApplicationContext(), ActivityWebViewFeedback.class);
+                        intent = new Intent(getApplicationContext(), ActivityWebViewFeedback.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.menu_tip:
+                        intent = new Intent(getApplicationContext(), ActivityTip.class);
                         startActivity(intent);
                         break;
                     case R.id.menu_about:
@@ -118,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         LinearLayout layout_btn_building = (LinearLayout) findViewById(R.id.layout_btn_building);
-        LinearLayout layout_btn_daily = (LinearLayout) findViewById(R.id.layout_btn_daily);
+//        LinearLayout layout_btn_daily = (LinearLayout) findViewById(R.id.layout_btn_daily);
         LinearLayout layout_btn_decoration = (LinearLayout) findViewById(R.id.layout_btn_decoration);
         LinearLayout layout_btn_dye = (LinearLayout) findViewById(R.id.layout_btn_dye);
         LinearLayout layout_btn_food = (LinearLayout) findViewById(R.id.layout_btn_food);
@@ -129,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout layout_btn_tools = (LinearLayout) findViewById(R.id.layout_btn_tools);
         LinearLayout layout_btn_weapon = (LinearLayout) findViewById(R.id.layout_btn_weapon);
         LinearLayout layout_btn_others = (LinearLayout) findViewById(R.id.layout_btn_others);
+        LinearLayout layout_btn_semlting = (LinearLayout) findViewById(R.id.layout_btn_semlting);
         LinearLayout layout_btn_brewing = (LinearLayout) findViewById(R.id.layout_btn_brewing);
         LinearLayout layout_btn_enchant = (LinearLayout) findViewById(R.id.layout_btn_enchant);
 
@@ -143,10 +150,10 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_BUILDING);
                         intent.putExtra(EXTRA_CATEGORY, "建筑类");
                         break;
-                    case R.id.layout_btn_daily:
-                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_DAILY);
-                        intent.putExtra(EXTRA_CATEGORY, "日常类");
-                        break;
+//                    case R.id.layout_btn_daily:
+//                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_DAILY);
+//                        intent.putExtra(EXTRA_CATEGORY, "日常类");
+//                        break;
                     case R.id.layout_btn_decoration:
                         intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_DECORATION);
                         intent.putExtra(EXTRA_CATEGORY, "装饰类");
@@ -187,6 +194,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_OTHERS);
                         intent.putExtra(EXTRA_CATEGORY, "其他类");
                         break;
+                    case R.id.layout_btn_semlting:
+//                        intent = new Intent(getApplicationContext(), ActivityListViewShowSmelting.class);
+                        intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_SMELTING);
+                        intent.putExtra(EXTRA_CATEGORY, "烧炼类");
+                        break;
                     case R.id.layout_btn_brewing:
                         intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_BREWING);
                         intent.putExtra(EXTRA_CATEGORY, "药水类");
@@ -204,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         layout_btn_building.setOnClickListener(onClickListener);
-        layout_btn_daily.setOnClickListener(onClickListener);
+        layout_btn_semlting.setOnClickListener(onClickListener);
         layout_btn_decoration.setOnClickListener(onClickListener);
         layout_btn_dye.setOnClickListener(onClickListener);
         layout_btn_food.setOnClickListener(onClickListener);
@@ -367,13 +379,13 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println("Start dbManage.insertDataToTable");
                 DbManage dbManage = new DbManage(MainActivity.this);
 
-                for (int i = 0; i < DbManage.josns.length; i++) {
+                for (int i = 0; i < DbManage.jsons.length; i++) {
                     Message message = mHandler.obtainMessage();
                     message.what = 0;
                     message.obj = i;
                     mHandler.sendMessage(message);
                     dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
-                            DbManage.josns[i]);
+                            DbManage.jsons[i]);
 //                    System.out.println("Start dbManage.insertDataToTable " + MyDatabaseHelper.TABLE_NAMES[i]);
 
                 }
@@ -382,7 +394,7 @@ public class MainActivity extends AppCompatActivity {
                 mHandler.sendMessage(message);
 //                System.out.println("Start dbManage.insertDataToTable" + MyDatabaseHelper.TABLE_ENCHANT);
 
-                dbManage.insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, DbManage.josnEnchant);
+                dbManage.insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, DbManage.jsonEnchant);
 
                 dbManage.closeDatabase();
             }

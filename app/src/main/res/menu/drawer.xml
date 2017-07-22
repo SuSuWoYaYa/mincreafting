@@ -10,10 +10,10 @@
             android:id="@+id/menu_feedback"
             android:icon="@drawable/ic_feedback"
             android:title="@string/menu_feedback" />
-         <!--<item-->
-            <!--android:id="@+id/menu_share"-->
-            <!--android:icon="@drawable/ic_share"-->
-            <!--android:title="@string/menu_share" />-->
+         <item
+            android:id="@+id/menu_tip"
+            android:icon="@drawable/ic_tip"
+            android:title="@string/tip_me" />
 
          <item
             android:id="@+id/menu_about"

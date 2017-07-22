@@ -40,4 +40,6 @@
     <string name="click_to_change_theme">更换标题栏颜色</string>
     <string name="title_activity_search">ActivitySearch</string>
     <string name="autocomplete_hint">输入文字进行搜索</string>
+    <string name="category_smelting">烧炼</string>
+    <string name="tip_me">打赏作者</string>
 </resources>

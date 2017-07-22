@@ -4,14 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".ActivityLoding"
             android:screenOrientation="portrait">
@@ -21,15 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ActivityListViewShowBlocks"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityTip"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityListViewShowEnchants"
@@ -37,7 +34,6 @@
         <activity
             android:name=".ActivityWebViewFeedback"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ActivitySearch"
             android:screenOrientation="portrait" />
@@ -45,6 +41,7 @@
         <meta-data
             android:name="com.cuisanzhang.mincreafting.GlideConfiguration"
             android:value="GlideModule" />
+
 
     </application>
 
