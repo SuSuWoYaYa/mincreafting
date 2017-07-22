@@ -7,8 +7,8 @@ android {
         applicationId "com.cuisanzhang.mincreafting"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 4
-        versionName "3.0"
+        versionCode 5
+        versionName "4.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

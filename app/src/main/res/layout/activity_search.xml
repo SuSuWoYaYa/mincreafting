@@ -29,7 +29,7 @@
             android:layout_margin="5dp"
             android:padding="4dp"
             android:hint="@string/autocomplete_hint"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:id="@+id/autoCompleteTextView"
             android:completionThreshold="1"
             android:singleLine="true"
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:text="暂无数据\n目前附魔不在搜索范围"/>
         </LinearLayout>
 
