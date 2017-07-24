@@ -176,7 +176,7 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
 //                imageViewMain.setImageResource(R.drawable.loading_enchant);
                 layoutMainView.setVisibility(View.VISIBLE);
                 String MainFileResId = "android.resource://com.cuisanzhang.mincreafting/drawable/" + enchant.getMainFileName();
-                Glide.with(ActivityListViewShowEnchants.this).load(MainFileResId).placeholder(R.drawable.loading_enchant)
+                Glide.with(ActivityListViewShowEnchants.this).load(MainFileResId).placeholder(R.drawable.loading_of_enchant)
                         .into(imageViewMain);
             }
 
@@ -189,7 +189,7 @@ public class ActivityListViewShowEnchants extends AppCompatActivity {
 //                imageViewSub.setImageResource(R.drawable.loading_enchant);
                 layoutSubView.setVisibility(View.VISIBLE);
                 String SubFileResId = "android.resource://com.cuisanzhang.mincreafting/drawable/" + enchant.getSubFileName();
-                Glide.with(ActivityListViewShowEnchants.this).load(SubFileResId).placeholder(R.drawable.loading_enchant)
+                Glide.with(ActivityListViewShowEnchants.this).load(SubFileResId).placeholder(R.drawable.loading_of_enchant)
                         .into(imageViewSub);
             }
 

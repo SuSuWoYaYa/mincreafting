@@ -390,10 +390,12 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-
+                //发送完成消息
                 Message message = mHandler.obtainMessage();
                 message.what = 1;
                 mHandler.sendMessage(message);
+
+
                 ////附魔取消单独一个表
 ////                System.out.println("Start dbManage.insertDataToTable" + MyDatabaseHelper.TABLE_ENCHANT);
 //
