@@ -50,17 +50,13 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
         String category = getIntent().getStringExtra(MainActivity.EXTRA_CATEGORY);
 
         //为了适应药水和烧炼的图片
-        if (table_name.equals(MyDatabaseHelper.TABLE_BREWING))
-        {
+        if (table_name.equals(MyDatabaseHelper.TABLE_BREWING)) {
             layout_of_giveView = R.layout.layout_listview_item_brewing;
             loading_of_background = R.drawable.loading_of_brewing;
-        }
-        else if (table_name.equals(MyDatabaseHelper.TABLE_SMELTING))
-        {
+        } else if (table_name.equals(MyDatabaseHelper.TABLE_SMELTING)) {
             layout_of_giveView = R.layout.layout_listview_item_smelting;
             loading_of_background = R.drawable.loading_of_smelting;
-        }
-        else {
+        } else {
             layout_of_giveView = R.layout.layout_listview_item_block;
             loading_of_background = R.drawable.loading_of_blocks;
         }
@@ -93,10 +89,11 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
         public final class ViewHolder {
             public ImageView imageView;
+            public String FileName;
             public TextView textViewName;
             public TextView textViewMaterial;
             public TextView textViewUse;
-            public TextView textViewDetail;
+
             public TextView textViewShowBlockDetail;
             public CheckBox checkBox;
         }
@@ -131,12 +128,19 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             // TODO Auto-generated method stub
             final int pos = position;
 
+            Block block = blocks.get(position);
+            String filename = block.getFileName();
+
+
             if (convertView == null) {
 
                 holder = new ViewHolder();
 
 
                 convertView = mInflater.inflate(layout_of_giveView, null);
+
+                holder.FileName = "";
+
                 holder.textViewName = (TextView) convertView
                         .findViewById(R.id.name);
                 holder.textViewMaterial = (TextView) convertView
@@ -154,12 +158,14 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             } else {
 
                 holder = (ViewHolder) convertView.getTag();
-            }
-            Block block = blocks.get(position);
-            holder.textViewName.setText(block.getName());
-            TextView textViewBuilding = (TextView)findViewById(R.id.textViewBuilding);
 
-            holder.textViewMaterial.setText(block.getMaterial() );
+            }
+
+
+            holder.textViewName.setText(block.getName());
+            TextView textViewBuilding = (TextView) findViewById(R.id.textViewBuilding);
+
+            holder.textViewMaterial.setText(block.getMaterial());
 //            holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());
 //            boolean isgif = block.isgif();
 
@@ -168,13 +174,16 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //            Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
 //                        .into(holder.imageView);
 
-            String resId = "android.resource://com.cuisanzhang.mincreafting/drawable/" + block.getFileName();
-            Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
+            //刷新的时候图片没变就不更新数据
+            if (!holder.FileName.equals(filename)) {
+                holder.FileName = filename;
+                String resId = "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename;
+                Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
                         .into(holder.imageView);
+            }
 
             holder.textViewUse.setText(block.getUse());
             holder.textViewShowBlockDetail.setText(block.getDetail());
-
             // 防止数组越界
             if (checkBoxStateList.size() <= position) {
                 // 保存每个checkBoxState, 用来动态更新
@@ -222,7 +231,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityListViewShowBlocks.this, ActivitySearch.class);
-                startActivity(intent );
+                startActivity(intent);
             }
         });
     }

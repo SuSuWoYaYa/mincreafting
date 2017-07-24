@@ -35,8 +35,8 @@ public class DbManage {
             "jsons/weapon.json",      //武器 weapon
             "jsons/others.json",      //杂项类 others
             "jsons/smelting.json",      //烧炼类 others
-            "jsons/brewing.json"        //药水类 brewing
-            //enchant";		//附魔类 enchant
+            "jsons/brewing.json",       //药水类 brewing
+            "jsons/enchant.json",		//附魔类 enchant
 
     };
 
@@ -55,6 +55,7 @@ public class DbManage {
             "其他类",
             "烧炼类",
             "药水类",
+            "附魔类",
     };
 
     public DbManage(Context c) {

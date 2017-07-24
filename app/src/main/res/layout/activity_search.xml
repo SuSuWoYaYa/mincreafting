@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="15dp"
-            android:text="暂无数据\n目前附魔不在搜索范围"/>
+            android:text="暂无数据"/>
         </LinearLayout>
 
 </LinearLayout>

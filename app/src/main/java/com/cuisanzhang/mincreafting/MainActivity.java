@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra(EXTRA_CATEGORY, "药水类");
                         break;
                     case R.id.layout_btn_enchant:
-                        intent = new Intent(getApplicationContext(), ActivityListViewShowEnchants.class);
+                        //intent = new Intent(getApplicationContext(), ActivityListViewShowEnchants.class);
                         intent.putExtra(EXTRA_TABLE_NAME, MyDatabaseHelper.TABLE_ENCHANT);
                         intent.putExtra(EXTRA_CATEGORY, "附魔类");
                         break;
@@ -389,12 +389,15 @@ public class MainActivity extends AppCompatActivity {
 //                    System.out.println("Start dbManage.insertDataToTable " + MyDatabaseHelper.TABLE_NAMES[i]);
 
                 }
+
+
                 Message message = mHandler.obtainMessage();
                 message.what = 1;
                 mHandler.sendMessage(message);
-//                System.out.println("Start dbManage.insertDataToTable" + MyDatabaseHelper.TABLE_ENCHANT);
-
-                dbManage.insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, DbManage.jsonEnchant);
+                ////附魔取消单独一个表
+////                System.out.println("Start dbManage.insertDataToTable" + MyDatabaseHelper.TABLE_ENCHANT);
+//
+//                dbManage.insertEnchantsToTable(MyDatabaseHelper.TABLE_ENCHANT, DbManage.jsonEnchant);
 
                 dbManage.closeDatabase();
             }

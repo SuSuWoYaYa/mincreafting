@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	public static final String DATABASE_NAME = "DataBase.sqlite";
-	public static final int DB_VERSION = 4;
+	public static final int DB_VERSION = 5;
 
 	public static final String TABLE_BUILDING =  "table_building";	//建筑 building
 //	public static final String TABLE_DAILY =  "table_daily";		//日常 daily
@@ -41,6 +41,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 			"table_others",		//杂项类 others
 			"table_smelting",		//烧炼类 weapon
 			"table_brewing",		//药水类 brewing
+			"table_enchant",		//附魔类 enchant
 
 	};
 	
@@ -64,17 +65,17 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 					+ " detail TEXT)");
 //					+ " isgif INTEGER)");
 		}
-		//附魔单独一个表
-		db.execSQL("CREATE TABLE " + TABLE_ENCHANT
-				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-//					+ " res_id INTEGER,"
-				+ " name TEXT,"
-				+ " high_level TEXT,"
-				+ " main_file_name TEXT,"
-				+ " sub_file_name TEXT,"
-//				+ " material TEXT,"
-				+ " use TEXT,"
-				+ " detail TEXT)");
+		//附魔取消单独一个表
+//		db.execSQL("CREATE TABLE " + TABLE_ENCHANT
+//				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+////					+ " res_id INTEGER,"
+//				+ " name TEXT,"
+//				+ " high_level TEXT,"
+//				+ " main_file_name TEXT,"
+//				+ " sub_file_name TEXT,"
+////				+ " material TEXT,"
+//				+ " use TEXT,"
+//				+ " detail TEXT)");
 
 	}
 
@@ -84,7 +85,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 		for (int i = 0; i < TABLE_NAMES.length; i++) {
 			db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAMES[i]);
 		}
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENCHANT);
+		//附魔取消单独一个表
+		//db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENCHANT);
 		onCreate(db);
 
 
