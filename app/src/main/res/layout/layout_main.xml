@@ -237,7 +237,7 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/icon_food2" />
+                    android:src="@drawable/icon_food" />
 
                 <TextView
                     android:layout_width="300dp"
@@ -276,7 +276,7 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:padding="5dp"
-                    android:src="@drawable/icon_lighting1" />
+                    android:src="@drawable/icon_lighting" />
 
                 <TextView
                     android:layout_width="300dp"
