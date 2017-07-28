@@ -180,8 +180,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             //刷新的时候图片没变就不更新数据
             if (!holder.FileName.equals(filename)) {
                 holder.FileName = filename;
-                String resId = "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename;
-                Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
+                String path = "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename;
+                Glide.with(ActivityListViewShowBlocks.this).load(path).placeholder(loading_of_background)
                         .into(holder.imageView);
             }
 
