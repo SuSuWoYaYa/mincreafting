@@ -6,6 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.PaintDrawable;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,7 +19,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,9 +26,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static SharedPreferences preferences = null;
 
+    private SoundPool mSoundPool = null;
+    private static  int TOUCH_SOUND = R.raw.click;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int theme = ChangeTheme.getTheme(getApplicationContext());
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main);
         initActionBar();
+
 
 
         preferences = getSharedPreferences(SAVE_FILE,
@@ -123,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setItemIconTintList(null);
 
 
+
+
         LinearLayout layout_btn_building = (LinearLayout) findViewById(R.id.layout_btn_building);
 //        LinearLayout layout_btn_daily = (LinearLayout) findViewById(R.id.layout_btn_daily);
         LinearLayout layout_btn_decoration = (LinearLayout) findViewById(R.id.layout_btn_decoration);
@@ -143,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 Intent intent = new Intent(getApplicationContext(), ActivityListViewShowBlocks.class);
 
                 switch (v.getId()) {
@@ -212,7 +221,36 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), ActivityListViewShowBlocks.class);
                         break;
                 }
+
                 startActivity(intent);
+
+
+                //loading sound
+                if(Build.VERSION.SDK_INT >= 21) {
+                    SoundPool.Builder builder = new SoundPool.Builder();
+                    builder.setMaxStreams(1);
+
+                    AudioAttributes.Builder attrBuilder = new AudioAttributes.Builder();
+                    attrBuilder.setLegacyStreamType(AudioManager.STREAM_MUSIC);
+
+                    builder.setAudioAttributes(attrBuilder.build());
+
+                    mSoundPool = builder.build();
+
+                }else {
+                    mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+
+                }
+
+                int soundId = mSoundPool.load(MainActivity.this, TOUCH_SOUND, 1);
+
+                //PLAY SOUND
+                mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+                    @Override
+                    public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                        soundPool.play(sampleId,1, 1, 0, 0, 1);
+                    }
+                });
             }
         };
         layout_btn_building.setOnClickListener(onClickListener);
@@ -445,6 +483,12 @@ public class MainActivity extends AppCompatActivity {
             }
             super.handleMessage(msg);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSoundPool.release();
     }
 
 }
