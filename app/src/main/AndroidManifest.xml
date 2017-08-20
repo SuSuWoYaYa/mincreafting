@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityListViewShowBlocks"
             android:screenOrientation="portrait" />
@@ -42,7 +42,11 @@
             android:name="com.cuisanzhang.mincreafting.GlideConfiguration"
             android:value="GlideModule" />
 
+        <activity
+            android:name=".FragmentMainActivity"
+            android:screenOrientation="portrait">
 
+        </activity>
     </application>
 
 </manifest>

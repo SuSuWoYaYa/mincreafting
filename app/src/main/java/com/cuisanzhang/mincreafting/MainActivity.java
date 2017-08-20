@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static SharedPreferences preferences = null;
 
-    private SoundPool mSoundPool = null;
-    private static  int TOUCH_SOUND = R.raw.click;
+//    private SoundPool mSoundPool = null;mSoundPool
+//    private static  int TOUCH_SOUND = R.raw.click;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -225,32 +225,32 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
-                //loading sound
-                if(Build.VERSION.SDK_INT >= 21) {
-                    SoundPool.Builder builder = new SoundPool.Builder();
-                    builder.setMaxStreams(1);
-
-                    AudioAttributes.Builder attrBuilder = new AudioAttributes.Builder();
-                    attrBuilder.setLegacyStreamType(AudioManager.STREAM_MUSIC);
-
-                    builder.setAudioAttributes(attrBuilder.build());
-
-                    mSoundPool = builder.build();
-
-                }else {
-                    mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-
-                }
-
-                int soundId = mSoundPool.load(MainActivity.this, TOUCH_SOUND, 1);
-
-                //PLAY SOUND
-                mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-                    @Override
-                    public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                        soundPool.play(sampleId,1, 1, 0, 0, 1);
-                    }
-                });
+//                //loading sound
+//                if(Build.VERSION.SDK_INT >= 21) {
+//                    SoundPool.Builder builder = new SoundPool.Builder();
+//                    builder.setMaxStreams(1);
+//
+//                    AudioAttributes.Builder attrBuilder = new AudioAttributes.Builder();
+//                    attrBuilder.setLegacyStreamType(AudioManager.STREAM_MUSIC);
+//
+//                    builder.setAudioAttributes(attrBuilder.build());
+//
+////                    mSoundPool = builder.build();
+//
+//                }else {
+//                    mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+//
+//                }
+//
+//                int soundId = mSoundPool.load(MainActivity.this, TOUCH_SOUND, 1);
+//
+//                //PLAY SOUND
+//                mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+//                    @Override
+//                    public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+//                        soundPool.play(sampleId,1, 1, 0, 0, 1);
+//                    }
+//                });
             }
         };
         layout_btn_building.setOnClickListener(onClickListener);
@@ -417,13 +417,13 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println("Start dbManage.insertDataToTable");
                 DbManage dbManage = new DbManage(MainActivity.this);
 
-                for (int i = 0; i < DbManage.jsons.length; i++) {
+                for (int i = 0; i < MyDatabaseHelper.jsons.length; i++) {
                     Message message = mHandler.obtainMessage();
                     message.what = 0;
                     message.obj = i;
                     mHandler.sendMessage(message);
                     dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
-                            DbManage.jsons[i]);
+                            MyDatabaseHelper.jsons[i]);
 //                    System.out.println("Start dbManage.insertDataToTable " + MyDatabaseHelper.TABLE_NAMES[i]);
 
                 }
@@ -485,11 +485,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSoundPool.release();
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+////        mSoundPool.release();
+//    }
 
 }
 

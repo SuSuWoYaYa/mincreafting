@@ -59,7 +59,7 @@ public class ActivityLoding extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(ActivityLoding.this, MainActivity.class);
+                Intent intent = new Intent(ActivityLoding.this, FragmentMainActivity.class);
                 startActivity(intent);
                 finish();
             }

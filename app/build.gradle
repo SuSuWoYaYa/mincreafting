@@ -7,9 +7,14 @@ android {
         applicationId "com.cuisanzhang.mincreafting"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 6
-        versionName "5.0"
+        versionCode 7
+        versionName "6.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            v2SigningEnabled false
+        }
     }
     buildTypes {
         release {
@@ -52,4 +57,10 @@ repositories {
 //dependencies {
 //    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
 //}
+dependencies {
+    compile 'com.android.support:support-v4:25.+'
+}
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
 

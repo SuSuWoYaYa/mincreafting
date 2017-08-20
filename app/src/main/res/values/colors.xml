@@ -44,4 +44,9 @@
     <color name="list_item_title_textColor">#e4e0e0</color>
     <color name="list_item_material_textColor">#212121</color>
     <color name="list_item_detail_background">#e3e3e3</color>
+
+
+    <color name="main_background_nomal">#ffffff</color>
+    <color name="main_background_block">@android:color/darker_gray</color>
+
 </resources>

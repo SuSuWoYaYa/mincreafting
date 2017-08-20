@@ -42,4 +42,20 @@
     <string name="autocomplete_hint">输入文字进行搜索</string>
     <string name="category_smelting">烧炼</string>
     <string name="tip_me">打赏作者</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="category_boss">BOSS</string>
+    <string name="category_hostile">攻击型</string>
+    <string name="category_neutral">中立型</string>
+    <string name="category_passive">被动型</string>
+    <string name="category_tameable">可驯服</string>
+    <string name="category_utility">效用型</string>
+    <string name="category_other_mobs">其他生物</string>
+    <string name="category_natural">自然生成</string>
+    <string name="category_sructures">结构方块</string>
+    <string name="category_materials">材料类</string>
+    <string name="category_food2">食物类</string>
+    <string name="category_plants">植物类</string>
+    <string name="category_command">命令方块</string>
+    <string name="category_other_block">其它物品</string>
 </resources>

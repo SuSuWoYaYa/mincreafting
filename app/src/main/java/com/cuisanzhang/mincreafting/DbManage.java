@@ -20,43 +20,7 @@ public class DbManage {
     private static SQLiteDatabase dbRead = null;
     private static SQLiteDatabase dbWrite = null;
 
-    public static String jsonEnchant = "jsons/enchant.json";
-    public static String[] jsons = {
-            "jsons/building.json",    //建筑 building
-//            "jsons/daily.json",       //日常 daily
-            "jsons/decoration.json",  //装饰 decoration
-            "jsons/dye.json",         //染料类 dye
-            "jsons/food.json",        //食物 food
-            "jsons/lighting.json",    //照明 lighting
-            "jsons/ore.json",         //矿石 ore
-            "jsons/redstone.json",    //红石 redstone
-            "jsons/tannsport.json",   //运输 tannsport
-            "jsons/tools.json",       //工具 tools
-            "jsons/weapon.json",      //武器 weapon
-            "jsons/others.json",      //杂项类 others
-            "jsons/smelting.json",      //烧炼类 others
-            "jsons/brewing.json",       //药水类 brewing
-            "jsons/enchant.json",		//附魔类 enchant
 
-    };
-
-    public static String DATA_BASE_CATEGORYS[] = {
-            "建筑类",
-//            "日常类",
-            "装饰类",
-            "染料类",
-            "食物类",
-            "照明类",
-            "矿石类",
-            "红石类",
-            "运输类",
-            "工具类",
-            "武器类",
-            "其他类",
-            "烧炼类",
-            "药水类",
-            "附魔类",
-    };
 
     public DbManage(Context c) {
         // TODO Auto-generated constructor stub
@@ -117,36 +81,36 @@ public class DbManage {
 
 
     }
-
-    public void insertEnchantsToTable(String TableName, String jsonfileName) {
-        List<Enchant> enchants = null;
-        enchants = ReadJsonData.ReadEnchantformJsonFile(context, jsonfileName);
-        for (int i = 0; i < enchants.size(); i++) {
-
-            Enchant item = enchants.get(i);
-
-            String name = item.getName();
-            String high_level = item.getHighLevel();
-            String main_file_name = item.getMainFileName();
-            String sub_file_name = item.getSubFileName();
-            String use = item.getUse();
-            String detail = item.getDetail();
-
-            ContentValues values = new ContentValues();
-//            values.put(Block.RES_ID, res_id);
-            values.put(Enchant.NAME, name);
-            values.put(Enchant.HIGH_LEVEL, high_level);
-            values.put(Enchant.MAIN_FILE_NAME, main_file_name);
-            values.put(Enchant.SUB_FILE_NAME, sub_file_name);
-//            values.put(Enchant.MATERIAL, material);
-            values.put(Enchant.USE, use);
-            values.put(Enchant.DETAIL, detail);
-//            Log.e(TAG, "insertDataToTable " + name);
-            dbWrite.insert(TableName, null, values);
-        }
-
-
-    }
+//
+//    public void insertEnchantsToTable(String TableName, String jsonfileName) {
+//        List<Enchant> enchants = null;
+//        enchants = ReadJsonData.ReadEnchantformJsonFile(context, jsonfileName);
+//        for (int i = 0; i < enchants.size(); i++) {
+//
+//            Enchant item = enchants.get(i);
+//
+//            String name = item.getName();
+//            String high_level = item.getHighLevel();
+//            String main_file_name = item.getMainFileName();
+//            String sub_file_name = item.getSubFileName();
+//            String use = item.getUse();
+//            String detail = item.getDetail();
+//
+//            ContentValues values = new ContentValues();
+////            values.put(Block.RES_ID, res_id);
+//            values.put(Enchant.NAME, name);
+//            values.put(Enchant.HIGH_LEVEL, high_level);
+//            values.put(Enchant.MAIN_FILE_NAME, main_file_name);
+//            values.put(Enchant.SUB_FILE_NAME, sub_file_name);
+////            values.put(Enchant.MATERIAL, material);
+//            values.put(Enchant.USE, use);
+//            values.put(Enchant.DETAIL, detail);
+////            Log.e(TAG, "insertDataToTable " + name);
+//            dbWrite.insert(TableName, null, values);
+//        }
+//
+//
+//    }
 
     public List<Block> getBlocksFormTable(String TableName) {
         List<Block> list = new ArrayList<Block>();
@@ -255,7 +219,7 @@ public class DbManage {
                 String name = cursor.getString((cursor.getColumnIndex(Block.NAME)));
                 String material = cursor.getString((cursor.getColumnIndex(Block.MATERIAL)));
 //            Log.e(TAG, "SeachString " + file_name + name + material);
-                SearchResult result = new SearchResult(DATA_BASE_CATEGORYS[i], file_name, name, material);
+                SearchResult result = new SearchResult(MyDatabaseHelper.DATA_BASE_CATEGORYS[i], file_name, name, material);
                 list.add(result);
                 cursor.moveToNext();
             }

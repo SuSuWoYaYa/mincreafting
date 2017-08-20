@@ -17,6 +17,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -24,11 +25,17 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
     public static String TAG = "getView";
 
+    public static String EXTRA_TABLE_NAME = "table_name";
+    public static String EXTRA_CATEGORY = "category";
+    public static String EXTRA_LOADING = "loading";
+    public static String EXTRA_LAYLOUT = "layout";
+
     List<Block> blocks = null;
     // checkbox状态
     List<Boolean> checkBoxStateList = null;
     MyAdapter adapter = null;
     String table_name = null;
+    String category  = null;
     int layout_of_giveView = 0;
     int loading_of_background = 0;
 
@@ -46,23 +53,28 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
         DbManage dbManage = new DbManage(getApplicationContext());
 
-        table_name = getIntent().getStringExtra(MainActivity.EXTRA_TABLE_NAME);
-        String category = getIntent().getStringExtra(MainActivity.EXTRA_CATEGORY);
+        //按传递的数据加载数据库,标题,背景,布局
+        //Toast.makeText(ActivityListViewShowBlocks.this, "", Toast.LENGTH_SHORT).show();
+        Intent intent = getIntent();
+        table_name = intent.getStringExtra(EXTRA_TABLE_NAME);
+        category = intent.getStringExtra(EXTRA_CATEGORY);
+        loading_of_background = intent.getIntExtra(EXTRA_LOADING,R.drawable.loading_of_blocks);
+        layout_of_giveView = intent.getIntExtra(EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
 
         //为了适应药水,烧炼和附魔的图片
-        if (table_name.equals(MyDatabaseHelper.TABLE_BREWING)) {
-            layout_of_giveView = R.layout.layout_listview_item_brewing;
-            loading_of_background = R.drawable.loading_of_brewing;
-        } else if (table_name.equals(MyDatabaseHelper.TABLE_SMELTING)) {
-            layout_of_giveView = R.layout.layout_listview_item_smelting;
-            loading_of_background = R.drawable.loading_of_smelting;
-        } else if (table_name.equals(MyDatabaseHelper.TABLE_ENCHANT)) {
-            layout_of_giveView = R.layout.layout_listview_item_block;
-            loading_of_background = R.drawable.loading_of_enchant;
-        }else {
-            layout_of_giveView = R.layout.layout_listview_item_block;
-            loading_of_background = R.drawable.loading_of_blocks;
-        }
+//        if (table_name.equals(MyDatabaseHelper.TABLE_BREWING)) {
+//            layout_of_giveView = R.layout.layout_listview_item_brewing;
+//            loading_of_background = R.drawable.loading_of_brewing;
+//        } else if (table_name.equals(MyDatabaseHelper.TABLE_SMELTING)) {
+//            layout_of_giveView = R.layout.layout_listview_item_smelting;
+//            loading_of_background = R.drawable.loading_of_smelting;
+//        } else if (table_name.equals(MyDatabaseHelper.TABLE_ENCHANT)) {
+//            layout_of_giveView = R.layout.layout_listview_item_block;
+//            loading_of_background = R.drawable.loading_of_enchant;
+//        }else {
+//            layout_of_giveView = R.layout.layout_listview_item_block;
+//            loading_of_background = R.drawable.loading_of_blocks;
+//        }
         TextView listViewTitle = (TextView) findViewById(R.id.listViewTitle);
         listViewTitle.setText(category);
 

@@ -33,6 +33,7 @@
             android:id="@+id/autoCompleteTextView"
             android:completionThreshold="1"
             android:singleLine="true"
+            android:imeOptions="actionDone"
             android:layout_weight="1" />
 
         <ImageView
