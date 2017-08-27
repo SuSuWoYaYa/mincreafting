@@ -7,8 +7,8 @@ android {
         applicationId "com.cuisanzhang.mincreafting"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 7
-        versionName "6.0"
+        versionCode 8
+        versionName "7.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -59,6 +59,9 @@ repositories {
 //}
 dependencies {
     compile 'com.android.support:support-v4:25.+'
+}
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
 }
 dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'

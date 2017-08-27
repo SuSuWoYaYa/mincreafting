@@ -90,7 +90,7 @@ public class FragmentCreating extends Fragment {
 
                 String tableName ;
                 String category ;
-                int layout = R.layout.layout_listview_item_block;
+//                int layout = R.layout.layout_listview_item_block;
                 int loding = R.drawable.loading_of_blocks;
 
                 switch (v.getId()) {
@@ -142,19 +142,18 @@ public class FragmentCreating extends Fragment {
                         tableName =  MyDatabaseHelper.TABLE_SMELTING;
                         category = "烧炼类";
                         loding =R.drawable.loading_of_smelting;
-                        layout= R.layout.layout_listview_item_smelting;
+//                        layout= R.layout.layout_listview_item_smelting;
                         break;
                     case R.id.layout_btn_brewing:
                         tableName =  MyDatabaseHelper.TABLE_BREWING;
                         category = "药水类";
                         loding = R.drawable.loading_of_brewing;
-                        layout= R.layout.layout_listview_item_brewing;
+//                        layout= R.layout.layout_listview_item_brewing;
                         break;
                     case R.id.layout_btn_enchant:
                         tableName =  MyDatabaseHelper.TABLE_ENCHANT;
                         category = "附魔类";
                         loding = R.drawable.loading_of_enchant;
-
                         break;
                     default:
                         tableName = MyDatabaseHelper.TABLE_BUILDING;
@@ -167,7 +166,7 @@ public class FragmentCreating extends Fragment {
                 intent.putExtra(ActivityListViewShowBlocks.EXTRA_TABLE_NAME, tableName);
                 intent.putExtra(ActivityListViewShowBlocks.EXTRA_CATEGORY, category);
                 intent.putExtra(ActivityListViewShowBlocks.EXTRA_LOADING, loding);
-                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, layout);
+//                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
                 startActivity(intent);
 
 

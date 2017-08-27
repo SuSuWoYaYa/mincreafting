@@ -28,7 +28,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     public static String EXTRA_TABLE_NAME = "table_name";
     public static String EXTRA_CATEGORY = "category";
     public static String EXTRA_LOADING = "loading";
-    public static String EXTRA_LAYLOUT = "layout";
+//    public static String EXTRA_LAYLOUT = "layout";
 
     List<Block> blocks = null;
     // checkbox状态
@@ -36,7 +36,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     MyAdapter adapter = null;
     String table_name = null;
     String category  = null;
-    int layout_of_giveView = 0;
+//    int layout_of_giveView = 0;
     int loading_of_background = 0;
 
     @Override
@@ -59,7 +59,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
         table_name = intent.getStringExtra(EXTRA_TABLE_NAME);
         category = intent.getStringExtra(EXTRA_CATEGORY);
         loading_of_background = intent.getIntExtra(EXTRA_LOADING,R.drawable.loading_of_blocks);
-        layout_of_giveView = intent.getIntExtra(EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
+//        layout_of_giveView = intent.getIntExtra(EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
 
         //为了适应药水,烧炼和附魔的图片
 //        if (table_name.equals(MyDatabaseHelper.TABLE_BREWING)) {
@@ -152,7 +152,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 holder = new ViewHolder();
 
 
-                convertView = mInflater.inflate(layout_of_giveView, null);
+                convertView = mInflater.inflate(R.layout.layout_listview_item_block, null);
 
                 holder.FileName = "";
 
@@ -178,7 +178,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
 
             holder.textViewName.setText(block.getName());
-            TextView textViewBuilding = (TextView) findViewById(R.id.textViewBuilding);
+//            TextView textViewBuilding = (TextView) findViewById(R.id.textViewBuilding);
 
             holder.textViewMaterial.setText(block.getMaterial());
 //            holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());

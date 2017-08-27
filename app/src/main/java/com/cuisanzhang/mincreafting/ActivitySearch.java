@@ -15,6 +15,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -38,16 +40,21 @@ public class ActivitySearch extends AppCompatActivity {
 
     private static SharedPreferences preferences = null;
     private List<String> historyList;
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> autoCompleteAdapter;
     private AutoCompleteTextView autoCompleteTextView;
     private ImageView imageViewMenu;
     private ImageView imageViewSaerch;
     private ListView listView;
+    private MyAdapter listviewAdapter;
     private LinearLayout emptyView;
     private TextView textViewEmpty;
-    private List<SearchResult> searchResults;
+    private List<Block> searchResults;
 
-private InputMethodManager mInputMethodManager;
+    // checkbox状态
+    List<Boolean> checkBoxStateList = null;
+
+    private InputMethodManager mInputMethodManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +80,9 @@ private InputMethodManager mInputMethodManager;
                 Context.MODE_PRIVATE);
 
         historyList = new ArrayList<String>();
+
+
+        checkBoxStateList = new ArrayList<Boolean>();
 
         getHistory();
 
@@ -113,7 +123,7 @@ private InputMethodManager mInputMethodManager;
 
         for (int i = 0; i < historyList.size(); i++) {
             editor.putString("history" + i, historyList.get(i));
-            Log.e(TAG, "editor.putString " + "history" + i + historyList.get(i));
+//            Log.e(TAG, "editor.putString " + "history" + i + historyList.get(i));
         }
         editor.apply();
 
@@ -179,8 +189,8 @@ private InputMethodManager mInputMethodManager;
     }
 
     private void setAdapter() {
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, historyList);
-        autoCompleteTextView.setAdapter(adapter);
+        autoCompleteAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, historyList);
+        autoCompleteTextView.setAdapter(autoCompleteAdapter);
     }
 
 
@@ -191,8 +201,11 @@ private InputMethodManager mInputMethodManager;
 //        Log.e(TAG, "searchString get result count for " + searchResults.size());
         if (searchResults != null && searchResults.size() > 0) {
 
+            //搜索后清空详情状态
+            checkBoxStateList = new ArrayList<Boolean>();
+
 //            Log.e(TAG, "listView.setAdapter(listviewAdapter);");
-            MyAdapter listviewAdapter = new MyAdapter(ActivitySearch.this);
+            listviewAdapter = new MyAdapter(ActivitySearch.this);
             listView.setAdapter(listviewAdapter);
         } else {
 
@@ -210,8 +223,11 @@ private InputMethodManager mInputMethodManager;
             public ImageView imageView;
             public String FileName;
             public TextView textViewName;
-            public TextView textViewCategory;
             public TextView textViewMaterial;
+            public TextView textViewUse;
+
+            public TextView textViewShowBlockDetail;
+            public CheckBox checkBox;
         }
 
         private LayoutInflater mInflater = getLayoutInflater();
@@ -238,42 +254,134 @@ private InputMethodManager mInputMethodManager;
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+//
+//            if (convertView == null) {
+//                holder = new ViewHolder();
+//                convertView = mInflater.inflate(R.layout.activity_search_listview_item, null);
+//
+//                holder.FileName = "";
+//                holder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
+//                holder.textViewName = (TextView) convertView.findViewById(R.id.textViewName);
+//                holder.textViewCategory = (TextView) convertView.findViewById(R.id.textViewCategory);
+//                holder.textViewMaterial = (TextView) convertView.findViewById(R.id.textViewMaterial);
+//                convertView.setTag(holder);
+//            } else {
+//                holder = (ViewHolder) convertView.getTag();
+//            }
+//
+//            Block item = searchResults.get(position);
+//
+//            //不再使用反射获得id,直接生成Uri
+////            int resId = getResources().getIdentifier(item.getFileName(), "drawable",
+////                    getPackageName());
+////            holder.imageView.setImageURI(resId);
+//
+//            String filename = item.getFileName();
+//            Uri uri = Uri.parse( "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename);
+////            holder.imageView.setImageURI(uri);
+//            //刷新的时候图片没变就不更新数据
+//            if (!holder.FileName.equals(filename)) {
+//                holder.FileName = filename;
+//                String path = "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename;
+//                Glide.with(ActivitySearch.this).load(uri).placeholder(R.drawable.loading_of_blocks)
+//                        .into(holder.imageView);
+//            }
+//
+//            holder.textViewName.setText(item.getName());
+////            holder.textViewCategory.setText(item.getCategory());
+//            holder.textViewMaterial.setText(item.getMaterial());
+//            return convertView;
+
+            // TODO Auto-generated method stub
+            final int pos = position;
+
+            Block block = searchResults.get(position);
+            String filename = block.getFileName();
+
 
             if (convertView == null) {
+
                 holder = new ViewHolder();
-                convertView = mInflater.inflate(R.layout.activity_search_listview_item, null);
+
+
+                convertView = mInflater.inflate(R.layout.layout_listview_item_block, null);
 
                 holder.FileName = "";
-                holder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
-                holder.textViewName = (TextView) convertView.findViewById(R.id.textViewName);
-                holder.textViewCategory = (TextView) convertView.findViewById(R.id.textViewCategory);
-                holder.textViewMaterial = (TextView) convertView.findViewById(R.id.textViewMaterial);
+
+                holder.textViewName = (TextView) convertView
+                        .findViewById(R.id.name);
+                holder.textViewMaterial = (TextView) convertView
+                        .findViewById(R.id.material);
+                holder.imageView = (ImageView) convertView
+                        .findViewById(R.id.imageView1);
+                holder.textViewUse = (TextView) convertView
+                        .findViewById(R.id.use);
+                holder.textViewShowBlockDetail = (TextView) convertView
+                        .findViewById(R.id.textViewShowBlockDetail);
+                holder.checkBox = (CheckBox) convertView
+                        .findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
+
             } else {
+
                 holder = (ViewHolder) convertView.getTag();
+
             }
 
-            SearchResult item = searchResults.get(position);
 
-            //不再使用反射获得id,直接生成Uri
-//            int resId = getResources().getIdentifier(item.getFileName(), "drawable",
+            holder.textViewName.setText(block.getName());
+//            TextView textViewBuilding = (TextView) findViewById(R.id.textViewBuilding);
+
+            holder.textViewMaterial.setText(block.getMaterial());
+//            holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());
+//            boolean isgif = block.isgif();
+
+//            int resId = getResources().getIdentifier(block.getFileName(), "drawable",
 //                    getPackageName());
-//            holder.imageView.setImageURI(resId);
+//            Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
+//                        .into(holder.imageView);
 
-            String filename = item.getFileName();
-            Uri uri = Uri.parse( "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename);
-//            holder.imageView.setImageURI(uri);
             //刷新的时候图片没变就不更新数据
             if (!holder.FileName.equals(filename)) {
                 holder.FileName = filename;
                 String path = "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename;
-                Glide.with(ActivitySearch.this).load(uri).placeholder(R.drawable.loading_of_blocks)
+                Glide.with(ActivitySearch.this).load(path).placeholder(R.drawable.loading_of_search)
                         .into(holder.imageView);
             }
 
-            holder.textViewName.setText(item.getName());
-            holder.textViewCategory.setText(item.getCategory());
-            holder.textViewMaterial.setText(item.getMaterial());
+            holder.textViewUse.setText(block.getUse());
+            holder.textViewShowBlockDetail.setText(block.getDetail());
+//            Log.e(TAG, block.getDetail());
+            // 防止数组越界
+            if (checkBoxStateList.size() <= position) {
+                // 保存每个checkBoxState, 用来动态更新
+                checkBoxStateList.add(false);
+            }
+
+            holder.checkBox
+                    .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                        @Override
+                        public void onCheckedChanged(CompoundButton buttonView,
+                                                     boolean isChecked) {
+                            // TODO Auto-generated method stub
+                            // 按照列表位置更新checkbox状态
+                            checkBoxStateList.set(pos, isChecked);
+                            listviewAdapter.notifyDataSetChanged();
+//                            Log.e(TAG, "" +pos +" "  +isChecked);
+                        }
+                    });
+
+            boolean ischecked = checkBoxStateList.get(position);
+            holder.checkBox.setChecked(ischecked);
+            if (ischecked) {
+////				holder.textViewDetail.setVisibility(View.VISIBLE);
+                holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
+            } else {
+//				holder.textViewDetail.setVisibility(View.GONE);
+                holder.textViewShowBlockDetail.setVisibility(View.GONE);
+            }
+
             return convertView;
         }
     }

@@ -165,7 +165,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                 intent.putExtra(ActivityListViewShowBlocks.EXTRA_CATEGORY, category);
                 intent.putExtra(ActivityListViewShowBlocks.EXTRA_LOADING, loading);
 
-                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
+//                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
                 startActivity(intent);
 
 

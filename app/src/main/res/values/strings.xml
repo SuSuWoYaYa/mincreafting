@@ -1,12 +1,7 @@
 <resources>
     <string name="app_name">我的世界合成表大全</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="versionCode">v7.0</string>
     <string name="action_settings">Settings</string>
-    <string name="material">材料:</string>
-    <string name="use">用途:</string>
-    <string name="Loading">正在载入</string>
-    <string name="show_detail">显示详细信息</string>
-    <string name="detail">详细信息:</string>
     <string name="toolbar_search">搜索</string>
     <string name="menu_change_theme">切换主题</string>
     <string name="menu_feedback">意见反馈</string>
@@ -38,7 +33,6 @@
     <string name="category_enchant">附魔</string>
     <string name="click_to_skip">点击跳过</string>
     <string name="click_to_change_theme">更换标题栏颜色</string>
-    <string name="title_activity_search">ActivitySearch</string>
     <string name="autocomplete_hint">输入文字进行搜索</string>
     <string name="category_smelting">烧炼</string>
     <string name="tip_me">打赏作者</string>
@@ -57,5 +51,6 @@
     <string name="category_food2">食物类</string>
     <string name="category_plants">植物类</string>
     <string name="category_command">命令方块</string>
-    <string name="category_other_block">其它物品</string>
+    <string name="category_other_block">其他物品</string>
+    <string name="title_activity_tutorial">ActivityTutorial</string>
 </resources>

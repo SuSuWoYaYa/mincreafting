@@ -154,42 +154,42 @@ public class DbManage {
         return list;
     }
 
-    public List<Enchant> getEnchantsFormTable(String TableName) {
-        List<Enchant> enchants = new ArrayList<Enchant>();
-
-        Cursor cursor = dbRead.query(TableName, null, null, null, null, null, null);
-//		int count = cursor.getCount();
-        if (cursor.moveToFirst() == false) {
-            Log.e(TAG, "getDatasFormTable " + TableName + " return cursor getcount = " + cursor.getCount());
-            return enchants;
-        }
-//        Log.e(TAG, "getDatasFormTable cursor getcount = " + cursor.getCount());
-
-        for (int i = 0; i < cursor.getCount(); i++) {
-
-
-//            int res_id = cursor.getInt((cursor.getColumnIndex(Block.RES_ID)));
-            String name = cursor.getString((cursor.getColumnIndex(Enchant.NAME)));
-            String high_level = cursor.getString((cursor.getColumnIndex(Enchant.HIGH_LEVEL)));
-            String main_file_name = cursor.getString((cursor.getColumnIndex(Enchant.MAIN_FILE_NAME)));
-            String sub_file_name = cursor.getString((cursor.getColumnIndex(Enchant.SUB_FILE_NAME)));
-//            String material = cursor.getString((cursor.getColumnIndex(Enchant.MATERIAL)));
-            String use = cursor.getString((cursor.getColumnIndex(Enchant.USE)));
-            String detail = cursor.getString((cursor.getColumnIndex(Enchant.DETAIL)));
-//            int isgif = cursor.getInt((cursor.getColumnIndex(Block.ISGIF)));
-
-
-//			Log.e(TAG , "getDatasFormTable " + name);
-            Enchant enchant = new Enchant(name, high_level, main_file_name, sub_file_name, use, detail);
-
-            enchants.add(enchant);
-            cursor.moveToNext();
-        }
-
-        cursor.close();
-
-        return enchants;
-    }
+//    public List<Enchant> getEnchantsFormTable(String TableName) {
+//        List<Enchant> enchants = new ArrayList<Enchant>();
+//
+//        Cursor cursor = dbRead.query(TableName, null, null, null, null, null, null);
+////		int count = cursor.getCount();
+//        if (cursor.moveToFirst() == false) {
+//            Log.e(TAG, "getDatasFormTable " + TableName + " return cursor getcount = " + cursor.getCount());
+//            return enchants;
+//        }
+////        Log.e(TAG, "getDatasFormTable cursor getcount = " + cursor.getCount());
+//
+//        for (int i = 0; i < cursor.getCount(); i++) {
+//
+//
+////            int res_id = cursor.getInt((cursor.getColumnIndex(Block.RES_ID)));
+//            String name = cursor.getString((cursor.getColumnIndex(Enchant.NAME)));
+//            String high_level = cursor.getString((cursor.getColumnIndex(Enchant.HIGH_LEVEL)));
+//            String main_file_name = cursor.getString((cursor.getColumnIndex(Enchant.MAIN_FILE_NAME)));
+//            String sub_file_name = cursor.getString((cursor.getColumnIndex(Enchant.SUB_FILE_NAME)));
+////            String material = cursor.getString((cursor.getColumnIndex(Enchant.MATERIAL)));
+//            String use = cursor.getString((cursor.getColumnIndex(Enchant.USE)));
+//            String detail = cursor.getString((cursor.getColumnIndex(Enchant.DETAIL)));
+////            int isgif = cursor.getInt((cursor.getColumnIndex(Block.ISGIF)));
+//
+//
+////			Log.e(TAG , "getDatasFormTable " + name);
+//            Enchant enchant = new Enchant(name, high_level, main_file_name, sub_file_name, use, detail);
+//
+//            enchants.add(enchant);
+//            cursor.moveToNext();
+//        }
+//
+//        cursor.close();
+//
+//        return enchants;
+//    }
 
     public void closeDatabase() {
         if (db != null) {
@@ -202,11 +202,11 @@ public class DbManage {
         }
     }
 
-    public List<SearchResult> seachString(String searchName) {
-        List<SearchResult> list = new ArrayList<SearchResult>();
+    public List<Block> seachString(String searchName) {
+        List<Block> list = new ArrayList<Block>();
 
         for (int i = 0; i < MyDatabaseHelper.TABLE_NAMES.length; i++) {
-            Cursor cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], new String[]{"file_name", "name", "material"}, "name like '%" + searchName + "%'", null, null, null, null);
+            Cursor cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], new String[]{"file_name", "name", "material", "use", "detail"}, "name like '%" + searchName + "%'", null, null, null, null);
 
 //            Log.e(TAG, "SeachString " + MyDatabaseHelper.TABLE_NAMES[i] + " return cursor getcount = " + cursor.getCount());
             if (!cursor.moveToFirst()) {
@@ -218,8 +218,12 @@ public class DbManage {
                 String file_name = cursor.getString((cursor.getColumnIndex(Block.FILE_NAME)));
                 String name = cursor.getString((cursor.getColumnIndex(Block.NAME)));
                 String material = cursor.getString((cursor.getColumnIndex(Block.MATERIAL)));
-//            Log.e(TAG, "SeachString " + file_name + name + material);
-                SearchResult result = new SearchResult(MyDatabaseHelper.DATA_BASE_CATEGORYS[i], file_name, name, material);
+                String use = cursor.getString((cursor.getColumnIndex(Block.USE)));
+                String detail = cursor.getString((cursor.getColumnIndex(Block.DETAIL)));
+
+//            Log.e(TAG, "SeachString " + detail);
+//                SearchResult result = new SearchResult(MyDatabaseHelper.DATA_BASE_CATEGORYS[i], file_name, name, material, use, detail);
+                Block result = new Block(file_name, name, material, use, detail);
                 list.add(result);
                 cursor.moveToNext();
             }
