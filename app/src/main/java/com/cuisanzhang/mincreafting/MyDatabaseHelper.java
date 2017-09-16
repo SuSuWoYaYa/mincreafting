@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	public static final String DATABASE_NAME = "DataBase.sqlite";
-	public static final int DB_VERSION = 6;
+	public static final int DB_VERSION = 7;
 
 
     //每个分类数据库的表名,用来传递给分类详情页使用
@@ -44,19 +44,22 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_ITEM_BLOCK_PLANTS		=	"table_item_block_plants";      //植物类
 
 
+
+	//排序影响搜索结果,搜索从后搜到前
     //每个分类数据的类别,初始化数据库提示用
     public static final String[] DATA_BASE_CATEGORYS = {
+			"染料类合成",
+			"武器类合成",
+
+			"工具类合成",
             "建筑类合成",
 //            "日常类",
             "装饰类合成",
-            "染料类合成",
             "食物类合成",
             "照明类合成",
             "矿石类合成",
             "红石类合成",
             "运输类合成",
-            "工具类合成",
-            "武器类合成",
             "其他类合成",
             "烧炼类",
             "药水类",
@@ -83,18 +86,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 //	public static String jsonEnchant = "jsons/creating/enchant.json";
 
     //json文件路径
+	//排序影响搜索结果
 	public static final String[] jsons = {
+
+			"jsons/creating/dye.json",         //染料类 dye
+			"jsons/creating/weapon.json",      //武器 weapon
+			"jsons/creating/tools.json",       //工具 tools
 			"jsons/creating/building.json",    //建筑 building
 //            "jsons/daily.json",       //日常 daily
 			"jsons/creating/decoration.json",  //装饰 decoration
-			"jsons/creating/dye.json",         //染料类 dye
 			"jsons/creating/food.json",        //食物 food
 			"jsons/creating/lighting.json",    //照明 lighting
 			"jsons/creating/ore.json",         //矿石 ore
 			"jsons/creating/redstone.json",    //红石 redstone
 			"jsons/creating/tannsport.json",   //运输 tannsport
-			"jsons/creating/tools.json",       //工具 tools
-			"jsons/creating/weapon.json",      //武器 weapon
 			"jsons/creating/others.json",      //杂项类 others
 			"jsons/creating/smelting.json",      //烧炼类 others
 			"jsons/creating/brewing.json",       //药水类 brewing
@@ -119,18 +124,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	};
 
     //每个分类数据库的表名, 便于循环使用数据库
+	//排序影响搜索结果
 	public static final String[] TABLE_NAMES = {
+			"table_dye",		//染料类 dye
+			"table_weapon",		//武器 weapon
+			"table_tools",		//工具 tools
 			"table_building", 	//建筑 building
 //			"table_daily",		//日常 daily
 			"table_decoration",	//装饰 decoration
-			"table_dye",		//染料类 dye
 			"table_food",		//食物 food
 			"table_lighting",	//照明 lighting
 			"table_ore",		//矿石 ore
 			"table_redstone",	//红石 redstone
 			"table_tannsport",	//运输 tannsport
-			"table_tools",		//工具 tools
-			"table_weapon",		//武器 weapon
 			"table_others",		//杂项类 others
 			"table_smelting",		//烧炼类 weapon
 			"table_brewing",		//药水类 brewing

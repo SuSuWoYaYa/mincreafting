@@ -88,7 +88,7 @@
     {
       "file_name": "rangshedechuang",
       "name": "染色的床",
-      "material": "白色床 + 对应的染料",
+      "material": "'白色'床 + 对应的染料",
       "use": "仅限Java版",
       "detail": "可使用染料来对白色的床重新染色.\n\n其他详情请参考床"
     },

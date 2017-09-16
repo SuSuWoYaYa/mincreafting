@@ -19,18 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ActivityListViewShowBlocks"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityTip"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ActivityListViewShowEnchants"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ActivityWebViewFeedback"
             android:screenOrientation="portrait" />

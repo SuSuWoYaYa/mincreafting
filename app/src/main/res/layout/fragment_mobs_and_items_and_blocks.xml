@@ -34,7 +34,7 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_moyinglong" />
+                android:src="@drawable/icon_dragon" />
 
             <TextView
                 android:id="@+id/textViewBuilding"
@@ -68,7 +68,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_food1" />
+                android:src="@drawable/icon_food" />
 
             <TextView
                 android:layout_width="300dp"
@@ -109,7 +109,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_zombie" />
+                android:src="@drawable/icon_skeleton2" />
 
             <TextView
                 android:layout_width="300dp"
@@ -182,7 +182,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_moyingren" />
+                android:src="@drawable/icon_enderman" />
 
             <TextView
                 android:layout_width="300dp"
@@ -214,7 +214,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_material1" />
+                android:src="@drawable/icon_clay" />
 
             <TextView
                 android:layout_width="300dp"
@@ -253,7 +253,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_pig" />
+                android:src="@drawable/icon_pig2" />
 
             <TextView
                 android:layout_width="300dp"
@@ -324,7 +324,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_ma" />
+                android:src="@drawable/icon_horse" />
 
             <TextView
                 android:layout_width="300dp"
@@ -405,7 +405,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_nowgolem" />
+                android:src="@drawable/icon_village_golem" />
 
             <TextView
                 android:layout_width="300dp"
@@ -478,7 +478,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_jiaoyubang" />
+                android:src="@drawable/icon_npc" />
 
             <TextView
                 android:layout_width="300dp"

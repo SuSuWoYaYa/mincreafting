@@ -1,5 +1,6 @@
 package com.cuisanzhang.mincreafting;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +21,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class ActivityListViewShowBlocks extends AppCompatActivity {
 
@@ -28,16 +34,23 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     public static String EXTRA_TABLE_NAME = "table_name";
     public static String EXTRA_CATEGORY = "category";
     public static String EXTRA_LOADING = "loading";
+    public static String EXTRA_IS_CREATING = "isCreating";
 //    public static String EXTRA_LAYLOUT = "layout";
 
     List<Block> blocks = null;
     // checkbox状态
     List<Boolean> checkBoxStateList = null;
     MyAdapter adapter = null;
+    List<String> Material = null;
     String table_name = null;
-    String category  = null;
-//    int layout_of_giveView = 0;
+    String category = null;
+    boolean isCreating = false;
+    List<String> searchList;
+    //    int layout_of_giveView = 0;
     int loading_of_background = 0;
+
+    //    for admob
+    private AdRequest adRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +63,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
         initActionBar();
 
         checkBoxStateList = new ArrayList<Boolean>();
+        Material = new ArrayList<String>();
+        searchList = new ArrayList<String>();
 
         DbManage dbManage = new DbManage(getApplicationContext());
 
@@ -58,7 +73,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
         Intent intent = getIntent();
         table_name = intent.getStringExtra(EXTRA_TABLE_NAME);
         category = intent.getStringExtra(EXTRA_CATEGORY);
-        loading_of_background = intent.getIntExtra(EXTRA_LOADING,R.drawable.loading_of_blocks);
+        loading_of_background = intent.getIntExtra(EXTRA_LOADING, R.drawable.loading_of_blocks);
+        isCreating = intent.getBooleanExtra(EXTRA_IS_CREATING, false);
 //        layout_of_giveView = intent.getIntExtra(EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
 
         //为了适应药水,烧炼和附魔的图片
@@ -81,6 +97,16 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
         blocks = dbManage.getBlocksFormTable(table_name);
         dbManage.closeDatabase();
 
+
+//        google admob
+        MobileAds.initialize(this, "ca-app-pub-1353370194949670~3914579262");
+
+        adRequest = new AdRequest.Builder()
+                .addTestDevice("C5EF7D96DFF2F2C3E5CD1CA16D57D71F")
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
+
 //        if (blocks == null) {
 //            System.out.println("getDatabase is null");
 //        } else {
@@ -100,23 +126,26 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
     }
 
-    public class MyAdapter extends BaseAdapter {
+    private class MyAdapter extends BaseAdapter {
 
-        public final class ViewHolder {
-            public ImageView imageView;
-            public String FileName;
-            public TextView textViewName;
-            public TextView textViewMaterial;
-            public TextView textViewUse;
+        private final class ViewHolder {
+            private ImageView imageView;
+            private String FileName;
+            private TextView textViewName;
+            private TextView textViewMaterial;
+            private TextView textViewUse;
 
-            public TextView textViewShowBlockDetail;
-            public CheckBox checkBox;
+            private TextView textViewShowBlockDetail;
+            private CheckBox checkBox;
+            private AdView mAdView;
+
+
         }
 
         private LayoutInflater mInflater = getLayoutInflater();
         private ViewHolder holder = null;
 
-        public MyAdapter(Context context) {
+        private MyAdapter(Context context) {
             this.mInflater = LayoutInflater.from(context);
         }
 
@@ -170,6 +199,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                         .findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
 
+                holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
+
             } else {
 
                 holder = (ViewHolder) convertView.getTag();
@@ -181,6 +212,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //            TextView textViewBuilding = (TextView) findViewById(R.id.textViewBuilding);
 
             holder.textViewMaterial.setText(block.getMaterial());
+
 //            holder.textViewMaterial.setText(block.getMaterial() + block.getFileName());
 //            boolean isgif = block.isgif();
 
@@ -188,12 +220,65 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //                    getPackageName());
 //            Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
 //                        .into(holder.imageView);
+            if (holder.imageView == null) {
+                Log.e(TAG, "holder.imageView == nullholder.imageView == nullholder.imageView == nullholder.imageView == nullholder.imageView == null");
+            }
+
+            if (Material.size() <= position) {
+                // 保存每个合成原料, 用来分割查询
+                Material.add(block.getMaterial());
+            }
+
+            if (isCreating) {
+
+                holder.imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String str = Material.get(pos);
+                        str = str.replace(",", " ");
+                        str = str.replace("+", " ");
+                        str = str.replace("'", " ");
+
+                        str = str.replace("(", " ");
+                        str = str.replace(")", " ");
+                        str = str.replace("(基础", " ");
+                        str = str.replace("还原)", " ");
+                        str = str.replace("或", " ");               //或
+                        str = str.replace("任何", "");         //任何
+                        str = str.replace("对应的", "");   //对应的
+//                        str = str.replace("", " ");
+//                        str = str.replace("", " ");
+//                        str = str.replace("", " ");
+
+                        String[] searchNames = str.split("\\s+");
+//
+                        //没有原料的时候分割出来的数组为0大小
+                        if(searchNames.length == 0 || searchNames[0].equals(""))
+                            return;
+//                        String temp = "'";
+//                        for (String search : searchNames) {
+//                            temp += search + "";
+////                            System.out.println("searchNames=" +str);
+//                        }
+//                        temp += "'";
+//                        Toast.makeText(ActivityListViewShowBlocks.this, temp, Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(ActivityListViewShowBlocks.this, ActivitySearch.class);
+                        intent.putExtra(ActivitySearch.EXTRA_ARRAY_LIST, searchNames);
+                        startActivity(intent);
+
+
+                    }
+//
+                });
+            }
 
             //刷新的时候图片没变就不更新数据
             if (!holder.FileName.equals(filename)) {
                 holder.FileName = filename;
                 String path = "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename;
-                Glide.with(ActivityListViewShowBlocks.this).load(path).placeholder(loading_of_background)
+                Glide.with(ActivityListViewShowBlocks.this).load(path)
+                        .placeholder(loading_of_background)
                         .into(holder.imageView);
             }
 
@@ -220,13 +305,26 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
             boolean ischecked = checkBoxStateList.get(position);
             holder.checkBox.setChecked(ischecked);
+
             if (ischecked) {
 //				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
+
+//                if(holder.mAdView != null){
+                holder.mAdView.setVisibility(View.VISIBLE);
+                    holder.mAdView.loadAd(adRequest);
+//                }
+//
+
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
+//                if(holder.mAdView != null){
+                holder.mAdView.setVisibility(View.GONE);
+//                }
+
             }
+
 
             return convertView;
         }
