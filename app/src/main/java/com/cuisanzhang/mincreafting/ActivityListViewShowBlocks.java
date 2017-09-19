@@ -107,7 +107,6 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
         adRequest = new AdRequest.Builder()
 //                .addTestDevice("C5EF7D96DFF2F2C3E5CD1CA16D57D71F")
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 
         isNetworkConnected = Utils.isNetworkConnected(ActivityListViewShowBlocks.this);
