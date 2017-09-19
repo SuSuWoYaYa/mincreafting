@@ -82,7 +82,7 @@ public class ActivitySearch extends AppCompatActivity {
         MobileAds.initialize(this, "ca-app-pub-1353370194949670~3914579262");
 
         adRequest = new AdRequest.Builder()
-                .addTestDevice("C5EF7D96DFF2F2C3E5CD1CA16D57D71F")
+//                .addTestDevice("C5EF7D96DFF2F2C3E5CD1CA16D57D71F")
                 .build();
         isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
 
