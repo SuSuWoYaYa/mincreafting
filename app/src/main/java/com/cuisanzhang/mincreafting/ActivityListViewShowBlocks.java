@@ -17,15 +17,18 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.util.Util;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.NativeExpressAdView;
 
 public class ActivityListViewShowBlocks extends AppCompatActivity {
 
@@ -51,6 +54,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
     //    for admob
     private AdRequest adRequest;
+    boolean isNetworkConnected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +110,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 
+        isNetworkConnected = Utils.isNetworkConnected(ActivityListViewShowBlocks.this);
 
 //        if (blocks == null) {
 //            System.out.println("getDatabase is null");
@@ -114,7 +119,21 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //        }
 
         ListView listView = (ListView) findViewById(R.id.listView1);
+
+        //add admob in listView
+        LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+        NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
+        if (!isNetworkConnected){
+            nativeExpressAdView.setVisibility(View.GONE);
+        }else {
+            nativeExpressAdView.loadAd(adRequest);
+        }
+        listView.addFooterView(tipEndViw);
+
+
         adapter = new MyAdapter(getApplicationContext());
+
+
         listView.setAdapter(adapter);
 //		if (blocks != null) {
 //
@@ -133,6 +152,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             private String FileName;
             private TextView textViewName;
             private TextView textViewMaterial;
+            private ImageView imageViewHideMore;
             private TextView textViewUse;
 
             private TextView textViewShowBlockDetail;
@@ -195,8 +215,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                         .findViewById(R.id.use);
                 holder.textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
-                holder.checkBox = (CheckBox) convertView
-                        .findViewById(R.id.checkBox1);
+                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
+                holder.checkBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
 
                 holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
@@ -235,33 +255,24 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         String str = Material.get(pos);
-                        str = str.replace(",", " ");
-                        str = str.replace("+", " ");
-                        str = str.replace("'", " ");
 
-                        str = str.replace("(", " ");
-                        str = str.replace(")", " ");
-                        str = str.replace("(基础", " ");
-                        str = str.replace("还原)", " ");
-                        str = str.replace("或", " ");               //或
-                        str = str.replace("任何", "");         //任何
-                        str = str.replace("对应的", "");   //对应的
-//                        str = str.replace("", " ");
-//                        str = str.replace("", " ");
-//                        str = str.replace("", " ");
+                        str = Utils.filterString(str);
 
                         String[] searchNames = str.split("\\s+");
 //
-                        //没有原料的时候分割出来的数组为0大小
-                        if(searchNames.length == 0 || searchNames[0].equals(""))
-                            return;
+
+//                        Debug
 //                        String temp = "'";
 //                        for (String search : searchNames) {
 //                            temp += search + "";
 ////                            System.out.println("searchNames=" +str);
 //                        }
 //                        temp += "'";
-//                        Toast.makeText(ActivityListViewShowBlocks.this, temp, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(ActivityListViewShowBlocks.this, "搜索" + str + "|" + searchNames.length + temp, Toast.LENGTH_SHORT).show();
+
+                        //没有原料的时候分割出来的数组为0大小
+                        if (searchNames.length == 0 || searchNames[0].equals(""))
+                            return;
 
                         Intent intent = new Intent(ActivityListViewShowBlocks.this, ActivitySearch.class);
                         intent.putExtra(ActivitySearch.EXTRA_ARRAY_LIST, searchNames);
@@ -290,6 +301,17 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
+            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 按照列表位置更新checkbox状态
+                    checkBoxStateList.set(pos, false);
+                    adapter.notifyDataSetChanged();
+
+
+                }
+            });
+
             holder.checkBox
                     .setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -309,16 +331,20 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             if (ischecked) {
 //				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
-
+                holder.imageViewHideMore.setVisibility(View.VISIBLE);
 //                if(holder.mAdView != null){
-                holder.mAdView.setVisibility(View.VISIBLE);
+                if(isNetworkConnected){
+                    holder.mAdView.setVisibility(View.VISIBLE);
                     holder.mAdView.loadAd(adRequest);
+                }
+
 //                }
 //
 
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
+                holder.imageViewHideMore.setVisibility(View.GONE);
 //                if(holder.mAdView != null){
                 holder.mAdView.setVisibility(View.GONE);
 //                }
@@ -347,6 +373,10 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
+
+
 
 }

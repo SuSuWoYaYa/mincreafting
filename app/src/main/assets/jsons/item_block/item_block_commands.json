@@ -41,7 +41,7 @@
             "name": "知识之书",
             "material": " ",
             "use": "只能通过命令获得",
-            "detail": "知识之书(Knowledge Book)是一种使用后可以让玩家获得指定合成配方的实用物品.\n\n知识之书目前只能通过使用命令获得.\n比如说,要给予某个玩家可以解锁桶和花盆的合成配方的知识之书,\n请输入这条命令:/give @s minecraft:knowledge_book 1 0 {Recipes:[\"minecraft:bucket\", \"minecraft:flower_pot\"]}.\n\n用途\n知识之书用于为使用该物品的玩家解锁指定的合成配方.\n\n知识之书在/gamerule doLimitedCrafting设置为true时会变得非常有用,因为将这个规则设置为true后,你只能用已经解锁了的合成配方来合成物品,而知识之书正是用来解锁合成配方的.\n\n配方书使用NBT标签Recipes来表示它们包含哪些配方.\n\n下列NBT结构被提供来展示Recipes标签是如何组织的,而不是上面tag标签的综合.\n 实体数据值\n Item:物品\n tag:物品的可选信息.这个标签对大多数物品是可选的.\n Recipes:知识之书中包含的所有配方.\n 配方的名字,比如说minecraft:gold_nugget或minecraft:gold_ingot_from_nuggets.\n\n1.12 加入了知识之书.\n\n数据值DEC: 453 HEX: 1C5 BIN: 111000101\n名称knowledge_book"
+            "detail": "知识之书(Knowledge Book)是一种使用后可以让玩家获得指定合成配方的实用物品.\n\n知识之书目前只能通过使用命令获得.\n比如说,要给予某个玩家可以解锁桶和花盆的合成配方的知识之书,请输入这条命令:/give @s minecraft:knowledge_book 1 0 {Recipes:[\"minecraft:bucket\", \"minecraft:flower_pot\"]}.\n\n用途\n知识之书用于为使用该物品的玩家解锁指定的合成配方.\n\n知识之书在/gamerule doLimitedCrafting设置为true时会变得非常有用,因为将这个规则设置为true后,你只能用已经解锁了的合成配方来合成物品,而知识之书正是用来解锁合成配方的.\n\n配方书使用NBT标签Recipes来表示它们包含哪些配方.\n\n下列NBT结构被提供来展示Recipes标签是如何组织的,而不是上面tag标签的综合.\n 实体数据值\n Item:物品\n tag:物品的可选信息.这个标签对大多数物品是可选的.\n Recipes:知识之书中包含的所有配方.\n 配方的名字,比如说minecraft:gold_nugget或minecraft:gold_ingot_from_nuggets.\n\n1.12 加入了知识之书.\n\n数据值DEC: 453 HEX: 1C5 BIN: 111000101\n名称knowledge_book"
         }
         
 	]

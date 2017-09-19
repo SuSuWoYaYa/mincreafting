@@ -128,6 +128,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_PLANTS;
                         category = "植物类物品";
                         loading= R.drawable.loading_of_wuping;
+                        isCreating = true;
                         break;
                     case R.id.layout_btn_materials:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_MATERIALS;
@@ -144,6 +145,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_STRUCTURES;
                         category = "结构方块";
                         loading= R.drawable.loading_of_wuping;
+                        isCreating = true;
                         break;
                     case R.id.layout_btn_commands:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_COMMANDS;
@@ -154,6 +156,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_OTHERS;
                         category = "其他物品";
                         loading= R.drawable.loading_of_wuping;
+                        isCreating = true;
                         break;
 
                     default:

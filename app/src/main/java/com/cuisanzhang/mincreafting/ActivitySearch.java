@@ -31,6 +31,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.NativeExpressAdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,7 @@ public class ActivitySearch extends AppCompatActivity {
 
     //    for admob
     private AdRequest adRequest;
+    boolean isNetworkConnected = false;
 
     private String[] search;
 
@@ -82,7 +84,7 @@ public class ActivitySearch extends AppCompatActivity {
         adRequest = new AdRequest.Builder()
                 .addTestDevice("C5EF7D96DFF2F2C3E5CD1CA16D57D71F")
                 .build();
-
+        isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
 
         Intent intent = getIntent();
         search = intent.getStringArrayExtra(EXTRA_ARRAY_LIST);
@@ -93,6 +95,16 @@ public class ActivitySearch extends AppCompatActivity {
         imageViewCleanText = (ImageView) findViewById(R.id.imageViewToolbar_cleanText);
         imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         listView = (ListView) findViewById(R.id.listView);
+
+        //add admob in listView
+        LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+        NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
+        if (!isNetworkConnected){
+            nativeExpressAdView.setVisibility(View.GONE);
+        }else {
+            nativeExpressAdView.loadAd(adRequest);
+        }
+        listView.addFooterView(tipEndViw);
 
         LinearLayout emptyView;
         emptyView = (LinearLayout) findViewById(R.id.emptyView);
@@ -264,11 +276,12 @@ public class ActivitySearch extends AppCompatActivity {
 
     private void searchString(String[] search) {
 
-
         String text = "";
         for (int i = 0; i < search.length; i++) {
             text += search[i] + " ";
         }
+//        Toast.makeText(ActivitySearch.this, "搜索 " + text, Toast.LENGTH_SHORT).show();
+
         text += "的搜索结果";
         autoCompleteTextView.setText(text);
 
@@ -295,6 +308,7 @@ public class ActivitySearch extends AppCompatActivity {
         search = null;
     }
 
+
     private class MyAdapter extends BaseAdapter {
 
         private final class ViewHolder {
@@ -302,6 +316,7 @@ public class ActivitySearch extends AppCompatActivity {
             private String FileName;
             private TextView textViewName;
             private TextView textViewMaterial;
+            private ImageView imageViewHideMore;
             private TextView textViewUse;
 
             private TextView textViewShowBlockDetail;
@@ -398,6 +413,7 @@ public class ActivitySearch extends AppCompatActivity {
                         .findViewById(R.id.use);
                 holder.textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
+                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
                 holder.checkBox = (CheckBox) convertView
                         .findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
@@ -432,19 +448,8 @@ public class ActivitySearch extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     String str = Material.get(pos);
-                    str = str.replace(",", " ");
-                    str = str.replace("+", " ");
-                    str = str.replace("'", " ");
-                    str = str.replace("(", " ");
-                    str = str.replace(")", " ");
-                    str = str.replace("(基础", " ");
-                    str = str.replace("还原)", " ");
-                    str = str.replace("或", " ");               //或
-                    str = str.replace("任何", "");         //任何
-                    str = str.replace("对应的", "");   //对应的
-//                        str = str.replace("", " ");
-//                        str = str.replace("", " ");
-//                        str = str.replace("", " ");
+
+                    str = Utils.filterString(str);
 
                     String[] searchNames = str.split("\\s+");
 //                    searchString(searchNames);
@@ -478,6 +483,16 @@ public class ActivitySearch extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
+            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 按照列表位置更新checkbox状态
+                    checkBoxStateList.set(pos, false);
+                    listviewAdapter.notifyDataSetChanged();
+
+
+                }
+            });
             holder.checkBox
                     .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -497,11 +512,16 @@ public class ActivitySearch extends AppCompatActivity {
             if (ischecked) {
 ////				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
-                holder.mAdView.setVisibility(View.VISIBLE);
-                holder.mAdView.loadAd(adRequest);
+                holder.imageViewHideMore.setVisibility(View.VISIBLE);
+
+                if(isNetworkConnected){
+                    holder.mAdView.setVisibility(View.VISIBLE);
+                    holder.mAdView.loadAd(adRequest);
+                }
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
+                holder.imageViewHideMore.setVisibility(View.GONE);
                 holder.mAdView.setVisibility(View.GONE);
             }
 

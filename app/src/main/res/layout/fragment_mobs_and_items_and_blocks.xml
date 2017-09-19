@@ -214,7 +214,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_clay" />
+                android:src="@drawable/icon_rabbit" />
 
             <TextView
                 android:layout_width="300dp"
@@ -284,7 +284,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_grass" />
+                android:src="@drawable/icon_diamond_ore" />
 
             <TextView
                 android:layout_width="300dp"
