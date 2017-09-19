@@ -1,7 +1,13 @@
 {
     "category": "其它物品",
     "blocks": [
-		{
+        {
+            "file_name": "wuping_tuzhijiao",
+            "name": "兔子脚",
+            "material": "兔子 死亡时可能掉落",
+            "use": "酿造药水的材料",
+            "detail": "兔子脚(Rabbit's Foot)是兔子的一种掉落物.\n\n兔子被玩家杀死时有10%的几率掉落兔子脚.每等级的抢夺附魔增加3%的几率.\n\n作为平凡的药水,跳跃药水的酿造材料\n\n版本1.8 添加了兔子脚.\n版本1.9 15w46a 兔子脚的掉落率变为原先四倍.\n\n数据值\nDEC: 414 HEX: 19E BIN: 110011110\n名称\nrabbit_foot"
+        },{
             "file_name": "wuping_mingmingpai",
             "name": "命名牌",
             "material": "",
@@ -10,26 +16,32 @@
         },{
             "file_name": "wuping_rongyangtong",
             "name": "熔岩桶",
-            "material": "",
+            "material": "水桶 + 熔岩",
             "use": "装了熔岩的桶",
             "detail": "熔岩桶\n\n熔岩源方块可以使用桶来收集,与收集水的途径一样.\n\n熔岩桶可以作为高效率的燃料使用.与800秒的煤炭块相比,它最长可以燃烧1000秒\n一个熔岩桶可烧炼100个物品,一个煤炭方块可烧炼80个物品.燃料用完后会留下空桶(Minecraft: Xbox 360版除外,桶会消失).\n\n数据值	\nDEC: 327 HEX: 147 BIN: 101000111\n名称	\nlava_bucket\n\n物品           数字ID\n熔岩桶 (PC版)    327\n熔岩桶 (携带版)  325"
         },{
             "file_name": "wuping_shuitong",
             "name": "水桶",
-            "material": "",
+            "material": "水桶 + 水",
             "use": "装了水的桶",
             "detail": "水桶(Water bucket)是桶的一个装了水的变种.\n\n要用桶装水,对水源方块使用它.在该过程中桶会装上水.\n在固体方块使用水桶,将会在按下的时候放置水源方块.然而在下界,水会蒸发.\n\n在玩家使用水桶或被发射器激活发射时,会让水流出桶,并把水桶变成桶.\n\n水桶可填充炼药锅.\n\n数据值:\n物品 ID名称      数字ID\n水桶 water_bucket 326\n"
         },{
+            "file_name": "wuping_xiaochi",
+            "name": "鞘翅",
+            "material": " ",
+            "use": "是一个能够让玩家滑翔的物品,无法合成",
+            "detail": "鞘翅(Elytra),携带版中被称为(Elytra Wings)\n是一个能够让玩家滑翔的物品.\n\n鞘翅的颜色是灰色,除非玩家穿了披风.\n如果玩家同时穿上披风和鞘翅,鞘翅会采用披风的图案.\n\n鞘翅可以在末地船里找到.\n每个末地船里都会有一个物品展示框,里面会有一个鞘翅.\n\n鞘翅也能通过在铁砧界面中使用皮革来修复耐久值.\n\n飞行:\n鞘翅装备在胸甲槽上.\n如胸甲一样,鞘翅可以直接在物品栏内装备,也可以由发射器装上.\n\n要开始飞行,玩家必须处于掉落状态,然后按一下空格键.\n飞行时方向是由左右视角控制(偏航),而飞行速度和下降速度由上下视角控制(俯仰).\n滑翔中观看上方会暂时增加玩家的海拔高度,然而,持续这个动作会太久会使玩家失速,造成快速下降(玩家此时会四肢挥动).\n\n当玩家以恒定的 0° 俯仰角从一个方块滑翔时,鞘翅将使其飞越10个方块的水平距离(不包括最开始的落下),最终得到大约 5.7° 的最佳不变滑翔角.\n要获得最久的滑翔时间,需要大约以 +14° 度的斜向上俯仰角落下.\n最快的终端速度大约为67.5米/秒,可由大约 -52° 斜向下的初始俯仰角得到.[2]\n\n改变落下时的俯仰角能够使玩家飞得更久、更远.\n在飞行时垂直俯冲,然后当接近地面时向上拉起到 +45° 度俯仰角,一直重复这个动作,就可以使玩家一直飞行数千个方块,直到鞘翅耐久度耗尽.\n要达到足够的速度以使用这个技巧,起始落点似乎需要至少45到50格方块的高度.\n然而,Jeb在Reddit上表示,这个行为会在即将到来的快照中减弱[3].\n在15w42a中已不能借此获得高于起点的高度.\n\n每飞行一秒,耐久度就会减少1点.\n鞘翅拥有431点的耐久度,所以能够滑翔7分11秒.\n可以使用铁砧和附魔书来增加耐久附魔,其效果类似其他工具被耐久附魔的结果.\n\n装备鞘翅后玩家一般不会受到摔落伤害,除非俯仰角过低或发生失速以致垂直速度过大.\n摔落伤害的摔落格数以俯冲或失速降落时的格数计.\n如往常一样,摔落伤害可以通过水来避免.\n飞行时撞在方块上也会导致受到伤害甚至死亡.\n\n滑翔时玩家碰撞箱减小,身高从不装备时的 1.8 格降低到 0.6 格,长度和宽度不变.\n\n提升速度:\n当你在用鞘翅飞行且手里拿着烟花火箭时,按下使用键,烟花火箭会加快你的飞行速度.\n如果烟花火箭使用了任何一种烟火之星合成,那么玩家会受到3.5颗红心的伤害.\n加速的持续时间和力量取决于烟花火箭的飞行时间.\n\n修复:\n当鞘翅的耐久只有1时,鞘翅会变成损毁状态,不过不会消失当然也不会自然恢复耐久值,并且会停止工作.\n损毁的鞘翅的材质看上去是破损的,和正常的鞘翅不同.\n你可以用铁砧加上皮革来修复耐久值,每个皮革可以修复108的耐久值,4个皮革就可以把鞘翅的耐久值修满.\n\n鞘翅能获得以下魔咒,但只能通过使用铁砧获得：\n耐久\n经验修补\n消失诅咒\n绑定诅咒\n\n数据值\nDEC: 443 HEX: 1BB BIN: 110111011\n名称\nelytra"
+        },{
             "file_name": "wuping_bushituteng",
             "name": "不死图腾",
-            "material": "唤魔者死亡时会掉落一块不死图腾",
+            "material": "唤魔者 死亡时掉落",
             "use": "能在濒死状态下拯救玩家的物品",
             "detail": "不死图腾(Totem of Undying)是能在濒死状态下拯救玩家的物品.\n\n唤魔者死亡时会掉落一块不死图腾.\n\n用法:\n若玩家在主手或副手持有不死图腾时受到外界的致命攻击,此物品能够阻止玩家的死亡,将玩家的生命值恢复到0.5颗红心、移除玩家身上所有的状态效果并提供40秒的生命恢复II以及5秒的伤害吸收II\n在主机板及携带版中,它还能给予玩家40秒的防火II,不死图腾使用后即损毁.\n\n  使用时,会触发遮挡玩家前方视线的动画,与玩家对抗远古守卫者的动画类似.\n  不死图腾无法挽救由/kill命令或虚空导致的死亡.\n  不死图腾在被激活时无视人称视角,也就是说不管你用哪个视角进行游戏,不死图腾照样遮挡你的屏幕.\n\n你知道吗?\n如果生成一个拿着不死图腾的生物,它们也会在死亡时复活,音效也会播放,但是不会显示动画.\n\n数据值\nDEC: 449 HEX: 1C1 BIN: 111000001\n名称\ntotem_of_undying"
         },
         {
             "file_name": "block_hunnitu",
             "name": "混凝土",
-            "material": " ",
+            "material": "混凝土粉末",
             "use": "混凝土粉末与水接触,会固化成混凝土方块",
             "detail": "混凝土(Concrete)是有16种染料颜色的固体方块.\n\n如果混凝土粉末与水接触的话,它会固化成混凝土方块.降雨、炼药锅、喷溅型水瓶和颗粒不会影响混凝土粉末.\n\n混凝土可被任何镐开采.若不用镐开采,则不会掉落任何东西.\n\n混凝土明亮而纯净的色彩适合用于装饰用途.混凝土的颜色比染色的陶瓦更为浓厚,同时混凝土又不像羊毛一样易燃.\n\n在建筑材料方面,混凝土的硬度比石头稍高,但其爆炸抗性比石头低得多.\n\n数据值\nPC:DEC: 251 HEX: FB BIN: 11111011\nPE:DEC: 236 HEX: EC BIN: 11101100\n名称\n混凝土\n\n"
         },
@@ -43,15 +55,15 @@
         {
             "file_name": "wuping_yingyuechangpian",
             "name": "音乐唱片",
-            "material": "",
+            "material": " ",
             "use": "能够在唱片机里播放",
-            "detail": "音乐唱片(Music Discs),又称为他们的物品 ID:records(唱片),是能够在唱片机里播放的物品.\n\n一般地,它们播放的是由C418制作的音乐；然而,自定义音乐能通过使用资源包来被添加至其中.\n\n音乐唱片(13)会在22.2%的地牢的箱子里以及22.2%的林地府邸的箱子里以1份为一组的形式出现.\n音乐唱片(Cat)会在22.2%的地牢的箱子里以及22.2%的林地府邸的箱子里以1份为一组的形式出现.\n\n当爬行者被一只骷髅的箭射杀后,会掉落一张随机的音乐唱片,而不只是其他的物品.\n\n音乐产品能在主机版的教学世界(tutorial world)中的自然生成的箱子里被找到.\n\n一张音乐唱片的种类由其ID 名称界定.\n\n名称        ID名称            数字ID\n13          record_13          2256\ncat         record_cat         2257\nblocks      record_blocks      2258\nchirp       record_chirp       2259\nfar         record_far         2260\nmall        record_mall        2261\nmellohi     record_mellohi     2262\nstal        record_stal        2263\nstrad       record_strad       2264\nward        record_ward        2265\n11          record_11          2266\nwait        record_wait        2267\n\n原始音乐文件:\n12 首为 C418 的唱片创造的音乐曲目可在以下目录被找到:\nWindows: %appdata%\.minecraft\assets\virtual\legacy\records\nLinux: ~/.minecraft/resources/streaming/\nmacOS ~/Library/Application Support/minecraft/resources/streaming/\n所有的音乐唱片文件都使用.ogg格式."
+            "detail": "音乐唱片(Music Discs),又称为他们的物品 ID:records(唱片),是能够在唱片机里播放的物品.\n\n一般地,它们播放的是由C418制作的音乐；然而,自定义音乐能通过使用资源包来被添加至其中.\n\n音乐唱片(13)会在22.2%的地牢的箱子里以及22.2%的林地府邸的箱子里以1份为一组的形式出现.\n音乐唱片(Cat)会在22.2%的地牢的箱子里以及22.2%的林地府邸的箱子里以1份为一组的形式出现.\n\n当爬行者被一只骷髅的箭射杀后,会掉落一张随机的音乐唱片,而不只是其他的物品.\n\n音乐产品能在主机版的教学世界(tutorial world)中的自然生成的箱子里被找到.\n\n一张音乐唱片的种类由其ID 名称界定.\n\n名称        ID名称            数字ID\n13          record_13          2256\ncat         record_cat         2257\nblocks      record_blocks      2258\nchirp       record_chirp       2259\nfar         record_far         2260\nmall        record_mall        2261\nmellohi     record_mellohi     2262\nstal        record_stal        2263\nstrad       record_strad       2264\nward        record_ward        2265\n11          record_11          2266\nwait        record_wait        2267\n\n原始音乐文件:\n12 首为 C418 的唱片创造的音乐曲目可在以下目录被找到:\nWindows: %appdata%\\.minecraf\\assets\\virtual\\legacy\\records\nLinux: ~/.minecraft/resources/streaming/\nmacOS ~/Library/Application Support/minecraft/resources/streaming/\n所有的音乐唱片文件都使用.ogg格式."
         },{
             "file_name": "wuping_shengwutoulu",
             "name": "生物头颅",
-            "material": "",
+            "material": " ",
             "use": "一种装饰性方块",
-            "detail": "生物头颅(Mob head)是一种装饰性方块.\n\n凋灵骷髅头颅、骷髅头颅、僵尸头颅、爬行者头颅、玩家头颅、龙首\n\n生物头颅可用任何东西摧毁,摧毁时会掉落其自身.如果玩家的头颅有自定义皮肤,这个皮肤会被保留下来.\n\n如果生物头颅被活塞推动,或与水和岩浆接触,它也会掉落为物品.\n\n龙首自然生成在末地船里.\n\n高压爬行者:\n爬行者、骷髅、凋灵骷髅和僵尸被高压爬行者炸死时会掉落它们其中一个生物的头颅.\n\n用途:\n生物头颅的主要用途即为装饰.生物头颅在被安放在方块上后可以呈16种不同的方向,而安放在方块侧面是可以呈4种不同的方向.它们不能在方块下表面放置.\n\n玩家可以像戴帽子一样装备头,与南瓜类似.当头颅戴在玩家头上时,头颅的材质将会覆盖头部的第二层.\n\n龙首会在其收到红石信号时反复开闭它的嘴.\n\n伪装:\n玩家戴上相应的生物头颅将会减小默认骷髅(非凋灵骷髅)、爬行者和僵尸发现你的范围的50%.这类似于潜行时或拥有隐身效果时会减少检测范围的特性.\n\n凋灵:\n凋灵骷髅头颅是召唤凋灵的必备之物.如果希望召唤凋灵,需要将四个灵魂沙呈T字型排列,并在其顶端安放3个凋灵骷髅头颅.最后安放的方块必须是凋灵骷髅头颅.你可以使用发射器放置头颅,头颅的朝向取决于发射器的朝向.这么做会生成凋灵.\n\n发射器可以将生物头颅装备给没有头戴盔甲的玩家、生物或盔甲架,也可以在发射器面前放置头颅.\n\n可以作为以下物品的合成材料:\n染色头颅盾徽旗帜\n纹章装饰染色头颅盾徽图案(头颅与叉号)\n染色爬行者盾徽旗帜\n\n玩家皮肤:\n人类头颅在自定义地图里还有特殊用途,它们可以添加特定的NBT数据让它显示任何Minecraft正版玩家的皮肤.这意味着如果你想要获得某个人的头颅,你可以通过修改NBT数据获得它.\n\n若要自己获得某位带有皮肤的玩家的头颅,可通过这个命令实现/give @p skull <数量> 3 {SkullOwner:'<玩家名称>'}.\n\n当玩家头颅被创建的时候,其材质(即玩家皮肤)会被保存,这意味着即使对方更换了皮肤,头颅依旧显示原来的材质.[1]\n\nMojang皮肤:\n所有由Mojang提供的MHF生物头颅.\nMojang创建了一些存有特定皮肤的账户,因此地图创建者们可以直接使用公用头颅而无需担心某位玩家会在某一天里更换了他自己的皮肤.\n这些账户的玩家名格式均为MHF_<生物名称>,举个例子,MHF_PigZombie对应的是带有僵尸猪人皮肤的Minecraft玩家.\nMHF的意思是'Marc的头颅格式'('Marc's Head Format').为保证多样化,它们还有一些方块和'额外'头颅.\n\n目前官方提供的头颅有:\n生物\n MHF_Alex\n MHF_Blaze\n MHF_CaveSpider\n MHF_Chicken\n MHF_Cow\n MHF_Creeper\n MHF_Enderman\n MHF_Ghast\n MHF_Golem\n MHF_Herobrine\n MHF_LavaSlime\n MHF_MushroomCow\n MHF_Ocelot\n MHF_Pig\n MHF_PigZombie\n MHF_Sheep\n MHF_Skeleton\n MHF_Slime\n MHF_Spider\n MHF_Squid\n MHF_Steve\n MHF_Villager\n MHF_WSkeleton\n MHF_Zombie\n方块\n MHF_Cactus\n MHF_Cake\n MHF_Chest\n MHF_CoconutB\n MHF_CoconutG\n MHF_Melon\n MHF_OakLog\n MHF_Present1\n MHF_Present2\n MHF_Pumpkin\n MHF_TNT\n MHF_TNT2\n附加\n MHF_ArrowUp\n MHF_ArrowDown\n MHF_ArrowLeft\n MHF_ArrowRight\n MHF_Exclamation\n \n你可以通过上面所述的/give命令获得这些头颅,只需把命令里的<玩家名称>改为MHF_<生物名称>即可.\n\n对于物品和实体数据值来说,数据值代表了头颅的种类:\nDV 描述\n0  骷髅头颅\n1  凋灵骷髅头颅\n2  僵尸的头\n3  头\n4  爬行者的头\n\n\n实体ID\nskull\n数据值\n方块\nDEC: 144 HEX: 90 BIN: 10010000\n物品\nDEC: 397 HEX: 18D BIN: 110001101\n名称\nskull"
+            "detail": "生物头颅(Mob head)是一种装饰性方块.\n\n凋灵骷髅头颅、骷髅头颅、僵尸头颅、爬行者头颅、玩家头颅、龙首\n\n在1.8快照14w30a以后其他头颅都可以通过相应生物被高压爬行者炸死来获得, 且凋灵骷髅头颅也为凋灵骷髅的稀有掉落物, 龙首自然生成在末地船.\n\n生物头颅可用任何东西摧毁,摧毁时会掉落其自身.如果玩家的头颅有自定义皮肤,这个皮肤会被保留下来.\n\n如果生物头颅被活塞推动,或与水和岩浆接触,它也会掉落为物品.\n\n龙首自然生成在末地船里.\n\n高压爬行者:\n爬行者、骷髅、凋灵骷髅和僵尸被高压爬行者炸死时会掉落它们其中一个生物的头颅.\n\n用途:\n生物头颅的主要用途即为装饰.生物头颅在被安放在方块上后可以呈16种不同的方向,而安放在方块侧面是可以呈4种不同的方向.它们不能在方块下表面放置.\n\n玩家可以像戴帽子一样装备头,与南瓜类似.当头颅戴在玩家头上时,头颅的材质将会覆盖头部的第二层.\n\n龙首会在其收到红石信号时反复开闭它的嘴.\n\n伪装:\n玩家戴上相应的生物头颅将会减小默认骷髅(非凋灵骷髅)、爬行者和僵尸发现你的范围的50%.这类似于潜行时或拥有隐身效果时会减少检测范围的特性.\n\n凋灵:\n凋灵骷髅头颅是召唤凋灵的必备之物.如果希望召唤凋灵,需要将四个灵魂沙呈T字型排列,并在其顶端安放3个凋灵骷髅头颅.最后安放的方块必须是凋灵骷髅头颅.你可以使用发射器放置头颅,头颅的朝向取决于发射器的朝向.这么做会生成凋灵.\n\n发射器可以将生物头颅装备给没有头戴盔甲的玩家、生物或盔甲架,也可以在发射器面前放置头颅.\n\n可以作为以下物品的合成材料:\n染色头颅盾徽旗帜\n纹章装饰染色头颅盾徽图案(头颅与叉号)\n染色爬行者盾徽旗帜\n\n玩家皮肤:\n人类头颅在自定义地图里还有特殊用途,它们可以添加特定的NBT数据让它显示任何Minecraft正版玩家的皮肤.这意味着如果你想要获得某个人的头颅,你可以通过修改NBT数据获得它.\n\n若要自己获得某位带有皮肤的玩家的头颅,可通过这个命令实现/give @p skull <数量> 3 {SkullOwner:'<玩家名称>'}.\n\n当玩家头颅被创建的时候,其材质(即玩家皮肤)会被保存,这意味着即使对方更换了皮肤,头颅依旧显示原来的材质.[1]\n\nMojang皮肤:\n所有由Mojang提供的MHF生物头颅.\nMojang创建了一些存有特定皮肤的账户,因此地图创建者们可以直接使用公用头颅而无需担心某位玩家会在某一天里更换了他自己的皮肤.\n这些账户的玩家名格式均为MHF_<生物名称>,举个例子,MHF_PigZombie对应的是带有僵尸猪人皮肤的Minecraft玩家.\nMHF的意思是'Marc的头颅格式'('Marc's Head Format').为保证多样化,它们还有一些方块和'额外'头颅.\n\n目前官方提供的头颅有:\n生物\n MHF_Alex\n MHF_Blaze\n MHF_CaveSpider\n MHF_Chicken\n MHF_Cow\n MHF_Creeper\n MHF_Enderman\n MHF_Ghast\n MHF_Golem\n MHF_Herobrine\n MHF_LavaSlime\n MHF_MushroomCow\n MHF_Ocelot\n MHF_Pig\n MHF_PigZombie\n MHF_Sheep\n MHF_Skeleton\n MHF_Slime\n MHF_Spider\n MHF_Squid\n MHF_Steve\n MHF_Villager\n MHF_WSkeleton\n MHF_Zombie\n方块\n MHF_Cactus\n MHF_Cake\n MHF_Chest\n MHF_CoconutB\n MHF_CoconutG\n MHF_Melon\n MHF_OakLog\n MHF_Present1\n MHF_Present2\n MHF_Pumpkin\n MHF_TNT\n MHF_TNT2\n附加\n MHF_ArrowUp\n MHF_ArrowDown\n MHF_ArrowLeft\n MHF_ArrowRight\n MHF_Exclamation\n \n你可以通过上面所述的/give命令获得这些头颅,只需把命令里的<玩家名称>改为MHF_<生物名称>即可.\n\n对于物品和实体数据值来说,数据值代表了头颅的种类:\nDV 描述\n0  骷髅头颅\n1  凋灵骷髅头颅\n2  僵尸的头\n3  头\n4  爬行者的头\n\n\n实体ID\nskull\n数据值\n方块\nDEC: 144 HEX: 90 BIN: 10010000\n物品\nDEC: 397 HEX: 18D BIN: 110001101\n名称\nskull"
         },{
             "file_name": "block_faguangdeheiyaoshi",
             "name": "发光的黑曜石",

@@ -10,6 +10,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class DbManage {
@@ -19,7 +20,6 @@ public class DbManage {
     private static MyDatabaseHelper db = null;
     private static SQLiteDatabase dbRead = null;
     private static SQLiteDatabase dbWrite = null;
-
 
 
     public DbManage(Context c) {
@@ -202,11 +202,36 @@ public class DbManage {
         }
     }
 
-    public List<Block> seachString(String searchName) {
-        List<Block> list = new ArrayList<Block>();
+    public List<Block> seachString(String[] selectionArgs) {
+        //增加通配符
+        for (int i = 0; i < selectionArgs.length; i++){
+            selectionArgs[i] = "%"+selectionArgs[i] + "%";
 
-        for (int i = 0; i < MyDatabaseHelper.TABLE_NAMES.length; i++) {
-            Cursor cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], new String[]{"file_name", "name", "material", "use", "detail"}, "name like '%" + searchName + "%'", null, null, null, null);
+        }
+        String[] columns =  new String[]{"file_name", "name", "material", "use", "detail"};
+        String selection = "name like ?";
+//        int searchCount = searchNames.length;
+        List<Block> list = new ArrayList<Block>();
+//
+        for (int i = 1; i < selectionArgs.length; i++) {
+            selection = selection + " or name like ?";
+
+        }
+
+//        String name_like = "name like '%" + "木板" + "%'" + " or name like '%" + "木棍" + "%'";
+//        String temp = "'";
+//        for (String search : selectionArgs) {
+//            temp += search + "";
+////                            System.out.println("searchNames=" +str);
+//        }
+//        temp += "'";
+//        Toast.makeText(context, selectionArgs.length + ""+temp
+//                ,Toast.LENGTH_SHORT).show();
+
+        for (int i = MyDatabaseHelper.TABLE_NAMES.length - 1; i >= 0; i--) {
+
+//            Cursor cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], new String[]{"file_name", "name", "material", "use", "detail"}, "name like '%" + searchName + "%'", null, null, null, null);
+            Cursor cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], columns, selection, selectionArgs, null, null, null);
 
 //            Log.e(TAG, "SeachString " + MyDatabaseHelper.TABLE_NAMES[i] + " return cursor getcount = " + cursor.getCount());
             if (!cursor.moveToFirst()) {
@@ -237,8 +262,6 @@ public class DbManage {
 //        Log.e(TAG, "SeachString has result count for " + list.size());
         return list;
     }
-
-
 
 
 }

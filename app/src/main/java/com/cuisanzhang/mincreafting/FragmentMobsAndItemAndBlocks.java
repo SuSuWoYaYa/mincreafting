@@ -78,6 +78,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                 String tableName ;
                 String category ;
                 int loading;
+                boolean isCreating = false;
 
                 switch (v.getId()) {
                     case R.id.layout_btn_boss:
@@ -121,16 +122,19 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_FOOD;
                         category = "食物类物品";
                         loading= R.drawable.loading_of_wuping;
+                        isCreating = true;
                         break;
                     case R.id.layout_btn_plants:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_PLANTS;
                         category = "植物类物品";
                         loading= R.drawable.loading_of_wuping;
+                        isCreating = true;
                         break;
                     case R.id.layout_btn_materials:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_MATERIALS;
                         category = "材料类物品";
                         loading= R.drawable.loading_of_wuping;
+                        isCreating = true;
                         break;
                     case R.id.layout_btn_natural:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_NATURAL;
@@ -141,6 +145,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_STRUCTURES;
                         category = "结构方块";
                         loading= R.drawable.loading_of_wuping;
+                        isCreating = true;
                         break;
                     case R.id.layout_btn_commands:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_COMMANDS;
@@ -151,6 +156,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_OTHERS;
                         category = "其他物品";
                         loading= R.drawable.loading_of_wuping;
+                        isCreating = true;
                         break;
 
                     default:
@@ -164,6 +170,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                 intent.putExtra(ActivityListViewShowBlocks.EXTRA_TABLE_NAME, tableName);
                 intent.putExtra(ActivityListViewShowBlocks.EXTRA_CATEGORY, category);
                 intent.putExtra(ActivityListViewShowBlocks.EXTRA_LOADING, loading);
+                intent.putExtra(ActivityListViewShowBlocks.EXTRA_IS_CREATING, isCreating);
 
 //                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
                 startActivity(intent);

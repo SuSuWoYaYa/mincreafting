@@ -1,13 +1,16 @@
 package com.cuisanzhang.mincreafting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -25,45 +28,85 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.NativeExpressAdView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.trinea.android.common.util.StringUtils;
 
+
 public class ActivitySearch extends AppCompatActivity {
 
 
+    private static final String TAG = "ActivitySearch";
+    private static final String HISTORY = "history.txt";
 
-    private String TAG = "ActivitySearch";
-    private String HISTORY = "history.txt";
+    public static String EXTRA_ARRAY_LIST = "arrayList";
 
     private static SharedPreferences preferences = null;
     private List<String> historyList;
-    private ArrayAdapter<String> autoCompleteAdapter;
+
     private AutoCompleteTextView autoCompleteTextView;
     private ImageView imageViewMenu;
     private ImageView imageViewSaerch;
+    private ImageView imageViewCleanText;
     private ListView listView;
     private MyAdapter listviewAdapter;
-    private LinearLayout emptyView;
+
     private TextView textViewEmpty;
     private List<Block> searchResults;
 
     // checkbox状态
     List<Boolean> checkBoxStateList = null;
+    List<String> Material = null;
 
     private InputMethodManager mInputMethodManager;
+
+    //    for admob
+    private AdRequest adRequest;
+    boolean isNetworkConnected = false;
+
+    private String[] search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+
+//        google admob
+        MobileAds.initialize(this, "ca-app-pub-1353370194949670~3914579262");
+
+        adRequest = new AdRequest.Builder()
+//                .addTestDevice("C5EF7D96DFF2F2C3E5CD1CA16D57D71F")
+                .build();
+        isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
+
+        Intent intent = getIntent();
+        search = intent.getStringArrayExtra(EXTRA_ARRAY_LIST);
+
+
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
+        imageViewCleanText = (ImageView) findViewById(R.id.imageViewToolbar_cleanText);
         imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         listView = (ListView) findViewById(R.id.listView);
+
+        //add admob in listView
+        LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+        NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
+        if (!isNetworkConnected){
+            nativeExpressAdView.setVisibility(View.GONE);
+        }else {
+            nativeExpressAdView.loadAd(adRequest);
+        }
+        listView.addFooterView(tipEndViw);
+
+        LinearLayout emptyView;
         emptyView = (LinearLayout) findViewById(R.id.emptyView);
         listView.setEmptyView(emptyView);
 //        listView.setDivider();
@@ -71,7 +114,6 @@ public class ActivitySearch extends AppCompatActivity {
 
 
         textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);
-
 
 
         mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -84,12 +126,24 @@ public class ActivitySearch extends AppCompatActivity {
 
         checkBoxStateList = new ArrayList<Boolean>();
 
+        Material = new ArrayList<String>();
+
+
         getHistory();
 
         initActionBar();
 
-
         setAdapter();
+
+        if (search != null) {
+            //有传搜索参数就关闭输入模式,不弹出输入法
+            autoCompleteTextView.setInputType(InputType.TYPE_NULL);
+
+
+            searchString(search);
+
+        }
+
 
     }
 
@@ -111,8 +165,8 @@ public class ActivitySearch extends AppCompatActivity {
 
 
     private void saveHistory() {
-        for(int i = 1; i< historyList.size(); i++){
-            if (historyList.get(0).equals(historyList.get(i))){
+        for (int i = 1; i < historyList.size(); i++) {
+            if (historyList.get(0).equals(historyList.get(i))) {
                 historyList.remove(i);
                 break;
             }
@@ -131,13 +185,29 @@ public class ActivitySearch extends AppCompatActivity {
     }
 
     public void initActionBar() {
+
+        //有点击输入框就打开输入模式,自动弹出输入法
+        autoCompleteTextView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                autoCompleteTextView.setInputType(InputType.TYPE_CLASS_TEXT);
+                return false;
+            }
+        });
+
         autoCompleteTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
+
+
             public void onFocusChange(View v, boolean hasFocus) {
+
                 AutoCompleteTextView view = (AutoCompleteTextView) v;
-                if (hasFocus) {
+//                view.setText("");
+                //有传搜索参数就不弹出下拉框
+                if (search == null && hasFocus) {
                     view.showDropDown();
                 }
+
             }
         });
 
@@ -157,7 +227,7 @@ public class ActivitySearch extends AppCompatActivity {
                         break;
 
                 }
-                return  false;
+                return false;
             }
         });
 
@@ -174,7 +244,11 @@ public class ActivitySearch extends AppCompatActivity {
                 String string = autoCompleteTextView.getText().toString();
                 if (!StringUtils.isBlank(string)) {
                     historyList.add(0, string);
-                    searchString(string);
+
+                    search = new String[]{string};
+//                    search.add(string);
+                    searchString(search);
+
                     saveHistory();
                     setAdapter();
                 }
@@ -186,15 +260,30 @@ public class ActivitySearch extends AppCompatActivity {
             }
 
         });
+        imageViewCleanText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoCompleteTextView.setText("");
+            }
+        });
     }
 
     private void setAdapter() {
-        autoCompleteAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, historyList);
+        ArrayAdapter<String> autoCompleteAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, historyList);
         autoCompleteTextView.setAdapter(autoCompleteAdapter);
     }
 
 
-    private void searchString(String search) {
+    private void searchString(String[] search) {
+
+        String text = "";
+        for (int i = 0; i < search.length; i++) {
+            text += search[i] + " ";
+        }
+//        Toast.makeText(ActivitySearch.this, "搜索 " + text, Toast.LENGTH_SHORT).show();
+
+        text += "的搜索结果";
+        autoCompleteTextView.setText(text);
 
         DbManage dbManage = new DbManage(ActivitySearch.this);
         searchResults = dbManage.seachString(search);
@@ -215,25 +304,31 @@ public class ActivitySearch extends AppCompatActivity {
         }
 
         dbManage.closeDatabase();
+
+        search = null;
     }
+
 
     private class MyAdapter extends BaseAdapter {
 
-        public final class ViewHolder {
-            public ImageView imageView;
-            public String FileName;
-            public TextView textViewName;
-            public TextView textViewMaterial;
-            public TextView textViewUse;
+        private final class ViewHolder {
+            private ImageView imageView;
+            private String FileName;
+            private TextView textViewName;
+            private TextView textViewMaterial;
+            private ImageView imageViewHideMore;
+            private TextView textViewUse;
 
-            public TextView textViewShowBlockDetail;
-            public CheckBox checkBox;
+            private TextView textViewShowBlockDetail;
+            private CheckBox checkBox;
+            private AdView mAdView;
+
         }
 
         private LayoutInflater mInflater = getLayoutInflater();
         private ViewHolder holder = null;
 
-        public MyAdapter(Context context) {
+        private MyAdapter(Context context) {
             this.mInflater = LayoutInflater.from(context);
         }
 
@@ -318,9 +413,12 @@ public class ActivitySearch extends AppCompatActivity {
                         .findViewById(R.id.use);
                 holder.textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
+                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
                 holder.checkBox = (CheckBox) convertView
                         .findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
+
+                holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
 
             } else {
 
@@ -341,11 +439,38 @@ public class ActivitySearch extends AppCompatActivity {
 //            Glide.with(ActivityListViewShowBlocks.this).load(resId).placeholder(loading_of_background)
 //                        .into(holder.imageView);
 
+            if (Material.size() <= position) {
+                // 保存每个合成原料, 用来分割查询
+                Material.add(block.getMaterial());
+            }
+
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String str = Material.get(pos);
+
+                    str = Utils.filterString(str);
+
+                    String[] searchNames = str.split("\\s+");
+//                    searchString(searchNames);
+
+                    //没有原料的时候分割出来的数组为0大小
+                    if(searchNames.length == 0 || searchNames[0].equals(""))
+                        return;
+
+                    Intent intent = new Intent(ActivitySearch.this, ActivitySearch.class);
+                    intent.putExtra(ActivitySearch.EXTRA_ARRAY_LIST, searchNames);
+                    startActivity(intent);
+                }
+            });
+
             //刷新的时候图片没变就不更新数据
             if (!holder.FileName.equals(filename)) {
                 holder.FileName = filename;
                 String path = "android.resource://com.cuisanzhang.mincreafting/drawable/" + filename;
-                Glide.with(ActivitySearch.this).load(path).placeholder(R.drawable.loading_of_search)
+
+                Glide.with(ActivitySearch.this)
+                        .load(path).placeholder(R.drawable.loading_of_search)
                         .into(holder.imageView);
             }
 
@@ -358,6 +483,16 @@ public class ActivitySearch extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
+            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 按照列表位置更新checkbox状态
+                    checkBoxStateList.set(pos, false);
+                    listviewAdapter.notifyDataSetChanged();
+
+
+                }
+            });
             holder.checkBox
                     .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -377,9 +512,17 @@ public class ActivitySearch extends AppCompatActivity {
             if (ischecked) {
 ////				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
+                holder.imageViewHideMore.setVisibility(View.VISIBLE);
+
+                if(isNetworkConnected){
+                    holder.mAdView.setVisibility(View.VISIBLE);
+                    holder.mAdView.loadAd(adRequest);
+                }
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
+                holder.imageViewHideMore.setVisibility(View.GONE);
+                holder.mAdView.setVisibility(View.GONE);
             }
 
             return convertView;

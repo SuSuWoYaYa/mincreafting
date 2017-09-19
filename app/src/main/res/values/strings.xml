@@ -53,4 +53,5 @@
     <string name="category_command">命令方块</string>
     <string name="category_other_block">其他物品</string>
     <string name="title_activity_tutorial">ActivityTutorial</string>
+    <string name="tip_the_end">已经到底了!</string>
 </resources>

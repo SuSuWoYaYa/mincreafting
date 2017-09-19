@@ -32,6 +32,16 @@ import java.util.TimerTask;
 
 public class FragmentMainActivity extends AppCompatActivity {
 
+//    id
+//    ca-app-pub-1353370194949670~3914579262
+//    banner
+//    ca-app-pub-1353370194949670/1876052366
+//    kaiping
+//    ca-app-pub-1353370194949670/4442505957
+//    native
+//    ca-app-pub-1353370194949670/3859179886
+    //7320    "C5EF7D96DFF2F2C3E5CD1CA16D57D71F"
+
     private SimpleFragmentPagerAdapter pagerAdapter;
 
     private ViewPager viewPager;

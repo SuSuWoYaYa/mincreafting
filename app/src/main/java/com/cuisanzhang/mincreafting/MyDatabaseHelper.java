@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	public static final String DATABASE_NAME = "DataBase.sqlite";
-	public static final int DB_VERSION = 6;
+	public static final int DB_VERSION = 7;
 
 
     //每个分类数据库的表名,用来传递给分类详情页使用
@@ -44,23 +44,35 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_ITEM_BLOCK_PLANTS		=	"table_item_block_plants";      //植物类
 
 
+
+	//排序影响搜索结果,搜索从后搜到前
     //每个分类数据的类别,初始化数据库提示用
     public static final String[] DATA_BASE_CATEGORYS = {
+
+			"药水类",
+			"附魔类",
+			"染料类合成",
+			"装饰类合成",
+			"武器类合成",
+
+			"运输类合成",
+			"工具类合成",
             "建筑类合成",
+			"红石类合成",
 //            "日常类",
-            "装饰类合成",
-            "染料类合成",
             "食物类合成",
             "照明类合成",
             "矿石类合成",
-            "红石类合成",
-            "运输类合成",
-            "工具类合成",
-            "武器类合成",
             "其他类合成",
             "烧炼类",
-            "药水类",
-            "附魔类",
+
+			"自然生成方块",
+			"结构方块",
+			"命令类方块",
+			"食物类物品",
+			"其他物品",
+			"材料类物品",
+			"植物类物品",
 
             "Boss生物",
             "攻击型生物",
@@ -70,43 +82,30 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "效用型生物",
             "其他生物",
 
-            "自然生成方块",
-            "结构方块",
-            "命令类方块",
-            "食物类物品",
-            "其他物品",
-            "材料类物品",
-            "植物类物品",
     };
 
 
 //	public static String jsonEnchant = "jsons/creating/enchant.json";
 
     //json文件路径
+	//排序影响搜索结果
 	public static final String[] jsons = {
-			"jsons/creating/building.json",    //建筑 building
-//            "jsons/daily.json",       //日常 daily
-			"jsons/creating/decoration.json",  //装饰 decoration
+
+			"jsons/creating/brewing.json",       //药水类 brewing
+			"jsons/creating/enchant.json",		//附魔类 enchant
 			"jsons/creating/dye.json",         //染料类 dye
+			"jsons/creating/decoration.json",  //装饰 decoration
+			"jsons/creating/weapon.json",      //武器 weapon
+			"jsons/creating/tannsport.json",   //运输 tannsport
+			"jsons/creating/tools.json",       //工具 tools
+			"jsons/creating/building.json",    //建筑 building
+			"jsons/creating/redstone.json",    //红石 redstone
+//            "jsons/daily.json",       //日常 daily
 			"jsons/creating/food.json",        //食物 food
 			"jsons/creating/lighting.json",    //照明 lighting
 			"jsons/creating/ore.json",         //矿石 ore
-			"jsons/creating/redstone.json",    //红石 redstone
-			"jsons/creating/tannsport.json",   //运输 tannsport
-			"jsons/creating/tools.json",       //工具 tools
-			"jsons/creating/weapon.json",      //武器 weapon
 			"jsons/creating/others.json",      //杂项类 others
 			"jsons/creating/smelting.json",      //烧炼类 others
-			"jsons/creating/brewing.json",       //药水类 brewing
-			"jsons/creating/enchant.json",		//附魔类 enchant
-
-			"jsons/mobs/mobs_boss.json",         //Boss boss
-			"jsons/mobs/mobs_hostile.json",         // 攻击型生物
-			"jsons/mobs/mobs_neutral.json",         // 中立型生物
-			"jsons/mobs/mobs_passive.json",         // 被动型生物
-			"jsons/mobs/mobs_tameable.json",         // 可驯服生物
-			"jsons/mobs/mobs_utility.json",         // 效用型生物
-			"jsons/mobs/mobs_unuse.json",         // 其他的生物
 
             //物品和方块
             "jsons/item_block/item_block_natural.json",     //自然生成
@@ -116,33 +115,36 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "jsons/item_block/item_block_others.json",      //其他
             "jsons/item_block/item_block_materials.json",   //材料类
             "jsons/item_block/item_block_plants.json",      //植物类
+
+			"jsons/mobs/mobs_boss.json",         //Boss boss
+			"jsons/mobs/mobs_hostile.json",         // 攻击型生物
+			"jsons/mobs/mobs_neutral.json",         // 中立型生物
+			"jsons/mobs/mobs_passive.json",         // 被动型生物
+			"jsons/mobs/mobs_tameable.json",         // 可驯服生物
+			"jsons/mobs/mobs_utility.json",         // 效用型生物
+			"jsons/mobs/mobs_unuse.json",         // 其他的生物
+
 	};
 
     //每个分类数据库的表名, 便于循环使用数据库
+	//排序影响搜索结果
 	public static final String[] TABLE_NAMES = {
-			"table_building", 	//建筑 building
-//			"table_daily",		//日常 daily
-			"table_decoration",	//装饰 decoration
+
+			"table_brewing",		//药水类 brewing
+			"table_enchant",		//附魔类 enchant
 			"table_dye",		//染料类 dye
+			"table_decoration",	//装饰 decoration
+			"table_weapon",		//武器 weapon
+			"table_tannsport",	//运输 tannsport
+			"table_tools",		//工具 tools
+			"table_building", 	//建筑 building
+			"table_redstone",	//红石 redstone
+//			"table_daily",		//日常 daily
 			"table_food",		//食物 food
 			"table_lighting",	//照明 lighting
 			"table_ore",		//矿石 ore
-			"table_redstone",	//红石 redstone
-			"table_tannsport",	//运输 tannsport
-			"table_tools",		//工具 tools
-			"table_weapon",		//武器 weapon
 			"table_others",		//杂项类 others
 			"table_smelting",		//烧炼类 weapon
-			"table_brewing",		//药水类 brewing
-			"table_enchant",		//附魔类 enchant
-
-			"table_mobs_boss",         //Boss boss
-			"table_mobs_hostile",         // 攻击型生物
-			"table_mobs_neutral",         // 中立型生物
-			"table_mobs_passive",         // 被动型生物
-			"table_mobs_tameable",         // 可驯服生物
-			"table_mobs_utility",         // 效用型生物
-			"table_mobs_unuse",         // 其他的生物
 
             //物品和方块
             "table_item_block_natural",     //自然生成
@@ -152,6 +154,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "table_item_block_others",      //其他
             "table_item_block_materials",   //材料类
             "table_item_block_plants",      //植物类
+
+			"table_mobs_boss",         //Boss boss
+			"table_mobs_hostile",         // 攻击型生物
+			"table_mobs_neutral",         // 中立型生物
+			"table_mobs_passive",         // 被动型生物
+			"table_mobs_tameable",         // 可驯服生物
+			"table_mobs_utility",         // 效用型生物
+			"table_mobs_unuse",         // 其他的生物
+
 
 	};
 
