@@ -88,19 +88,20 @@
         android:background="@color/list_background"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:padding="4dp"
         android:text="detail"
         android:textColor="@android:color/black"
         android:textSize="12dp" />
 
-        <ImageView
-            android:id="@+id/imageViewHideMore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_hide_more"/>
+        <!--<ImageView-->
+            <!--android:id="@+id/imageViewHideMore"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@drawable/ic_hide_more"/>-->
 
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -108,10 +109,9 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            ads:adUnitId="@string/ad_banner_id">
         </com.google.android.gms.ads.AdView>
 
     </LinearLayout>

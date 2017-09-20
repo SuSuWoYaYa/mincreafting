@@ -8,15 +8,6 @@
     <string name="menu_share">分享</string>
     <string name="menu_about">关于</string>
     <string name="toolbar_title">我的世界合成表大全</string>
-    <string name="color_black">黑色</string>
-    <string name="color_gray">灰色</string>
-    <string name="color_pink">粉色</string>
-    <string name="color_red">红色</string>
-    <string name="feedback">意见反馈</string>
-    <string name="color_orange">橙色</string>
-    <string name="color_purple">紫色</string>
-    <string name="color_blue">蓝色</string>
-    <string name="color_brown">棕色</string>
     <string name="category_others">其他</string>
     <string name="category_weapon">武器</string>
     <string name="category_tools">工具</string>
@@ -54,4 +45,34 @@
     <string name="category_other_block">其他物品</string>
     <string name="title_activity_tutorial">ActivityTutorial</string>
     <string name="tip_the_end">已经到底了!</string>
+
+    <!--admob-->
+    <string name="admob_uni_id">ca-app-pub-1353370194949670~3914579262</string>
+    <string name="ad_banner_id">ca-app-pub-1353370194949670/1876052366</string>
+    <string name="ad_native_id">ca-app-pub-1353370194949670/3859179886</string>
+    <string name="my_test_device_id">C5EF7D96DFF2F2C3E5CD1CA16D57D71F</string>
+
+    <!--color-->
+    <string name="color_black">黑色</string>
+    <string name="color_gray">灰色</string>
+    <string name="color_pink">粉色</string>
+    <string name="color_red">深红</string>
+    <string name="feedback">意见反馈</string>
+    <string name="color_orange">橙色</string>
+    <string name="color_purple">紫色</string>
+    <string name="color_blue">蓝色</string>
+    <string name="color_brown">棕色</string>
+    <string name="color_orange_red">红色</string>
+    <string name="color_blue_purple">紫蓝</string>
+    <string name="color_deep_blue">深蓝</string>
+    <string name="color_drak_green">深绿</string>
+    <string name="color_green">绿色</string>
+    <string name="color_gold">金色</string>
+    <string name="color_yellow">黄色</string>
+    <string name="color_saddle_brown">褐色</string>
+    <string name="color_hotpink">粉红</string>
+
+    <string name="change_item_title_color">改变物品名称背景颜色</string>
+    <string name="change_main_title_color">改变主标题栏背景颜色</string>
+
 </resources>

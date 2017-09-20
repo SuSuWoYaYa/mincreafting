@@ -1,182 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/list_background"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp"
-    android:orientation="vertical"    >
+    android:orientation="vertical"
+    android:paddingTop="10dp">
+
 
     <LinearLayout
-        android:id="@+id/layoutPopChangeToGray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_marginLeft="100dp"
-            android:padding="5dp"
-            android:src="@color/colorPrimary_gray"
-            android:layout_width="140dp"
-            android:layout_height="45dp" />
-        <TextView
-            android:text="@string/color_gray"
-            android:textSize="15sp"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimary_gray"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            />
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/layoutPopChangeToGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_green"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_green"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/layoutPopChangeToDrakGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_darkgreen"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_drak_green"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/layoutPopChangeToBlue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_blue"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_blue"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/layoutPopChangeToDeepBlue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_deep_blue"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_deep_blue"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/layoutPopChangeToBlown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_brown"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_brown"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/layoutPopChangeToSaddleBrown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_saddlebrown"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_saddle_brown"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/layoutPopChangeToHotPink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_hotpink"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_pink"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/layoutPopChangeToPink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_pink"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_hotpink"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/layoutPopChangeToDeepGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_deep_gray"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="深灰"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/layoutPopChangeToGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_gray"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_gray"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/layoutPopChangeToLightGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_light_gray"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="亮灰"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/layoutPopChangeToOrange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_orange"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_orange"
+                android:textColor="@color/textColorPrimary_black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/layoutPopChangeToOrangeRed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_orange_red"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_orange_red"
+                android:textColor="@color/textColorPrimary_black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/layoutPopChangeToRed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_red"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_red"
+                android:textColor="@color/textColorPrimary_black"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/layoutPopChangeToBluePurple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_blue_purple"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_blue_purple"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/layoutPopChangeToPurple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary_purple"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/color_purple"
+                android:textColor="@color/textColorPrimary_white"
+                android:textSize="18sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutPopChangeToRed"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
-        <ImageView
-            android:padding="5dp"
-            android:layout_marginLeft="100dp"
-            android:src="@color/colorPrimary_red"
-            android:layout_width="140dp"
-            android:layout_height="45dp" />
+
         <TextView
-            android:text="@string/color_red"
-            android:textSize="15sp"
+            android:id="@+id/textViewSelectColor"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@color/textColorPrimary_white"
+            android:gravity="center" />
+
+        />
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimary_red"
-            android:layout_weight="1"
-            android:gravity="center"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/checkBoxChangeMainColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/change_main_title_color"/>
+
+            <CheckBox
+                android:id="@+id/checkBoxChangeTitleColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/change_item_title_color" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layoutPopChangeToOrange"
-        android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/button_changeColor"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-            android:padding="5dp"
-            android:layout_marginLeft="100dp"
-            android:src="@color/colorPrimary_orange"
-            android:layout_width="140dp"
-            android:layout_height="45dp" />
-        <TextView
-            android:text="@string/color_orange"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimary_orange"
-            android:layout_weight="1"
-            android:gravity="center"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layoutPopChangeToPurple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-            android:padding="5dp"
-            android:layout_marginLeft="100dp"
-            android:src="@color/colorPrimary_purple"
-            android:layout_width="140dp"
-            android:layout_height="45dp" />
-        <TextView
-            android:text="@string/color_purple"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimary_purple"
-            android:layout_weight="1"
-            android:gravity="center"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layoutPopChangeToBlue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-            android:padding="5dp"
-            android:layout_marginLeft="100dp"
-            android:src="@color/colorPrimary_blue"
-            android:layout_width="140dp"
-            android:layout_height="45dp" />
-        <TextView
-            android:text="@string/color_blue"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimary_blue"
-            android:layout_weight="1"
-            android:gravity="center"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layoutPopChangeToBlown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-            android:padding="5dp"
-            android:layout_marginLeft="100dp"
-            android:src="@color/colorPrimary_brown"
-            android:layout_width="140dp"
-            android:layout_height="45dp" />
-        <TextView
-            android:text="@string/color_brown"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimary_brown"
-            android:layout_weight="1"
-            android:gravity="center"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layoutPopChangeToPink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-            android:padding="5dp"
-            android:layout_marginLeft="100dp"
-            android:src="@color/colorPrimary_pink"
-            android:layout_width="140dp"
-            android:layout_height="45dp" />
-        <TextView
-            android:text="@string/color_pink"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorPrimary_pink"
-            android:layout_weight="1"
-            android:gravity="center"
-            />
-    </LinearLayout>
-
+        android:text="确认"
+        android:textSize="20dp" />
 
 </LinearLayout>

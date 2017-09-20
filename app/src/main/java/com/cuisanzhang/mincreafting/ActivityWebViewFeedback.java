@@ -30,7 +30,7 @@ public class ActivityWebViewFeedback extends  AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int theme = ChangeTheme.getTheme(getApplicationContext());
+        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_webview_feedback);

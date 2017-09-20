@@ -10,6 +10,10 @@ public class ActivityTip extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
+//        int color = Utils.ChangeTheme.getTitleColor(getApplicationContext());
+        setTheme(theme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
         initActionBar();

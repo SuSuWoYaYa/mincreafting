@@ -29,7 +29,7 @@ public class ActivityTutorial extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int theme = ChangeTheme.getTheme(getApplicationContext());
+        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
 
         super.onCreate(savedInstanceState);

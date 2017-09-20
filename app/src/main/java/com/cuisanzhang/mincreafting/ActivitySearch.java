@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
@@ -67,23 +68,32 @@ public class ActivitySearch extends AppCompatActivity {
     private InputMethodManager mInputMethodManager;
 
     //    for admob
-    private AdRequest adRequest;
+//    private AdRequest adRequest;
     boolean isNetworkConnected = false;
 
     private String[] search;
 
+
+    //for change title color
+    int selectColor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
+        int color = Utils.ChangeTheme.getTitleColor(getApplicationContext());
+        setTheme(theme);
+        selectColor = ContextCompat.getColor(ActivitySearch.this,color);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
 
 //        google admob
-        MobileAds.initialize(this, "ca-app-pub-1353370194949670~3914579262");
+        MobileAds.initialize(this, getString(R.string.admob_uni_id));
 
-        adRequest = new AdRequest.Builder()
-//                .addTestDevice("C5EF7D96DFF2F2C3E5CD1CA16D57D71F")
-                .build();
+//        adRequest = new AdRequest.Builder()
+////                .addTestDevice(getString(R.string.my_test_device_id))
+//                .build();
         isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
 
         Intent intent = getIntent();
@@ -102,7 +112,7 @@ public class ActivitySearch extends AppCompatActivity {
         if (!isNetworkConnected){
             nativeExpressAdView.setVisibility(View.GONE);
         }else {
-            nativeExpressAdView.loadAd(adRequest);
+            nativeExpressAdView.loadAd(new AdRequest.Builder().build());
         }
         listView.addFooterView(tipEndViw);
 
@@ -316,7 +326,7 @@ public class ActivitySearch extends AppCompatActivity {
             private String FileName;
             private TextView textViewName;
             private TextView textViewMaterial;
-            private ImageView imageViewHideMore;
+//            private ImageView imageViewHideMore;
             private TextView textViewUse;
 
             private TextView textViewShowBlockDetail;
@@ -413,12 +423,14 @@ public class ActivitySearch extends AppCompatActivity {
                         .findViewById(R.id.use);
                 holder.textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
-                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
+//                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
                 holder.checkBox = (CheckBox) convertView
                         .findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
 
                 holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
+
+                holder.textViewName.setBackgroundColor(selectColor);
 
             } else {
 
@@ -483,16 +495,17 @@ public class ActivitySearch extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
-            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 按照列表位置更新checkbox状态
-                    checkBoxStateList.set(pos, false);
-                    listviewAdapter.notifyDataSetChanged();
+//            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    // 按照列表位置更新checkbox状态
+//                    checkBoxStateList.set(pos, false);
+//                    listviewAdapter.notifyDataSetChanged();
+//
+//
+//                }
+//            });
 
-
-                }
-            });
             holder.checkBox
                     .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -512,16 +525,16 @@ public class ActivitySearch extends AppCompatActivity {
             if (ischecked) {
 ////				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
-                holder.imageViewHideMore.setVisibility(View.VISIBLE);
+//                holder.imageViewHideMore.setVisibility(View.VISIBLE);
 
                 if(isNetworkConnected){
                     holder.mAdView.setVisibility(View.VISIBLE);
-                    holder.mAdView.loadAd(adRequest);
+                    holder.mAdView.loadAd(new AdRequest.Builder().build());
                 }
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
-                holder.imageViewHideMore.setVisibility(View.GONE);
+//                holder.imageViewHideMore.setVisibility(View.GONE);
                 holder.mAdView.setVisibility(View.GONE);
             }
 

@@ -9,6 +9,6 @@
     android:layout_marginBottom="5dp"
     android:layout_marginTop="4dp"
     ads:adSize="BANNER"
-    ads:adUnitId="ca-app-pub-1353370194949670/1876052366"/>
+    ads:adUnitId="@string/ad_banner_id"/>
 
 

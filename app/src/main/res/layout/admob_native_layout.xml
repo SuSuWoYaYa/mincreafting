@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="360x100"
-        ads:adUnitId="ca-app-pub-1353370194949670/3859179886"/>
+        ads:adUnitId="@string/ad_native_id"/>
 
 
 </LinearLayout>

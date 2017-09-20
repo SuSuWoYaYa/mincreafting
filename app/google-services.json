@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "416906572389",
+    "firebase_url": "https://minecrafting-d507d.firebaseio.com",
+    "project_id": "minecrafting-d507d",
+    "storage_bucket": "minecrafting-d507d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416906572389:android:c1fc19fc8cf58d29",
+        "android_client_info": {
+          "package_name": "com.cuisanzhang.mincreafting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416906572389-sejs3dfh2olb5iv32ln87p91b3mq2lgv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cuisanzhang.mincreafting",
+            "certificate_hash": "1432a2f346cf300b583a2cf18e116edf6a02ff4c"
+          }
+        },
+        {
+          "client_id": "416906572389-6ngdfb22c2e3rs51fr154sfjs8onspv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDI_hLGv7TRtICZFv0_dH1GC9T0Y1GUQQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416906572389-6ngdfb22c2e3rs51fr154sfjs8onspv8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

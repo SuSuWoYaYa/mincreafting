@@ -5,17 +5,48 @@
     <color name="textColorPrimary_white">#FFFFFF</color>
     <color name="textColorPrimary_black">#212121</color>
 
-    <color name="colorPrimary_red">#f44336</color>
-    <color name="colorPrimaryDark_red">#f44336</color>
-    <color name="colorAccent_red">#f44336</color>
+    <color name="colorPrimary_orange_red">#f44336</color>
+    <color name="colorPrimaryDark_orange_red">#f44336</color>
+    <color name="colorAccent_orange_red">#f44336</color>
 
-    <color name="colorPrimary_purple">#673AB7</color>
-    <color name="colorPrimaryDark_purple">#673AB7</color>
-    <color name="colorAccent_purple">#673AB7</color>
+    <color name="colorPrimary_red">#CC0000</color>
+    <color name="colorPrimaryDark_red">#CC0000</color>
+    <color name="colorAccent_red">#CC0000</color>
+
+
+    <color name="colorPrimary_purple">#66009D</color>
+    <color name="colorPrimaryDark_purple">#66009D</color>
+    <color name="colorAccent_purple">#66009D</color>
+
+
+    <color name="colorPrimary_blue_purple">#673AB7</color>
+    <color name="colorPrimaryDark_blue_purple">#673AB7</color>
+    <color name="colorAccent_blue_purple">#673AB7</color>
+
+    <color name="colorPrimary_deep_blue">#0000FF</color>
+    <color name="colorPrimaryDark_deep_blue">#0000FF</color>
+    <color name="colorAccent_deep_blue">#0000FF</color>
 
     <color name="colorPrimary_blue">#2196f3</color>
     <color name="colorPrimaryDark_blue">#2196f3</color>
     <color name="colorAccent_blue">#2196f3</color>
+
+    <color name="colorPrimary_darkgreen">#006400</color>
+    <color name="colorPrimaryDark_darkgreen">#006400</color>
+    <color name="colorAccent_darkgreen">#006400</color>
+
+    <color name="colorPrimary_green">#2E8B57</color>
+    <color name="colorPrimaryDark_green">#2E8B57</color>
+    <color name="colorAccent_green">#2E8B57</color>
+
+
+    <color name="colorPrimary_gold">#FFD700</color>
+    <color name="colorPrimaryDark_gold">#FFD700</color>
+    <color name="colorAccent_gold">#FFD700</color>
+
+    <color name="colorPrimary_yellow">#FFFF00</color>
+    <color name="colorPrimaryDark_yellow">#FFFF00</color>
+    <color name="colorAccent_yellow">#FFFF00</color>
 
     <color name="colorPrimary_orange">#ff5722</color>
     <color name="colorPrimaryDark_orange">#ff5722</color>
@@ -25,13 +56,31 @@
     <color name="colorPrimaryDark_brown">#795548</color>
     <color name="colorAccent_brown">#795548</color>
 
+    <color name="colorPrimary_saddlebrown">#8B4513 </color>
+    <color name="colorPrimaryDark_saddlebrown">#8B4513 </color>
+    <color name="colorAccent_saddlebrown">#8B4513 </color>
+
+    <color name="colorPrimary_hotpink">#FF69B4</color>
+    <color name="colorPrimaryDark_hotpink">#FF69B4</color>
+    <color name="colorAccent_hotpink">#FF69B4</color>
+
     <color name="colorPrimary_pink">#e91e63</color>
     <color name="colorPrimaryDark_pink">#e91e63</color>
     <color name="colorAccent_pink">#e91e63</color>
 
-    <color name="colorPrimary_gray">#262626</color>
-    <color name="colorPrimaryDark_gray">#262626</color>
-    <color name="colorAccent_gray">#262626</color>
+
+    <color name="colorPrimary_light_gray">#808080</color>
+    <color name="colorPrimaryDark_light_gray">#808080</color>
+    <color name="colorAccent_light_gray">#808080</color>
+
+    <color name="colorPrimary_gray">#666666</color>
+    <color name="colorPrimaryDark_gray">#666666</color>
+    <color name="colorAccent_gray">#666666</color>
+
+
+    <color name="colorPrimary_deep_gray">#444444</color>
+    <color name="colorPrimaryDark_deep_gray">#444444</color>
+    <color name="colorAccent_deep_gray">#444444</color>
 
     <color name="window_background">#FFFFFF</color>
     <color name="main_page_background">#ebebeb</color>

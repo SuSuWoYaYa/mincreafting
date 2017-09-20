@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -22,9 +23,13 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Timer;
@@ -64,10 +69,19 @@ public class FragmentMainActivity extends AppCompatActivity {
     private static SharedPreferences preferences = null;
 
 
+    //for change Theme
+    private int mainBackgroup = Utils.ChangeTheme.THEME_DEEPGRAY;
+    private int titleBackgroup = Utils.ChangeTheme.THEME_DEEPGRAY;
+    private int theme = 0;
+    private int selectColor = 0;
+    private TextView textViewSelectColor = null;
+    private boolean changeMainBackgroup = true;
+    private boolean changeTitleBackgroup = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        int theme = ChangeTheme.getTheme(getApplicationContext());
+        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
 
         super.onCreate(savedInstanceState);
@@ -170,6 +184,8 @@ public class FragmentMainActivity extends AppCompatActivity {
 
     protected void initPopupWindow() {
 
+
+
         if (mPopupWindow != null && mPopupWindow.isShowing())
             return;
 
@@ -193,57 +209,199 @@ public class FragmentMainActivity extends AppCompatActivity {
         });
 
 
-        LinearLayout layoutGray = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToGray);
-        LinearLayout layoutPink = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToPink);
-        LinearLayout layoutBlown = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToBlown);
-        LinearLayout layoutOrange = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToOrange);
-        LinearLayout layoutBlue = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToBlue);
-        LinearLayout layoutPurple = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToPurple);
-        LinearLayout layoutRed = (LinearLayout) layout.findViewById(R.id.layoutPopChangeToRed);
+
+         textViewSelectColor = layout.findViewById(R.id.textViewSelectColor);
+
+        CheckBox checkBoxChangeMainColor = layout.findViewById(R.id.checkBoxChangeMainColor);
+        checkBoxChangeMainColor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    changeMainBackgroup = true;
+                }else
+                {
+                    changeMainBackgroup =false;
+                }
+            }
+        });
+
+        CheckBox checkBoxChangeTitleColor = layout.findViewById(R.id.checkBoxChangeTitleColor);
+        checkBoxChangeTitleColor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    changeTitleBackgroup = true;
+
+                }else {
+                    changeTitleBackgroup = false;
+                }
+            }
+        });
+
+        Button button_changeColor = layout.findViewById(R.id.button_changeColor);
+        button_changeColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (selectColor != 0){
+                    if (changeMainBackgroup){
+                        Utils.ChangeTheme.setTheme(getApplicationContext(), theme);
+                    }
+                    if (changeTitleBackgroup){
+                        Utils.ChangeTheme.setTitleColor(getApplicationContext(), selectColor);
+                    }
+                }
+
+//                if (changeMainBackgroup) {
+                    mPopupWindow.dismiss();
+                    ReStartActivity(FragmentMainActivity.this);
+//                }
+
+            }
+        });
+
+
+        TextView textViewGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToGreen);
+        TextView textViewDeepDrakGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToDrakGreen);
+        TextView textViewBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToBlue);
+        TextView textViewDeepBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToDeepBlue);
+        TextView textViewBlown = (TextView) layout.findViewById(R.id.layoutPopChangeToBlown);
+        TextView textViewDeepSaddleBrown = (TextView) layout.findViewById(R.id.layoutPopChangeToSaddleBrown);
+        TextView textViewHotPink = (TextView) layout.findViewById(R.id.layoutPopChangeToHotPink);
+        TextView textViewPink = (TextView) layout.findViewById(R.id.layoutPopChangeToPink);
+
+        TextView textViewDeepGray = (TextView) layout.findViewById(R.id.layoutPopChangeToDeepGray);
+        TextView textViewGray = (TextView) layout.findViewById(R.id.layoutPopChangeToGray);
+        TextView textViewLightGray = (TextView) layout.findViewById(R.id.layoutPopChangeToLightGray);
+        TextView textViewOrangeRed = (TextView) layout.findViewById(R.id.layoutPopChangeToOrangeRed);
+        TextView textViewOrange = (TextView) layout.findViewById(R.id.layoutPopChangeToOrange);
+//        TextView textViewGold = (TextView) layout.findViewById(R.id.layoutPopChangeToGold);
+//        TextView textViewYellow = (TextView) layout.findViewById(R.id.layoutPopChangeToBlueYellow);
+        TextView textViewBluePurple = (TextView) layout.findViewById(R.id.layoutPopChangeToBluePurple);
+        TextView textViewPurple = (TextView) layout.findViewById(R.id.layoutPopChangeToPurple);
+        TextView textViewRed = (TextView) layout.findViewById(R.id.layoutPopChangeToRed);
+
+
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                int theme;
+
                 switch (v.getId()) {
-                    case R.id.layoutPopChangeToGray:
-                        theme = ChangeTheme.THEME_GRAY;
+
+                    case R.id.layoutPopChangeToGreen:
+                        theme = Utils.ChangeTheme.THEME_GREEN;
+                        selectColor = R.color.colorPrimary_green;
                         break;
-                    case R.id.layoutPopChangeToPink:
-                        theme = ChangeTheme.THEME_PINK;
-                        break;
-                    case R.id.layoutPopChangeToRed:
-                        theme = ChangeTheme.THEME_RED;
-                        break;
-                    case R.id.layoutPopChangeToBlown:
-                        theme = ChangeTheme.THEME_BROWN;
+                    case R.id.layoutPopChangeToDrakGreen:
+                        theme = Utils.ChangeTheme.THEME_DRAKGREEN;
+
+                        selectColor = R.color.colorPrimary_darkgreen;
                         break;
                     case R.id.layoutPopChangeToBlue:
-                        theme = ChangeTheme.THEME_BLUE;
+                        theme = Utils.ChangeTheme.THEME_BLUE;
+
+                        selectColor = R.color.colorPrimary_blue;
+                        break;
+                    case R.id.layoutPopChangeToDeepBlue:
+                        theme = Utils.ChangeTheme.THEME_DEEP_BLUE;
+
+                        selectColor = R.color.colorPrimary_deep_blue;
+                        break;
+                    case R.id.layoutPopChangeToBlown:
+                        theme = Utils.ChangeTheme.THEME_BROWN;
+
+                        selectColor = R.color.colorPrimary_brown;
+                        break;
+                    case R.id.layoutPopChangeToSaddleBrown:
+                        theme = Utils.ChangeTheme.THEME_SADDLEBROWN;
+
+                        selectColor = R.color.colorPrimary_saddlebrown;
+                        break;
+                    case R.id.layoutPopChangeToHotPink:
+                        theme = Utils.ChangeTheme.THEME_HOTPINK;
+
+                        selectColor = R.color.colorPrimary_hotpink;
+                        break;
+                    case R.id.layoutPopChangeToPink:
+                        theme = Utils.ChangeTheme.THEME_PINK;
+
+                        selectColor = R.color.colorPrimary_pink;
+                        break;
+
+                    case R.id.layoutPopChangeToDeepGray:
+                        theme = Utils.ChangeTheme.THEME_DEEPGRAY;
+
+                        selectColor = R.color.colorPrimary_deep_gray;
+                        break;
+                    case R.id.layoutPopChangeToGray:
+                        theme = Utils.ChangeTheme.THEME_GRAY;
+
+                        selectColor = R.color.colorPrimary_gray;
+                        break;
+                    case R.id.layoutPopChangeToLightGray:
+                        theme = Utils.ChangeTheme.THEME_LIGHTGRAY;
+
+                        selectColor = R.color.colorPrimary_light_gray;
+                        break;
+                    case R.id.layoutPopChangeToOrangeRed:
+                        theme = Utils.ChangeTheme.THEME_ORANGE_RED;
+
+                        selectColor = R.color.colorPrimary_orange_red;
                         break;
                     case R.id.layoutPopChangeToOrange:
-                        theme = ChangeTheme.THEME_ORANGE;
+                        theme = Utils.ChangeTheme.THEME_ORANGE;
+
+                        selectColor = R.color.colorPrimary_orange;
+                        break;
+//                    case R.id.layoutPopChangeToGold:
+//                        theme = Utils.ChangeTheme.THEME_GOLD;
+//                        break;
+//                    case R.id.layoutPopChangeToBlueYellow:
+//                        theme = Utils.ChangeTheme.THEME_YELLOW;
+//                        break;
+                    case R.id.layoutPopChangeToBluePurple:
+                        theme = Utils.ChangeTheme.THEME_BLUE_PURPLE;
+
+                        selectColor = R.color.colorPrimary_blue_purple;
                         break;
                     case R.id.layoutPopChangeToPurple:
-                        theme = ChangeTheme.THEME_PURPLE;
+                        theme = Utils.ChangeTheme.THEME_PURPLE;
+                        selectColor = R.color.colorPrimary_purple;
+                        break;
+                    case R.id.layoutPopChangeToRed:
+                        theme = Utils.ChangeTheme.THEME_RED;
+                        selectColor = R.color.colorPrimary_red;
                         break;
                     default:
-                        theme = ChangeTheme.THEME_GRAY;
+                        theme = Utils.ChangeTheme.THEME_DEEPGRAY;
+                        selectColor = R.color.colorPrimary_deep_gray;
                 }
-                ChangeTheme.setTheme(getApplicationContext(), theme);
-                mPopupWindow.dismiss();
-                ReStartActivity(FragmentMainActivity.this);
+                textViewSelectColor.setBackgroundColor(ContextCompat.getColor(FragmentMainActivity.this, selectColor));
+
 
             }
         };
-        layoutGray.setOnClickListener(onClickListener);
-        layoutPink.setOnClickListener(onClickListener);
-        layoutRed.setOnClickListener(onClickListener);
-        layoutBlue.setOnClickListener(onClickListener);
-        layoutBlown.setOnClickListener(onClickListener);
-        layoutOrange.setOnClickListener(onClickListener);
-        layoutPurple.setOnClickListener(onClickListener);
+          textViewGreen.setOnClickListener(onClickListener);
+          textViewDeepDrakGreen.setOnClickListener(onClickListener);
+          textViewBlue.setOnClickListener(onClickListener);
+          textViewDeepBlue.setOnClickListener(onClickListener);
+          textViewBlown.setOnClickListener(onClickListener);
+          textViewDeepSaddleBrown .setOnClickListener(onClickListener);
+          textViewHotPink.setOnClickListener(onClickListener);
+          textViewPink.setOnClickListener(onClickListener);
+
+
+        textViewDeepGray.setOnClickListener(onClickListener);
+          textViewGray.setOnClickListener(onClickListener);
+          textViewLightGray.setOnClickListener(onClickListener);
+          textViewOrangeRed.setOnClickListener(onClickListener);
+          textViewOrange.setOnClickListener(onClickListener);
+//          textViewGold .setOnClickListener(onClickListener);
+//          textViewYellow.setOnClickListener(onClickListener);
+          textViewBluePurple .setOnClickListener(onClickListener);
+          textViewPurple .setOnClickListener(onClickListener);
+          textViewRed .setOnClickListener(onClickListener);
     }
 
     @Override
