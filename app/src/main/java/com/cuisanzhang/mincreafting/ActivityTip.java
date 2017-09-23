@@ -23,7 +23,7 @@ import okhttp3.Response;
 public class ActivityTip extends AppCompatActivity {
 
     //http://owpvbuvtf.bkt.clouddn.com/vip.txt
-    static String URL = "http://owpvbuvtf.bkt.clouddn.com/vip.txt";
+    static String URL = "http://cuisanzhang.u.qiniudn.com/vip.txt";
 
     Button btnCheckVip ;
     private Handler mHandler;
