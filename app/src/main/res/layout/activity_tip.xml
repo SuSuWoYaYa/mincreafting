@@ -9,60 +9,86 @@
     tools:context="com.cuisanzhang.mincreafting.ActivityTip">
 
     //标题栏
+
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="?attr/colorPrimary">
+
         <ImageView
             android:id="@+id/imageViewToolbar_menu"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:src="?attr/navigationIcon_back"
-            android:scaleType="centerInside"/>
+            android:paddingTop="5dp"
+            android:scaleType="centerInside"
+            android:src="?attr/navigationIcon_back" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/toolbar_title"
-            android:textSize="16sp"
-            android:textColor="?attr/textColorPrimary"/>
+            android:textColor="?attr/textColorPrimary"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orientation="vertical">
 
-        <ImageView
+    <ImageView
+        android:id="@+id/tip_weixin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-            android:padding="10dp"
-        android:scaleType="centerInside"
-        app:srcCompat="@drawable/weixin"
-        android:id="@+id/tip_weixin"
         android:layout_weight="1"
-        />
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/weixin" />
 
-        <!--<Button-->
-        <!--android:text="保存图片"-->
-        <!--android:textSize="20dp"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center|bottom"-->
-        <!--android:id="@+id/btn_save_image"-->
-        <!--android:layout_weight="1"-->
+    <!--<Button-->
+    <!--android:text="保存图片"-->
+    <!--android:textSize="20dp"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center|bottom"-->
+    <!--android:id="@+id/btn_save_image"-->
+    <!--android:layout_weight="1"-->
 
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginBottom="12dp" />-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginBottom="12dp" />-->
 
-    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tip_dashang1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tip_dashang2"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tip_email"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/tip_qq"/>
+
+    <Button
+        android:id="@+id/btnCheckVip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:text="@string/check_vip" />
 
 </LinearLayout>

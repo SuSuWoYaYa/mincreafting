@@ -12,6 +12,9 @@ import android.net.NetworkInfo;
 
 public class Utils {
 
+
+    static String  VIP_URL = "http://owpvbuvtf.bkt.clouddn.com/vip.txt";
+
     public static boolean isNetworkConnected(Context context) {
         if (context != null) {
             // 获取手机所有连接管理对象(包括对wi-fi,net等连接的管理)
@@ -86,6 +89,9 @@ public class Utils {
         private static final String PREFTHEME = "pref_theme";
         private static final String THEME = "theme";
         private static final String COLOR = "color";
+        private static final String USER_NAME = "user_name";
+        private static final String VIP_STATE = "vip_state";
+
 
 
         public static void setTheme(Context context, int theme) {
@@ -112,6 +118,37 @@ public class Utils {
             return sp.getInt(COLOR, R.color.colorPrimary_deep_gray);
         }
 
+        public  static  void setUserName(Context context, String userName){
+            SharedPreferences sp = context.getSharedPreferences(PREFTHEME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString(USER_NAME, userName);
+            editor.apply();
+        }
+
+        public static String getUserName(Context context) {
+            SharedPreferences sp = context.getSharedPreferences(PREFTHEME, Context.MODE_PRIVATE);
+            return sp.getString(USER_NAME, "请输入你的昵称");
+        }
+
+
+        public  static  void setVipState(Context context, boolean VipState){
+            SharedPreferences sp = context.getSharedPreferences(PREFTHEME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean(VIP_STATE, VipState);
+            editor.apply();
+        }
+
+        public static boolean getVipState(Context context) {
+            SharedPreferences sp = context.getSharedPreferences(PREFTHEME, Context.MODE_PRIVATE);
+            return sp.getBoolean(VIP_STATE, false);
+        }
+
     }
+
+
+
+
+
+
 
 }

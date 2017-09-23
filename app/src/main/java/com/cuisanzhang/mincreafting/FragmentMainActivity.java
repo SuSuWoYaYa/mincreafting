@@ -3,6 +3,7 @@ package com.cuisanzhang.mincreafting;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.PaintDrawable;
@@ -20,12 +21,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -55,7 +58,7 @@ public class FragmentMainActivity extends AppCompatActivity {
     public static String EXTRA_CATEGORY = "category";
 
     private static String SAVE_FILE = "save.txt";
-    private static String  DB_VERSION = "db_version";
+    private static String DB_VERSION = "db_version";
 
     public int MESSAGE_PROGRESS_CHANGE = 0;
     public int MESSAGE_PROGRESS_COMPLATE = 1;
@@ -66,6 +69,9 @@ public class FragmentMainActivity extends AppCompatActivity {
     private Handler mHandler;
 
 
+    private String userName;
+    private EditText editText_settingName;
+    private TextView textUserName;
     private static SharedPreferences preferences = null;
 
 
@@ -100,15 +106,11 @@ public class FragmentMainActivity extends AppCompatActivity {
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
 
 
-
-
         initActionBar();
-
 
 
         preferences = getSharedPreferences(SAVE_FILE,
                 Context.MODE_APPEND);
-
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -146,12 +148,34 @@ public class FragmentMainActivity extends AppCompatActivity {
         mNavigationView.setItemIconTintList(null);
 
 
-        int  db_version = preferences.getInt(DB_VERSION, 0);
+        View headerView = mNavigationView.getHeaderView(0);
+        textUserName = (TextView) headerView.findViewById(R.id.textUserName);
+        textUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSettingUserNameDialog();
+//                    textUserName.setText(userName);
+//
+////                    if (mPopupWindow != null && mPopupWindow.isShowing())
+////                        mPopupWindow.dismiss();
+//
+//                    return;
+//                }
+            }
+
+
+        });
+        textUserName.setText(Utils.ChangeTheme.getUserName(FragmentMainActivity.this));
+
+
+        int db_version = preferences.getInt(DB_VERSION, 0);
         //System.out.println("db_version = " + db_version);
         if (db_version != MyDatabaseHelper.DB_VERSION) {
             initDatabase();
         }
     }
+
+
     public void initActionBar() {
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
@@ -165,7 +189,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FragmentMainActivity.this, ActivitySearch.class);
-                startActivity(intent );
+                startActivity(intent);
             }
         });
     }
@@ -177,13 +201,12 @@ public class FragmentMainActivity extends AppCompatActivity {
         Intent intent = activity.getIntent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         activity.finish();
-  //      Toast.makeText(FragmentMainActivity.this, "ReStartActivity",Toast.LENGTH_SHORT).show;
+        //      Toast.makeText(FragmentMainActivity.this, "ReStartActivity",Toast.LENGTH_SHORT).show;
         activity.startActivity(intent);
     }
 
 
     protected void initPopupWindow() {
-
 
 
         if (mPopupWindow != null && mPopupWindow.isShowing())
@@ -209,51 +232,49 @@ public class FragmentMainActivity extends AppCompatActivity {
         });
 
 
+        textViewSelectColor = (TextView) layout.findViewById(R.id.textViewSelectColor);
 
-         textViewSelectColor = layout.findViewById(R.id.textViewSelectColor);
-
-        CheckBox checkBoxChangeMainColor = layout.findViewById(R.id.checkBoxChangeMainColor);
+        CheckBox checkBoxChangeMainColor = (CheckBox) layout.findViewById(R.id.checkBoxChangeMainColor);
         checkBoxChangeMainColor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
+                if (b) {
                     changeMainBackgroup = true;
-                }else
-                {
-                    changeMainBackgroup =false;
+                } else {
+                    changeMainBackgroup = false;
                 }
             }
         });
 
-        CheckBox checkBoxChangeTitleColor = layout.findViewById(R.id.checkBoxChangeTitleColor);
+        CheckBox checkBoxChangeTitleColor = (CheckBox) layout.findViewById(R.id.checkBoxChangeTitleColor);
         checkBoxChangeTitleColor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
+                if (b) {
                     changeTitleBackgroup = true;
 
-                }else {
+                } else {
                     changeTitleBackgroup = false;
                 }
             }
         });
 
-        Button button_changeColor = layout.findViewById(R.id.button_changeColor);
+        Button button_changeColor = (Button) layout.findViewById(R.id.button_changeColor);
         button_changeColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectColor != 0){
-                    if (changeMainBackgroup){
+                if (selectColor != 0) {
+                    if (changeMainBackgroup) {
                         Utils.ChangeTheme.setTheme(getApplicationContext(), theme);
                     }
-                    if (changeTitleBackgroup){
+                    if (changeTitleBackgroup) {
                         Utils.ChangeTheme.setTitleColor(getApplicationContext(), selectColor);
                     }
                 }
 
 //                if (changeMainBackgroup) {
-                    mPopupWindow.dismiss();
-                    ReStartActivity(FragmentMainActivity.this);
+                mPopupWindow.dismiss();
+                ReStartActivity(FragmentMainActivity.this);
 //                }
 
             }
@@ -279,7 +300,6 @@ public class FragmentMainActivity extends AppCompatActivity {
         TextView textViewBluePurple = (TextView) layout.findViewById(R.id.layoutPopChangeToBluePurple);
         TextView textViewPurple = (TextView) layout.findViewById(R.id.layoutPopChangeToPurple);
         TextView textViewRed = (TextView) layout.findViewById(R.id.layoutPopChangeToRed);
-
 
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -382,26 +402,26 @@ public class FragmentMainActivity extends AppCompatActivity {
 
             }
         };
-          textViewGreen.setOnClickListener(onClickListener);
-          textViewDeepDrakGreen.setOnClickListener(onClickListener);
-          textViewBlue.setOnClickListener(onClickListener);
-          textViewDeepBlue.setOnClickListener(onClickListener);
-          textViewBlown.setOnClickListener(onClickListener);
-          textViewDeepSaddleBrown .setOnClickListener(onClickListener);
-          textViewHotPink.setOnClickListener(onClickListener);
-          textViewPink.setOnClickListener(onClickListener);
+        textViewGreen.setOnClickListener(onClickListener);
+        textViewDeepDrakGreen.setOnClickListener(onClickListener);
+        textViewBlue.setOnClickListener(onClickListener);
+        textViewDeepBlue.setOnClickListener(onClickListener);
+        textViewBlown.setOnClickListener(onClickListener);
+        textViewDeepSaddleBrown.setOnClickListener(onClickListener);
+        textViewHotPink.setOnClickListener(onClickListener);
+        textViewPink.setOnClickListener(onClickListener);
 
 
         textViewDeepGray.setOnClickListener(onClickListener);
-          textViewGray.setOnClickListener(onClickListener);
-          textViewLightGray.setOnClickListener(onClickListener);
-          textViewOrangeRed.setOnClickListener(onClickListener);
-          textViewOrange.setOnClickListener(onClickListener);
+        textViewGray.setOnClickListener(onClickListener);
+        textViewLightGray.setOnClickListener(onClickListener);
+        textViewOrangeRed.setOnClickListener(onClickListener);
+        textViewOrange.setOnClickListener(onClickListener);
 //          textViewGold .setOnClickListener(onClickListener);
 //          textViewYellow.setOnClickListener(onClickListener);
-          textViewBluePurple .setOnClickListener(onClickListener);
-          textViewPurple .setOnClickListener(onClickListener);
-          textViewRed .setOnClickListener(onClickListener);
+        textViewBluePurple.setOnClickListener(onClickListener);
+        textViewPurple.setOnClickListener(onClickListener);
+        textViewRed.setOnClickListener(onClickListener);
     }
 
     @Override
@@ -422,6 +442,31 @@ public class FragmentMainActivity extends AppCompatActivity {
         builder.setPositiveButton("确定", null);
         builder.show();
     }
+
+
+    private boolean showSettingUserNameDialog() {
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View settingNameView = inflater.inflate(R.layout.layout_setting_name, null);
+        editText_settingName = (EditText) settingNameView.findViewById(R.id.editText_settingName);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
+        builder.setTitle("请输入你的昵称");
+        builder.setView(settingNameView);
+//        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
+        builder.setNegativeButton("取消", null);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                userName = editText_settingName.getText().toString();
+                Utils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
+                textUserName.setText(userName);
+            }
+        });
+        builder.show();
+        return true;
+    }
+
 
     //第一次启动插入数据库
     private void initDatabase() {
@@ -463,7 +508,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                 dbManage.closeDatabase();
             }
         };
-        timer.schedule(timerTask,0);
+        timer.schedule(timerTask, 0);
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(DB_VERSION, MyDatabaseHelper.DB_VERSION);

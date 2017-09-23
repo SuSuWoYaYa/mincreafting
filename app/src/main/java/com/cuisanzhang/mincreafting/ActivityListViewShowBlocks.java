@@ -56,7 +56,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     //    for admob
 //    private AdRequest adRequest;
     boolean isNetworkConnected = false;
-
+    boolean isVip;
 
     //for change title color
     int selectColor;
@@ -67,7 +67,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
         int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
         int color = Utils.ChangeTheme.getTitleColor(getApplicationContext());
         setTheme(theme);
-        selectColor = ContextCompat.getColor(ActivityListViewShowBlocks.this,color);
+        selectColor = ContextCompat.getColor(ActivityListViewShowBlocks.this, color);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_listview_of_blocks);
@@ -109,31 +109,28 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
         dbManage.closeDatabase();
 
 
-//        google admob
-        MobileAds.initialize(this, getString(R.string.admob_uni_id));
+        ListView listView = (ListView) findViewById(R.id.listView1);
 
-//        AdRequest adRequest = new AdRequest.Builder() .build();
+        isVip = Utils.ChangeTheme.getVipState(ActivityListViewShowBlocks.this);
 
         isNetworkConnected = Utils.isNetworkConnected(ActivityListViewShowBlocks.this);
 
-//        if (blocks == null) {
-//            System.out.println("getDatabase is null");
-//        } else {
-//            System.out.println("blocks.size=" + blocks.size());
-//        }
+        if (!isVip) {
+//        google admob
+            MobileAds.initialize(this, getString(R.string.admob_uni_id));
 
-        ListView listView = (ListView) findViewById(R.id.listView1);
+            //add admob in listView
+            LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+            NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
 
-        //add admob in listView
-        LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
-        NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
-        if (!isNetworkConnected){
-            nativeExpressAdView.setVisibility(View.GONE);
-        }else {
-            nativeExpressAdView.loadAd(new AdRequest.Builder().build());
+
+            if (!isNetworkConnected) {
+                nativeExpressAdView.setVisibility(View.GONE);
+            } else {
+                nativeExpressAdView.loadAd(new AdRequest.Builder().build());
+            }
+            listView.addFooterView(tipEndViw);
         }
-        listView.addFooterView(tipEndViw);
-
 
         adapter = new MyAdapter(getApplicationContext());
 
@@ -156,7 +153,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             private String FileName;
             private TextView textViewName;
             private TextView textViewMaterial;
-//            private ImageView imageViewHideMore;
+            //            private ImageView imageViewHideMore;
             private TextView textViewUse;
 
             private TextView textViewShowBlockDetail;
@@ -234,7 +231,6 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 holder = (ViewHolder) convertView.getTag();
 
             }
-
 
 
             holder.textViewName.setText(block.getName());
@@ -342,7 +338,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
 //                holder.imageViewHideMore.setVisibility(View.VISIBLE);
 //                if(holder.mAdView != null){
-                if(isNetworkConnected){
+                if (!isVip && isNetworkConnected) {
                     holder.mAdView.setVisibility(View.VISIBLE);
 //                    if (holder.mAdView.)
                     holder.mAdView.loadAd(new AdRequest.Builder().build());
@@ -386,7 +382,6 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
 
     }
-
 
 
 }

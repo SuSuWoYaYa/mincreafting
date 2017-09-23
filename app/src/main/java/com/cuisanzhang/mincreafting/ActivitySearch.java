@@ -70,6 +70,7 @@ public class ActivitySearch extends AppCompatActivity {
     //    for admob
 //    private AdRequest adRequest;
     boolean isNetworkConnected = false;
+    boolean isVip ;
 
     private String[] search;
 
@@ -88,13 +89,27 @@ public class ActivitySearch extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
 
-//        google admob
-        MobileAds.initialize(this, getString(R.string.admob_uni_id));
+        isVip = Utils.ChangeTheme.getVipState(ActivitySearch.this);
 
+        isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
+
+        if (!isVip) {
+//        google admob
+            MobileAds.initialize(this, getString(R.string.admob_uni_id));
+
+            //add admob in listView
+            LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+            NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
+            if (!isNetworkConnected) {
+                nativeExpressAdView.setVisibility(View.GONE);
+            } else {
+                nativeExpressAdView.loadAd(new AdRequest.Builder().build());
+            }
+            listView.addFooterView(tipEndViw);
+        }
 //        adRequest = new AdRequest.Builder()
 ////                .addTestDevice(getString(R.string.my_test_device_id))
 //                .build();
-        isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
 
         Intent intent = getIntent();
         search = intent.getStringArrayExtra(EXTRA_ARRAY_LIST);
@@ -106,15 +121,6 @@ public class ActivitySearch extends AppCompatActivity {
         imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         listView = (ListView) findViewById(R.id.listView);
 
-        //add admob in listView
-        LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
-        NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
-        if (!isNetworkConnected){
-            nativeExpressAdView.setVisibility(View.GONE);
-        }else {
-            nativeExpressAdView.loadAd(new AdRequest.Builder().build());
-        }
-        listView.addFooterView(tipEndViw);
 
         LinearLayout emptyView;
         emptyView = (LinearLayout) findViewById(R.id.emptyView);
@@ -439,6 +445,9 @@ public class ActivitySearch extends AppCompatActivity {
             }
 
 
+//            if(!isVip){
+//                holder.mAdView.setVisibility(View.GONE);
+//            }
             holder.textViewName.setText(block.getName());
 //            TextView textViewBuilding = (TextView) findViewById(R.id.textViewBuilding);
 
@@ -527,7 +536,7 @@ public class ActivitySearch extends AppCompatActivity {
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
 //                holder.imageViewHideMore.setVisibility(View.VISIBLE);
 
-                if(isNetworkConnected){
+                if(!isVip && isNetworkConnected){
                     holder.mAdView.setVisibility(View.VISIBLE);
                     holder.mAdView.loadAd(new AdRequest.Builder().build());
                 }
