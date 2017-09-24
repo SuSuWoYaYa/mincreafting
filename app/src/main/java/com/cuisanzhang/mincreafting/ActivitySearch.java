@@ -89,6 +89,22 @@ public class ActivitySearch extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
 
+//        adRequest = new AdRequest.Builder()
+////                .addTestDevice(getString(R.string.my_test_device_id))
+//                .build();
+
+        Intent intent = getIntent();
+        search = intent.getStringArrayExtra(EXTRA_ARRAY_LIST);
+
+
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
+        imageViewCleanText = (ImageView) findViewById(R.id.imageViewToolbar_cleanText);
+        imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
+        listView = (ListView) findViewById(R.id.listView);
+
+
+
         isVip = Utils.ChangeTheme.getVipState(ActivitySearch.this);
 
         isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
@@ -107,19 +123,6 @@ public class ActivitySearch extends AppCompatActivity {
             }
             listView.addFooterView(tipEndViw);
         }
-//        adRequest = new AdRequest.Builder()
-////                .addTestDevice(getString(R.string.my_test_device_id))
-//                .build();
-
-        Intent intent = getIntent();
-        search = intent.getStringArrayExtra(EXTRA_ARRAY_LIST);
-
-
-        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
-        imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
-        imageViewCleanText = (ImageView) findViewById(R.id.imageViewToolbar_cleanText);
-        imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
-        listView = (ListView) findViewById(R.id.listView);
 
 
         LinearLayout emptyView;
@@ -127,6 +130,7 @@ public class ActivitySearch extends AppCompatActivity {
         listView.setEmptyView(emptyView);
 //        listView.setDivider();
 //        listView.setDividerHeight(2);
+
 
 
         textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);

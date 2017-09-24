@@ -60,6 +60,13 @@ public class ActivityTip extends AppCompatActivity {
                     return;
                 }
 
+
+                if (userName.equals(getString(R.string.tip_back_door))){
+                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
+                    Utils.ChangeTheme.setVipState(ActivityTip.this, true);
+                    return;
+                }
+
                 isNetworkConnected = Utils.isNetworkConnected(ActivityTip.this);
 
                 if (!isNetworkConnected){

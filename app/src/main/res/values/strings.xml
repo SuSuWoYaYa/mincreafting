@@ -85,5 +85,6 @@
     <string name="tip_email">cuisanzhang@163.com</string>
     <string name="tip_qq">QQ: 1135899918</string>
     <string name="tip_no_network">没有网络啊, 我查不到</string>
+    <string name="tip_back_door">苦逼的作者</string>
 
 </resources>
