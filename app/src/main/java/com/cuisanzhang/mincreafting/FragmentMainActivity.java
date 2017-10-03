@@ -98,8 +98,8 @@ public class FragmentMainActivity extends AppCompatActivity {
 
         //设置选中和缓存
         int pageCount = pagerAdapter.getPageCount();
-        viewPager.setOffscreenPageLimit(pageCount);
-        viewPager.setCurrentItem(0);
+//        viewPager.setOffscreenPageLimit(2);
+        viewPager.setCurrentItem(1);
 
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);

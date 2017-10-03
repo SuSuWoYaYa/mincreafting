@@ -67,21 +67,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/tip_dashang1"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/tip_dashang2"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:text="@string/tip_dashang2"/>-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/tip_email"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/tip_qq"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:text="@string/tip_qq"/>-->
 
     <Button
         android:id="@+id/btnCheckVip"
@@ -89,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_gravity="center"
+        android:background="@drawable/cling_button_normal"
         android:text="@string/check_vip" />
 
 </LinearLayout>

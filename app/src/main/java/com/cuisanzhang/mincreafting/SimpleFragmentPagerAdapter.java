@@ -4,6 +4,7 @@ package com.cuisanzhang.mincreafting;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.widget.Toast;
 
 /**
  * Created by hesuxiang on 17/8/12.
@@ -16,7 +17,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private int pageCount = 0;
     private String tabTitles[] = new String[]{
-//            "物品",
+            "基础教程",
 
             "合成表大全",
             "生物.物品.方块",
@@ -32,14 +33,22 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public android.support.v4.app.Fragment getItem(int position) {
+//        Toast.makeText(context, "getItem" +
+//                " position =" + position, Toast.LENGTH_SHORT).show();
         switch (position){
+            case 0:
+                return  FragmentTutorial.newInstance(0);
             case 1:
+                return  FragmentCreating.newInstance(0);
+            case 2:
                 return  FragmentMobsAndItemAndBlocks.newInstance(0);
 
-
             default:
+//                Toast.makeText(context, "Error position=" + position, Toast.LENGTH_SHORT).show();
                 break;
         }
+
+//        Toast.makeText(context, "Unknow Error position=" + position, Toast.LENGTH_SHORT).show();
         return  FragmentCreating.newInstance(0);
     }
 

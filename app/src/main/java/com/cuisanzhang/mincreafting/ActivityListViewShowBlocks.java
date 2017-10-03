@@ -218,13 +218,15 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                         .findViewById(R.id.textViewShowBlockDetail);
 //                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
                 holder.checkBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
-                convertView.setTag(holder);
+
 
                 holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
 
 
 //                holder.textViewName.setBackgroundColor(getResources().getColor(R.color.colorPrimary_brown);
                 holder.textViewName.setBackgroundColor(selectColor);
+
+                convertView.setTag(holder);
 
             } else {
 

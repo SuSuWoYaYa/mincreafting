@@ -1,5 +1,6 @@
 package com.cuisanzhang.mincreafting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,9 +15,11 @@ import android.widget.ImageView;
 
 public class ActivityTutorial extends AppCompatActivity {
 
+    public static String EXTRA_URI = "file_name";
     WebView mWebview;
     WebSettings mWebSettings;
-    private String uri = "file:///android_asset/html/day1.html";
+    private String uri = "http://10minute.cn/2017/09/30/%E3%80%8A%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%E3%80%8B%E6%A2%AF%E7%94%B0%E5%BD%A2%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%94%B6%E5%89%B2%E6%9C%BA%E5%88%B6%E4%BD%9C%E5%9B%BE%E8%A7%A3/";
+//    private String uri = "file:///android_asset/html/banzhidongkekedoushougeji.html";
 
 //打开本包内asset目录下的index.html文件
 //wView.loadUrl(" file:///android_asset/index.html ");
@@ -36,6 +39,9 @@ public class ActivityTutorial extends AppCompatActivity {
         setContentView(R.layout.layout_webview_tutorial);
 
         initActionBar();
+
+        Intent intent = getIntent();
+        uri = intent.getStringExtra(EXTRA_URI);
 
         mWebview = (WebView) findViewById(R.id.webView);
         mWebSettings = mWebview.getSettings();
