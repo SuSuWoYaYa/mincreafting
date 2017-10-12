@@ -13,7 +13,6 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -30,10 +29,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -76,8 +73,8 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
     //for change Theme
-    private int mainBackgroup = Utils.ChangeTheme.THEME_DEEPGRAY;
-    private int titleBackgroup = Utils.ChangeTheme.THEME_DEEPGRAY;
+    private int mainBackgroup = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
+    private int titleBackgroup = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
     private int theme = 0;
     private int selectColor = 0;
     private TextView textViewSelectColor = null;
@@ -87,7 +84,7 @@ public class FragmentMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
 
         super.onCreate(savedInstanceState);
@@ -165,7 +162,7 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
         });
-        textUserName.setText(Utils.ChangeTheme.getUserName(FragmentMainActivity.this));
+        textUserName.setText(SettingUtils.ChangeTheme.getUserName(FragmentMainActivity.this));
 
 
         int db_version = preferences.getInt(DB_VERSION, 0);
@@ -265,10 +262,10 @@ public class FragmentMainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (selectColor != 0) {
                     if (changeMainBackgroup) {
-                        Utils.ChangeTheme.setTheme(getApplicationContext(), theme);
+                        SettingUtils.ChangeTheme.setTheme(getApplicationContext(), theme);
                     }
                     if (changeTitleBackgroup) {
-                        Utils.ChangeTheme.setTitleColor(getApplicationContext(), selectColor);
+                        SettingUtils.ChangeTheme.setTitleColor(getApplicationContext(), selectColor);
                     }
                 }
 
@@ -310,67 +307,67 @@ public class FragmentMainActivity extends AppCompatActivity {
                 switch (v.getId()) {
 
                     case R.id.layoutPopChangeToGreen:
-                        theme = Utils.ChangeTheme.THEME_GREEN;
+                        theme = SettingUtils.ChangeTheme.THEME_GREEN;
                         selectColor = R.color.colorPrimary_green;
                         break;
                     case R.id.layoutPopChangeToDrakGreen:
-                        theme = Utils.ChangeTheme.THEME_DRAKGREEN;
+                        theme = SettingUtils.ChangeTheme.THEME_DRAKGREEN;
 
                         selectColor = R.color.colorPrimary_darkgreen;
                         break;
                     case R.id.layoutPopChangeToBlue:
-                        theme = Utils.ChangeTheme.THEME_BLUE;
+                        theme = SettingUtils.ChangeTheme.THEME_BLUE;
 
                         selectColor = R.color.colorPrimary_blue;
                         break;
                     case R.id.layoutPopChangeToDeepBlue:
-                        theme = Utils.ChangeTheme.THEME_DEEP_BLUE;
+                        theme = SettingUtils.ChangeTheme.THEME_DEEP_BLUE;
 
                         selectColor = R.color.colorPrimary_deep_blue;
                         break;
                     case R.id.layoutPopChangeToBlown:
-                        theme = Utils.ChangeTheme.THEME_BROWN;
+                        theme = SettingUtils.ChangeTheme.THEME_BROWN;
 
                         selectColor = R.color.colorPrimary_brown;
                         break;
                     case R.id.layoutPopChangeToSaddleBrown:
-                        theme = Utils.ChangeTheme.THEME_SADDLEBROWN;
+                        theme = SettingUtils.ChangeTheme.THEME_SADDLEBROWN;
 
                         selectColor = R.color.colorPrimary_saddlebrown;
                         break;
                     case R.id.layoutPopChangeToHotPink:
-                        theme = Utils.ChangeTheme.THEME_HOTPINK;
+                        theme = SettingUtils.ChangeTheme.THEME_HOTPINK;
 
                         selectColor = R.color.colorPrimary_hotpink;
                         break;
                     case R.id.layoutPopChangeToPink:
-                        theme = Utils.ChangeTheme.THEME_PINK;
+                        theme = SettingUtils.ChangeTheme.THEME_PINK;
 
                         selectColor = R.color.colorPrimary_pink;
                         break;
 
                     case R.id.layoutPopChangeToDeepGray:
-                        theme = Utils.ChangeTheme.THEME_DEEPGRAY;
+                        theme = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
 
                         selectColor = R.color.colorPrimary_deep_gray;
                         break;
                     case R.id.layoutPopChangeToGray:
-                        theme = Utils.ChangeTheme.THEME_GRAY;
+                        theme = SettingUtils.ChangeTheme.THEME_GRAY;
 
                         selectColor = R.color.colorPrimary_gray;
                         break;
                     case R.id.layoutPopChangeToLightGray:
-                        theme = Utils.ChangeTheme.THEME_LIGHTGRAY;
+                        theme = SettingUtils.ChangeTheme.THEME_LIGHTGRAY;
 
                         selectColor = R.color.colorPrimary_light_gray;
                         break;
                     case R.id.layoutPopChangeToOrangeRed:
-                        theme = Utils.ChangeTheme.THEME_ORANGE_RED;
+                        theme = SettingUtils.ChangeTheme.THEME_ORANGE_RED;
 
                         selectColor = R.color.colorPrimary_orange_red;
                         break;
                     case R.id.layoutPopChangeToOrange:
-                        theme = Utils.ChangeTheme.THEME_ORANGE;
+                        theme = SettingUtils.ChangeTheme.THEME_ORANGE;
 
                         selectColor = R.color.colorPrimary_orange;
                         break;
@@ -381,20 +378,20 @@ public class FragmentMainActivity extends AppCompatActivity {
 //                        theme = Utils.ChangeTheme.THEME_YELLOW;
 //                        break;
                     case R.id.layoutPopChangeToBluePurple:
-                        theme = Utils.ChangeTheme.THEME_BLUE_PURPLE;
+                        theme = SettingUtils.ChangeTheme.THEME_BLUE_PURPLE;
 
                         selectColor = R.color.colorPrimary_blue_purple;
                         break;
                     case R.id.layoutPopChangeToPurple:
-                        theme = Utils.ChangeTheme.THEME_PURPLE;
+                        theme = SettingUtils.ChangeTheme.THEME_PURPLE;
                         selectColor = R.color.colorPrimary_purple;
                         break;
                     case R.id.layoutPopChangeToRed:
-                        theme = Utils.ChangeTheme.THEME_RED;
+                        theme = SettingUtils.ChangeTheme.THEME_RED;
                         selectColor = R.color.colorPrimary_red;
                         break;
                     default:
-                        theme = Utils.ChangeTheme.THEME_DEEPGRAY;
+                        theme = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
                         selectColor = R.color.colorPrimary_deep_gray;
                 }
                 textViewSelectColor.setBackgroundColor(ContextCompat.getColor(FragmentMainActivity.this, selectColor));
@@ -459,7 +456,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 userName = editText_settingName.getText().toString();
-                Utils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
+                SettingUtils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
                 textUserName.setText(userName);
             }
         });

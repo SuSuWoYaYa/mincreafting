@@ -1,6 +1,5 @@
 package com.cuisanzhang.mincreafting;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +19,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.util.Util;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -64,8 +60,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
-        int color = Utils.ChangeTheme.getTitleColor(getApplicationContext());
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
+        int color = SettingUtils.ChangeTheme.getTitleColor(getApplicationContext());
         setTheme(theme);
         selectColor = ContextCompat.getColor(ActivityListViewShowBlocks.this, color);
 
@@ -111,9 +107,9 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listView1);
 
-        isVip = Utils.ChangeTheme.getVipState(ActivityListViewShowBlocks.this);
+        isVip = SettingUtils.ChangeTheme.getVipState(ActivityListViewShowBlocks.this);
 
-        isNetworkConnected = Utils.isNetworkConnected(ActivityListViewShowBlocks.this);
+        isNetworkConnected = SettingUtils.isNetworkConnected(ActivityListViewShowBlocks.this);
 
         if (!isVip) {
 //        google admob
@@ -263,7 +259,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                     public void onClick(View v) {
                         String str = Material.get(pos);
 
-                        str = Utils.filterString(str);
+                        str = SettingUtils.filterString(str);
 
                         String[] searchNames = str.split("\\s+");
 //

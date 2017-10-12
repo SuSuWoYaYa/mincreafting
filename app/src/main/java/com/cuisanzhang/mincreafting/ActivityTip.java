@@ -9,16 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.util.Util;
-
 import java.io.IOException;
-import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class ActivityTip extends AppCompatActivity {
 
@@ -36,7 +29,7 @@ public class ActivityTip extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
 //        int color = Utils.ChangeTheme.getTitleColor(getApplicationContext());
         setTheme(theme);
 
@@ -44,8 +37,8 @@ public class ActivityTip extends AppCompatActivity {
         setContentView(R.layout.activity_tip);
         initActionBar();
 
-        userName = Utils.ChangeTheme.getUserName(ActivityTip.this);
-        isVip = Utils.ChangeTheme.getVipState(ActivityTip.this);
+        userName = SettingUtils.ChangeTheme.getUserName(ActivityTip.this);
+        isVip = SettingUtils.ChangeTheme.getVipState(ActivityTip.this);
 
 
         btnCheckVip = (Button) findViewById(R.id.btnCheckVip);
@@ -63,11 +56,11 @@ public class ActivityTip extends AppCompatActivity {
 
                 if (userName.equals(getString(R.string.tip_back_door))){
                     Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
-                    Utils.ChangeTheme.setVipState(ActivityTip.this, true);
+                    SettingUtils.ChangeTheme.setVipState(ActivityTip.this, true);
                     return;
                 }
 
-                isNetworkConnected = Utils.isNetworkConnected(ActivityTip.this);
+                isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTip.this);
 
                 if (!isNetworkConnected){
                     Toast.makeText(ActivityTip.this, R.string.tip_no_network, Toast.LENGTH_SHORT).show();
@@ -150,7 +143,7 @@ public class ActivityTip extends AppCompatActivity {
 //                    result = (String) msg.obj;
                     Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
 
-                    Utils.ChangeTheme.setVipState(ActivityTip.this, true);
+                    SettingUtils.ChangeTheme.setVipState(ActivityTip.this, true);
                     break;
                 default:
                     Toast.makeText(ActivityTip.this, R.string.tip_check_vip_error, Toast.LENGTH_SHORT).show();

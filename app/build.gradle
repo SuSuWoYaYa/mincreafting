@@ -33,10 +33,11 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
-//    compile 'com.google.android.gms:play-services-ads:11.2.0'
-//    compile 'com.android.support:appcompat-v7:26.1.0'
+    //    compile 'com.google.android.gms:play-services-ads:11.2.0'
+    //    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.google.firebase:firebase-ads:11.4.0'
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    compile files('libs/zip4j_1.3.2.jar')
 }
 
 //dependencies {
@@ -73,6 +74,11 @@ dependencies {
 //    annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
 //
 //}
+
+//okhttputils
+dependencies {
+    compile 'com.zhy:okhttputils:2.6.2'
+}
 
 repositories {
     jcenter()

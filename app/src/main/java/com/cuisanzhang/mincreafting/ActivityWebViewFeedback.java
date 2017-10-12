@@ -1,11 +1,8 @@
 package com.cuisanzhang.mincreafting;
 
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -15,7 +12,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by hesuxiang on 17/3/20.
@@ -30,7 +26,7 @@ public class ActivityWebViewFeedback extends  AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_webview_feedback);

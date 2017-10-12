@@ -3,12 +3,10 @@ package com.cuisanzhang.mincreafting;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -80,8 +77,8 @@ public class ActivitySearch extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
-        int color = Utils.ChangeTheme.getTitleColor(getApplicationContext());
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
+        int color = SettingUtils.ChangeTheme.getTitleColor(getApplicationContext());
         setTheme(theme);
         selectColor = ContextCompat.getColor(ActivitySearch.this,color);
 
@@ -105,9 +102,9 @@ public class ActivitySearch extends AppCompatActivity {
 
 
 
-        isVip = Utils.ChangeTheme.getVipState(ActivitySearch.this);
+        isVip = SettingUtils.ChangeTheme.getVipState(ActivitySearch.this);
 
-        isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
+        isNetworkConnected = SettingUtils.isNetworkConnected(ActivitySearch.this);
 
         if (!isVip) {
 //        google admob
@@ -474,7 +471,7 @@ public class ActivitySearch extends AppCompatActivity {
                 public void onClick(View v) {
                     String str = Material.get(pos);
 
-                    str = Utils.filterString(str);
+                    str = SettingUtils.filterString(str);
 
                     String[] searchNames = str.split("\\s+");
 //                    searchString(searchNames);
