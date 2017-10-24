@@ -8,6 +8,7 @@ public class TutorialList {
 
     public static String[] TuorialName = {
 
+            "我的世界命令教程(国服手机端)",
             "基本操作与合成玩法",
             "挖矿教程",
             "食物与生命值",
@@ -46,6 +47,7 @@ public class TutorialList {
 
     public static String[] TuorialFile = {
 
+            "file:///android_asset/html/costem1.html",
             "file:///android_asset/html/jiaochen1.html",
             "file:///android_asset/html/jiaochen2.html",
             "file:///android_asset/html/jiaochen3.html",

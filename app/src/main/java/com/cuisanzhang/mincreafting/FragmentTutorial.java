@@ -46,7 +46,7 @@ public class FragmentTutorial extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
     private List<Map<String, String>> data;
-    private boolean hasTutorial = false;
+    private boolean hasTutorial = true;
     private static String TAG = "FragmentTutorial";
     private ProgressBar mProgressBar;
     private Button mbtnStart;
