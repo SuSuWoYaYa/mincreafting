@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[命令方块]一键命令方块基础：浓缩与拼接的宏</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">[命令方块]一键命令方块基础：浓缩与拼接的宏</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        <p>　　一键命令方块是指只用一串命令就能生成命令方块组(一串的命令方块连在一起) ，通常这些命令方块开启后都会有一系列神奇的效果，比如说平地建起一座城堡。那么想要学习一键命令方块，首先需要有命令方块基础，下面就为大家介绍一下制作一键命令方块需要用到的一些指令。</p>
+<p>　　正式教程（需1.11版本以上）</p>
+<p>　　一、首先，我们介绍一下 ”summon ”指令。运用这个指令将可以生成Minecraft中任何的 实体。在这些实体中，有一种叫做 ”falling_block ”的万能实体。它可以变成任何方块的材质，当它接触到地上时，它将变成显示材质的方块。</p>
+<p>　　下面这就是”summon ”指令的格式：</p>
+<p>　<strong>　/summon falling_block ~ ~1 ~ {Time:1,Block:sand,Data:2}</strong></p>
+<p>　　这条命令将会生成一个掉落的沙子方块在执行这条命令的生物（命令方块）的上面一格（因为在填坐标的位置放了 ” ~ ”,浪号的意思是玩家的x,y,z,的坐标，放在哪，便是哪的坐标，浪号后方加任何数字就是玩家x,y,z,加n，若是加上减号和数字便相反）</p>
+<p>　　关于NBT(NBT主要指实体、方块、物品的属性)：Time，并没有特指什么，但是如果不填Time，掉落的沙子就不会生成，所以默认填1。Block就是字面上的意思：方块。当你在后边填上任何的方块id，就会变成任何方块。如果不填，就默认是普通沙子。Data就是方块的种类，如树苗的Data为0表示橡树树苗，2就表示白桦树树苗。</p>
+<p>　　下面就为大家展示一下这条指令的效果。</p>
+<p ><img src="mc163/20171025_59f06b02e1449.jpg" alt="[命令方块]一键命令方块基础：浓缩与拼接的宏" /></p>
+<p ><img src="mc163/20171025_59f06b0307a5c.jpg" alt="[命令方块]一键命令方块基础：浓缩与拼接的宏" /></p>
+<p>　　可以看到，成功地生成了一个掉落中的沙子！</p>
+<p>　　二、命令方块不同类型的id：command_block,repeating_command_block,</p>
+<p>　　chain_command_block。从左到右依次是：脉冲型命令方块（红石控制），循环型命令方块（红石控制），连锁型命令方块（保持开启）。</p>
+<p>　　三、接着我们需要再了解一个NBT：TileEntityData。这个NBT后面要输入{<strong>Command：你的指令</strong>},据我所知，它唯一的作用就是设置生成的掉落沙属性命令方块内的指令。如：</p>
+<p>　　<strong>/summon falling_block ~ ~1 ~ {Time:1,Block:command_block,Data:2,TileEntityData:{Command:/say 233}}</strong></p>
+<p>　　这一指令将会生成一个命令方块，里面的命令将是/say 233的。</p>
+<p ><img src="mc163/20171025_59f06b0325b3c.jpg" alt="[命令方块]一键命令方块基础：浓缩与拼接的宏" /></p>
+<p ><img src="mc163/20171025_59f06b0342eab.jpg" alt="[命令方块]一键命令方块基础：浓缩与拼接的宏" /></p>
+<p>　　如此一来，就为后面打下了很好的基础啦~</p>
+<p>　　四、接着我们再来介绍一个NBT：Passengers。它的格式是:<strong>Passengers:[{id:”生物id”},NBT]</strong>。那么大家可能猜到了，它就是骑乘NBT。比如说想要生成很多的蝙蝠叠罗汉，可以用这个指令：</p>
+<p>　　<strong>/summon bat ~ ~ ~ {Passengers:[{id:&#8221;bat&#8221;,Passengers:[{id:&#8221;bat&#8221;,Passengers:[{id:&#8221;bat&#8221;}]}]}]}</strong></p>
+<p>　　这个可以生成四个叠在一起的蝙蝠。它们的控制主要是看最底下的蝙蝠。当然这个NBT是可以运用于几乎所有生物。我们先来看一下效果：</p>
+<p ><img src="mc163/20171025_59f06b0360445.jpg" alt="[命令方块]一键命令方块基础：浓缩与拼接的宏" /></p>
+<p>　　以上这些指令是一键命令方块的基础，也是常常用到的，我们可以结合这些指令来做一个简单的一键命令方块：</p>
+<p>　　<strong>/summon falling_block ~ ~1 ~ {Time:1,Block:command_block,Data:2,TileEntityData:{Command:/summon sheep ~ ~ ~ {Passengers:[{id:&#8221;creeper&#8221;}]}}}</strong></p>
+<p>　　比如说这个指令的效果就是召唤一个命令方块，这个命令方块激活后能生成一个骑着羊的爬行者，下面看一下效果：</p>
+<p ><img src="mc163/20171025_59f06b0378cd6.jpg" alt="[命令方块]一键命令方块基础：浓缩与拼接的宏" /></p>
+<p>　　当然这只是一个比较简单的例子，一键命令方块的神奇之处远不止这些，只要运用得好，就能够发挥无限的潜力~</p>
+          </div>
+        </article>
+        <!-- End Article -->
+
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
