@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+  </head>
+
+<body>
+    <h1  >
+        命令方块</h1>
+
+    <div style="padding: 1em; font-size: 10pt; width: auto; background-color: #FFFFCC; height: auto;">
+      此WIKI页面的（部分）内容需要被翻译。
+      <br/><br/>你可以帮助我们来翻译此页面
+    </div>
+    <div  >
+      命令方块是一种帮助和支持冒险模式、SMP的自动化和自定义地图。如果你想了解更多细节，请参见命令方块页。如果你不知道在某些命令中如何设置x,y,z的值最好先看看坐标。
+      <br/><br/></div>
+
+
+
+    <h2 >一般的应用</h2>
+    <div  >
+      命令方块可以使用在许多事情，改变难度，改变天气的状态，或者给你预先指定的物品。他们在这些领域特别有用：/weather 和 /time set x 命令。他们只能在作弊模式之外。 /time set x 命令很有用，它允许你改变当前预定时间再按下一个开关。
+      <br/><br/> 命令方块也可以被用来使文本出现在人的聊天菜单。命令是 tell @p &lt;message &gt;, 或者 tell &lt;username &gt; &lt;message &gt;.如果加上@p在tell的后面，那么只有最近的玩家会看到信息. 而如果制定了一个username，那么对应的玩家会看到信息. 你也可以输入: /tell &lt;your username&gt; @p ，当有人走过时，它会跟你说："@ whispers to you: &lt;username&gt;.
+      <br/><br/> 你可以用已下命令去改变难度 /difficulty x 0=和平，1=简单，2=普通，3=困难，或者在后面直接打上难度的名字。（例如：/difficulty peaceful）
+      <br/><br/> 另外一种使用命令方块的方法是使用代码/tp @p &lt;目的地坐标&gt;在两个不同的基地之间传送。
+      <br/><br/>
+    </div>
+
+
+
+    <h2 >给予一个随机玩家一个物品并告诉所有人</h2>
+    <div  >
+      <img src="img/minglingfangkuai1.png" style="width: auto; height: auto;"></img>
+      <br/>曲奇给予器 5000X
+      <br/><br/> 这个装置会给予一个随机玩家五个曲奇，然后告诉所有人。
+      <br/><br/> 首先创建一个记分板(名字任意，注意除非在你测试时，不要显示它)，比如说“cookie”（曲奇）
+      <br/><br/> /scoreboard objectives add cookie dummy cookie
+      <br/><br/> 第一个命令方块的命令：
+      <br/><br/> /scoreboard players set @r cookie 1
+      <br/><br/> 第二个和第三个命令（两者可颠倒，但要同时被激活）
+      <br/><br/> /say @a[score_cookie_min=1] has been given 5 cookies.
+      <br/><br/> /give @a[score_cookie_min=1] minecraft:cookie 5
+      <br/><br/> 第四个命令方块的命令
+      <br/><br/> /scoreboard players set @a[score_cookie_min=1] cookie 0
+      <br/><br/> "I" 代表输入红石信号端。（建议可使用循环红石电路）
+      <br/><br/>
+    </div>
+
+
+
+    <h2 >传送</h2>
+    <div  >
+      你可以通过使用/tp x y z来传送。其中y表示上下方向的移动，x和z表示前后和左右方向的移动，玩家可以通过这个命令传送到（x y z）这一个坐标的位置。
+      <br/><br/> 如果要以目前站的位置为标准进行传送的话就只要在x y z前面加上一个~即可，例如/tp ~x ~y ~z。如果当玩家位于(x y z)坐标为(-36 96 -12)的时候输入/tp @p ~3 ~4 ~5,这时他会被传送到(-33 100 -7)这个坐标，和玩家输入/tp @p -34 100 -8是一个效果。
+      <br/><br/>
+    </div>
+
+
+
+    <h2 >玩家安全系统</h2>
+    <div  >
+      命令方块同时也可以用来制作安全系统。 只要在你房子入口的铁门前放置一个压力板，输入命令：/tp @p[r=&lt;radius&gt;,name=!&lt;yourname&gt;] &lt;x &gt; &lt;y &gt; &lt;z &gt;。
+      <br/><br/> 对于怪物，简单的栅栏或熔岩护城河就能达到目的。
+      <br/><br/>
+    </div>
+
+
+
+    <h2 >Moving Sidewalk</h2>
+    <div  >
+      A similar concept to the elevator but made to move a player along the x or z coordinates. This can be created by:
+
+      <ul>
+        <li> Use the /fill command with your coordinates. (/fill x y z x2 y2 z2)</li>
+        <li>For the block you fill it with, use this:<br/>
+          <div style="padding: 1em; font-size: 10pt; width: auto; background-color: #ffffff; height: auto;">
+            command_block 1 replace {Command:/tp @p ~-1 ~ ~}
+            <br/><br/></div>
+
+        </li>
+
+        <li>Edit the coordinates inside the brackets to change the direction you will move</li>
+        <li>Place pressure plates on top of all the command blocks.</li>
+        <li>Step on it</li>
+      </ul>
+
+      You might want to turn command block output off....the chat will explode in your face.
+
+      <br/><br/>
+    </div>
+
+
+
+    <h2 >Eternal Day</h2>
+    <div  >
+      <img src="img/minglingfangkuai2.png" style="width: auto; height: auto;"></img>
+      <br/><br/><br/> Note: As of 13w24a, there is a gamerule, doDaylightCycle, which can be used to obtain eternal day by typing in the chat, /gamerule doDaylightCycle false, and then /time set 6000.
+      <br/><br/> By using Cobweb and a minecart, you can skip nights using /time set 0. A minecart takes 31 seconds to fall through a cobweb. Therefore, by using 23 stacked cobweb with a Detector Rail and several Powered Rail will keep the sun in the
+      sky.
+      <br/><br/> Alternatively you can use an item de-spawning on a wooden pressure pad. The item de-spawns off of the pad every 5 mins, at this time it triggers a command block reset of the time to 0, also it triggers a dispenser (or dropper) to drop
+      a new item on the wooden pad. 5 Mins is the day cycle and will trigger before mobs spawn. This method however is limited to 64x9 = 576 cycles = 48 IRL hours of gameplay with that chunk loaded. In the snapshot 13w01a and higher, hoppers are added
+      into the game that can pick up items and deposit them into blocks with an inventory. A mob grinder can keep the dispenser full with gunpowder, arrows, and zombie flesh. Another technique is to simply use a command block to create the item out of
+      thin air (e.g.: /summon Item ~1 ~0 ~1 {Item:brown_mushroom}). The advantage to this is that it has no 64x9 item limit like using dispensers does.
+      <br/><br/> Both of these methods require the chunk to be loaded to allow the system to work.
+      <br/><br/> Alternatively, you could connect the command block to a repeating redstone pulse, such as a five-clock, some type of loop, or a daylight sensor as seen on the right. To prevent this filling up the chat box, set the gamerule "commandBlockOutput"
+      to false using the command /gamerule commandBlockOutput false. Note: This method can be used to set a variety of things by using a different command. (I.E. to have eternal sun, add another command block to the loop and use the command /weather clear)
+      <br/><br/> Also, to make it toggle-able, use one of these designs, but put an AND Gate before the command block, with a lever on one side, and the mechanism on the other side.
+      <br/><br/> Using a daylight sensor is a more direct approach for eternal day.
+      <br/><br/><img src="img/minglingfangkuai3.png" style="width: auto; height: auto;"></img>
+      <br/><br/><br/>
+      <img src="img/minglingfangkuai4.png" style="width: auto; height: auto;"></img>
+      <br/><br/><br/> The sensor deactivates the Redstone torch which will activate the Command Block which will set the time to 8000 when there's not enough light for the sensor to power the Redstone torch across the far distance. In other words, the
+      Command Block will set the time to Noon when it's dark enough. The light level when the command will be activated varies with the distance of the Redstone wire. The time it sets to varies with the time typed in the Command Block.
+      <br/><br/>
+      <img src="img/minglingfangkuai5.png" style="width: auto; height: auto;"></img>
+      <br/>
+      <br/><br/> To make it, first, you place the Daylight Sensor on an open area. Then you place some Redstone wire away from it. The distance of the Redstone wire depends on your need of precious time. You can only have a max of 15 blocks worth of Redstone
+      wire away from the daylight sensor to send the signal to its destination. Next, you put a block on the other end of the Redstone. Put a Redstone Torch on the block's side and a Command Block on top of the torch. Right click the command block and
+      start with "/time set" and enter a valid time value and the end. The value depends on when you want to set the time to. 14000 is night and 8000 is noon.
+      <br/><br/><img src="img/minglingfangkuai6.png" style="width: auto; height: auto;"></img>
+      <br/><br/> This design can be used in maps to keep it a certain time of day/night. This simple contraption can only be used in Creative mode or when you enable Cheats.
+      <br/><br/> There is an alternative, more compact design. If you put a comparator facing away from the sunlight detector and a 15 strength redstone line (one redstone with a torch) into the second input. Then set the comparator to subtraction mode.
+      The comparator will activate right after noon.
+
+      <br/><br/><b style="font-size: 18px;">Easy set day/night</b><br/> Place a Daylight Sensor atop a Command Block then right-click on it to set it to a night sensor. Add "/time set day" to the Command Block. Or if you want it to always be night, add
+      a Daylight Sensor and don't right-click it, then add "/time set night" to the Command Block.
+      <br/><br/>
+    </div>
+
+
+
+    <h2 >Wireless redstone</h2>
+    <div  >
+      Wireless Redstone can be achieved using command blocks and the scoreboard system. The process involves using a scoreboard variable that is searched for by a command block attached to the output of a clock circuit. A comparator is then used on the wireless
+      output command block that will trigger when the variable is found true.
+      <br/><br/> Wireless Redstone can also be achieved by using objectives instead of variables. If the output command block is set to try and remove a non-existent objective, a redstone signal can be created by adding said objective via command block
+      or chat command. The advantage to this method over the variable method is that it is not dependent on players.
+      <br/><br/> To do this, place a command block at the input and type the command: /scoreboard objectives add
+      <objective name> dummy. At the output location, place a command block, type /scoreboard objectives remove
+        <objective name>, hook it up to a clock, and put a comparator then a repeater leading out of the command block. Then just use the repeater as an output.
+
+          <br/><br/><img src="img/minglingfangkuai7.png" style="width: auto; height: auto;"></img>
+          <br/>Off state.
+          <br/><br/><img src="img/minglingfangkuai8.png" style="width: auto; height: auto;"></img>
+          <br/>On state
+          <br/><br/><img src="img/minglingfangkuai9.png" style="width: auto; height: auto;"></img>
+          <br/>On state command.
+          <br/><br/><img src="img/minglingfangkuai10.png" style="width: auto; height: auto;"></img>
+          <br/>Off state command.
+          <br/><br/><img src="img/minglingfangkuai11.png" style="width: auto; height: auto;"></img>
+          <br/>Wireless output setup.
+          <br/><br/><img src="img/minglingfangkuai12.png" style="width: auto; height: auto;"></img>
+          <br/>Wireless output command.
+          <br/><br/><img src="img/minglingfangkuai13.png" style="width: auto; height: auto;"></img>
+          <br/>Another way of having wireless redstone using the "/summon" command. The command used here is /summon FallingSand -118 150 -60.5 {TileID:76,Time:1,DropItem:0}
+          <br/><br/> You can also achieve wireless redstone by using the /setblock command instead of the scoreboard system. All you have to do is let the command block set a redstone_block to the destination coordinates - together with an air block (or
+          anything that does not output a signal) being set to the same coordinates from a command block connected to the inverted signal.
+
+          <br/><br/>
+    </div>
+
+
+
+    <h2 >Wireless Button</h2>
+    <div  >
+      This can be done with any block, technically, but buttons, levers, and other interchangeable blocks add an interesting effect. It's surprisingly simple, despite the mysteriousness on servers. It uses the 1.8 command testforblock. The setup is simply a
+      command block, a comparator to translate the command into a redstone signal, a block to be tested for, and a clock to repeatedly activate the command block. Here's the example for a button:/testforblock 123 12 123 stone_button 10. You use the coordinates
+      and name for the specific block you want to test for, in this case a stone button located at 123 12 123. This can be interchangeable for any block that changes data value. The number 10 after the coordinates corresponds the data value of the button
+      that we want the command block to test for. In this case we want the command block to activate when a button facing west is pushed, so we set the value to 10.
+      <br/><br/> Note: this value changes depending on which direction the button/lever is facing. The initial value for a button facing west that is not pressed is 2. When a button is pressed, it adds a value of 8 to the initial state, so a button facing
+      west when pressed would then have a data value of 10. Refer to: Button#Data values & Lever#Data values for the data values.
+      <br/><br/>
+    </div>
+
+
+
+    <h2 >Starter Kits</h2>
+    <div  >
+      By using m=, you can make a kit on a server/custom map that can only be obtained once! First, dig 3 squares down in the ground, then place a row of command blocks (one for each item in the kit). In the GUI, type /give[m=
+      <starting gamemode, in number form>]
+        <item id>
+          <amount>. Do this for each item you wish to give. Make an extra command block that has the command /gamemode <a different gamemode than the starting mode>, then string redstone across all of the command blocks (this can be done easily by sneaking and placing). Fill in the hole and place a pressure plate over it. When players walk over it, they will get the desired kit of items and it will change their gamemode so they cannot receive it anymore (unless cheats are used) (Note: This method can also be done by using the method above only using (First name your kit do /scoreboard objectives add <kitName> dummy <kitName>) scoreboard commands! /give @p[score_<kitName>=0] <item id> <amount> for the row of command blocks giving you the items and /scoreboard players add @p <kitName> <any number greater than 0> to make it a one time use. Also you can make more than one kit if you repeat the steps and use a different <kitName>).
+
+
+<br/><br/>
+</div>
+
+
+
+<h2 >As a replacement for pressure plates</h2>
+<div  >
+是不是已经厌烦了压力板只有四种材质可用了呢（石质，橡木质，铁质和金质）？现在你可以不再为这个问题困扰了。你可以使用包含命令/testfor，区域大小的带有时钟电路的命令方块来代替压力板了。命令/testfor @p[r=2]会检测2格内（朝任意方向两个方块加上命令方块本身的区域内）是否有任意玩家。当命令方块在一层地板下面的时候，r＝2刚好是希望达到的效果。记住玩家是在一个球形区域内（而不是方形区域）触发这个命令的，所以r＝2的区域大约是5*5*5，r＝1的区域大约是3*3*3（其实更像是一个＋号上下各加一个方块）。你可以用dx，dy，dz这些参数来编辑命令。你也可以在代码里指定xyz坐标（比如/testfor @p[x=50,y=64,z=46,r=1]），但是注意不能把区域缩小到一个方块。因为在不包含坐标的命令中区域大小代表着命令方块本身加上周围r个方块厚的区域，对于命令方块来说比较合理（如果缩小到只有一个中心方块，那就只有你站在命令方块那个位置时才会触发命令了，所以并不合理）。至少来说一个r＝1的触发区域（即＋号上下各加一个方块）可以被埋在地层下，只露出上表面，前提是你知道玩家不可能在地表下两层的位置行走。如果实现这一效果且不使用xyz坐标则要求命令方块嵌在地表上，可以被玩家看到。
+<br/><br/>
+</div>
+
+
+
+<h2 >Using Command Blocks in Single Player Non-Creative Maps[编辑 | 编辑源代码]
+</h2>
+<div  >
+  By swapping gamemode it is possible to use command blocks in single player outside of creative mode. Simply swap to creative mode with the /gamemode 1 command, set the command block command to whatever you want, then swap back to /gamemode 0. The command block only needs to be set in creative, but will still function once back in normal.
+  <br/><br/>
+  It can also be used to teleport to certain areas (for ex. a far-away Stronghold, a deep mining operation, or a floating island). If it took you a very long time to get there, and if you don't mind sort-of cheating, then you can set up a teleport system. Make sure that you are on Creative mode while setting it (use the command /gamemode 1. If you don't have cheats enabled, open the LAN and set the cheats on), but you can still activate it in Survival mode. Type this command in when having the Command Block GUI open /tp @p x y z . Then, activate the command block with redstone (including buttons, levers, and pressure plates), and you will be sent to your far-away destination. You can set up multiple different teleports. This can also be used when doing a big project that spans over a very large area or if you are transferring chests to from an old house to a newer house.
+  <br/><br/>
+  </div>
+
+
+
+  <h2 >探险家地图绘制</h2>
+  <div  >
+如果一个人希望创造一个单人玩家的探险家地图，做 /publish命令来让其他的命令（见下方）被使用。
+<br/><br/>
+</div>
+
+
+
+<h2 >在多人中的应用 (SMP)</h2>
+<div  >
+  这个章节详细介绍了命令方块在多人游戏中的应用。
+
+  <br/><br/><b style="font-size: 18px;">传送/运输</b><br/>
+
+
+  通过 /tp命令,可以制作一个所有人都可以使用的传送装置。可以在每个地方都使用。 例如，在整个世界里做一个庞大的传送系统，所有的传送点入口都汇集到传送大厅中，而传送大厅可以进入每个传送点入口处进而达到出口。这样就可以建造一个“快速交通中心”了。
+
+<br/><br/><b style="font-size: 18px;">  "定格动画"</b><br/>
+
+
+  通过使用/tp，或者Minecraft地图编辑器，例如MC地图编辑器可以复制一张图片（利用方块做出来的绘画），然后粘贴到一处遥远的地方，并变动绘画的一些方块，利用一些压力板或者绊线钩,在玩家短时间欣赏绘画后,命令方块做出/tp命令，将玩家传送到下一张绘图点. 如果大量的复制粘贴这样的零件，让玩家按顺序的在这些之间传送并稍稍弄出一点点的延迟，那么玩家就会产生幻觉，认为这个绘画是在运动的（甚至认为是某MOD做出来），这就是利用命令方块来实现定格动画技术。
+<br/><br/>
+  1.7+里可以使用/setblock来直接放置和删除方块，利用/setblock还可以免除传送时不必要的卡顿和一大堆的房间，而1.8+的/fill更是可以极其方便地放置大量的方块。
+
+  <br/><br/><b style="font-size: 18px;">抽奖</b><br/>
+
+
+  用/give @r命令,可以创造一个抽奖。但是记住， /give命令是直接把物品放进他们的背包，而不是放在他们面前。
+
+  <br/><br/><b style="font-size: 18px;">监狱</b><br/>
+
+
+  通过连接高频红石到一个命令方块和用/tp命令,你可以强制玩家留在某个地方。如果你想让这个方法成为可行的，在你的聊天窗内使用命令/gamerule commandBlockOutput false.。使用"Range"（最大范围）和"Minimum Range"（最小范围）两个参数,你可以在玩家离开一定距离后再将他们传送回来。
+
+  <br/><br/><b style="font-size: 18px;">只针对管理员</b><br/>
+
+
+  如果使用参数[m=1]，那么只有创造模式的玩家才会受到这条命令的影响，当然输入m=0既只对生存模式的玩家有效。
+
+  <br/><br/><b style="font-size: 18px;">戏弄创造模式玩家</b><br/>
+
+
+  你可以放置一个命令方块，输入“/tp @p[m=1] <坐标>”或者一些整人命令。当创造模式的玩家激活这个命令方块就会被传送到某个地方或者变成生存模式，好无聊的恶作剧！
+
+  <br/><br/><b style="font-size: 18px;">公告</b><br/>
+
+
+  注：使用AutoMessage等服务端插件就可以达到自动公告的功能
+<br/><br/>
+  通过在命令方块中使用 /me，可以创造一个无人自动广播（需要连接循环红石等不断发出激活信号的红石元件），不需要OP，用1.7+的新命令/tellraw {text:"<信息>"}可以免除开头的[@]并且可以做到悬浮事件和点击事件等。
+
+  <br/><br/><b style="font-size: 18px;">安全扫描</b><br/>
+
+
+  注：大部分服务器管理插件支持封禁危险物品。
+<br/><br/>
+  使用 /clear命令， 你可以清除玩家背包中的某物品。具体步骤是这样的，使用 /clear @a（或者某玩家ID） <清除的物品名>。如果想实现自动清理危险品需要连接循环红石。
+
+  <br/><br/><b style="font-size: 18px;">比赛裁判</b><br/>
+
+
+  使用/say @p，命令方块就能报告最近的玩家。如果命令方块放在终点线后，他会很方便的说出赢家，但是/say会给所有玩家发送信息，为了防止刷屏，建议使用/tell或/tellraw。
+
+  <br/><br/><b style="font-size: 18px;">建立保护区域</b><br/>
+
+
+  注：Residence等服务器领地插件的拓展插件可以实现领地内游戏模式的变化。
+<br/><br/>
+  你可以通过命令方块创造一个“创造/生存模式区域”，但是很繁琐。可以通过用命令方块的范围限制来制作一个“围栏”，通过围栏的玩家会变成生存或创造模式。在命令方块中输入命令 /gamemode 2 @a[x=<区域中心坐标> y=<区域中心坐标> z=<区域中心坐标> r=<最大的玩家搜索半径> rm=<最小的玩家搜索半径>] 这样放置两个搜索区域不重合的命令方块，就可以将规定半径内的玩家改变模式。
+
+  <br/><br/><b style="font-size: 18px;">无插件PVP</b><br/>
+
+
+  使用命令 /gamerule keepInventory true 来关闭玩家死亡后的物品掉落（同样在重生后会保留物品和经验等，所以需要在玩家重生后清空背包） 。使用 /give @p <物品ID>可以给予玩家武器（可以添加NBT标签），你可以设计一套完善的职业系统，玩家选择不同的职业会有不同的装备。使用 /spawnpoint [x y z坐标] 设置玩家重生地点，使用 /tp [x y z坐标]移动地图中的玩家到指定区域。
+
+  <br/><br/><b style="font-size: 18px;">新手工具包</b><br/>
+
+
+  你可以很简单的给新手工具包不用任何插件使用命令方块: "/give @p[r=2] 274". 为了防止有人第二次按下按钮得到他们的工具包，您可以设置按钮激活两个命令方块：: 1. "/give @p[r=2,m=2] 274" 2."/gamemode 0 @p[r=2]"(玩家一开始是冒险模式，获得工具包后调成生存模式，然后再限定工具包仅限冒险模式能拿即可)
+
+  <br/><br/><b style="font-size: 18px;">特殊的彩字</b><br/>
+
+
+  虽然你不能够直接输入彩色/粗体/斜体文本到命令方块中，但是通过McEdit滤器可以编辑那些服务器内的文本。 SethBling's McEdit Filter: ColourCommandBlockText
+<br/><br/>
+  同时/tellraw可以直接利用color等参数来弄出彩色字体
+
+  <br/><br/><b style="font-size: 18px;">警报系统</b><br/>
+
+
+  当玩家走上踏板时，他能触发命令方块 /say @p <警告内容>
+
+<br/><br/><b style="font-size: 18px;">奖励屋</b><br/>
+
+
+  如果某个玩家在服务器有着过人的贡献或者有元老资历，但却不足给他管理，你可以奖励他一组钻石或者一些奇怪的东西.... 创建一个只有通过传送命令才能进入的房间，将有卓越贡献的玩家传送进去，玩家会激活房间中的命令方块从而获得奖励，而后他又会被另一个命令方块传送回原地，如果服务器允许/back的话，连续2次传送到原点，这样/back就无效了。（可以避免玩家二次领取奖励）
+
+  <br/><br/><b style="font-size: 18px;">天气机</b><br/>
+
+
+  使用/toggledownfall和/weather thunder来开始或者结束降雨（雷雨。）合理安排这个命令的权限会十分有用， 你可以顺随自己的意愿开始或停止降雨。这个技术可以用于村民和一些由降水控制的红石机械，不用输入任何命令就可以控制天气（需要管理员激活命令方块自动执行）， 合理利用将会十分有效，比如在森林火灾时或者在雨天刷怪
+
+  <br/><br/><b style="font-size: 18px;">有奖竞赛</b><br/>
+
+
+  使用/tp @p 和 /give @p，你可以制作一个障碍赛跑或者奖励迷宫，游戏结束后就将玩家传送汇出生点或其他地方。
+
+  <br/><br/><b style="font-size: 18px;">时间机器</b><br/>
+
+
+  在地图上模拟两个十分相似的环境，通过命令方块将玩家从一个传送到另一个，并且时间也会被设置为开始的时刻，这就好像是时间倒退。 注：可以广泛用于剧情RPG地图。
+
+  <br/><br/><b style="font-size: 18px;">地雷</b><br/>
+
+
+  使用命令/testfor @p[r=<检测范围>,name=<玩家名（如果没有限制可不写）>] 使用红石中继器连接命令方块和TNT，当命令方块检测到有玩家经过就会激活TNT！Boom！ 注：命令方块的/testfor命令为一次性命令，命令方块检测到一次就会一直输出信号，如果需要多次性的话，你可以直接使用/summon召唤出TNT。
+
+  <br/><br/><b style="font-size: 18px;">安全门</b><br/>
+
+
+  通过使用 /testfor @p[r=5,name=<房主>]，命令方块会在一定范围内检测房主并且为他开门，也只会为他开门。 注：命令方块的/testfor命令为一次性命令，命令方块检测到一次就会一直输出信号。
+<br/><br/>
+</div>
+
+
+
+<h2 >在自定义地图中的应用</h2>
+<div  >
+  这一节详细介绍了命令方块在自定义地图的应用。
+<br/><br/>
+  Minecraft中使用大量命令方块的地图有很多优势。
+
+
+  <br/><br/><b style="font-size: 18px;">“沉默的”命令方块</b><br/>
+
+
+  在地图中控制命令方块不输出提示信息很重要，这可以保持玩家对地图的未知性和剧情的隐蔽性，如果玩家看到了各种命令的提示信息，地图将会索然无味。 关闭命令方块输出信息（除非是/say这类的命令）使用/gamerule commandBlockOutput false就可以实现。
+
+  <br/><br/><b style="font-size: 18px;">庇护所/角斗场</b><br/>
+
+
+  使用压力板或者绊线 （以安全城堡为例）设置进入城堡内的玩家为和平模式（对于不同区域视情况而定）。城堡大门可以有连接命令方块的绊线，玩家一旦走过绊线，激活命令方块，就会变为和平模式，这样就可以创造一个“避难所”。反之，你可以用同样的方法创造一个“困难模式区域”，所有玩家进入会变为困难模式。
+
+<br/><br/><b style="font-size: 18px;">  对于不同游戏模式玩家的控制</b><br/>
+
+
+  使用值[m=1]你就可以设置命令只对创造模式的玩家有效，生存模式就是[m=0]。 例：传送所有创造模式的玩家到254，47，-874，使用的命令为 /tp @a[m=1] 254 47 -874
+
+<br/><br/><b style="font-size: 18px;">  “联合”住宅</b><br/>
+
+
+  在房间的入口或者出口设置一个 /tp 命令的命令方块，你不必将你的建筑都在同一个地方建设，它们可以在任何地方，只需要入口的命令方块传送过去，玩家会忽然觉得外面感觉很小的建筑内部空间竟如此之大。用这种方法联合多个建筑，可用作与服务器或单人地图中的场景瞬移。
+
+<br/><br/><b style="font-size: 18px;">  出生地</b><br/>
+
+
+  使用 /spawnpoint 可以设定玩家出生地点。（应用十分广泛，PVP地图，RPG地图等等）
+
+<br/><br/><b style="font-size: 18px;">  熔岩跑酷</b><br/>
+
+
+  之前的内容提到过，/gamerule keepInventory true可以在玩家死后保存背包物品。 在跑酷地图的出发点设置一个这样的命令方块，就可以使掉落熔岩死亡的玩家不会丢失物品，同时记录点可以用/spawnpoint来做。
+
+<br/><br/><b style="font-size: 18px;">  我要睡觉！</b><br/>
+
+
+  使用 /spawnpoint 可以直接设置出生点，但是要跳过白天就需要 /time set <时间> 命令，18000为夜晚（并非绝对，可以按喜好设置，不要少于12500），这样就可以模拟出睡觉的效果了。(可用/time set 700 直接转为白天，/spawnpoint命令和/time set 700配合不就行了么？）
+
+<br/><br/><b style="font-size: 18px;">  时间和天气下的场景</b><br/>
+
+
+  比方说，你的地图开始在一个寒冷的暴风雨之夜，你可以设置突然天晴了，外面有灿烂的阳光（光影mod么？）！或者，如果你想开始一个光明的一天，想让雨突然下起来又没办法？不要怕，有/weather命令。只需使用/weather，输入就行了！你也可以使用/time set输入：0是凌晨，6000是中午，12000是黄昏，18000是午夜（月亮还挂在头上呐！）。
+
+<br/><br/><b style="font-size: 18px;">  检测玩家是否切换到了和平模式</b><br/>
+
+
+  创建一个攻击型生物，把它放在压力板上。（请确保它会保持始终按下状态，所以一定要确保它不能跳或走开）。做一个红石电路，让压力板在没有接收到红石信号的时候激活命令方块。命令方块里设置一个消息，通知玩家的地图由于和平模式了已经损坏，需要的怪物已经消失，必须重新下载这个地图。你甚至可以做一个隐形传输命令方块，把那些故意切换到和平模式的玩家换成冒险模式后传送到一间基岩屋内，并让他不能使用/kill或/tp命令，并把他的重生点设在那个房子里，让他永生见不得光明！(单人的话，可以点“对局域网开放”，或用修改器)
+
+<br/><br/><b style="font-size: 18px;">  Talking Adventure Map(featuring an easy Quest System!)</b><br/>
+
+
+  /say命令非常有用因为它可以直接给玩家发送消息. 用命令方块将会更好，这样你就不需要放很多的告示牌和编页码长到不行的书来告诉玩家游戏规则. 你只需要把命令方块放成一条线然后在中间铺中继器来弄各个语段之间的延迟(so the player isn't spammed)接着你就可以把那堆告示牌和放着书的箱子移走。
+<br/><br/>
+  有一些是和NPC配合使用的. 想象一下你进了铁匠铺并且你想要让里面的铁匠说些什么。在命令方块出现之前, 你需要一些书和告示牌来充当对话的效果, 然后在铁匠铺里造些房间并放些杂物，这样会让这个铁匠铺看起来变得非常乱，但是现在，你只需要使用/say命令来制造铁匠说话的效果. Maybe a pig behind the counter will even beg for mercy! Let's take another example: you are in a factory and an alarm suddenly rings and says that it's going to explode. Having it in the chat, especially if the text is long, keeps the stressfull mood; the same thing works for bomb timers. The player will get more into the map's mood if the chat displays '10...' '9...' '8...' also.
+<br/><br/>
+  Last but not least, it makes it easier to create a Quest System. Let's say the player gets in a butchery. He activates through a pressure plate connected to a RS NOR Latch (so it can't be activated twice) and a command block with the /say command in which the butcher asks for the player's help: he needs to kill a pig (shame on him). The player gets to the pig that is standing on a stone pressure plate, that turns off when the pig is dead. So, when the player gets back to the butchery, he activates another circuit containing yet another RS NOR Latch and two command blocks with two commands. First, the /say command in which the butcher thanks the player, and other one, the /give command, so the player gets the reward. Along with that, don't forget to use the @p command so the butcher says the player's name. For example, if the command block is set to do this: /say Thanks, @p. You helped me a lot killing that pig., the channel will say: "@]: Thanks, <name of the player>. You helped me a lot killing that pig." This makes the map way cooler and looks like it's made for the player as it says his/her name!
+
+<br/><br/><b style="font-size: 18px;">  创建商店</b><br/>
+
+<br/><br/>
+  使用/give @p[lm=(等级)] (物品) (数量)和/xp -(等级)l @p[lm=(等级)] ，你可以创建一个使用经验交易物品的商店系统。例如，如果你创建了一个使用/give @p[lm=5] 2 64的命令方块以及一个使用/xp -5l @p[lm=5]的命令方块，并把它们连接到同一个红石电路，那么激活时就会从最近的玩家身上扣除5级经验并给他64个草方块。
+<br/><br/>
+  * Subtracting xp CAN work as a currency, by using the command /xp -3l @p[lm=3] where l (L for level) is subtracted. The minimum xp for the command to work can be listed inside the brackets, where lm is short for minimum level necessary.
+<br/>  <br/>You can make a Store using xp as a currency. Just place a command block before all the others with the following instructions: /testfor @p[lm=5] with a Comparator in front of the command block. That way you can only do the trade if you're at least at level 5 (in this case, but you can choose what level you want).
+
+<br/><br/>
+  *The last two "updates" are pointless, as the [lm=(level)] in the first post will keep players from getting the item or losing their xp unless they are that level or higher. so if the command says [lm=5], they will NOT be able to use the "store" if they are level 4 or below, but WILL be able to if they are level 5 or above.
+  <br/><br/>The blocks must be in order for this to work. If the blocks are powered at the same time, the cost block will subtract as per normal, but the block giving the item will not function unless your level is double or higher what the cost of the block is. (example: item costs 5, you have 7 levels, you will lose the 5 levels, but will not gain the item. You would only receive the item if your starting level is 10 or higher) The fix for this is to power the blocks linearly, give block first followed by xp block.
+
+<br/><br/>
+</div>
+
+
+
+<h2 >Command-Piston-Repeater Fun</h2>
+<div  >
+  Command block: /setblock x y z minecraft:sand
+  <br/><br/>1st Piston Front: Showing to set /setblock x y z to that position
+
+<br/><br/><b style="font-size: 18px;">Fast Pusher</b><br/>
+Repeaters are risen by 1 block from 1-3 so you can see them
+<br/><br/>
+1(Repeater): Set to 1<br/><br/>
+2(Repeater): Set to 3<br/><br/>
+3(2 Repeaters): Set to 4 and 2<br/><br/>
+4(Repeater): Set to 2(Default)<br/><br/>
+5(2 Repeaters): Set to 4 and 1<br/><br/>
+6(2 Repeaters): Set to 4 and 4<br/><br/>
+7(Repeater): Set to 2<br/><br/>
+8 and 9(Repeaters): Set to 4 and 4<br/><br/>
+<br/><br/><img src="img/minglingfangkuai.gif" style="width: auto; height: auto;"></img>
+<br/>
+
+<br/><br/><b style="font-size: 18px;">Slow Pusher</b><br/>
+1(Repeater): Set to 4
+<br/><br/>
+2(Repeater): Set to 4
+<br/><br/>
+3(Repeater): Set to 4
+<br/><br/>
+4(Repeater): Set to 1(Default)
+<br/><br/>
+5(Repeater): Set to 1
+<br/><br/>
+6(Repeater): Set to 1
+<br/><br/>
+8(Repeater): Set to 4
+<br/><br/>
+9(Repeater): Set to 2
+<br/><br/>
+10(Repeater): Set to 2
+<br/><br/>
+<br/><br/><img src="img/minglingfangkuai1.gif" style="width: auto; height: auto;"></img>
+<br/>
+
+<br/><br/>
+</div>
+
+ 
+</body>
+</html>

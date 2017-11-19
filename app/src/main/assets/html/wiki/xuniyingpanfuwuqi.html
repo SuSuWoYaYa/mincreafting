@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>虚拟硬盘服务器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">虚拟硬盘服务器</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此页面的部分内容由于太久没更新而已过期。</b>
+<br />
+你可以帮助我们来更新此页面
+</p>
+<p class="yellow">
+<b>此页面的（部分）内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> -->
+<p class="red"><b>警告</b>
+<br />
+因为这是 Wiki 的一个条目，可以在任何时间内被任何人编辑，因此建议你不要完全使用这个脚本，而是将其当作编写脚本的指导手册看待。</p> 
+
+
+<p>该教程向你大概描述什么是虚拟硬盘，怎样和 Minecraft 使用，以及如何设置一个虚拟硬盘服务器。</p>
+ 
+<h2>虚拟硬盘描述</h2>
+<p>传统上，文件和文件夹储存在硬盘驱动器，但以今天的标准来看，普通数据的传输速度（80MB/秒 到 200MB/秒之间）的提升空间还很大。虚拟硬盘是一个虚拟的文件系统（不像硬盘那样是硬件），会把文件数据完全实时储存在计算机内存条里。它们的普通数据传输速度（3000MB/秒 到 15000MB/秒之间）非常高，但会失去稳定性（重启电脑数据就会丢失）以及空间（受系统安装内存条的数量限制，包括交换空间）。然而，有许多实用工具可以每隔一段时间备份虚拟硬盘里面的数据，以及在关机前备份，然后在系统启动时加载上次保存的数据。</p>
+<h2>优点和缺点</h2>
+<h3>优点</h3>
+<ul><li>非常高的传输速度（从数据到应用）</li>
+<li>非常低的寻道时间（在文件之间搜索）</li></ul>
+<h3>缺点</h3>
+<ul><li>在系统重启时会清除虚拟硬盘的数据</li> 
+ <li>如果世界尺寸大于内存条可用空间则很难实现</li></ul>
+ 
+<h2>为什么它对 Minecraft 服务器有意义</h2>
+<p>在一个 Minecraft 服务器，最大的一个瓶颈是相关的磁盘 I/O 操作（如区块管理）。通过向内存移动数据，访问时间会被大大缩减，数据传输速度也会大大提高，让区块加载和保存区块操作变得更快。因为一个 Minecraft 世界包含了许多区块文件，寻道时间没多大变化，因为重要的是整体速度。</p>
+
+<h2>基础 Minecraft 和虚拟硬盘安装</h2>
+<b>确保在开始前备份了你的文件！</b>
+
+<h3>GNU/Linux（简单方法）</h3>
+<p>2011年3月12日，在Aimless Bits的博客里<br/> <a target="_self" rel="nofollow" class="external text" href="http://www.aimlessbits.com/?p=12">http://www.aimlessbits.com/?p=12</a>，<br/>发布了把一个 Minecraft 服务器加载到虚拟硬盘的简单方法。它包含了修改过的 Wiki 脚本，以及一些小更改。本指南充实了这一过程，并在 Aimless Bits 的脚本里做了一些小更改。</p>
+<p>这个快速指南假设你已为加载 Minecraft 设定了一个用户、Minecraft 目录和运行中的服务器。它还有助于熟悉 /etc/init.d/minecraft 启动脚本。</p>
+<ul>
+<li>第一步，在根目录里为虚拟硬盘创建一个目录。如“/home/username/minecraft_ramdisk”。</li>
+<li>要将其挂载为一个虚拟硬盘，只需要简单编辑你的 /etc/fstab/ 文件：</li>
+</ul>
+<pre>sudo nano /etc/fstab
+</pre>
+<p>然后添加这行，确保路径（用户名、目录名称等）是正确的。</p>
+<pre>tmpfs  /home/username/minecraft_ramdisk tmpfs  defaults,size=512m      0       0
+</pre>
+<p>虚拟硬盘的尺寸必须比 Minecraft 的世界目录还要大。确保你已经预留多了一些空间。</p>
+<ul>
+<li>重启你的计算机。虚拟硬盘现在会在你重启时加载，如果你希望立刻加载，输入</li>
+</ul>
+<pre>mount -t tmpfs none /home/username/minecraft_ramdisk -o size=512m
+</pre>
+<p>现在要做的是简单运行简单修改过的脚本，该脚本会加载硬盘上的文件到服务器里，将它们复制几次作为副本，以防止数据丢失。再次提醒，这个脚本是 Aimless Bits 脚本的修改版本。</p>
+<p>如果你拥有 /etc/init.d/minecraft，删除它或者将其覆盖到这个脚本里。如果没有，新建一个文本文档，命名为“minecraft”，然后向它复制下列脚本内容。</p>
+<pre>#!/bin/bash
+# /etc/init.d/minecraft
+# version 0.6 2012-02-25 (YYYY-MM-DD)
+
+### BEGIN INIT INFO
+# Provides:   minecraft
+# Required-Start: $local_fs $remote_fs
+# Required-Stop:  $local_fs $remote_fs
+# Should-Start:   $network
+# Should-Stop:    $network
+# Default-Start:  2 3 4 5
+# Default-Stop:   0 1 6
+# Short-Description:    Minecraft server
+# Description:    Starts the minecraft server
+### END INIT INFO
+
+#Settings
+JARFILE='craftbukkit-beta_1.4.6-R0.3.jar'
+USERNAME="minecraft"
+MCSTORE="/home/$USERNAME/minecraft"
+MCPATH="/home/$USERNAME/minecraft_ramdisk"
+CPU_COUNT=1
+INVOCATION="java -Xmx2048M -Xms2048M -server -jar $JARFILE -o false"
+BACKUPPATH="/home/$USERNAME/minecraft_backups/"
+WORLD=Asgarde
+
+
+as_user() {
+  if [ "`whoami`" == "$USERNAME" ] ; then
+    bash -c "$1"
+  else
+    su - $USERNAME -c "$1"
+  fi
+}
+
+mc_status() {
+  ps aux |grep -F -v grep|grep -F -v SCREEN|grep -F --quiet $JARFILE
+  return $?
+}
+
+mc_start() {
+  if mc_status; then
+    echo "Tried to start but $JARFILE was already running!"
+  else
+    echo "$JARFILE was not running... starting."
+    if [ -d $MCSTORE/$WORLD.bak ]; then
+      echo "last $WORLD.bak still exist, crashed warning! manual check required!!!"
+      exit 1
+    fi
+    cd $MCPATH
+    if [ ! -f "$MCPATH/$JARFILE" ]; then 
+      echo "Ram drive empty...  prepping."
+      as_user "cp -R $MCSTORE/* $MCPATH/"
+    fi
+    as_user "cd $MCPATH &amp;&amp; screen -dmS minecraft $INVOCATION"
+    sleep 7
+    if mc_status; then
+      echo "$JARFILE is now running."
+    else
+      echo "Could not start $JARFILE."
+    fi
+  fi
+}
+
+mc_saveoff() {
+  if mc_status; then
+    echo "$JARFILE is running... suspending saves"
+    TO_SCREEN="screen -p 0 -S minecraft -X eval 'stuff "
+    as_user "$TO_SCREEN \"say SERVER BACKUP STARTING. Server going readonly...\"\015'"
+    as_user "$TO_SCREEN \"save-off\"\015'"
+    as_user "$TO_SCREEN \"save-all\"\015'"
+    sync
+    sleep 10
+  else
+    echo "$JARFILE was not running. Not suspending saves."
+  fi
+}
+
+mc_saveon() {
+  if mc_status; then
+    echo "$JARFILE is running... re-enabling saves"
+    TO_SCREEN="screen -p 0 -S minecraft -X eval 'stuff "
+    as_user "$TO_SCREEN \"save-on\"\015'"
+    as_user "$TO_SCREEN \"say SERVER BACKUP ENDED. Server going read-write...\"\015'"
+  else
+    echo "$JARFILE was not running. Not resuming saves."
+  fi
+}
+
+mc_stop() {
+  if mc_status; then
+    echo "$JARFILE is running... stopping."
+    TO_SCREEN="screen -p 0 -S minecraft -X eval 'stuff "
+    as_user "$TO_SCREEN \"say SERVER SHUTTING DOWN IN 5 SECONDS. Saving map...\"\015'"
+    as_user "$TO_SCREEN \"save-all\"\015'"
+    sleep 5
+    as_user "$TO_SCREEN \"stop\"\015'"
+    sleep 5
+  else
+    echo "$JARFILE was not running."
+  fi
+
+  if mc_status; then
+    echo "$JARFILE could not be shut down... still running."
+  else
+    echo "$JARFILE is shut down."
+  fi
+}
+
+
+mc_update() {
+  if mc_status; then
+    echo "$JARFILE is running! Will not start update."
+  else
+    MC_SERVER_URL=https://minecraft.net/`wget -q -O - http://www.minecraft.net/download.jsp | grep minecraft_server.jar\&lt;/a\&gt; | cut -d \" -f 2`
+    as_user "cd $MCPATH &amp;&amp; wget -q -O $MCPATH/minecraft_server.jar.update $MC_SERVER_URL"
+    if [ -f $MCPATH/minecraft_server.jar.update ]; then
+      if `diff $MCPATH/$JARFILE $MCPATH/minecraft_server.jar.update &gt;/dev/null`
+     then 
+       echo "You are already running the latest version of $JARFILE."
+     else
+       as_user "mv $MCPATH/minecraft_server.jar.update $MCPATH/$JARFILE"
+       echo "Minecraft successfully updated."
+      fi
+    else
+      echo "Minecraft update could not be downloaded."
+    fi
+  fi
+}
+
+mc_backup() {
+   echo "Backing up minecraft files"
+   as_user "tar zcf $BACKUPPATH/MCBKUP_`date "+%Y.%m.%d-%H"`.tar.gz $MCSTORE"
+   echo "Backup complete"
+}
+
+mc_disksaverun() {
+  if mc_status; then
+    echo "Saving ramdrive to disk."
+    if [ ! -f $MCPATH/$JARFILE ]; then
+      echo "Error.. Minecraft not in ram"
+    else
+      if [ -d $MCSTORE/$WORLD.bak ]; then
+        echo "last $WORLD.bak still exist, crashed warning! manual check required!!!"
+        exit 1
+      fi
+      if [ -d $MCSTORE/$WORLD ]; then
+        as_user "mv $MCSTORE/$WORLD $MCSTORE/$WORLD.bak"
+      fi
+
+      TO_SCREEN="screen -p 0 -S minecraft -X eval 'stuff "
+      as_user "$TO_SCREEN \"save-off\"\015'"
+      as_user "$TO_SCREEN \"save-all\"\015'" 
+      as_user "cp -R $MCPATH/* $MCSTORE/"
+      as_user "$TO_SCREEN \"save-on\"\015'"
+
+      if [ -d $MCSTORE/$WORLD.bak ]; then
+        as_user "rm -r $MCSTORE/$WORLD.bak"
+      fi
+    fi
+  else
+    echo "Service is not running"
+ fi
+
+}
+
+mc_disksavehalt() {
+   echo "Saving ramdrive to disk."
+   if [ ! -f $MCPATH/$JARFILE ]; then 
+     echo "Error.. Minecraft not in ram"
+   else
+     if [ -d $MCSTORE/$WORLD.bak ]; then
+        echo "last $WORLD.bak still exist, crashed warning! manual check required!!!"
+        exit 1
+     fi
+     if [ -d $MCSTORE/$WORLD ]; then
+       as_user "mv $MCSTORE/$WORLD $MCSTORE/$WORLD.bak"
+     fi
+
+     echo "Saving, screen session closed"
+     as_user "cp -R $MCPATH/* $MCSTORE/"
+
+     if [ -d $MCSTORE/$WORLD.bak ]; then
+       as_user "rm -r $MCSTORE/$WORLD.bak"
+     fi
+   fi
+}
+
+
+#Start-Stop here
+case "$1" in
+  start)
+    mc_start
+    ;;
+  stop)
+    mc_stop
+    mc_disksavehalt
+    ;;
+  restart)
+    mc_stop
+    mc_disksavehalt
+    mc_start
+    ;;
+  update)
+    mc_stop
+    mc_backup
+    mc_update
+    mc_start
+    ;;
+  backup)
+    mc_disksaverun
+    mc_saveoff
+    mc_backup
+    mc_saveon
+    ;;
+  disksavehalt)
+    mc_disksavehalt
+    ;;
+  disksaverun)
+    mc_disksaverun
+    ;;
+  status)
+    if mc_status; then
+      echo "$JARFILE is running."
+    else
+      echo "$JARFILE is not running."
+    fi
+    ;;
+  *)
+  echo "Usage: /etc/init.d/minecraft {start|stop|update|backup|status|restart|disksaverun}"
+  exit 1
+  ;;
+esac
+</pre>
+<ul>
+<li>把该脚本移动到你的 /etc/init.d/ directory，然后设置它为可执行：</li>
+</ul>
+<pre>mv /directory/wherefileis/filename /etc/init.d/minecraft
+chmod a+x /etc/init.d/minecraft
+</pre>
+<p>注： <b>该脚本没有写上在 教程/服务器启动脚本 的其他 minecraft 初始化脚本的命令行选项！</b> 因此重写了该脚本，加入了一些命令代码，因此虚拟硬盘服务器也可以使用命令之类去同步而不用使用其他插件来进行计划：<a target="_self" rel="nofollow" class="external free" href="http://pastebin.com/4ynwL2js">http://pastebin.com/4ynwL2js</a> 。如果需要命令行选项，可以使用这个。</p>
+<p>你就快完成了！这个脚本表现的和原始的启动脚本差不多，只有一点不同的就是它把数据加载到虚拟硬盘里。你也可以修改脚本来使用 rsync 而不是 cp。</p>
+<pre>"rsync -r -t $MCSTORE/ $MCPATH/"
+</pre>
+<p>如果你想做其他东西，例如远程复制，但这对性能没什么影响，除非你的世界很大。</p>
+<ul>
+<li><b>请勿跳过这个步骤！</b>你需呀添加一个 crontab 条目来保存你的世界。因为某些原因，你要接着往下看，但是如果你不完成这个步骤，那么你在虚拟硬盘里的数据就会丢失。该脚本有2个磁盘保存函数，disksavehalt 和 disksaverun。 Disksavehalt 指定 screen 会话正在关闭还是正在备份，不会关闭地图保存。不要在 crontab 里调用这个函数，而是使用 disksave。做这个：</li>
+</ul>
+<pre>sudo crontab -e
+</pre>
+<p>然后添加下面2行：</p>
+<pre>*/5 * * * * /etc/init.d/minecraft disksaverun
+20 */6 * * * /etc/init.d/minecraft backup
+</pre>
+<p>数字代表每隔多少分钟就保存世界，如果你喜欢一个强健的安装、有力的供给备份以及工作，就减少这个数字。这个间隔最低只能为5分钟。</p>
+<p>其他行运行 Minecraft 会每隔6小时备份一次，并且固定在:20时进行备份。不要跳过备份！这是最后一次警告！</p>
+<p>但愿这能够对管理员有帮助，祝你好运！</p>
+
+
+<h3>GNU/Linux（备选方法）</h3>
+<p>在多数的 GNU/Linux 发行版，虚拟硬盘已经设置好了（通常挂载在 /dev/shm （<b>sh</b>ared <b>m</b>emory（共享的内存））），默认最多使用已安装内存的一半） 如果未设置，互联网上有许多资源教你如何设置。</p>
+<p>可以把任何东西移到虚拟硬盘，但本教程只专注于把地图移动到虚拟硬盘里，并将服务器文件留在传统驱动器上。</p>
+<p>在用户根目录里的“minecraft_server/”服务器目录里分成下面几个基本文件，含有世界“world”和其他所需要的文件。</p>
+<table >
+<tr>
+<th>~/minecraft_server/</th>
+</tr>
+<tr>
+<td>world/</td>
+</tr>
+<tr>
+<td>minecraft_server.jar</td>
+</tr>
+<tr>
+<td>server.log</td>
+</tr>
+<tr>
+<td>server.properties</td>
+</tr>
+<tr>
+<td>...</td>
+</tr>
+</table>
+<p>接下来的目标是把“world/”移动到共享内存里。由于虚拟硬盘的不稳定性，我们要创建一个新文件夹，在里面放上一个自动备份的脚本，通过复制当前目录到一个新名称目录来定期储存当前世界的名为（例如）“world_storage”的快照。</p>
+<pre>$ cd ~/minecraft_server/
+$ cp -r world/ world_storage/
+</pre>
+<p>现在旧世界在一个安全位置里，我们现在可以进行下一步并将世界移动到虚拟硬盘。</p>
+<pre>$ mkdir /dev/shm/minecraft
+$ mv world/ /dev/shm/minecraft
+</pre>
+<p>现在，世界以及加载到内存里，但是 Minecraft 服务器还是没有在它的目录里看见这个世界，导致在启动时会重新生成它。为了阻止服务器生成它，我们要在虚拟硬盘里创造一个符号链接到那个世界。运行下列命令：</p>
+<pre>$ ln -s /dev/shm/minecraft/world/ 
+</pre>
+<p>这将会创建一个名为“world/”的链接，其链接到服务器目录“/dev/shm/minecraft/world/”，服务器会把它当作实际的世界文件夹使用，但是这个文件夹在内存里。</p>
+<p>现在我们需要注意虚拟硬盘的不稳定性，要定期保存内存“world_storage/”里面的世界。下面将使用 cron 进行计划任务和 rsync 进行同步。</p>
+<p>首先，创建一个叫作 cron 的脚本（它不能是一个脚本，因为你可以直接从 cron 命令行直接调用 rsync，但这样允许在晚些时候更容易的进行自定义）</p>
+<pre>#!/bin/sh
+
+VOLATILE="/home/$USER/minecraft_server/world/"
+PERMANENT="/home/$USER/minecraft_server/world_storage/"
+
+#TODO: Check if both directories actually exist, skipped here for clearness
+rsync -r -t -v "$VOLATILE" "$PERMANENT"
+</pre>
+<p>然后每隔几分钟运行该脚本（这里将会隔5分钟，你可以测试一下隔多长时间对你是最合适的）</p>
+<pre>$ crontab -e
+</pre>
+<p>你将会被带到一个编辑器（更精确的说：你的“EDITOR”环境变量编辑器）来编辑你的用户 cron 表。添加下列行：</p>
+<pre>*/5 * * * * bash /home/&lt;your_username&gt;/minecraft_server/save_world.sh &amp;&gt;/dev/null
+</pre>
+<p>现在你的服务器将会重启，你将会在晚些时候在共享内存里(/dev/shm/minecraft/world)重新创建世界文件夹（/dev/shm/minecraft），因为重启后 /dev/shm/ 是空的。你可以写一个简单的可执行脚本来做到这点。</p>
+<p>因此制作一个简单的可执行脚本：</p>
+<pre>exec 1&gt;/tmp/backup_world.log 2&gt;&amp;1 #sends the output to this file
+#!/bin/sh
+#remake the paths
+mkdir /dev/shm/minecraft
+mkdir /dev/shm/minecraft/world
+
+VOLATILE="/home/$USER/minecraft_server/world/"
+PERMANENT="/home/$USER/minecraft_server/world_storage/"
+
+#TODO: Check if both directories actually exist, skipped here for clearness
+#reversed the order
+rsync -r -t -v "$PERMANENT" "$VOLATILE"
+</pre>
+<p>每次你重启时，你都要运行这个脚本来重新挂载虚拟硬盘。不要把这个添加到 crontab 里。如果你找出了答案，那么你可以添加这个到 start up。</p>
+
+
+<h3>Windows</h3>
+<p>使用一个像Dataram RAMDisk之类的虚拟硬盘实用工具来在内存中创建一个磁盘（下载免费的版本）之类的虚拟硬盘实用工具来在内存中创建一个磁盘，<br /> <a target="_self" rel="nofollow" class="external text" href="http://memory.dataram.com/products-and-services/software/ramdisk">http://memory.dataram.com/products-and-services/software/ramdisk</a><br />并将服务器文件放进里面。 <i>Dataram RAMDisk</i> 提供了在其关闭的时候或隔几分钟自动保存图像的选项。</p>
+<p><b>开始之前：</b></p>
+<ul>
+<li>至少要4G内存</li>
+<li>开启“关机时保存磁盘映像”，在关机时停止虚拟硬盘的运行会对 Windows 关机时间造成影响，同时也会对开机时间造成影响，因为要“在启动时加载磁盘映像”。如果你仅在需要时手动启动或停止服务器，那么这就不成问题了。</li>
+<li>在网络上进行搜索保存虚拟硬盘数据的方法，以防你的虚拟硬盘不能工作时丢失数据。</li>
+<li>FAT16 格式的虚拟硬盘<i>通常</i>比 FAT32 的要快，然而 FAT16 格式不允许单个磁盘容量超过 2048 MB。</li>
+<li>记住：<b>经常备份！</b>如果你的电脑崩掉了，任何未保存的虚拟硬盘数据都会丢失！</li>
+<li>确保你为虚拟硬盘分配了足够的空间，可以装得下“Minecraft Server”文件夹 - 记得 Minecraft 世界数据可以增加很多！</li>
+<li>...最后，确保剩余的内存空间足够让 Windows 和服务器本身运行</li>
+</ul>
+<p><b>设置你的虚拟硬盘（简单用法）</b></p>
+<ol>
+<li>下载并安装  Dataram RAMDisk </li>
+<li>设置硬盘尺寸（不推荐设置到最大）</li>
+<li>如果硬盘尺寸少于等于 2048 MB，选择“FAT16 Partition”否则就选“FAT32 Partition”（高级用户可能会选择“unformatted”并手动格式化硬盘）</li>
+<li>前往 Load/Save 标签页，并选择所有3种虚拟硬盘保存方法（“AutoSave”、“Save Disk Image on Shutdown”和“Load Disk Image on Startup”）</li>
+<li>要启动你的虚拟硬盘 - 点击“Start RAMDisk”</li>
+<li>现在前往“计算机”（Win XP 为我的电脑、Win 7、Win 10 为计算机、Win 8 为此计算机），你应该会看见新的硬盘</li>
+<li>打开它并复制所有的 Minecraft 服务器到这个硬盘里。</li>
+<li>像平常一样启动你的服务器，只不过现在是从刚刚创建的虚拟硬盘启动 - 你现在就能启动和运行了！</li>
+</ol>
+<p>你的虚拟硬盘现在会在关机时自动保存，并在开机时自动加载。你会注意到开机/关机的时间更长了，而增加的时间取决于你设置的尺寸。</p>
+<p>同时，你可能希望调整 AutoSave （自动保存）间隔。</p>
+<p><b>如果你没有选择“Save Disk Image on Shutdown”，继续看下去！</b></p>
+<p>你需要在'<i>每次'</i><b>关闭计算机</b>时完成下列步骤，否则<b>数据就会丢失</b>！</p>
+<dl>
+<dd><b>手动停止虚拟硬盘（在关闭计算机之前）</b>
+<ol>
+<li>如果你的 Minecraft 服务器正在运行，停止它</li>
+<li>打开 Dataram RAMDisk configuration Utility（再次）</li>
+<li>在 Load/save 标签页开启“Load Disk Image on Startup”</li>
+<li>点击“Save disk image now”</li>
+<li>点击“Stop RAMDisk”</li>
+</ol>
+</dd>
+<dd>（如果你希望再次启动服务器，按照你第一次启动服务器的操作去做。如果你勾选了“Load Disk Image at Startup”才能做这个）</dd>
+<dd><b>备选方法：</b>
+<ol>
+<li>停止你的服务器</li>
+<li>复制虚拟硬盘里的所有文件到硬盘驱动器的一个备份文件夹</li>
+<li>在 Dataram RAMDisk configuration Utility 点击“Stop RAMDisk”</li>
+</ol>
+</dd>
+<dd>（要再次启动它，按照你第一次启动虚拟硬盘的操作去做，然后把所有文件复制到虚拟硬盘里，然后启动你的服务器。）</dd>
+</dl>
+
+
+<h3>Mac OS X</h3>
+<p>在 Mac OS 里键入下列命令来创建你的虚拟硬盘：</p>
+<pre>diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram://1165430`
+</pre>
+<p>这只有一条命令行，而且还很快，很有效果。&#160;:)</p>
+<p>如果你跟随这些操作去做了，你的虚拟硬盘将会出现在 /Volumes/ramdisk。在此之后，按照你在 Linux 那样做，使用 Terminal 和你喜爱的文字编辑器。</p>
+          </div>
+        </article>
+        <!-- End Article -->
+
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

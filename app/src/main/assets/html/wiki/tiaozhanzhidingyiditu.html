@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>挑战自定义地图</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">挑战自定义地图</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        <p>挑战一个自定义地图需要组合不同的策略。该教程的大部分都是基于已完工的有纪念风格的地图而制作的，但是仍然会适用于任何形式的自定义地图。</p>
+         <h2>结构</h2>
+         <p>在挑战地图里通常会存在一些结构。</p>
+<table>
+<tr>
+<th>结构</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>死亡之洞</td>
+<td>1个方块宽的洞，这个洞可以让玩家掉落到虚空或熔岩。</td>
+</tr>
+<tr>
+<td>避难洞</td>
+<td>一个快速建造的或挖洞（通常是1×1×2），这通常用于防止死亡。</td>
+</tr>
+<tr>
+<td>地牢</td>
+<td>一个拥有刷怪箱的结构。在挑战地图里，它们通常包含一个箱子，箱子里面有有价值的东西。</td>
+</tr>
+<tr>
+<td>鸟笼/成就物品/成就物品覆盖盒</td>
+<td>一个环绕着羊毛箱子的一个盒子，通常用来防止爬行者破坏的，并且让它在地牢中更明显等等。通常是由玻璃环绕着的一个台阶层组成。</td>
+</tr>
+<tr>
+<td>刷怪盒</td>
+<td>一个带有刷怪箱的3×3的盒子。通常用石头覆盖。</td>
+</tr>
+<tr>
+<td>刷怪箱</td>
+<td>一个刷怪箱。</td>
+</tr>
+<tr>
+<td>胜利纪念碑</td>
+<td>一个放置你的羊毛（详见下面）的地方。</td>
+</tr>
+<tr>
+<td>羊毛</td>
+<td>一个广义的结构，通常是“击败”灾变地图后获得的。这可以是一个记录、实际上的羊毛、植物等。</td>
+</tr>
+<tr>
+<td>羊毛箱子</td>
+<td>也称作羊毛覆盖盒。这个结构是一个放有羊毛的箱子（详见上面）。通常用荧石标记。</td>
+</tr>
+<tr>
+<td>惊险石头</td>
+<td>一个看起来像石头方块的陷阱，但是站上去时会生成怪物。你可以在黑暗的轮廓里设置。</td>
+</tr>
+</table>
+
+<h2>一些有用的知识</h2>
+<p>这些东西是很有用的知识，并且可以在尝试挑战一个自定义地图时派上用场。</p>
+<h3>伤害</h3>
+<p>当你知道使用武器杀死生物需要多少点伤害值时，生物就被更容易的杀死了。同时也可以让你知道一个武器的损害值以及你手上的武器哪一个是最强的。</p>
+<table class="wikitable" style="text-align: center">
+<tr>
+<th colspan="2">武器伤害值</th>
+</tr>
+<tr>
+<th>名称</th>
+<th>伤害值</th>
+</tr>
+<tr>
+<td>木剑, 金剑</td>
+<td>5（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Half_Heart.png" src="img/Half_Heart.png" />）</td>
+</tr>
+<tr>
+<td>石剑</td>
+<td>6（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）</td>
+</tr>
+<tr>
+<td>铁剑</td>
+<td>7（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Half_Heart.png" src="img/Half_Heart.png" />）</td>
+</tr>
+<tr>
+<td>钻石剑</td>
+<td>8（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）</td>
+</tr>
+<tr>
+<td>弓</td>
+<td>1（<img alt="Half_Heart.png" src="img/Half_Heart.png" />） - 9（<span class="nowrap" title="9"><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Half_Heart.png" src="img/Half_Heart.png" />），罕见的是 10（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）</td>
+</tr>
+<tr>
+<th colspan="2">伤害值修正</th>
+</tr>
+<tr>
+<th>名称</th>
+<th>伤害加强</th>
+</tr>
+<tr>
+<td>锋利</td>
+<td>每等级增加1.25的额外伤害</td>
+</tr>
+<tr>
+<td>亡灵杀手</td>
+<td>对亡灵生物每等级增加2.5的额外伤害</td>
+</tr>
+<tr>
+<td>节肢杀手</td>
+<td>对节肢生物每等级增加2.5的额外伤害</td>
+</tr>
+<tr>
+<td>火焰附加</td>
+<td>火焰附加 I 造成 （<img alt="Heart.png" src="img/Heart.png" /><img alt="Half_Heart.png" src="img/Half_Heart.png" />）点火焰伤害，火焰附加 II 造成 7（<span class="nowrap" title="7"><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Half_Heart.png" src="img/Half_Heart.png" />） 点火焰伤害。</td>
+</tr>
+<tr>
+<td>力量</td>
+<td>箭的伤害提升25% × (等级 + 1)，舍入半颗心。</td>
+</tr>
+<tr>
+<td>火矢</td>
+<td>造成 5（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Half_Heart.png" src="img/Half_Heart.png" />）点火焰伤害。</td>
+</tr>
+</table>
+<p>在通常情况下，带有锋利 N 的剑（N是一个数值）比它材质更好的剑效果要好。因此一把锋利II的木剑比一把铁剑要好。</p>
+<h2>与生物进行战斗</h2>
+<p>这里列出了对付不同生物的策略。</p>
+<h4>一大群生物</h4>
+<p>如果有几群生物，最好跑回去，避开这群生物（扑空）。如果在这群生物里有爬行者，让它爆炸，它会杀死群内的大多数生物。</p>
+<h4>用2伤害值武器杀死的生物</h4>
+<p>这包含了像僵尸猪人的生物。如果你可以，在你周围建造一个障碍，防止它们进来。然后拿弓打它们，即使距离很近。</p>
+<h4>骷髅</h4>
+<p>如果你没有3伤害值的武器，尝试使用你的弓来对抗它。在 13w03b 中，骷髅将会尝试避开玩家的反击，并快速向玩家射箭。.</p>
+<h4>烈焰人</h4>
+<p>抗火药水在对抗烈焰人时很有用。不要忘记当你拿着一把剑攻击它们的时候离得太近，因为它们碰到它们会受到很高的伤害。</p>
+<h4>恶魂</h4>
+<p>恶魂非常恼人，因为它们不但可以发射火球摧毁方块，而且还可以飞离玩家，使它们难以被杀死。</p>
+<p>你需要尽快处理恶魂，否则它将会很恼人。为了杀死一只恶魂，<b>对准它的身体</b>，或者反弹它的火球。这是因为它的碰撞箱较大。</p>
+<p>恶魂不能破坏圆石或其他高爆炸抗性的方块，因此你可以使用你的优势。总是使用圆石进行建造，如果你有一些。</p>
+<h4>蠹虫</h4>
+<p>通常的，地图制作者将会创建一条通往怪物蛋的走廊。如果你破坏了这些方块，将会生成一只蠹虫，当它攻击时，生成于附近方块的蠹虫将会参与攻击。如果玩家对蠹虫一击必杀后或死于“自然”原因，其它蠹虫不会出来参与攻击。</p>
+<p>一个蠹虫拥有 8（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）。这里是杀死一只蠹虫但又不会生成更多蠹虫的方法：</p>
+<ul>
+<li>用弓完全蓄力向它射箭（造成9（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Half_Heart.png" src="img/Half_Heart.png" />）伤害）。</li>
+<li>使用伤害药水 II（造成 12（<span class="nowrap" title="12"><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）伤害）。</li>
+<li>使用带有锋利 I附魔的钻石剑攻击它。（造成 8（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）至10（<span class="nowrap" title="10"><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）的伤害）。</li>
+<li>使用打火石</a>点燃它（自然原因）。</li>
+<li>将它放在熔岩中燃烧（自然原因）。</li>
+<li>暴击（造成 8（<img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）至14（<span class="nowrap" title="14"><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" /><img alt="Heart.png" src="img/Heart.png" />）的伤害）。</li>
+</ul>
+
+<h2>征服地牢</h2>
+<h3>刷怪盒</h3>
+<p>这些恶毒的刷怪箱组有时会让挑战地图变得更加困难。一个刷怪盒生成怪物的数量可以比1个玩家杀死怪物的数量要多，冲进去放置火把来关闭刷怪箱的做法变得不可能了。这里是关闭它们的一些策略：</p>
+<h4>熔岩</h4>
+<p>熔岩对于关闭刷怪盒来说是最容易，并且也是最有效的。它照亮了刷怪盒周围，防止了生物的生成，并杀死了在刷怪盒中已经生成的生物。</p>
+<p>为了使用熔岩，选择一个在刷怪盒里面可以放置方块的地方，在那里倾倒熔岩。</p>
+<p>如果刷怪盒超出范围，建造一座桥，并从桥上倾倒熔岩。</p>
+<h4>大炮</h4>
+<p>使用一个TNT大炮对于不可及的刷怪盒来说是相当有效的，同时也很有乐趣。然而，这可能会摧毁羊毛箱子，更不要说自己了。使用该方法时请小心。</p>
+<h4>挖隧道</h4>
+<p>最容易的就是挖一条通往刷怪盒的隧道，因为大多数刷怪盒都放置在开阔区域。当你走进隧道时，请确保你已经照亮了它：你不想让你的隧道太黑暗。</p>
+<h4>关闭后</h4>
+<p>如果刷怪盒在地牢里，最好摧毁它，因为爬行者可以摧毁刷怪盒周围的东西。（从而重新激活它）你也可能想通过刷怪箱获得经验球。</p>
+<p>如果刷怪盒在你的庇护所附近，你可以将它变成一个快速的怪物磨床来获取掉落的经验值。</p>
+
+<h3>大房间</h3>
+<p>这些房间通常很大。它们很难被照亮，因为怪物会从各个方位攻击你。</p>
+<h4>跑进去</h4>
+<p>喝下迅捷药水冲进区域中，尽可能地放置火把。这很危险，但也很有效，因为你覆盖了大面积的区域，并关闭了许多刷怪箱。</p>
+<h4>进攻与撤退</h4>
+<p>攻进去，照亮一片区域，然后撤退。这样有效果，不过很久才能体现处出来，这也很危险。</p>
+<h4>挖隧道</h4>
+<p>在房间周围挖隧道，按照一定间隔照亮房间。这将会关闭多数刷怪箱，并将会让进攻与撤退的方法更容易。（使用熔岩关闭刷怪箱比插火把更有效果）</p>
+<p>从顶部挖一条隧道，并往里面倾倒熔岩比这个方法更安全。</p>
+
+<h3>地区</h3>
+<p>地区是一片巨大的区域，它们甚至比大房间还要大。在这片区域里有几个你需要征服的小地牢。同时，在地区的边缘，会有更加让人恼火的区域。</p>
+<h4>运输</h4>
+<p>使用铁轨是穿过地区的一种有效方式。你也可以在区域里挖隧道，以便安全地在夜晚旅行。不过这会花费许多时间，也不值得这么做。</p>
+
+<h3>虚空房间</h3>
+<p>在虚空或熔岩上面的一片开阔空间。如果你从平台上掉下，那么你将会在大多数时候失去你物品栏里的东西。</p>
+<p>在这些区域里缓慢稳定的通过。不要冒不必要的风险。封闭你找到的任何通往虚空的洞穴，在沙子或沙砾上时请小心。</p>
+<h4>搭桥</h4>
+<p>如果在平台之间有缺口，那么就建造一条很安全的桥。在你左边和右边放置方块，还有你的后面。</p>
+<p>如果你想到达的平台里存在太多的生物，最好建造一条活塞桥，如果可能的话。面向平台放置1个活塞，并让它分别推动方块。重复这个步骤3次：1个是地面，另外2个是铁轨两侧的方块。</p>
+
+<h3>迷宫</h3>
+<p>在地图上偶尔会找到基岩迷宫。令人沮丧的是，很难对付它们，并且也都很难从里面出来。</p>
+<h4>紧贴墙壁</h4>
+<p>在开始之前，选择要出发的方向（左边或者是右边），并坚持不改变方向，这将会很容易的从里面出来了。当你在道路分叉口时，标记你已经探索过的路，并选择其它的路。如果你在一个死胡同里，那么就返回到上一个道路分叉口，并标记相应的方向。另一种从迷宫里推进的方法是靠着墙的一边走。这将会消耗大量的时间，但是这肯定会将你带出迷宫。</p>
+<h4>在迷宫里战斗</h4>
+<p>地图制作者的一个常用技巧是在迷宫里放置刷怪箱，让你很难向周围移动。在迷宫里战斗时，将迷宫角落转变为你的优势。不要使用熔岩：它将会把走廊弄得更乱。</p>
+
+<h3>需要注意的东西</h3>
+<h4>沙子和沙砾</h4>
+<p>沙子和沙砾通常用于制作浮空沙子或沙砾陷阱。当你在上面放置一个方块或火把时，它会掉落到熔岩、一大群怪物、虚空、压力板、以及激活一些红石。</p>
+<p>沙子陷阱揭露出一些地方是不可到达的，然而，你可以谨慎地避免红石型沙子陷阱。如果你看见一个箱子、熔炉，或一些种类的东西，确保你在破坏它之后有方法远离它。</p>
+<h4>TNT</h4>
+<p>TNT可能是制作陷阱的绝佳材料。寻找在地区里未探索过的房屋：它们可能是一个死亡陷阱！TNT也可以制造一个很大的洞，让它很难被找到。同时一些包含TNT地图做了它在测试版中做过的东西，点击它将会被引爆，从而使它很难被解除。地图制作者通过外部工具来达成这个效果。自 1.7 以后，它们也可以在命令中使用数据值了。</p>
+<h4>深坑</h4>
+
+<p>虽然在走廊里很容易避免这个陷阱，但是这会让你分心，你甚至会掉落到一个深坑里！把它盖住，或者在你看见的深坑上设置障碍，标记这可能是一个威胁。直接避开这些深坑是可能的。</p>
+<h4>有关红石的物品</h4>
+<p>这包括压力板、发射器和活塞。红石电路事实上可以由任何东西建造，因此如果你看见一个“未探索过”的压力板，封锁它，或者避免站上去。</p>
+<h4>影响移动的方块</h4>
+<p>这包括灵魂沙、冰和藤蔓。灵魂沙会让你穿过一片区域时变慢；冰将地面变得很滑；藤蔓可以使在探索墙壁时让人分心。尝试远离灵魂沙或冰，同时也要避免在藤蔓区域里被生物逼入绝境。</p>
+
+<h2>准备挑战</h2>
+<h3>你的物品栏</h3>
+<p>当进入地牢时，最好是轻装上阵，这样你就不会因为死亡而失去太多的东西。</p>
+<p>这里是你的物品栏里的一些好东西：</p>
+<ul>
+<li>2把剑</li>
+<li>1把弓
+<ul>
+<li>最多一组的箭</li>
+</ul>
+</li>
+<li>2把镐</li>
+<li>一组或2组火把</li>
+<li>1个水桶（用于熔岩区域）</li>
+<li>护甲</li>
+<li>1组或2组方块</li>
+<li>活塞（如果可能）</li>
+</ul>
+<p>如果是营救任务，那么你将会有：</p>
+<ul>
+<li>1把剑/弓</li>
+<li>1把镐</li>
+<li>一些火把</li>
+<li>一些方块</li>
+<li>低级护甲</li>
+<li>药水（如果可能，只用于生物聚集区）</li>
+</ul>
+<p>这里是一些适合携带的药水：</p>
+<ul>
+<li><b>治疗药水</b>：适合随身携带，因为它不仅可以回复自身生命值，而且可以对僵尸、骷髅和僵尸猪人造成伤害。</li>
+<li><b>隐身药水</b>：适合用于穿越大量刷怪箱的地带，因为它将不会让你受到任何的伤害。</li>
+<li><b>抗火药水</b>：使用抗火药水，就可以很容易地对付恶魂和烈焰人了。</li>
+</ul>
+<h4>庇护所</h4>
+<p>一个主庇护所应该有以下特征：</p>
+<ul>
+<li>可以完全躲避怪物。</li>
+<li>拥有工作台、熔炉和箱子。</li>
+</ul>
+<p>一般的，人们都会将它们的庇护所建造在胜利纪念碑附近，但是一些地图制作者在纪念碑处设置了一些很闹人的东西（例如死亡的僵尸、藤蔓等），因此最好在纪念碑相当近的地方建造庇护所，而不要太靠近。</p>
+<p>推荐将下面的结构放入你的庇护所中：</p>
+<h3>食物农场</h3> 
+<p>在大多数地图里，最好的可重新食物就是胡萝卜和马铃薯了。它们很容易种植，而且它们吃几次（胡萝卜回复2点饥饿度，熟马铃薯则是3点）。这是是一个关于自动小麦农场的教程，这个农场也可以用于种植胡萝卜和马铃薯。</p>
+<p>如果地图上有牛和哞菇，最好就是在建造了胡萝卜/马铃薯农场的之后再建造一个小麦农场。肉类可回复4饥饿度，并且在游戏中也是最容易获得的食物。</p>
+<p>一个西瓜农场，除非很大，否则不推荐。因为西瓜只能吃一次，并且生长速度也很慢。</p>
+<h4>怪物经验农场</h4>
+<p>你只需要在庇护所的周围设置一个怪物陷阱，而不需要穿着附魔的装备出去获得经验。</p>
+<p>在刷怪盒周围设置一个怪物陷阱，最好很高，以便怪物在掉落时受到一半生命值的伤害（一击致命）。</p>
+<h4>树木农场</h4>
+
+<p>不可否认，木头是 Minecraft 中最重要的资源。在挑战地图中你将会需要大量的木头。</p>
+<h4>圆石农场</h4>
+<p>这只在你需要大量的石头的极端条件下才使用。最容易的农场的构造是：</p>
+        </div>
+        </article>
+        <!-- End Article -->
+
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

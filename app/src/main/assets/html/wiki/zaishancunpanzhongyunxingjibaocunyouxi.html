@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>在闪存盘中运行及保存Minecraft</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">在闪存盘中运行及保存Minecraft</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        <p>此教程解释了如何在闪存盘上运行Minecraft。你在使用不同的电脑上使用相同的游戏数据（世界、保存的数据、资源包、服务器等）时这很有用，因为游戏数据将会始终保存在便携式驱动器中。</p>
+<p></p>
+
+<h2>先决条件</h2>
+<p>你需要：</p>
+<ul>
+<li>一个最少拥有 512MB 内存的便携式驱动器。你将会需要更多的空间在驱动器上储存你的Minecraft存档。</li>
+<li>一个运行着Windows、OS X、或任何Linux的发行版的电脑，这台电脑要符合<a target="_self" rel="nofollow" class="external text" href="https://help.mojang.com/customer/portal/articles/325948-minecraft-system-requirements">Minecraft 配置运行需求</a>。</li>
+</ul>
+<h2>步骤</h2>
+
+<h3>安装了Windows的电脑</h3>
+<h4>准备工作</h4>
+<p>因为 Minecraft 需要安装多个文件，我们将会收集 Minecraft 运行所有的所需文件，并在便携式驱动器中分好类，以方便寻找。请注意，如果你不正确的按照下面的指示做，那么 Minecraft 可能会崩溃或启动失败。Windows 对所有的文件和文件夹名称的大小写都很敏感。</p>
+<ul>
+<li>将便携式驱动器插入到你的电脑中，并打开它。</li>
+<li>新建一个文件夹，将其命名为 <b>Minecraft Portable</b>（或其他你选择的名字，名字不能含有中文字符），并进入文件夹。</li>
+<li>在这个文件夹里，新建2个文件夹，并分别命名为 <b>Launcher</b> 和 <b>Data</b>。
+
+<li>注：这些文件夹必须有确切的名称，因为我们将在以下步骤中使用它们。</li>
+<li>现在在驱动器上有3个文件夹：在 <b>Minecraft Portable</b> 里面的 <b>Launcher</b> 和 <b>Data</b>。</li>
+
+</li>
+</ul>
+<h4>启动</h4>
+<p>往便携式驱动器中添加启动器/客户端：</p>
+<ul>
+<li>下载 Minecraft launcher。
+<ul>
+<li>你可以在https://minecraft.net/download中下载它。</li>
+<li>确保你使用了“Minecraft for Windows (alternative)” 版本，这可以在“Show all platforms”页面中找到。</li>
+</ul>
+</li>
+<li>将 Minecraft.exe 复制到已经创建的 <b>Launcher</b>文件夹。</li>
+</ul>
+<h4>数据文件</h4>
+<p>此部分教程将会指导你如何将游戏数据（世界、储存的数据、资源包、服务器等）复制到便携式驱动器中。<br />
+如果你不想复制你的游戏数据，你可以跳过这个部分。</p>
+<p>所有的游戏数据都必须在 <b>.minecraft</b> 文件夹里。</p>
+<ul><li>按下 <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⊞ Windows</kbd> + <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">R</kbd>
+<ul>
+<li>输入 <b>%APPDATA%</b> 并点击确定。</li>
+</ul>
+</li>
+<li>查找 <b>.minecraft</b> 文件夹，并复制它。</li>
+<li>将复制的文件夹粘贴到 <b>Data</b> 文件夹。</li>
+</ul>
+
+<h4>设置</h4>
+<p>现在所有的数据文件都在这里了，我们需要告诉 Windows 将 Minecraft 引导到在便携式驱动器的文件上。为了达成这个目标，我们需要创建一个批处理文件（.bat)。</p>
+<ul>
+<li>打开记事本或一个简单的文字编辑器。
+<ul>
+<li>按下 <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⊞ Windows</kbd> + <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">R</kbd>。</li>
+<li>键入 <b>notepad</b> 并点击确定。</li>
+</ul>
+</li>
+<li>在文字编辑器中复制并粘贴下列文字：</li>
+</ul>
+<pre> set APPDATA=%CD%\Data
+ start %cd%\Launcher\Minecraft.exe
+</pre>
+<ul>
+<li>如果你愿意使用 minecraft.jar，使用下列文字代替：</li>
+</ul>
+<pre> set APPDATA=%CD%\Data
+ start %cd%\Launcher\Minecraft.jar
+</pre>
+<ul>
+<li>现在点击 文件 &gt; 另存为...</li>
+<li>导航到你的 <b>Minecraft Portable</b> 文件夹（<i>不是<b>Launcher</b> 或 <b>Data</b></i>）。</li>
+<li>命名这个文件为 "StartMinecraft.bat"。</li>
+<li>双击运行它。如果要修改这个文件，请右击这个文件，并点击“编辑”。</li>
+</ul>
+<h4>开始游戏</h4>
+<ul>
+<li>一旦设置完成后，你就可以通过运行已经创建的 StartMinecraft.bat 文件来启动 Minecraft 了。</li>
+<li>当启动器出现时，点击 Play 开始游戏。</li>
+</ul>
+
+<h3>安装了 Linux 的电脑</h3>
+<p>我们要确定便携式驱动器在 /dev/sdb1 中，并且 Minecraft 被安装在 ~/games/.minecraft</p>
+<ul>
+<li><b>注</b>：目录名称可能不同，这取决于你将 Minecraft 安装到的目录。</li>
+</ul>
+<p>在一个 Terminal 中运行下列命令（确保以管理员方式运行，或者使用 sudo）：</p>
+<pre> umount /dev/sdb1
+ mkdir /media/minecraft
+ mount /dev/sdb1 /media/minecraft
+ mkdir /media/minecraft/games # 如果你的 USB 中有一个储存游戏的文件夹，那么可以跳过该步骤。
+ cp - rn ~/games/.minecraft /media/minecraft/ # 这可能需要花费一些时间。
+ cd
+ umount /dev/sdb1
+ rm /media/minecraft # 双击以确保你的 USB 已经安装！
+</pre>
+<p>在此之后，如果你想游玩 Minecraft，只需要在 Terminal 中输入下列命令。（你还是需要超级用户权限）</p>
+<pre> umount /dev/sdb1
+ mkdir ~/games # 如果游戏文件夹在根目录里，那么可以跳过。
+ mount /dev/sdb1 ~/games # 你将不能够玩任何储存在 ~/games 目录里的游戏。
+</pre>
+<p>运行你的 Minecraft 启动器并开始游玩。</p>
+
+<h3>安装了 OS X 的电脑</h3>
+<p>这部分并不是真的是让 Minecraft 在便携驱动器上运行，因为它需要在你每次进行游戏时复制游戏数据到便携驱动器上面。</p>
+<h4>设置</h4>
+<ul>
+<li>寻找你的 Minecraft 文件。当在搜索界面时按下 Command+Shift+G ，然后复制 ~/Library/application support/minecraft 到对话框中。</li>
+<li>将在你的 application support 文件夹里的 minecraft 文件夹复制。</li>
+<li>Insert in your portable drive and make 2 folders in it: 插入你的便携驱动器，并新建2个文件夹：
+
+<b>data</b> 和 <b>launcher</b>
+
+</li>
+<li>将 minecraft 文件夹粘贴到便携式驱动器的 “data” 文件夹中。</li>
+<li>拖动你的启动器到“launcher”文件夹。</li>
+<li>移除你的便携式驱动器。</li>
+</ul>
+<h4>开始游戏</h4>
+<p>一旦完成设置后，你就可以在另一台 Mac 上测试你的 Minecraft 是否可以运行了。</p>
+<ul>
+<li>将便携式驱动器插入到另一台要测试的 Mac。</li>
+<li>打开 launcher 文件夹，并移动 Minecraft launcher 到你的 Applications 文件夹。</li>
+<li>双击启动器来运行它。在 Minecraft 加载后退出。</li>
+<li>转到 Users/USERNAME/Library/Application Support</li>
+<li>在 “Application Support”中，删除 minecraft文件夹。</li>
+<li>将便携式驱动器里的 data 文件夹里面的 minecraft 文件夹移动到桌面。</li>
+<li>将该文件夹从桌面移动到 application support。</li>
+<li>再次运行 Minecraft。</li>
+</ul>
+
+
+<h2>补充注释</h2>
+<p><b>注</b>：如果你往便携式驱动器里安装资源包或 Mod，那么当有响应的指示让你复制文件时，你就需要使用到你的闪存盘里面的 <b>.minecraft</b> 文件夹。</p>
+<p>注：该方法同样适用于 Dropbox、Google Drive 和 OneDrive。</p>
+<h2>原始资料</h2>
+<p>如果你在理解这个页面上遇到麻烦，可以在 <a target="_self" class="external text" href="http://www.minecraftforum.net/topic/814010-100how-to-play-minecraft-off-your-usb-drive-any-computer-any-minecraft-version/">这个帖子</a> 中找到原始教程。</p>
+<h2>其它方法</h2>
+
+
+<h3>Cryshal 的方法</h3>
+<p><i>不工作，minecraft 始终还是从 appdata 文件夹中启动，Minecraft Profile Manager 没用，Java 也不能从闪存盘中运行</i></p>
+<p>你需要</p>
+<ul>
+<li>1个闪存盘（建议容量在2GB左右，但是这取决于你拥有多少世界/资源包）</li>
+<li>Windows 系统</li>
+</ul>
+<p><br /></p>
+<ul>
+<li>首先，创建一个文件夹，例如“Flash MC”。然后，下载 <a target="_self" rel="nofollow" class="external text" href="http://portableapps.com/apps/utilities/java_portable/">jPortable</a>，这个软件可以让 Java 在你的闪存盘上正确运行，而不用安装在电脑后才能运行。</li>
+</ul>
+<ul>
+<li>你需要将 jPortable 安装到闪存盘中的一个文件夹，如 \Flash MC\jPortable。</li>
+</ul>
+<ul>
+<li>然后，前往 <a target="_self" class="external text" href="http://www.minecraftforum.net/topic/540449-minecraft-profile-manager/">Minecraft Profile Manager</a>的帖子，并下载它。</li>
+<li>按照说明将它放入到你的闪存盘里面的 MC 文件夹。（将 minecraft.exe 放置在相同的文件夹）</li>
+<li>现在你将能够启动 MPM，新建一个用户资料，并下载运行 Minecraft 的全部所需文件。</li>
+</ul>
+<h4>注意</h4>
+<ul>
+<li>MPM的运行需要使用 Java，这意味着你必须安装 Java 来让它工作。</li>
+<li>运行 Windows 的电脑应该很好的工作，除非它们没有打补丁。</li>
+</ul>
+<p>希望这能够帮到你！</p>
+
+<h3>HiWiki's 的方法</h3>
+<p class="yellow"><b>警告</b><br />
+请小心跟随下面的步骤，以防止 Minecraft 崩溃！<br />
+该方法来源于 HiWiki！</p>
+<p><b>警告</b> - 请独自承担这带来的风险！<br />
+只在 <b>WINDOWS</b> 上工作！</p>
+<p>你需要：</p>
+
+<ul><li>USB （最低要求容量为2.5GB，如果你想安装 Mod 或材质包，你就需要更多空间（你也需要额外的空间存储世界））</li>
+<li>记事本</li>
+<li>Minecraft 客户端</li>
+<li>.minecraft 文件夹</li>
+</ul>
+</li>
+</ul>
+<h4>步骤</h4>
+<ul>
+<li>首先，你需要新建2个文件夹——<b>bin</b> 和 <b>data</b>。</li>
+<li>然后，将 Minecraft 客户端放入 <b>bin</b> 文件夹。
+<ul>
+<li>如果你使用 jar 文件（或其他运行 Minecraft 的东西），也请放置到 <b>bin</b>文件夹。</li>
+</ul>
+</li>
+<li>但是 Minecraft 的数据并不在 <b>data</b>文件夹中，
+<ul>
+<li>因此你需要按下 <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⊞ Windows</kbd> + <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">R</kbd> ，打开运行窗口，并在窗口中输入&#160;%appdata% ，然后复制 .minecraft 文件夹（同时包括 minecraft 的其它文件夹，例如 .aether）
+<ul>
+<li>选择这些文件夹并按下 <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">Ctrl</kbd> + <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">C</kbd> （或 <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">Ctrl</kbd> + <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">X</kbd> 如果你想移动这些文件）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>然后再次按下 <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⊞ Windows</kbd> + <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">R</kbd> ，并在对话框中输入 notepad，然后复制下列代码：</li>
+</ul>
+<pre> SET APPDATA=%CD%\data
+ bin\minecraft.exe
+</pre>
+<ul>
+<li>如果使用 jar 文件，则用下列命令：</li>
+</ul>
+<pre> SET APPDATA=%CD%\data
+ bin\minecraft.jar
+</pre>
+<ul>
+<li>如果使用的 Jar/Exe 文件拥有不同的名称，例如 Minecraft-launcher，则用下列命令</li>
+</ul>
+<pre> SET APPDATA=%CD%\data
+ bin\&lt;启动器的名称&gt;.&lt;jar/exe&gt;
+</pre>
+<ul>
+<li>这就完成了！</li>
+</ul>
+<h4>注意！</h4>
+<ul>
+<li>该方法将会需要 Java，如果你想让 java 在你的闪存盘中运行，请查看下面的部分——<b>添加便携式 Java 的方法</b></li>
+<li>在 appdata 的 .minecraft 文件夹里面的数据都要在你的闪存盘中运行。</li>
+</ul>
+<h4>添加便携式 Java 的方法</h4>
+<p><b>该方法需要额外的 0.5GB 磁盘空间！</b></p>
+<ul>
+<li>现在你已经完成上面的步骤！</li>
+<li>是时候添加便携式 Java 了（YAY!）</li>
+<li>首先，点击 <a target="_self" rel="nofollow" class="external text" href="http://portableapps.com/download">这个链接</a>。</li>
+<li>然后，在页面上点击<a target="_self" rel="nofollow" class="external text" href="http://downloads.sourceforge.net/portableapps/PortableApps.com_Platform_Setup_11.2.exe?accel_key=69%3A1396263552%3Ahttp%253A//portableapps.com/download%3A9d865d8b%243f3c86b4e6edabada0df0f9217933d7a908de328&amp;click_id=7dfd50b4-b8c3-11e3-aacb-0200ac1d1daa&amp;source=accel">Download Now或这个链接</a>。</li>
+<li>然后打开 PortableApps.com_Platform_Setup_11.2.exe ，在你看见 add apps section 前请等待。
+<ul>
+<li>确保你已经将安装程序放置在闪存盘中！</li>
+</ul>
+</li>
+<li>然后在工具里寻找并勾选 jPortable 、jPortable Launcher、jPortable Browser 的复选框，然后点击 install。</li>
+<li>等待完成后，就完成了！</li>
+</ul>
+<h4>如何开启 jPortable</h4>
+<ul>
+<li>首先，在你的闪存盘中寻找文件夹 PortableApps。</li>
+<li>然后双击 start，并点击 jPortable Launcher。</li>
+<li>这将会打开一个窗口，然后寻找 jar。（如果只显示 jar，不用担心，只要将它改为 all files，然后寻找你的 exe 即可）</li>
+<li>之后点击 open，然后你的 Minecraft 将会打开。</li>
+</ul>
+<h4>漏洞与修复</h4>
+<ul>
+<li>如果找不到 minecraft 目录，请确认是否点击了 edit profile 按钮，并在资源管理器中定位到你的 data 文件夹，然后点击它，并按下 properties。
+
+<li>同时也可以编辑 edit profile 窗口里面的 <b>Game directory</b> 文本框。</li>
+<li>现在应该出现了一个窗口，你将要对拖动文本的<i>位置</i>的一行进行选择，然后将其粘贴到 <b>Game directory</b> 文本框中，并输入 \.minecraft 或复制它到 <b>Game directory</b> 文本框中。</li>
+
+</li>
+<li>然后你就完成了！</li>
+</ul>
+<h4>通过修改autorun.inf以修改启动器文件</h4>
+<p>如果你autorun.inf内容是这样的：</p>
+<pre> set APPDATA=%CD%\data
+ bin\minecraft.exe
+</pre>
+<p>或：</p>
+<pre> set APPDATA=%CD%\data
+ bin\minecraft.jar
+</pre>
+<p>请将文件内容改成这样：</p>
+<pre> set APPDATA=Minecraft portable\data
+ cd Minecraft portable\drive\
+ Minecraft.jar
+</pre>
+
+          </div>
+        </article>
+        <!-- End Article -->
+
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

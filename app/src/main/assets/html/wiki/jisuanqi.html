@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>计算器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">计算器</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此页面的部分内容由于太久没更新而已过期。</b>
+<br />
+你可以帮助我们来更新此页面
+</p>
+<p class="yellow">
+<b>此页面的（部分）内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> 
+<p class="red"><b>警告</b>
+<br />
+在依照本页面上的所有步骤架设服务器之前，请注意如果您不清楚您自己在做什么而运行服务端软件，将会导致您的系统出现错误甚至出现崩溃。[1]
+       </p> 
+-->
+<p class="yellow">
+<b>此页面的（部分）内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> 
+       
+       
+<p></p>
+ 
+<h2>摘要</h2>
+<p>这是目前已经建立的计算器计划：
+</p>
+<p>
+<img src="img\jisuanqi1.png" />
+<br /> 
+<img src="img\jisuanqi2.png" />
+<br />计算器计划
+</p>
+<p><br>
+当然，所有的编译都是用二进制的形式。这就是为什么会要有很多不同的解码器。
+</p>
+
+<h2>目前的零件</h2>
+ <p>这篇文章会尽量使用一些逻辑顺序来描述组成零件。
+</p>
+
+<h3>控制面板（室）</h3>
+<p>控制面板是你设置输入和决定操作的房间。
+</p>
+
+<h4>数字输入面板</h4>
+<p>
+<img src="img\jisuanqi3.png" />
+<br />数字输入面板
+</p>
+<p>在这里，用户将决定他要用什么号码。现在，我使用基于拉杆的二进制输入系统，所以用户必须分解他想用的数为二进制。
+</p>
+<h4>计算面板</h4>
+<p>在这个面板，用户要从各个运算符号之间选取他要用的一个：加(+)，减(-)，乘(*)，除(/)。现在，我再次使用拉杆系统。
+</p>
+<p>
+<img src="img\jisuanqi4.png" />
+<br />计算面板
+</p>
+
+<h3>输入端 (白色和橙色)</h3>
+<p>这些电线连接输入面板和计算面板到不同的逻辑单元。试着去改变他们的方式让相同的值集合在一起。所以，你的电线看起来应该像这样，从左到右：A1; B1; A2; B2; A4; B4; ...
+</p>
+
+<h3>逻辑单元</h3>
+<p>这是执行的操作的机器。
+</p>
+
+<h4>加法器/减法器(黄色和红色)</h4>
+<p><b>注：在这个计划中，减法器和加法器是分开的。我会尽快修复它。</b>
+</p><p>我已经建立了自己版本的一个加法器/减法器。它的结构很简单，因为它是被调整过的(由许多相同的部件组成)。这意味着，如果你使用更多的位元，你可以只添加更多的部分在侧边，但你有时要改变一些链接。
+</p>
+<p>
+<img src="img\jisuanqi5.png" />
+<br />二合一加法器/减法器
+</p>
+<p>在这台机器上，您的输入(二进制)进入底部的 全加器 (黄色)。每一个加法器需要两个具有相同的值的输入(A和B)。而且，最低的位元要在左边，所以他们都应该由他们的进位进行连接。基本上，你的输入会像在 #Input Wires (白色和橙色) 部分中的线。使用基本的桥梁在其他线路之上通过，而不会连接到其他线路。你的A输入(左边)是被减数(X-Y=Z中的X)，它会直接传到加法器。你的B输入是减数(X-Y=Z中的Y)，它必须通过一个多路复用器，它由一个在需要进行减法的情况下给加法器一个反相信号的 异或门组成。多路复用器由一个开关控制(在图中，那个开关在左边)。加法和会进入另一个多路复用器，它同样会在减法的情况下给出一个反相输入。这是由一个如果开关是“减法”而且last carry为真的话会输出真的 蕴含门 (在右上方)控制。这是有必要的因为在一个减法，Last进位实际上是“-”（减号）标志。
+<br>
+白色的机器是 半加器 ，作为输入last的加法器的进位和各自的全加法器的总和。我们需要这个因为如果答案是否定的，它使用方程”-A =&#160;!A (inverted A)+ 1”， 这里 。最后的输出是所有的最上方的wires可以观察，加wire在右边（从最后的全加法器进位）和进位在第一个（左边）半加法器是负号。
+</p><p>The white machines are  half-adders , that use, as inputs, the carry of the last adder and the sum of their respective full adder. We need this because, if the answer is negative, it uses the equation " -A =&#160;!A (inverted A)+ 1 ", as explained  here .
+The final outputs are all of the top-most wires you can observe, plus the wire on the right (the carry from the last full adder) and the carry that goes in the first (left) half-adder, as the negation sign.
+</p>
+
+<h4>乘法器 (浅蓝色)</h4>
+<p>让我们从基本知识开始，因为这是最复杂的地方。如果你上过学，你应该要知道，乘法只是一个重复的加法。那即是，我们会在这里再次使用加法器。其实在开始之前，你需要先设置一些与门（不包括the control one）。它的用途十分简单：在二进制的乘法中，因为我们只会使用0和1，我们可以制造输出的唯一方法是将1乘以1。
+<br>
+我将按由低位到高位的顺序。
+<br>
+最低的位元：
+1*1 = 1。
+即是第二个与门的输出(the control one) 直接传到输出红石线集合。
+<br>
+倒数第二：
+1*2 = 2和2*1 = 2。
+两个输出会进入全加器。和会进入输出，进位则会进入下一位。
+<br>
+下一个：
+1*4 = 4；2*2 = 4和4*1 = 4。
+来自the last bit的进位会第一个加法器的进位进入。The two normal inputs are 三个与门中的两个。它们的和会进入第二个加法器，第二个输入则是第三个与门。Both carry outs go to the next stage，他们的和会进入输出。
+<br>
+你可以用这种方式一直継续直到你 run out of AND gates, or equations.
+</p>
+
+<h4>除法器(粉红色)</h4>
+<p>这个很容易和乘法器比较。我们将会继续使用全加器。基本上，每个A输入端, 会设置<i><b>n</b></i>个加法器，<i><b>n</b></i>=B输入端的数量。Also, this time, 你需要“将它们反相”. 现在the most significant bit should pass its carry downwards.
+</p>
+
+
+<h3>输出线</h3>
+<p>此线必须接收到从每一个机器发出的每一条输出信号，并且将他们重定向到另一部分
+</p>
+
+<h3>二进制-十进制解码器</h3>
+<p>这个部件会把二进制转换成十进制输出。它的尺寸会是(二进制输入*2)*(十进制输出)<br>
+*快速笔记* 它用于一个 "可编程的" 异或门 cane 倾向于一个非门.这样会激活一行红石火把输出正确答案。
+</p>
+ 
+ 
+
+          </div>
+        </article>
+        <!-- End Article -->
+
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

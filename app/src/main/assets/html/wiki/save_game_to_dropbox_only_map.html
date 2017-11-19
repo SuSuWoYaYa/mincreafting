@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>将游戏数据保存到 Dropbox 云端（仅限地图数据）</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">将游戏数据保存到 Dropbox 云端（仅限地图数据）</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        
+        <p class="red"><b>该页面的内容不受Mojang AB、Minecraft Wiki、Minecraft IRC频道与Minecraft论坛的官方支持。</b></p>
+        <hr> 
+        <p class="red"><b>警告</b><br/>因为这是 Wiki 的一个条目，可以在任何时间内被任何人编辑，因此建议你不要完全使用这个脚本，而是将其当作编写脚本的指导手册看待。</p>
+         <hr> 
+
+
+<p>这里是一个如何把游戏数据上传到云端的教程，以便你可以在任何地方游玩该存档。</p>
+
+
+<h2>注意</h2>
+<p>该教程假设你只想上传 Minecraft 存档文件夹。如果你希望分离不同系统的文件夹（如 Minecraft/Linux、Minecraft/Windows，Minecraft/Toaster 等等），那么你就要在 Dropbox 里创建它们。本教程只会同步游戏存档，其它的 .jar 自定义文件（例如 Mod）或材质包则不包括。如果你不知道它们是什么，那么你的文件可能是安全的。</p>
+
+<h2>下载和安装 Dropbox</h2>
+<p>第一步就是下载 Dropbox。Dropbox 会自动同步服务器的内容，允许你在线或通过PC客户端访问这些内容。Dropbox 是跨平台的，再加上可以通过网页或手机网页进行访问。</p>
+<p>前往 http://www.dropbox.com，注册一个免费账户，下载应用程序并安装它。你会自动获得2GB的免费云存储空间。</p>
+<p>安装了 Dropbox 后，你需要知道 Dropbox 的文件夹位置：</p>
+<ul>
+<li>在 Windows XP 里，Dropbox 文件夹在用户的“My Documents”文件夹里。引用该文件夹最简单的方法就是使用环境变量，例如： <tt>"%HomeDrive%%HomePath%\My Documents\Dropbox"</tt>。因为“My Documents”含有空格，因此变量最前面和最后面的双引号是必需的。</li>
+<li>在 Windows 7 和 8 里，默认 Dropbox 文件夹在 C:\Users\<i>用户名</i>\Dropbox。使用环境变量 <tt>%HomeDrive%%HomePath%\Dropbox</tt>。</li>
+<li>在 Linux 里，默认位置在用户的 home 文件夹。例如在 Ubuntu，其文件夹就在 ~/Dropbox</li>
+<li>在 Mac OS 里，其位置也应该在用户的 home 文件夹。</li>
+</ul>
+<p>无论你使用哪个系统，Dropbox 都有对应的非常好的文档，可以协助你查找帮助：http://www.dropbox.com/help</p>
+
+<h2>复制你的存档数据到 Dropbox</h2>
+<p>下一步，我们将会需要备份一份 Minecraft 的存档数据，并且把这个备份放到 Dropbox 云端。要完成本教程，我们将会复制 <code>.minecraft</code> 里面的 <code>saves</code>文件夹，并把这个复制的文件夹放进 Dropbox 文件夹里面的 <code>Minecraft</code>。你也可以选择把它存在你选择的 Dropbox 位置里。</p>
+<h3>Windows</h3>
+<p>在 Windows 里，你的 Minecraft 数据文件夹位于你的 Application Data 文件夹。你可以通过按下 Windows+R 或点击 开始菜单 &gt; 运行并在框里输入 <code>%AppData%\.minecraft</code>。这将会为你打开 minecraft 文件夹。复制名为 <code>saves</code> 的文件夹，我们将会在 Dropbox 文件夹中创建 <code>Minecraft</code> 文件夹，然后把数据储存在这里面。</p>
+<p>一旦这些文件复制完成后，回到你的 <code>.minecraft</code> 文件夹，然后重命名文件夹为 <code>saves-backup</code>。该步骤可确保你在出现不可恢复的错误时拥有一个备份，以及允许在最后的一个步骤中创建正确的符号链接。</p>
+<h3>Mac OS X</h3>
+<p>在 Mac OS X，Minecraft 数据文件夹位于您的用户名 &gt; Library &gt; Application Support 文件夹。你可以通过打开 Finder → Go → Go To Folder → 输入 <code>~/Library/Application Support/minecraft</code> 来快速访问该文件夹。要为接下来的引用作准备，最好的方法是为该文件夹制造一个别名，并将它复制到您的桌面。</p>
+<p>现在，复制文件夹到 Dropbox 其中一个位置。最好重命名原始存档文件夹（在您的 <code>minecraft</code> Application Support 文件夹里）为 <code>saves-backup</code> 作为备份，以防止发生意外情况时存档文件夹出现问题。它也允许我们在接下来的一个步骤里创建链接到正确位置的符号链接。</p>
+<h3>Linux</h3>
+<p>在 Linux 里，您的 Minecraft 数据文件夹位于您的 user home 文件夹里。然而，这个文件夹可能在视图里被隐藏了。如果您正在使用 GUI，确保已选择 View &gt; Show Hidden Files。</p>
+<p>把存档文件夹复制到您的 Dropbox。与之前提到的一样，本教程我们在 Dropbox 创建了一个叫作 <code>Minecraft</code> 的文件夹来保存这个存档文件夹。</p>
+<p>一旦保存完成后，重命名存档文件夹为 <code>save-backup</code>。</p>
+<p>如果您拥有强大的命令行解析能力，这里是上述步骤所使用的命令行。</p>
+<dl>
+<dd><code>if [&#160;! -e ~/Dropbox/Minecraft]</code></dd>
+<dd><code>then</code></dd>
+<dd><code>mkdir ~/Dropbox/Minecraft</code></dd>
+<dd><code>fi</code></dd>
+<dd><code>cp -r ~/.minecraft/saves ~/Dropbox/Minecraft/saves</code></dd>
+<dd><code>mv ~/.minecraft/saves ~/Dropbox/saves-backup</code></dd>
+</dl>
+
+<h2>创建符号链接</h2>
+<p>这是本教程的最后一个步骤，它将会允许用户在使用他们文件的云端版本。</p>
+<h3>Windows</h3>
+<h4>GUI</h4>
+<p>一个免费的应用程序 <a target="_self" rel="nofollow" class="external text" href="http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#download">Link Shell Extension</a>
+<br/>http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#download
+<br/>让在 Windows 上创建符号链接变得更容易，它允许你在资源浏览器里通过右键创建符号链接。</p>
+<p><b>注意：</b>如果您正在运行 Windows XP，您需要安装 Server 2003 resource pack 以开启符号链接，这个 Resource pack 可以在 <a target="_self" rel="nofollow" class="external text" href="http://www.microsoft.com/downloads/en/details.aspx?familyid=9d467a69-57ff-4ae7-96ee-b18c4790cffd">这里</a>下载。</p>
+<ol>
+<li>移动你的 Minecraft 存档文件夹（位于 <code>%appdata%\.minecraft</code>）到您的 Dropbox。</li>
+<li>右击该新文件夹，并选择 <i>Pick Link Source</i>。</li>
+<li>回到您的 Minecraft 文件夹原始位置，然后在空白位置右击，并点击 <i>Drop As… → Junction</i>。</li>
+<li>至此，您已经完成了把游戏数据推送到云端的全部设置。</li>
+</ol>
+
+
+
+<h4>命令提示符</h4>
+<ol>
+<li>右击 cmd.exe 然后点击以管理员身份运行。</li>
+<li>在 cmd.exe 键入： <code>cd&#160;%appdata%\.minecraft\</code></li>
+<li>然后键入：<code>mklink /d "saves" "&lt;dropbox_path&gt;\Minecraft\saves"</code></li>
+<li>如果一切成功，那么控制台就会输出“Symbolic link created”。</li>
+</ol>
+
+<h3>Mac OS X</h3>
+<h4>GUI</h4>
+<p>一个免费的应用程序 <a target="_self" rel="nofollow" class="external text" href="http://seiryu.home.comcast.net/~seiryu/symboliclinker.html">SymbolicLinker</a><br/>
+http://seiryu.home.comcast.net/~seiryu/symboliclinker.html 
+<br/>允许你在 Finder 里通过右键创建符号链接。</p>
+<ol>
+<li>下载并安装 SymbolicLinker。</li>
+<li>安装后，移动您的 Minecraft 存档文件夹（位于 '~/Library/Application Support/minecraft<i>）到您的 Dropbox。</i></li>
+<li>右击该新文件夹并选择 <i>Make symbolic link</i>。这将会在同一个文件夹创建符号链接。</li>
+<li>把这个文件夹移到原来的位置（确保与原始文件夹同名）。</li>
+<li>至此，您就完成了把游戏数据导入云端的全部设置。</li>
+</ol>
+<h4>Terminal</h4>
+<ol>
+<li>打开 Terminal</li>
+<li>输入：<code>ln -s ~/Dropbox/Minecraft/saves ~/Library/Application\ Support/minecraft/saves</code></li>
+</ol>
+<p>如果您移动了您的 Dropbox 到某个位置而不是默认位置，那么您就需要修改第一个路径。</p>
+
+<h3>Linux</h3>
+<h4>GUI</h4>
+<dd>打开2个文件浏览器窗口，一个窗口展示的是 Dropbox 文件夹，另外一个展示的是 minecraft 文件夹。</dd>
+<dd>之后把 <code>saves</code> 拖到 Dropbox 文件夹那里，然后按下 Alt 键拖回去到原来的位置。这应该会创建一个符号链接。</dd>
+<h4>Terminal</h4>
+<dd>要在 Terminal 里面创建符号链接，在 Terminal 里输入：</dd>
+<dd><code>ln -s ~/.minecraft/saves ~/Dropbox/Minecraft</code></dd>
+<dd>现在，当您启动 Minecraft 时，您所有保存的世界应该都会在那里了。</dd>
+</dl>
+<p><i>为了链接任何其它您希望游玩的计算机，您必须遵循下列步骤 - 安装 Dropbox，然后创建符号链接。</i></p>
+
+
+
+
+
+
+
+
+
+         </div>
+        </article>
+        <!-- End Article -->
+
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>OpenBSD 启动脚本</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">OpenBSD 启动脚本</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此页面的部分内容由于太久没更新而已过期。</b>
+<br />
+你可以帮助我们来更新此页面
+</p>
+<p class="yellow">
+<b>此页面的（部分）内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> -->
+<p class="red"><b>警告</b>
+<br />
+因为这是 Wiki 的一个条目，可以在任何时间内被任何人编辑，因此建议你不要完全使用这个脚本，而是将其当作编写脚本的指导手册看待。</p> 
+
+ 
+<h2>安装</h2>
+<ul>
+<li>安装 screen</li>
+</ul>
+<pre>$ pkg_add -vi screen
+</pre>
+<p>或</p>
+<pre>$ sudo apt-get install screen
+</pre>
+<ul>
+<li>安装 openJDK</li>
+</ul>
+<pre>$ pkg_add -vi jdk
+</pre>
+<p>或</p>
+<pre>$ sudo apt-get install openjdk-7-jre
+</pre>
+<ul>
+<li>向要启动/运行 Minecraft 的系统添加一个用户（最好不是登录用户）</li>
+</ul>
+<ul>
+<li>下载 Minecraft 服务端 jar 文件，并将其放置到你系统的某个地方（如 /var/games/minecraft）</li>
+</ul>
+<ul>
+<li>设置“minecraft”用户，把目录拥有者设置为它自己。</li>
+</ul>
+<pre>$ sudo chown -R minecraft:minecraft /var/games/minecraft
+</pre>
+
+<h2>启动脚本</h2>
+<ul>
+<li>在 “/etc/rc.d” 名为 “minecraft”里创建依个新脚本。</li>
+<li>把下列内容放进脚本里，并设置其为可运行，确保已与其他的脚本匹配了权限。</li>
+</ul>
+<pre>#!/bin/sh                                                                                                                                  
+
+minecraft_session="minecraft_session"
+minecraft_args="/usr/local/jdk-1.7.0/bin/java -Xms1536M -Xmx1536M -jar /var/games/minecraft/minecraft_server.jar nogui"
+
+daemon="/usr/local/bin/screen"
+daemon_user="minecraft"
+daemon_flags="-d -m -S ${minecraft_session} ${minecraft_args}"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_check() {
+    pkill -0 -f "/usr/local/bin/SCREEN ${daemon_flags}"
+}
+
+rc_stop() {
+    ${rcexec} "${daemon} -p 0 -S ${minecraft_session} -X eval 'stuff stop\015'"
+}
+
+rc_cmd $1
+</pre>
+<ul>
+<li>编辑“/etc/rc.conf.local”并添加“minecraft”到你的“pkg_scripts”</li>
+</ul>
+<pre># rc.d(8) packages scripts
+# started in the specified order and stopped in reverse order
+pkg_scripts="minecraft"
+</pre>
+<p>这时候，你的服务器应该能够启动/停止，并且可以在启动时自动加载。</p>
+
+          </div>
+        </article>
+        <!-- End Article -->
+
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

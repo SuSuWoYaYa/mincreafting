@@ -189,6 +189,10 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             // TODO Auto-generated method stub
             final int pos = position;
 
+            //  防止内存回收后返回到这个界面崩溃
+            if ((blocks ==null) || (blocks.size() <=0)){
+                finish();
+            }
             Block block = blocks.get(position);
             String filename = block.getFileName();
 

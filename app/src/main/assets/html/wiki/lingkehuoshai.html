@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Zero-tick pistons(0刻活塞)</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">Zero-tick pistons(0刻活塞)</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此页面的部分内容由于太久没更新而已过期。</b>
+<br />
+你可以帮助我们来更新此页面
+</p>
+<p class="yellow">
+<b>此页面的（部分）内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> 
+<p class="red"><b>警告</b>
+<br />
+在依照本页面上的所有步骤架设服务器之前，请注意如果您不清楚您自己在做什么而运行服务端软件，将会导致您的系统出现错误甚至出现崩溃。[1]
+       </p> 
+-->
+
+<p class="yellow">
+<b>此页面的（部分）内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+    </p> 
+<p>This tutorial seeks to teach the player how to make a redstone signal last 0 redstone ticks and go over how this could be used, particularly with its uses on pistons.
+    </p> 
+  
+
+<h2>Introduction</h2>
+<p>When you send a redstone signal through a pulse limiter, it shortens the pulse. When the pulse is shortened enough, strange behaviors arise. If a sticky piston is powered by a pulse 1 tick long, it will begin to retract instantly and end up being unable to retrieve the block so soon after pushing it, while also be able to instantly push again.[Java and Legacy Console editions only] No matter there are mutiple blocks to be pushed or not, the blocks in front of the sticky piston will be pushed or pulled instantaneously. Oddly enough, this does not work on non-sticky pistons.
+</p> <p>Using incredibly specific redstone timings, you can make a piston be powered and depowered at the same time. If you have slow-motion capabilities, you can see this odd behavior in action. This happens when the redstone pulse powering the piston lasts only 1 game tick, which is one half a redstone tick. It is called a 0-tick pulse for this reason.
+</p> 
+<h2>How To 0-Tick A Piston</h2>
+<p>Reasons for why you would do this vary, and they are covered later in this tutorial. There are a few ways to send a 0-tick pulse.
+</p> 
+<h3>Using Observers</h3>
+<p>When an observer block detects a block update, it sends a redstone signal for less than a redstone tick. Using this, you can make a signal cut-off circuit that produces a 0-tick pulse.
+</p> <p>To do so, you must place an observer block with the output facing the piston. Then simply create a block update by placing a block in front of the observer block.
+</p> 
+<h3>Using Redstone Timings</h3>
+<p>Although repeaters and comparators have the same delay by default (1 redstone tick), comparators are handled one game tick after repeaters. Using this, you can make a signal cut-off circuit that produces a 0-tick pulse.
+</p> <p>To do so, the 0-tick redstone line should be able to be powered through a block by a repeater. That block needs to have a sticky piston facing it, so when the piston is powered, the redstone line is not powered. Face a comparator into the piston so the piston is powered by the comparator and put the repeater and comparator on the same input. Now, when you power this input, you should have a 0-tick pulse coming through the output wire, though it will be difficult to see this because it is almost seven times faster than a blink of an eye.
+</p> 
+<h2>Uses of 0-Ticking</h2>
+<h3>Redstone</h3>
+<p>A comparator does not react to a 0-tick pulse, and the pulse will lose its effects if the signal goes through a repeater. The most effective uses come from 0-ticking a piston.
+</p> 
+<h3>Color-Swapping</h3>
+<p>This can be used to turn sand into red sand (or vice-versa) or change the color of concrete powder. It can only be used on these blocks. To set up such a machine, you need a pile of the block you want to convert and one block of the block you want the stack to convert into. For this example, the “stack” will have green concrete powder, and the player wants to turn the powder orange. First, set this up such that two sticky pistons can push the blocks in front of them into a 1x1 hole. The redstone needs to be set up such that the green concrete powder is zero-tick-pushed into the hole. Exactly one redstone tick later, zero-tick the piston with the orange concrete powder. When you power the system, one green concrete powder block will fall in and an orange concrete powder will fall out every time you activate it, until there is no more green concrete powder in the stack.
+</p> <p>This works because red sand is sand with a data tag, and the different colors of concrete powder are the same with a difference in data tags. When these blocks are zero-ticked into each other, the game gets confused and changes the color. This is used heavily in 3D printers.
+</p> 
+<h3>Swapping Blocks</h3>
+<p>Let's say you have a item frame against a block and you want the supporting block to be swapped with a new block, without breaking the item frame. This is impossible to do under normal circumstances, but if you place the new block next to the one you want changed and use a 0-ticked piston to push it into place, the item frame won't break. This is because the blocks are shifted so quickly that the item frame does not have the chance to realize the attachment block moved, so it remains attached to the new block. This works for any entity that is placed against a wall, such as a painting [verify].
+</p> 
+<h3>Chorus Plants</h3>
+<p>If end stone directly underneath a chorus flower is pushed by a 0-ticked piston, and another end stone takes its place, the chorus flower will instantly grow if it has the space, and instantly mature if it doesn't. Done properly, this can allow a farm to be built where the player plants down a chorus flower near bedrock level and the flower's endstone is 0-ticked over and over again until it reaches the sky build limit, and another player can break that chorus flower. Ilmango used this concept to build his chorus plant farm in this video:
+</p> 
+<h3>Suffocation Devices</h3> 
+<p>Normally, when you power a sticky piston with a block on it towards a mob on the edge of a cliff, the mob will be pushed off the edge. However, if that piston is 0-ticked, the block it was pushing will instead end up inside that mob, possibly suffocating it.
+
+</p> 
+          </div>
+        </article>
+        <!-- End Article -->
+
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

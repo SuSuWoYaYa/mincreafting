@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>音效索引</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">音效索引</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        <h2>位置</h2>
+        <p>Minecraft 的 Sound 文件夹在这些位置里：</p>
+<ul>
+<li>Windows XP/Vista/7/8：<code>%AppData%\.minecraft\assets</code> 或 <code>%AppData%\.minecraft\assets\virtual\legacy</code></li>
+<li>Linux：<code>~/.minecraft/assets</code></li>
+<li>OS X：<code>~/Library/Application Support/minecraft/assets</code></li>
+</ul>
+
+        <h2>1.7 及以上的音效文件结构</h2>
+        <pre><code>   "sounds/music/menu/menu1.ogg": {
+     "hash": "c157c56846f0e50620f808fecd9d069423dd6c41",
+     "size": 1744657
+   },</code> 
+</pre>
+<p>从这段文字我们可以看出 <code>menu1.ogg</code> 文件被标记为 <code>c157c56846f0e50620f808fecd9d069423dd6c41</code> ，在 <i>assets</i> 下面的 <i>objects</i> 文件夹搜索那个标记的文字，就可以找到对应的文件。文件名的头2格字符对应文件所在的文件夹，这可能会使搜索变得更快。定位后，你会发现这个文件没有扩展名，但是仍然可以使用媒体播放器进行播放。如果你在使用其它系统，那么你可以使用对应系统上能播放 <code>.ogg</code> 文件的媒体播放器播放这个文件。如果媒体播放器不能播放没有扩展名的文件，那么就在文件名后面加上 <code>.ogg</code>。</p>
+
+        <h2>警告</h2>
+        <p>如果你意外编辑或移除原始文件夹里面的文件，你将不得不要删除 Minecraft 根目录里面的 <i>assets</i> 文件夹，启动器会在你下次启动游戏时自动下载它。如果你更改了音乐之后并连接到互联网，启动器就会自动下载原始文件，并用这些文件覆盖被更改的文件。因此如果你想要保存你所作的更改，在游玩前必须<b>断网</b>。当然，你也可以创建一个包含你的音乐的自定义资源包。</p>
+        
+        <h2>Legacy 的子文件夹</h2>
+        <p>在 <code>.minecraft\assets\virtual\legacy\sounds</code> 里面有13个子文件夹。</p>
+<ul>
+<li>Ambient：下雨/雷电天气的洞穴音效。</li>
+<li>Damage：玩家受伤音效。</li>
+<li>Dig：破坏方块。</li>
+<li>Fire：火。</li>
+<li>Firework：烟火音效。</li>
+<li>Liquids：水/熔岩制造的声音。</li>
+<li>Minecart：由移动的矿车发出的声音。</li>
+<li>Mob：Minecraft 里生物的声音。</li>
+<li>Music：C418 制作的背景音乐。</li>
+<li>Random：从吃食物到爆炸的几种音效。</li>
+<li>Records：Minecraft 里音乐唱片对应的音乐。</li>
+<li>Step：脚步声。</li>
+<li>Tile：活塞。</li>
+</ul>
+          </div>
+        </article>
+        <!-- End Article -->
+
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
