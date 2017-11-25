@@ -281,12 +281,14 @@ public class FragmentMainActivity extends AppCompatActivity {
         TextView textViewGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToGreen);
         TextView textViewDeepDrakGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToDrakGreen);
         TextView textViewBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToBlue);
+        TextView textViewSkyBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToSkyBlue);
         TextView textViewDeepBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToDeepBlue);
         TextView textViewBlown = (TextView) layout.findViewById(R.id.layoutPopChangeToBlown);
         TextView textViewDeepSaddleBrown = (TextView) layout.findViewById(R.id.layoutPopChangeToSaddleBrown);
         TextView textViewHotPink = (TextView) layout.findViewById(R.id.layoutPopChangeToHotPink);
         TextView textViewPink = (TextView) layout.findViewById(R.id.layoutPopChangeToPink);
 
+        TextView textViewDeepDark = (TextView) layout.findViewById(R.id.layoutPopChangeToDeepDrak);
         TextView textViewDeepGray = (TextView) layout.findViewById(R.id.layoutPopChangeToDeepGray);
         TextView textViewGray = (TextView) layout.findViewById(R.id.layoutPopChangeToGray);
         TextView textViewLightGray = (TextView) layout.findViewById(R.id.layoutPopChangeToLightGray);
@@ -317,8 +319,11 @@ public class FragmentMainActivity extends AppCompatActivity {
                         break;
                     case R.id.layoutPopChangeToBlue:
                         theme = SettingUtils.ChangeTheme.THEME_BLUE;
-
                         selectColor = R.color.colorPrimary_blue;
+                        break;
+                    case R.id.layoutPopChangeToSkyBlue:
+                        theme = SettingUtils.ChangeTheme.THEME_SKY_BLUE;
+                        selectColor = R.color.colorPrimary_sky_blue;
                         break;
                     case R.id.layoutPopChangeToDeepBlue:
                         theme = SettingUtils.ChangeTheme.THEME_DEEP_BLUE;
@@ -346,9 +351,12 @@ public class FragmentMainActivity extends AppCompatActivity {
                         selectColor = R.color.colorPrimary_pink;
                         break;
 
+                    case R.id.layoutPopChangeToDeepDrak:
+                        theme = SettingUtils.ChangeTheme.THEME_DEEP_DRAK;
+                        selectColor = R.color.colorPrimary_deep_drak;
+                        break;
                     case R.id.layoutPopChangeToDeepGray:
                         theme = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
-
                         selectColor = R.color.colorPrimary_deep_gray;
                         break;
                     case R.id.layoutPopChangeToGray:
@@ -402,6 +410,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         textViewGreen.setOnClickListener(onClickListener);
         textViewDeepDrakGreen.setOnClickListener(onClickListener);
         textViewBlue.setOnClickListener(onClickListener);
+        textViewSkyBlue.setOnClickListener(onClickListener);
         textViewDeepBlue.setOnClickListener(onClickListener);
         textViewBlown.setOnClickListener(onClickListener);
         textViewDeepSaddleBrown.setOnClickListener(onClickListener);
@@ -409,6 +418,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         textViewPink.setOnClickListener(onClickListener);
 
 
+        textViewDeepDark.setOnClickListener(onClickListener);
         textViewDeepGray.setOnClickListener(onClickListener);
         textViewGray.setOnClickListener(onClickListener);
         textViewLightGray.setOnClickListener(onClickListener);

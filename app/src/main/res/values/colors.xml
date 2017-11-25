@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <color name="textColorPrimary_white">#FFFFFF</color>
     <color name="textColorPrimary_black">#212121</color>
 
@@ -22,6 +21,11 @@
     <color name="colorPrimary_blue_purple">#673AB7</color>
     <color name="colorPrimaryDark_blue_purple">#673AB7</color>
     <color name="colorAccent_blue_purple">#673AB7</color>
+
+
+    <color name="colorPrimary_sky_blue">#1f4784</color>
+    <color name="colorPrimaryDark_sky_blue">#1f4784</color>
+    <color name="colorAccent_sky_blue">#1f4784</color>
 
     <color name="colorPrimary_deep_blue">#0000FF</color>
     <color name="colorPrimaryDark_deep_blue">#0000FF</color>
@@ -81,6 +85,11 @@
     <color name="colorPrimary_deep_gray">#444444</color>
     <color name="colorPrimaryDark_deep_gray">#444444</color>
     <color name="colorAccent_deep_gray">#444444</color>
+
+    <color name="colorPrimary_deep_drak">#262626</color>
+    <color name="colorPrimaryDark_deep_drak">#262626</color>
+    <color name="colorAccent_deep_drak">#262626</color>
+
 
     <color name="window_background">#FFFFFF</color>
     <color name="main_page_background">#ebebeb</color>

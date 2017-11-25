@@ -28,6 +28,13 @@
     </style>
 
 
+    //天蓝色
+
+    <style name="Base.Theme.Design.sky_blue" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_sky_blue</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_sky_blue</item>
+    </style>
+
     //深蓝色
 
     <style name="Base.Theme.Design.deep_blue" parent="Theme.AppCompat.Light.NoActionBar">
@@ -111,6 +118,14 @@
         <item name="colorPrimary">@color/colorPrimary_deep_gray</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_deep_gray</item>
     </style>
+
+    //深黑色
+
+    <style name="Base.Theme.Design.deep_drak" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_deep_drak</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_deep_drak</item>
+    </style>
+
 
     //粉红
     <style name="Base.Theme.Design.hotpink" parent="Theme.AppCompat.Light.NoActionBar">

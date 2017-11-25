@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.cuisanzhang.mincreafting"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 9
         versionName "8.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -37,7 +37,6 @@ dependencies {
     //    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.google.firebase:firebase-ads:11.4.0'
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile files('libs/zip4j_1.3.2.jar')
 }
 
 //dependencies {

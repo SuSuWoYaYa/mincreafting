@@ -70,12 +70,14 @@ public class SettingUtils {
         public static final int THEME_GREEN = R.style.Base_Theme_Design_green;
         public static final int THEME_DRAKGREEN = R.style.Base_Theme_Design_darkgreen;
         public static final int THEME_BLUE = R.style.Base_Theme_Design_blue;
+        public static final int THEME_SKY_BLUE = R.style.Base_Theme_Design_sky_blue;
         public static final int THEME_DEEP_BLUE = R.style.Base_Theme_Design_deep_blue;
         public static final int THEME_BROWN = R.style.Base_Theme_Design_brown;
         public static final int THEME_SADDLEBROWN = R.style.Base_Theme_Design_saddlebrown;
         public static final int THEME_HOTPINK = R.style.Base_Theme_Design_hotpink;
         public static final int THEME_PINK = R.style.Base_Theme_Design_pink;
 
+        public static final int THEME_DEEP_DRAK= R.style.Base_Theme_Design_deep_drak;
         public static final int THEME_GRAY = R.style.Base_Theme_Design_gray;
         public static final int THEME_LIGHTGRAY = R.style.Base_Theme_Design_light_gray;
         public static final int THEME_ORANGE_RED = R.style.Base_Theme_Design_orange_red;

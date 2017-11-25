@@ -78,7 +78,7 @@ public class FragmentTutorial extends Fragment {
 
         data = new ArrayList<Map<String, String>>();
 
-        Log.e("FragmentTutorial", "context.getCacheDir().getAbsolutePath() = " + getActivity().getCacheDir().getAbsolutePath());
+//        Log.e("FragmentTutorial", "context.getCacheDir().getAbsolutePath() = " + getActivity().getCacheDir().getAbsolutePath());
 
     }
 

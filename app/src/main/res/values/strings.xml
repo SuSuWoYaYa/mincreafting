@@ -60,11 +60,11 @@
     <string name="feedback">意见反馈</string>
     <string name="color_orange">橙色</string>
     <string name="color_purple">紫色</string>
-    <string name="color_blue">蓝色</string>
+    <string name="color_blue">浅蓝</string>
     <string name="color_brown">棕色</string>
     <string name="color_orange_red">红色</string>
     <string name="color_blue_purple">紫蓝</string>
-    <string name="color_deep_blue">深蓝</string>
+    <string name="color_deep_blue">蓝色</string>
     <string name="color_drak_green">深绿</string>
     <string name="color_green">绿色</string>
     <string name="color_gold">金色</string>
@@ -86,5 +86,7 @@
     <string name="tip_qq">QQ: 1135899918</string>
     <string name="tip_no_network">没有网络啊, 我查不到</string>
     <string name="tip_back_door">苦逼的作者</string>
+    <string name="color_sky_blue">深蓝</string>
+    <string name="color_deepdrak">深黑</string>
 
 </resources>

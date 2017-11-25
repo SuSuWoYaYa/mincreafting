@@ -333,7 +333,7 @@ public class ActivitySearch extends AppCompatActivity {
             private String FileName;
             private TextView textViewName;
             private TextView textViewMaterial;
-//            private ImageView imageViewHideMore;
+            private ImageView imageViewHideMore;
             private TextView textViewUse;
 
             private TextView textViewShowBlockDetail;
@@ -407,6 +407,11 @@ public class ActivitySearch extends AppCompatActivity {
             // TODO Auto-generated method stub
             final int pos = position;
 
+            //  防止内存回收后返回到这个界面崩溃
+            if ((searchResults ==null) || (searchResults.size() <=0)){
+                finish();
+            }
+
             Block block = searchResults.get(position);
             String filename = block.getFileName();
 
@@ -430,7 +435,7 @@ public class ActivitySearch extends AppCompatActivity {
                         .findViewById(R.id.use);
                 holder.textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
-//                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
+                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
                 holder.checkBox = (CheckBox) convertView
                         .findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
@@ -505,16 +510,14 @@ public class ActivitySearch extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
-//            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // 按照列表位置更新checkbox状态
-//                    checkBoxStateList.set(pos, false);
-//                    listviewAdapter.notifyDataSetChanged();
-//
-//
-//                }
-//            });
+            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 按照列表位置更新checkbox状态
+                    checkBoxStateList.set(pos, false);
+                    listviewAdapter.notifyDataSetChanged();
+                }
+            });
 
             holder.checkBox
                     .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -535,7 +538,7 @@ public class ActivitySearch extends AppCompatActivity {
             if (ischecked) {
 ////				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
-//                holder.imageViewHideMore.setVisibility(View.VISIBLE);
+               holder.imageViewHideMore.setVisibility(View.VISIBLE);
 
                 if(!isVip && isNetworkConnected){
                     holder.mAdView.setVisibility(View.VISIBLE);
@@ -544,7 +547,7 @@ public class ActivitySearch extends AppCompatActivity {
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
-//                holder.imageViewHideMore.setVisibility(View.GONE);
+                holder.imageViewHideMore.setVisibility(View.GONE);
                 holder.mAdView.setVisibility(View.GONE);
             }
 

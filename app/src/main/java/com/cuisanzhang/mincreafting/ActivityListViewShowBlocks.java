@@ -149,7 +149,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             private String FileName;
             private TextView textViewName;
             private TextView textViewMaterial;
-            //            private ImageView imageViewHideMore;
+            private ImageView imageViewHideMore;
             private TextView textViewUse;
 
             private TextView textViewShowBlockDetail;
@@ -216,7 +216,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                         .findViewById(R.id.use);
                 holder.textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
-//                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
+                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
                 holder.checkBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
 
 
@@ -256,6 +256,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 Material.add(block.getMaterial());
             }
 
+            //有的分类是不需要原料查询的
             if (isCreating) {
 
                 holder.imageView.setOnClickListener(new View.OnClickListener() {
@@ -308,16 +309,16 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
-//            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // 按照列表位置更新checkbox状态
-//                    checkBoxStateList.set(pos, false);
-//                    adapter.notifyDataSetChanged();
-//
-//
-//                }
-//            });
+            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 按照列表位置更新checkbox状态
+                    checkBoxStateList.set(pos, false);
+                    adapter.notifyDataSetChanged();
+
+
+                }
+            });
 
             holder.checkBox
                     .setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -338,7 +339,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             if (ischecked) {
 //				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
-//                holder.imageViewHideMore.setVisibility(View.VISIBLE);
+                holder.imageViewHideMore.setVisibility(View.VISIBLE);
 //                if(holder.mAdView != null){
                 if (!isVip && isNetworkConnected) {
                     holder.mAdView.setVisibility(View.VISIBLE);
@@ -352,7 +353,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
-//                holder.imageViewHideMore.setVisibility(View.GONE);
+                holder.imageViewHideMore.setVisibility(View.GONE);
 //                if(holder.mAdView != null){
                 holder.mAdView.setVisibility(View.GONE);
 //                }
