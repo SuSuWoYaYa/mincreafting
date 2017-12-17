@@ -54,15 +54,15 @@
 <h2>CUD开关的种类</h2>
 <p>因为只有比较器能感受比较器更新，CUD总是基于比较器。每当你干了上面列出的事，就会有比较器更新在水平方向传播两格。</p>
 
-<h3>基于不透明方块挡住箱子的比较器更新检测器</h3><p>这种方案使用了箱子的特性。当箱子被不透明方块挡住打不开时，比较器不会知道它已经不该发出信号直到它被更新。在被更新时，它意识到，并重置系统。</p>
+ <p>  <b>基于不透明方块挡住箱子的比较器更新检测器</b></p> <p>这种方案使用了箱子的特性。当箱子被不透明方块挡住打不开时，比较器不会知道它已经不该发出信号直到它被更新。在被更新时，它意识到，并重置系统。</p>
 
 
-<h3>基于被驯服的猫</h3>
+ <p>  <b>基于被驯服的猫</b></p> 
 <p>这是另一种锁箱子的方案，用猫代替了上面方案中的方块。猫能用活塞矿车或水流移动。</p>
-<h3>基于带有容器的矿车和探测铁轨</h3>
+ <p>  <b>基于带有容器的矿车和探测铁轨</b></p> 
 <p>没有铁轨的运输矿车无法被比较器检测到，可以使用活塞来控制铁轨</p>
 
-<h3>基于酿药锅</h3>
+ <p>  <b>基于酿药锅</b></p> 
 <p>
 
   <img src="img/bijiaoqigengxingganyinqi2.png" />
@@ -71,7 +71,7 @@
 <p>这方案使用了装了水的酿药锅被推走时不会被比较器注意到的特点。这样比较器仍然会被点亮直到被更新。</p>
 <p>使用水缸来实现双稳态的比较器BUD是不可能的，原因是：通过移动水缸无法使得比较器处于两个不同的BUD状态。</p>
 
-<h3>改向BUD</h3>
+ <p>  <b>改向BUD</b></p> 
 <p>
 
   <img src="img/bijiaoqigengxingganyinqi3.png" />
@@ -81,12 +81,12 @@
 
 <p>这方案经常在设计BUD时用到。你能通过用比较器替换中继器把中继器基的BUD搞成CUD。可以通过推拉探测铁轨、红石块或用不透明方块卡线来修改导线指向。这样比较器仍然会被点亮直到被更新。</p>
 
-<h3>基于物品展示框和非完整碰撞箱的活塞可推动方块（1.8+）</h3>
+ <p>  <b>基于物品展示框和非完整碰撞箱的活塞可推动方块（1.8+）</b></p> 
 <p>比较器能从物品展示框中获得能量，但物品展示框必须处在空气方块中。有些方块不会破坏在它位置上的物品展示框。如水，栅栏门，头颅，花</p>
 
 <h2>变种</h2>
 <p>其他设备也可以利用与CUD开关相同的基本原理建造。CUD可以被做成可纵向堆叠的，甚至横向堆叠。它们可以被做成状态更新检测器。CUD可以利用猫而不依赖活塞。</p>
-<h3>T-CUD</h3>
+ <p>  <b>T-CUD</b></p> 
 <p>T-CUD 会在两个状态之间切换，其实他就是T触发与CUD的结合，在状态A时，比较器熄灭，一旦发生更新就再次亮起（即状态B）如此反复。</p>
 <p>
   <img src="img/bijiaoqigengxingganyinqi4.png" />
@@ -104,7 +104,17 @@
 <p>很快，NiceMarkMC设计了一个新版本，使用了 DvirWi's 的技术 Redstone Sheep then found out that it would detect most Tile Entity changes and had a chat with NiceMarkMC, giving it the first name TEDUD (Tile entity data update detector)</p>
 <p>NiceMarkMC then uploaded a video of DvirWi's version and called it TEUD to keep it shorter, and viewers suggested calling it DUD (Data Update Detector) which became a widely used name.</p>
 <p>NiceMarkMC accepted the name DUD but then renamed it to CUD because the other names were technically incorrect.</p>
-         </div>
+   <h2>参考</h2>     <p>  
+ <a target="_self" rel="nofollow" class="external free" href="https://www.youtube.com/watch?v=DiUcSTQfCvk">https://www.youtube.com/watch?v=DiUcSTQfCvk</a> 
+ </p>     <p>  
+ <a target="_self" rel="nofollow" class="external free" href="https://www.youtube.com/watch?v=729o_Xwg1WU">https://www.youtube.com/watch?v=729o_Xwg1WU</a> 
+ </p>     <p>  
+ <a target="_self" rel="nofollow" class="external free" href="https://www.youtube.com/watch?v=R_cSJCzHfZc">https://www.youtube.com/watch?v=R_cSJCzHfZc</a> 
+ </p>     <p>  
+ <a target="_self" rel="nofollow" class="external free" href="http://pastebin.com/raw.php?i=Y5jM1idd">http://pastebin.com/raw.php?i=Y5jM1idd</a> 
+ </p>
+ 
+   </div>
         </article>
         <!-- End Article -->
 

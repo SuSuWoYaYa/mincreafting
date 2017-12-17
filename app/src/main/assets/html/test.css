@@ -9,112 +9,95 @@ Text Domain: publishable-mag
 Tags: two-columns, right-sidebar, left-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-image-header, featured-images, footer-widgets, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, blog, entertainment, news, portfolio
 */
 html {
-    font-family: sans-serif;
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    box-sizing:
+    border-box;
 }
-body {
-    font-size: 14px;
-    line-height: 150%;
-    font-family: 'Roboto', 'helvetica neue', helvetica, arial, sans-serif;
-    color: #555555;
-    margin: 0;
-    overflow-x: hidden;
+body {  
+ /* background-color: #eeeeee;  */
+         /* 起点版黄色背景 */
+         /*  background-color: #EDE0C9;*/
+          /* 网页版黄色背景 */
+       background-color: #FBF6EC; 
+    line-height: 1.3;
+  /* Fallback for when there is no custom background color defined. */ }
+
+
+div {
+  font-size: 10pt;
+   /* background-color: #eeeeee;  */
+         /* 起点版黄色背景 */
+         /*  background-color: #EDE0C9;*/
+          /* 网页版黄色背景 */
+       background-color: #FBF6EC; 
+
 }
-*, *:before, *:after {
-    padding: 0;
-    margin: 0;
+
+.yellow {  width: 100%;
+  height: 100%;
+    background-color: #FFFFCC;
+    text-align:center;
+    padding:10px;
 }
-article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary { display: block }
-audio, canvas, progress, video {
-    display: inline-block;
-    vertical-align: baseline;
+.red {
+      width: 100%;
+  height: 100%;
+    background-color: #FFCCCC;
+    text-align:center;
+    padding:10px;
+
 }
-[hidden], template { display: none }
-a { background-color: transparent }
-a:active, a:hover { outline: 0 }
-abbr[title] { border-bottom: 1px dotted }
-b, strong { font-weight: bold }
-dfn { font-style: italic }
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
+.big{
+  font-size: 22px;
 }
-mark {
-    background: #ff0;
-    color: #000;
+
+.medium{
+  font-size: 18px;
 }
-small { font-size: 80% }
-sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
+.small{
+    font-size: 18px;
 }
-sup { top: -0.5em }
-sub { bottom: -0.25em }
-img { border: 0 }
-svg:not(:root) { overflow: hidden }
-hr {
-    box-sizing: content-box;
-    height: 0;
-}
-pre { overflow: auto }
-code, kbd, pre, samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
-textarea { overflow: auto }
-optgroup { font-weight: bold }
-button, input, select, textarea { margin: 0 }
-:focus { outline: 0 }
-a:link { -webkit-tap-highlight-color: #FF5E99 }
-td, th { padding: 0 }
-.breadcrumb, .breadcrumb> span, .breadcrumb i, .breadcrumb .root a { float: none }
-.breadcrumb {
-    clear: both;
-    padding: 0;
-    overflow: hidden;
-    line-height: 24px;
-    margin-top: 20px;
-}
-.breadcrumb> span {
-    padding: 0;
-    padding-right: 5px;
-    overflow: hidden;
-    float: none;
-    display: inline-block;
-}
-.breadcrumb i { padding: 0 }
-.breadcrumb i { padding: 0 0 }
-.breadcrumb> span { overflow: visible }
-.no-results h2 { font-size: 16px }
-/*--------------------------------------------------------------
-# Typography
---------------------------------------------------------------*/
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: #444;
-    font-family: 'Roboto', 'helvetica neue', helvetica, arial, sans-serif;
+.smallest{
+    font-size: 18px;
 }
 h1 {
-    font-size: 28px;
-    line-height: 1.4;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  font-size: 30px;
+  color: #ffffff;
+  background-color: #464444;
+  text-align: center;
+  
 }
 h2 {
-    font-size: 26px;
-    line-height: 1.4;
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    margin-top: 10px;
+    font-size: 25px;
+    background-color: #c4c5c7;
 }
 h3 {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
     font-size: 22px;
+    
     line-height: 1.4;
+ 
 }
 h4 {
+    padding: 8px;
     font-size: 20px;
     line-height: 1.4;
+ 
 }
 h5 {
+    padding: 5px;
     font-size: 18px;
     line-height: 1.4;
 }
@@ -122,213 +105,102 @@ h6 {
     font-size: 16px;
     line-height: 1.4;
 }
-p { margin-bottom: 1.5em }
-dfn, cite, em, i { font-style: italic }
-blockquote { margin: 0 1.5em }
-address { margin: 0 0 1.5em }
+ 
+b, strong {
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+p {
+    padding:5px;
+  padding-left: 15px;}
+
+
 pre {
-    background: #eee;
-    font-family: "Courier 10 Pitch", Courier, monospace;
-    font-size: 15px;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    margin-bottom: 1.6em;
-    max-width: 100%;
-    overflow: auto;
-    padding: 1.6em;
+        padding:5px;
+          padding-left: 15px;
+    background-color: #ffffff;
 }
-code, kbd, tt, var {
-    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-    font-size: 15px;
-    font-size: 0.9375rem;
+*, *:before, *:after {
+    padding: 0;
+    margin: 0;
 }
-abbr, acronym {
-    border-bottom: 1px dotted #666;
-    cursor: help;
+article { display: block }
+
+a { background-color: transparent }
+a:active, a:hover { outline: 0 }
+abbr[title] { border-bottom: 1px dotted }
+
+dfn { font-style: italic }
+
+mark {
+    background: #ff0;
+    color: #000;
 }
-mark, ins {
-    background: #fff9c0;
-    text-decoration: none;
-}
-big { font-size: 125% }
-/*--------------------------------------------------------------
-# Elements
---------------------------------------------------------------*/
-html { box-sizing: border-box }
-*, *:before, *:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http: //css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-    box-sizing: inherit;
-}
-body {
-    background: #eee; /* Fallback for when there is no custom background color defined. */ }
-blockquote:before, blockquote:after { content: "" }
-blockquote { quotes: "" "" }
-hr {
+small { font-size: 80% }
+
+
+/*hr {
+    box-sizing: content-box;
+    height: 0;
     background-color: #ccc;
     border: 0;
     height: 1px;
     margin-bottom: 1.5em;
+}*/
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+
+*, *:before, *:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http: //css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+    box-sizing: inherit;
 }
-ul, ol {
+
+
+
+/*ul, ol {
     margin: 0;
     padding: 0;
 }
 ul { list-style: disc }
-ol { list-style: decimal }
-li > ul, li > ol {
-    margin-bottom: 0;
-    margin-left: 17px;
-    margin-top: 5px;
+ol { list-style: decimal }*/
+ul{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 3em;
 }
-dt { font-weight: bold }
-dd { margin: 0 1.5em 1.5em }
+ol{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 3em;
+}
+dt { font-weight: bold;
+ padding-left: 15px; }
+dd { padding-left: 3em }
 img {
+
     height: auto; /* Make sure images are scaled correctly. */
     max-width: 100%; /* Adhere to container width. */
 }
-table {
+table { 
     border-collapse: collapse;
-    border-spacing: 0;
+    border-spacing: 1;
     width: 100%;
     margin-bottom: 15px;
 }
-td, th {
-    padding: 5px 15px;
-    border: 1px solid #e2e2e2;
+td,th {
+    padding: 5px;
+    border: 1px solid #666666;
+
+}
+td{
+    padding: 5px  ;
     text-align: left;
 }
-/*--------------------------------------------------------------
-# Forms
---------------------------------------------------------------*/
-textarea {
-    padding-left: 3px;
-    width: 100%;
-}
-@font-face {
-    font-family: 'publishable-mag';
-    src: url('fonts/publishable-mag.eot');
-    src: url('fonts/publishable-mag.eot#iefix') format('embedded-opentype'), url('fonts/publishable-mag.woff2') format('woff2'), url('fonts/publishable-mag.woff') format('woff'), url('fonts/publishable-mag.ttf') format('truetype'), url('fonts/publishable-mag.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-[class^="icon-"]:before, [class*=" icon-"]:before {
-    font-family: "publishable-mag";
-    font-style: normal;
-    font-weight: normal;
-    speak: none;
-    display: inline-block;
-    text-decoration: inherit;
+th {
+    padding: 5px  ;
+    border: 1px solid #666666;
     text-align: center;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.icon-plus:before { content: '\e800' }
-.icon-bookmark:before { content: '\e801' }
-.icon-comment:before { content: '\e802' }
-.icon-users:before { content: '\e803' }
-.icon-minus:before { content: '\e804' }
-.icon-mail:before { content: '\e805' }
-.icon-twitter:before { content: '\f099' }
-.icon-facebook:before { content: '\f09a' }
-.icon-rss:before { content: '\f09e' }
-.icon-menu:before { content: '\f0c9' }
-.icon-pinterest-circled:before { content: '\f0d2' }
-.icon-gplus:before { content: '\f0d5' }
-.icon-linkedin:before { content: '\f0e1' }
-.icon-angle-double-right:before { content: '\f101' }
-.icon-angle-left:before { content: '\f104' }
-.icon-angle-right:before { content: '\f105' }
-.icon-angle-up:before { content: '\f106' }
-.icon-angle-down:before { content: '\f107' }
-.icon-github:before { content: '\f113' }
-.icon-youtube:before { content: '\f167' }
-.icon-dropbox:before { content: '\f16b' }
-.icon-instagram:before { content: '\f16d' }
-.icon-flickr:before { content: '\f16e' }
-.icon-tumblr:before { content: '\f173' }
-.icon-up:before { content: '\f176' }
-.icon-dribbble:before { content: '\f17d' }
-.icon-skype:before { content: '\f17e' }
-.icon-foursquare:before { content: '\f180' }
-.icon-vimeo-squared:before { content: '\f194' }
-.icon-reddit:before { content: '\f1a1' }
-.icon-stumbleupon:before { content: '\f1a4' }
-.icon-behance:before { content: '\f1b4' }
-.icon-soundcloud:before { content: '\f1be' }
-/*-[ Main container ]---------------*/
-.main-container {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 100%;
-    clear: both;
-}
-#page, .container {
-    max-width: 1050px;
-    min-width: 240px;
-    overflow: visible;
-    margin: 0 auto;
-    position: relative;
-}
-.main-header .container { max-width: 100% }
-#page {
-    padding-top: 45px;
-    min-height: 100px;
-    float: none;
-    clear: both;
-}
-/*-[ Header ]-----------------------*/
-body > header {
-    float: left;
-    width: 100%;
-    position: relative;
-}
-#site-header {
-    position: relative;
-    float: left;
-    width: 100%;
-    z-index: 99;
-        background: #181818;
-    padding: 20px 0 0 0;
-}
-.site-branding {
-    position: relative;
-    float: left;
-    margin: 0 auto;
-    min-height: 80px;
-        max-width: 30%;
-    overflow: hidden;
-}
-.site-branding h1, .site-branding h2 {
-    font-size: 44px;
-    display: inline-block;
-    line-height: 120%;
-    margin: 10px 0 23px 0;
-}
-.site-branding h1.image-logo, .site-branding h2.image-logo { margin-top: 24px }
-.site-title a {
-    text-transform: none;
-    color: #fff;
-}
-.site-description {
-    margin-top: -15px;
-    margin-bottom: 10px;
-    line-height:150%;
-        color: #828282;
-}
-.widget-header {
-    float: right;
-    max-width: 728px;
-    width: 70%;
-    margin-top: 0;
-    color:#fff;
-}
-.widget-header th, .widget-header td {
-    color:#333;
-}
-.widget-header h3 {
-    color:#fff;
 }
 
 /*-[ Content ]--------------------*/
@@ -336,336 +208,24 @@ body > header {
     width: 100%;
     max-width: 100%;
     float: left;
-    margin-bottom: 30px;
-}
-.woocommerce .article {
     background: #fff;
     margin-bottom: 30px;
 }
-.woocommerce .article #content { padding: 22px 20px }
+
+/*.article #content { padding: 22px 20px }*/
 #content_box {
     float: left;
     width: 100%;
 }
-.ss-full-width {
-    background: white;
-    padding: 20px;
-    margin-bottom: 30px;
-    overflow: hidden;
-    border: 1px solid #CDCDCD;
-}
-.ss-full-width #content_box {
-    padding-right: 0;
-    padding-left: 0;
-}
-span.sticky-post {
-    position: absolute;
-    top: 0px;
-    color: #fff;
-    padding: 1px 10px;
-    font-size: 13px;
-    right: 0px;
-}
-#featured-thumbnail {
-    float: left;
-    max-width: 150px;
-    width: 22.2%;
-    margin-right: 20px;
-}
+
 .error404 #searchform fieldset {
     width:100%;
 }
-.title {
-    margin-bottom: 5px;
-    margin-top: 15px;
-    font-size: 24px;
-    line-height: 28px;
-    clear: both;
-}
-h1.title {
-    line-height:150%;
-    font-size:30px;
-}
-.single-title {
-    float: left;
-    padding: 0 0 0 0;
-    font-size: 32px;
-    line-height: 1.4;
-    margin:0;
-}
-.title a { color: #000 }
-.page h1.title {
-    margin-bottom: 0;
-    margin-top: 0;
-}
+
+
 article header {
     margin-bottom: 15px;
     float: left;
     width: 100%;
 }
-a:hover { color: #c69c6d }
-a:link, a:visited, a:active { text-decoration: none }
-/* Small menu. */
-.menu-toggle, .main-navigation.toggled ul { display: block }
-@media screen and (min-width: 37.5em) { 
-    .menu-toggle { display: none }
-    .main-navigation ul { display: block }
-}
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
-.article img.left, .article img.alignleft, .wp-caption.alignleft {
-    margin: 0.3em 1.571em 0.5em 0;
-    display: block;
-    float: left;
-}
-.article img.right, .article img.alignright, .wp-caption.alignright {
-    margin: 0.3em 0 0.5em 1.571em;
-    display: block;
-    float: right;
-}
-.article img.center, .article img.aligncenter, .wp-caption.aligncenter {
-    margin: 0.3em auto 1em auto;
-    display: block;
-    float: none;
-}
-.article img.aligncenter, .article img.alignnone {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    display: block;
-    clear: both;
-    float: none;
-}
-/*--------------------------------------------------------------
-# Content Lists
---------------------------------------------------------------*/
-.article ul {
-    margin: 1.5em 0 1.571em 1.9em;
-    list-style-type: square;
-    padding: 0;
-}
-.article ul li, .article ol li { margin-bottom: 5px; }
-.article ol {
-    margin: 1.5em 0 1.571em 1.9em;
-    list-style-type: decimal;
-    padding: 0;
-}
-.article ul ul, .article ol ol, .article ul ol, .article ol ul {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-/*----
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
-.infinity-end.neverending #site-footer { display: block }
-/*--------------------------------------------------------------
-# Media
---------------------------------------------------------------*/
-.page-content .wp-smiley, .entry-content .wp-smiley, .comment-content .wp-smiley {
-    border: none;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding: 0;
-}
-/* Make sure embeds and iframes fit their containers. */
-embed, iframe, object { max-width: 100% }
-/*--------------------------------------------------------------
-## Galleries
---------------------------------------------------------------*/
-.gallery { margin-bottom: 1.5em }
-.gallery-item {
-    display: inline-block;
-    text-align: center;
-    vertical-align: top;
-    width: 100%;
-}
-.gallery-columns-2 .gallery-item { max-width: 50% }
-.gallery-columns-3 .gallery-item { max-width: 33.33% }
-.gallery-columns-4 .gallery-item { max-width: 25% }
-.gallery-columns-5 .gallery-item { max-width: 20% }
-.gallery-columns-6 .gallery-item { max-width: 16.66% }
-.gallery-columns-7 .gallery-item { max-width: 14.28% }
-.gallery-columns-8 .gallery-item { max-width: 12.5% }
-.gallery-columns-9 .gallery-item { max-width: 11.11% }
-.gallery-caption { display: block }
-/*-[ pagination ]------------------*/
-.pagination {
-    clear: both;
-    float: left;
-    width: 100%;
-    padding: 0;
-    margin-bottom: 0;
-}
-.pagination ul {
-    list-style: none;
-    margin: 0;
-}
-.pagination ul li {
-    float: left;
-    margin-right: 8px;
-}
-.pagination .current {
-    color: #fff;
-    margin: 0 1px 0 0;
-    display: inline-block;
-    float: left;
-    line-height: 1.2em;
-    text-decoration: none;
-    padding: 10px 14px;
-    border: 1px solid #ccc;
-    margin-right: 8px;
-}
-.single .pagination .current {margin: 0;}
-.pagination a, .pagination2, .pagination .dots {
-    background: #fff;
-    margin: 0 1px 0 0;
-    display: inline-block;
-    float: left;
-    line-height: 1.2em;
-    text-decoration: none;
-    color: #555;
-    box-shadow:0px 0px 10px rgba(0, 0, 0, 0.19);
-    padding: 10px 14px;
-    margin-right: 8px;
-    transition: all 0.25s ease;
-}
-.single .pagination a {
-    padding: 0;
-    border: 0;
-}
-.pagination a:hover {
-    color: #fff;
-    border-color: transparent;
-}
-.pagination2 { clear: both }
-.top { float: right }
-.pnavigation2 {
-    display: block;
-    width: 100%;
-    overflow: hidden;
-    padding: 10px 0;
-    float: left;
-    margin-bottom: 10px;
-}
-.infinite-loader {
-    float: none;
-    display: inline-block;
-    margin: 0 auto;
-}
-/*-[ Social Profile Widget ]--------------------------*/
-.social-profile-icons ul { margin: 0 -4px }
-.social-profile-icons ul li {
-    background: none;
-    border: none;
-    float: left;
-    list-style-type: none;
-    margin: 0 4px 8px 4px!important;
-    padding: 0 !important;
-    border: none !important;
-}
-.social-profile-icons ul li a {
-    width: 36px;
-    height: 36px;
-    display: block;
-    float: left;
-    border-radius: 3px;
-    text-align: center;
-    line-height: 36px;
-    color: #FFF!important;
-    transition: all .4s;
-    padding: 0;
-}
-.social-profile-icons ul li i {
-    font-size: 16px;
-    line-height: 32px;
-}
-.social-profile-icons .social-youtube a { background: #c9322b }
-.social-profile-icons .social-rss a { background: #ef922f }
-.social-profile-icons .social-twitter a { background: #40bff5 }
-.social-profile-icons .social-facebook a { background: #5d82d1 }
-.social-profile-icons .social-gplus a { background: #eb5e4c }
-.social-profile-icons .social-vimeo a { background: #35c6ea }
-.social-profile-icons .social-dribbble a { background: #f7659c }
-.social-profile-icons .social-tumblr a { background: #426d9b }
-.social-profile-icons .social-instagram a { background: #91653f }
-.social-profile-icons .social-flickr a { background: #ff48a3 }
-.social-profile-icons .social-pinterest a { background: #e13138 }
-.social-profile-icons .social-linkedin a { background: #238cc8 }
-.social-profile-icons .social-github a { background: #b5a470 }
-.social-profile-icons .social-email a { background: #1d90dd }
-.social-profile-icons .social-behance a { background: #1879fd }
-.social-profile-icons .social-skype a { background: #13c1f3 }
-.social-profile-icons .social-soundcloud a { background: #ff7e30 }
-.social-profile-icons .social-stumbleupon a { background: #ff5c30 }
-.social-profile-icons .social-dropbox a { background: #3476e4 }
-.social-profile-icons .social-foursquare a { background: #0bbadf }
-.social-profile-icons .social-reddit a { background: #ff4400 }
-.widget.woocommerce ul li { margin-left: 0; list-style-type: none; float: left; width: 100%; }
-.rtl_on { direction: rtl; }
-.rtl_off { direction: ltr; }
-@media screen and (max-width:1100px) { 
-    #page, .container, .site-branding { max-width: 96% }
-}
-@media screen and (min-width:865px) { 
-    .navigation.mobile-only { display: none }
-}
-@media screen and (max-width: 720px) { 
-    .site-branding h1, .site-branding h2 {
-        font-size:35px;
-    }
-    .article {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .sidebar.c-4-12 {
-        width: 100%;
-        float: none!important;
-        margin-left: auto;
-        margin-right: auto;
-        overflow: hidden;
-    }
-    .pagination { margin-bottom: 0 }
-    .sidebar.c-4-12 .sidebar_list { margin-top: 30px }
-    .widget-header {
-        float: left;
-        width: 100%;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-    #page { padding-top: 25px }
-}
-@media screen and (max-width: 640px) { 
 
-    .footer-widget {
-        width: 48%;
-        margin-right: 4%;
-    }
-    .footer-widget:nth-child(even) { margin-right: 0 }
-    .single-title { font-size: 24px }
-}
-@media screen and (max-width: 480px) { 
-    .footer-widget { width: 100% }
-    #copyright-note, .top {
-        width: 100%;
-        text-align: center;
-    }
-        .readMore {
-        width:100%;
-        text-align:center;
-    }
-    .post.excerpt {
-        text-align:center;
-    }
-    .featured-thumbnail, #featured-thumbnail {
-        max-width:100%;
-        width:100%;
-        margin-bottom:10px;
-    }
-    .related-posts .post.excerpt {
-        max-width:100%;
-        width:100%;
-    }
-}

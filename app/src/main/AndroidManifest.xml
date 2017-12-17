@@ -51,6 +51,10 @@
             android:name=".ActivityTutorial"
             android:label="@string/title_activity_tutorial"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".ActivityTutorialList"
+            android:label="@string/title_activity_tutorial"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

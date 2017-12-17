@@ -6,7 +6,16 @@ package com.cuisanzhang.mincreafting;
 
 public class TutorialList {
 
-    public static String[] TuorialName = {
+
+    public static String EXTRA_TUTORIAL_NAMES = "tutorialNames";
+    public static String EXTRA_TUTORIAL_FILES = "tutorialFiles";
+
+
+    public static String MC_163 = "mc163";
+    public static String WANGLUOJIAOCHENG = "wangluoijiaocheng";
+
+
+    public static String[] mc163_names = {
 
             "我的世界命令教程(国服手机端)",
             "基本操作与合成玩法",
@@ -45,7 +54,7 @@ public class TutorialList {
 
     };
 
-    public static String[] TuorialFile = {
+    public static String[] mc163_files = {
 
             "file:///android_asset/html/costem1.html",
             "file:///android_asset/html/jiaochen1.html",

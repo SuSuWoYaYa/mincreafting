@@ -10,18 +10,23 @@
 <body>
     <h1  >
       西瓜和南瓜种植  </h1>
-
-
+<div>
+ <p class="yellow">
+                             <b>此页面的（部分）内容需要被翻译。 </b> 
+                            <br />
+                            你可以帮助我们来翻译此页面
+                            </p> 
 
 
     <h2 >生长机制</h2>
-    <div  >
+     <p>  
+
       西瓜和南瓜使用的是基本相同的生长机制，所以能用同样的方法进行种植。一旦它们成熟，便会稳定地供应果实以满足你的需求。
-      <ul>
+     </p>     <ul>
         <li>开始种植的前提，是必须找到相应的种子：</li>
         <li>南瓜和西瓜的种子都可以在废弃矿井的运输矿车中被发现</li>
         <li>南瓜可以在任何覆盖着草丛的 生物群系 中随机生成而被发现。</li>
-        <li>
+        
           <li>西瓜也可以在丛林中随机生成而被发现。</li>
           <li>在 携带版 以前的版本中，两种种子都可以在 下界反应器 的帮助下制造出来。</li>
           <li>西瓜梗与南瓜梗的生长速率，它们所生成果实，都是由和小麦，胡萝卜，马铃薯相同的种植生长率算法决定的。 梗自身从萌芽到成熟共有8个阶段。骨粉则可用于加快其生长。</li>
@@ -29,125 +34,268 @@
           <li>因此，含水的农田能相应的提高相邻梗的生长速率，果实的产量，梗与梗之间相同的排列方式（除非行列排序）会减少生长速率和果实的产量，且梗上方有9级的光对于农作物是十分必要的，等等。</li>
           <li>单梗果实生成的最大几率，需要在梗在所有八面都有含水耕地，并且其中四个耕地方块尚未被种植（此处所述的角落可能被一些其它作物种植）。实用型的农场往往会相应减少每棵梗的生产速率（⅔，⅓，甚至最大的⅙）以获取更多空间上的效率和便于收割。</li>
           <li>当这两种果实生长时，它们都会还原下方的耕地为泥土。南瓜可以非常容易地用斧收割， 收获，并且将掉落完整的物品。西瓜可以用斧快速破坏。当然，也能用剑，但会产生两倍的耐久损耗。西瓜生长为方块时，收割会掉落3-7片的西瓜片（除非使用了精准采集 附魔的工具）。在这两种情况下，收割的果实还可以被合成回种子。 收割成熟的梗也将会掉落种子（每梗1-4个），而对于重新种植一个要从萌芽到成熟的梗，等待已成熟的梗长出果实会快得多。</li>
-          <li>跳转 ↑ 每个 方块 都有1/32的随机几率生成南瓜；一个随机点会被选择，且重复尝试64次，就会找到一个下方是草的随机空气方块，那么围绕它的15×15×7的区域内，就会生成南瓜。注意那个随机点可能会在高空中或地底下，这也就大大减少了南瓜能够被生成的几率。</li>
-          <li>跳转 ↑ 同样的，对于每个丛林中的方块而言，会生成一个随机点，且重复尝试64次，最后找到一个可替换的随机方块（如空气，长草丛或是藤蔓），下方是草，那么围绕它的15×15×7的区域内，就会生成西瓜。注意那个随机点可能会在高空中或地底下，这也就大大减少了西瓜能够被生成的几率。</li>
+          <li>每个 方块 都有1/32的随机几率生成南瓜；一个随机点会被选择，且重复尝试64次，就会找到一个下方是草的随机空气方块，那么围绕它的15×15×7的区域内，就会生成南瓜。注意那个随机点可能会在高空中或地底下，这也就大大减少了南瓜能够被生成的几率。</li>
+          <li>同样的，对于每个丛林中的方块而言，会生成一个随机点，且重复尝试64次，最后找到一个可替换的随机方块（如空气，长草丛或是藤蔓），下方是草，那么围绕它的15×15×7的区域内，就会生成西瓜。注意那个随机点可能会在高空中或地底下，这也就大大减少了西瓜能够被生成的几率。</li>
       </ul>
-    </div>
+    
+
 
 
 
     <h2 >手动农场</h2>
-    <div  >
+      <p>  
+
       这里有一些合理的农场设计。显示的百分数为空间效率。假设农场周围没有方块，且能放置西瓜块，那么括号内的值都是理论上的最大值。任何西瓜和南瓜农场的最大效率都是50％（每梗仅产一果实）。果实可占有两个或两个以上的梗的空间，会降低效率和产量。问号方块表示任何东西都可能被放置在那一点，可以是光，亦或是其它农作物如 小麦， 胡萝卜 ， 和 马铃薯。你可能会想到用 台阶，一个 睡莲，或者一个 地毯来遮盖住水源的地方。
-      <br/><br/> 如果你只是想要一个快速的，紧凑型的农场，请使用下面含D的设计。C和D效率略低，但都适合“标准农场设计”，并很容易收割。这它们两个中，D可能有一个较快的生长速率，原因是它的梗是分列排布的，但中间那列不能放置泥土/草方块或是耕地（或是梗），因为每个果实的生成都可以被两个梗连接。而对于C，中间那排除了梗外可以是任何东西，这都是出于同样的原因的。
-      <br/><br/> 设计A稍大并能最大限度地提升空间的利用率。它可以被平铺成大型的农场，但交叉列必须被复制成相同的顶部至底部以保持效率。设计B效率较低，所以适合用于较小空间分布内。
+      </p>     <p>  
 
-      <br/><br/><img src="img/xiguahenanguazhongzhi1.png" style="width: auto; height: auto;"></img>
-      <br/>农场设计A，9×10，48.88％
-      <br/><br/><img src="img/xiguahenanguazhongzhi2.png" style="width: auto; height: auto;"></img>
-      <br/>农场设计B，9×8，43.21％
-      <br/><br/><img src="img/xiguahenanguazhongzhi3.png" style="width: auto; height: auto;"></img>
-      <br/>农场设计C，9×9，44.44％
-      <br/><br/><img src="img/xiguahenanguazhongzhi4.png" style="width: auto; height: auto;"></img>
-      <br/>农场设计D，9×9，44.44％
-      <br/><br/>
-    </div>
+ 如果你只是想要一个快速的，紧凑型的农场，请使用下面含D的设计。C和D效率略低，但都适合“标准农场设计”，并很容易收割。这它们两个中，D可能有一个较快的生长速率，原因是它的梗是分列排布的，但中间那列不能放置泥土/草方块或是耕地（或是梗），因为每个果实的生成都可以被两个梗连接。而对于C，中间那排除了梗外可以是任何东西，这都是出于同样的原因的。
+      
+</p>     <p>  
+ 设计A稍大并能最大限度地提升空间的利用率。它可以被平铺成大型的农场，但交叉列必须被复制成相同的顶部至底部以保持效率。设计B效率较低，所以适合用于较小空间分布内。
+
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi1.png" />
+ <br />   
+农场设计A，9×10，48.88％
+      
+</p>     <p>  
+<img src="img\xiguahenanguazhongzhi2.png" />
+ <br /> 
+农场设计B，9×8，43.21％
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi3.png" />
+ <br />
+农场设计C，9×9，44.44％
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi4.png" />
+ <br />   
+农场设计D，9×9，44.44％
+      </p>    
+
+
+    
 
 
 
-    <h2 >大型农场</h2>
-    <div  >
+
+    <p><b>大型农场</b></p> 
+    
+   <p>  
       上面所述的农场大多可以平铺成为大型农场，即使在一些情况下，间隔播种或按列分布都能取得最佳的种植效果。这个农场表示的是设计A（侧面）的扩充，左面的分布和右面的对称。 （这也显示了整个农场的耕地边界）。其分布可以进一步重复，把单位农场扩大了9倍。注意这个设计的宗旨是确保每个果实只占一梗——当它的成熟时，效率会接近49％。
 
-      <br/><br/><img src="img/xiguahenanguazhongzhi5.png" style="width: auto; height: auto;"></img>
-      <br/>
-      <br/><br/>
-    </div>
+      </p>     <p>  
+<img src="img\xiguahenanguazhongzhi5.png" />
+ <br /> 
+</p>    
+      
+
+
+    
+
 
 
 
     <h2 >多层农场</h2>
-    <div  >
+    
+  <p>  
       当上述的设计都使用一层时，效率最高的（49.38％）的9倍；9个农场都可以建造成双层。这个设计是基于设计D，且圆石代表将被（用泥土）覆盖的上面一层的空间。
-      <br/><br/> 当复制在一个较大的区域时，设计G有点的地方，你需要跳着来收割。设计H则避免了这样做，还能保证相同的生产效率。对于设计H，水源必须小心放置，使其不会蔓延到“走道”。但是，如果底层有一个正常的坑（与上方的洞所匹配），水源就可以对着上部的其中一个方块进行放置，或那层再上2格。西瓜梗的位置和两层农田中的泥土/草/耕地方块都可以进行毫无损失的相互替换。
-      <br/><br/><img src="img/xiguahenanguazhongzhi6.png" style="width: auto; height: auto;"></img>
-      <br/>农场设计G底层，9×9，29.62％（44.44％）
-      <br/><br/><img src="img/xiguahenanguazhongzhi7.png" style="width: auto; height: auto;"></img>
-      <br/>农场设计G顶层，9×9
-      <br/><br/><img src="img/xiguahenanguazhongzhi8.png" style="width: auto; height: auto;"></img>
-      <br/>农场设计H底层，9×9，29.62％（44.44％）
-      <br/><br/><img src="img/xiguahenanguazhongzhi9.png" style="width: auto; height: auto;"></img>
-      <br/>农场方案H顶层，9×9
-      <br/>
-      <br/><br/><img src="img/xiguahenanguazhongzhi10.png" style="width: auto; height: auto;"></img>
-      <br/>设计D
-      <br/><br/>
-    </div>
+      </p>     <p>  
+
+ 当复制在一个较大的区域时，设计G有点的地方，你需要跳着来收割。设计H则避免了这样做，还能保证相同的生产效率。对于设计H，水源必须小心放置，使其不会蔓延到“走道”。但是，如果底层有一个正常的坑（与上方的洞所匹配），水源就可以对着上部的其中一个方块进行放置，或那层再上2格。西瓜梗的位置和两层农田中的泥土/草/耕地方块都可以进行毫无损失的相互替换。
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi6.png" />
+ <br />
+农场设计G底层，9×9，29.62％（44.44％）
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi7.png" />
+ <br />
+农场设计G顶层，9×9
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi8.png" />
+ <br />
+农场设计H底层，9×9，29.62％（44.44％）
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi9.png" />
+ <br />  
+农场方案H顶层，9×9
+      </p>     <p>  
+
+      
+
+<img src="img\xiguahenanguazhongzhi10.png" />
+ <br />   
+设计D
+      
+</p>    
+
+    
+
 
 
 
     <h2 >快速收割农场</h2>
-    <div  >
+    
+   <p>  
       上述的设计都以速度为代价，充分利用了生产的高效率。他们择优为稀少的收获，让重新长出果实耗费了大量的时间。对于经常性的收成来说，第一个的设计可能更为合适；如果每日每夜循环收割一次，每次收割产生约17块果实（而不是上面设计的13块果实）。第二个设计更进一步地朝这个方向迈进——它不需要有效地利用空间，而是给予每个梗2-4潜在的空间生成南瓜或西瓜，虽然这是个比较笨的设计成本且减少了未来预期的产量，但能鼓励农场初期更快速的发展。
-      <br/><br/><img src="img/xiguahenanguazhongzhi11.png" style="width: auto; height: auto;"></img>
-      <br/>快速收割农场1
-      <br/><br/><img src="img/xiguahenanguazhongzhi12.png" style="width: auto; height: auto;"></img>
-      <br/>快速收割农场2
-      <br/><br/>
-    </div>
+      
+</p>     <p>  
+<img src="img\xiguahenanguazhongzhi11.png" />
+ <br /> 
+快速收割农场1
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi12.png" />
+ <br /> 
+快速收割农场2
+      
+</p>     
+
+    
+
 
 
 
     <h2 >半自动农场</h2>
-    <div  >
+    
+    <p>  
       当任意种类的活塞推动西瓜或南瓜时，它们便都会“掉落”，因此我们可以利用这个方法建造半自动西瓜农场。一个简单的自动收割机，由放置在能产生西瓜的耕地上的朝上粘性活塞组成。当粘性活塞被供能时，它们会破坏所有的西瓜，令玩家可以捡拾。使用这种技术，可以建造一个如下所示的半自动农场，但它会占用额外的空间来放置红石机械。它可以被建造成用计时器来收获西瓜，并用漏斗收集掉落物的全自动农场。
-      <br/><br/><b style="font-size: 18px;">设计1</b><br/>
-      <br/><br/><img src="img/xiguahenanguazhongzhi.gif" style="width: auto; height: auto;"></img>
-      <br/>
-      <br/><br/><b style="font-size: 18px;">设计2</b><br/> 紧凑型全自动南瓜/西瓜切片生成器：
-      <br/><br/><img src="img/xiguahenanguazhongzhi13.png" style="width: auto; height: auto;"></img>
-      <br/>第1层
-      <br/><br/><img src="img/xiguahenanguazhongzhi14.png" style="width: auto; height: auto;"></img>
-      <br/>第2层
-      <br/><br/><img src="img/xiguahenanguazhongzhi15.png" style="width: auto; height: auto;"></img>
-      <br/>第3层
-      <br/><br/>此设计使用了各自含生成空间的2个梗，和一个通知音符盒。第1层的木板确定音符盒的音调，且能根据自己的喜好替换成其它方块。任何不透明方块都可用于代替圆石。南瓜灯可以换成荧石。这里建议红石中继器设置到最大延迟。
-      <br/><br/>
-    </div>
+      </p>     <p>  
 
+<b>设计1</b></p>     <p>  
+
+      
+
+<img src="img\xiguahenanguazhongzhi13.gif" />
+ <br />
+
+      </p>     <p>  
+
+<b>设计2</b></p>     <p>  
+ 紧凑型全自动南瓜/西瓜切片生成器：
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi14.png" />
+ <br />
+第1层
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi15.png" />
+ <br />
+第2层
+      </p>     <p>  
+
+<img src="img\xiguahenanguazhongzhi16.png" />
+ <br /> 
+第3层
+      </p>     <p>  
+
+此设计使用了各自含生成空间的2个梗，和一个通知音符盒。第1层的木板确定音符盒的音调，且能根据自己的喜好替换成其它方块。任何不透明方块都可用于代替圆石。南瓜灯可以换成荧石。这里建议红石中继器设置到最大延迟。
+      
+</p>   
+
+    <p><b>设计3 - 可堆叠式农场</b></p> 
+    <p>  The following design sacrifices space efficiency in order to fully automate harvesting and allow massive expansion: The tower can be expanded up to the build limit and/or down to bedrock, potentially yielding nearly a thousand growing spaces per tower.
+</p>     <p>   
+The total area of the farm is 13 blocks by 7 blocks, with alternating piston and farm layers. Its height is 2 blocks, plus 2 more for each "crop layer" of 8 growing spaces. It will use 16 dirt, 8 jack-o-lanterns, or glowstone, 8 iron, 28 redstone, and at least 50 generic blocks per crop layer, plus 10-13 extra redstone and 43 blocks for the build as a whole.
+</p>     <p>   
+The farmland is hydrated by water flowing down from above. A pressure plate at the end of the collection area on the bottom activates a redstone torch tower, which in turn activates each piston layer. The harvest falls down the empty middle area into flowing water at the bottom layer, and is channelled to the player standing on the pressure plate. Notes:
+</p>     
+<ul><li>To speed up collection, place ice blocks under the watercourse.
+</li><li>The farm can be lit from within by glowstone as shown, or much more cheaply by jack-o-lanterns. Unfortunately, you can't place a jack-o-lantern directly onto a piston, so if you will need to put temporary blocks in place of the pistons, put the jack-o-lanterns on top of those, and then replace the temporary blocks with the pistons.
+</li><li>The pressure plate can be replaced with a hopper or two, leading to a chest or two south of it. Then the redstone can be triggered with a switch anywhere along its length. However, a sufficiently tall farm may produce enough goods to overwhelm the hopper. (750 items—call it a dozen stacks—will take 5 minutes to absorb, so additional stacks may expire. Twenty or so levels of melons could do that, or most of a hundred levels of pumpkins.)
+     </li></ul> <p>   To build the farm:</p>    
+
+<ul><li>Start with the base layer, which is a modified farm layer. The farmland squares should be planted with your seeds, while the dirt is where pumpkins or melons will grow.
+</li><li>If you are using jack-o-lanterns for light, remember the temporary blocks as noted above.
+</li><li>Place a piston layer on top of that. This completes your first crop layer, and for the bare-minimum "tower", you could go on to the cap and water layers from here. More likely, continue to:
+</li><li>Alternate farm and piston layers, as many as you want. Each pair is a crop layer. This is the expandable section, and you are limited only by resources.
+</li><li>After the last piston layer, build the cap layer instead of another farm layer. The black wool indicates temporary blocks (any solid, non-falling, block will do) which you will remove after placing the water on the top level.
+</li><li>Last of all, build the top layer, place the water, and mine out those temporary blocks. For the top-most layer, all the water blocks are sources. (The Art of the Bucket will assist in filling them quickly.) 
+</li></ul>
 
 
     <h2 >全自动农场</h2>
-    <div  >
+   <p>  
+
       这种农场在建成之后，无需玩家进行任何操作来采集收获。 全自动农场的建造需要用到红石和活塞，并且一般比手动农场和半自动农场造价更高。
-      <br/><br/> 农场用以下三种方式之一实现自动化：
-      <br/><br/> 计时器，使用红石、漏斗计时器或是眼光传感器实现；
-      <br/> BUD， 一个检测附近方块更新的装置；<br/> 一个南瓜或西瓜成熟时会被接通的简单红石电路。
-      <br/>
-      <br/> 成熟的瓜用如下方式收集：
-      <br/>
-      <br/> 水流；
-      <br/> 漏斗；
-      <br/> 漏斗矿车。
-      <br/>
-      <br/><br/><b style="font-size: 18px;">设计1</b><br/> 这个设计每个南瓜梗只需一个活塞, 而且没有运用到BUD. 这个南瓜场占地在5x5以内而且建造起来非常简单.
-      <br/>
-      <br/>以下是这个农场优于其他农场的原因.
-      <br/> 不需要粘性活塞
-      <br/> 没有运用到BUD
-      <br/> 所需材料少，每个南瓜梗仅需一个活塞
-      <br/> 容易扩展
-      <br/> 占地少，大多数情况下5x4，最大5x5
-      <br/>
-      <br/><br/><b style="font-size: 18px;">设计2</b><br/> 要建造西瓜和南瓜的自动收割农场，先要找到一小块平地。开始用桶放置水源以便冲走杂草，然后将旁边的草地锄成耕地。
-      <br/><br/><img src="img/xiguahenanguazhongzhi16.png" style="width: auto; height: auto;"></img>
-      <br/>西瓜和南瓜自动农场设计
-      <br/><br/> 然后，用任何方块挡住周围（右边图里是石砖），只留下一边。完成后，在没有被挡住的那边向下两格的位置放一个粘性活塞。在草方块上放置任意固体方块，并连接上红石火把，确定朝向要和图中一样。
-      <br/><br/> 接下来，面向红石火把放置一个红石中继器并让其朝向西瓜/南瓜将要生长的位置。周边用红石围起来，这可能会需要红石中继器，取决于你要建造的建筑有多大。图里右下角的音符盒是可选的，它只是用来发出声响来提醒你植物已经收割了。
-      <br/><br/> 将南瓜或西瓜片推到运河里可以方便收集。要做到这点，在比植物高一格且水对面一格远的位置放另一个活塞，并把连接到第一个活塞的红石也连接在这个活塞上。在活塞臂上放一个方块（只用活塞臂去推可能无法推动物品）。为了防止被推的方块有松开的漏洞，可能需要延时。确保朝向南瓜或西瓜的红石中继器有足够的延时。另外，必须要放几个方块来确保每个物品除了进入水中无处可去。
-      <br/><br/> 在你完成这些之后，种下西瓜或南瓜的种子（如果你已经有的话），然后等着你的初次收获吧。
-      <br/><br/>
-    </div>
+      </p>     <p>  
+
+ 农场用以下三种方式之一实现自动化：
+      
+</p>     
+ <ul><li>计时器，使用红石、漏斗计时器或是眼光传感器实现；
+      
+  </li><li>BUD， 一个检测附近方块更新的装置 
+ </li><li>一个南瓜或西瓜成熟时会被接通的简单红石电路。
+      </li></ul>
+     <p>  
+      
+ 成熟的瓜用如下方式收集：
+      </p>     
+
+   <ul><li>   
+ 水流 
+ 
+ </li><li>漏斗 
+ </li><li>漏斗矿车。
+      </li></ul>
+    <p>  
+      
+
+<b>设计1</b></p>     <p>  
+ 这个设计每个南瓜梗只需一个活塞, 而且没有运用到BUD. 这个南瓜场占地在5x5以内而且建造起来非常简单.
+      </p>     <p> 
+
+      
+以下是这个农场优于其他农场的原因.</p>     
+ <ul><li>
+ 不需要粘性活塞
+ </li><li>
+ 没有运用到BUD
+ </li><li>
+ 所需材料少，每个南瓜梗仅需一个活塞
+ </li><li>
+ 容易扩展
+ </li><li>
+ 占地少，大多数情况下5x4，最大5x5
+      
+</li></ul>    <p> 
+      
+
+	  <b>设计2</b>      </p>     <p> 
+ The following melon/pumpkin farm is completely modular and uses a dropper/hopper combo to detect melon growth. Believed to have the highest efficiency of the fully automatic farms.      </p> 
+			
+			
+<p> <b>设计3</b>      </p>     <p> 
+ 要建造西瓜和南瓜的自动收割农场，先要找到一小块平地。开始用桶放置水源以便冲走杂草，然后将旁边的草地锄成耕地。
+            </p>     <p> 
+
+<img src="img\xiguahenanguazhongzhi17.png" />
+ <br />
+西瓜和南瓜自动农场设计
+            </p>     <p> 
+
+ 然后，用任何方块挡住周围（右边图里是石砖），只留下一边。完成后，在没有被挡住的那边向下两格的位置放一个粘性活塞。在草方块上放置任意固体方块，并连接上红石火把，确定朝向要和图中一样。
+            </p>     <p> 
+
+ 接下来，面向红石火把放置一个红石中继器并让其朝向西瓜/南瓜将要生长的位置。周边用红石围起来，这可能会需要红石中继器，取决于你要建造的建筑有多大。图里右下角的音符盒是可选的，它只是用来发出声响来提醒你植物已经收割了。
+            </p>     <p> 
+
+ 将南瓜或西瓜片推到运河里可以方便收集。要做到这点，在比植物高一格且水对面一格远的位置放另一个活塞，并把连接到第一个活塞的红石也连接在这个活塞上。在活塞臂上放一个方块（只用活塞臂去推可能无法推动物品）。为了防止被推的方块有松开的漏洞，可能需要延时。确保朝向南瓜或西瓜的红石中继器有足够的延时。另外，必须要放几个方块来确保每个物品除了进入水中无处可去。
+      
+      </p>     <p> 
+ 在你完成这些之后，种下西瓜或南瓜的种子（如果你已经有的话），然后等着你的初次收获吧        </p>     
+
+</div>
+    
+
  
 </body>
 

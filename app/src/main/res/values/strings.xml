@@ -88,5 +88,19 @@
     <string name="tip_back_door">苦逼的作者</string>
     <string name="color_sky_blue">深蓝</string>
     <string name="color_deepdrak">深黑</string>
+    <string name="btn_new_play">新手指南</string>
+    <string name="btn_huangjingjieshao">环境介绍</string>
+    <string name="btn_jinjiezhinan">进阶指南</string>
+    <string name="btn_building">建筑教程</string>
+    <string name="btn_zhongzhi">种植教程</string>
+    <string name="btn_shuaguai">刷怪教程</string>
+    <string name="btn_caikuaijishu">采矿技术</string>
+    <string name="btn_fumoshaolian">附魔烧炼</string>
+    <string name="btn_chujihongshi">初级红石</string>
+    <string name="btn_hongshijinjie">红石进阶</string>
+    <string name="btn_gaojijishu">高级技术</string>
+    <string name="btn_gengduotiaozhan">更多挑战</string>
+    <string name="btn_mc163">网易教程</string>
+    <string name="btn_wangluojiaocheng">网络教程</string>
 
 </resources>

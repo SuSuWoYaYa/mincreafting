@@ -11,97 +11,196 @@
 <body>
     <h1  >
         蘑菇种植</h1>
-
-
+<div  >
+ <p class="yellow">
+                             <b>此页面的（部分）内容需要被翻译。 </b> 
+                            <br />
+                            你可以帮助我们来翻译此页面
+                            </p>
 
     <h2 >种植小型蘑菇</h2>
-    <div  >
+    
+    <p> 
 
       因为蘑菇无法在亮度等级大于12的地方生长，所以种植者必须仔细考虑如何规划光源。蘑菇除了在光线充足的地方和非固体/透明的方块以外，可以在任何地方播种，不需要水、沙子和多余的空间，与农作物、仙人掌或是树苗不同。但是即使在夜间，它们也只能被种植在在那些到了白天亮度依然弱于12的区域。唯一的例外是菌丝，如果蘑菇在菌丝上种植那么即使暴露在完全的日光下也没有问题。随后它们会缓慢扩散到其他的不透明块上，包括他们不能被种植的那些。蘑菇只有在9x9x3空间内小于5朵蘑菇的时候才会扩散。（注：这是在1.3.2版生存模式多人游戏中的测试，也许现在已不适用）
-      <br/><br/> 在小型蘑菇种植中主要的危险是源于由于他们需要低光亮度的环境，经常导致怪物在同一区域生成（和平模式除外）。这种危险可以被一些方法克服。一个简单的办法是在蘑菇的生长区域上方两个方块以上放置火把（有些时候是在天花板上凿个小洞）。另一个办法是把种植区的高度限制在一方块，并在走道上铺砖。由于怪物无法在半格高度内生成，所以这可以减少危险。你也可以使用一个流水装置将蘑菇从房间里带出集中到一个地方。下界是一个安全的养殖蘑菇的地方，因为那里的怪物不会在小空间里刷出。
-      <br/><br/> 过去数个版本的改变让种植小蘑菇变得更困难；另一个选择是建立一个大的地下空间并使用骨粉来种植可以收获数朵蘑菇的巨型蘑菇。
-      <br/><br/> 在地上挖个1x1x1坑，倒上水，就可以让蘑菇长在坑里面.这是一个新的方法！
+      
+</p>     <p> 
+ 在小型蘑菇种植中主要的危险是源于由于他们需要低光亮度的环境，经常导致怪物在同一区域生成（和平模式除外）。这种危险可以被一些方法克服。一个简单的办法是在蘑菇的生长区域上方两个方块以上放置火把（有些时候是在天花板上凿个小洞）。另一个办法是把种植区的高度限制在一方块，并在走道上铺砖。由于怪物无法在半格高度内生成，所以这可以减少危险。你也可以使用一个流水装置将蘑菇从房间里带出集中到一个地方。下界是一个安全的养殖蘑菇的地方，因为那里的怪物不会在小空间里刷出。
+      </p>     <p> 
 
-      <br/><br/>
-    </div>
+ 过去数个版本的改变让种植小蘑菇变得更困难；另一个选择是建立一个大的地下空间并使用骨粉来种植可以收获数朵蘑菇的巨型蘑菇。
+      
+</p>     <p> 
+ 在地上挖个1x1x1坑，倒上水，就可以让蘑菇长在坑里面.这是一个新的方法！
+
+      
+</p>     
+
+    
+
 
 
 
     <h2 >传播扩散原理</h2>
-    <div  >
-      <br/> 每一秒，每个蘑菇有1%的几率按下面的步骤进行：
-      <br/>
-      <br/>选择一个3x3x3范围内的随机方块（以蘑菇自己的方块为中心而不是它生长的那个方块）。更倾向于选择蘑菇自己所在的那层高度：更高和更低的层分别有1/4的机会，而蘑菇自己所在的层有1/2的机会。如果蘑菇可以种植在所属的方块位置（方块必须是空的，亮度
-      <=12，下方的方块必须是不透明的）就继续: <br/>在上面所选方块的3x3范围内随机选择一个方块，如果此方块可以如上面一样种植蘑菇，在此处生成一个蘑菇。
-      <br/>请注意开始选择的那个随机方块也可能是初始的蘑菇本身，或者上下两格。如果发生这种情况，“是否可以种植”的检查将会失败，这将进一步降低整体的传播速度。
-      <br/>
-      <br/>还有一些规则可以依据上面的规则推导出来：
-      <br/>
-      <br/>蘑菇可以传播到两格以外，即使中间有一格不适合生长
-      <br/>蘑菇可以在通过对角线相连的格子间传播
-      <br/><br/>
-    </div>
+    
+      <p> 
+      
+ 每一秒，每个蘑菇有1%的几率按下面的步骤进行：
+      
+</p>      
+      
+<ul><li>选择一个3x3x3范围内的随机方块（以蘑菇自己的方块为中心而不是它生长的那个方块）。更倾向于选择蘑菇自己所在的那层高度：更高和更低的层分别有1/4的机会，而蘑菇自己所在的层有1/2的机会。如果蘑菇可以种植在所属的方块位置（方块必须是空的，亮度
+      &lt;=12，下方的方块必须是不透明的）就继续: 
+ </li><li>在上面所选方块的3x3范围内随机选择一个方块，如果此方块可以如上面一样种植蘑菇，在此处生成一个蘑菇。
+    </li></ul> <p>    
+请注意开始选择的那个随机方块也可能是初始的蘑菇本身，或者上下两格。如果发生这种情况，“是否可以种植”的检查将会失败，这将进一步降低整体的传播速度。
+     </p>     <p>  
+
+      
+还有一些规则可以依据上面的规则推导出来：
+      
+</p>    <ul><li>
+      
+蘑菇可以传播到两格以外，即使中间有一格不适合生长
+  </li><li>
+蘑菇可以在通过对角线相连的格子间传播
+</li></ul> 
+
+
+    
+
 
 
 
     <h2 >基础蘑菇种植</h2>
-    <div  >
+    
+  <p> 
       这个方法依赖光线来为初级的蘑菇种植者确保一个没有怪物威胁，没有采矿需求的蘑菇农场。建造一个两格高并且和需求一样宽广的房间。按正常间隔在天花板上凿一个洞，放入一个火把产生减弱的光源。这将使地面的亮度等级保持在10，允许蘑菇生长繁殖。你可以少至每6块距离放一个火把来确保没有怪物刷新的危险。这么设置将让蘑菇以最快速度生长。将蘑菇植入地上并等待其生长完毕即可。
 
-      <br/><br/>
-    </div>
+      </p>    
+
+
+    
+
 
 
 
     <h2 >巨型蘑菇</h2>
-    <div  >
-      <img src="img/moguzhongzhi.png" style="width: auto; height: auto;"></img>
-      <br/>巨型蘑菇最小生长条件。<br/><br/> 如果有足够的可利用空间,以及如果蘑菇是被种植在泥土、草,或菌丝上,在一个红或棕色蘑菇上使用骨粉 会使一只 巨型蘑菇成长。巨型蘑菇在被收获时能提供20只以上的蘑菇。右侧的图片说明了最小生长条件:
-      <ul>
+    
+    <p> 
+<img src="img\moguzhongzhi1.png" />
+ <br />
+巨型蘑菇最小生长条件。
+</p>     <p> 
+ 如果有足够的可利用空间,以及如果蘑菇是被种植在泥土、草,或菌丝上,在一个红或棕色蘑菇上使用骨粉 会使一只 巨型蘑菇成长。巨型蘑菇在被收获时能提供20只以上的蘑菇。右侧的图片说明了最小生长条件:
+      </p>     <ul>
         <li>上方的木头说明了一只这种大小的巨型蘑菇生长所需要的最小高度。巨型蘑菇可以长到5、6,或7格高,最大高度比它上方可利用的空间低一个方块。因此,如果在上方7米有个方块,巨型蘑菇总会长到5个方块高。</li>
         <li>下方的平面说明了所需要的面积为7×7。和巨型蘑菇的茎相邻的方块必须为空气, 但对其它的方块没有要求。</li>
         <li>右侧的菌丝表明了因为巨型红蘑菇的覆盖面积较小而产生的所需空间的重叠。</li>
-      </ul>
+      </ul>   <p> 
       牢记巨型蘑菇仍然会尝试生长成一个比可利用的空间高的高度,失败并浪费一份骨粉。 因此通常最好以最大可利用空间去种植(7×7×8), 以便骨粉永不浪费。
-      <br/><br/> 移动版中，红蘑菇可以长到13米高。
-      <br/><br/>
-    </div>
+      </p>     <p> 
+
+ 移动版中，红蘑菇可以长到13米高。
+      
+</p>    
+
+    
+
 
 
 
     <h2 >蘑菇农场建造方法</h2>
-    <div  >
+    
+     <p> 
       这里的一部分方法可能已经过时， 如果你有更好的方法，请联系我们。
-      <br/><br/><b style="font-size: 18px;">半自动蘑菇农场</b><br/> 第一步：
-      <br/> 每隔2个方块就放置一条长15米的红石。在这个电路上放置一个按钮。在每行红石之间放置粘性活塞。在所有物品的上面放置泥土（包括活塞和红石）。放置一个活塞电路能让水流在原来的电路中流动。然后在里面加入一个拉杆。按照长度调整电路（相对于长度我更倾向于宽度，这样连接更简单）。
-      <br/><br/> 第二步：
-      <br/> 在红石上方的泥土上种植蘑菇。
+      
+</p>     <p> 
+<b>半自动蘑菇农场</b></p>     <p> 
+ 第一步：
+       <br />
+ 每隔2个方块就放置一条长15米的红石。在这个电路上放置一个按钮。在每行红石之间放置粘性活塞。在所有物品的上面放置泥土（包括活塞和红石）。放置一个活塞电路能让水流在原来的电路中流动。然后在里面加入一个拉杆。按照长度调整电路（相对于长度我更倾向于宽度，这样连接更简单）。
+      </p>     <p> 
 
-      <br/><br/> 第三步：
-      <br/> 使用按钮来强行移除蘑菇，然后拉动拉杆让蘑菇流向你。在地面以下重复制作这样的设计，每次重复上一层楼。能够让水流最终汇聚到一个中央区域，更方便你收集蘑菇。
+ 第二步：
+       <br />
+ 在红石上方的泥土上种植蘑菇。
+
+      </p>     <p> 
+
+ 第三步：
+       <br />
+ 使用按钮来强行移除蘑菇，然后拉动拉杆让蘑菇流向你。在地面以下重复制作这样的设计，每次重复上一层楼。能够让水流最终汇聚到一个中央区域，更方便你收集蘑菇。
+
+</p>     
 
 
-      <br/><br/>
-    </div>
+    <p><b>全自动蘑菇农场</b></p>
 
+  <p>  
+Using water dispensers and a light sensor circuit
+</p>     <p>  
+In the following design mushroom is planted on central platforms and new mushrooms will spread to side platforms. Water will flow once a day through the side platforms delivering the new spread mushrooms to hoppers and finally into chests.
+</p>     <p>  
+On the central platforms mushrooms can be planted in packs up to four mushroom of each kind. Planting more mushroom will increase the spreading speed, but will also reach its cap limit sooner. In the video three mushroom of each kind are planted, as it gives higher daily output.
+</p>     <p>  
+The side platforms should be one block height to improve efficiency, whilst the central ones should be 3 blocks height, in the video the central platform has middle glass platforms, as mushroom can't spread over glass.
+</p>     <p>  
+A circuit using a light sensor emits two delayed pulses once a day, activating and deactivating dispensers containing water buckets, making water flow through the side platforms for about 12 seconds, enough to deliver every new mushroom spread in the side platforms to a hopper collection point, that will store mushroom into chests.
+</p>     <p>  
+The farm can be covered in glass if the platforms are built in mycelium, or can be covered in any other non transparent block, both designs are shown in the video.
+</p>     
 
+    <p><b>运用活塞</b></p>
+      <p> 可以使用活塞建设一个简单的完全自动化的蘑菇农场。首先要建设一个高度为2的房间，在这个房间里建设宽为2的水流，该水流的目的只是为了将已经收获的蘑菇送出房间。蘑菇应该种植在这条水流的移动方向的方块上，而且这个方块上面是空的。最后，活塞需要朝向水流放置。它们应该放置在没有种植蘑菇的方块旁边。
+</p>     <p> 
+The pistons need to be wired to an outside switch, the water stream shall be redirected to your favorite collection point. Then the room needs to be sealed to be completely dark. The only opening should be 1x1 wide, for the water stream. This being the only opening, spawned monsters cannot leave the room. Eventually the mushrooms will spread to the blocks in front of the pistons. Activating the pistons will then harvest the mushrooms and push them into the water stream. The system is reset by deactivating the pistons without any need for replanting.
+</p>     <p> 
+Higher efficiency can be achieved by multiple arrangements. The system can even be arranged in a room of the height 1, this makes setup more difficult though.
+</p>      
 
-    <h2 >户外巨型的蘑菇栽培（无菌丝）</h2>
-    <div  >
+	    <p><b>活塞/玻璃为主（干农业）</b></p>
+    <p> The idea here is that mushrooms can also be popped off by causing the block beneath them to change to Glass. Using Pistons you can push 12 blocks of alternating block/Glass rows causing any mushrooms growing on them to pop off.
+</p>  <p>
+<img src="img\moguzhongzhi2.png" />
+ <br />
+</p>   <p> 
+ 
+The basic set up is two sets of pistons facing each other on either side of the seed mushroom row. Upon pushing a button a signal is sent causing the first group to extend popping off the mushrooms. The signal is delayed 12 ticks(3 repeaters) and the second group of pistons then extends resetting the farm.
+</p>     <p> 
+Generally this is designed for use in the Nether, where "wet" methods are unavailable. Some benefits over other "dry" methods are simplicity and low resource requirements.
+
+	</p>     <p> 	
+   <p><b>户外巨型的蘑菇栽培（无菌丝）</b></p>
+
+    <p>
+
       其实有一种方式可以使巨型蘑菇在户外生长。挖一个1x1的坑，里面倒上水，再把蘑菇放在水里，再快速用骨粉增大使其成为巨型蘑菇。如果添加骨粉的速度不够快，蘑菇会掉落。
 
-      <br/><br/>
-    </div>
+      </p> 
 
+    
+
+<p>youtube视频  
+
+<a href="http://www.youtube.com/watch?v=OfNWtqKMb4o">http://www.youtube.com/watch?v=OfNWtqKMb4o</a>
+  <br />Video tutorial by HybridCraft 
+</p>
 
 
     <h2 >历史</h2>
-    <div  >
+    
+   <p>
       自从1.6升级后，蘑菇会缓慢的扩散到附近的不透明方块上，这个条件允许了农场的建立。然而，蘑菇扩散的速度相当的慢，因此，当没有多个蘑菇的时候要开始经营一个蘑菇农场将会是一个考验。
-      <br/><br/> 在 Beta 1.8 蘑菇的扩散被削弱了，所以一个蘑菇只会它周围少于5个蘑菇的9x9x3的区域内扩散。这使得蘑菇养殖变得十分低效，很多之前可行的方法（尤其是"五重水流管道(water flushable pentapipe)"）将不会在Beta1.8以上的版本中工作。然而，巨型蘑菇的加入提供了一个更快更好的替代选项。
-      <br/><br/>
-    </div>
- 
+      
+</p>     <p>
+ 在 Beta 1.8 蘑菇的扩散被削弱了，所以一个蘑菇只会它周围少于5个蘑菇的9x9x3的区域内扩散。这使得蘑菇养殖变得十分低效，很多之前可行的方法（尤其是"五重水流管道(water flushable pentapipe)"）将不会在Beta1.8以上的版本中工作。然而，巨型蘑菇的加入提供了一个更快更好的替代选项。
+      
+</p>   
+
+    
+
+ </div  >
 </body>
 
 </html>

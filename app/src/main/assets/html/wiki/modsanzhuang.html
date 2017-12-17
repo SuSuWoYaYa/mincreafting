@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mods 安装</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  <div class="main-container">
+
+
+    <div id="page" class="single">
+      <div class="content">
+        <!-- Start Article -->
+        <article class="article">
+          <header>
+
+            <!-- Start Title -->
+            <h1 class="title single-title">Mods 安装</h1>
+            <!-- End Title -->
+          </header>
+          <!-- Start Content -->
+          <div id="content" class="post-single-content box mark-links">
+        
+		        <p class="red">  该页面的内容不受Mojang AB、Minecraft Wiki、Minecraft IRC频道与Minecraft论坛的官方支持。</p> 
+
+				
+				
+				
+				
+	<h2>使用Mod的注意事项</h2>
+
+	 <i>  <p><b>在开始修改Minecraft文件前，你必须意识到你行为的目的；你有可能将你的游戏弄坏。（如果你的游戏是盗版，你可以随意备份你的存档，或是重新下载游戏。）  </b></p> 
+	
+	<p><b> 重复一次：如果你修改Minecraft文件，你有可能会毁掉游戏和你的所有游戏世界。由于此操作不被 Mojang 支持，他们不会帮助你。 </b></p> 
+	</i>
+     <p>  
+	由于Mod的原理，升级游戏客户端会删除你的Mod。即是，每次升级游戏后，你必须重新安装Mod。不过，你创造的世界不会被破坏（但Mod添加的新物品等会发生变化）。
+</p>     <p>  
+另外，Mod作者不会保证Mod代码的运行100%正常，提供支持的作者则更少。
+</p>     <p>  
+几乎所有的Mod集合包都提供了自动安装程序，对于新手十分方便。你可以在Mod条目下中找到这些集合包。
+	</p>
+	
+	<h3>预备技能</h3>
+<ul><li>
+
+关于压缩/解压缩的知识，有正常高效的压缩软件（WinRAR，7-zip等），或者Mod安装程序的有关知识。
+</li><li>了解如何正确提交故障报告。
+</li><li>了解安装Mod的实际知识和相关技能。
+</li><li>知道如何准确地执行指引。
+</li><li>了解Mod之间的兼容和冲突。</li></ul>
+    <p> 你可能在没有完全了解所有预备技能时就已经着手安装Mod，但如果你的游戏损坏了，你应该去Mod社区（最好是Mod作者的）请教他人。这是提升自己的好机会！
+</p> 
+
+<h3>Mod的工作原理</h3>
+<p>"minecraft.jar" 文件提供了游戏运行时需要的文件，如：世界生成、显示方块、处理生物、物品和合成配方等等内容。当你向游戏安装Mod时，将文件加入到 minecraft.jar 中并覆盖某些文件，使得必要的文件被更新应用。而且所有游戏文件都经过了“模糊处理”，简单来说，例如一个单词"recipe"（配方）会被模糊成"bf"（技术上说，所有的 class 名称和其它等等标识符都会被转换成一个或两个无意义的字母组合）。
+</p><p>另外，游戏中所有实体（生物、物品等等）都拥有一个ID使得可以在游戏地图中描述。若要加入一个新元素，这个新元素就需要给定一个新ID，因此在安装Mod时必须保证新元素的ID不与原有ID重复（冲突）。
+</p><p>以下是几条重要的事项：
+</p>
+<ul><li> <i>Mod的安装会永久性地改变游戏的运行方式。</i>因此 Mojang <b>不能也不必要</b>给予帮助，并且<b>不对由此造成的崩溃和数据丢失负责</b>。</li>
+<li> 一些Mod声称会在游戏中加入某些有趣的元素如可爱的小猫小狗之类，但实际上会进行恶意行为，如会盗取游戏的账户和密码，或安装键盘记录器等等。若下载到的Mod符合以下特征，必须高度警惕：
+<ul><li> Mod中包含可执行程序并要求运行；</li>
+<li> Mod要求修改游戏启动器（而<b>不是 minecraft.jar</b>文件）。</li></ul></li></ul>
+<p>若某个Mod的安装要求不包括上述几项，这就比较安全了。不过最为安全的方法是只安装十分热门的Mod。Risugami 编写了 Modloader 等安全高效的Mod，而这些Mod的最新版本提供了更为安全和方便的Mod制作和安装条件。请在下载前参阅说明和评论。
+</p>
+<ul><li> 当游戏版本升级后，所有Mod都必须重新下载、安装和升级，因为 Mojang 会再次将游戏文件模糊处理。若游戏版本增加了新元素，占用了新的ID，原来已经使用了此ID的Mod就不能正常工作，而包含这些Mod元素的游戏世界会畸形，甚至完全毁坏不能再使用。Mod作者对Mod的更新时随其所愿的，可能会花上几个星期。不过这不能成为烦扰Mod作者的理由。</li>
+<li> 如果两个Mod的功能大致相同，那它们之间有可能不兼容，由于它们都可能会修改同一个游戏文件。（这个问题大多可以解决，现在许多Mod会附有设置文件修改物品和方块ID避开冲突。）</li>
+<li> 添加了Mod中新元素的游戏世界在Mod被移除（一般是由于游戏更新）后就不再兼容。</li></ul>
+
+
+<h3>下载Mod</h3>
+<p>下载Mod最好的地方是<a href="//minecraft.gamepedia.com/Mods#Client_Mods" class="extiw" title="en:Mods">Wiki的Mod页面（英文）</a>。这个页面十分可靠，更新及时。另外，<a target="_self" class="external text" href="http://www.minecraftforum.net/forum/51-minecraft-mods/">Minecraft 社区论坛Mod专区</a>也是一个好去处。要注意的是，这个专区有300多页，搜索起来可能很麻烦。
+</p><p>若在其它地方下载到某些著名的Mod（如 TooManyItems），必须防范恶意软件。因此你最好到Mod的源页面下载Mod。如果发现下载到的文件不是 class 文件、 png 文件、音频文件或Mod安装程序，<b>切记不要打开</b>。在安装Mod之前，Mod必须先通过杀毒软件的扫描。
+</p>
+
+
+<h3>备份</h3>
+<p>如果你只是想无风险地测试一个Mod，只需要简单地将整个.minecraft文件夹备份起来。测试完毕后用备份替换，游戏就会完全恢复到安装Mod前的状态（包括你的世界）。
+</p><p>若你打算从今走进Mod这个新领域，你应该记住以下指引：
+</p>
+<ul><li> 备份 <b>.minecraft/saves</b>，这是你的所有单人世界。</li>
+<li> 若你已经安装了其它Mod，同时备份 minecraft.jar ，这样在游戏损毁后就不必重头再来。</li>
+<li> 若你希望留存你的游戏统计数据和成就情况，备份 <b>.minecraft/stats</b> 文件夹。</li>
+<li> 若你想在原版游戏中使用某个世界，不要在这个世界的箱子中放置Mod特有的物品。否则在原版游戏中打开或破坏这些箱子时，游戏会崩溃。</li></ul>
+<p>每次安装了一个新的Mod时，都需要备份一次。
+</p>
+
+<h3>ModLoader, Spawnlist 等</h3>
+<ul><li> 实际上许多Mod是依赖其它Mod工作的，由于这些Mod中使用了其依附的Mod之中的命令。这种<b>被依附</b>的Mod通常称为实用性Mod。这些Mod包括 Modloader （用于向游戏中添加Mod主体）、AudioMod （用于添加Mod的声音）、ToolUtils（用于添加工具的特定功能）、Spawnlist（用于添加新生物）和 Turbomodel（用于更高级的模型）。在安装有依赖关系的Mod之前，被依赖的实用性Mod必须先被安装。如果没有安装，Mod不会正常运作甚至会引起游戏崩溃。</li></ul>
+<p>Mod作者通常会提供配置文件用于更改物品和实体ID。若有冲突的ID，只要找出并修改即可。并且记住，当游戏更新或Mod更新后，要重新设置这些ID，不然还会崩溃。
+</p>
+
+
+
+<h3>应对第一次崩溃</h3>
+<ul><li> 在命令行模式下运行游戏，得到堆栈跟踪。</li>
+<li> 将堆栈跟踪作为错误报告提交到Mod作者的网页/论坛。</li>
+<li> 如果使用了ModLoader，检查.minecraft文件夹中的日志文件(modloader.txt)。</li>
+<li> 如果你不能修复，参阅下一节，恢复你的游戏和世界。</li></ul>
+
+<h3>删除Mod、修复崩溃与还原游戏</h3>
+<p>有2种方法删除Mod。
+</p>
+<ol><li> （仅限使用此法安装的Mod）进入 <b>.minecraft/mods</b> 文件夹删除。（仅在较新版本的Modloader中有效）</li>
+<li> 恢复你的游戏，切记备份你的游戏世界。</li></ol>
+<p>对于正版，要恢复你的游戏，要先将 .minecraft/Saves 文件夹备份，然后将整个 .minecraft 文件夹删除。启动登录器登录，等待登录器下载游戏完毕后，将 Saves 文件夹重新放回原来的地方。至此你的世界应该会全部保留，但Mod中特有的物品都会消失。
+</p><p>要修复崩溃，先检查以下列表：
+</p>
+<ul><li> 删除了minecraft.jar中的 META-INF 文件夹了吗？</li>
+<li> 忽略了Modloader？</li>
+<li> 物品ID或方块ID是否有冲突？若是，许多Mod都有配置文件修改这些ID。
+<ul><li> 查看 modloader.txt 以确定哪些ID存在冲突。</li></ul></li>
+<li> 你的Mod对应你的游戏版本吗？</li>
+<li> 你是否已经安装了Mod所依赖的其它所有组件？例如，TurboModelThingy 需要 Planes Mod 才能运作，而 ModLoaderMP 、Modloader是 SDK's Guns Mod 的必须组件。</li>
+<li> Modloader 的版本是否正确？</li>
+<li> Mod的版本是否正确？</li>
+<li> 你确定你正确安装了Mod了吗？（参阅Mod的帮助文件）</li></ul>
+<p>同时，也有工具能够自动修复游戏，如 BlackScreenFix ：<a target="_self" rel="nofollow" class="external free" href="http://dl.dropbox.com/u/62819837/BlackScreenFix.exe">http://dl.dropbox.com/u/62819837/BlackScreenFix.exe</a>
+</p>
+
+
+<h3>简单排查</h3>
+<ul><li> 删除META-INF文件夹。</li>
+<li> 检查是否存在有冲突的Mod。</li>
+<li> 若使用Modloader，检查Modloader的版本。</li>
+<li> 检查Mod本身的版本。</li>
+<li> 搜索Mod的视频教程（确保你参考的视频中Mod的版本与自己的一致）。</li></ul>
+
+
+<h2>如何安装Mod</h2>
+<p>（对于正版游戏）
+</p>
+<ul><li> <b>Windows ME/95/98/XP:</b></li></ul>
+<ol><li> 点击 <b>开始</b>。</li>
+<li> 点击 <b>运行…</b>。</li>
+<li> 输入 <b>%AppData%</b>并回车。</li>
+<li> 打开 <b>.minecraft</b>文件夹。</li>
+<li> 打开 <b>bin</b> 文件夹，找到<b>minecraft.jar</b>（若隐藏了扩展名，则只会显示为<b>minecraft</b>）</li>
+<li> 使用解压软件（WinRAR等）打开minecraft.jar。可使用“打开方式…”菜单。</li>
+<li> 将Mod中的class文件复制到minecraft.jar中。复制完毕后退出软件。</li>
+<li> 某些Mod会要求你将文件复制到其它目录下，包括：</li></ol>
+<p>- <b>Resources</b>文件夹（在<b>.minecraft</b>目录下）
+<br>- <b>Config</b>文件夹（在<b>.minecraft</b>目录下）
+<br>- <b>.minecraft</b>文件夹
+<br>遵循Mod的安装指引确定文件复制的位置。
+</p><p><br />
+</p>
+<ul><li> <b>Windows Vista/7:</b></li></ul>
+<ol><li> 点击 <b>开始</b>。</li>
+<li> 在搜索栏中输入 <b>%AppData%</b>并回车。</li>
+<li> 打开<b>Roaming</b>文件夹。</li>
+<li> 打开<b>.minecraft</b>文件夹。</li>
+<li> 打开 <b>bin</b> 文件夹，找到<b>minecraft.jar</b>（若隐藏了扩展名，则只会显示为<b>minecraft</b>）</li>
+<li> 使用解压软件（WinRAR等）打开minecraft.jar。可使用“打开方式…”菜单。</li>
+<li> 将Mod中的class文件复制到minecraft.jar中。复制完毕后退出软件。</li>
+<li> 某些Mod会要求你将文件复制到其它目录下，包括：</li></ol>
+<p>- <b>Resources</b>文件夹（在<b>.minecraft</b>目录下）
+<br>- <b>Config</b>文件夹（在<b>.minecraft</b>目录下）
+<br>- <b>.minecraft</b>文件夹
+<br>遵循Mod的安装指引确定文件复制的位置。
+</p>
+<ul><li> <b>Macintosh:</b></li></ul>
+<p><b>简易安装指引</b>
+</p>
+<ol><li> 点击 <b>Finder</b>。</li>
+<li> 在菜单中，选择<b>Go</b>, <b>Go to Folder</b>.</li>
+<li> 进入"~/Library/Application Support/minecraft/"</li>
+<li> 打开"bin"</li>
+<li> 安装解压缩软件。（App Store中的The Unarchiver）</li>
+<li> 解压文件<b>minecraft.jar</b></li>
+<li> 把Mod部分放入文件夹中</li>
+<li> 退出文件并在名字中添加.jar的扩展名</li>
+<li> 当然mods需要你复制一些文件到其它文件夹. 例如包括:</li></ol>
+<p>- <b>Resources</b> 文件夹 (在主目录<b>minecraft</b> 下)
+<br>- <b>Config</b> 文件夹 (在主目录<b>minecraft</b> 下)
+<br>- <b>.minecraft</b>文件夹
+<br>根据你的下载说明中阐述的位置来复制文件.
+</p><p><b>进阶安装指引</b>
+</p><p>1. 下载你的Mod.
+<br>2. 打开终端(它可能在你的应用程序文件夹内.)
+<br>3. 逐行输入下列文字:
+</p>
+<pre> cd ~
+ mkdir mctmp
+ cd mctmp
+ jar xf ~/Library/Application\ Support/minecraft/bin/minecraft.jar
+</pre>
+<p>4. 请不要关闭终端! 打开你的home文件夹.里面应该会有一个叫mctmp的文件夹. 所有的.class文件复制到这个文件夹里.
+<br>5. 回到你的终端界面,逐行输入下列文字:
+</p>
+<pre> rm META-INF/MOJANG_C.*
+ jar uf ~/Library/Application\ Support/minecraft/bin/minecraft.jar ./
+ cd ..
+ rm -rf mctmp
+</pre>
+<p><br />
+</p>
+<ul><li> <b>Linux:</b></li></ul>
+<p>你在 <b>~/.minecraft/bin/</b>目录下可以找到一个叫<b>minecraft.jar</b> 的文件.
+使用 Nautilus (或者其他常见文件浏览器), 按 Ctrl+H 来显示隐藏文件, 这样才能看到并打开.minecraft文件夹. 如果是在控制台下, 输入, <b>ls -a ~/</b> 你会发现 <b>.minecraft</b>文件夹. 进入 bin 文件夹. 用归档管理器或其他类似程序来打开minecraft.jar文件. 从zip或rar文件里解压你想要放到jar里面的mods. 关闭归档管理器窗口.开始游戏!
+</p><p><br />
+</p>
+<ul><li> <b>所有操作系统：</b></li></ul>
+<p>在大多数系统中，你可以在游戏菜单中打开材质包目录。打开后点击“向上”按钮，你就到达.minecraft目录。
+</p>
+ 
+
+<h2>安装其它Mod、测试兼容性</h2>
+<ul><li> 打开"minecraft.jar"（详情见上），然后将Mod文件拖拽进去。大多数Mod都要求删除minecraft.jar中的"META-INF"文件夹从而能正常工作。</li></ul>
+
+<h3>应对崩溃</h3>
+ 
+		<ul><li> 你的Mod可能在方块ID或物品ID上存在冲突。在下载Mod处看看别人是否也有类似的问题，以及有没有解决方案。</li>
+<li> 你可能忘记删除minecraft.jar中的"META-INF"文件夹。大多数Mod都要求删除从而能正常工作。</li>
+<li> 一些Mod，如Risugami's Modloader 和 Audio Mod，会在你的Mod一直崩溃（或游戏异常静音）时帮到你。</li></ul>		
+				
+          </div>
+        </article>
+        <!-- End Article -->
+
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

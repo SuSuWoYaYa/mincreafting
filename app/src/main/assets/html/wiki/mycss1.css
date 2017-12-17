@@ -88,13 +88,13 @@ h3 {
     font-size: 22px;
     
     line-height: 1.4;
-    background-color: #d7d8d9;
+ 
 }
 h4 {
     padding: 8px;
     font-size: 20px;
     line-height: 1.4;
-    background-color: #e0e0e0;
+ 
 }
 h5 {
     padding: 5px;
@@ -182,23 +182,23 @@ img {
     height: auto; /* Make sure images are scaled correctly. */
     max-width: 100%; /* Adhere to container width. */
 }
-table {
+table { 
     border-collapse: collapse;
     border-spacing: 1;
     width: 100%;
     margin-bottom: 15px;
 }
 td,th {
-    padding: 5px 15px;
+    padding: 5px;
     border: 1px solid #666666;
 
 }
 td{
-
+    padding: 5px  ;
     text-align: left;
 }
 th {
-    padding: 5px 15px;
+    padding: 5px  ;
     border: 1px solid #666666;
     text-align: center;
 }

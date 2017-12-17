@@ -17,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
@@ -45,23 +46,24 @@ public class FragmentTutorial extends Fragment {
 
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
-    private List<Map<String, String>> data;
-    private boolean hasTutorial = true;
-    private static String TAG = "FragmentTutorial";
-    private ProgressBar mProgressBar;
-    private Button mbtnStart;
-    private Button mbtnRestart;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.mActivity = (Activity) context;
-    }
-
-    private Activity mActivity;
 
 
-    private String testzipUrl = "http://cuisanzhang.u.qiniudn.com/test/test.zip";
+    public static String DATA_BASE_tutorialFilesS[] = {
+            "新手指南",
+            "环境介绍",
+            "进阶指南",
+            "建筑教程",
+            "种植教程",
+            "刷怪教程",
+            "采矿技术",
+            "附魔烧炼",
+            "初级红石",
+            "红石进阶",
+            "高级技术",
+            "更多挑战",
+            "网易教程",
+            "网络教程",
+    };
 
     public static FragmentTutorial newInstance(int page) {
         Bundle args = new Bundle();
@@ -75,183 +77,183 @@ public class FragmentTutorial extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-
-        data = new ArrayList<Map<String, String>>();
-
-//        Log.e("FragmentTutorial", "context.getCacheDir().getAbsolutePath() = " + getActivity().getCacheDir().getAbsolutePath());
-
     }
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if (!hasTutorial) {
-            View downView = inflater.inflate(R.layout.layout_down_files, container, false);
+        View view = inflater.inflate(R.layout.fragment_tutorial_layout, container, false);
 
-            mProgressBar = (ProgressBar) downView.findViewById(R.id.progressBar);
-            mProgressBar.setMax(100);
-            mProgressBar.setProgress(0);
-            mbtnStart = (Button) downView.findViewById(R.id.btnStrat);
-            mbtnRestart = (Button) downView.findViewById(R.id.btnRestart);
+//        LinearLayout mian_layout = (LinearLayout) view.findViewById(R.id.mian_layout);
+        LinearLayout layout_btn_newplay = (LinearLayout) view.findViewById(R.id.layout_btn_newplay);
+//        LinearLayout layout_btn_daily = (LinearLayout) findViewById(R.id.layout_btn_daily);
+        LinearLayout layout_btn_huanjingjieshao = (LinearLayout) view.findViewById(R.id.layout_btn_huanjingjieshao);
+        LinearLayout layout_btn_jinjiezhinan = (LinearLayout) view.findViewById(R.id.layout_btn_jinjiezhinan);
+        LinearLayout layout_btn_building = (LinearLayout) view.findViewById(R.id.layout_btn_building);
+        LinearLayout layout_btn_zhongzhi = (LinearLayout) view.findViewById(R.id.layout_btn_zhongzhi);
+        LinearLayout layout_btn_shuaguai = (LinearLayout) view.findViewById(R.id.layout_btn_shuaguai);
 
-
-            mbtnStart.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    OkHttpUtils//
-                            .get()//
-                            .url(testzipUrl)//
-                            .build()//
-                            .execute(new FileCallBack(mActivity.getFilesDir().getAbsolutePath(), "test.zip")//
-                            {
-
-                                /**
-                                 * UI Thread
-                                 *
-                                 * @param progress
-                                 */
-                                public void inProgress(float progress, long total, int id) {
-
-                                    mProgressBar.setProgress((int) (100 * progress));
-                                    Log.e(TAG, "inProgress " + progress + "progress(int) = " + (int) (100 * progress));
-                                }
-
-                                @Override
-                                public void onError(Call call, Exception e, int id) {
-                                    Log.e(TAG, "onError " + e.getMessage() );
-
-                                }
-
-                                @Override
-                                public void onResponse(File response, int id) {
-                                    Log.e(TAG, "onResponse :" + response.getAbsolutePath());
-                                }
-                            });
-
-                }
-            });
-
-            return downView;
-        }
-
-        View tutorialView = inflater.inflate(R.layout.fragment_tutorial_layout, container, false);
+        LinearLayout layout_btn_caikuaijishu = (LinearLayout) view.findViewById(R.id.layout_btn_caikuaijishu);
+        LinearLayout layout_btn_fumoshaolian = (LinearLayout) view.findViewById(R.id.layout_btn_fumoshaolian);
+        LinearLayout layout_btn_chujihongshi = (LinearLayout) view.findViewById(R.id.layout_btn_chujihongshi);
+        LinearLayout layout_btn_hongshijinjie = (LinearLayout) view.findViewById(R.id.layout_btn_hongshijinjie);
+        LinearLayout layout_btn_gaojijishu = (LinearLayout) view.findViewById(R.id.layout_btn_gaojijishu);
+        LinearLayout layout_btn_gengduotiaozhan = (LinearLayout) view.findViewById(R.id.layout_btn_gengduotiaozhan);
+        LinearLayout layout_btn_mc163 = (LinearLayout) view.findViewById(R.id.layout_btn_mc163);
+        LinearLayout layout_btn_wangluojiaocheng = (LinearLayout) view.findViewById(R.id.layout_btn_wangluojiaocheng);
 
 
-        ListView listView = (ListView) tutorialView.findViewById(R.id.listView);
-//        listView.setAdapter(new SimpleAdapter(getContext(),
-//                getData(),
-//                R.layout.fragment_listview_of_item_tutorial_layout,
-//                new String[]{"name"},
-//                new int[]{R.id.textView}
-//        ));
+//        mian_layout.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.main_background_block));
 
-        MyAdapter adapter = new MyAdapter(getContext());
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(), ActivityTutorial.class);
-                intent.putExtra(ActivityTutorial.EXTRA_URI, TutorialList.TuorialFile[position]);
-                startActivity(intent);
-            }
-        });
-
-
-        Button button = (Button) tutorialView.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                DownloadUtil.get(mActivity).download(testzipUrl, "/html", new DownloadUtil.OnDownloadListener() {
+                String tutorialNames;
+                String tutorialFiles;
 
-                    @Override
-                    public void onDownloadSuccess() {
-                        Log.e("onDownloadSuccess", "onDownloadSuccess");
-                    }
+                switch (v.getId()) {
+                    case R.id.layout_btn_newplay:
+                        tutorialNames = MyDatabaseHelper.TABLE_BUILDING;
+                        tutorialFiles = "新手指南";
+                        break;
+                    case R.id.layout_btn_huanjingjieshao:
+                        tutorialNames = MyDatabaseHelper.TABLE_DECORATION;
+                        tutorialFiles = "环境介绍";
+                        break;
+                    case R.id.layout_btn_jinjiezhinan:
+                        tutorialNames = MyDatabaseHelper.TABLE_DYE;
+                        tutorialFiles = "进阶指南";
+                        break;
+                    case R.id.layout_btn_building:
+                        tutorialNames = MyDatabaseHelper.TABLE_FOOD;
+                        tutorialFiles = "建筑教程";
+                        break;
+                    case R.id.layout_btn_zhongzhi:
+                        tutorialNames = MyDatabaseHelper.TABLE_LIGHTING;
+                        tutorialFiles = "种植教程";
+                        break;
+                    case R.id.layout_btn_shuaguai:
+                        tutorialNames = MyDatabaseHelper.TABLE_ORE;
+                        tutorialFiles = "刷怪教程";
+                        break;
+                    case R.id.layout_btn_caikuaijishu:
+                        tutorialNames = MyDatabaseHelper.TABLE_REDSTONE;
+                        tutorialFiles = "采矿技术";
+                        break;
+                    case R.id.layout_btn_fumoshaolian:
+                        tutorialNames = MyDatabaseHelper.TABLE_TANNSPORT;
+                        tutorialFiles = "附魔烧炼";
+                        break;
+                    case R.id.layout_btn_chujihongshi:
+                        tutorialNames = MyDatabaseHelper.TABLE_TOOLS;
+                        tutorialFiles = "初级红石";
+                        break;
+                    case R.id.layout_btn_hongshijinjie:
+                        tutorialNames = MyDatabaseHelper.TABLE_WEAPON;
+                        tutorialFiles = "红石高级";
+                        break;
+                    case R.id.layout_btn_gaojijishu:
+                        tutorialNames = MyDatabaseHelper.TABLE_OTHERS;
+                        tutorialFiles = "高级技术";
+                        break;
+                    case R.id.layout_btn_gengduotiaozhan:
+                        tutorialNames = MyDatabaseHelper.TABLE_SMELTING;
+                        tutorialFiles = "更多挑战";
+                        break;
+                    case R.id.layout_btn_mc163:
+                        tutorialNames = TutorialList.MC_163;
+                        tutorialFiles = "网易教程";
+                        break;
+                    case R.id.layout_btn_wangluojiaocheng:
+                        tutorialNames = TutorialList.WANGLUOJIAOCHENG;
+                        tutorialFiles = "网络教程";
+                        break;
+                    default:
+                        tutorialNames = TutorialList.WANGLUOJIAOCHENG;
+                        tutorialFiles = "新手指南";
+                        break;
+                }
 
-                    @Override
-                    public void onDownloading(int progress) {
-                        Log.e("onDownloading", "onDownloading");
-                    }
 
-                    @Override
-                    public void onDownloadFailed() {
-                        Log.e("onDownloadFailed", "onDownloadFailed");
+                Intent intent = new Intent(getActivity(), ActivityTutorialList.class);
+                intent.putExtra(TutorialList.EXTRA_TUTORIAL_NAMES, tutorialNames);
+                intent.putExtra(TutorialList.EXTRA_TUTORIAL_FILES, tutorialFiles);
+//                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
+                startActivity(intent);
 
-                    }
-                });
+
             }
-        });
-        return tutorialView;
+        };
 
+        layout_btn_newplay.setOnClickListener(onClickListener);
+        layout_btn_huanjingjieshao.setOnClickListener(onClickListener);
+        layout_btn_jinjiezhinan.setOnClickListener(onClickListener);
+        layout_btn_building.setOnClickListener(onClickListener);
+        layout_btn_zhongzhi.setOnClickListener(onClickListener);
+        layout_btn_shuaguai.setOnClickListener(onClickListener);
+        layout_btn_caikuaijishu.setOnClickListener(onClickListener);
+        layout_btn_fumoshaolian.setOnClickListener(onClickListener);
+        layout_btn_chujihongshi.setOnClickListener(onClickListener);
+        layout_btn_hongshijinjie.setOnClickListener(onClickListener);
+        layout_btn_gaojijishu.setOnClickListener(onClickListener);
+        layout_btn_gengduotiaozhan.setOnClickListener(onClickListener);
+        layout_btn_mc163.setOnClickListener(onClickListener);
+        layout_btn_wangluojiaocheng.setOnClickListener(onClickListener);
 
+        return view;
     }
-
-
-//    private List<Map<String, String>> getData() {
+//    private class MyAdapter extends BaseAdapter {
 //
-//        for (int i = 0; i < TutorialList.TuorialName.length; i++) {
-//            Map<String, String> item = new HashMap<String, String>();
-//            item.put("name", TutorialList.TuorialName[i]);
-//
-//            data.add(item);
-//
+//        private final class ViewHolder {
+//            private TextView textView;
 //        }
-//        return data;
+//
+//
+//        private ViewHolder holder = null;
+//        private LayoutInflater mInflater = getActivity().getLayoutInflater();
+//
+//        private MyAdapter(Context context) {
+//            this.mInflater = LayoutInflater.from(context);
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return TutorialList.TuorialName.length;
+//        }
+//
+//        @Override
+//        public Object getItem(int position) {
+//            return null;
+//        }
+//
+//        @Override
+//        public long getItemId(int position) {
+//            return position;
+//        }
+//
+//        @Override
+//        public View getView(int position, View convertView, ViewGroup parent) {
+//            if (convertView == null) {
+//                holder = new MyAdapter.ViewHolder();
+//
+//                convertView = mInflater.inflate(R.layout.fragment_listview_of_item_tutorial_layout, null);
+//                holder.textView = (TextView) convertView
+//                        .findViewById(R.id.textView);
+//                convertView.setTag(holder);
+//            } else {
+//
+//                holder = (ViewHolder) convertView.getTag();
+//
+//            }
+//
+//
+//            holder.textView.setText(TutorialList.TuorialName[position]);
+//            return convertView;
+//        }
+//
+//
 //    }
-
-    private class MyAdapter extends BaseAdapter {
-
-        private final class ViewHolder {
-            private TextView textView;
-        }
-
-
-        private ViewHolder holder = null;
-        private LayoutInflater mInflater = getActivity().getLayoutInflater();
-
-        private MyAdapter(Context context) {
-            this.mInflater = LayoutInflater.from(context);
-        }
-
-        @Override
-        public int getCount() {
-            return TutorialList.TuorialName.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                holder = new MyAdapter.ViewHolder();
-
-                convertView = mInflater.inflate(R.layout.fragment_listview_of_item_tutorial_layout, null);
-                holder.textView = (TextView) convertView
-                        .findViewById(R.id.textView);
-                convertView.setTag(holder);
-            } else {
-
-                holder = (ViewHolder) convertView.getTag();
-
-            }
-
-
-            holder.textView.setText(TutorialList.TuorialName[position]);
-            return convertView;
-        }
-
-
-    }
 
 }

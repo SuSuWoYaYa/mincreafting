@@ -1,44 +1,80 @@
-
 fangwuleixing.html
-
-
-
 
 titianxingbanzhidongshougeji.html
 
+ </p>  <p>  <b>
+  </b>  </p> <p>   
+  </p>    <p>  
+
+<p><b>  </b></p> 
+    <p>  </p> 
+     <i>  </i>
+ </p>
+</p>
 
 
-tntdapao.html
-trading.html
-use_map.html
-wolf.html
-wudingleixing.html
-wuliaodeshihzuoshenme.html
-wupingdianti.html
-wuxiangshuijing.html
-xiajie.html
-xiajiekuaishulvxing.html
-xiajieshengchun.html
-xiajieyaosai.html
-xianjing.html
-xianjingsheji.html
-xianrenzhangzhongzhi.html
-xiguahenanguazhongzhi.html
-xuanzheyizhongrangliao.html
-xuekuileifangyupao.html
-xukong.html
-yangguangchuangganqi.html
-yangjiangguaixiangjin.html
-youyuxiangjin.html
-yuanshishengchangqi.html
-zhengfuchonglingshenmiao.html
-zhengfuhaidiyiji.html
-zhengfumodicheng.html
-zhengfushamoshendian.html
-zhidonghuanongchang.html
-zhidonghuashaolian.html
-zhidongmeng.html
-zhidongxiguananguaji.html
-zhizhutiaoyue.html
-zhouyetangcheqi.html
-zhuanshi.html
+<tr><td><img src="img\jindu_icon_.png" /></td><td><b>
+
+ <p>
+<img src="img\jiangshiweicheng.png" />
+<br />
+</p>
+ 
+
+<h3></h3>
+<h4></h4>
+
+<h2></h2>
+
+<ul><li>
+</li><li>
+</li></ul>
+
+<table>
+<tr><th>
+</th><th>
+</th><tr>
+<tr><td>
+</td><td>
+</td></tr>
+</table>
+
+ <p>youtube视频  
+<a href="aaa">aaa</a>
+</p>
+
+<img src="local\Hunger.png" />
+<img src="local\Half_Hunger.png" />
+<img src="local\Empty_Hunger.png" />
+
+<img src="local\Absorption_Heart.png" />
+<img src="local\Heart.png" />
+<img src="local\Half_Heart.png" />
+<img src="local\Empty_Heart.png" />
+
+ <!--
+  <p class="yellow"> <b>该页面仍需完善 </b>  
+<br />请您帮助我们扩充内容。
+ </p>
+
+<p class="yellow"> <b>此页面的部分内容由于太久没更新而已过期。 </b>  
+<br />
+你可以帮助我们来更新此页面
+</p>
+
+ <p class="yellow">
+<b>此页面的（部分）内容需要被翻译。 </b> 
+<br />
+你可以帮助我们来翻译此页面
+</p> 
+
+<p class="red">  <b>警告 </b> 
+<br />
+在依照本页面上的所有步骤架设服务器之前，请注意如果您不清楚您自己在做什么而运行服务端软件，将会导致您的系统出现错误甚至出现崩溃。[1]
+</p> 
+  -->
+                            
+<img src="local\Mob_Heart.png" />
+<img src="local\Mob_Half_Heart.png" />
+
+ 

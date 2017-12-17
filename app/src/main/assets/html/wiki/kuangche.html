@@ -34,7 +34,7 @@
 </p>
 
 <h2>基础知识</h2>
-<h3>矿车</h3>
+ <p>  <b>矿车</b></p> 
 <p>下面是关于矿车最重要的几个属性：</p>
 <ul>
 <li>矿车最快的移动速度是8米/秒；</li>
@@ -43,15 +43,15 @@
 <li>如果矿车没有供能，它会减速并最终停下。</li>
 </ul>
 
-<h3>铁轨</h3>
+ <p>  <b>铁轨</b></p> 
 <p>铁轨: 矿车可以在铁轨上移动。普通铁轨是唯一一种可以拐弯的铁轨。一个铁轨要么拐弯，要么向上升一格，不可同时起作用。</p>
 <p>探测铁轨: 当一个矿车移动到探测铁轨上时，探测铁轨会发射出一个红石信号。其余的时候它就像直的普通铁轨一样。</p>
 <p>充能铁轨: 当充能铁轨激活后，它会将一个移动矿车提到8米/秒的最高速。如果一个矿车被放置在充能铁轨上，由于没有运动方向，充能铁轨不会给矿车动能。自从1.3版本后，矿车可以被乘坐人轻轻推动。当铁轨一端连通一个固定方块（就像下面的发射装置）时，矿车会离开这个固定方块。当未充能时，这个铁轨会让一个移动中的矿车停下来。参见下面的充能铁轨。</p>
 <p>激活铁轨: 当充能时，行驶在激活铁轨上的TNT矿车将会被点燃，漏斗矿车将会停止吸取物品。在矿车中的玩家会从矿车中掉出来。（就像快照14w05a中）。</p>
 
 <h2>充能铁轨</h2>
-<h3>行为</h3>
-<h4>效果</h4>
+ <p>  <b>行为</b></p> 
+ <p>  <b>效果</b></p> 
 <p>
 <img src="img/kuangche1.png" />
 <br/>一个简单的使用四个充能铁轨、一个按钮和一个固体方块的启动器
@@ -68,7 +68,7 @@
 </ul>
 <p>第二和第三种情况，可以简单的使用一个石制按钮发射器中利用。当充能铁轨未充能时，矿车会停止不动，提供一个安全的，不会使矿车出轨的方式来填充或者取出矿车中的物品。</p>
 
-<h4>供能</h4>
+ <p>  <b>供能</b></p> 
 <p>在铁轨周围6个毗邻位置（上方，下方或者任意一侧）的红石信号传递能量给这个铁轨。</p>
 <p>充能铁轨能够在同一条铁路中传递能量给其他挨着的充能铁轨，最高能传递距离供能源9格距离（第一格直接供能，它能够给挨着它的其余8格铁轨供能）。它们也能从毗邻的探测铁轨（仅当有矿车经过探测铁轨时）获取到能量，甚至它们不是同一条铁路上（但也遵循上面的规则）。 由于探测铁轨能够供能这个特点，仅当需要的时候，可以在以下情况激活充能铁轨：</p>
 <ul>
@@ -81,12 +81,12 @@
 <li>在充能铁轨底部放置一个激活的拉杆（最经济的方法，只需要一个木棍和一个圆石就能合成）；</li>
 <li>在红石块上放置充能铁轨。</li>
 </ul>
-<h4>动能</h4>
+ <p>  <b>动能</b></p> 
 <p>使用充能铁轨加速的矿车最大速度能达到8m/s，但是矿车有一个内部的"动能"维持着矿车以8m/s的速度运行，直到动能被耗尽。</p>
 <p>一个在平地上紧靠着一个方块的充能铁轨能够为载着物体的矿车提供80个铁轨长度的动能，或者为空载的矿车提供8个长度的动能（在Beta 1.5版，分别是64格和8格）。测试表明，在一条铁路中放置多个充能铁轨，提供给矿车的动量是逐渐减少的。这样暗指了当矿车速度足够快时动量增加会减少，反之亦然。</p>
 <p>测试表明爬坡会严重的损失动量，所以矿车的速度会急剧下降。但是，如果有足够的剩余动量，矿车会轻易的爬上坡道。相反地，矿车下坡会增加动能。下坡的铁轨会把下坡的动能和铁轨提供的动能都充给矿车。</p>
 
-<h3>爬坡</h3>
+ <p>  <b>爬坡</b></p> 
 <p>
 <img src="img/kuangche2.jpg" />
 <br/>Beta 1.5版本中不带额外推动力的矿车能爬上6个格子，Beta 1.6版本中能爬上10个格子。
@@ -96,7 +96,7 @@
 <p>对于空的矿车（比如一套运输矿车系统），每隔2米放置一个充能铁轨来保持动能是必须的。为了最小化动力需求，2个充能铁轨接两个普通铁轨也可以达到相同的目的（同理于载人矿车）。</p>
 <p>当以极速（8m/s）爬坡行驶时，一个充能铁轨能够维持两个方块高的动能，这就意味着需要在保持极速的斜坡上，充能铁轨和普通铁轨需要交替设置。在斜坡上连续的充能铁轨会提供更多的动能。所以8个充能铁轨可以连着8个普通的铁轨，而且会一直保持极速状态。更长的铁轨会逐步减少动能。</p>
 
-<h4>合理使用</h4>
+ <p>  <b>合理使用</b></p> 
 <p>有人按照不同频率在同一高度设置2000米长的充能铁轨。记录了矿车跑完这2000米的耗时。下面的表格列出了结果:</p>
 <table  style="text-align:center">
   <tr>
@@ -291,14 +291,14 @@
   <p>Because of this difference, there is also a difference between the optimal spacing of powered rails when used on a 2D track when compared to straight travel on flat terrain. This is currently undetermined to high accuracy but is roughly 1 every 52 blocks.</p>
   <p>There is also a difference in unmanned or storage mine carts so it is advisable to use a shorter interval if these carts will be used on the track.</p>
   <p>It seems as if the optimal Powered Rail placing interval to make storage mine carts move is 4 (1 Powered Rail every 4th block). Compared to shorter intervals the reduction in speed is minimal. The maximal possible interval seems to be 9 as the minecart will not reliably reach its destination when using higher intervals.</p>
-<h4>探测铁轨的用处</h4>
+ <p>  <b>探测铁轨的用处</b></p> 
 <p>当一辆装了东西的或者空的矿车在探测铁轨上时，它会把邻近4个方块和下放的两个方块充能。这使不需要红石线和红石火把的铁路成为可能。</p>
 <p>探测铁轨可以激活邻近的充能铁轨。但是，探测铁轨如果用于激活超过两到三个充能铁轨（取决于矿车的速度），有的充能铁轨可能在矿车到来时还没被激活，导致停车。</p>
 <p>在充能铁轨前放置探测铁轨可以被用在单程铁路上。这种情况下，矿车只会向正确的方向行驶。如果方向错误，由于充能铁轨没有被激活，所以矿车会被停下</p>
 <p>你也可以在充能铁轨的两侧都装上探测铁轨，这样铁路就是双向的了。但是这种铺设方式很不划算。</p>
 <p>如果没有足够的初始速度，在1×1的斜坡上交替铺设充能铁轨和探测铁轨不能使矿车上坡超过三个方块。矿车在斜坡上会极快地减速，这样导致矿车不能在探测铁轨变成“关”状态之前从探测铁轨上到达充能铁轨。如果是两个或更多的矿车一起通过，最后的车会被卡住。</p>
 <p>A detector rail could also be used to activate an event based on a cart's location.举个例子，你可以做一个通过自动发车来防止停着的车被后来的车撞上的自动防撞装置。当后来的车经过探测铁轨时，激活充能铁轨就可以送走停着的车</p>
-<h4>其他属性</h4>
+ <p>  <b>其他属性</b></p> 
 <p>
 <img src="img/kuangche3.png" />
 <br/>Powered rails do not curve like other rails.
@@ -308,8 +308,8 @@
 <p>A cart traveling on a powered rail that collides with an object (wall, single block, player, other cart) will reverse direction. It will not reverse direction if it collides with a translucent block, such as Stone Slabs or Glass. If a track including powered rails is bordered by blocks acting as "buffers", the cart will indefinitely continue back and forth along the track. Having carts interact with each other on a short track designed this way can be used to chain multiple carts together as a "train". Once aligned, they will all move together at relatively the same speed.</p>
 <p>How far the charge passes down adjacent rails is independent of the length of redstone wire. Even if the rails are connected to a redstone torch by 15 blocks of redstone dust, the 8 adjacent rails will still be powered normally despite the fact that they should be out of range for the torch.</p>
 
-<h3>自动轨道机构</h3>
-<h4>停止点</h4>
+ <p>  <b>自动轨道机构</b></p> 
+ <p>  <b>停止点</b></p> 
 <p>你可以设置一个能让矿车停下然后在玩家的干预下启动的“停止点”。如果你希望在你的世界中一些有意思的地方设置一个检查点的话，这个设施会很有用。这只需要两个充能铁轨和一个方块的落差，第一个充能铁轨倾斜, 第二个充能铁轨接在第一个下面，并在第二个充能铁轨旁放一个按钮，这样摁下按钮就可以直接驱动矿车了。详见下面的动态图。</p>
 <p>
 <img src="img/huochezhang1.gif" />
@@ -318,7 +318,7 @@
 <p>矿车开过来时就会在斜坡上停住，按下按钮，矿车就会在重力作用下加速向前。玩家这时就可以在矿车里前往下一个车站，或者下车把车留下。</p>
 <p>双向停止点可以通过用探测铁轨把两个停止点并联来实现，这就可以让各个方向的矿车停下并用按钮重启。</p>
 
-<h4>快速启动</h4>
+ <p>  <b>快速启动</b></p> 
 <p>
 <img src="img/kuangche5.png" />
 <br/>Two-way minecart stop, click for larger
@@ -326,7 +326,7 @@
 <p>建立一个简易的快速启动装置需要两个充能铁轨，挖一条一格深，两格长的浅沟,把其中一个对着你想作为矿车出口的轨道，此时这个充能铁轨应该是倾斜的。最后把矿车放在没有倾斜的充能铁轨上，铁轨一旦被充能，矿车就会被弹射出去!</p>
 
 <h2>微型系统</h2>
-<h3>启动器</h3>
+ <p>  <b>启动器</b></p> 
 <p>
 <img src="img/kuangche6.png" />
 <br/>A simple minecart launcher
@@ -337,7 +337,7 @@
 <br/>A launcher with cart dispenser
 </p>
 <p>This second design is essentially the same as the first. A dispenser replaces the solid block behind the last powered rail. The dispenser will launch the minecart just like the solid block, but creates a convenient place to store extra minecarts. To activate, use the button behind the dispenser and a minecart will pop onto the rail and be ready for use.</p>
-<h3>Rider Detection</h3>
+ <p>  <b>Rider Detection</b></p> 
 <p>
 <img src="img/kuangche8.png" />
 <br/>Trip wire based design
@@ -349,7 +349,7 @@
 <br/>A momentum based design
 </p>
 <p>Another method to check for a rider is to take advantage of the change in speed of the cart, as an empty cart slows down more quickly. In this design, a minecart will create a pulse when it passes the detector rail. If the minecart is empty, it will get to the turn just as the signal does and be sent back. If the minecart has a rider, it will get to the turn before the signal and be able to continue on. This design requires the track to be set by default to let the cart through.</p>
-<h4>空车</h4>
+ <p>  <b>空车</b></p> 
 <p>
 <img src="img/kuangche10.png" />
 <br/>An overflow pile for empty carts
@@ -357,13 +357,13 @@
 <p>When an empty cart is detected, generally it's a good idea to send it into an overflow pile. An overflow pile is a drop of two or more blocks with a rail at the bottom. When carts are boosted into the hole, they will snap to the track, regardless of how many carts are already on the track. This pile should be placed where the carts can be collected, either close to a station or in a maintenance area. It is important to boost carts to full speed just before they are dropped to ensure they don't become stuck on the end of the track and eventually back up the system.</p>
 <p>Another variant of this method is to replace the rail at the bottom with a cactus, thus destroying minecarts that fall in. Placement of a hopper next to the sand on which the cactus is placed then allows saving of at least some of the carts.</p>
 
-<h3>加速器</h3>
+ <p>  <b>加速器</b></p> 
 <p>
 <img src="img/kuangche11.png" />
 <br/>Two styles of speed boosters
 </p>
 <p>Boosters are a method used to prevent carts from slowing to a stop on a track. Because carts will eventually slow to a halt on level track, and very quickly turn around on regular rail track whilst uphill-bound, boosters are a method of assuring one's cart keeps moving. Boosters accelerate carts to a terminal velocity of 8&#160;m/s, as they use powered rails, and help effectively counter the forces of friction and gravity on the acceleration of the cart. Boosters are simply a single powered segment of powered rail, powered through detector rails, redstone torches or levers next to them. Refer to the diagrams to the right. Players generally keep the distance between boosters uniform, although these distances vary by player. One common, and according to many the most efficient, distribution of powered rails is to place powered rail every 38 blocks on level ground. An easy way to place a lot of track using this count without needing to keep track of each rail is by dividing the rails into stacks of 37, as shown on the right. Approximately 1 out of every 3 rails will need to be powered to travel uphill due to gravity.</p>
-<h3>Junction</h3>
+ <p>  <b>Junction</b></p> 
 <p>
 <img src="img/kuangche12.png" />
 <br/>Two-way junction
@@ -376,7 +376,7 @@
 </p>
 <p>A junction that has multiple destinations can be set up by expanding the junctions. In the design to the right, the rider is given much more time to select his destination than a two-way junction. He can select any destination by first selecting left or right, then forward or backward. This design doesn't scale well but can be used in sequence to create any number of destinations.</p>
 
-<h3>Multiple Destination Selector</h3>
+ <p>  <b>Multiple Destination Selector</b></p> 
 <p>There are many, many styles of minecart destination selectors. Most are modular, meaning they can be extended to include more destinations. An RS-NOR latch array is often used to select a destination as these latches have a designated reset line (as opposed to a t-flip flop which only has one input).</p>
 <p>This design was selected for its simplicity and for its ability to be expanded with relative ease. One of the buttons on the selection panel is a designated reset line since additional input doesn't clear the previous selection; that is to say, a player can select more than one destination with this design (although a launched minecart will take the left-most of the selected destinations).</p>
 <p><a target="_self" rel="nofollow" class="external text" href="https://www.youtube.com/watch?v=asFgsGfsB8o">Video Tutorial</a> by CNB</p>
@@ -387,7 +387,7 @@
 <p>The following design is heavily influenced by the previous but uses a different RS-NOR latch design involving pistons. It has a reset integrated in the selection such that a new input will clear a previous one. By removing the designated reset line of the previous version, it allows for an additional station in a similar amount of space.</p>
 <p><a target="_self" rel="nofollow" class="external text" href="https://www.youtube.com/watch?v=j4BpqlHi0JQ">Video Tutorial</a> by redminecraftstonetut</p>
 
-<h3>Example Of A System Incorporating Some of the Basic Parts</h3>
+ <p>  <b>Example Of A System Incorporating Some of the Basic Parts</b></p> 
 <p>This system consist of a <b>"Launcher"</b>, a different mechanism for <b>"Empty Carts"</b>, a <b>"Junction"</b> and a <b>"Booster"</b></p>
 <p>System works on tripwire.</p>
 <p>The empty minecart is always moving in circles awaiting a passenger. <b>(Empty cart compenent is not needed any longer)</b></p>
