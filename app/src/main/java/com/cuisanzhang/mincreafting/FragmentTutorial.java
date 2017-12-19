@@ -154,13 +154,13 @@ public class FragmentTutorial extends Fragment {
                         tutorialCategary = "网易教程";
                         break;
                     case R.id.layout_btn_wangluojiaocheng:
-                        tutorialNames = TutorialListData.tutorial_mc163_names;
-                        tutorialFiles = TutorialListData.tutorial_mc163_files;
+                        tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
+                        tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
                         tutorialCategary = "网络教程";
                         break;
                     default:
-                        tutorialNames = TutorialListData.tutorial_mc163_names;
-                        tutorialFiles = TutorialListData.tutorial_mc163_files;
+                        tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
+                        tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
                         tutorialCategary = "新手指南";
                         break;
                 }

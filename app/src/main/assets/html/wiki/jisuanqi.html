@@ -59,9 +59,9 @@
 <p>这是目前已经建立的计算器计划：
 </p>
 <p>
-<img src="img\jisuanqi1.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi1.png" />
 <br /> 
-<img src="img\jisuanqi2.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi2.png" />
 <br />计算器计划
 </p>
 <p><br>
@@ -78,7 +78,7 @@
 
 <h4>数字输入面板</h4>
 <p>
-<img src="img\jisuanqi3.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi3.png" />
 <br />数字输入面板
 </p>
 <p>在这里，用户将决定他要用什么号码。现在，我使用基于拉杆的二进制输入系统，所以用户必须分解他想用的数为二进制。
@@ -87,7 +87,7 @@
 <p>在这个面板，用户要从各个运算符号之间选取他要用的一个：加(+)，减(-)，乘(*)，除(/)。现在，我再次使用拉杆系统。
 </p>
 <p>
-<img src="img\jisuanqi4.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi4.png" />
 <br />计算面板
 </p>
 
@@ -104,7 +104,7 @@
 </p><p>我已经建立了自己版本的一个加法器/减法器。它的结构很简单，因为它是被调整过的(由许多相同的部件组成)。这意味着，如果你使用更多的位元，你可以只添加更多的部分在侧边，但你有时要改变一些链接。
 </p>
 <p>
-<img src="img\jisuanqi5.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi5.png" />
 <br />二合一加法器/减法器
 </p>
 <p>在这台机器上，您的输入(二进制)进入底部的 全加器 (黄色)。每一个加法器需要两个具有相同的值的输入(A和B)。而且，最低的位元要在左边，所以他们都应该由他们的进位进行连接。基本上，你的输入会像在 #Input Wires (白色和橙色) 部分中的线。使用基本的桥梁在其他线路之上通过，而不会连接到其他线路。你的A输入(左边)是被减数(X-Y=Z中的X)，它会直接传到加法器。你的B输入是减数(X-Y=Z中的Y)，它必须通过一个多路复用器，它由一个在需要进行减法的情况下给加法器一个反相信号的 异或门组成。多路复用器由一个开关控制(在图中，那个开关在左边)。加法和会进入另一个多路复用器，它同样会在减法的情况下给出一个反相输入。这是由一个如果开关是“减法”而且last carry为真的话会输出真的 蕴含门 (在右上方)控制。这是有必要的因为在一个减法，Last进位实际上是“-”（减号）标志。

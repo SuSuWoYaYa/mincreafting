@@ -66,8 +66,8 @@ public class ActivitySearch extends AppCompatActivity {
 
     //    for admob
 //    private AdRequest adRequest;
-    boolean isNetworkConnected = false;
-    boolean isVip ;
+//    boolean isNetworkConnected = false;
+//    boolean isVip ;
 
     private String[] search;
 
@@ -102,24 +102,24 @@ public class ActivitySearch extends AppCompatActivity {
 
 
 
-        isVip = SettingUtils.ChangeTheme.getVipState(ActivitySearch.this);
-
-        isNetworkConnected = SettingUtils.isNetworkConnected(ActivitySearch.this);
-
-        if (!isVip) {
-//        google admob
-            MobileAds.initialize(this, getString(R.string.admob_uni_id));
-
-            //add admob in listView
-            LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
-            NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
-            if (!isNetworkConnected) {
-                nativeExpressAdView.setVisibility(View.GONE);
-            } else {
-                nativeExpressAdView.loadAd(new AdRequest.Builder().build());
-            }
-            listView.addFooterView(tipEndViw);
-        }
+//        isVip = SettingUtils.ChangeTheme.getVipState(ActivitySearch.this);
+//
+//        isNetworkConnected = SettingUtils.isNetworkConnected(ActivitySearch.this);
+//
+//        if (!isVip) {
+////        google admob
+//            MobileAds.initialize(this, getString(R.string.admob_uni_id));
+//
+//            //add admob in listView
+//            LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+//            NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
+//            if (!isNetworkConnected) {
+//                nativeExpressAdView.setVisibility(View.GONE);
+//            } else {
+//                nativeExpressAdView.loadAd(new AdRequest.Builder().build());
+//            }
+//            listView.addFooterView(tipEndViw);
+//        }
 
 
         LinearLayout emptyView;
@@ -338,7 +338,7 @@ public class ActivitySearch extends AppCompatActivity {
 
             private TextView textViewShowBlockDetail;
             private CheckBox checkBox;
-            private AdView mAdView;
+//            private AdView mAdView;
 
         }
 
@@ -440,7 +440,7 @@ public class ActivitySearch extends AppCompatActivity {
                         .findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
 
-                holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
+//                holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
 
                 holder.textViewName.setBackgroundColor(selectColor);
 
@@ -538,18 +538,18 @@ public class ActivitySearch extends AppCompatActivity {
             if (ischecked) {
 ////				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
-               holder.imageViewHideMore.setVisibility(View.VISIBLE);
-
-                if(!isVip && isNetworkConnected){
-                    holder.mAdView.setVisibility(View.VISIBLE);
-                    holder.mAdView.loadAd(new AdRequest.Builder().build());
-                }
-            } else {
-//				holder.textViewDetail.setVisibility(View.GONE);
-                holder.textViewShowBlockDetail.setVisibility(View.GONE);
-                holder.imageViewHideMore.setVisibility(View.GONE);
-                holder.mAdView.setVisibility(View.GONE);
+                holder.imageViewHideMore.setVisibility(View.VISIBLE);
             }
+//                if(!isVip && isNetworkConnected){
+//                    holder.mAdView.setVisibility(View.VISIBLE);
+//                    holder.mAdView.loadAd(new AdRequest.Builder().build());
+//                }
+//            } else {
+////				holder.textViewDetail.setVisibility(View.GONE);
+//                holder.textViewShowBlockDetail.setVisibility(View.GONE);
+//                holder.imageViewHideMore.setVisibility(View.GONE);
+//                holder.mAdView.setVisibility(View.GONE);
+//            }
 
             return convertView;
         }

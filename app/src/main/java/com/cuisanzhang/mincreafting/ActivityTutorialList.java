@@ -35,6 +35,7 @@ public class ActivityTutorialList extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_tutorial_list_layout);
+        initActionBar();
 
         Intent intent = getIntent();
 

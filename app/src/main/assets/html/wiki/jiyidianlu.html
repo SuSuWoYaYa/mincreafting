@@ -52,7 +52,7 @@
 <h2>RS或非锁存器与输入稳定器</h2>
 
 <p>
-<img src="img\jiyidianlu1.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu1.png" />
 <br />
 RS或非锁存器的设计方案</p>
      <p>   
@@ -192,7 +192,7 @@ RS或非锁存器的最常见应用是把控制脉冲转化为稳定红石信号
   <p><b> 输入稳定器单元 </b></p> 
 
 <p>
-<img src="img\jiyidianlu2.jpg" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu2.jpg" />
 <br />输入稳定器电路</p>
    <p> 这个装置可以稳定输入信号，一旦收到输入信号就能一直保持它（即使输入信号源已经关闭）。本质上，它就是一个中继器自供电的无R端的RS或非锁存器。比如用该装置可以将按钮或者压力板所产生的一次性短促信号变为永久信号。
 </p>     <p> 
@@ -204,7 +204,7 @@ RS或非锁存器的最常见应用是把控制脉冲转化为稳定红石信号
 <h2>RS与非锁存器</h2>
 
 <p>
-<img src="img\jiyidianlu3.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu3.png" />
 <br />
 
 RS与非锁存器的设计。 </p>       <p> 
@@ -276,7 +276,7 @@ RS与非锁存器的设计。 </p>       <p>
 <h2>D触发器与门控D锁存器</h2>
 
 <p>
-<img src="img\jiyidianlu4.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu4.png" />
 <br />
 一个门控D锁存器和D触发器</p>
      <p>  D触发器（D Flip-flop）（英文中“D”代表“Data”，“数据”之意），是对输入时钟脉冲边沿信号敏感的装置。只有在检测到边沿信号，才设置输出信号与输入端D相同。比如时钟的信号由假变为真（上边沿信号），或时钟的信号由真变为假（下边沿信号）。一个触发器一般被称为是边沿触发装置，锁存器被称为电平触发装置（在时钟信号真或假时一直触发）。一个基础的电平触发装置是门控D锁存器（Gated D Latch）（设计版本A），它只在时钟信号为假时设置输出信号，在时钟信号为真时忽略输入端信号 D 的改变，保持输出端信号 Q 不变。
@@ -286,13 +286,13 @@ RS与非锁存器的设计。 </p>       <p>
 在这些设计方案中，它们的输出端信号都是非隔离的。这就允许异步R和S端输入（会覆写时钟信号并且强制设定输出状态）。如果要使输出端隔离，可以不使用输出端 Q, 取而代之的是使用 Q 端且加一个非门。
 </p>
 <p>
-<img src="img\jiyidianlu5.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu5.png" />
 <br />
 纵向的D锁存器</p>
      <p>  设计方案C就是比设计版本A宽一格，并且用了正相时钟的设计版本。它会在时钟信号为真时持续的设置输出信号。我们可以设计多个这样的触发器，并且并行放置在最小的空间里。一个时钟信号可以分配给所有这些触发器，这样就允许多个触发器共用一个时钟边沿信号。输出端 Q 在反方向上和输入端一道比较容易连接。
 </p>
 <p>
-<img src="img\jiyidianlu6.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu6.png" />
 <br />
 压缩的D锁存器</p>
      <p>  设计方案E就是一个更紧凑版的设计版本A，同时仍具有相同的高度需求。设计方案E'允许边沿触发器在高电平输入时被触发。设计版本F在时钟信号为真时保持状态，时钟信号变为假时输出D的状态。注意图中有一个用于断路的在红石线之上的方块，用黄色斜线表示。中继器在此用来同步信号，为此它必须处于激活状态。
@@ -400,7 +400,7 @@ RS与非锁存器的设计。 </p>       <p>
   <p><b> BUD型D触发器  </b>
 </p>
 <p>
-<img src="img\jiyidianlu7.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu7.png" />
 <br />
 
 基于活塞BUD的D触发器</p>    <p> 
@@ -413,7 +413,7 @@ RS与非锁存器的设计。 </p>       <p>
 
  <h2>JK触发器与锁存器</h2> 
 <p>
-<img src="img\jiyidianlu8.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu8.png" />
 <br />
 JK触发器设计方案</p>
 <p><b>JK触发器（JK Flip-flop）</b>可以作为另一种形式的记忆单元。其功能为：只有当时钟信号C“从假变真”异或“从真变假”（边沿触发，设计方案A与B）或者当时钟持续在某一电平位置（电平触发锁存，设计方案C）时启动触发。当触发器被触发：如果输入J=1且K=0，那么输出Q=1；如果J=0且K=1，那么Q=0；如果J=K=0，那么JK触发器保持当前状态；如果J=K=1，那么输出会反向变化——例如，如果触发前Q=1，那么触发后Q=0。下方的真值表总结了这些状态的变化——请注意Q(t)为出发后的新输出，Q(t-1)为触发前的输出。
@@ -502,12 +502,12 @@ JK触发器设计方案</p>
 <h2>T触发器</h2>
  
 <p>
-<img src="img\jiyidianlu9.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu9.png" />
 <br />
 T触发器设计方案
 </p>
 <p>
-<img src="img\jiyidianlu10.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu10.png" />
 <br />
 更多T触发器设计方案</p>
     <p> 
@@ -524,14 +524,14 @@ T触发器（T Flip-flop）（在英文中“T”代表“Toggle”，“转换�
   <p><b> 铁轨型T触发器 </b></p> 
  
 <p>
-<img src="img\jiyidianlu11.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu11.png" />
 <br />
 
 铁轨型T触发器
  </p>
  
 <p>
-<img src="img\jiyidianlu12.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu12.png" />
 <br />
 另一种铁轨型T触发器设计方案</p>
      <p>  
@@ -543,7 +543,7 @@ T触发器（T Flip-flop）（在英文中“T”代表“Toggle”，“转换�
   <p><b>  发射器型T触发器</b></p> 
  
 <p>
-<img src="img\jiyidianlu13.png" />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jiyidianlu13.png" />
 <br />发射器型T触发器
 </p>
     <p> 

@@ -54,12 +54,16 @@ public class ActivityTip extends AppCompatActivity {
                 }
 
 
-                if (userName.equals(getString(R.string.tip_back_door))){
+                else if (userName.equals(getString(R.string.tip_back_door))){
                     Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
                     SettingUtils.ChangeTheme.setVipState(ActivityTip.this, true);
                     return;
                 }
 
+                else  {
+                    Toast.makeText(ActivityTip.this, "嗯! 一定是你点错了", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 //                isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTip.this);
 //
 //                if (!isNetworkConnected){
