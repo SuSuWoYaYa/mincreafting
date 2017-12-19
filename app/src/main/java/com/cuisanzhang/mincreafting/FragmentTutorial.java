@@ -1,41 +1,13 @@
 package com.cuisanzhang.mincreafting;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.ads.AdView;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
-import com.zhy.http.okhttp.callback.FileCallBack;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import okhttp3.Call;
 
 
 /**
@@ -48,7 +20,7 @@ public class FragmentTutorial extends Fragment {
     private int mPage;
 
 
-    public static String DATA_BASE_tutorialFilesS[] = {
+    public static String DATA_BASE_tutorialCategaryS[] = {
             "新手指南",
             "环境介绍",
             "进阶指南",
@@ -110,76 +82,94 @@ public class FragmentTutorial extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String tutorialNames;
-                String tutorialFiles;
+                String[] tutorialNames;
+                String[] tutorialFiles;
+                
+                String tutorialCategary;
 
                 switch (v.getId()) {
                     case R.id.layout_btn_newplay:
-                        tutorialNames = MyDatabaseHelper.TABLE_BUILDING;
-                        tutorialFiles = "新手指南";
+                        tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names;
+                        tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files;
+                        tutorialCategary = "新手指南";
                         break;
                     case R.id.layout_btn_huanjingjieshao:
-                        tutorialNames = MyDatabaseHelper.TABLE_DECORATION;
-                        tutorialFiles = "环境介绍";
+                        tutorialNames = TutorialListData.tutorial_huangjingjieshao_names;
+                        tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files;
+                        tutorialCategary = "环境介绍";
                         break;
                     case R.id.layout_btn_jinjiezhinan:
-                        tutorialNames = MyDatabaseHelper.TABLE_DYE;
-                        tutorialFiles = "进阶指南";
+                        tutorialNames = TutorialListData.tutorial_jingjiezhinan_names;
+                        tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files;
+                        tutorialCategary = "进阶指南";
                         break;
                     case R.id.layout_btn_building:
-                        tutorialNames = MyDatabaseHelper.TABLE_FOOD;
-                        tutorialFiles = "建筑教程";
+                        tutorialNames = TutorialListData.tutorial_build_names;
+                        tutorialFiles = TutorialListData.tutorial_build_files;
+                        tutorialCategary = "建筑教程";
                         break;
                     case R.id.layout_btn_zhongzhi:
-                        tutorialNames = MyDatabaseHelper.TABLE_LIGHTING;
-                        tutorialFiles = "种植教程";
+                        tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names;
+                        tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files;
+                        tutorialCategary = "种植教程";
                         break;
                     case R.id.layout_btn_shuaguai:
-                        tutorialNames = MyDatabaseHelper.TABLE_ORE;
-                        tutorialFiles = "刷怪教程";
+                        tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names;
+                        tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files;
+                        tutorialCategary = "刷怪教程";
                         break;
                     case R.id.layout_btn_caikuaijishu:
-                        tutorialNames = MyDatabaseHelper.TABLE_REDSTONE;
-                        tutorialFiles = "采矿技术";
+                        tutorialNames = TutorialListData.tutorial_caikuangjishu_names;
+                        tutorialFiles = TutorialListData.tutorial_caikuangjishu_files;
+                        tutorialCategary = "采矿技术";
                         break;
                     case R.id.layout_btn_fumoshaolian:
-                        tutorialNames = MyDatabaseHelper.TABLE_TANNSPORT;
-                        tutorialFiles = "附魔烧炼";
+                        tutorialNames = TutorialListData.tutorial_fumoheshaolian_names;
+                        tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files;
+                        tutorialCategary = "附魔烧炼";
                         break;
                     case R.id.layout_btn_chujihongshi:
-                        tutorialNames = MyDatabaseHelper.TABLE_TOOLS;
-                        tutorialFiles = "初级红石";
+                        tutorialNames = TutorialListData.tutorial_chujihongshi_names;
+                        tutorialFiles = TutorialListData.tutorial_chujihongshi_files;
+                        tutorialCategary = "初级红石";
                         break;
                     case R.id.layout_btn_hongshijinjie:
-                        tutorialNames = MyDatabaseHelper.TABLE_WEAPON;
-                        tutorialFiles = "红石高级";
+                        tutorialNames = TutorialListData.tutorial_hongshijingjie_names;
+                        tutorialFiles = TutorialListData.tutorial_hongshijingjie_files;
+                        tutorialCategary = "红石高级";
                         break;
                     case R.id.layout_btn_gaojijishu:
-                        tutorialNames = MyDatabaseHelper.TABLE_OTHERS;
-                        tutorialFiles = "高级技术";
+                        tutorialNames = TutorialListData.tutorial_gaojijishu_names;
+                        tutorialFiles = TutorialListData.tutorial_gaojijishu_files;
+                        tutorialCategary = "高级技术";
                         break;
                     case R.id.layout_btn_gengduotiaozhan:
-                        tutorialNames = MyDatabaseHelper.TABLE_SMELTING;
-                        tutorialFiles = "更多挑战";
+                        tutorialNames = TutorialListData.tutorial_tiaozhan_names;
+                        tutorialFiles = TutorialListData.tutorial_tiaozhan_files;
+                        tutorialCategary = "更多挑战";
                         break;
                     case R.id.layout_btn_mc163:
-                        tutorialNames = TutorialList.MC_163;
-                        tutorialFiles = "网易教程";
+                        tutorialNames = TutorialListData.tutorial_mc163_names;
+                        tutorialFiles = TutorialListData.tutorial_mc163_files;
+                        tutorialCategary = "网易教程";
                         break;
                     case R.id.layout_btn_wangluojiaocheng:
-                        tutorialNames = TutorialList.WANGLUOJIAOCHENG;
-                        tutorialFiles = "网络教程";
+                        tutorialNames = TutorialListData.tutorial_mc163_names;
+                        tutorialFiles = TutorialListData.tutorial_mc163_files;
+                        tutorialCategary = "网络教程";
                         break;
                     default:
-                        tutorialNames = TutorialList.WANGLUOJIAOCHENG;
-                        tutorialFiles = "新手指南";
+                        tutorialNames = TutorialListData.tutorial_mc163_names;
+                        tutorialFiles = TutorialListData.tutorial_mc163_files;
+                        tutorialCategary = "新手指南";
                         break;
                 }
 
 
                 Intent intent = new Intent(getActivity(), ActivityTutorialList.class);
-                intent.putExtra(TutorialList.EXTRA_TUTORIAL_NAMES, tutorialNames);
-                intent.putExtra(TutorialList.EXTRA_TUTORIAL_FILES, tutorialFiles);
+                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_NAMES, tutorialNames);
+                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_FILES, tutorialFiles);
+                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_CATEGARY, tutorialCategary);
 //                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
                 startActivity(intent);
 
@@ -204,56 +194,4 @@ public class FragmentTutorial extends Fragment {
 
         return view;
     }
-//    private class MyAdapter extends BaseAdapter {
-//
-//        private final class ViewHolder {
-//            private TextView textView;
-//        }
-//
-//
-//        private ViewHolder holder = null;
-//        private LayoutInflater mInflater = getActivity().getLayoutInflater();
-//
-//        private MyAdapter(Context context) {
-//            this.mInflater = LayoutInflater.from(context);
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return TutorialList.TuorialName.length;
-//        }
-//
-//        @Override
-//        public Object getItem(int position) {
-//            return null;
-//        }
-//
-//        @Override
-//        public long getItemId(int position) {
-//            return position;
-//        }
-//
-//        @Override
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//            if (convertView == null) {
-//                holder = new MyAdapter.ViewHolder();
-//
-//                convertView = mInflater.inflate(R.layout.fragment_listview_of_item_tutorial_layout, null);
-//                holder.textView = (TextView) convertView
-//                        .findViewById(R.id.textView);
-//                convertView.setTag(holder);
-//            } else {
-//
-//                holder = (ViewHolder) convertView.getTag();
-//
-//            }
-//
-//
-//            holder.textView.setText(TutorialList.TuorialName[position]);
-//            return convertView;
-//        }
-//
-//
-//    }
-
 }

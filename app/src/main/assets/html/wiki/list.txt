@@ -24,6 +24,14 @@
 3 村庄 cunzhuang.html
 3 地牢 dilao.html
 3 要塞 yaosai.html
+0 下界 xiajie.html
+1 下界要塞 xiajieyaosai.html
+1 末路之地 moluzhidi.html
+6 征服海底遗迹 zhengfuhaidiyiji.html
+####7 征服神殿和神庙
+7_0   征服沙漠神殿  zhengfushamoshendian.html
+7_1   征服丛林神庙 zhengfuchonglingshenmiao.html
+8 征服末地城  zhengfumodicheng.html
 4 边境之地 bianjingzhidi.html
 4 去边境之地 qubianjingzhidi2.html
 5 世界界限 shijiejixian.html
@@ -102,14 +110,7 @@
 
 
 5挑战
-0 下界 xiajie.html
-1 下界要塞 xiajieyaosai.html
-1 末路之地 moluzhidi.html
-6 征服海底遗迹 zhengfuhaidiyiji.html
-####7 征服神殿和神庙
-7_0   征服沙漠神殿  zhengfushamoshendian.html
-7_1   征服丛林神庙 zhengfuchonglingshenmiao.html
-8 征服末地城  zhengfumodicheng.html
+
 2 完成冒险  maoxian.html
 3 在冒险模式中生存 maoxianmoshixiadeshenchun.html
 4 挑战自定义地图
@@ -140,7 +141,7 @@
 
 7
 刷物品
- 
+
 1 自动化农场  zhidonghuanongchang.html
 2 仙人掌种植 xianrenzhangzhongzhi.html
 3 刷蛋糕  shuadanggao.html

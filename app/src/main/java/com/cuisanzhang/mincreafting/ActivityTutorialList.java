@@ -3,10 +3,8 @@ package com.cuisanzhang.mincreafting;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,29 +17,41 @@ public class ActivityTutorialList extends AppCompatActivity {
 
 
 
+    public static String EXTRA_TUTORIAL_NAMES = "tutorialNames";
+    public static String EXTRA_TUTORIAL_FILES = "tutorialFiles";
+    public static String EXTRA_TUTORIAL_CATEGARY = "tutorialCategary";
 
-    private String[] TutorialNames = TutorialList.mc163_names;
-    private String[] TutorialFiles = TutorialList.mc163_files;
+
+    String[] tutorialNames;
+    String[] tutorialFiles;
+    String tutorialCategary;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_tutorial_list_layout);
 
+        Intent intent = getIntent();
+
+        tutorialNames = intent.getStringArrayExtra(EXTRA_TUTORIAL_NAMES);
+        tutorialFiles = intent.getStringArrayExtra(EXTRA_TUTORIAL_FILES);
+        tutorialCategary = intent.getStringExtra(EXTRA_TUTORIAL_CATEGARY);
+
+
          ListView listView;
          MyAdapter adapter;
 
         listView= (ListView) findViewById(R.id.listView);
          adapter = new MyAdapter(getApplicationContext());
-        Log.e("ActivityTutorialL", "getApplicationContext=" + getApplicationContext());
-        Log.e("ActivityTutorialL", "TutorialList.mc163_names.length=" + TutorialList.mc163_names.length);
+//        Log.e("ActivityTutorialL", "getApplicationContext=" + getApplicationContext());
+//        Log.e("ActivityTutorialL", "TutorialList.mc163_names.length=" + TutorialList.mc163_names.length);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ActivityTutorial.class);
-                intent.putExtra(ActivityTutorial.EXTRA_URI, TutorialFiles[position]);
+                intent.putExtra(ActivityTutorial.EXTRA_URI, tutorialFiles[position]);
                 startActivity(intent);
             }
         });
@@ -64,7 +74,7 @@ public class ActivityTutorialList extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return TutorialNames.length;
+            return tutorialNames.length;
         }
 
         @Override
@@ -94,7 +104,7 @@ public class ActivityTutorialList extends AppCompatActivity {
             }
 
 
-            holder.textView.setText(TutorialNames[position]);
+            holder.textView.setText(tutorialNames[position]);
             return convertView;
         }
     }
