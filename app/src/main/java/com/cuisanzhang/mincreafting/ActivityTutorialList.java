@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +29,10 @@ public class ActivityTutorialList extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
+        setTheme(theme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_tutorial_list_layout);
 
@@ -37,7 +42,8 @@ public class ActivityTutorialList extends AppCompatActivity {
         tutorialFiles = intent.getStringArrayExtra(EXTRA_TUTORIAL_FILES);
         tutorialCategary = intent.getStringExtra(EXTRA_TUTORIAL_CATEGARY);
 
-
+        TextView textTitle = (TextView) findViewById(R.id.textTitle);
+        textTitle.setText(tutorialCategary);
          ListView listView;
          MyAdapter adapter;
 
@@ -107,6 +113,19 @@ public class ActivityTutorialList extends AppCompatActivity {
             holder.textView.setText(tutorialNames[position]);
             return convertView;
         }
+    }
+
+    public void initActionBar() {
+        ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
+        imageViewMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.webView_toolbar);
+//        toolbar.setTitle("");
+//        setSupportActionBar(toolbar);
     }
 
 }

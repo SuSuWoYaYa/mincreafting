@@ -16,12 +16,12 @@ html {
     box-sizing:
     border-box;
 }
-body {  
+body {
  /* background-color: #eeeeee;  */
          /* 起点版黄色背景 */
          /*  background-color: #EDE0C9;*/
           /* 网页版黄色背景 */
-       background-color: #FBF6EC; 
+       background-color: #FBF6EC;
     line-height: 1.3;
   /* Fallback for when there is no custom background color defined. */ }
 
@@ -32,7 +32,7 @@ div {
          /* 起点版黄色背景 */
          /*  background-color: #EDE0C9;*/
           /* 网页版黄色背景 */
-       background-color: #FBF6EC; 
+       background-color: #FBF6EC;
 
 }
 
@@ -40,14 +40,14 @@ div {
   height: 100%;
     background-color: #FFFFCC;
     text-align:center;
-    padding:10px;
+    padding:6px;
 }
 .red {
       width: 100%;
   height: 100%;
     background-color: #FFCCCC;
     text-align:center;
-    padding:10px;
+    padding:6px;
 
 }
 .big{
@@ -66,17 +66,17 @@ div {
 h1 {
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 14px;
   font-size: 30px;
   color: #ffffff;
   background-color: #464444;
   text-align: center;
-  
+
 }
 h2 {
     width: 100%;
     height: 100%;
-    padding: 18px;
+    padding: 12px;
     margin-top: 10px;
     font-size: 25px;
     background-color: #c4c5c7;
@@ -86,18 +86,18 @@ h3 {
     height: 100%;
     padding: 8px;
     font-size: 22px;
-    
+
     line-height: 1.4;
- 
+
 }
 h4 {
-    padding: 8px;
+    padding: 6px;
     font-size: 20px;
     line-height: 1.4;
- 
+
 }
 h5 {
-    padding: 5px;
+    padding: 4px;
     font-size: 18px;
     line-height: 1.4;
 }
@@ -105,7 +105,7 @@ h6 {
     font-size: 16px;
     line-height: 1.4;
 }
- 
+
 b, strong {
   font-weight: bold;
   line-height: 1.4;
@@ -182,7 +182,7 @@ img {
     height: auto; /* Make sure images are scaled correctly. */
     max-width: 100%; /* Adhere to container width. */
 }
-table { 
+table {
     border-collapse: collapse;
     border-spacing: 1;
     width: 100%;
@@ -228,4 +228,3 @@ article header {
     float: left;
     width: 100%;
 }
-

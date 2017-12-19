@@ -64,14 +64,14 @@
 }
 
 
--dontwarn okhttp3.**
--dontwarn okio.**
--dontwarn javax.annotation.**
-
-#okhttp
--dontwarn okhttp3.**
--keep class okhttp3.**{*;}
-
-#okio
--dontwarn okio.**
--keep class okio.**{*;}
+#-dontwarn okhttp3.**
+#-dontwarn okio.**
+#-dontwarn javax.annotation.**
+#
+##okhttp
+#-dontwarn okhttp3.**
+#-keep class okhttp3.**{*;}
+#
+##okio
+#-dontwarn okio.**
+#-keep class okio.**{*;}

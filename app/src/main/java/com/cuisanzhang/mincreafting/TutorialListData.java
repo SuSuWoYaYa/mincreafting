@@ -6,6 +6,7 @@ package com.cuisanzhang.mincreafting;
 
 public class TutorialListData {
 
+//    https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img
 
 
     public static String[] tutorial_xinshoujiaochen_names = {
@@ -93,7 +94,7 @@ public class TutorialListData {
             "file:///android_asset/html/wiki/zhengfuchonglingshenmiao.html",
             "file:///android_asset/html/wiki/zhengfumodicheng.html",
             "file:///android_asset/html/wiki/bianjingzhidi.html",
-            "file:///android_asset/html/wiki/qubianjingzhidi2.html",
+            "file:///android_asset/html/wiki/qubianjingzhidi.html",
             "file:///android_asset/html/wiki/shijiejixian.html",
             "file:///android_asset/html/wiki/shijiebianjie.html",
             "file:///android_asset/html/wiki/xinbiaojingzhita.html",
@@ -130,7 +131,7 @@ public class TutorialListData {
             "交易",
             "村庄机制",
             "防卫僵尸围城",
-            "虚空",
+//            "虚空",
             "挂机池",
             "在服务器上游玩",
             "PvP",
@@ -160,7 +161,7 @@ public class TutorialListData {
             "file:///android_asset/html/wiki/trading.html",
             "file:///android_asset/html/wiki/chunzhuangjizhi.html",
             "file:///android_asset/html/wiki/fangzhijiangshiweicheng.html",
-            "file:///android_asset/html/wiki/xukong.html",
+//            "file:///android_asset/html/wiki/xukong.html",
             "file:///android_asset/html/wiki/guajichi.html",
             "file:///android_asset/html/wiki/zaifuwuqishangyouwan.html",
             "file:///android_asset/html/wiki/pvp.html",

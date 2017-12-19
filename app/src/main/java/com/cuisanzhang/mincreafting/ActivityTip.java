@@ -60,44 +60,44 @@ public class ActivityTip extends AppCompatActivity {
                     return;
                 }
 
-                isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTip.this);
-
-                if (!isNetworkConnected){
-                    Toast.makeText(ActivityTip.this, R.string.tip_no_network, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                mHandler = new ActivityTip.MyHandler();
-                Timer timer = new Timer();
-                TimerTask timerTask = new TimerTask() {
-                    @Override
-                    public void run() {
-
-                        Message message = mHandler.obtainMessage();
-                        message.what = 0;
-                        try {
-                            result  = new Vip().run(URL);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        String[] vips = result.split("\n");
-
-
-                        for (int i = 0; i < vips.length; i++){
-                            if (userName.equals(vips[i])){
-                                isVip = true;
-                                message.what = 1;
-                                break;
-                            }
-                        }
-
-
-
-//                        message.obj = result;
-                        mHandler.sendMessage(message);
-                    }
-                };
-                timer.schedule(timerTask,0);
+//                isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTip.this);
+//
+//                if (!isNetworkConnected){
+//                    Toast.makeText(ActivityTip.this, R.string.tip_no_network, Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                mHandler = new ActivityTip.MyHandler();
+//                Timer timer = new Timer();
+//                TimerTask timerTask = new TimerTask() {
+//                    @Override
+//                    public void run() {
+//
+//                        Message message = mHandler.obtainMessage();
+//                        message.what = 0;
+//                        try {
+//                            result  = new Vip().run(URL);
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        String[] vips = result.split("\n");
+//
+//
+//                        for (int i = 0; i < vips.length; i++){
+//                            if (userName.equals(vips[i])){
+//                                isVip = true;
+//                                message.what = 1;
+//                                break;
+//                            }
+//                        }
+//
+//
+//
+////                        message.obj = result;
+//                        mHandler.sendMessage(message);
+//                    }
+//                };
+//                timer.schedule(timerTask,0);
 
 
 
@@ -127,30 +127,30 @@ public class ActivityTip extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
     }
 
-
-    private class MyHandler extends Handler {
-
-        @Override
-        public void handleMessage(Message msg) {
-
-            switch (msg.what) {
-                case 0:
-//                    result = (String) msg.obj;
-                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_not_a_vip, Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(ActivityTip.this, result, Toast.LENGTH_SHORT).show();
-                    break;
-                case 1:
-//                    result = (String) msg.obj;
-                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
-
-                    SettingUtils.ChangeTheme.setVipState(ActivityTip.this, true);
-                    break;
-                default:
-                    Toast.makeText(ActivityTip.this, R.string.tip_check_vip_error, Toast.LENGTH_SHORT).show();
-                    break;
-            }
-            super.handleMessage(msg);
-
-        }
-    }
+//
+//    private class MyHandler extends Handler {
+//
+//        @Override
+//        public void handleMessage(Message msg) {
+//
+//            switch (msg.what) {
+//                case 0:
+////                    result = (String) msg.obj;
+//                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_not_a_vip, Toast.LENGTH_SHORT).show();
+////                    Toast.makeText(ActivityTip.this, result, Toast.LENGTH_SHORT).show();
+//                    break;
+//                case 1:
+////                    result = (String) msg.obj;
+//                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
+//
+//                    SettingUtils.ChangeTheme.setVipState(ActivityTip.this, true);
+//                    break;
+//                default:
+//                    Toast.makeText(ActivityTip.this, R.string.tip_check_vip_error, Toast.LENGTH_SHORT).show();
+//                    break;
+//            }
+//            super.handleMessage(msg);
+//
+//        }
+//    }
 }
