@@ -596,6 +596,39 @@ public class TutorialListData {
 "全自动养鸡屠鸡场",
 "半自动可可豆农场",
 "全自动仙人掌塔",
+
+//            42
+            "《我的世界》铁砧的用途",
+//43
+    "全面的附魔环境：高等级附魔台介绍",
+//44
+    "植物完全指南：普通植物的妙用",
+//45
+        "《我的世界》特殊生物的战斗方法",
+//46
+        "《我的世界》趣味物品的使用",
+//47
+        "《我的世界》盔甲指南",
+//48
+        "《我的世界》合成配方",
+//49
+    "轻松收获甘蔗的机器",
+//50
+    "冰上秀航技：冰上赛船",
+//51
+    "竞技的乐趣：PVP角斗场",
+//52
+    "建筑的方向：初建一个房子",
+//53
+    "地面的惊喜：平地隐藏楼梯",
+//54
+    "房子的秘密：隐形的活塞门",
+//55
+    "航天的梦想：飞机模型制作",
+//56
+        "《我的世界》自动收瓜机",
+//57
+    "高效垂直挖矿技巧",
     };
     public static String[] tutorial_mc163_files = {
             "file:///android_asset/html/mc163/mc163_1.html",
@@ -640,9 +673,26 @@ public class TutorialListData {
             "file:///android_asset/html/mc163/mc163_37.html",
             "file:///android_asset/html/mc163/mc163_38.html",
             "file:///android_asset/html/mc163/mc163_39.html",
+
             "file:///android_asset/html/mc163/mc163_40.html",
             "file:///android_asset/html/mc163/mc163_41.html",
+            "file:///android_asset/html/mc163/mc163_42.html",
+            "file:///android_asset/html/mc163/mc163_43.html",
+            "file:///android_asset/html/mc163/mc163_44.html",
+            "file:///android_asset/html/mc163/mc163_45.html",
+            "file:///android_asset/html/mc163/mc163_46.html",
+            "file:///android_asset/html/mc163/mc163_47.html",
+            "file:///android_asset/html/mc163/mc163_48.html",
+            "file:///android_asset/html/mc163/mc163_49.html",
 
+                    "file:///android_asset/html/mc163/mc163_50.html",
+                    "file:///android_asset/html/mc163/mc163_51.html",
+                    "file:///android_asset/html/mc163/mc163_52.html",
+                    "file:///android_asset/html/mc163/mc163_53.html",
+                    "file:///android_asset/html/mc163/mc163_54.html",
+                    "file:///android_asset/html/mc163/mc163_55.html",
+                    "file:///android_asset/html/mc163/mc163_56.html",
+                    "file:///android_asset/html/mc163/mc163_57.html",
 
     };
 
@@ -683,7 +733,9 @@ public class TutorialListData {
             "简单易懂实用的刷怪塔",
             "刷怪笼简易改造",
             "自动西瓜南瓜机制作教学",
-
+            "半自动可可豆收割机",
+            "超省材料半自动农田",
+            "自动西瓜南瓜机制作",
 
     };
 
@@ -723,6 +775,9 @@ public class TutorialListData {
             "file:///android_asset/html/wangluojiaocheng/jiaochen31.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen32.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen33.html",
+            "file:///android_asset/html/wangluojiaocheng/jiaochen34.html",
+            "file:///android_asset/html/wangluojiaocheng/jiaochen35.html",
+            "file:///android_asset/html/wangluojiaocheng/jiaochen36.html",
 
     };
 
