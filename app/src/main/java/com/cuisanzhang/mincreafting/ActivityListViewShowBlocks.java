@@ -51,8 +51,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
     //    for admob
 //    private AdRequest adRequest;
-//    boolean isNetworkConnected = false;
-//    boolean isVip;
+    boolean isNetworkConnected = false;
+    boolean isVip;
 
     //for change title color
     int selectColor;
@@ -107,13 +107,13 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listView1);
 
-//        isVip = SettingUtils.ChangeTheme.getVipState(ActivityListViewShowBlocks.this);
+        isVip = SettingUtils.ChangeTheme.getVipState(ActivityListViewShowBlocks.this);
 
-//        isNetworkConnected = SettingUtils.isNetworkConnected(ActivityListViewShowBlocks.this);
+        isNetworkConnected = SettingUtils.isNetworkConnected(ActivityListViewShowBlocks.this);
 
-//        if (!isVip) {
+        if (!isVip) {
 ////        google admob
-////            MobileAds.initialize(this, getString(R.string.admob_uni_id));
+            MobileAds.initialize(this, getString(R.string.admob_uni_id));
 //
 //            //add admob in listView
 //            LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
@@ -126,7 +126,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //                nativeExpressAdView.loadAd(new AdRequest.Builder().build());
 //            }
 //            listView.addFooterView(tipEndViw);
-//        }
+        }
 
         adapter = new MyAdapter(getApplicationContext());
 
@@ -154,7 +154,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
             private TextView textViewShowBlockDetail;
             private CheckBox checkBox;
-//            private AdView mAdView;
+            private AdView mAdView;
 
 
         }
@@ -220,7 +220,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 holder.checkBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
 
 
-//                holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
+                holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
 
 
 //                holder.textViewName.setBackgroundColor(getResources().getColor(R.color.colorPrimary_brown);
@@ -340,23 +340,23 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
                 holder.imageViewHideMore.setVisibility(View.VISIBLE);
-//                if(holder.mAdView != null){
-//                if (!isVip && isNetworkConnected) {
-//                    holder.mAdView.setVisibility(View.VISIBLE);
-////                    if (holder.mAdView.)
-//                    holder.mAdView.loadAd(new AdRequest.Builder().build());
-//                }
+                if(holder.mAdView != null){
+                if (!isVip && isNetworkConnected) {
+                    holder.mAdView.setVisibility(View.VISIBLE);
+//                    if (holder.mAdView.)
+                    holder.mAdView.loadAd(new AdRequest.Builder().build());
+                }
 
-//                }
+                }
 //
 
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
                 holder.imageViewHideMore.setVisibility(View.GONE);
-//                if(holder.mAdView != null){
-//                holder.mAdView.setVisibility(View.GONE);
-//                }
+                if(holder.mAdView != null){
+                holder.mAdView.setVisibility(View.GONE);
+                }
 
             }
 

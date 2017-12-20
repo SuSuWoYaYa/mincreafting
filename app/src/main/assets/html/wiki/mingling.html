@@ -16,20 +16,12 @@
 </head>
 
 <body class="single single-post postid-14455 single-format-standard">
-  <div class="main-container">
-
-
-    <div id="page" class="single">
-      <div class="content">
-        <!-- Start Article -->
-        <article class="article">
-          <header>
+  
 
             <!-- Start Title -->
             <h1 class="title single-title">命令详解</h1>
             <!-- End Title -->
-          </header>
-          <!-- Start Content -->
+        
           <div id="content" class="post-single-content box mark-links">
         
 	     <p class="yellow"> 
@@ -438,7 +430,6 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 </p><p>在告示牌被放置或修改时，或在一本成书被“翻开”（书写后第一次打开）时，记分板分数和目标选择器会被解析成具体的值。这些结果不再更新，使用NBT编辑器修改已存在的告示牌或已翻开的书也不会起作用。解析的结果无法在告示牌上换行，或在书上换页，超出的文字只会直接消失。
 </p><p>原始JSON文本的格式是支持以下（大多是可选的）元素的JSON对象：
 </p>
-<div class="treeview">
 <ul><li>基础聊天组件对象
 <ul><li> &#160;text：字符串，存储在聊天框中直接出现的纯文字。注意像是“@a”和“@p”的选择器并不会转译成玩家名字；必须使用<b>selector</b>代替。使用转义字符“\n”换行（回车）。</li>
 <li>&#160;keybind：显示用于执行特定操作的按键键位。例如，<code>key.inventory</code>会向玩家显示打开物品栏的按键，若玩家使用默认设置，则会显示“E”。</li>
@@ -469,7 +460,6 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 <li>&#160;objective：要显示分数的记分板目标。</li>
 <li>&#160;value：可选。如果存在，将以此覆盖目标原先的分数。</li></ul></li>
 <li>&#160;selector：一个包含了一个选择器（@p、@a、@r或@e）的字符串以及可选的选择器参数。不像<b>text</b>，此处的选择器将会被解析为正确的玩家/实体名。如果多于一个玩家/实体符合条件，其将会被以例如'名字1和名字2'或'名字1,名字2,名字3,和名字4'的形式显示。此参数存在时完全忽略<b>text</b>、<b>translate</b>和<b>score</b>。在<code>/tellraw</code>命令中使用此标签时，点击结果中的玩家名称会出现私信该玩家的命令建议；按住<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⇧ Shift</kbd>点击玩家名称会将名称填入聊天框中；按住<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⇧ Shift</kbd>点击非玩家实体的名称会将其UUID填入聊天框中。</li></ul></li></ul>
-</div>
 <p>由于<b>extra</b>标签的存在，以上格式可递归地嵌套成非常复杂与多功能的字符串。然而，原始JSON文本不必弄得如此复杂：几乎所有的属性都可选或会被忽略。
 </p><p>为了确保有效，每一个对象至少应该包含以下至少一个元素：<b>text</b>、<b>translate</b>、<b>score</b>或<b>selector</b>（其余的元素都是可选的）。为使用方便，整个对象可以只用一个字符串表示。此时，将这个字符串赋作<b>text</b>的值即可。例如，<code>"This is raw text"</code>和<code>{"text":"This is raw text"}</code>是等价的。这种写法在任何需要使用原始JSON文本的地方都是有效的（包括<code>/tellraw</code>里面所用到的&lt;<i>raw json message</i>&gt;参数，<b>extra</b>列表中的元素，以及“show_text”<b>hover_event</b>中的<b>value</b>值）。
 </p><p>/tellraw也接受一个对象或字串的数组，并依次显示。它甚至接受多层嵌套的数组树，并以深度优先遍历。例如：
@@ -4433,26 +4423,8 @@ Indev 0.31</li></ul>
 </p>
 
 
-
-
-
-
-
-
-
-
-
-
-
-	</div>
-        </article>
-        <!-- End Article -->
-
         
-
-      </div>
-    </div>
-  </div>
+</div>
 </body>
 
 </html>
