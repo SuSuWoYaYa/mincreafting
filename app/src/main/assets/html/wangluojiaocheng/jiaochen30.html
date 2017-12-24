@@ -25,14 +25,14 @@
           <div id="content" class="post-single-content box mark-links">
 
             <p> 《我的世界》中最有特色的其中一个特色就是红石电路了，很多玩家还对红石电路不是很了解。身为一个渣渣，在学习红石电路的时候，也有过看别人红石教程的时候。但是别人的教程，很多都不是太繁琐，就是太简单(只是一些简单的电路，连逻辑门都没有)。这次决定从自己的角度出发，用最通俗的语言，来解释这个神奇的红石电路。 </p>
-            <p><font color="#ffcc00"><strong>红石电路入门基础</strong></font></p>
-            <p><strong>1 红石是什么</strong></p>
+            <h2>红石电路入门基础</h2>
+            <h3>1 红石是什么</h3>
             <p> 红石是由红石矿石(Redstone Ore 可以在地下深层发现，需要铁矿镐开采)开采后所取得的红石粉末(Redstone Dust)的简称。</p>
-            <p><strong>2 红石电路是什么</strong></p>
+            <h3>2 红石电路是什么</h3>
             <p> 我们可以将红石粉末涂抹在部分方块的表面，用来构成连通的网络系统，用于传输红石能量。通过连接红石网络和红石火炬以及各种开关，我们可以制造出复杂的逻辑系统。我们将其称之为红石电路。</p>
-            <p><strong>3 红石电路有什么用</strong></p>
+            <h3>3 红石电路有什么用</h3>
             <p> 红石电路可以作为某些特殊物品的控制系统(门，可换向轨道，水流岩浆流转向，弓箭发射器，音乐盒等)。关于具体操作方法，网上有不少的教程和视频，我就不细说了。值得强调的有几点：(1)门的控制可以在地面也可以在门顶端 (2)水流岩浆流转向是一次性的无法逆转 (3)由于红石火炬的存在，红石电路能够在游戏中制成各类显示装置(娱乐闪烁灯具，LED数码显示管，大型图像显示屏等)。(4)最近的更新添加的可控音乐盒加上红石电路则可以成为各类音响设备。</p>
-            <p><strong>4 红石电路基本元件及运行原理。</strong></p>
+            <h3>4 红石电路基本元件及运行原理。</h3>
             <p> 1/ 基本红石电路网络</p>
             <p> 如下图所示，红石电路网络在无源状态下显示暗红色，不能激发任何装置。</p>
             <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image001-45.jpg" /></p>
@@ -61,7 +61,7 @@
             <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image010-29.jpg" /></p>
             <p> 从下面的两个图可以看到，侧放型红石火炬的影响范围还包括于其高度相差一格的正下方和正上方红石网络。</p>
             <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image011-35.jpg" /> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image012-25.jpg" /></p>
-              <p><font color="#ffcc00"><strong>逻辑电路基础</strong></font></p>
+              <h2>逻辑电路基础</h2>
               <p> 游戏中的红石电路，没有电压电流的概念，只有被激活和未被激活的逻辑开关状态，说明红石电路是纯粹的逻辑电路。要熟练地使用红石电路，就需要玩家掌握一定的逻辑运算知识。下面我会简单解释一些。如果要深入学习则需要找一些布尔逻辑代数的书来看。</p>
               <p> 逻辑运算中变量的值只有0和1两种，对应的逻辑电路也只有关和开两种状态。在红石电路中，我们不妨把未被激活的红石线路内的信号定义为 “0”，已激活的线路内的信号定义为 “1”，之后我们便可以方便地对照逻辑运算表和逻辑电路元件了。</p>
               <p> 注意：最好不要看红石火炬的亮和灭来定义逻辑信号的指示标准。在后面的内容中我们会看到这样做可能导致逻辑颠倒。</p>
@@ -70,17 +70,17 @@
               <p> “非”运算的表示为A的头上加一横杠(这里打不出来，大家见谅)， 非A = C 。“非”运算就是将变量值取反，当A为“0”时 C为“1”，而A为“1”时 C为“0”。</p>
               <p> “与”运算表示为： A与B = A·B = C 可通俗理解为 A B 的乘法， 只有当 A B 均为 “1”时，C的值才为“1”，否则C的值为“0”。</p>
               <p> 在逻辑电路中，同样有三种基本门电路：“或门”“非门”“与门”对应如上三种逻辑运算。下面我们就看看如何用红石电路来实现这三种基本逻辑门电路。</p>
-              <p><strong>1 红石火炬方块的逻辑含义</strong></p>
+              <h3>1 红石火炬方块的逻辑含义</h3>
               <p> 当红石火炬方块为单输入单输出时，以下两图显示出方块两侧的线路中的信号是相反的，这说明单入单出的红石火炬方块为一个逻辑“非门”。</p>
               <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image013-29.jpg" /> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image014-19.jpg" /></p>
-              <p><strong>2 “或门”</strong></p>
+              <h3>2 “或门”</h3>
               <p> 在搭建红石“或门”前，我们先看下面4张图。</p>
               <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image015-24.jpg" /> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image016-19.jpg" /> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image017-23.jpg" /> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image018-17.jpg" /></p>
               <p> 在这里，笔者有一个小失误，就是没在火炬方块的正前方添加红石线路，不过考虑到，如果添加了线路，其状态应与红石火炬状态相同。所以应该不影响大家理解。</p>
               <p> 我们将左右两边的红石线路看作变量A和B，我们发现，只有当A和B的值都为“0”时，红石火炬的值才为“1”(21楼图)，其他状态均为“0”(22-24楼图)，这和“或门”的状态刚好相反(“或门”的逻辑状态是输入均为“0”时结果才为“0”，其他状态为“1”)。于是要搭建真正的“或门”，我们需要再在此电路的输出上摆上一个单入单出的红石火炬(“非门”)。同时我们也可以了解到，多输入的红石火炬方块实质上是一个“或非门”(“或门”“非门”的串联结构)，只有再多加一个“非门”才能还原为正式的“或门”(两个“非门”一起，则状态还原)。</p>
               <p> 下面两图就是已经完成的逻辑“或门”，大家可以对照条件验证。</p>
               <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image019-20.jpg" /> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image020-12.jpg" /></p>
-                <p><strong>3 “与门”</strong></p>
+                <h3>3 “与门”</h3>
             <p> 在构造“与门”之前，我们先要引入逻辑反演规则，将“与门”用“或门”和“非门”来实现(游戏中无法直接实现逻辑乘法)。反演规则如下所示：</p>
             <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image021-16.jpg" /></p>
             <p> 注意，取“非”运算不符合分配率，上面两个等式，1式的左边和2式的右边并不等价，同样的1式的右边和2式的左边也不等价。</p>
@@ -89,7 +89,7 @@
             <p> 用逻辑电路实现就是：A 和 B 前各放置一个“非门”，然后再作“或非”，则可得到“与门”。</p>
             <p> 下面两图就是已经完成的“与门”</p>
             <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image023-13.jpg" /> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image024-10.jpg" /></p>
-            <p><strong>4 “异或门”</strong></p>
+            <h3>4 “异或门”</h3>
             <p> 下面要介绍一个有点复杂，但是应用广泛的逻辑电路门单元 &#8212; “异或门”，其功能为：比较两个输入端的值，如果值相同(同为“1”或同为“0”)，则结果输出值为“0”，如果相异，则结果输出值为“1”。通过使用“异或门”和“非门”，我们可以简单地实现可编码的多位密码门(编码端在屋内，输入端在屋外，密码对比相同时，经由“非门”转换结果为“1”，则门可打开，相异时门则保持关闭)。</p>
             <p> “异或门”的逻辑解释和实现如下图所示：</p>
             <p> <img width=auto hight=auto src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/image025-14.jpg" /></p>

@@ -74,13 +74,13 @@
 
     <string name="change_item_title_color">改变物品名称背景颜色</string>
     <string name="change_main_title_color">改变主标题栏背景颜色</string>
-    <string name="check_vip">打赏后点我去广告</string>
+    <string name="check_vip">去广告</string>
     <string name="user_name_tip">点击设置名字</string>
     <string name="click_hint_setting_username">点击输入</string>
-    <string name="tip_you_are_vip_now">你已经是VIP啦</string>
-    <string name="tip_you_are_not_a_vip">亲, 没查询到你的去广告状态</string>
+    <string name="tip_you_are_vip_now">广告已经没有啦</string>
+    <string name="tip_you_are_not_a_vip">亲, 没查询到你的状态</string>
     <string name="tip_check_vip_error">查询的时候出错了</string>
-    <string name="tip_dashang1">打赏时留下昵称即可去除广告</string>
+    <string name="tip_dashang1">打赏后请联系作者</string>
     <string name="tip_dashang2">打赏后请把留言和昵称发给作者</string>
     <string name="tip_email">cuisanzhang@163.com</string>
     <string name="tip_qq">QQ: 1135899918</string>

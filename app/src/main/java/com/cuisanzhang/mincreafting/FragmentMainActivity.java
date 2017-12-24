@@ -445,7 +445,7 @@ public class FragmentMainActivity extends AppCompatActivity {
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setTitle("关于 Mincreafting");
-        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
+        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft中文WIKI, 网易,网络以及网友的贡献");
         builder.setPositiveButton("确定", null);
         builder.show();
     }
