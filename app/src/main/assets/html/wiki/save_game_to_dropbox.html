@@ -24,9 +24,9 @@
         
           <div id="content" class="post-single-content box mark-links">
                 <p class="red"><b>该页面的内容不受Mojang AB、Minecraft Wiki、Minecraft IRC频道与Minecraft论坛的官方支持。</b></p>
-        <hr> 
+         
         <p class="red"><b>警告</b><br/>因为这是 Wiki 的一个条目，可以在任何时间内被任何人编辑，因此建议你不要完全使用这个脚本，而是将其当作编写脚本的指导手册看待。</p>
-         <hr> 
+          
          <p>该教程将会将会介绍如何把存档移动到 Dropbox 上，以便可以让你在多台计算机上游玩这个存档。</p>
 <p><i>警告：</i>你只能在一台计算机游玩一次存档，并且在别的计算机游玩存档之前必须允许 Dropbox 自动同步整个存档文件夹。如果不这样做，那么你将会丢失你当前的进度，而且有可能会损坏你的存档。</p>
      
@@ -47,23 +47,23 @@
 
 <p>下一步，我们将会需要复制你的 Minecraft 数据到 Dropbox 服务器，然后把原始数据重命名。
 <h3>Windows</h3>
-<p>在 Windows 上，你的 Minecraft 数据被保存在你的应用程序数据（AppData）文件夹里。你可以通过按下 Windows+R 或点击开始菜单上面的运行，然后在运行文本框并输入&#160;%AppData%\.minecraft。如果没有打开文件夹，点击资源管理器上面的<b>工具</b>菜单，点击<b>视图</b>标签，在<b>高级设置</b>下面勾选“显示隐藏的文件、文件夹和驱动器”。</p>
+<p>在 Windows 上，你的 Minecraft 数据被保存在你的应用程序数据(AppData)文件夹里。你可以通过按下 Windows+R 或点击开始菜单上面的运行，然后在运行文本框并输入&#160;%AppData%\.minecraft。如果没有打开文件夹，点击资源管理器上面的<b>工具</b>菜单，点击<b>视图</b>标签，在<b>高级设置</b>下面勾选“显示隐藏的文件、文件夹和驱动器”。</p>
 <p>复制该文件夹的所有文件到你的 Dropbox 文件夹。为了方便，通常在 Dropbox 文件夹下面新建一个子文件夹，并命名为“Minecraft”。</p>
-<p>一旦这些文件被复制后，回到你的 AppData 文件夹，然后重命名文件夹为 .minecraft2（以“.”为首字符命名文件，Windows 可能会显示一个错误信息并拒绝应用新名字。如果这发生了，请把文件夹命名为“.minecraft2.”，这将会把文件命名为“.minecraft2”。</p>
+<p>一旦这些文件被复制后，回到你的 AppData 文件夹，然后重命名文件夹为 .minecraft2(以“.”为首字符命名文件，Windows 可能会显示一个错误信息并拒绝应用新名字。如果这发生了，请把文件夹命名为“.minecraft2.”，这将会把文件命名为“.minecraft2”。</p>
 <p>确保你已完成下列步骤：</p>
 <ol>
 <li>确保你的文件已经进行备份 。</li>
 <li>允许在稍后的一个步骤制作符号链接到正确的位置。</li>
 </ol>
-<h4>备选方法（命令行）</h4>
+<h3>备选方法(命令行)</h3>
 <p><code>xcopy /I /E&#160;%AppData%\.minecraft&#160;%HomeDrive%%HomePath%\Dropbox\Minecraft<br />
 cd&#160;%AppData%<br />
 rename .minecraft .minecraft2</code><br />
 <b>注</b>：尝试使用 <code>rename&#160;%AppData%\.minecraft&#160;%AppData%\.minecraft2</code> 将会显示错误信息： <code>The syntax of the command is incorrect.</code>，应该要使用：<code>rename&#160;%AppData%\.minecraft .minecraft2</code></p>
 <h3>Mac OS X</h3>
 <p>在 Mac OS X 里，Minecraft 数据文件夹在你的 用户名 &gt; Library &gt; Application Support 文件夹。你可以通过打开 Finder &gt; Go &gt; Go To Folder &gt; 然后输入 <i>~/Library/Application Support/minecraft</i> 来快速到达这个文件夹。要在稍后的时候引用该文件夹，最好为该文件夹制作一个别名，然后复制它到你的桌面。注：Mountain Lion 隐藏在用户的 Library 文件夹。按下 option 键然后就能在 GO 菜单中看见 Library 菜单。</p>
-<p>现在，复制存档文件夹（~/Library/Application Support/minecraft/saves/）到你的 Minecraft 文件夹（~/Dropbox/Minecraft/），除非你已经从 Windows 或 Linux 那里保存了存档。</p>
-<h4>备选方法（命令行）</h4>
+<p>现在，复制存档文件夹(~/Library/Application Support/minecraft/saves/)到你的 Minecraft 文件夹(~/Dropbox/Minecraft/)，除非你已经从 Windows 或 Linux 那里保存了存档。</p>
+<h3>备选方法(命令行)</h3>
 <p><code>mkdir ~/Dropbox/Minecraft/<br />
 cp -r ~/Library/Application\ Support/minecraft/saves ~/Dropbox/Minecraft/<br />
 mv ~/Library/Application\ Support/minecraft/saves ~/Library/Application\ Support/minecraft/saves.old</code></p>
@@ -71,7 +71,7 @@ mv ~/Library/Application\ Support/minecraft/saves ~/Library/Application\ Support
 <p>在 Linux 里，你的 Minecraft 数据文件夹位置在你的 user home 文件夹。然而，它可能隐藏在视图里。如果你正在使用 GUI，确保已勾选 View &gt; Show Hidden Files。</p>
 <p>复制 .minecraft 文件夹到你的 Dropbox 文件夹。和之前提到的一样，在 Dropbox 里面新建一个“Minecraft”文件夹。</p>
 <p>一旦复制完成后，重命名 .minecraft 文件夹为 .minecraft2</p>
-<h4>备选方法（命令行）</h4>
+<h3>备选方法(命令行)</h3>
 <p>打开 Terminal，并输入：</p>
 <pre>cp -r ~/.minecraft ~/Dropbox/Minecraft
 mv ~/.minecraft ~/.minecraft2
@@ -82,7 +82,7 @@ mv ~/.minecraft ~/.minecraft2
 <h3>Windows</h3>
 <p>符号链接和快捷键类似，但是更强大。在 Windows 里， <b>mklink</b> 或 <b>junction</b> 命令会允许我们创建一个符号链接。</p>
 <p>打开命令提示符。在 Windows 7 和 8，你可以通过搜索“命令提示符”打开，右击它并选择“<b>以管理员身份运行</b>”。这样做是必要的，即使你当前机器上使用的用户是管理员用户。否则，你将会接收到“<tt>你没有足够的权限来完成这个操作”的信息，那么创建符号链接将会失败。</tt></p>
-<h4>Windows Vista, 7 & 8</h4>
+<h3>Windows Vista, 7 & 8</h3>
 <p><tt><b>警告：在 Vista 及之前的系统创建或删除硬链接时要小心操作！</b>硬连接创造一个链接到文件数据的别名。在 Vista 或 XP 上删除硬链接会删除其关联的数据。</tt></p>
 <p><tt><code>mklink /d "%AppData%\.minecraft" "%HomeDrive%%HomePath%\Dropbox\Minecraft"</code></tt></p>
 <p><tt>如果出现了一个错误<tt>不能创建已存在文件的文件</tt>，确保在&#160;%AppData% 的 .minecraft 文件夹已被删除或重命名。<tt>mklink</tt>会尝试新建一个叫作 <tt><b>.minecraft</b></tt> 的“文件夹”，不会替换存在相同名称的文件或文件夹。</tt></p>
@@ -90,9 +90,9 @@ mv ~/.minecraft ~/.minecraft2
 <p>在 Vista 或 XP 上使用下列命令断开对该硬链接的链接：</p>
 <pre><i>fsutil reparsepoint delete &lt;path&gt;</i>
 </pre>
-<p>这将会移除链接，但是会留下一个相同名称的空文件，然后你就可以安全的移除它了。（在删除前确保文件夹是空的）</p>
+<p>这将会移除链接，但是会留下一个相同名称的空文件，然后你就可以安全的移除它了。(在删除前确保文件夹是空的)</p>
 <p>在 Windows 7、8 和 10 你可以通过资源管理器安全地删除一个硬链接。</p>
-<h4>Windows XP（安装了 junction.exe 后）</h4>
+<h3>Windows XP(安装了 junction.exe 后)</h3>
 <p>如果正在运行 Windows XP，首先要从 SysInternals 下载 <b>junction.exe</b>，
 <br/>http://download.sysinternals.com/files/Junction.zip
 <br/>然后放置它到你的根目录里以便开启符号链接。</p>
@@ -102,8 +102,8 @@ mv ~/.minecraft ~/.minecraft2
 
 <h3>Mac OS X</h3>
 <p>在 Mac OS X 创建符号链接是很容易的，这要感谢一个叫作 SymboliceLinker 的免费程序，它允许你通过在 Finder 右击文件夹来创建一个符号链接。</p>
-<p>安装该程序后，移动你的 Minecraft 文件夹（位于 <i>~/Library/Application Support/</i>）到你的 Dropbox 里。右击该新文件夹并选择 <i>Make symbolic link</i>。这将会在相同文件夹中创建依个符号链接。移动该文件夹到原本的位置里（确保它和原始文件夹名称相同），并且你已经拉取全部的游戏数据到互联网上。</p>
-<h4>备选方法（命令行）</h4>
+<p>安装该程序后，移动你的 Minecraft 文件夹(位于 <i>~/Library/Application Support/</i>)到你的 Dropbox 里。右击该新文件夹并选择 <i>Make symbolic link</i>。这将会在相同文件夹中创建依个符号链接。移动该文件夹到原本的位置里(确保它和原始文件夹名称相同)，并且你已经拉取全部的游戏数据到互联网上。</p>
+<h3>备选方法(命令行)</h3>
 <p>打开 Terminal，并输入：</p>
 <pre>ln -s ~/Dropbox/Minecraft/ ~/Library/Application\ Support/minecraft/saves
 </pre>
@@ -130,7 +130,7 @@ mv ~/.minecraft ~/.minecraft2
    
 
         
-</div>
+<p><br/></p></div>
 </body>
 
 </html>

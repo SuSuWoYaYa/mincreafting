@@ -13,11 +13,11 @@
         android:background="?attr/colorPrimary">
         <ImageView
             android:id="@+id/imageViewToolbar_menu"
-            android:layout_width="35dp"
+            android:layout_width="50dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
             android:src="?attr/navigationIcon_back"
             android:scaleType="centerInside"/>
         <TextView
@@ -32,7 +32,7 @@
 
         <ImageView
             android:id="@+id/imageViewToolbar_search"
-            android:layout_width="35dp"
+            android:layout_width="45dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:paddingTop="5dp"

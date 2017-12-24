@@ -7,15 +7,15 @@
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:background="?attr/colorPrimary">
         <ImageView
             android:id="@+id/imageViewToolbar_menu"
-            android:layout_width="35dp"
+            android:layout_width="55dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
             android:src="?attr/navigationIcon_back"
             android:scaleType="centerInside"/>
         <TextView

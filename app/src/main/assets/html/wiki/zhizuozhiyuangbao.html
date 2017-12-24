@@ -24,7 +24,7 @@
         
           <div id="content" class="post-single-content box mark-links">
         <p class="red">此页面的部分内容由于太久没更新而已过期。你可以帮助我们来更新此页面</p>
-        <p>要制作资源包，首先前往 minecraft 文件夹。在 Windows 平台上，这个文件夹被叫作 .minecraft，它的位置在 AppData 文件夹，你可以前往开始菜单并键入&#160;%appdata%。在 Mac 平台上，它被叫作 minecraft，你可以在 Finder 打开这个文件夹，按下 Shift-Command-G 并输入“~/Library/Application Support/minecraft”并输入回车。在 Linux 上，它被叫作 .minecraft 并在您的根目录（默认隐藏）中。你也可以通过打开选项进入那个文件夹，然后点击 Resource Packs... 然后就打开了资源包文件夹。</p>
+        <p>要制作资源包，首先前往 minecraft 文件夹。在 Windows 平台上，这个文件夹被叫作 .minecraft，它的位置在 AppData 文件夹，你可以前往开始菜单并键入&#160;%appdata%。在 Mac 平台上，它被叫作 minecraft，你可以在 Finder 打开这个文件夹，按下 Shift-Command-G 并输入“~/Library/Application Support/minecraft”并输入回车。在 Linux 上，它被叫作 .minecraft 并在您的根目录(默认隐藏)中。你也可以通过打开选项进入那个文件夹，然后点击 Resource Packs... 然后就打开了资源包文件夹。</p>
 <p>你进入到 minecraft 之后，就打开 <code>resourcepacks</code> 文件夹。为你的新资源包新建一个文件夹，把这个文件夹命名为新资源包的名称。</p>
 <p>如果你对资源包的结构不够了解，你可以参照一下现成的资源包，并看看游戏主文件如<code>1.12.2.jar</code>中的内容，因为这些内容和资源包的结构比较相似</p>
  <h2>pack.mcmeta</h2>
@@ -48,13 +48,13 @@
 <p>下一步，你需要新建一个叫作 <code>assets</code> 的文件夹，并在这个文件夹内新建一个叫作 <code>minecraft</code> 的文件夹。里面的 <code>minecraft</code> 文件夹是放置所有的自定义文件，制作你独一无二的材质包的地方。</p>
 <p>现在你已经准备好自定义你想要的文件了。你不需要往里面放任何东西，也不需要改变任何默认的东西，因为 Minecraft 会自动过滤资源包以便可以选择它们。通常，下一个资源包就是默认的资源包。所以说，你希望所有东西都是相同的，除非你要把你的砖材质制作成紫色而不是红色。你将会需要新建一张带有紫色的砖的新图像文件，但它需要与原始路径的名称和文件名相同。因此对于砖来说，你将要转到 <code>minecraft</code> 里面的 assets 文件夹，并新建一个叫作 <code>textures</code> 的文件夹。之后，你需要新建一个 <code>blocks</code> 文件夹，在里面你就可以放置你的紫色砖图像文件。确保这个文件的文件名为 <code>brick.png</code>。</p>
 <p>你可能想知道如何找到它们的名字，文件结构分布如何。如果你只是想作出一个细微的变化，而不是如何开始，如何寻找原始的材质文件。要做到这点，你不得不查看两处地方，这取决于你要改变的文件的类型。</p>
-<p>如果你想自定义图标、音乐、唱片或音效，前往第一个 <code>minecraft</code> 含有 <code>resourcepacks</code> 的文件夹。现在打开 <code>assets</code> 文件夹（这与你做的不同）。你应该看见被命名为 <code>icons</code>、<code>music</code>、<code>records</code> 和 <code>sounds</code> 的文件夹。在这些文件夹的里面，你就会找到原始材质文件。如果你想要更新一个图标，只需要复制那个图标，然后前往你最近创建的 <code>minecraft</code> 文件，在里面新建 <code>icon</code> 文件夹，并粘贴你的图标文件进去。现在你可以打开这个文件并进行编辑了。这个文件仍然拥有正确的文件名和文件路径。</p>
+<p>如果你想自定义图标、音乐、唱片或音效，前往第一个 <code>minecraft</code> 含有 <code>resourcepacks</code> 的文件夹。现在打开 <code>assets</code> 文件夹(这与你做的不同)。你应该看见被命名为 <code>icons</code>、<code>music</code>、<code>records</code> 和 <code>sounds</code> 的文件夹。在这些文件夹的里面，你就会找到原始材质文件。如果你想要更新一个图标，只需要复制那个图标，然后前往你最近创建的 <code>minecraft</code> 文件，在里面新建 <code>icon</code> 文件夹，并粘贴你的图标文件进去。现在你可以打开这个文件并进行编辑了。这个文件仍然拥有正确的文件名和文件路径。</p>
 <p>对于1.8及以上版本，你将会需要使用下面的音效目录结构。<code>sounds</code> 文件夹必须要在 <code>minecraft</code> 文件夹中首先创建，并且 <code>music</code> 和 <code>records</code> 文件夹必须在 <code>sounds</code> 文件夹里创建。在 <code>music</code> 文件夹中，你将要创建 <code>game</code> 和 <code>menu</code> 文件夹。这些附加的文件夹可以让你创建适当的附加音效类型，但这些文件应该要以你的方式放置好。要创建你的 ogg 文件，把它们的名字改为存在的音效的文件的文件名，然后放置它们到适当的文件夹，你可以把你的文件代替默认的文件。</p>
-<p>要寻找字体、语言、文字和材质文件，就需要做多一点的工作。回到第一个包含 <code>resourcepacks</code> 的 <code>minecraft</code> 文件夹，打开 <code>versions</code> 文件夹。你应该能看见文件夹里面有当前的版本（例如 1.7.2）。使用压缩软件打开 1.7.2 jar，你将会看见一些列的 class 文件， 但在那里你会找到另外一个含 <code>assets</code> 的 <code>minecraft</code> 文件夹。打开文件夹，你将会看见 <code>font</code>、<code>lang</code>、<code>texts</code> 和 <code>textures</code> 文件夹。你会再次找到里面的默认文件，你可以复制你想要进行更改的文件到隐藏在 <code>resourcepack</code> 的 <code>minecraft</code> 文件夹。</p>
+<p>要寻找字体、语言、文字和材质文件，就需要做多一点的工作。回到第一个包含 <code>resourcepacks</code> 的 <code>minecraft</code> 文件夹，打开 <code>versions</code> 文件夹。你应该能看见文件夹里面有当前的版本(例如 1.7.2)。使用压缩软件打开 1.7.2 jar，你将会看见一些列的 class 文件， 但在那里你会找到另外一个含 <code>assets</code> 的 <code>minecraft</code> 文件夹。打开文件夹，你将会看见 <code>font</code>、<code>lang</code>、<code>texts</code> 和 <code>textures</code> 文件夹。你会再次找到里面的默认文件，你可以复制你想要进行更改的文件到隐藏在 <code>resourcepack</code> 的 <code>minecraft</code> 文件夹。</p>
 <p>如果感觉这太混乱了，那么看一个或两个教学视频可能会有帮助。你也可以下载一个你可以复制和修改的默认资源包，删除所有你不需要的文件夹分支。那可能更简单，取决于你要做什么。</p>
 
 <h2>添加语言</h2>
-<p>你可以通过资源包向 <i>Minecraft</i> 添加新语言。假定你的语言代码是“LANG”（可能是 ISO 639里面的），国家/地图代码为 “COUNTRY”（ISO 3166-1）。<code>pack.mcmeta</code> 看起来将会是这样的：</p>
+<p>你可以通过资源包向 <i>Minecraft</i> 添加新语言。假定你的语言代码是“LANG”(可能是 ISO 639里面的)，国家/地图代码为 “COUNTRY”(ISO 3166-1)。<code>pack.mcmeta</code> 看起来将会是这样的：</p>
 <pre>{
    "pack":{
       "pack_format":1,
@@ -87,13 +87,13 @@
    }
 }
 </pre>
-<p><tt>width</tt> 和 <tt>height</tt> 是每一帧的尺寸（单位：像素）<tt>interpolate</tt>（true/false）决定了 Minecraft 是否在2帧内是否生成更多帧。<tt>frametime</tt> 是两帧之间的默认延迟，为50毫秒。 <tt>frames</tt> 是帧列表，按照要播放的顺序进行排列。<tt>index</tt> 和 <tt>time</tt> 都可被用来指定一个帧，这一帧比默认帧的时间间隔都不同。</p>
+<p><tt>width</tt> 和 <tt>height</tt> 是每一帧的尺寸(单位：像素)<tt>interpolate</tt>(true/false)决定了 Minecraft 是否在2帧内是否生成更多帧。<tt>frametime</tt> 是两帧之间的默认延迟，为50毫秒。 <tt>frames</tt> 是帧列表，按照要播放的顺序进行排列。<tt>index</tt> 和 <tt>time</tt> 都可被用来指定一个帧，这一帧比默认帧的时间间隔都不同。</p>
 <p><b>注</b>：如果你真的需要制作一个动态材质，使用下列代码，这将会一帧一帧地播放。</p>
 <pre>{
   "animation": {}
 }
 </pre>
-<p>保存文件，把文件名改成你想动画化的材质文件的名称（就像你想动画化 <tt>stone.png</tt>，你应该保存它为 <tt>stone.png.mcmeta</tt>）。然后把这个文件放置到与材质相同的文件夹（或许是 <tt>stone.png</tt>）。</p>
+<p>保存文件，把文件名改成你想动画化的材质文件的名称(就像你想动画化 <tt>stone.png</tt>，你应该保存它为 <tt>stone.png.mcmeta</tt>)。然后把这个文件放置到与材质相同的文件夹(或许是 <tt>stone.png</tt>)。</p>
  
  <h2>材质属性</h2>
  <pre>{ 
@@ -103,7 +103,7 @@
    }
 }
 </pre>
-<p>这个可选的部分可以通过对应的.png.mcmeta文件添加特殊的属性到您的材质中。<tt>blur</tt>将允许材质启用双线性过滤,而<tt>clamp</tt>将防止材质出现可能的重复情况（通过设置shadow.png.mcmeta中的<tt>clamp</tt>属性为false，这可以很容易地看出 - 一些生物下面会出现多个阴影。）</p>
+<p>这个可选的部分可以通过对应的.png.mcmeta文件添加特殊的属性到您的材质中。<tt>blur</tt>将允许材质启用双线性过滤,而<tt>clamp</tt>将防止材质出现可能的重复情况(通过设置shadow.png.mcmeta中的<tt>clamp</tt>属性为false，这可以很容易地看出 - 一些生物下面会出现多个阴影。)</p>
  
  <h2>字体</h2>
  <p>字体的字符尺寸由最后一行含非零的 alpha 像素决定。这允许通过1级 alpha 等级添加一个颜色来添加额外的填充字符，<i>Minecraft</i> 会认为它是文字的一部分。</p>
@@ -115,7 +115,7 @@
  
 
 
-</div>
+<p><br/></p></div>
 </body>
 
 </html>

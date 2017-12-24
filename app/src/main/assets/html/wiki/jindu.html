@@ -27,8 +27,8 @@
 
   <p class="yellow">仅限Java版
  </p>
-
-<p style="background-color:#eeeeee">这一整个叫“进度”的系统，其目的就是指导和跟踪玩家在游戏中的进展（在原版的生存模式以及那些有创意的地图制作者的自定义插件或者mod中）。大部分进度就如字面所言——你在游戏中的前进。„
+<p class="say">
+这一整个叫“进度”的系统，其目的就是指导和跟踪玩家在游戏中的进展(在原版的生存模式以及那些有创意的地图制作者的自定义插件或者mod中)。大部分进度就如字面所言——你在游戏中的前进。„
 <br /><br />——Dinnerbone评论于进度系统 </p>
 
  <p>
@@ -43,7 +43,7 @@
 <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu3.png" />
 <br />
 特殊的挑战进度完成时弹出的提示。</p>
-<p>进度（Advancements）是一种只存在于Java版中的、用来逐步引导新手玩家融入Minecraft，并给予他们需完成的挑战的途径的系统，它类似于原主机版和基岩版中更简单的成就系统。
+<p>进度(Advancements)是一种只存在于Java版中的、用来逐步引导新手玩家融入Minecraft，并给予他们需完成的挑战的途径的系统，它类似于原主机版和基岩版中更简单的成就系统。
 
 </p>
 
@@ -59,9 +59,9 @@
 
    <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu4.png" />
 <br /> 进度界面。其中“这不是铁镐么”进度被选中。
-  </p>    <p>  与成就一样，进度界面也是在暂停界面内调出。玩家也可以按下L来打开此屏幕（可在游戏内的选项菜单中更改）。
+  </p>    <p>  与成就一样，进度界面也是在暂停界面内调出。玩家也可以按下L来打开此屏幕(可在游戏内的选项菜单中更改)。
 
-进度系统包含若干棵进度树，每棵进度树的开端是一个根进度，末端则是目标或挑战进度。通过点击与拖动，可以查看进度树的不同分支。每棵树分为不同的标签（这些标签本身就是一个进度）。目前原版Minecraft中有5个标签（尽管之后还会继续添加[2][3]）：
+进度系统包含若干棵进度树，每棵进度树的开端是一个根进度，末端则是目标或挑战进度。通过点击与拖动，可以查看进度树的不同分支。每棵树分为不同的标签(这些标签本身就是一个进度)。目前原版Minecraft中有5个标签(尽管之后还会继续添加[2][3])：
   </p>    <ul><li>
 
 
@@ -144,7 +144,7 @@
 
 <tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_13.png" /></td><td><b>附魔师</b></td><td>在附魔台里附魔一件物品</td><td>—</td><td>minecraft:story/enchant_item</td></tr>
 
-<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_14.png" /></td><td><b>僵尸科医生</b></td><td>弱化并治疗一名僵尸村民</td><td>向僵尸村民扔出喷溅型虚弱药水并喂它吃一个金苹果（手持金苹果并对着僵尸村民，按下使用键）。</td><td>minecraft:story/cure_zombie_villager</td></tr>
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_14.png" /></td><td><b>僵尸科医生</b></td><td>弱化并治疗一名僵尸村民</td><td>向僵尸村民扔出喷溅型虚弱药水并喂它吃一个金苹果(手持金苹果并对着僵尸村民，按下使用键)。</td><td>minecraft:story/cure_zombie_villager</td></tr>
 
 <tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_15.png" /></td><td><b>隔墙有眼</b></td><td>跟随末影之眼</td><td>进入要塞。</td><td>minecraft:story/follow_ender_eye</td></tr>
 
@@ -295,30 +295,30 @@
 <ul><li> item：物品的ID</li>
 <li> data：物品的损害值</li></ul></li>
 <li> title：进度的名称</li>
-<li> title：JSON文本（包含文本，格式和/tellraw等命令中使用的类似）</li>
-<li> frame：图标边框的可选种类。<code>challenge</code>为有穗的边框标题，其用于杀死所有种类生物的进度；<code>goal</code>为更圆的边框标题，其用于完整信标进度；<code>task</code>为普通进度（默认）。</li>
-<li> background：用于此进度标签的背景的可选目录（仅根进度）。</li>
+<li> title：JSON文本(包含文本，格式和/tellraw等命令中使用的类似)</li>
+<li> frame：图标边框的可选种类。<code>challenge</code>为有穗的边框标题，其用于杀死所有种类生物的进度；<code>goal</code>为更圆的边框标题，其用于完整信标进度；<code>task</code>为普通进度(默认)。</li>
+<li> background：用于此进度标签的背景的可选目录(仅根进度)。</li>
 <li> description：进度的描述</li>
 <li> description：进度的描述。</li>
 <li> show_toast：可以为<code>true</code>或<code>false</code>。是否在完成此进度后显示提示信息。默认为true。</li>
 <li> announce_to_chat：可以为<code>true</code>或<code>false</code>。是否在完成此进度后广播此信息。默认为true。</li>
 <li> hidden：可以为<code>true</code>或<code>false</code>。是否直到完成进度前在进度屏幕隐藏进度。对根进度无效，但会影响其子进度。当父进度值为<code>true</code>后便无法覆盖。默认为false。</li></ul></li>
-<li> parent：此进度的可选的父目录（不适用于根进度）。</li>
+<li> parent：此进度的可选的父目录(不适用于根进度)。</li>
 <li> criteria：必须达成的条件。
-<ul><li> &lt;criteriaName&gt;：给予此条件的名称（可以为任何字符串，必须唯一）。
+<ul><li> &lt;criteriaName&gt;：给予此条件的名称(可以为任何字符串，必须唯一)。
 <ul><li> trigger：此进度的触发条件；指定游戏为进度检查的条件。</li>
 <li> conditions：当触发器激活时所有需要达成的条件。</li></ul></li></ul></li>
-<li> requirements：可选，所有条件（&lt;criteriaName&gt;）列表。如果所有条件都需要，此项可以被忽略。有多个条件：要求包含了要求条件列表（所有条件都需要被提及）。任一列表中所有条件达成后，进度会完成。（基本上是“与”、“或”的条件分组）</li>
+<li> requirements：可选，所有条件(&lt;criteriaName&gt;)列表。如果所有条件都需要，此项可以被忽略。有多个条件：要求包含了要求条件列表(所有条件都需要被提及)。任一列表中所有条件达成后，进度会完成。(基本上是“与”、“或”的条件分组)</li>
 <li> rewards：可选，当进度达到时获得的所有奖励。
-<ul><li> recipes：配方列表（标签）。</li>
-<li> loot：战利品列表（标签）。</li>
+<ul><li> recipes：配方列表(标签)。</li>
+<li> loot：战利品列表(标签)。</li>
 <li> experience：经验值总数。</li>
 <li> function：运行的函数。函数为.minecraft\saves\XXXX\data\functions\中的纯文本文件，包含运行的命令列表。</li></ul></li></ul></li></ul>
 
 
 <h2>你知道吗</h2>
-   <p>  17个原电脑版的成就被重制为进度：这是？工作台！（改为 Minecraft）、采矿时间到！（改为 石器时代）、获得升级、来硬的、我们需要再深入些、结束了？、结束了。（改为 解放末地）、见鬼去吧！、与火共舞、本地的酿造厂、开始了？（改为 凋零山庄）、信标工程师、钻石！、附魔师、探索的时光、怪物猎人、狙击手的对决。
-  </p>    <p>  6个原其他版本的成就被重制为进度： 保镖（改为 招募援兵）、逃脱死亡（改为 超越生死）、僵尸科医生、你需要来点薄荷糖、结束了…再一次…、这上面的风景不错。
+   <p>  17个原电脑版的成就被重制为进度：这是？工作台！(改为 Minecraft)、采矿时间到！(改为 石器时代)、获得升级、来硬的、我们需要再深入些、结束了？、结束了。(改为 解放末地)、见鬼去吧！、与火共舞、本地的酿造厂、开始了？(改为 凋零山庄)、信标工程师、钻石！、附魔师、探索的时光、怪物猎人、狙击手的对决。
+  </p>    <p>  6个原其他版本的成就被重制为进度： 保镖(改为 招募援兵)、逃脱死亡(改为 超越生死)、僵尸科医生、你需要来点薄荷糖、结束了…再一次…、这上面的风景不错。
  </p>
  
  
@@ -342,7 +342,7 @@
 使用信标</td></tr>
 <tr><td>饥饿</td><td>
 被尸壳攻击<br />
-吃一个河豚（100%）、腐肉（80%）或者生鸡肉（30%）</td></tr>
+吃一个河豚(100%)、腐肉(80%)或者生鸡肉(30%)</td></tr>
 <tr><td>隐身</td><td>
 喝下隐身药水</td></tr>
 <tr><td>跳跃提升</td><td>
@@ -357,8 +357,8 @@
 <tr><td>夜视</td><td>
 喝下夜视药水</td></tr>
 <tr><td>中毒</td><td>
-被洞穴蜘蛛攻击（处于普通或困难难度）<br />
-吃一个毒马铃薯（60%）蜘蛛眼（100%），或河豚（100%）<br />
+被洞穴蜘蛛攻击(处于普通或困难难度)<br />
+吃一个毒马铃薯(60%)蜘蛛眼(100%)，或河豚(100%)<br />
 被女巫扔出的药水砸中<br />
 喝下剧毒药水</td></tr>
 <tr><td>生命恢复</td><td>
@@ -384,7 +384,7 @@
 喝下虚弱药水</td></tr>
 <tr><td>凋零</td><td>
 被凋灵或凋灵骷髅攻击</td></tr>
- </div>
+ <p><br/></p></div>
 </body>
 
 </html>

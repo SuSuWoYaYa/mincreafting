@@ -29,7 +29,7 @@
 你可以帮助我们来更新此页面
 </p>
 <p class="yellow">
-<b>此页面的（部分）内容需要被翻译。</b>
+<b>此页面的(部分)内容需要被翻译。</b>
 <br />
 你可以帮助我们来翻译此页面
        </p> -->
@@ -54,7 +54,7 @@ sudo adduser minecraft minecraft # this adds user "minecraft" the group "minecra
 <pre>sudo chown -R minecraft.minecraft /srv/minecraft-server
 </pre>
 <ul>
-<li>创建并编辑开始/停止脚本吗，该脚本是位于 /etc/init/minecraft-server 的新文件（<b>不是</b> /etc/init.d 而是 /etc/init （没有.d））</li>
+<li>创建并编辑开始/停止脚本吗，该脚本是位于 /etc/init/minecraft-server 的新文件(<b>不是</b> /etc/init.d 而是 /etc/init (没有.d))</li>
 </ul>
 <pre>sudo nano /etc/init/minecraft-server
 </pre>
@@ -74,7 +74,7 @@ respawn limit 20 5
 
 exec /usr/bin/java -Xms1536M -Xmx2048M -jar minecraft_server.jar nogui
 </pre>
-<p>每行命令解释（注意，该脚本不能使用。）：</p>
+<p>每行命令解释(注意，该脚本不能使用。)：</p>
 <pre># description "start and stop the minecraft-server" &lt;-- 为脚本添加提示
 
 start on runlevel [2345] &lt;-- 告诉 Ubuntu 何时启动服务器。Runlevels 2、3、4、和 5 都是“正常操作”。
@@ -82,8 +82,8 @@ stop on runlevel [^2345] &lt;-- 告诉 Ubuntu 何时停止服务器、^ 意为�
 
 console log &lt;-- 登录
 chdir YOUR_INSTALLATION_DIRECTORY &lt;-- 把活动目录更改到安装目录
-setuid minecraft &lt;-- 设置 UserID 为 “minecraft”（Minecraft 用户）
-setgid minecraft &lt;-- 设置 GroupID 为 “minecraft”（Minecraft 组）
+setuid minecraft &lt;-- 设置 UserID 为 “minecraft”(Minecraft 用户)
+setgid minecraft &lt;-- 设置 GroupID 为 “minecraft”(Minecraft 组)
 
 respawn &lt;-- 允许软件遇到严重错误时重启
 respawn limit 20 5 &lt;-- 允许软件在5秒内重启20次
@@ -119,12 +119,12 @@ exec /usr/bin/java -Xms1536M -Xmx2048M -jar minecraft_server.jar nogui &lt;-- �
 <p>使用下列命令检查服务器日志：</p>
 <pre>sudo tail /var/log/upstart/minecraft-server.log
 </pre>
-<p>如果还是没能得到帮助，请联系：<a href="https://minecraft-zh.gamepedia.com/UserProfile:Cel1ne" title="User:Cel1ne">Cel1ne</a>（注：只能够使用英语与他交流）</p>
+<p>如果还是没能得到帮助，请联系：<a href="https://minecraft-zh.gamepedia.com/UserProfile:Cel1ne" title="User:Cel1ne">Cel1ne</a>(注：只能够使用英语与他交流)</p>
 
         
 
 
-</div>
+<p><br/></p></div>
 </body>
 
 </html>

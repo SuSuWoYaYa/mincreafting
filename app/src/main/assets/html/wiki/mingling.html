@@ -28,12 +28,12 @@
 			仅限Java版、基岩版和教育版
 		</p>
    <p> 
-		JAVA版和携带版中的命令（Command）是通过输入特定文本字符串而激活的高级功能。
+		JAVA版和携带版中的命令(Command)是通过输入特定文本字符串而激活的高级功能。
 				</p>  
 		
 		<h2>使用方法</h2>
 	    <p>	
-在普通的Minecraft客户端和独立客户端中，命令通过Minecraft的聊天窗口输入，通过按下T键（默认）或/键唤出聊天窗口。使用/键会同时输入命令必需的前缀斜杠（/），因此这是个实用的快捷键。在输入命令时按下Tab ↹键会循环显示当前可用的命令或参数，也可以快速输入准星当前指向方块的坐标。
+在普通的Minecraft客户端和独立客户端中，命令通过Minecraft的聊天窗口输入，通过按下T键(默认)或/键唤出聊天窗口。使用/键会同时输入命令必需的前缀斜杠(/)，因此这是个实用的快捷键。在输入命令时按下Tab ↹键会循环显示当前可用的命令或参数，也可以快速输入准星当前指向方块的坐标。
 </p>     <p>
 命令也可以在多人服务器的控制台中输入，但是不需要加入前缀/。
 
@@ -45,16 +45,16 @@
 
 在Minecraft多人联机服务器游戏中，由管理员或命令方块使用。
 </li><li>在其他的多人模式游戏中，由开启局域网并允许作弊的玩家，或主持多人联机服务器的玩家使用。
-</li><li>在单人模式中，创造世界时开启作弊（借由“更多选项”按钮）
+</li><li>在单人模式中，创造世界时开启作弊(借由“更多选项”按钮)
   </li></ul>  <p>玩家命令在不允许作弊的生存模式中仍然可用。
 </p>     <p>
-注意：在单人游戏中，如果不允许作弊，仍可以通过公开目前的游戏至局域网 (Esc→“公开至局域网”，点选“允许作弊”为开，接着“开始局域网游戏”) 而暂时可以作弊。你不必实际连入局域网或等待别人加入。这并不是永久的，但直至退出世界前都可以使用命令，且命令做出的修改都会被保存（物品，生物生成等）。你可以在再次开启游戏时重复以上步骤。注意当公开至局域网时游戏便无法暂停，所以在打开游戏目录时最好找个安全的地方。你可以重新载入世界来取消公开至局域网。
+注意：在单人游戏中，如果不允许作弊，仍可以通过公开目前的游戏至局域网 (Esc→“公开至局域网”，点选“允许作弊”为开，接着“开始局域网游戏”) 而暂时可以作弊。你不必实际连入局域网或等待别人加入。这并不是永久的，但直至退出世界前都可以使用命令，且命令做出的修改都会被保存(物品，生物生成等)。你可以在再次开启游戏时重复以上步骤。注意当公开至局域网时游戏便无法暂停，所以在打开游戏目录时最好找个安全的地方。你可以重新载入世界来取消公开至局域网。
 	</p> 	
 		
 	  <p><b> 	波浪号 </b></p> 
 	  
-	  <p>很多命令可以使用波浪号（<code>~</code>）来指定<i>相对</i>坐标。在波浪号后方的数字是个<i>偏移量</i>而不是绝对坐标。数字的正负号表示以坐标轴的正或负方向偏移。一个单独的波浪号<code>~</code>是<code>~0</code>的简写。
-</p><p>举例来说，<code>/tp 0 64 0</code> 将会移动使用者到坐标(0, 64, 0)，而<code>tp ~3 ~ ~-3</code>会使使用者往x轴移动3米（东方），保持原本高度，并在z轴移动-3米(北方)。
+	  <p>很多命令可以使用波浪号(<code>~</code>)来指定<i>相对</i>坐标。在波浪号后方的数字是个<i>偏移量</i>而不是绝对坐标。数字的正负号表示以坐标轴的正或负方向偏移。一个单独的波浪号<code>~</code>是<code>~0</code>的简写。
+</p><p>举例来说，<code>/tp 0 64 0</code> 将会移动使用者到坐标(0, 64, 0)，而<code>tp ~3 ~ ~-3</code>会使使用者往x轴移动3米(东方)，保持原本高度，并在z轴移动-3米(北方)。
 </p><p>通常绝对坐标和相对坐标可以混合使用。举例来说，<code >/tp ~ 64 ~</code>会保持使用者的x轴和z轴坐标，但是传送使用者到绝对高度64。
 </p><p>偏移量的基准点由命令本身决定。举例来说，<code >/tp</code>的偏移是从起始位置来算。其他常见的偏移量包括命令的执行位置或者从另一个坐标由该命令指定。
 </p>
@@ -66,8 +66,7 @@
 </p><p>举例来说，要改变红队所有玩家的游戏模式为创造模式，而不使用名字来逐个指明：
 </p>
 <dl><dd><code>/gamemode creative @a[team=Red]</code></dd></dl>
-<p><br />
-</p>
+
 <table  >
 <caption><b> 目标选择器变量汇总</b>
 </caption>
@@ -100,17 +99,17 @@
 <dl><dt> <code>@p</code></dt></dl>
 <dl><dd> 选择最近的玩家。在服务器控制台中输入时，基准点为(0, 0, 0)。如果有多个最近的玩家，他们与基准点距离完全相同，那么会选择其中最晚进入服务器的玩家。</dd></dl>
 <dl><dd>目标选择器参数可以进一步筛选待选目标。举例来说，<code>@p[team=Red]</code>只会选择红队中距离最近的玩家，即使有其他非红队玩家更为靠近。</dd></dl>
-<dl><dd> <code>c</code>目标选择器参数可以用来追加待选目标。（举例来说，<code>@p[c=3]</code>会选择最近的三名玩家）。若参数是负值，<code>c</code>会反转选择目标的顺序（举例来说，<code>@p[c=-1]</code> 会选择<i>最远</i>的一名玩家）。</dd></dl>
+<dl><dd> <code>c</code>目标选择器参数可以用来追加待选目标。(举例来说，<code>@p[c=3]</code>会选择最近的三名玩家)。若参数是负值，<code>c</code>会反转选择目标的顺序(举例来说，<code>@p[c=-1]</code> 会选择<i>最远</i>的一名玩家)。</dd></dl>
 <dl><dt> <code>@r</code></dt></dl>
-<dl><dd> 选择随机玩家（或使用<code>type</code>目标选择器参数来包含实体）。</dd></dl>
+<dl><dd> 选择随机玩家(或使用<code>type</code>目标选择器参数来包含实体)。</dd></dl>
 <dl><dd>目标选择器参数可以进一步筛选待选目标。举例来说，<code>@r[team=Red]</code>只会随机选择红队玩家。</dd></dl>
-<dl><dd> <code>c</code>目标选择器参数可以用来追加待选目标。（举例来说，<code>@r[c=3]</code>会随机选择三名玩家）。</dd></dl>
-<dl><dd> 如果没有使用<code>type</code>参数，<code>@r</code>只会选择随机玩家。<code>type</code>参数可以用来选择非玩家的实体（举例来说，<code>@r[type=zombie]</code>会随机选择僵尸，<code>@r[type=!player]</code>会随机选择非玩家实体，等等）。</dd></dl>
+<dl><dd> <code>c</code>目标选择器参数可以用来追加待选目标。(举例来说，<code>@r[c=3]</code>会随机选择三名玩家)。</dd></dl>
+<dl><dd> 如果没有使用<code>type</code>参数，<code>@r</code>只会选择随机玩家。<code>type</code>参数可以用来选择非玩家的实体(举例来说，<code>@r[type=zombie]</code>会随机选择僵尸，<code>@r[type=!player]</code>会随机选择非玩家实体，等等)。</dd></dl>
 <dl><dt> <code>@a</code></dt></dl>
 <dl><dd> 选择所有玩家，包括已死亡玩家。除了此选择器以及<code>@s</code>以外的其它所有目标选择器都不能选中已死亡玩家。</dd></dl>
 <dl><dd>目标选择器参数可以进一步筛选待选目标。举例来说，<code>@a[team=Red]</code>只会选择红队的所有玩家。</dd></dl>
 <dl><dt> <code>@e</code></dt>
-<dd> 选择所有实体（包含玩家）。</dd>
+<dd> 选择所有实体(包含玩家)。</dd>
 <dd> 目标选择器参数可以进一步筛选待选目标。举例来说，<code>@e[type=cow]</code>只会选择牛。</dd></dl>
 <dl><dt> <code>@s</code></dt>
 <dd> 只选择唯一一个实体：执行该命令的实体，包括已死亡玩家。若命令执行者不是一个实体，如通过命令方块或服务器控制台执行命令，则此选择器不会选中任何东西。</dd>
@@ -139,7 +138,7 @@
 <tr>
 <td> <code>r</code>, <code>rm</code>
 </td>
-<td> 半径（外径，内径）
+<td> 半径(外径，内径)
 </td></tr>
 <tr>
 <td> <code>dx</code>, <code>dy</code>, <code>dz</code>
@@ -188,7 +187,7 @@
 <tr>
 <td> <code>l</code>, <code>lm</code>
 </td>
-<td>  经验等级（最高，最低）
+<td>  经验等级(最高，最低)
 </td></tr>
 <tr>
 <td> <code>m</code>
@@ -203,12 +202,12 @@
 <tr>
 <td> <code>rx</code>, <code>rxm</code>
 </td>
-<td>  垂直旋转角度（最大，最小）
+<td>  垂直旋转角度(最大，最小)
 </td></tr>
 <tr>
 <td> <code>ry</code>, <code>rym</code>
 </td>
-<td> 水平旋转角度（最大，最小）
+<td> 水平旋转角度(最大，最小)
 </td></tr>
 <tr>
 <td> <code>type</code>
@@ -227,11 +226,11 @@
 <dl><dt> 通过半径选择目标</dt></dl>
 <dl><dd> <code>[r=<i>R</i>]</code> — 只选择以命令的执行处为中心，半径小于<i>R</i>米区域内的目标。</dd>
 <dd> <code>[rm=<i>RM</i>]</code> — 只选择以命令的执行处为中心，半径大于<i>RM</i>米区域内的目标。</dd></dl>
-<dl><dd> 如果坐标（参见上一段）和半径都已被定义，命令会以定义的坐标为中心执行命令。</dd></dl>
+<dl><dd> 如果坐标(参见上一段)和半径都已被定义，命令会以定义的坐标为中心执行命令。</dd></dl>
 <dl><dt> 通过体积尺寸选择目标</dt></dl>
 <dl><dd> <code>[dx=<i>DX</i>,dy=<i>DY</i>,dz=<i>DZ</i>]</code></dd></dl>
-<dl><dd> 只选择位于一定体积内部的目标，体积定义为从执行命令的位置开始，向“x”方向（东/西方）延伸<i>DX</i>格，向“y”方向（上/下方）延伸<i>DY</i>格，并向“z”方向（北/南方）延伸<i>DZ</i>格。如果最初的坐标已经使用<code>x</code>、<code>y</code>和<code>z</code>参数定义，则它会取代命令的执行位置，成为体积选择参数的计算位置。否则，基准位置为命令执行所在方格的西北下角处。（<code>dx</code> 、<code>dy</code>和<code>dz</code>仍然用来指定与坐标的<i>距离</i>；它们<i>不</i>指定一个新的坐标）。</dd></dl>
-<dl><dd> 玩家可以结合通过半径和通过体积选择目标，此时只考虑二者重叠的区域。（从西北下角算起在一定的半径以内，且不超过定义的体积）。</dd></dl>
+<dl><dd> 只选择位于一定体积内部的目标，体积定义为从执行命令的位置开始，向“x”方向(东/西方)延伸<i>DX</i>格，向“y”方向(上/下方)延伸<i>DY</i>格，并向“z”方向(北/南方)延伸<i>DZ</i>格。如果最初的坐标已经使用<code>x</code>、<code>y</code>和<code>z</code>参数定义，则它会取代命令的执行位置，成为体积选择参数的计算位置。否则，基准位置为命令执行所在方格的西北下角处。(<code>dx</code> 、<code>dy</code>和<code>dz</code>仍然用来指定与坐标的<i>距离</i>；它们<i>不</i>指定一个新的坐标)。</dd></dl>
+<dl><dd> 玩家可以结合通过半径和通过体积选择目标，此时只考虑二者重叠的区域。(从西北下角算起在一定的半径以内，且不超过定义的体积)。</dd></dl>
 <dl><dt> 通过分数选择目标</dt></dl>
 <dl><dd> <code>[score_<i>name</i>=<i>SCORE</i>]</code> — 只选择目标计分板<i>name</i>中分数的不高于<i>SCORE</i>的目标。</dd></dl>
 <dl><dd> <code>[score_<i>name</i>_min=<i>SCOREMIN</i>]</code> — 只选择目标计分板<i>name</i>中分数的不低于<i>SCOREMIN</i>的目标。</dd></dl>
@@ -277,15 +276,15 @@
 <dl><dt>  通过垂直旋转选择目标</dt></dl>
 <dl><dd> <code>[rx=<i>RX</i>]</code> — 只选择最大不超过垂直旋转角度<i>RX</i>的目标。</dd>
 <dd> <code>[rxm=<i>RXM</i>]</code> — 只选择最小不低于垂直旋转角度<i>RXM</i>的目标。</dd></dl>
-<dl><dd> 垂直旋转角度从270面对正上方，降低至将近水平时角度升至359，刚好水平时为0，再到90.0面对正下方（因此垂直旋转值增加时会旋转向下）。</dd></dl>
+<dl><dd> 垂直旋转角度从270面对正上方，降低至将近水平时角度升至359，刚好水平时为0，再到90.0面对正下方(因此垂直旋转值增加时会旋转向下)。</dd></dl>
 <dl><dt> 通过水平旋转选择目标</dt></dl>
 <dl><dd> <code>[ry=<i>RY</i>]</code> — 只选择与最大不超过水平旋转值<i>RY</i>的目标。</dd>
 <dd> <code>[rym=<i>RYM</i>]</code> — 只选择与最小不低于水平旋转值<i>RYM</i>的目标。</dd></dl>
-<dl><dd> 水平旋转值从-180（面对正北方），到-90（面对正东方），到0（面对正南方），到90（面对正西方），到180（正北偏西），旋转回正北方-180（因此水平旋转值增加时会向右旋转，或者从上方看下去是顺时针方向旋转）。</dd></dl>
+<dl><dd> 水平旋转值从-180(面对正北方)，到-90(面对正东方)，到0(面对正南方)，到90(面对正西方)，到180(正北偏西)，旋转回正北方-180(因此水平旋转值增加时会向右旋转，或者从上方看下去是顺时针方向旋转)。</dd></dl>
 <dl><dt> 通过实体类型选择目标</dt></dl>
 <dl><dd> <code>[type=<i>TYPE</i>]</code> — 只选择特定的实体类型的目标。</dd>
 <dd> <code>[type=!<i>TYPE</i>]</code> — 只选择不属于特定的实体类型的目标。</dd></dl>
-<dl><dd> <i>TYPE</i>必须游戏内部用来判定不同种类实体的 实体ID（举例来说，<code>creeper</code>指定爬行者，<code>minecart</code> 指定普通矿车，<code>tnt</code>指定TNT等等）。实体ID必须区别大小写，且无效的实体ID会造成命令失败。</dd></dl>
+<dl><dd> <i>TYPE</i>必须游戏内部用来判定不同种类实体的 实体ID(举例来说，<code>creeper</code>指定爬行者，<code>minecart</code> 指定普通矿车，<code>tnt</code>指定TNT等等)。实体ID必须区别大小写，且无效的实体ID会造成命令失败。</dd></dl>
 <dl><dd> 当与<code>@r</code>一起使用时，原本用来选择玩家的命令也可以被用来选择其它实体。</dd></dl>	  
 	  
 	  
@@ -358,22 +357,22 @@
 <tr>
 <td>  &#160;字节
 </td>
-<td> 介于-128和127之间（包含）的整数。
+<td> 介于-128和127之间(包含)的整数。
 </td></tr>
 <tr>
 <td> &#160;短整型
 </td>
-<td> 介于-32768和32767之间（包含）的整数。
+<td> 介于-32768和32767之间(包含)的整数。
 </td></tr>
 <tr>
 <td>  &#160;整型
 </td>
-<td> 介于-2147483648和2147483647之间（包含）的整数。
+<td> 介于-2147483648和2147483647之间(包含)的整数。
 </td></tr>
 <tr>
 <td>  &#160;长整型
 </td>
-<td> 介于-9,223,372,036,854,775,808和9,223,372,036,854,775,807之间（包含）的整数。
+<td> 介于-9,223,372,036,854,775,808和9,223,372,036,854,775,807之间(包含)的整数。
 </td></tr>
 <tr>
 <td>  &#160;单精度浮点型 <br> <br/> &#160;双精度浮点型
@@ -418,7 +417,7 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 </td></tr>
 </table>
 <p><br/>&#160;字节数组类型无法用于命令。
-</p><p>某些命令要求明确指明某些数值的数据类型，这可以通过在数值后附加限定字符（B、S、L、F、D）来实现。举例来说， <code>3s</code> 表示短整型，<code>3.2f</code> 表示单精度浮点，等等。（字符I不能限定整型。）限定字符不区分大小写。在不加限定字符，且<i>Minecraft</i>无法根据上下文来确定数据类型时，会将数据类型假定为双精度浮点型（数值有小数部分时）、整型（数值没有小数点，且在整型取值范围内）或字符串（若前述情况均不符合）。被方括号包含的集合中，被逗号分隔的元素若全为整型，则会将数据类型假定为整型数组；否则会假定为列表。但有以下特例：<code>[]</code>是一个空列表，而<code>[,]</code>是一个空整型数组。
+</p><p>某些命令要求明确指明某些数值的数据类型，这可以通过在数值后附加限定字符(B、S、L、F、D)来实现。举例来说， <code>3s</code> 表示短整型，<code>3.2f</code> 表示单精度浮点，等等。(字符I不能限定整型。)限定字符不区分大小写。在不加限定字符，且<i>Minecraft</i>无法根据上下文来确定数据类型时，会将数据类型假定为双精度浮点型(数值有小数部分时)、整型(数值没有小数点，且在整型取值范围内)或字符串(若前述情况均不符合)。被方括号包含的集合中，被逗号分隔的元素若全为整型，则会将数据类型假定为整型数组；否则会假定为列表。但有以下特例：<code>[]</code>是一个空列表，而<code>[,]</code>是一个空整型数组。
 </p><p>如果用<code >/testfor</code>、<code >/testforblock</code>、<code>/clear</code> 等命令来查找数据标签，这些命令只会检查目标实体/方块/物品是否存在此标签。这意味着一个符合条件的实体/方块/物品可能同时还拥有其他标签。这对列表和数组同样成立：只要列表或数组中包含待查找的所有元素，就会成功匹配，既不考虑元素的排列顺序，也不考虑是否有多余的元素存在。
 </p><p>数据标签的数据结构是JSON的lenient形式。
 </p>	  
@@ -427,41 +426,41 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 	  <h2>原始JSON文本</h2>
 	  
 <p><code>/tellraw</code>和<code>/title</code>命令使用严格的JSON语法。
-</p><p>在告示牌被放置或修改时，或在一本成书被“翻开”（书写后第一次打开）时，记分板分数和目标选择器会被解析成具体的值。这些结果不再更新，使用NBT编辑器修改已存在的告示牌或已翻开的书也不会起作用。解析的结果无法在告示牌上换行，或在书上换页，超出的文字只会直接消失。
-</p><p>原始JSON文本的格式是支持以下（大多是可选的）元素的JSON对象：
+</p><p>在告示牌被放置或修改时，或在一本成书被“翻开”(书写后第一次打开)时，记分板分数和目标选择器会被解析成具体的值。这些结果不再更新，使用NBT编辑器修改已存在的告示牌或已翻开的书也不会起作用。解析的结果无法在告示牌上换行，或在书上换页，超出的文字只会直接消失。
+</p><p>原始JSON文本的格式是支持以下(大多是可选的)元素的JSON对象：
 </p>
 <ul><li>基础聊天组件对象
-<ul><li> &#160;text：字符串，存储在聊天框中直接出现的纯文字。注意像是“@a”和“@p”的选择器并不会转译成玩家名字；必须使用<b>selector</b>代替。使用转义字符“\n”换行（回车）。</li>
+<ul><li> &#160;text：字符串，存储在聊天框中直接出现的纯文字。注意像是“@a”和“@p”的选择器并不会转译成玩家名字；必须使用<b>selector</b>代替。使用转义字符“\n”换行(回车)。</li>
 <li>&#160;keybind：显示用于执行特定操作的按键键位。例如，<code>key.inventory</code>会向玩家显示打开物品栏的按键，若玩家使用默认设置，则会显示“E”。</li>
 <li>&#160;extra：附加对象的列表，格式与基础对象相同。
-<ul><li>与基础对象格式相同的附加对象（递归的）。注意所有对象的属性都会被其子对象所继承，除了<b>text</b>、<b>extra</b>、<b>translate</b>、<b>with</b>和<b>score</b>。这表意味着子对象会保留与父对象相同的格式和事件，除非子对象明确声明将其覆盖。</li></ul></li>
-<li> &#160;color：渲染文字时使用的颜色。有效值有：“black”，“dark_blue”，“dark_green”，“dark_aqua”，“dark_red”，“dark_purple”，“gold”，“gray”，“dark_gray”，“blue”，“green”，“aqua”，“red”，“light_purple”，“yellow”，“white”和“reset”（取消父对象使用的颜色效果）。技术上来说，“bold” （粗体）、“underline”（下划线）、“italic”（斜体）、“strikethrough”（删除线）和“obfuscated”（模糊处理）都是可接受的，不过建议使用下文提到的标签来实现。</li>
-<li> &#160;bold：布尔值（true/false） - 是否将文字渲染为粗体，默认为false。</li>
-<li> &#160;underlined：布尔值（true/false） - 是否为文字添加下划线，默认为false。</li>
-<li> &#160;italic：布尔值（true/false） - 是否将文字渲染为斜体，默认为false。</li>
-<li> &#160;strikethrough：布尔值（true/false） - 是否为文字添加删除线，默认为false。</li>
-<li>&#160;obfuscated：布尔值（true/false） - 是否将文字模糊处理，默认为false。</li>
+<ul><li>与基础对象格式相同的附加对象(递归的)。注意所有对象的属性都会被其子对象所继承，除了<b>text</b>、<b>extra</b>、<b>translate</b>、<b>with</b>和<b>score</b>。这表意味着子对象会保留与父对象相同的格式和事件，除非子对象明确声明将其覆盖。</li></ul></li>
+<li> &#160;color：渲染文字时使用的颜色。有效值有：“black”，“dark_blue”，“dark_green”，“dark_aqua”，“dark_red”，“dark_purple”，“gold”，“gray”，“dark_gray”，“blue”，“green”，“aqua”，“red”，“light_purple”，“yellow”，“white”和“reset”(取消父对象使用的颜色效果)。技术上来说，“bold” (粗体)、“underline”(下划线)、“italic”(斜体)、“strikethrough”(删除线)和“obfuscated”(模糊处理)都是可接受的，不过建议使用下文提到的标签来实现。</li>
+<li> &#160;bold：布尔值(true/false) - 是否将文字渲染为粗体，默认为false。</li>
+<li> &#160;underlined：布尔值(true/false) - 是否为文字添加下划线，默认为false。</li>
+<li> &#160;italic：布尔值(true/false) - 是否将文字渲染为斜体，默认为false。</li>
+<li> &#160;strikethrough：布尔值(true/false) - 是否为文字添加删除线，默认为false。</li>
+<li>&#160;obfuscated：布尔值(true/false) - 是否将文字模糊处理，默认为false。</li>
 <li> &#160;insertion：当玩家按住<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⇧ Shift</kbd>并点击文字时，此字符串会自动填入聊天编辑框中。不会覆盖原有的文字。</li>
 <li> &#160;clickEvent：当玩家点击文字时产生的事件。
-<ul><li> &#160;action：当点击文字时所触发的行为。有效值为“open_url”（在玩家的默认浏览器中打开<b>value</b>中的URL地址），“run_command”（以玩家的身份在聊天框中输入<b>value</b>值并提交。可以用来执行命令，但是如果玩家没有所需的权限，命令会失败），“change_page”（只能用在成书中，如果该<b>value</b>页存在，翻至该页）和“suggest_command”（和“run_command”相似，但是文本只会出现在玩家的聊天输入栏，并不会自动提交。与<b>insertion</b>不同，这会直接取代原先在聊天输入框中的内容）。“open_file”和“twitch_user_info”用于游戏自动生成的信息中（如截图时显示的信息），不能在命令和告示牌中使用。</li>
+<ul><li> &#160;action：当点击文字时所触发的行为。有效值为“open_url”(在玩家的默认浏览器中打开<b>value</b>中的URL地址)，“run_command”(以玩家的身份在聊天框中输入<b>value</b>值并提交。可以用来执行命令，但是如果玩家没有所需的权限，命令会失败)，“change_page”(只能用在成书中，如果该<b>value</b>页存在，翻至该页)和“suggest_command”(和“run_command”相似，但是文本只会出现在玩家的聊天输入栏，并不会自动提交。与<b>insertion</b>不同，这会直接取代原先在聊天输入框中的内容)。“open_file”和“twitch_user_info”用于游戏自动生成的信息中(如截图时显示的信息)，不能在命令和告示牌中使用。</li>
 <li>&#160;value：前述指定的<b>action</b>使用到的URL地址、聊天内容或命令。注意，命令之前一定要加上“/”斜杠。</li></ul></li>
 <li> &#160;hoverEvent：当玩家将鼠标指针悬浮在文字之上时显示的说明提示。
-<ul><li>&#160;action：说明提示的类型。有效值为“show_text”（显示原始JSON文本）、“show_item”（显示一个可带NBT标签的物品）、“show_achievement”（显示成就描述或统计数据。普通成就显示为绿色，终极成就显示为深紫色，统计数据名称显示为灰色。成就的显示会附加描述）和“show_entity”（显示实体的名称，还可能显示其类型和UUID）。</li>
+<ul><li>&#160;action：说明提示的类型。有效值为“show_text”(显示原始JSON文本)、“show_item”(显示一个可带NBT标签的物品)、“show_achievement”(显示成就描述或统计数据。普通成就显示为绿色，终极成就显示为深紫色，统计数据名称显示为灰色。成就的显示会附加描述)和“show_entity”(显示实体的名称，还可能显示其类型和UUID)。</li>
 <li>&#160;value：此标签的格式取决于<b>action</b>。注意，“show_text”是唯一接受对象作为value值的action；其它action对应的value值都是字符串，所以必须用引号包含。
 <ul><li> <i>"show_text"</i>：可以是字符串，或是与基础对象格式相同的一个对象。注意，此对象的<b>clickEvent</b>和<b>hoverEvent</b>在说明提示中不会生效，但是它的格式和<b>extra</b>标签仍然有效。</li>
-<li> <i>"show_item"</i>：与物品NBT标签格式相同的的<i>字符串</i>。包含“id”标签，和可选的“Damage”标签和“tag”标签（和<code>/give</code>命令所使用的“dataTag”标签中的组合相同）。</li>
+<li> <i>"show_item"</i>：与物品NBT标签格式相同的的<i>字符串</i>。包含“id”标签，和可选的“Damage”标签和“tag”标签(和<code>/give</code>命令所使用的“dataTag”标签中的组合相同)。</li>
 <li> <i>"show_achievement"</i>：成就或统计数据的名称。其格式与成就、统计数据记分板对象判据以及<code>/achievement</code>命令相同。</li>
-<li> <i>"show_entity"</i>：描述一个组合的<i>字符串</i>，包含字符串值“type”（例如“Zombie”）、“name”和“id”（要求为实体UUID，但接受任意字符串）。</li></ul></li></ul></li>
+<li> <i>"show_entity"</i>：描述一个组合的<i>字符串</i>，包含字符串值“type”(例如“Zombie”)、“name”和“id”(要求为实体UUID，但接受任意字符串)。</li></ul></li></ul></li>
 <li> &#160;translate：显示文本的翻译标识符，用于将文本翻译至玩家使用的语言。此标识符与assets文件夹或资源包中的标识符一致。翻译文本只会在<b>text</b>字符串<i>未</i>被使用时显示。</li>
 <li>&#160;with：<b>translate</b>所使用的聊天对象参数列表和/或字符串参数。
-<ul><li> 该参数为当前语言翻译文本中出现的参数赋值，参数依序排列（例如，列表中的第一个元素将会取代翻译文本中的“%1$s”）。</li></ul></li>
+<ul><li> 该参数为当前语言翻译文本中出现的参数赋值，参数依序排列(例如，列表中的第一个元素将会取代翻译文本中的“%1$s”)。</li></ul></li>
 <li>&#160;score： 一个玩家在一个记分板目标里的分数。若该玩家没有被该记分板目标追踪，则什么都不显示。此参数存在时完全忽略<b>text</b>和<b>translate</b>。
-<ul><li>&#160;name：要被显示分数的玩家的名字。可使用选择器（例如@p），以及记分板系统中存在的虚拟玩家名称。另外，如果名称为“*”，会显示读者自己的分数（例如，<code>/tellraw @a {score:{name:"*",objective:"obj"}}</code>将给每个在线玩家显示他们自己在“obj”目标里的分数）。</li>
+<ul><li>&#160;name：要被显示分数的玩家的名字。可使用选择器(例如@p)，以及记分板系统中存在的虚拟玩家名称。另外，如果名称为“*”，会显示读者自己的分数(例如，<code>/tellraw @a {score:{name:"*",objective:"obj"}}</code>将给每个在线玩家显示他们自己在“obj”目标里的分数)。</li>
 <li>&#160;objective：要显示分数的记分板目标。</li>
 <li>&#160;value：可选。如果存在，将以此覆盖目标原先的分数。</li></ul></li>
-<li>&#160;selector：一个包含了一个选择器（@p、@a、@r或@e）的字符串以及可选的选择器参数。不像<b>text</b>，此处的选择器将会被解析为正确的玩家/实体名。如果多于一个玩家/实体符合条件，其将会被以例如'名字1和名字2'或'名字1,名字2,名字3,和名字4'的形式显示。此参数存在时完全忽略<b>text</b>、<b>translate</b>和<b>score</b>。在<code>/tellraw</code>命令中使用此标签时，点击结果中的玩家名称会出现私信该玩家的命令建议；按住<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⇧ Shift</kbd>点击玩家名称会将名称填入聊天框中；按住<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⇧ Shift</kbd>点击非玩家实体的名称会将其UUID填入聊天框中。</li></ul></li></ul>
+<li>&#160;selector：一个包含了一个选择器(@p、@a、@r或@e)的字符串以及可选的选择器参数。不像<b>text</b>，此处的选择器将会被解析为正确的玩家/实体名。如果多于一个玩家/实体符合条件，其将会被以例如'名字1和名字2'或'名字1,名字2,名字3,和名字4'的形式显示。此参数存在时完全忽略<b>text</b>、<b>translate</b>和<b>score</b>。在<code>/tellraw</code>命令中使用此标签时，点击结果中的玩家名称会出现私信该玩家的命令建议；按住<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⇧ Shift</kbd>点击玩家名称会将名称填入聊天框中；按住<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">⇧ Shift</kbd>点击非玩家实体的名称会将其UUID填入聊天框中。</li></ul></li></ul>
 <p>由于<b>extra</b>标签的存在，以上格式可递归地嵌套成非常复杂与多功能的字符串。然而，原始JSON文本不必弄得如此复杂：几乎所有的属性都可选或会被忽略。
-</p><p>为了确保有效，每一个对象至少应该包含以下至少一个元素：<b>text</b>、<b>translate</b>、<b>score</b>或<b>selector</b>（其余的元素都是可选的）。为使用方便，整个对象可以只用一个字符串表示。此时，将这个字符串赋作<b>text</b>的值即可。例如，<code>"This is raw text"</code>和<code>{"text":"This is raw text"}</code>是等价的。这种写法在任何需要使用原始JSON文本的地方都是有效的（包括<code>/tellraw</code>里面所用到的&lt;<i>raw json message</i>&gt;参数，<b>extra</b>列表中的元素，以及“show_text”<b>hover_event</b>中的<b>value</b>值）。
+</p><p>为了确保有效，每一个对象至少应该包含以下至少一个元素：<b>text</b>、<b>translate</b>、<b>score</b>或<b>selector</b>(其余的元素都是可选的)。为使用方便，整个对象可以只用一个字符串表示。此时，将这个字符串赋作<b>text</b>的值即可。例如，<code>"This is raw text"</code>和<code>{"text":"This is raw text"}</code>是等价的。这种写法在任何需要使用原始JSON文本的地方都是有效的(包括<code>/tellraw</code>里面所用到的&lt;<i>raw json message</i>&gt;参数，<b>extra</b>列表中的元素，以及“show_text”<b>hover_event</b>中的<b>value</b>值)。
 </p><p>/tellraw也接受一个对象或字串的数组，并依次显示。它甚至接受多层嵌套的数组树，并以深度优先遍历。例如：
 </p>
 <pre>/tellraw @a ["Hello there, ",{"selector":"@p"},"."]
@@ -768,7 +767,7 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 <tr>
 <td style="text-align:left;"> <code>/kill</code>
 </td>
-<td style="text-align:left;"> 杀死实体（玩家、生物、物品等）。
+<td style="text-align:left;"> 杀死实体(玩家、生物、物品等)。
 </td>
 <td style="background-color: #C6EFCE; color: #006100;"> 2 </td>
 <td style="background-color: #FFC7CE; color: #9C0006;"> —
@@ -1369,7 +1368,7 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 
 
 限制条件:管理员
-</li><li>加入版本:1.12（17w13a ）</li></ul>
+</li><li>加入版本:1.12(17w13a )</li></ul>
 	<p>给予或移除玩家的进度，或者检测玩家是否有某进度。
 </p>
 <dl><dt>语法</dt></dl>
@@ -1382,22 +1381,22 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 <dl><dd> <code>only</code>
 <dl><dd> 仅操作玩家的指定进度。</dd></dl></dd></dl>
 <dl><dd> <code>until</code>
-<dl><dd> 操作玩家的指定进度及其全部上游进度，从根进度“直到（until）”指定的进度。进度的遍历顺序是“指定进度”&gt;“父进度”&gt;“父进度的父进度”&gt;……&gt;“起始进度”。</dd></dl></dd></dl>
+<dl><dd> 操作玩家的指定进度及其全部上游进度，从根进度“直到(until)”指定的进度。进度的遍历顺序是“指定进度”&gt;“父进度”&gt;“父进度的父进度”&gt;……&gt;“起始进度”。</dd></dl></dd></dl>
 <dl><dd> <code>from</code>
-<dl><dd> 操作玩家的指定进度及其全部下游进度，“自（from）”指定进度开始的全部子进度。进度的遍历顺序是“指定进度”&gt;“子进度”&gt;“子进度的子进度”&gt;……，以深度优先遍历（即优先枚举节点的子节点，而后才枚举节点的兄弟节点）。由于具体的进度树取决于操作系统读取文件的方式，因此在不同操作系统上具体的遍历顺序不尽相同。</dd></dl></dd></dl>
+<dl><dd> 操作玩家的指定进度及其全部下游进度，“自(from)”指定进度开始的全部子进度。进度的遍历顺序是“指定进度”&gt;“子进度”&gt;“子进度的子进度”&gt;……，以深度优先遍历(即优先枚举节点的子节点，而后才枚举节点的兄弟节点)。由于具体的进度树取决于操作系统读取文件的方式，因此在不同操作系统上具体的遍历顺序不尽相同。</dd></dl></dd></dl>
 <dl><dd> <code>through</code>
-<dl><dd> 效果等同于<code>until</code>和<code>from</code>的混合，所有“经由（through）”指定进度，任何上下游进度。进度的遍历顺序是<code>until</code>和<code>from</code>的结合，首先进行<code>until</code>，然后进行<code>from</code>。</dd></dl></dd></dl>
+<dl><dd> 效果等同于<code>until</code>和<code>from</code>的混合，所有“经由(through)”指定进度，任何上下游进度。进度的遍历顺序是<code>until</code>和<code>from</code>的结合，首先进行<code>until</code>，然后进行<code>from</code>。</dd></dl></dd></dl>
 <dl><dd> <code>everything</code>
 <dl><dd> 操作全部玩家的已载入进度。</dd></dl></dd></dl>
 <dl><dd> <i>进度</i>
 <dl><dd> 指定要给予、移除或检测的进度。必须是有效进度识别串。</dd></dl></dd></dl>
-<dl><dd> <i>条件</i>（可选）
+<dl><dd> <i>条件</i>(可选)
 <dl><dd> 指定要操作的进度的条件。必须是有效进度条件识别串。</dd>
 <dd> 若指定，命令只会遵循该完成条件，而不是全部进度。</dd>
 <dd> 若留空，命令会在全进度中寻找。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若参数没有正确定义或<i>玩家</i>未能指定一个及以上的在线玩家，则命令失败。</dd></dl>
-<dl><dd> 成功时，添加或移除指定玩家的进度（且添加或删除该进度的前置需求或后续依赖）。</dd></dl>
+<dl><dd> 成功时，添加或移除指定玩家的进度(且添加或删除该进度的前置需求或后续依赖)。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 要测试自己是否有拥有“Obtain armor”进度的“Iron leggings”完成条件：<code>advancement test @p minecraft:story/obtain_armor iron_leggings</code></dd></dl>
 <dl><dd> 给自己授予“Shiny gear”进度：<code>advancement grant @p minecraft:story/shiny_gear</code></dd></dl>  
@@ -1420,12 +1419,11 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 <dl><dt>参数</dt></dl>
 <dl><dd> <i>名称</i>
 <dl><dd> 需要封禁的玩家名。该玩家<i>无需</i>在线，甚至不需要实际存在。</dd></dl></dd></dl>
-<dl><dd> <i>理由</i>（可选）
+<dl><dd> <i>理由</i>(可选)
 <dl><dd> 与封禁信息一同显示，展示给其他服务器中的管理员以及记录在服务器日志中的文本。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 永远成功。指定的玩家名称被列入服务器黑名单，任何此名的玩家都无法再进入服务器。</dd></dl>
-<p><br />
-</p> 
+ 
 	  
     <h2>ban-ip</h2>
 <ul><li>
@@ -1444,13 +1442,12 @@ Double - 64位双精度浮点数，<i>例：</i>3.141592653589793
 <dl><dt>参数</dt></dl>
 <dl><dd> <i>地址|名称</i>
 <dl><dd> IP地址或者当前在线的玩家。</dd></dl></dd></dl>
-<dl><dd> <i>理由</i>（可选）
+<dl><dd> <i>理由</i>(可选)
 <dl><dd> 与封禁信息一同显示，展示给其他服务器中的管理员以及记录在服务器日志中的文本。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 如果<i>地址|名称</i>既不是有效IP地址也不是在线玩家的名称，则失败。</dd></dl>
-<dl><dd> 成功时，IP地址（指定在线玩家的或输入的）被加入服务器黑名单，任何使用此地址的玩家都无法再进入服务器。</dd></dl>
-<p><br />
-</p>
+<dl><dd> 成功时，IP地址(指定在线玩家的或输入的)被加入服务器黑名单，任何使用此地址的玩家都无法再进入服务器。</dd></dl>
+
 
 
 <h2>banlist</h2><ul><li>
@@ -1467,15 +1464,14 @@ Alpha 1.0.16</li></ul>
 <dd> <code>banlist players</code></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 永远成功，显示封禁的IP地址或玩家列表。</dd></dl>
-<p><br />
-</p>
+
 
 
 <h2>blockdata</h2>
 <ul><li>限制条件:
 是管理员
 </li><li>加入版本:
-1.8（14w02a ）</li></ul>
+1.8(14w02a )</li></ul>
 
 <p>修改一个方块的数据标签。
 </p>
@@ -1485,7 +1481,7 @@ Alpha 1.0.16</li></ul>
 <dl><dd> <i>x y z</i>
 <dl><dd> 指定要修改的方块的坐标。可以含有波浪号代表与命令执行处的相对坐标。</dd></dl></dd></dl>
 <dl><dd> <i>数据标签</i>
-<dl><dd> 指定要添加或修改的方块数据标签元素。必须是NBT标签组合（示例：<code>{CustomName:Fred}</code>）。</dd></dl></dd></dl>
+<dl><dd> 指定要添加或修改的方块数据标签元素。必须是NBT标签组合(示例：<code>{CustomName:Fred}</code>)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若参数没有正确指定或目标方块不是“存有数据的方块”，则失败。未与方块实体值关联的方块没有数据。</dd></dl>
 <dl><dd> 成功时，编辑目标方块的数据标签。</dd></dl>
@@ -1498,14 +1494,13 @@ Alpha 1.0.16</li></ul>
 <li> <code>/replaceitem</code> — 替换方块物品栏中的物品</li>
 <li> <code>/setblock</code> – 在一个位置放置一个新方块</li>
 <li> <code>/stats</code> — 对方块的命令统计进行设置</li></ul></dd></dl>
-<p><br />
-</p>
+
 
 <h2>clear</h2>
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.4.2（12w37a ）</li></ul>
+1.4.2(12w37a )</li></ul>
 <p>清空玩家物品栏的物品。
 </p>
 <dl><dt>语法</dt></dl>
@@ -1514,18 +1509,18 @@ Alpha 1.0.16</li></ul>
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>clear [<i>玩家：目标</i>] [<i>物品名：字符串</i>] [<i>数据：整数</i>] [<i>最大数量：整数</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）（可选）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)(可选)
 <dl><dd> 必须是玩家名或目标选择器。若未定义则默认为命令执行者。在命令方块中为必需参数。</dd></dl></dd></dl>
-<dl><dd> <i>物品</i>（携带版：<i>物品名：字符串</i>）（可选）
+<dl><dd> <i>物品</i>(携带版：<i>物品名：字符串</i>)(可选)
 <dl><dd> 指定将被清除的物品的ID。若未定义则清除物品栏中所有物品。</dd></dl></dd></dl>
-<dl><dd> <i>数据</i>（携带版：<i>数据：整数</i>）（可选）
+<dl><dd> <i>数据</i>(携带版：<i>数据：整数</i>)(可选)
 <dl><dd> 指定将被清除的物品的数据值。若未指定或定义为<code>-1</code>，则所有符合<i>物品</i>值的物品会被清除而不考虑物品数据。</dd></dl></dd></dl>
-<dl><dd> <i>最大数量</i>（携带版：<i>最大数量：整数</i>）（可选）
-<dl><dd> 指定物品将被清除的最大数量。若未指定或定义为<code>-1</code>，则所有符合<i>物品</i>与<i>数据</i>值的物品会被清除。若定义为<code>0</code>，则不会清除任何物品，但会成功执行并返回是否有物品本应该被清除（用来检测物品但不清除物品）。</dd></dl></dd></dl>
-<dl><dd> <i>数据标签</i>（可选）<sup>[<i>仅Java版</i>]</sup>
-<dl><dd> 指定将被清除的物品的数据标签（只有符合数据标签的物品会被清除；没有数据标签的物品不会被考虑）。必须为NBT标签组合（示例：<code>{display:{Name:Fred}}</code>）。</dd></dl></dd></dl>
+<dl><dd> <i>最大数量</i>(携带版：<i>最大数量：整数</i>)(可选)
+<dl><dd> 指定物品将被清除的最大数量。若未指定或定义为<code>-1</code>，则所有符合<i>物品</i>与<i>数据</i>值的物品会被清除。若定义为<code>0</code>，则不会清除任何物品，但会成功执行并返回是否有物品本应该被清除(用来检测物品但不清除物品)。</dd></dl></dd></dl>
+<dl><dd> <i>数据标签</i>(可选)<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定将被清除的物品的数据标签(只有符合数据标签的物品会被清除；没有数据标签的物品不会被考虑)。必须为NBT标签组合(示例：<code>{display:{Name:Fred}}</code>)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 若参数没有被正确指定，<i>玩家</i>没能指定一个或更多的在线玩家或者没有移除任何物品（除了<i>最大数量</i>为<code>0</code>的情况），则失败。</dd></dl>
+<dl><dd> 若参数没有被正确指定，<i>玩家</i>没能指定一个或更多的在线玩家或者没有移除任何物品(除了<i>最大数量</i>为<code>0</code>的情况)，则失败。</dd></dl>
 <dl><dd> 成功时，移除指定玩家的物品。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 清除自己的所有物品：<code>clear</code></dd></dl>
@@ -1540,8 +1535,7 @@ Alpha 1.0.16</li></ul>
 <dd> <code>/give</code> — 给予玩家物品</dd>
 <dd> <code>/kill</code> — 清除物品实体</dd>
 <dd> <code>/replaceitem</code> — 替换方块或实体的物品栏中的物品</dd></dl>
-<p><br />
-</p>
+
 
 
 <h2>clone</h2>
@@ -1549,7 +1543,7 @@ Alpha 1.0.16</li></ul>
 是管理员</li><li>
 加入版本: 
 1.8(14w03a)
-, PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+, PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 
@@ -1563,43 +1557,42 @@ Alpha 1.0.16</li></ul>
 <dl><dd> <code>clone <span style="background-color:#FDD">&lt;<i>begin: x y z</i>&gt;</span> <span style="background-color:#FFD">&lt;<i>end: x y z</i>&gt;</span> <span style="background-color:#DDF">&lt;<i>destination: x y z</i>&gt;</span> [<i>遮罩模式：字符串</i>] [<i>复制模式：字符串</i>] [<i>方块名：字符串</i>] [<i>方块数据：整数</i>]</code></dd></dl>
 <dl><dd><i>上方的背景色是为了方便阅读。游戏内clone命令的帮助信息中没有最后一个参数：</i>方块名<i>，此处是为了后续讨论而设。</i></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <span style="background-color:#FDD"><i>x1 y1 z1</i></span>与<span style="background-color:#FFD"><i>x2 y2 z2</i></span>（携带版：<span style="background-color:#FDD"><i>begin: x y z</i></span>与<span style="background-color:#FFD"><i>end: x y z</i></span>）
+<dl><dd> <span style="background-color:#FDD"><i>x1 y1 z1</i></span>与<span style="background-color:#FFD"><i>x2 y2 z2</i></span>(携带版：<span style="background-color:#FDD"><i>begin: x y z</i></span>与<span style="background-color:#FFD"><i>end: x y z</i></span>)
 <dl><dd> 定义源区域的两组对角方块坐标。可以使用波浪号来指定命令执行地的相对距离。</dd></dl></dd></dl>
 <dl><dd><dl><dd> 构成边角的方块在此方块的坐标正方向上延伸。因此，各轴上较小的坐标将会正好贴合区域边界，但较大的坐标将会超过边界1方块，源区域的体积则为(x<sub>大</sub> - x<sub>小</sub> + 1) × (y<sub>大</sub> - y<sub>小</sub> + 1) × (z<sub>大</sub> - z<sub>小</sub> + 1)。例如：<code>0 0 0 0 0 0</code>的体积为1方块，<code>0 0 0 1 1 1</code>与<code>1 1 1 0 0 0</code>都指定同一块8方块大小的区域。</dd></dl></dd></dl>
-<dl><dd> <span style="background-color:#DDF"><i>x y z</i></span>（携带版：<span style="background-color:#DDF"><i>destination: x y z</i></span>）
-<dl><dd> 定义目标区域的西北方向较低（即在各轴上坐标较小）的角。可以使用波浪号来指定命令执行地的相对距离。</dd></dl></dd></dl>
-<dl><dd> <i>遮罩模式</i>（携带版：<i>遮罩模式：字符串</i>）（可选）
+<dl><dd> <span style="background-color:#DDF"><i>x y z</i></span>(携带版：<span style="background-color:#DDF"><i>destination: x y z</i></span>)
+<dl><dd> 定义目标区域的西北方向较低(即在各轴上坐标较小)的角。可以使用波浪号来指定命令执行地的相对距离。</dd></dl></dd></dl>
+<dl><dd> <i>遮罩模式</i>(携带版：<i>遮罩模式：字符串</i>)(可选)
 <dl><dd> 指定是否过滤被复制方块。必须为下列之一：
 <ul><li> <code>filtered</code> — 仅复制方块ID符合<i>方块名</i>定义的方块。</li>
 <li> <code>masked</code> — 仅复制非空气方块。会保持目的区域中原本会被替换为空气的方块不变。</li>
 <li> <code>replace</code> — 复制所有方块，用源区域的方块覆盖目标区域中的<i>所有</i>方块。</li></ul></dd>
 <dd> 若未定义，默认为<code>replace</code>。</dd></dl></dd></dl>
-<dl><dd> <i>复制模式</i>（携带版：<i>复制模式：字符串</i>）（可选）
+<dl><dd> <i>复制模式</i>(携带版：<i>复制模式：字符串</i>)(可选)
 <dl><dd> 指定对源区域的操作。必须为下列之一：
 <ul><li> <code>force</code> — 强制复制，即使源区域与目标区域有重叠。</li>
 <li> <code>move</code> — 将源区域复制到目标区域，并将源区域替换为空气。在filtered遮罩模式下，只有被复制的方块才会被替换为空气。</li>
 <li> <code>normal</code> — 不执行force与move。</li></ul></dd>
 <dd> 若未指定，默认为<code>normal</code>。</dd></dl></dd></dl>
-<dl><dd> <i>方块名</i>（携带版：<i>方块名：字符串</i>）（可选）
-<dl><dd> 指定当<i>遮罩模式</i>设置为<code>filtered</code>时要复制的方块ID（示例：<code>minecraft:stone</code>）。在<code>filtered</code>模式下为必需参数。</dd></dl></dd></dl>
-<dl><dd> <i>数据值</i>（可选）
-<dl><dd> 指定复制时需要符合的方块数据值。必须在0到15之间（含）。</dd></dl></dd></dl>
-<dl><dd> <i>方块状态</i>（可选）<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> <i>方块名</i>(携带版：<i>方块名：字符串</i>)(可选)
+<dl><dd> 指定当<i>遮罩模式</i>设置为<code>filtered</code>时要复制的方块ID(示例：<code>minecraft:stone</code>)。在<code>filtered</code>模式下为必需参数。</dd></dl></dd></dl>
+<dl><dd> <i>数据值</i>(可选)
+<dl><dd> 指定复制时需要符合的方块数据值。必须在0到15之间(含)。</dd></dl></dd></dl>
+<dl><dd> <i>方块状态</i>(可选)<sup>[<i>仅Java版</i>]</sup>
 <dl><dd> 指定复制时需要符合的方块状态值。必须对于<i>方块名</i>中指定的方块有效。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 若参数没有被正确指定，或源区域的方块体积大于32768（足够复制8个区块的区域），或源区域与目标区域重合（除非使用了force复制模式），或者源区域与目标区域尚未被渲染时，则失败。</dd></dl>
-<dl><dd> 成功时，将目标区域用源区域的方块覆盖，源区域不变（除非使用了move复制模式）。</dd></dl>
+<dl><dd> 若参数没有被正确指定，或源区域的方块体积大于32768(足够复制8个区块的区域)，或源区域与目标区域重合(除非使用了force复制模式)，或者源区域与目标区域尚未被渲染时，则失败。</dd></dl>
+<dl><dd> 成功时，将目标区域用源区域的方块覆盖，源区域不变(除非使用了move复制模式)。</dd></dl>
 <dl><dt>另见</dt></dl>
 <dl><dd> <code>/fill</code> — 用一类方块填充整个区域</dd></dl>
-<p><br />
-</p>
+
 
 <h2>debug</h2>
 <ul><li>限制条件:
 是管理员,
 不在命令方块上执行</li><li>
 加入版本:
-1.3.1（12w27a ）
+1.3.1(12w27a )
 
 </li></ul>
 <p>开始或结束调试会话。
@@ -1614,28 +1607,27 @@ Alpha 1.0.16</li></ul>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若在已有活动的调试会话时尝试开始调试会话，或在没有时尝试结束，则失败，</dd></dl>
 <dl><dd> 若成功，开始或结束调试会话。调试会话活动时，将潜在性能瓶颈的提醒记录于控制台。停止时，在“debug”文件夹中创建一份分析结果。</dd></dl>
-<p><br />
-</p>
+
 
 <h2>defaultgamemode</h2>
 
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.3.1（12w22a ）
+1.3.1(12w22a )
 
 </li></ul>
-<p>设置新玩家进入服务器时默认的游戏模式（生存、创造等）。
+<p>设置新玩家进入服务器时默认的游戏模式(生存、创造等)。
 </p>
 <dl><dt>语法</dt></dl>
 <dl><dd><code>defaultgamemode &lt;<i>模式</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
 <dl><dd> <i>模式</i></dd></dl>
 <dl><dd><dl><dd> 定义新玩家的默认游戏模式。必须为下列之一：
-<ul><li> <code>survival</code>（可简写为<code>s</code>或<code>0</code>）表示生存模式</li>
-<li> <code>creative</code>（可简写为<code>c</code>或<code>1</code>）表示创造模式</li>
-<li> <code>adventure</code>（可简写为<code>a</code>或<code>2</code>）表示冒险模式</li>
-<li> <code>spectator</code>（可简写为<code>sp</code>或<code>3</code>）表示旁观模式</li></ul></dd></dl></dd></dl>
+<ul><li> <code>survival</code>(可简写为<code>s</code>或<code>0</code>)表示生存模式</li>
+<li> <code>creative</code>(可简写为<code>c</code>或<code>1</code>)表示创造模式</li>
+<li> <code>adventure</code>(可简写为<code>a</code>或<code>2</code>)表示冒险模式</li>
+<li> <code>spectator</code>(可简写为<code>sp</code>或<code>3</code>)表示旁观模式</li></ul></dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 参数没有被正确指定时失败。</dd></dl>
 <dl><dd> 成功时，更改显示在世界选择菜单的默认游戏模式。新进入世界的玩家会被设为该默认游戏模式。</dd></dl>
@@ -1653,7 +1645,7 @@ Alpha 1.0.16</li></ul>
 不在命令方块上执行</li><li>
 加入版本:
 Alpha 1.0.16,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>撤销玩家的管理员身份。
@@ -1664,22 +1656,21 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>deop &lt;<i>玩家：目标</i>&gt;</code></dd>
 <dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)
 <dl><dd> 指定一个玩家从管理员列表中移除。 可以是玩家名或目标选择器，但目标选择器不会被解析；只有明确指定的玩家才能会产生有效结果。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若条件满足，则永远成功。如果<i>玩家</i>处于管理员名单中，则会被除名，所有使用该名称的玩家都不再拥有管理员权限。</dd></dl>
 <dl><dt>示例</dt>
 <dd> 将Alice从管理员列表中移除: <code>deop Alice</code></dd></dl>
-<p><br />
-</p>
+
 
 <h2>difficulty</h2>
 
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.4.2（12w32a ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.4.2(12w32a ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
 
@@ -1692,7 +1683,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <dl><dd> <code>difficulty &lt;<i>难度：整数</i>&gt;</code></dd>
 <dd> <code>difficulty &lt;<i>难度：字符串</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt>
-<dd> <i>难度</i>（携带版：<i>难度：整数</i>或<i>难度：字符串</i>）
+<dd> <i>难度</i>(携带版：<i>难度：整数</i>或<i>难度：字符串</i>)
 <dl><dd> 新的游戏难度。必须为以下之一：
 <ul><li> <code>peaceful</code> (可被简写为<code>p</code>或<code>0</code>)为和平难度</li>
 <li> <code>easy</code> (可被简写为<code>e</code>或<code>1</code>)为简单难度</li>
@@ -1705,40 +1696,39 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <dl><dd> 更改难度为困难: <code>difficulty hard</code>、<code>difficulty h</code>或<code>difficulty 3</code></dd></dl>
 <dl><dt>另见</dt></dl>
 <dl><dd> <code>/gamemode</code> – 更改一位玩家的游戏模式(创造、生存，等等)</dd></dl>
-<p><br />
-</p>
+
 
 <h2>effect</h2>
 
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.5（13w09b ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.5(13w09b ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
 <p><b>effect</b>命令管理玩家及其它实体上的状态效果。
 </p>
 <dl><dt>语法</dt></dl>
 <ul><li> <b>PC版</b></li></ul>
-<dl><dd> <code>effect &lt;<i>玩家</i>&gt; clear</code>（移除所有效果）</dd>
-<dd> <code>effect &lt;<i>玩家</i>&gt; &lt;<i>效果</i>&gt; [<i>秒数</i>] [<i>强度</i>] [<i>隐藏颗粒</i>]</code>（给予一种效果）</dd></dl>
+<dl><dd> <code>effect &lt;<i>玩家</i>&gt; clear</code>(移除所有效果)</dd>
+<dd> <code>effect &lt;<i>玩家</i>&gt; &lt;<i>效果</i>&gt; [<i>秒数</i>] [<i>强度</i>] [<i>隐藏颗粒</i>]</code>(给予一种效果)</dd></dl>
 <ul><li> <b>携带版</b></li></ul>
-<dl><dd> <code>effect &lt;<i>玩家：目标</i>&gt; clear</code> （移除所有效果）</dd>
-<dd> <code>effect &lt;<i>玩家：目标</i>&gt; &lt;<i>效果：字符串</i>&gt; [<i>秒数：整数</i>] [<i>强度：整数</i>] [<i>隐藏颗粒：布尔值</i>]</code>（给予一种效果）</dd></dl>
+<dl><dd> <code>effect &lt;<i>玩家：目标</i>&gt; clear</code> (移除所有效果)</dd>
+<dd> <code>effect &lt;<i>玩家：目标</i>&gt; &lt;<i>效果：字符串</i>&gt; [<i>秒数：整数</i>] [<i>强度：整数</i>] [<i>隐藏颗粒：布尔值</i>]</code>(给予一种效果)</dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）
-<dl><dd> 指定目标。必须是一位玩家的名字或目标选择器（允许使用<code>@e</code>选择非玩家实体）。</dd></dl></dd></dl>
-<dl><dd> <i>效果</i>（携带版：<i>效果：字符串</i>）
-<dl><dd> 指定给予的效果。必须是一个状态效果ID（例如，<code>1</code>或<code>minecraft:speed</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>秒数</i>（携带版：<i>秒数：整数</i>）（可选）
-<dl><dd> 以秒为单位指定效果时长。必须在0至1,000,000之间（含，不输入逗号）。若未指定，默认为30秒。</dd></dl></dd></dl>
-<dl><dd> <i>强度</i>（携带版：<i>强度：整数</i>）（可选）
-<dl><dd> 指定效果的额外等级。必须在0至255之间（含）。若未指定，默认为0。注意，状态效果的第一级（如生命恢复 I）对应为0，因此第二级状态效果，如生命回复 II，应指定强度为1。</dd></dl></dd></dl>
-<dl><dd> <i>隐藏颗粒</i>（携带版：<i>隐藏颗粒：布尔值</i>）（可选）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)
+<dl><dd> 指定目标。必须是一位玩家的名字或目标选择器(允许使用<code>@e</code>选择非玩家实体)。</dd></dl></dd></dl>
+<dl><dd> <i>效果</i>(携带版：<i>效果：字符串</i>)
+<dl><dd> 指定给予的效果。必须是一个状态效果ID(例如，<code>1</code>或<code>minecraft:speed</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>秒数</i>(携带版：<i>秒数：整数</i>)(可选)
+<dl><dd> 以秒为单位指定效果时长。必须在0至1,000,000之间(含，不输入逗号)。若未指定，默认为30秒。</dd></dl></dd></dl>
+<dl><dd> <i>强度</i>(携带版：<i>强度：整数</i>)(可选)
+<dl><dd> 指定效果的额外等级。必须在0至255之间(含)。若未指定，默认为0。注意，状态效果的第一级(如生命恢复 I)对应为0，因此第二级状态效果，如生命回复 II，应指定强度为1。</dd></dl></dd></dl>
+<dl><dd> <i>隐藏颗粒</i>(携带版：<i>隐藏颗粒：布尔值</i>)(可选)
 <dl><dd> 指定是否隐藏状态效果的颗粒，以及游戏界面上的状态效果指示图标<sup>[<i>仅Java版</i>]</sup>。必须为<code>true</code>或<code>false</code>。若未指定，默认为<code>false</code>。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 若参数指定不正确，或当<i>玩家</i>不是有效实体（指定名字的玩家必须在线），或当<i>秒数</i>被指定为0而目标没有该效果时，或当在<code>clear</code>模式下没有效果被移除时失败。</dd></dl>
+<dl><dd> 若参数指定不正确，或当<i>玩家</i>不是有效实体(指定名字的玩家必须在线)，或当<i>秒数</i>被指定为0而目标没有该效果时，或当在<code>clear</code>模式下没有效果被移除时失败。</dd></dl>
 <dl><dd> 若成功：</dd></dl>
 <dl><dd><ul><li> <code>clear</code> — 从目标身上清除所有状态效果。</li>
 <li> <i>效果</i> — 给目标添加状态效果。如果一个目标已经拥有该状态效果，同等级的新状态效果仅在拥有更长的持续时覆盖旧的持续时间，但更高等级的新状态效果将会覆盖之前的持续时间。如果秒数设为0，则会取消指定的效果。</li></ul></dd></dl>
@@ -1747,8 +1737,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <dl><dd> 给予最近的玩家一个60秒的速度 III效果：<code>effect @p minecraft:speed 60 2</code></dd>
 <dd> 从所有玩家身上清除任何急迫效果：<code>effect @a minecraft:haste 0</code></dd>
 <dd> 清除所有僵尸身上的所有效果：<code>effect @e[type=zombie] clear</code></dd></dl>
-<p><br />
-</p>
+
 
 
 <h2>enchant</h2>
@@ -1756,8 +1745,8 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.4.4（1.4.4-pre ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 5 ）
+1.4.4(1.4.4-pre ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 5 )
 
 </li></ul>
 <p>为一位玩家手持的物品添加魔咒。受限于铁砧机制。
@@ -1770,21 +1759,20 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 5 ）
 <dl><dd><dl><dd> 可使用魔咒ID的字符串形式：</dd></dl></dd></dl>
 <dl><dd> <code>enchant &lt;<i>玩家：目标</i>&gt; &lt;<i>魔咒ID：字符串</i>&gt; [<i>等级：整数</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)
 <dl><dd> 指定目标。必须是一个玩家名或目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>魔咒ID</i>（携带版：<i>魔咒ID：整数</i>或<i>魔咒ID：字符串</i>）
-<dl><dd> 指定添加至玩家手持物品的魔咒。必须是一个有效的魔咒ID（例如，<code>16</code>或<code>minecraft:sharpness</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>等级</i> （携带版：<i>等级：整数</i>）（可选）
+<dl><dd> <i>魔咒ID</i>(携带版：<i>魔咒ID：整数</i>或<i>魔咒ID：字符串</i>)
+<dl><dd> 指定添加至玩家手持物品的魔咒。必须是一个有效的魔咒ID(例如，<code>16</code>或<code>minecraft:sharpness</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>等级</i> (携带版：<i>等级：整数</i>)(可选)
 <dl><dd> 指定魔咒等级。必须至少为1且不大于特定魔咒的最大等级。若未指定，默认为1。</dd></dl></dd></dl>
 <dl><dt>效果</dt>
-<dd> 若参数指定不正确，或当<i>玩家</i>未能指定一个或更多的在线玩家，或当魔咒对物品无效或与现有魔咒冲突时则失败（例如，“火焰保护”魔咒无法给予已附魔“保护”的盔甲，而“锋利III”无法给予已附魔“锋利I”的剑）。</dd>
+<dd> 若参数指定不正确，或当<i>玩家</i>未能指定一个或更多的在线玩家，或当魔咒对物品无效或与现有魔咒冲突时则失败(例如，“火焰保护”魔咒无法给予已附魔“保护”的盔甲，而“锋利III”无法给予已附魔“锋利I”的剑)。</dd>
 <dd> 若成功，添加指定的魔咒至目标的手持物品。</dd></dl>
 <dl><dt>示例</dt>
 <dd> 给所有手持弓的玩家附魔无限：<code>enchant @a 51</code></dd></dl>
 <dl><dt>备注</dt>
-<dd> 虽然<code>/enchant</code>对魔咒有等级和兼容性限制，但其它命令（如<code>/give</code>、<code>/replaceitem</code>和<code>/entitydata</code>）可以绕过这些限制。</dd></dl>
-<p><br />
-</p>
+<dd> 虽然<code>/enchant</code>对魔咒有等级和兼容性限制，但其它命令(如<code>/give</code>、<code>/replaceitem</code>和<code>/entitydata</code>)可以绕过这些限制。</dd></dl>
+
 
 
 <h2>entitydata</h2>
@@ -1795,7 +1783,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 5 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.8（14w32b ）</li></ul>
+1.8(14w32b )</li></ul>
 <p>修改实体的数据标签。
 </p>
 <dl><dt>语法</dt></dl>
@@ -1804,15 +1792,14 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 5 ）
 <dl><dd> <i>实体</i>
 <dl><dd> 指定要修改的实体。必须是实体的UUID或<code>@e</code>目标选择器。</dd></dl></dd></dl>
 <dl><dd> <i>数据标签</i>
-<dl><dd> 指定实体要被添加或修改的数据标签（无法删除数据标签，且字符串参数不能为空/null）。必须是NBT标签组合（例如， <code>{CustomName:"Fred"}</code>）。</dd></dl></dd></dl>
+<dl><dd> 指定实体要被添加或修改的数据标签(无法删除数据标签，且字符串参数不能为空/null)。必须是NBT标签组合(例如， <code>{CustomName:"Fred"}</code>)。</dd></dl></dd></dl>
 <dl><dt>效果</dt>
-<dd> 若参数指定不正确，或没有符合<i>实体</i>的非玩家实体则失败。（不可修改玩家。）</dd>
+<dd> 若参数指定不正确，或没有符合<i>实体</i>的非玩家实体则失败。(不可修改玩家。)</dd>
 <dd> 若成功，修改目标实体的数据标签。</dd></dl>
 <dl><dt>示例</dt>
 <dd> 阻止所有现有僵尸捡拾物品：
 <dl><dd> <code>entitydata @e[type=zombie] {CanPickUpLoot:0}</code></dd></dl></dd></dl>
-<p><br />
-</p>
+
 
 
 <h2>execute</h2>
@@ -1820,8 +1807,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 5 ）
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.8（14w07a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.8(14w07a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>使用此命令执行者的权限，以其它玩家或实体的身份执行一条命令。可以添加一个<code>/testforblock</code>格式的限制条件。
@@ -1838,34 +1825,33 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <p><i>以上文字的颜色是为了便于阅读。</i>
 </p>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>实体</i>（携带版：<i>执行源：目标</i>）
+<dl><dd> <i>实体</i>(携带版：<i>执行源：目标</i>)
 <dl><dd> 指定目标命令执行者。必须为一个玩家名或目标选择器。若多个目标被选中，则每个目标各运行一次指定的命令。</dd></dl></dd></dl>
-<dl><dd> <span style="background-color:#FDD"><i>x y z</i></span>（携带版：<span style="background-color:#FDD"><i>坐标：x y z</i></span>）
-<dl><dd> 指定命令运行的位置。<i>x</i>和<i>z</i>必须在-30,000,000到30,000,000内（含）。使用波浪号指定的相对坐标的参考点为命令代行者所处位置，而非此命令的执行位置。</dd></dl></dd></dl>
-<dl><dd> <i>命令</i>（携带版：<i>命令：字符串</i>）
+<dl><dd> <span style="background-color:#FDD"><i>x y z</i></span>(携带版：<span style="background-color:#FDD"><i>坐标：x y z</i></span>)
+<dl><dd> 指定命令运行的位置。<i>x</i>和<i>z</i>必须在-30,000,000到30,000,000内(含)。使用波浪号指定的相对坐标的参考点为命令代行者所处位置，而非此命令的执行位置。</dd></dl></dd></dl>
+<dl><dd> <i>命令</i>(携带版：<i>命令：字符串</i>)
 <dl><dd> 指定要运行的命令。必须为一个有效命令。</dd></dl></dd></dl>
-<dl><dd> <span style="background-color:#DDF"><i>x2 y2 z2</i></span>（携带版：<span style="background-color:#DDF"><i>测试坐标：x y z</i></span>）（仅在<code>detect</code>模式可用）
-<dl><dd> 指定要检测方块的位置。<i>x2</i>和<i>z2</i>必须在-30,000,000到30,000,000内（含）。可使用波浪号来指定与(<i>x</i>,<i>y</i>,<i>z</i>)的相对坐标。</dd></dl></dd></dl>
-<dl><dd> <i>方块</i>（携带版：<i>测试方块：字符串</i>）（仅在<code>detect</code>模式可用）
-<dl><dd> 指定方块ID，必须与(<i>x2</i>,<i>y2</i>,<i>z2</i>)处的方块相同，命令才会执行。<i>方块</i>必须是有效的方块ID（例如，<code>minecraft:stone</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>数据</i>（携带版：<i>测试数据：整数</i>）（仅在<code>detect</code>模式可用）
+<dl><dd> <span style="background-color:#DDF"><i>x2 y2 z2</i></span>(携带版：<span style="background-color:#DDF"><i>测试坐标：x y z</i></span>)(仅在<code>detect</code>模式可用)
+<dl><dd> 指定要检测方块的位置。<i>x2</i>和<i>z2</i>必须在-30,000,000到30,000,000内(含)。可使用波浪号来指定与(<i>x</i>,<i>y</i>,<i>z</i>)的相对坐标。</dd></dl></dd></dl>
+<dl><dd> <i>方块</i>(携带版：<i>测试方块：字符串</i>)(仅在<code>detect</code>模式可用)
+<dl><dd> 指定方块ID，必须与(<i>x2</i>,<i>y2</i>,<i>z2</i>)处的方块相同，命令才会执行。<i>方块</i>必须是有效的方块ID(例如，<code>minecraft:stone</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>数据</i>(携带版：<i>测试数据：整数</i>)(仅在<code>detect</code>模式可用)
 <dl><dd> 必须与测试方块的方块数据相等，命令才会执行。设为<code>-1</code>可匹配任意的方块数据。</dd></dl></dd></dl>
-<dl><dd> <i>状态</i>（仅在<code>detect</code>模式可用）<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> <i>状态</i>(仅在<code>detect</code>模式可用)<sup>[<i>仅Java版</i>]</sup>
 <dl><dd> 必须与测试方块的方块状态相等，命令才会执行。设为<code>*</code>可匹配任意的方块状态。</dd></dl></dd></dl>
 <dl><dt>效果</dt>
-<dd> 若参数指定不正确，或<i>实体</i>无法解析为一个或多个有效实体（指定名字的玩家必须在线），或检测到的方块ID、数据或状态不匹配，或指定的命令执行失败则失败。</dd></dl>
+<dd> 若参数指定不正确，或<i>实体</i>无法解析为一个或多个有效实体(指定名字的玩家必须在线)，或检测到的方块ID、数据或状态不匹配，或指定的命令执行失败则失败。</dd></dl>
 <dl><dd> 若成功，指定的命令将在指定的坐标位置，使用管理员等级的权限，以目标的身份执行。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 在每个僵尸的位置生成闪电：
 <dl><dd> <code>execute @e[type=zombie] ~ ~ ~ summon LightningBolt</code></dd></dl></dd></dl>
 <dl><dd> 在每个站在任意种类沙子上的僵尸的位置生成闪电：
 <dl><dd> <code>execute @e[type=zombie] ~ ~ ~ detect ~ ~-1 ~ minecraft:sand -1 summon lightning_bolt</code></dd></dl></dd></dl>
-<dl><dd> 在最近的玩家处召唤10只爬行者（只会在已载入的世界中存在至少10个实体时生效）：
+<dl><dd> 在最近的玩家处召唤10只爬行者(只会在已载入的世界中存在至少10个实体时生效)：
 <dl><dd> <code>execute @e[c=10] ~ ~ ~ execute @p ~ ~ ~ summon creeper</code></dd></dl></dd></dl>
 <dl><dt>另见</dt>
-<dd> <code>/testforblock</code> — 检测一个特定位置的某个方块（包括指定的数据标签）</dd></dl>
-<p><br />
-</p>
+<dd> <code>/testforblock</code> — 检测一个特定位置的某个方块(包括指定的数据标签)</dd></dl>
+
 
 
 
@@ -1874,8 +1860,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li>限制条件:是管理员
 </li><li>
 加入版本:
-1.8（14w03a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）</li></ul>	
+1.8(14w03a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )</li></ul>	
 
 <p>用特定方块填充一个区域的全部或部分。
 </p>
@@ -1889,26 +1875,26 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）</li></ul>
 <p><i>以上文字的颜色是为了便于阅读。</i>
 </p>
 <dl><dt>参数</dt></dl>
-<dl><dd> <span style="background-color:#FDD"><i>x1 y1 z1</i></span>与<span style="background-color:#DDF"><i>x2 y2 z2</i></span>（携带版：<span style="background-color:#FDD"><i>自：x y z</i></span>与<span style="background-color:#DDF"><i>至：x y z</i></span>）
+<dl><dd> <span style="background-color:#FDD"><i>x1 y1 z1</i></span>与<span style="background-color:#DDF"><i>x2 y2 z2</i></span>(携带版：<span style="background-color:#FDD"><i>自：x y z</i></span>与<span style="background-color:#DDF"><i>至：x y z</i></span>)
 <dl><dd> 定义填充区域的两组对角方块坐标。可使用波浪号来指定与命令执行处的相对距离。</dd></dl></dd></dl>
 <dl><dd><dl><dd> 构成边角的方块在此方块的坐标正方向上延伸。因此，各轴上较小的坐标将会正好贴合区域边界，但较大的坐标将会超过边界1方块，源区域的体积则为(x<sub>大</sub> - x<sub>小</sub> + 1) × (y<sub>大</sub> - y<sub>小</sub> + 1) × (z<sub>大</sub> - z<sub>小</sub> + 1)。例如：<code>0 0 0 0 0 0</code>的体积为1方块，<code>0 0 0 1 1 1</code>与<code>1 1 1 0 0 0</code>都指定同一块8方块大小的区域。</dd></dl></dd></dl>
 <dl><dd> <i>方块名</i>
-<dl><dd> 指定用于填充该区域的方块。必须为一个方块ID（例如,<code>minecraft:stone</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>数据</i>（可选）
-<dl><dd> 指定用于填充方块的方块数据。必须在0到15间（含）。</dd></dl></dd></dl>
-<dl><dd> <i>状态</i>（可选）<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定用于填充该区域的方块。必须为一个方块ID(例如,<code>minecraft:stone</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>数据</i>(可选)
+<dl><dd> 指定用于填充方块的方块数据。必须在0到15间(含)。</dd></dl></dd></dl>
+<dl><dd> <i>状态</i>(可选)<sup>[<i>仅Java版</i>]</sup>
 <dl><dd> 指定用于填充方块的方块状态。必须对于<i>方块名</i>指定的方块有效。</dd></dl></dd></dl>
-<dl><dd> <i>原有方块处理方式</i>（可选）
+<dl><dd> <i>原有方块处理方式</i>(可选)
 <dl><dd> 必须为其中之一：
-<ul><li> <code>destroy</code> - 用指定方块替换填充区域内所有方块（包括空气），原有方块视为被无魔咒的钻石锹或镐采掘而掉落对应的实体形式。（只能被剪刀采集的方块，如藤蔓，不会掉落；流体方块同理。）</li>
-<li> <code>hollow</code> - 仅用指定方块替换填充区域外层的方块。内部方块被替换为空气，掉落被替换方块可能拥有的内容物，但方块自身不会掉落。若被填充的区域没有内部（长、宽、高至少一个不足3方格）时，与<code>replace</code>效果相似。</li>
+<ul><li> <code>destroy</code> - 用指定方块替换填充区域内所有方块(包括空气)，原有方块视为被无魔咒的钻石锹或镐采掘而掉落对应的实体形式。(只能被剪刀采集的方块，如藤蔓，不会掉落；流体方块同理。)</li>
+<li> <code>hollow</code> - 仅用指定方块替换填充区域外层的方块。内部方块被替换为空气，掉落被替换方块可能拥有的内容物，但方块自身不会掉落。若被填充的区域没有内部(长、宽、高至少一个不足3方格)时，与<code>replace</code>效果相似。</li>
 <li> <code>keep</code> - 仅用指定方块替换填充区域内的空气方块。</li>
-<li> <code>outline</code> - 仅用指定方块替换填充区域外层的方块。内部方块不受影响。若被填充的区域没有内部（长、宽、高至少一个不足3方格）时，与<code>replace</code>效果相似。</li>
-<li> <code>replace</code> - 用指定方块替换填充区域内所有方块（包括空气），而不以实体形式掉落被替换的方块和方块内容物。可选地，不指定替换后方块的数据标签，而是指定方块ID和数据值，用于限制被替换的方块类型（见下<i>替换方块名</i>和<i>替换方块数据</i>）</li></ul></dd>
+<li> <code>outline</code> - 仅用指定方块替换填充区域外层的方块。内部方块不受影响。若被填充的区域没有内部(长、宽、高至少一个不足3方格)时，与<code>replace</code>效果相似。</li>
+<li> <code>replace</code> - 用指定方块替换填充区域内所有方块(包括空气)，而不以实体形式掉落被替换的方块和方块内容物。可选地，不指定替换后方块的数据标签，而是指定方块ID和数据值，用于限制被替换的方块类型(见下<i>替换方块名</i>和<i>替换方块数据</i>)</li></ul></dd>
 <dd>若未指定，默认为<code>replace</code>。</dd></dl></dd></dl>
-<dl><dd> <i>数据标签</i>（可选）<sup>[<i>仅Java版</i>]</sup>
-<dl><dd> 指定用于填充方块的数据标签（例如，一个箱子的内容物，一面旗帜上的图案等）。必须为一个NBT格式组合（例如<code>{CustomName:Fred}</code>）。不能与<i>替换方块名</i>和<i>替换方块数据</i>参数同时使用。</dd></dl></dd>
-<dd> <i>替换方块名</i>与<i>替换方块数据</i>（携带版：<i>替换方块名：字符串</i>与<i>替换方块数据：整数</i>）（可选）
+<dl><dd> <i>数据标签</i>(可选)<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定用于填充方块的数据标签(例如，一个箱子的内容物，一面旗帜上的图案等)。必须为一个NBT格式组合(例如<code>{CustomName:Fred}</code>)。不能与<i>替换方块名</i>和<i>替换方块数据</i>参数同时使用。</dd></dl></dd>
+<dd> <i>替换方块名</i>与<i>替换方块数据</i>(携带版：<i>替换方块名：字符串</i>与<i>替换方块数据：整数</i>)(可选)
 <dl><dd> 仅当<i>原有方块处理方式</i>为<code>replace</code>时可用的参数。不能与<i>数据标签</i>参数同时使用。</dd>
 <dd>限定填充区域内将被替换方块的方块名及方块数据。若<i>替换方块数据</i>未指定，则此条件被忽略。若两个参数均未指定，替换填充区域内所有方块。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
@@ -1921,15 +1907,14 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）</li></ul>
 <dl><dd> 将玩家脚下为顶面中心7×3×3的区域替换为水。</dd></dl></dd>
 <dd> <code>/fill <span style="background-color:#FDD">~-3 ~ ~-4</span> <span style="background-color:#DDF">~3 ~4 ~4</span> minecraft:planks 2 hollow</code>
 <dl><dd> 在玩家四周生成一个普通房间大小的盒子，并将内部替换为空气。</dd></dl></dd></dl>
-<p><br />
-</p>
+
 
 <h2>function</h2>
 
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.12（1.12-pre1 ）
+1.12(1.12-pre1 )
 
 </li></ul>
 
@@ -1956,8 +1941,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）</li></ul>
 <dl><dd>执行者不是玩家时，运行函数：<code>/function custom:example/test unless @s[type=player]</code></dd></dl>
 <dl><dt>另见</dt></dl>
 <dl><dd>游戏规则gameLoopFunction – 每一游戏刻均运行的函数</dd></dl>
-<p><br />
-</p>
+
 
 
 <h2>gamemode</h2>
@@ -1965,8 +1949,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）</li></ul>
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.3.1（12w16a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.3.1(12w16a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 
@@ -1980,14 +1964,14 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dl><dd> 通过数字而非名称指定游戏模式：</dd></dl></dd>
 <dd> <code>gamemode &lt;<i>模式：整数</i>&gt; [<i>玩家：目标</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>模式</i>（携带版：<i>模式：字符串</i>或<i>模式：整数</i>）
+<dl><dd> <i>模式</i>(携带版：<i>模式：字符串</i>或<i>模式：整数</i>)
 <dl><dd> 必须为其中之一：
-<ul><li> <code>survival</code>（可简写为<code>s</code>或<code>0</code>）为生存模式</li>
-<li> <code>creative</code>（可简写为<code>c</code>或<code>1</code>）为创造模式</li>
-<li> <code>adventure</code>（可简写为<code>a</code>或<code>2</code>）为冒险模式</li>
-<li> <code>spectator</code>（可简写为<code>sp</code>或<code>3</code>）为旁观模式<sup>[<i>仅Java版</i>]</sup></li></ul></dd></dl></dd></dl>
+<ul><li> <code>survival</code>(可简写为<code>s</code>或<code>0</code>)为生存模式</li>
+<li> <code>creative</code>(可简写为<code>c</code>或<code>1</code>)为创造模式</li>
+<li> <code>adventure</code>(可简写为<code>a</code>或<code>2</code>)为冒险模式</li>
+<li> <code>spectator</code>(可简写为<code>sp</code>或<code>3</code>)为旁观模式<sup>[<i>仅Java版</i>]</sup></li></ul></dd></dl></dd></dl>
 <dl><dd><dl><dd> “极限模式”不是一个有效的<i>模式</i>参数选项，因其技术上不是一个游戏模式。</dd></dl></dd></dl>
-<dl><dd><i>玩家</i>（携带版：<i>玩家：目标</i>）（可选）
+<dl><dd><i>玩家</i>(携带版：<i>玩家：目标</i>)(可选)
 <dl><dd>若指定，必须是一个玩家名或一个目标选择器。若未指定，默认为使用命令的玩家。当在命令方块中执行时，<i>玩家</i>为必需参数。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd>若参数指定不正确，或<i>玩家</i>无法解析为一个或多个在线玩家，则失败。</dd></dl>
@@ -1997,8 +1981,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dl><dd>使所有玩家进入生存模式：<code>gamemode 0 @a</code></dd></dl>
 <dl><dt>另见</dt></dl>
 <dl><dd>defaultgamemode – 设置加入世界玩家的初始游戏模式</dd></dl>
-<p><br />
-</p>
+
 
 
 <h2>gamerule</h2>
@@ -2006,8 +1989,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.4.2（12w32a ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.4.2(12w32a ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
 <p>设置或查询一条游戏规则。
@@ -2020,10 +2003,10 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <dd> <code>gamerule &lt;<i>规则：字符串</i>&gt; &lt;<i>值：整数</i>&gt;</code></dd>
 <dd> <code>gamerule [<i>规则：字符串</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>规则</i>（携带版：<i>规则：字符串</i>）
-<dl><dd> 指定要设置或查询的游戏规则。可为<i>任何</i>值，但只有某些预设的游戏规则会影响游戏玩法（见下<i>预设游戏规则</i>）。</dd></dl></dd></dl>
-<dl><dd> <i>值</i>（携带版：<i>值：布尔值</i>或<i>值：整数</i>）（可选）
-<dl><dd> 指定将游戏规则设置的值。可为<i>任何</i>值，但只有<code>true</code>或<code>false</code>指定预设的游戏规则会真正影响游戏玩法，除<code>maxEntityCramming</code>、<code>randomTickSpeed</code>和<code>spawnRadius</code>以外，任何0或以上的整数都会影响游戏玩法（见下<i>预设游戏规则</i>）。</dd></dl></dd></dl>
+<dl><dd> <i>规则</i>(携带版：<i>规则：字符串</i>)
+<dl><dd> 指定要设置或查询的游戏规则。可为<i>任何</i>值，但只有某些预设的游戏规则会影响游戏玩法(见下<i>预设游戏规则</i>)。</dd></dl></dd></dl>
+<dl><dd> <i>值</i>(携带版：<i>值：布尔值</i>或<i>值：整数</i>)(可选)
+<dl><dd> 指定将游戏规则设置的值。可为<i>任何</i>值，但只有<code>true</code>或<code>false</code>指定预设的游戏规则会真正影响游戏玩法，除<code>maxEntityCramming</code>、<code>randomTickSpeed</code>和<code>spawnRadius</code>以外，任何0或以上的整数都会影响游戏玩法(见下<i>预设游戏规则</i>)。</dd></dl></dd></dl>
 
 <table class="wikitable">
 <caption> 预设游戏规则
@@ -2051,7 +2034,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #FFC7CE; color: #9C0006;"> 否
 </td></tr>
 <tr>
-<td> <code>commandBlockOutput</code><br/>（携带版：<code>commandblockoutput</code>）
+<td> <code>commandBlockOutput</code><br/>(携带版：<code>commandblockoutput</code>)
 </td>
 <td> 命令方块执行命令时是否通报管理员
 </td>
@@ -2064,7 +2047,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <tr>
 <td> <code>disableElytraMovementCheck</code>
 </td>
-<td> 是否让服务器停止检查使用鞘翅玩家的移动速度。有助于减轻因服务器延迟而导致的飞行卡顿，但有可能导致生存模式下玩家飞行过快（作弊）。
+<td> 是否让服务器停止检查使用鞘翅玩家的移动速度。有助于减轻因服务器延迟而导致的飞行卡顿，但有可能导致生存模式下玩家飞行过快(作弊)。
 </td>
 <td style="text-align:center"> <code>false</code>
 </td>
@@ -2073,7 +2056,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #FFC7CE; color: #9C0006;"> 否
 </td></tr>
 <tr>
-<td> <code>doDaylightCycle</code><br/>（携带版：<code>dodaylightcycle</code>）
+<td> <code>doDaylightCycle</code><br/>(携带版：<code>dodaylightcycle</code>)
 </td>
 <td> 是否进行日夜交替和月相变化
 </td>
@@ -2084,7 +2067,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #C6EFCE; color: #006100;"> 是
 </td></tr>
 <tr>
-<td> <code>doEntityDrops</code><br/>（携带版：<code>doentitydrops</code>）
+<td> <code>doEntityDrops</code><br/>(携带版：<code>doentitydrops</code>)
 </td>
 <td> 非生物实体是否掉落物品
 </td>
@@ -2095,7 +2078,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #C6EFCE; color: #006100;"> 是
 </td></tr>
 <tr>
-<td> <code>doFireTick</code><br/>（携带版：<code>dofiretick</code>）
+<td> <code>doFireTick</code><br/>(携带版：<code>dofiretick</code>)
 </td>
 <td> 火是否传播及自然熄灭
 </td>
@@ -2117,7 +2100,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #FFC7CE; color: #9C0006;"> 否
 </td></tr>
 <tr>
-<td> <code>doMobLoot</code><br/>（携带版：<code>domobloot</code>）
+<td> <code>doMobLoot</code><br/>(携带版：<code>domobloot</code>)
 </td>
 <td> 生物是否掉落物品
 </td>
@@ -2128,7 +2111,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #C6EFCE; color: #006100;"> 是
 </td></tr>
 <tr>
-<td> <code>doMobSpawning</code><br/>（携带版：<code>domobspawning</code>）
+<td> <code>doMobSpawning</code><br/>(携带版：<code>domobspawning</code>)
 </td>
 <td> 生物是否自然生成。不影响刷怪箱。
 </td>
@@ -2139,7 +2122,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #C6EFCE; color: #006100;"> 是
 </td></tr>
 <tr>
-<td> <code>doTileDrops</code><br/>（携带版：<code>dotiledrops</code>）
+<td> <code>doTileDrops</code><br/>(携带版：<code>dotiledrops</code>)
 </td>
 <td> 方块被破坏时是否掉落物品
 </td>
@@ -2150,7 +2133,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #C6EFCE; color: #006100;"> 是
 </td></tr>
 <tr>
-<td> <code>doWeatherCycle</code><br/>（携带版：<code>doweathercycle</code>）
+<td> <code>doWeatherCycle</code><br/>(携带版：<code>doweathercycle</code>)
 </td>
 <td> 天气是否变化
 </td>
@@ -2205,7 +2188,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #FFC7CE; color: #9C0006;"> 否
 </td></tr>
 <tr>
-<td> <code>keepInventory</code><br/>（携带版：<code>keepinventory</code>）
+<td> <code>keepInventory</code><br/>(携带版：<code>keepinventory</code>)
 </td>
 <td> 玩家死亡后是否保留物品栏物品
 </td>
@@ -2240,7 +2223,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <tr>
 <td> <code>maxEntityCramming</code>
 </td>
-<td> 玩家或生物能同时推动其它可推动实体的数量，超过此数量时将承受每半秒3（<img src="local\Heart.png" /><img src="local\Half_Heart.png" />）</span>的 窒息伤害。设置成0可以停用这个规则。此规则影响生存模式和冒险模式的玩家，以及除蝙蝠外的所有生物。可推动实体包括非旁观模式玩家、除蝙蝠外的所有生物、船和矿车。
+<td> 玩家或生物能同时推动其它可推动实体的数量，超过此数量时将承受每半秒3(<img src="local\Heart.png" /><img src="local\Half_Heart.png" />)</span>的 窒息伤害。设置成0可以停用这个规则。此规则影响生存模式和冒险模式的玩家，以及除蝙蝠外的所有生物。可推动实体包括非旁观模式玩家、除蝙蝠外的所有生物、船和矿车。
 </td>
 <td style="text-align:center"> <code>24</code>
 </td>
@@ -2249,7 +2232,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #FFC7CE; color: #9C0006;"> 否
 </td></tr>
 <tr>
-<td> <code>mobGriefing</code><br/>（携带版：<code>mobgriefing</code>）
+<td> <code>mobGriefing</code><br/>(携带版：<code>mobgriefing</code>)
 </td>
 <td> 爬行者、 僵尸、 末影人、恶魂、 凋灵、 兔子、 羊和 村民是否能改变、破坏方块，以及村民、僵尸、 骷髅和僵尸猪人是否能捡拾物品
 </td>
@@ -2262,7 +2245,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <tr>
 <td> <code>naturalRegeneration</code>
 </td>
-<td> 玩家是否能在饥饿值足够时自然恢复生命值（不影响外部治疗效果，如 金苹果、生命恢复状态效果等）
+<td> 玩家是否能在饥饿值足够时自然恢复生命值(不影响外部治疗效果，如 金苹果、生命恢复状态效果等)
 </td>
 <td style="text-align:center"> <code>true</code>
 </td>
@@ -2284,7 +2267,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <tr>
 <td> <code>randomTickSpeed</code>
 </td>
-<td> 每游戏刻每区块中随机的 方块刻发生的频率（例如植物生长，树叶腐烂等）。为0时禁用随机刻，较高的数字将增大随机刻频率。
+<td> 每游戏刻每区块中随机的 方块刻发生的频率(例如植物生长，树叶腐烂等)。为0时禁用随机刻，较高的数字将增大随机刻频率。
 </td>
 <td style="text-align:center"> <code>3</code>
 </td>
@@ -2295,7 +2278,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <tr>
 <td> <code>reducedDebugInfo</code>
 </td>
-<td>  调试屏幕是否简化而非显示详细信息；同时影响<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">F3</kbd>+<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">B</kbd>（实体碰撞箱）和<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">F3</kbd>+<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">G</kbd>（区块边界）效果的显示。
+<td>  调试屏幕是否简化而非显示详细信息；同时影响<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">F3</kbd>+<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">B</kbd>(实体碰撞箱)和<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">F3</kbd>+<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">G</kbd>(区块边界)效果的显示。
 </td>
 <td style="text-align:center"> <code>false</code>
 </td>
@@ -2304,7 +2287,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #FFC7CE; color: #9C0006;"> 否
 </td></tr>
 <tr>
-<td> <code>sendCommandFeedback</code><br/>（携带版：<code>sendcommandfeedback</code>）
+<td> <code>sendCommandFeedback</code><br/>(携带版：<code>sendcommandfeedback</code>)
 </td>
 <td> 玩家执行命令的返回信息是否在聊天框中显示。同时影响命令方块是否保存命令输出文本
 </td>
@@ -2317,7 +2300,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <tr>
 <td> <code>showDeathMessages</code>
 </td>
-<td> 是否在聊天框中显示玩家以及驯养宠物（ 狼、 豹猫和 鹦鹉）的死亡信息。
+<td> 是否在聊天框中显示玩家以及驯养宠物( 狼、 豹猫和 鹦鹉)的死亡信息。
 </td>
 <td style="text-align:center"> <code>true</code>
 </td>
@@ -2348,9 +2331,9 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <td style="background-color: #FFC7CE; color: #9C0006;"> 否
 </td></tr></table>
 <dl><dt>效果</dt></dl>
-<dl><dd> 当<i>规则</i>未指定且<i>值</i>未指定（例如，尝试询问一条未定义的游戏规则）时失败。</dd></dl>
-<dl><dd> 成功时，返回游戏规则的值（若<i>值</i>未指定）或将游戏规则设为指定的值（若指定<i>值</i>）。</dd>
-<dd> 可定义新游戏规则且对其赋值（指定规则值）或查询（不指定规则值）。</dd></dl>
+<dl><dd> 当<i>规则</i>未指定且<i>值</i>未指定(例如，尝试询问一条未定义的游戏规则)时失败。</dd></dl>
+<dl><dd> 成功时，返回游戏规则的值(若<i>值</i>未指定)或将游戏规则设为指定的值(若指定<i>值</i>)。</dd>
+<dd> 可定义新游戏规则且对其赋值(指定规则值)或查询(不指定规则值)。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 停止日夜交替：<code>gamerule doDaylightCycle false</code></dd></dl>
 <dl><dd> 停止生命自然恢复：<code>gamerule naturalRegeneration false</code></dd></dl>
@@ -2363,8 +2346,8 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.3.1（12w16a ）
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.3.1(12w16a )
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>给予玩家一种物品。
@@ -2375,22 +2358,22 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>give &lt;<i>玩家：目标</i>&gt; &lt;<i>物品名：字符串</i>&gt; [<i>数量：整数</i>] [<i>数据：整数</i>] [<i>成分：成分</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)
 <dl><dd> 指定给予物品的目标。必须为一个玩家名或目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>物品名</i>（携带版：<i>物品名：字符串</i>）
-<dl><dd> 指定给予的物品。必须为一个有效的物品ID（例如，<code>minecraft:iron_shovel</code>），或为一个存在物品形态的有效的方块ID。不支持数字ID。</dd></dl></dd></dl>
-<dl><dd> <i>数量</i>（携带版：<i>数量：整数</i>）
-<dl><dd> 指定给予的物品数量。必须在1和64间（含），但64超过该物品一组的数量时仍然有效。若未指定，默认为<code>1</code>。</dd></dl></dd></dl>
+<dl><dd> <i>物品名</i>(携带版：<i>物品名：字符串</i>)
+<dl><dd> 指定给予的物品。必须为一个有效的物品ID(例如，<code>minecraft:iron_shovel</code>)，或为一个存在物品形态的有效的方块ID。不支持数字ID。</dd></dl></dd></dl>
+<dl><dd> <i>数量</i>(携带版：<i>数量：整数</i>)
+<dl><dd> 指定给予的物品数量。必须在1和64间(含)，但64超过该物品一组的数量时仍然有效。若未指定，默认为<code>1</code>。</dd></dl></dd></dl>
 <dl><dd><dl><dd> 无视特定物品的堆叠限制，例如：<code>/give @p minecraft:iron_sword 5</code>会给予1组5把铁剑，但正常情况下铁剑应为1组1把。一组最少1个物品、最多64个物品的限制仍然有效。</dd></dl></dd></dl>
-<dl><dd> <i>数据</i>（携带版：<i>数据：整数</i>）（可选）
-<dl><dd> 指定所给予物品的物品数据。必须为一个介于-2,147,483,648和2,147,483,647之间的整数（含，不输入逗号），但是当数据值对于指定的物品ID无效时，会被重置为0。若未指定，默认为0。</dd></dl></dd></dl>
-<dl><dd> <i>数据标签</i>（可选）<sup>[<i>仅Java版</i>]</sup>
-<dl><dd> 指定给予物品的数据标签。必须是NBT标签组合（例如，<code>{display:{Name:Fred}}</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>成分：成分</i>（可选）<sup>[<i>基岩版</i>]</sup>
-<dl><dd> 与数据标签类似，但仅支持<code>CanPlaceOn</code>和<code>CanDestroy</code>标签。（譬如： <code>give @p iron_shovel 1 0 {"minecraft:can_destroy":{"blocks":["grass"]}}</code>）</dd></dl></dd></dl>
+<dl><dd> <i>数据</i>(携带版：<i>数据：整数</i>)(可选)
+<dl><dd> 指定所给予物品的物品数据。必须为一个介于-2,147,483,648和2,147,483,647之间的整数(含，不输入逗号)，但是当数据值对于指定的物品ID无效时，会被重置为0。若未指定，默认为0。</dd></dl></dd></dl>
+<dl><dd> <i>数据标签</i>(可选)<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定给予物品的数据标签。必须是NBT标签组合(例如，<code>{display:{Name:Fred}}</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>成分：成分</i>(可选)<sup>[<i>基岩版</i>]</sup>
+<dl><dd> 与数据标签类似，但仅支持<code>CanPlaceOn</code>和<code>CanDestroy</code>标签。(譬如： <code>give @p iron_shovel 1 0 {"minecraft:can_destroy":{"blocks":["grass"]}}</code>)</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若参数指定不正确，或<i>玩家</i>无法解析为一个或多个在线玩家时则失败。</dd>
-<dd> 若成功，在目标所处的位置上生成指定的物品。如果<i>玩家</i>指定了多个目标，每个目标都会收到指定数量的物品。生成物品的物品实体中的Owner（所有者）标签会被设为物品给予的目标，且PickupDelay（捡拾延时）标签被设为0<sup>[<i>需要验证</i>]</sup>，使得物品能够立即进入目标的物品栏中，在物品栏未满的情况下。</dd></dl>
+<dd> 若成功，在目标所处的位置上生成指定的物品。如果<i>玩家</i>指定了多个目标，每个目标都会收到指定数量的物品。生成物品的物品实体中的Owner(所有者)标签会被设为物品给予的目标，且PickupDelay(捡拾延时)标签被设为0<sup>[<i>需要验证</i>]</sup>，使得物品能够立即进入目标的物品栏中，在物品栏未满的情况下。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 在John所处位置生成30个云杉木板，物品附加描述“Wooden planks”：
 <dl><dd> <code>give John minecraft:planks 30 1 {display:{Lore:["Wooden planks"]}}</code></dd></dl></dd></dl>
@@ -2410,8 +2393,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li>限制条件:
 无</li><li>
 加入版本:
-1.3.1（12w17a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.3.1(12w17a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 
@@ -2429,11 +2412,11 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dl><dd> <code>? &lt;<i>命令名：字符串</i>&gt;</code></dd>
 <dd> <code>? [<i>页码：整数</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>页码|命令名</i>（携带版：<i>命令名：字符串</i>或<i>页码：整数</i>）（可选）
-<dl><dd> 指定命令列表的页码或需要提供帮助信息的命令。若未指定，默认为<code>1</code>（命令列表的第一页）。</dd></dl></dd></dl>
+<dl><dd> <i>页码|命令名</i>(携带版：<i>命令名：字符串</i>或<i>页码：整数</i>)(可选)
+<dl><dd> 指定命令列表的页码或需要提供帮助信息的命令。若未指定，默认为<code>1</code>(命令列表的第一页)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若<i>页码</i>无效，或当<i>命令名</i>不是一个可用命令名时失败。在指定了有效的命令名，正常给出了命令的用法时，这个命令在技术上仍然返回失败状态。</dd></dl>
-<dl><dd> 若该命令通过命令方块运行，则将一条以“Searge says: ”（Searge说：）为开头的随机消息显示在命令方块界面“上一个输出”中，包括：“Yolo”、“/achievement take achievement.understandCommands @p”、“Ask for help on twitter”（去推特求助）、“/deop @p”、“Scoreboard deleted, commands blocked”（检测到记分板，命令已被屏蔽）、“Contact helpdesk for help”（去服务台求助）、“/testfornoob @p”、“/trigger warning”、“Oh my god, it's full of stats”（我的妈呀，全是数据）、“/kill @p[name=!Searge]”、“Have you tried turning it off and on again?”（你试过把它关掉再开没？）和“Sorry, no help today”（不好意思，今天没有帮助）。</dd></dl>
+<dl><dd> 若该命令通过命令方块运行，则将一条以“Searge says: ”(Searge说：)为开头的随机消息显示在命令方块界面“上一个输出”中，包括：“Yolo”、“/achievement take achievement.understandCommands @p”、“Ask for help on twitter”(去推特求助)、“/deop @p”、“Scoreboard deleted, commands blocked”(检测到记分板，命令已被屏蔽)、“Contact helpdesk for help”(去服务台求助)、“/testfornoob @p”、“/trigger warning”、“Oh my god, it's full of stats”(我的妈呀，全是数据)、“/kill @p[name=!Searge]”、“Have you tried turning it off and on again?”(你试过把它关掉再开没？)和“Sorry, no help today”(不好意思，今天没有帮助)。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 显示命令列表的第1页：<code>?</code>或<code>help</code></dd></dl>
 <dl><dd> 显示命令列表的第3页：<code>? 3</code></dd></dl>
@@ -2472,11 +2455,11 @@ Alpha 1.0.16
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.3.1（12w16a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.3.1(12w16a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
-<p>杀死/清除实体（玩家，生物，物品等）。
+<p>杀死/清除实体(玩家，生物，物品等)。
 </p>
 <dl><dt>语法</dt></dl>
 <ul><li> <b>PC版</b></li></ul>
@@ -2484,17 +2467,17 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd><dl><dd> <code>kill [<i>目标：目标</i>]</code></dd></dl></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家|实体</i>（携带版：<i>目标：目标</i>）（可选）
-<dl><dd>指定要杀死/清除的目标（包括非生物实体，例如物品，交通工具等）。必须为一个玩家名或一个目标选择器。若未指定，默认为命令执行者。在命令方块中为必需项。</dd></dl></dd></dl>
+<dl><dd> <i>玩家|实体</i>(携带版：<i>目标：目标</i>)(可选)
+<dl><dd>指定要杀死/清除的目标(包括非生物实体，例如物品，交通工具等)。必须为一个玩家名或一个目标选择器。若未指定，默认为命令执行者。在命令方块中为必需项。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 如果<i>玩家|实体</i>无法解析为一个或多个实体（如果是玩家名则必须在线）则失败。</dd></dl>
+<dl><dd> 如果<i>玩家|实体</i>无法解析为一个或多个实体(如果是玩家名则必须在线)则失败。</dd></dl>
 <dl><dd> 如果命令执行成功，则直接清除非生物实体，同时对生物实体造成3.4×10<sup>38</sup>的虚空伤害，杀死包括处于创造模式的和受高等伤害抗性状态效果保护的玩家，且显示适当的死亡信息。通过此方式杀死的玩家和生物会掉落物品，不是最小尺寸的史莱姆和岩浆怪则会分裂成更小尺寸。被指定的船、矿车、掉落物、经验球会被直接破坏。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 自杀：<code>kill</code></dd></dl>
 <dl><dd> 杀死Bob：<code>kill Bob</code></dd></dl>
 <dl><dd> 清除所有掉落物：<code>kill @e[type=item]</code></dd></dl>
 <dl><dd> 杀死所有已加载区块内的生物，包括自己：<code>kill @e</code></dd></dl>
-<dl><dd> 杀灭除玩家外的其它实体（物品实体、动物等）：<code>kill @e[type=!player]</code></dd></dl>
+<dl><dd> 杀灭除玩家外的其它实体(物品实体、动物等)：<code>kill @e[type=!player]</code></dd></dl>
 <p> 
 </p>
 
@@ -2505,7 +2488,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 仅多人联机,
 是管理员</li><li>
 加入版本:
-Alpha 1.0.16_02 （PE Alpha 0.16.0）,
+Alpha 1.0.16_02 (PE Alpha 0.16.0),
 PE Alpha 0.16.0 build 1
 
 </li></ul>
@@ -2516,11 +2499,11 @@ PE Alpha 0.16.0 build 1
 <dl><dd><code>list [<i>uuids</i>]</code></dd></dl>
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd><code>list</code></dd>
-<dd><code>listd [<i>详细信息：字符串</i>]</code>（隐藏命令）</dd></dl>
+<dd><code>listd [<i>详细信息：字符串</i>]</code>(隐藏命令)</dd></dl>
 <dl><dt>描述</dt></dl>
-<dl><dd>显示所有当前连接的玩家的名字（与按下<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">Tab ↹</kbd>相同）。</dd></dl>
+<dl><dd>显示所有当前连接的玩家的名字(与按下<kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">Tab ↹</kbd>相同)。</dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>uuids</i>（携带版：<i>详细信息：字符串</i>）（可选）
+<dl><dd> <i>uuids</i>(携带版：<i>详细信息：字符串</i>)(可选)
 <dl><dd> 若被指定，则玩家的UUID会与其名称一同显示。</dd>
 <dd> 在携带版中，必须为其中之一：
 <ul><li> <code>ids</code></li>
@@ -2528,8 +2511,7 @@ PE Alpha 0.16.0 build 1
 <li> <code>uuids</code></li></ul></dd></dl></dd></dl>
 <dl><dt>成功条件</dt>
 <dd>永远成功，甚至在命令方块中。</dd></dl>
-<p><br />
-</p>
+
 
 
 
@@ -2538,8 +2520,8 @@ PE Alpha 0.16.0 build 1
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.11（16w39a ）,
-PE 1.0（PE 1.0 build 1 ）
+1.11(16w39a ),
+PE 1.0(PE 1.0 build 1 )
 
 </li></ul>
 <p>在聊天框中为命令执行者显示给定类型结构的最近坐标。
@@ -2550,20 +2532,20 @@ PE 1.0（PE 1.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd><code>locate &lt;<i>特性：字符串</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>结构类型</i>（携带版：<i>特性：字符串</i>）</dd></dl>
+<dl><dd> <i>结构类型</i>(携带版：<i>特性：字符串</i>)</dd></dl>
 <dl><dd><dl><dd> 指定要定位的结构。必须是以下之一：
-<ul><li> <code>EndCity</code>（携带版：<code>endcity</code>）（末地城）</li>
-<li> <code>Fortress</code>（携带版：<code>fortress</code>）（下界要塞）</li>
-<li> <code>Mansion</code>（携带版：<code>mansion</code>）（林地府邸）</li>
-<li> <code>Mineshaft</code>（携带版：<code>mineshaft</code>）（废弃矿井）</li>
-<li> <code>Monument</code>（携带版：<code>monument</code>）（海底遗迹）</li>
-<li> <code>Stronghold</code>（携带版：<code>stronghold</code>）（要塞）</li>
-<li> <code>Temple</code>（携带版：<code>temple</code>）（沙漠神殿、丛林神庙、沼泽小屋、雪屋）</li>
-<li> <code>Village</code>（携带版：<code>village</code>）（村庄）</li></ul></dd></dl></dd></dl>
+<ul><li> <code>EndCity</code>(携带版：<code>endcity</code>)(末地城)</li>
+<li> <code>Fortress</code>(携带版：<code>fortress</code>)(下界要塞)</li>
+<li> <code>Mansion</code>(携带版：<code>mansion</code>)(林地府邸)</li>
+<li> <code>Mineshaft</code>(携带版：<code>mineshaft</code>)(废弃矿井)</li>
+<li> <code>Monument</code>(携带版：<code>monument</code>)(海底遗迹)</li>
+<li> <code>Stronghold</code>(携带版：<code>stronghold</code>)(要塞)</li>
+<li> <code>Temple</code>(携带版：<code>temple</code>)(沙漠神殿、丛林神庙、沼泽小屋、雪屋)</li>
+<li> <code>Village</code>(携带版：<code>village</code>)(村庄)</li></ul></dd></dl></dd></dl>
 <p>结构类型区分大小写。
 </p>
 <dl><dt>效果</dt></dl>
-<dl><dd> 如果参数未正确指定或无法找到所请求的<i>结构类型</i>（例如，在不同的维度中），则失败。</dd>
+<dl><dd> 如果参数未正确指定或无法找到所请求的<i>结构类型</i>(例如，在不同的维度中)，则失败。</dd>
 <dd> 如果成功，则显示距离命令执行者最近的指定结构的坐标。某些结构的Y轴坐标会显示为<code>(y?)</code>。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 获得最近的林地府邸的坐标： <code>locate Mansion</code></dd></dl>
@@ -2575,7 +2557,7 @@ PE 1.0（PE 1.0 build 1 ）
 <ul><li>限制条件:
 无</li><li>
 加入版本:
-Classic 0.0.15a_03 （PE 1.0.5）,
+Classic 0.0.15a_03 (PE 1.0.5),
 PE 1.0.5 build 1
 
 </li></ul>
@@ -2588,7 +2570,7 @@ PE 1.0.5 build 1
 <dl><dd> <code>me &lt;<i>动作：字符串</i>&gt;</code></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若目标选择器无法解析为一个或多个在线玩家，或以名称指定的玩家不在线，则失败。</dd></dl>
-<dl><dd> 成功时，以“*<i>你的名字</i> <i>动作</i>”（例如“* Alice打喷嚏。”或“* Alice爆炸了。”）的格式发送一条旁白信息给其他玩家。若<i>动作</i>中使用的目标选择器指定了多个玩家（例如<code>@a</code>），则玩家名单的格式为或“名字1和名字2”，或“名字1, 名字2……名字N”。</dd></dl>
+<dl><dd> 成功时，以“*<i>你的名字</i> <i>动作</i>”(例如“* Alice打喷嚏。”或“* Alice爆炸了。”)的格式发送一条旁白信息给其他玩家。若<i>动作</i>中使用的目标选择器指定了多个玩家(例如<code>@a</code>)，则玩家名单的格式为或“名字1和名字2”，或“名字1, 名字2……名字N”。</dd></dl>
 <p> 
 </p>
 
@@ -2600,7 +2582,7 @@ PE 1.0.5 build 1
 不在命令方块上执行</li><li>
 加入版本:
 Alpha 1.0.16,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>给予一位玩家管理员身份。
@@ -2647,7 +2629,7 @@ Alpha 1.0.16
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.8（14w04a ）
+1.8(14w04a )
 
 </li></ul>
 <p>创造颗粒。
@@ -2657,11 +2639,11 @@ Alpha 1.0.16
 <dl><dd> <i>上方的背景色是为了方便阅读。</i></dd></dl>
 <dl><dt>参数</dt></dl>
 <dl><dd> <i>名称</i>
-<dl><dd> 指定要创造的颗粒类型。必须为一个颗粒名称（例如，<code>explode</code>）。</dd></dl></dd></dl>
+<dl><dd> 指定要创造的颗粒类型。必须为一个颗粒名称(例如，<code>explode</code>)。</dd></dl></dd></dl>
 <dl><dd> <span style="background-color:#FDD"><i>x y z</i></span>
-<dl><dd> 指定创造颗粒的位置。所有值（包括<i>y</i>）必须在-30,000,000和30,000,000之间（含，不输入逗号）。可使用波浪号来指定一个相对于命令执行处的位置。</dd></dl></dd></dl>
+<dl><dd> 指定创造颗粒的位置。所有值(包括<i>y</i>)必须在-30,000,000和30,000,000之间(含，不输入逗号)。可使用波浪号来指定一个相对于命令执行处的位置。</dd></dl></dd></dl>
 <dl><dd> <span style="background-color:#DDF"><i>xd yd zd</i></span>
-<dl><dd> 指定颗粒生成的区域，以三维立方尺寸表示，此立方体中心位于<span style="background-color:#FDD"><i>x y z</i></span>处。实际尺寸为此处定义尺寸的约8倍（<code>1 1 1</code>定义一个约8×8×8的区域）。</dd></dl></dd></dl>
+<dl><dd> 指定颗粒生成的区域，以三维立方尺寸表示，此立方体中心位于<span style="background-color:#FDD"><i>x y z</i></span>处。实际尺寸为此处定义尺寸的约8倍(<code>1 1 1</code>定义一个约8×8×8的区域)。</dd></dl></dd></dl>
 <dl><dd><dl><dd> <i>例外</i>：当<i>名称</i>为<code>reddust</code>、<code>mobSpell</code>或<code>mobSpellAmbient</code>，<i>速度</i>不为0，而<i>数量</i>为0或未指定时，此参数变更为定义指定颗粒颜色的RGB通道值，范围从0到1。在这种用法中，<i>速度</i>参数变更为对此处RGB通道值的倍率。对于这些颗粒，若<i>数量</i>参数大于0，则<span style="background-color:#DDF"><i>xd yd zd</i></span>参数被正常视为三维立方尺寸而非颜色值，而颗粒的颜色变为随机。
 <dl><dd> 配合<code>mobSpell</code>或<code>mobSpellAmbient</code>时，<code>0 0 0</code>产生纯黑色颗粒，<code>0 1 0</code>产生纯绿色颗粒，<code>0 0 0.5</code>产生蓝黑色颗粒，等等。</dd>
 <dd> <code>reddust</code>颗粒的RGB通道设置更不相同：</dd></dl></dd></dl></dd></dl>
@@ -2735,7 +2717,7 @@ Alpha 1.0.16
 </td>
 <td> 蓝色
 </td></tr></table>
-<dl><dd> 其余的异常特性由以下伪代码解释（英文）：</dd></dl></dd></dl></dd></dl>
+<dl><dd> 其余的异常特性由以下伪代码解释(英文)：</dd></dl></dd></dl></dd></dl>
 <table class="wikitable">
 <tr>
 <th> 伪代码
@@ -2759,7 +2741,7 @@ For each channel (Red, Green, Blue):
 Return color of this particle as (Red, Green, Blue)
 </pre>
 </td></tr></table>
-<dl><dd> 为了更清楚地解释此过程，以下考虑几种通道值，这些通道值在任意的<span style="background-color:#DDF"><i>xd yd zd</i></span>中影响其对应的颜色通道（除<span style="background-color:#DDF">xd</span> = Red = <code>0</code>外）。</dd></dl></dd></dl></dd></dl>
+<dl><dd> 为了更清楚地解释此过程，以下考虑几种通道值，这些通道值在任意的<span style="background-color:#DDF"><i>xd yd zd</i></span>中影响其对应的颜色通道(除<span style="background-color:#DDF">xd</span> = Red = <code>0</code>外)。</dd></dl></dd></dl></dd></dl>
 <table class="wikitable" data-description="reddust examples">
 <tr>
 <th> 输入 </th>
@@ -2821,7 +2803,7 @@ Return color of this particle as (Red, Green, Blue)
 </td>
 <td> <code>255</code>或<code>0</code>
 </td>
-<td> 与上述类似。注意如果计算随机倍率以后的数值大于<code>-1</code>，则会被舍弃小数部分变为0。这种情况导致一些颗粒通道值为<code>255</code>，而另一些的通道值为<code>0</code>（效果为一些是黑的一些是亮的。）更靠近0的值最终会产生更多的黑色颗粒，更远离0的值最终会产生更多的亮色颗粒。
+<td> 与上述类似。注意如果计算随机倍率以后的数值大于<code>-1</code>，则会被舍弃小数部分变为0。这种情况导致一些颗粒通道值为<code>255</code>，而另一些的通道值为<code>0</code>(效果为一些是黑的一些是亮的。)更靠近0的值最终会产生更多的黑色颗粒，更远离0的值最终会产生更多的亮色颗粒。
 </td></tr>
 <tr>
 <td> <code>2</code>
@@ -2834,7 +2816,7 @@ Return color of this particle as (Red, Green, Blue)
 <p><code>0</code>至<code>255</code>
 </p>
 </td>
-<td> 这种情况可以产生所有可能的字节值。然而，由于数值范围重叠（例如，<code>245.76</code>和<code>501.76 = (245.76 + 256)</code>在取模后结果相等）且二重随机倍率造成的三角分布的影响，某些字节值出现的概率会更高。
+<td> 这种情况可以产生所有可能的字节值。然而，由于数值范围重叠(例如，<code>245.76</code>和<code>501.76 = (245.76 + 256)</code>在取模后结果相等)且二重随机倍率造成的三角分布的影响，某些字节值出现的概率会更高。
 </td></tr>
 <tr>
 <td> <code>1.921</code>
@@ -2847,19 +2829,19 @@ Return color of this particle as (Red, Green, Blue)
 <p><code>0</code>至<code>235</code>
 </p>
 </td>
-<td> 这种情况涵盖了字节值的全部取值范围且没有重叠区域，因此概率分布近似为三角分布（<code>363.91424</code>是概率最高的取值，转换为字节值为<code>107</code>）。注意<code>1.921 ~ 1 / (1 - 0.48)</code>。
+<td> 这种情况涵盖了字节值的全部取值范围且没有重叠区域，因此概率分布近似为三角分布(<code>363.91424</code>是概率最高的取值，转换为字节值为<code>107</code>)。注意<code>1.921 ~ 1 / (1 - 0.48)</code>。
 </td></tr></table>
  
 <dl><dd> <i>速度</i>
 <dl><dd> 指定颗粒的速度。必须至少为0。</dd></dl></dd></dl>
-<dl><dd> <i>数量</i>（可选）
-<dl><dd> 指定创造的颗粒效果的数量。必须至少为0（产生1个颗粒）。</dd></dl></dd></dl>
-<dl><dd> <i>模式</i>（可选）
+<dl><dd> <i>数量</i>(可选)
+<dl><dd> 指定创造的颗粒效果的数量。必须至少为0(产生1个颗粒)。</dd></dl></dd></dl>
+<dl><dd> <i>模式</i>(可选)
 <dl><dd> 指定显示模式。可为任意值，但仅<code>force</code>为有效值：将颗粒的可视距离设置为256米，包括将颗粒效果可视距离降至最低的玩家。</dd></dl></dd></dl>
-<dl><dd> <i>额外参数</i>（可选）
+<dl><dd> <i>额外参数</i>(可选)
 <dl><dd> 用于为<code>blockdust</code>、<code>iconcrack</code>、<code>fallingdust</code>和<code>blockcrack</code>颗粒定义显示的依据方块或物品。<code>iconcrack</code>接受2个额外参数。</dd></dl></dd></dl>
 <dl><dd><dl><dd><dl><dd> 对于<code>blockdust</code>、<code>blockcrack</code>和<code>fallingdust</code>，<i>额外参数</i>使用一个数字来同时指定一个方块数字ID和一个数据值，<code>(ID+(数据值×4096))</code>。</dd></dl></dd></dl></dd></dl>
-<dl><dd><dl><dd><dl><dd> 对于<code>iconcrack</code>，2个<i>额外参数</i>分别指定数字ID（方块ID或物品ID）和数据值。</dd></dl></dd></dl></dd></dl>
+<dl><dd><dl><dd><dl><dd> 对于<code>iconcrack</code>，2个<i>额外参数</i>分别指定数字ID(方块ID或物品ID)和数据值。</dd></dl></dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 当参数未正确指定时失败。</dd></dl>
 <dl><dd> 成功时，创造指定颗粒。</dd></dl>
@@ -2875,8 +2857,8 @@ Return color of this particle as (Red, Green, Blue)
 <ul><li>限制条件:
 是管理员</li><li>
 加入版本:
-1.6.1（1.6.1-pre ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.6.1(1.6.1-pre ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
 <p>播放一段声音。
@@ -2887,22 +2869,22 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>playsound &lt;<i>声音：字符串</i>&gt; &lt;<i>玩家：目标</i>&gt; [<i>方位：x y z</i>] [<i>音量：浮点数</i>] [<i>音调：浮点数</i>] [<i>最小音量：浮点数</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>声音</i>（携带版：<i>声音：字符串</i>）
-<dl><dd> 指定要播放的声音。必须为在sounds.json中被定义的一个声音项目（例如，<code>mob.pig.say</code>）。</dd></dl></dd></dl>
+<dl><dd> <i>声音</i>(携带版：<i>声音：字符串</i>)
+<dl><dd> 指定要播放的声音。必须为在sounds.json中被定义的一个声音项目(例如，<code>mob.pig.say</code>)。</dd></dl></dd></dl>
 <dl><dd><dl><dd> 一个声音项目可被多个不同的声音关联，而实际产生的声音为从中随机挑选的结果，被选中的概率由其权重决定，与正常游戏中相同。例如，声音项目<code>mob.pig.say</code>会随机播放多种猪音效之一，因为有多个声音关联于该项目。</dd></dl></dd></dl>
-<dl><dd><dl><dd> 资源包可能会向sounds.json中添加额外的声音项目；此命令可以正常播放这些项目。该命令使用的声音名称<i>不是</i>文件名；而是严格使用sounds.json内定义的项目（项目名称可能与实际音频文件的文件名和目录相差甚远），因此资源包在添加新声音时必须为这些音频文件定义声音事件项目（但当资源包替换原有的已被定义的音频文件时，不必为其重新定义）。</dd></dl></dd></dl>
+<dl><dd><dl><dd> 资源包可能会向sounds.json中添加额外的声音项目；此命令可以正常播放这些项目。该命令使用的声音名称<i>不是</i>文件名；而是严格使用sounds.json内定义的项目(项目名称可能与实际音频文件的文件名和目录相差甚远)，因此资源包在添加新声音时必须为这些音频文件定义声音事件项目(但当资源包替换原有的已被定义的音频文件时，不必为其重新定义)。</dd></dl></dd></dl>
 <dl><dd> <i>来源</i><sup>[<i>仅Java版</i>]</sup>
 <dl><dd> 指定播放声音所属的类别，对应于游戏选项中“音乐和声音”设置的分类。必须为以下之一：<code>master</code>、<code>music</code>、<code>record</code>、<code>weather</code>、<code>block</code>、<code>hostile</code>、<code>neutral</code>、<code>player</code>、<code>ambient</code>或<code>voice</code>。</dd></dl></dd></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)
 <dl><dd> 指定播放声音的目标。必须为一个玩家名或一个目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>方位：x y z</i>）（可选）
+<dl><dd> <i>x y z</i>(携带版：<i>方位：x y z</i>)(可选)
 <dl><dd> 指定声音发出的方位。可用波浪号来指定一个相对于目标的位置。</dd></dl></dd></dl>
-<dl><dd> <i>音量</i>（携带版：<i>音量：浮点数</i>）（可选）
-<dl><dd> 指定声音能被听见的距离。必须至少为0.0。对小于1.0的值，声音会相对减轻，球状可闻范围会相对小。对大于1.0的值，声音不会实际上增大，但其可闻范围（1.0时半径为16米）会与<i>音量</i>相乘。声音总会基于与球体中心的距离逐渐衰减至无声。</dd></dl></dd></dl>
-<dl><dd> <i>音调</i>（携带版：<i>音调：浮点数</i>）（可选）
-<dl><dd> 指定声音的音调。必须在0.0至2.0间（含），而小于0.5的值与0.5等价。小于1.0的值降低音调而提升持续时间；大于1.0的值提升音调而降低持续时间。音调值时乘在声音频率上的一个倍率，因此若将0.5-1.0（含）区间内的音调值乘以2，所得的新音调便会高一个八度。（如果您是一位音乐家，希望将其他音符转换为音调数值，请参阅 音符盒。但请注意1.0的音调值对于每种声音并不一定都是F♯。）若未指定，默认为1.0。</dd></dl></dd></dl>
-<dl><dd> <i>最小音量</i>（携带版：<i>最小音量：浮点数</i>）（可选）
-<dl><dd> 指定在声音可闻范围外的目标能听到的音量。若目标在可闻范围外，作为补偿，声源会被放置在距离目标较近的位置（距离小于4格），而<code><i>最小音量</i></code>会决定补偿声源的音量。必须在0.0至1.0间（含）。</dd></dl></dd></dl>
+<dl><dd> <i>音量</i>(携带版：<i>音量：浮点数</i>)(可选)
+<dl><dd> 指定声音能被听见的距离。必须至少为0.0。对小于1.0的值，声音会相对减轻，球状可闻范围会相对小。对大于1.0的值，声音不会实际上增大，但其可闻范围(1.0时半径为16米)会与<i>音量</i>相乘。声音总会基于与球体中心的距离逐渐衰减至无声。</dd></dl></dd></dl>
+<dl><dd> <i>音调</i>(携带版：<i>音调：浮点数</i>)(可选)
+<dl><dd> 指定声音的音调。必须在0.0至2.0间(含)，而小于0.5的值与0.5等价。小于1.0的值降低音调而提升持续时间；大于1.0的值提升音调而降低持续时间。音调值时乘在声音频率上的一个倍率，因此若将0.5-1.0(含)区间内的音调值乘以2，所得的新音调便会高一个八度。(如果您是一位音乐家，希望将其他音符转换为音调数值，请参阅 音符盒。但请注意1.0的音调值对于每种声音并不一定都是F♯。)若未指定，默认为1.0。</dd></dl></dd></dl>
+<dl><dd> <i>最小音量</i>(携带版：<i>最小音量：浮点数</i>)(可选)
+<dl><dd> 指定在声音可闻范围外的目标能听到的音量。若目标在可闻范围外，作为补偿，声源会被放置在距离目标较近的位置(距离小于4格)，而<code><i>最小音量</i></code>会决定补偿声源的音量。必须在0.0至1.0间(含)。</dd></dl></dd></dl>
 <dl><dt>效果</dt>
 <dd> 当参数未正确指定，当<i>玩家</i>无法解析到一个或多个在线玩家时，或当目标无法从声源处听见声音时，命令失败。</dd></dl>
 <dl><dd> 成功时，为目标玩家播放一段声音。</dd></dl>
@@ -2920,7 +2902,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 是管理员,
 不在命令方块上执行</li><li>
 加入版本:
-1.3.1（12w24a ）
+1.3.1(12w24a )
 
 </li></ul><p>向局域网开放单人游戏世界。
 </p>
@@ -2940,15 +2922,15 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.12（17w13a ）
+1.12(17w13a )
 
-</li></ul><p>给予或剥夺（解锁或锁定）玩家的合成配方。
+</li></ul><p>给予或剥夺(解锁或锁定)玩家的合成配方。
 </p>
 <dl><dt>语法</dt></dl>
 <dl><dd> <code>recipe &lt;<i>give|take</i>&gt; [<i>玩家</i>] &lt;<i>配方名称|*</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
 <dl><dd> <i>give|take</i>
-<dl><dd> 若为<i>give</i>，则对玩家给予（解锁）指定的合成配方；若为<i>take</i>，则对玩家剥夺（锁定）指定的合成配方。</dd></dl></dd></dl>
+<dl><dd> 若为<i>give</i>，则对玩家给予(解锁)指定的合成配方；若为<i>take</i>，则对玩家剥夺(锁定)指定的合成配方。</dd></dl></dd></dl>
 <dl><dd> <i>玩家</i>
 <dl><dd> 指定给予或剥夺合成配方的对象。可以是玩家名或目标选择器。</dd></dl></dd></dl>
 <dl><dd> <i>配方名称</i>
@@ -2965,7 +2947,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 是管理员,
 不在命令方块上执行</li><li>
 加入版本:
-1.12（17w18a ）</li></ul>
+1.12(17w18a )</li></ul>
  
 <p>从硬盘中重新加载战利品表、进度和函数。
 </p>
@@ -2973,8 +2955,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <dl><dd> <code>reload</code></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 永远成功。针对战利品表、进度和函数的改动会被<i>Minecraft</i>读取并识别。</dd></dl>
-<p><br />
-</p>
+
 
 <h2>replaceitem</h2>
 
@@ -2982,11 +2963,11 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.8（14w26a ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.8(14w26a ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
-<p>替换方块（箱子，熔炉等）或实体（玩家或生物）物品栏内的物品。
+<p>替换方块(箱子，熔炉等)或实体(玩家或生物)物品栏内的物品。
 </p>
 <dl><dt>语法</dt></dl>
 <ul><li> <b>PC版</b></li></ul>
@@ -2996,17 +2977,17 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <dl><dd> <code>replaceitem block &lt;<i>位置：x y z</i>&gt; &lt;<i>栏位类型：字符串</i>&gt; &lt;<i>栏位ID：整数</i>&gt; &lt;<i>物品名：字符串</i>&gt; [<i>数量：整数</i>] [<i>数据值：整数</i>]</code></dd>
 <dd> <code>replaceitem entity &lt;<i>目标：目标</i>&gt; &lt;<i>栏位类型：字符串</i>&gt; &lt;<i>栏位ID：整数</i>&gt; &lt;<i>物品名：字符串</i>&gt; [<i>数量：整数</i>] [<i>数据值：整数</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>位置：x y z</i>）（仅<code>block</code>模式）
+<dl><dd> <i>x y z</i>(携带版：<i>位置：x y z</i>)(仅<code>block</code>模式)
 <dl><dd> 指定要改变的方块的位置。可用波浪号来指定一个相对于命令执行处的位置。</dd></dl></dd></dl>
-<dl><dd> <i>选择器</i>（携带版：<i>目标：目标</i>）（仅<code>entity</code>模式）
+<dl><dd> <i>选择器</i>(携带版：<i>目标：目标</i>)(仅<code>entity</code>模式)
 <dl><dd> 指定要改变的实体。必须为一个玩家名或目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>栏位</i>（携带版：<i>栏位类型：字符串</i>和<i>栏位ID：整数</i>）
+<dl><dd> <i>栏位</i>(携带版：<i>栏位类型：字符串</i>和<i>栏位ID：整数</i>)
 <dl><dd> 指定要改变的物品栏栏位。有效值取决于要改变的方块或实体。</dd></dl></dd></dl>
 <dl><dd><dl><dd> 对于方块，必须为<code>slot.container.<i>栏位编号</i></code>，其中<i>栏位编号</i>用具体的栏位编号数值代替。
-<ul><li> 箱子、发射器、投掷器、漏斗和陷阱箱左上角的栏位被编号为0，而后从左到右、从上到下递增（例如，箱子的第一行栏位被从左至右编号为0至8）。大型箱子与大型陷阱箱被视为两个独立的容器方块。</li>
+<ul><li> 箱子、发射器、投掷器、漏斗和陷阱箱左上角的栏位被编号为0，而后从左到右、从上到下递增(例如，箱子的第一行栏位被从左至右编号为0至8)。大型箱子与大型陷阱箱被视为两个独立的容器方块。</li>
 <li>酿造台底部栏位从左至右编号为0至2，而其顶部栏位为3。</li>
 <li>熔炉的栏位中输入栏位编号为0，燃料栏位为1，而输出栏位为2。</li></ul></dd>
-<dd>其它能容纳物品但不拥有物品栏界面的方块（花盆与唱片机）的物品仅能被<code>/blockdata</code>命令改变。</dd></dl></dd></dl>
+<dd>其它能容纳物品但不拥有物品栏界面的方块(花盆与唱片机)的物品仅能被<code>/blockdata</code>命令改变。</dd></dl></dd></dl>
 <dl><dd><dl><dd> 对于实体，必须为下列之一，其中<i>栏位编号</i>用具体的栏位编号数值代替：</dd></dl></dd></dl>
 
 <table class="wikitable" data-description="Slot information">
@@ -3022,7 +3003,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 </td>
 <td>
 </td>
-<td rowspan="4">仅盔甲架、生物及玩家（虽然并非所有生物会显示或利用这些物品）
+<td rowspan="4">仅盔甲架、生物及玩家(虽然并非所有生物会显示或利用这些物品)
 </td></tr>
 <tr>
 <td><code>slot.armor.feet</code>
@@ -3044,7 +3025,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 </td>
 <td>
 </td>
-<td rowspan="2">对盔甲架和>生物有效（虽然并非所有生物会显示或利用这些物品）。
+<td rowspan="2">对盔甲架和>生物有效(虽然并非所有生物会显示或利用这些物品)。
 </td></tr>
 <tr>
 <td><code>slot.weapon.offhand</code>
@@ -3080,7 +3061,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 </td>
 <td>
 </td>
-<td>仅马和羊驼；<i>物品名</i>必须属于马铠（马）或地毯（羊驼）
+<td>仅马和羊驼；<i>物品名</i>必须属于马铠(马)或地毯(羊驼)
 </td></tr>
 <tr>
 <td><code>slot.horse.chest.<i>栏位编号</i></code>
@@ -3098,17 +3079,17 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 </td></tr></table>
 
 <dl><dd> 物品展示框内的物品仅能被用<code>/entitydata</code>改变。</dd></dl></dd></dl>
-<dl><dd> <i>物品名</i>（携带版：<i>物品名：字符串</i>）
-<dl><dd> 指定被放置于方块或实体的物品栏栏位内的物品。必须为物品ID，或具有物品形态的方块的ID（例如，<code>minecraft:golden_sword</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>数量</i>（携带版：<i>数量：整数</i>）（可选）
-<dl><dd> 指定被放置物品的数量。必须在1至64间（含），可以突破物品的堆叠限制。</dd></dl></dd></dl>
-<dl><dd> <i>数据</i>（携带版：<i>数据：整数</i>）（可选）
-<dl><dd> 指定被放置物品的物品数据。必须为一个在-2,147,483,648至2,147,483,647间（含，不输入逗号）的整数，且在对指定物品无效时被重置为0。若未指定，默认为0。</dd></dl></dd></dl>
-<dl><dd> <i>数据标签</i>（可选）<sup>[<i>仅Java版</i>]</sup>
-<dl><dd> 指定被放置物品的数据标签。必须为一个NBT格式组合（例如，<code>{display:{Name:Fred}}</code>）。</dd></dl></dd></dl>
+<dl><dd> <i>物品名</i>(携带版：<i>物品名：字符串</i>)
+<dl><dd> 指定被放置于方块或实体的物品栏栏位内的物品。必须为物品ID，或具有物品形态的方块的ID(例如，<code>minecraft:golden_sword</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>数量</i>(携带版：<i>数量：整数</i>)(可选)
+<dl><dd> 指定被放置物品的数量。必须在1至64间(含)，可以突破物品的堆叠限制。</dd></dl></dd></dl>
+<dl><dd> <i>数据</i>(携带版：<i>数据：整数</i>)(可选)
+<dl><dd> 指定被放置物品的物品数据。必须为一个在-2,147,483,648至2,147,483,647间(含，不输入逗号)的整数，且在对指定物品无效时被重置为0。若未指定，默认为0。</dd></dl></dd></dl>
+<dl><dd> <i>数据标签</i>(可选)<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定被放置物品的数据标签。必须为一个NBT格式组合(例如，<code>{display:{Name:Fred}}</code>)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 当参数指定不正确、指定方块不是一个容器时，或当<i>选择器</i> 无法解析为一个或多个实体（以名称指定的玩家必须在线），或当目标实体没有指定的栏位时（例如，僵尸没有<code>slot.horse.armor</code>），命令失败。</dd></dl>
-<dl><dd> 成功时，将指定栏位内的物品替换成指定的物品（原有的物品丢失）。</dd></dl>
+<dl><dd> 当参数指定不正确、指定方块不是一个容器时，或当<i>选择器</i> 无法解析为一个或多个实体(以名称指定的玩家必须在线)，或当目标实体没有指定的栏位时(例如，僵尸没有<code>slot.horse.armor</code>)，命令失败。</dd></dl>
+<dl><dd> 成功时，将指定栏位内的物品替换成指定的物品(原有的物品丢失)。</dd></dl>
 <dl><dt>示例</dt>
 <dd> 将1米上方的一个小型箱子右下角栏位内的物品替换成4棵云杉树苗:
 <dl><dd> <code>replaceitem block ~ ~1 ~ slot.container.26 minecraft:sapling 4 1</code></dd></dl></dd></dl>
@@ -3118,8 +3099,7 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <dd> <code>/blockdata</code> — 也能替换一个容器中的物品</dd>
 <dd> <code>/entitydata</code> — 也能替换一个生物物品栏中的物品，或改变盔甲与武器的掉落率</dd>
 <dd> <code>/give</code> — 不指定具体栏位、不覆盖原有物品地给予玩家物品</dd></dl>
-<p><br />
-</p>
+
 
 <h2>save</h2>
 
@@ -3133,9 +3113,8 @@ Alpha 1.0.16_01
 
 </li></ul>
 <p>这些命令管理服务器的存档。
-</p><p><br />
 </p>
-<h4><span class="mw-headline" id="save-all">save-all</span></h4>
+<h3><span class="mw-headline" id="save-all">save-all</span></h3>
 <p>将服务器保存至硬盘。
 </p>
 <dl><dt>语法</dt></dl>
@@ -3144,10 +3123,9 @@ Alpha 1.0.16_01
 <dl><dd>使服务器将所有区块和玩家数据标记为待保存。这些数据会随时间陆续保存进硬盘。</dd>
 <dd>若给出“flush”作为命令的唯一参数，则服务器会立即保存所有的区块数据，并造成服务器临时冻结。</dd></dl>
 <dl><dt>成功条件</dt>
-<dd>若世界被成功保存时，命令成功。若途中出现错误（如硬盘空间已满、另一个<i>Minecraft</i>实例正在打开同一个世界），则命令失败。</dd></dl>
-<p><br />
-</p>
-<h4><span class="mw-headline" id="save-off">save-off</span></h4>
+<dd>若世界被成功保存时，命令成功。若途中出现错误(如硬盘空间已满、另一个<i>Minecraft</i>实例正在打开同一个世界)，则命令失败。</dd></dl>
+
+<h3><span class="mw-headline" id="save-off">save-off</span></h3>
 <p>禁用服务器的自动保存。
 </p>
 <dl><dt>语法</dt></dl>
@@ -3156,9 +3134,8 @@ Alpha 1.0.16_01
 <dl><dd>禁用服务器编辑世界存档。所有的更改将会暂时进入队列。</dd></dl>
 <dl><dt>成功条件</dt></dl>
 <dl><dd>总是成功，除非自动保存已被禁止。</dd></dl>
-<p><br />
-</p>
-<h4><span class="mw-headline" id="save-on">save-on</span></h4>
+
+<h3><span class="mw-headline" id="save-on">save-on</span></h3>
 <p>启用服务器的自动保存。
 </p>
 <dl><dt>格式</dt></dl>
@@ -3178,7 +3155,7 @@ Alpha 1.0.16_01
 是管理员</li><li>
 加入版本:
 Classic 0.0.16a_01,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>通过聊天框向多个玩家发送消息。
@@ -3190,7 +3167,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dl><dd><code>say &lt;<i>消息：字符串</i>&gt;</code></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若目标选择器无法解析为一个或多个在线玩家，或以名称指定的玩家不在线。</dd>
-<dd> 成功时，向所有在线玩家广播<i>消息</i>。若<i>消息</i>中使用的目标选择器指定了多个玩家（例如@a），则玩家名单的格式为或“名字1和名字2”，或“名字1, 名字2……名字N”。在携带版中，消息中的目标选择器不被解析。</dd></dl>
+<dd> 成功时，向所有在线玩家广播<i>消息</i>。若<i>消息</i>中使用的目标选择器指定了多个玩家(例如@a)，则玩家名单的格式为或“名字1和名字2”，或“名字1, 名字2……名字N”。在携带版中，消息中的目标选择器不被解析。</dd></dl>
 <p> 
 </p>
 
@@ -3201,7 +3178,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.5（13w04a ）
+1.5(13w04a )
 
 </li></ul>
 
@@ -3221,7 +3198,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.3.1（12w21a ）
+1.3.1(12w21a )
 
 </li></ul>
 <p>显示世界种子。
@@ -3239,8 +3216,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.7.2（13w37a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.7.2(13w37a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>将一个方块更改为另一个方块。
@@ -3251,22 +3228,22 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>setblock &lt;<i>坐标：x y z</i>&gt; &lt;<i>方块名：字符串</i>&gt; [<i>方块数据：整数</i>] [<i>原方块处理方式：字符串</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>坐标：x y z</i>）
+<dl><dd> <i>x y z</i>(携带版：<i>坐标：x y z</i>)
 <dl><dd> 指定要更改的方块坐标。可使用波浪号来指定一个相对于命令执行处的位置。</dd></dl></dd></dl>
-<dl><dd> <i>方块名</i>（携带版：<i>方块名：字符串</i>）
-<dl><dd> 指定新的方块。必须为一个方块ID（例如，<code>minecraft:stone</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>数据值</i>（携带版：<i>方块数据：整数</i>）（可选）
-<dl><dd> 指定新方块的方块数据。必须在0到15之间（含）。如果没有指定，默认为<code>0</code>。</dd></dl></dd></dl>
-<dl><dd> <i>状态</i>（可选）<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> <i>方块名</i>(携带版：<i>方块名：字符串</i>)
+<dl><dd> 指定新的方块。必须为一个方块ID(例如，<code>minecraft:stone</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>数据值</i>(携带版：<i>方块数据：整数</i>)(可选)
+<dl><dd> 指定新方块的方块数据。必须在0到15之间(含)。如果没有指定，默认为<code>0</code>。</dd></dl></dd></dl>
+<dl><dd> <i>状态</i>(可选)<sup>[<i>仅Java版</i>]</sup>
 <dl><dd> 指定新方块的状态。必须对于<i>方块名</i>所指定的方块有效。</dd></dl></dd></dl>
-<dl><dd> <i>原方块处理方式</i>（携带版：<i>原方块处理方式：字符串</i>）（可选）
+<dl><dd> <i>原方块处理方式</i>(携带版：<i>原方块处理方式：字符串</i>)(可选)
 <dl><dd> 指定方块更改的处理方式。必须为其中之一：
-<ul><li> <code>destroy</code> — 原方块掉落本身与其内容物（如同被一个玩家破坏），播放方块碎裂的声音。</li>
-<li> <code>keep</code> — 只有空气方块会被改变（非空气方块将被保留下来）。</li>
+<ul><li> <code>destroy</code> — 原方块掉落本身与其内容物(如同被一个玩家破坏)，播放方块碎裂的声音。</li>
+<li> <code>keep</code> — 只有空气方块会被改变(非空气方块将被保留下来)。</li>
 <li> <code>replace</code> — 旧方块不掉落本身与其内容物，没有声音。</li></ul></dd>
 <dd> 如果没有指定，默认为<code>replace</code>。</dd></dl></dd></dl>
-<dl><dd> <i>数据标签</i>（可选）<sup>[<i>仅Java版</i>]</sup>
-<dl><dd> 指定新方块的数据标签。必须是一个NBT格式组合（例如，<code>{CustomName:Fred}</code>）。</dd></dl></dd></dl>
+<dl><dd> <i>数据标签</i>(可选)<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定新方块的数据标签。必须是一个NBT格式组合(例如，<code>{CustomName:Fred}</code>)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若没有正确指定参数，或在<code>keep</code>模式下尝试去更换一个非空气方块，或使用<code>keep</code>或<code>replace</code>模式时新方块和旧方块相同，或坐标指定位置的区块尚未加载时，命令失败。</dd></dl>
 <dl><dd> 若成功，则更改指定位置处的方块。</dd></dl>
@@ -3297,8 +3274,7 @@ Classic 0.0.15a_03
 <dl><dd>设置踢出空闲玩家的计时器，当玩家空闲时间超过<i>空闲分钟数</i>后会被踢出服务器。</dd></dl>
 <dl><dt>成功条件</dt></dl>
 <dl><dd>总是成功。</dd></dl>
-<p><br />
-</p>
+
 
 
 
@@ -3335,8 +3311,8 @@ PE 1.1
 限制条件:
 是管理员</li><li>
 加入版本:
-1.7.2（13w43a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.7.2(13w43a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>设置世界出生点。
@@ -3348,10 +3324,10 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>setworldspawn [<i>出生点：x y z</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>出生点：x y z</i>）（可选）
-<dl><dd>指定玩家的出生点。<i>x</i>和<i>z</i>必须在-30,000,000到30,000,000之间（含）。<i>y</i>必须为0到256之间（含）的整数。可以使用波浪号来指定基于命令执行位置的相对坐标。若没有指定，默认为命令执行位置。在命令方块中为必需参数。</dd></dl></dd></dl>
-<dl><dd><dl><dd> 如果服务器不处于冒险模式，玩家会出生在(<i>x</i>,<i>z</i>)附近的最高的方块上 — <i>y</i>会被无视。如果服务器处于冒险模式，那么新的出生点精确为给定的坐标，包括<i>y</i>坐标（无论是在地下或者根本没有方块）- 如果<i>y</i>处并没有空间让玩家出生，那么出生点将会向上移动，直至有空间，最高移动到第256层。</dd></dl></dd></dl>
-<dl><dd><dl><dd> 虽然出生点区块一般会保持加载状态，然而新设置的出生点区块需要等待玩家走到其附近才会开始加载。在此之前，指南针（在<i>Minecraft</i>里指向生成点而不是指向北方）的方位在重新加载世界前也不会发生变化。</dd></dl></dd></dl>
+<dl><dd> <i>x y z</i>(携带版：<i>出生点：x y z</i>)(可选)
+<dl><dd>指定玩家的出生点。<i>x</i>和<i>z</i>必须在-30,000,000到30,000,000之间(含)。<i>y</i>必须为0到256之间(含)的整数。可以使用波浪号来指定基于命令执行位置的相对坐标。若没有指定，默认为命令执行位置。在命令方块中为必需参数。</dd></dl></dd></dl>
+<dl><dd><dl><dd> 如果服务器不处于冒险模式，玩家会出生在(<i>x</i>,<i>z</i>)附近的最高的方块上 — <i>y</i>会被无视。如果服务器处于冒险模式，那么新的出生点精确为给定的坐标，包括<i>y</i>坐标(无论是在地下或者根本没有方块)- 如果<i>y</i>处并没有空间让玩家出生，那么出生点将会向上移动，直至有空间，最高移动到第256层。</dd></dl></dd></dl>
+<dl><dd><dl><dd> 虽然出生点区块一般会保持加载状态，然而新设置的出生点区块需要等待玩家走到其附近才会开始加载。在此之前，指南针(在<i>Minecraft</i>里指向生成点而不是指向北方)的方位在重新加载世界前也不会发生变化。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若没有正确指定参数，则失败。</dd>
 <dd> 成功时，把出生点设置到指定的坐标。</dd></dl>
@@ -3367,8 +3343,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.4.2 （ 12w32a ）,
-PE Alpha 0.16.0 （ PE Alpha 0.16.0 build 1 ）
+1.4.2 ( 12w32a ),
+PE Alpha 0.16.0 ( PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>为特定玩家设置出生点。
@@ -3381,10 +3357,10 @@ PE Alpha 0.16.0 （ PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd><code>spawnpoint [<i>玩家：目标</i>] [<i>出生坐标：x y z</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）（可选）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)(可选)
 <dl><dd> 指定被更改出生点的玩家。必须是一个玩家名或目标选择器。如果没有指定，默认为命令执行者。在命令方块中为必需参数。</dd></dl></dd></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>出生坐标：x y z</i>）（可选）
-<dl><dd> 指定玩家新的出生点的坐标。<i>x</i>和<i>z</i>必须在-30,000,000到30,000,000之间（含）。<i>y</i>必须为0到256之间（含）的整数。可以使用波浪号来指定基于命令执行位置的相对坐标。若没有指定，默认为目标玩家的当前位置。</dd></dl></dd></dl>
+<dl><dd> <i>x y z</i>(携带版：<i>出生坐标：x y z</i>)(可选)
+<dl><dd> 指定玩家新的出生点的坐标。<i>x</i>和<i>z</i>必须在-30,000,000到30,000,000之间(含)。<i>y</i>必须为0到256之间(含)的整数。可以使用波浪号来指定基于命令执行位置的相对坐标。若没有指定，默认为目标玩家的当前位置。</dd></dl></dd></dl>
 <dl><dt>效果</dt>
 <dd> 若没有正确指定参数，或<i>玩家</i>无法解析为一个或多个在线玩家时，命令失败。</dd></dl>
 <dl><dd> 成功时，把指定玩家的出生点设置到指定坐标。</dd></dl>
@@ -3400,11 +3376,11 @@ PE Alpha 0.16.0 （ PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.6.1（13w23a ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.6.1(13w23a ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
-<p>把实体（如玩家、>生物、物品等）随机传送到区域内地表的某个位置。
+<p>把实体(如玩家、>生物、物品等)随机传送到区域内地表的某个位置。
 </p>
 <dl><dt>语法</dt></dl>
 <ul><li> <b>PC版</b></li></ul>
@@ -3412,26 +3388,26 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>spreadplayers &lt;<i>x：坐标</i>&gt; &lt;<i>z：坐标</i>&gt; &lt;<i>分散间距：浮点数</i>&gt; &lt;<i>最大范围：浮点数</i>&gt; &lt;<i>传送目标：目标</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>x z</i>（携带版：<i>x：坐标</i>和<i>z：坐标</i>）
-<dl><dd> 指定传送目的地区域的中心。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间（含，不输入逗号）的整数。可以使用波浪号来指定基于命令执行位置的相对坐标。</dd></dl></dd></dl>
-<dl><dd> <i>分散间距</i>（携带版：<i>分散间距：浮点数</i>）
+<dl><dd> <i>x z</i>(携带版：<i>x：坐标</i>和<i>z：坐标</i>)
+<dl><dd> 指定传送目的地区域的中心。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间(含，不输入逗号)的整数。可以使用波浪号来指定基于命令执行位置的相对坐标。</dd></dl></dd></dl>
+<dl><dd> <i>分散间距</i>(携带版：<i>分散间距：浮点数</i>)
 <dl><dd> 指定传送目标之间的最小间距。最小值为0.0。</dd></dl></dd></dl>
-<dl><dd> <i>最大范围</i>（携带版：<i>最大范围：浮点数</i>）
-<dl><dd> 指定目标区域边界与区域中心在<i>x</i>和<i>z</i>轴上的距离（因此区域是正方形而不是圆形）。必须比<i>分散间距</i>大，且最小值为1.0。</dd></dl></dd></dl>
+<dl><dd> <i>最大范围</i>(携带版：<i>最大范围：浮点数</i>)
+<dl><dd> 指定目标区域边界与区域中心在<i>x</i>和<i>z</i>轴上的距离(因此区域是正方形而不是圆形)。必须比<i>分散间距</i>大，且最小值为1.0。</dd></dl></dd></dl>
 <dl><dd> <i>考虑队伍</i><sup>[<i>仅Java版</i>]</sup>
 <dl><dd> 同队成员在传送后会不会出现在一起。必须是<code>true</code>或<code>false</code>。如果为<code>true</code>，同队的目标会被传送到同一个位置。</dd></dl></dd></dl>
-<dl><dd> <i>传送目标</i>（携带版：<i>传送目标：目标</i>）
-<dl><dd> 指定需要随机传送的目标。必须为一个或多个玩家名，和/或目标选择器，使用空格分隔（使用<code>@e</code>可以指定玩家以外的实体）。</dd></dl></dd></dl>
+<dl><dd> <i>传送目标</i>(携带版：<i>传送目标：目标</i>)
+<dl><dd> 指定需要随机传送的目标。必须为一个或多个玩家名，和/或目标选择器，使用空格分隔(使用<code>@e</code>可以指定玩家以外的实体)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若没有正确指定参数，或因目标数太多导致<i>分散间距</i>无法在指定区域内满足，或者有目标将要传送到世界边界以外时，命令失败。</dd></dl>
 <dl><dd> 成功时，目标会随机传送到区域内表面的某个位置。目标一定会被传送到选定区域最高的方块上，且不会在熔岩上。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 传送所有玩家到以(0,0)为中心，大小为1,000×1,000的区域中的一个随机的地点，同队的玩家聚集在一起，且每队之间最小的间隔为200格：
 <dl><dd> <code>spreadplayers 0 0 200 500 true @a</code></dd></dl></dd></dl>
-<dl><dd> 从三个队伍（Red、Blue、Green）中各随机选取一名玩家，再加上Alice和Bob，传送至以(0,0)为中心，大小为200×200的区域中，且玩家之间最小的间隔为50格：
+<dl><dd> 从三个队伍(Red、Blue、Green)中各随机选取一名玩家，再加上Alice和Bob，传送至以(0,0)为中心，大小为200×200的区域中，且玩家之间最小的间隔为50格：
 <dl><dd> <code>spreadplayers 0 0 50 100 false @r[team=Red] @r[team=Blue] @r[team=Green] Alice Bob</code></dd></dl></dd></dl>
 <dl><dt>另见</dt></dl>
-<dl><dd> <code>/tp</code>与<code>/teleport</code> — 传送一个玩家或实体到一个指定的位置（甚至到地下）</dd></dl>
+<dl><dd> <code>/tp</code>与<code>/teleport</code> — 传送一个玩家或实体到一个指定的位置(甚至到地下)</dd></dl>
 <p> 
 </p>
 
@@ -3444,12 +3420,12 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.8（14w28a ）
+1.8(14w28a )
 
 </li></ul>
 <p>管理通过其他命令的结果来更新的记分牌目标。
-</p><p>一些命令可被方块（具体是命令方块和告示牌）或实体（玩家执行命令、其它实体通过<code>/execute</code>间接成为命令执行者）执行。当一个命令被执行后，会返回一个或多个“命令统计”：成功计数、影响的方块数、影响的实体数、影响的物品数、和/或命令的查询结果（比如<code>/time query daytime</code>）。
-</p><p><code>stats<code>命令可以在指定方块或实体所拥有的特定命令统计处设置“选择器”和“目标”。选择器（比如<code>@e</code>）在设置后会先被原样保存，不会被立即解析；当该方块或实体随后执行一个命令时，预先保存的选择器就会被解析并选取（其它）实体作为目标，然后使用这个命令所产生的命令统计来更新被选中目标的记分板目标。这些记分板数据与其它记分板数据一样，可以被正常显示或处理。
+</p><p>一些命令可被方块(具体是命令方块和告示牌)或实体(玩家执行命令、其它实体通过<code>/execute</code>间接成为命令执行者)执行。当一个命令被执行后，会返回一个或多个“命令统计”：成功计数、影响的方块数、影响的实体数、影响的物品数、和/或命令的查询结果(比如<code>/time query daytime</code>)。
+</p><p><code>stats<code>命令可以在指定方块或实体所拥有的特定命令统计处设置“选择器”和“目标”。选择器(比如<code>@e</code>)在设置后会先被原样保存，不会被立即解析；当该方块或实体随后执行一个命令时，预先保存的选择器就会被解析并选取(其它)实体作为目标，然后使用这个命令所产生的命令统计来更新被选中目标的记分板目标。这些记分板数据与其它记分板数据一样，可以被正常显示或处理。
 </p><p>命令方块的命令成功计数也可以使用红石比较器获取，但其上限为15；而记分板目标可以保存从-2,147,483,648到2,147,483,647的任意值。命令成功计数和查询结果也通常在聊天框中显示。
 </p>
 <dl><dt>语法</dt></dl>
@@ -3458,9 +3434,9 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <dd> <code>stats entity &lt;<i>选择器2</i>&gt; clear &lt;<i>统计</i>&gt;</code></dd>
 <dd> <code>stats entity &lt;<i>选择器2</i>&gt; set &lt;<i>统计</i>&gt; &lt;<i>选择器</i>&gt; &lt;<i>目标</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>x y z</i>（仅<code>block</code>模式）
-<dl><dd>指定命令统计数据的来源方块所处位置。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间（含，不输入逗号）的整数。可以使用波浪号来指定基于命令执行位置的相对坐标。</dd></dl></dd>
-<dd> <i>选择器2</i>（仅在<code>entity</code>模式中可用）
+<dl><dd> <i>x y z</i>(仅<code>block</code>模式)
+<dl><dd>指定命令统计数据的来源方块所处位置。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间(含，不输入逗号)的整数。可以使用波浪号来指定基于命令执行位置的相对坐标。</dd></dl></dd>
+<dd> <i>选择器2</i>(仅在<code>entity</code>模式中可用)
 <dl><dd>指定发送命令统计的实体。必须为一个玩家名称或目标选择器。</dd></dl></dd></dl>
 <dl><dd> <i>统计</i>
 <dl><dd>指定将要被设置或清除选择器和目标的命令统计。必须为以下之一：
@@ -3469,12 +3445,12 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <li> <code>AffectedItems</code> —返回受命令影响的物品的数量。</li>
 <li> <code>QueryResult</code> — 返回命令的查询结果。</li>
 <li> <code>SuccessCount</code> — 返回一个命令成功执行的次数。</li></ul></dd></dl></dd></dl>
-<dl><dd> <i>选择器</i>（仅<code>set</code>模式）
-<dl><dd> 指定一个目标选择器，会在方块或实体执行一个命令后得到解析，此时被指定的实体的记分板目标会根据<i>统计</i>得到更新。由于前述的非即时解析的特性，此处可以输入任何内容，但只有玩家名字或目标选择器能够产生有意义的结果（不过，玩家名可以是虚假的，即使是该玩家真实存在，也不需要在线）。</dd></dl></dd></dl>
-<dl><dd> <i>目标</i> （仅<code>set</code>模式）
+<dl><dd> <i>选择器</i>(仅<code>set</code>模式)
+<dl><dd> 指定一个目标选择器，会在方块或实体执行一个命令后得到解析，此时被指定的实体的记分板目标会根据<i>统计</i>得到更新。由于前述的非即时解析的特性，此处可以输入任何内容，但只有玩家名字或目标选择器能够产生有意义的结果(不过，玩家名可以是虚假的，即使是该玩家真实存在，也不需要在线)。</dd></dl></dd></dl>
+<dl><dd> <i>目标</i> (仅<code>set</code>模式)
 <dl><dd> 指定要被<i>统计</i>数据更新的记分板目标名称。由于前述的非即时解析的特性，此处可以输入任何内容，但只有已定义的记分板目标名称能够产生有意义的结果。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 当参数设置不正确，或指定的方块无法追踪命令统计（也就是说，指定的方块不是命令方块或告示牌），或<i>选择器2</i>无法解析为一个或多个有效实体（以名称指定的玩家必须在线）时，命令失败。</dd></dl>
+<dl><dd> 当参数设置不正确，或指定的方块无法追踪命令统计(也就是说，指定的方块不是命令方块或告示牌)，或<i>选择器2</i>无法解析为一个或多个有效实体(以名称指定的玩家必须在线)时，命令失败。</dd></dl>
 <dl><dd> 成功时，向<i>统计</i>所指定的命令统计处设置或清除选择器和目标。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 将(0,64,0)处方块执行命令的所有查询结果更新至最近玩家的记分板目标MyObj：
@@ -3521,8 +3497,8 @@ Alpha 1.0.16
 限制条件:
 是管理员</li><li>
 加入版本:
-1.9.3（1.9.3-pre2 ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.9.3(1.9.3-pre2 ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
 <p>停止声音播放。
@@ -3533,12 +3509,12 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>stopsound &lt;<i>玩家：目标</i>&gt; [<i>声音：字符串</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)
 <dl><dd> 指定声音的接收者。必须是玩家名称或目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>来源</i>（可选）<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> <i>来源</i>(可选)<sup>[<i>仅Java版</i>]</sup>
 <dl><dd> 指定要停止的声音所属的类别，对应于游戏选项中“音乐和声音”设置的分类。必须为以下之一：<code>master</code>、<code>music</code>、<code>record</code>、<code>weather</code>、<code>block</code>、<code>hostile</code>、<code>neutral</code>、<code>player</code>、<code>ambient</code>或<code>voice</code>。</dd></dl></dd></dl>
-<dl><dd> <i>声音</i>（携带版：<i>声音：字符串</i>）（可选）
-<dl><dd> 指定要停止的声音。必须为在sounds.json中被定义的一个声音项目（例如，<code>mob.pig.say</code>）。若未指定，则停止所有声音。</dd></dl></dd></dl>
+<dl><dd> <i>声音</i>(携带版：<i>声音：字符串</i>)(可选)
+<dl><dd> 指定要停止的声音。必须为在sounds.json中被定义的一个声音项目(例如，<code>mob.pig.say</code>)。若未指定，则停止所有声音。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若参数设置不正确，或<i>玩家</i>无法解析为一个或多个在线玩家时，命令失败。</dd></dl>
 <dl><dd> 成功时，为指定玩家停止指定的声音播放。</dd></dl>
@@ -3554,11 +3530,11 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.7.2（13w36a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.7.2(13w36a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
-<p>召唤一个实体（生物、弹射物、物品、载具等）。
+<p>召唤一个实体(生物、弹射物、物品、载具等)。
 </p>
 <dl><dt>语法</dt></dl>
 <ul><li> <b>PC版</b></li></ul>
@@ -3566,12 +3542,12 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>summon &lt;<i>实体类型：字符串</i>&gt; [<i>生成坐标：x y z</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>实体名</i>（携带版：<i>实体类型：字符串</i>）
-<dl><dd> 指定要召唤的实体。必须是一个体ID（例如<code>bat</code>、<code>horse</code>、<code>wither_skull</code>、<code>xp_orb</code>、<code>tnt</code>等等）或 <code>lightning_bolt</code>。</dd></dl></dd></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>生成坐标：x y z</i>）（可选<sup>[<i>仅Java版</i>]</sup>）
-<dl><dd> 指定实体要出现的位置坐标。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间（含，不输入逗号）的整数，且<i>y</i>必须大于0。可以使用波浪号来指定基于命令执行位置的相对坐标。若未指定，则默认为命令执行处。</dd></dl></dd></dl>
-<dl><dd> <i>数据标签</i>（可选）<sup>[<i>仅Java版</i>]</sup>
-<dl><dd> 指定实体的数据标签。必须是一个NBT格式组合（例如<code>{CustomName:Fred}</code>）。 闪电没有任何可以指定的数据标签。</dd></dl></dd></dl>
+<dl><dd> <i>实体名</i>(携带版：<i>实体类型：字符串</i>)
+<dl><dd> 指定要召唤的实体。必须是一个体ID(例如<code>bat</code>、<code>horse</code>、<code>wither_skull</code>、<code>xp_orb</code>、<code>tnt</code>等等)或 <code>lightning_bolt</code>。</dd></dl></dd></dl>
+<dl><dd> <i>x y z</i>(携带版：<i>生成坐标：x y z</i>)(可选<sup>[<i>仅Java版</i>]</sup>)
+<dl><dd> 指定实体要出现的位置坐标。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间(含，不输入逗号)的整数，且<i>y</i>必须大于0。可以使用波浪号来指定基于命令执行位置的相对坐标。若未指定，则默认为命令执行处。</dd></dl></dd></dl>
+<dl><dd> <i>数据标签</i>(可选)<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定实体的数据标签。必须是一个NBT格式组合(例如<code>{CustomName:Fred}</code>)。 闪电没有任何可以指定的数据标签。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 当参数未正确指定时命令失败。</dd></dl>
 <dl><dd> 成功时，在指定的位置创建指定的实体。</dd></dl>
@@ -3594,11 +3570,11 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.10（1.10-pre1 ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.10(1.10-pre1 ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
-<p>传送实体（玩家、生物、物品等）。
+<p>传送实体(玩家、生物、物品等)。
 </p><p>在PC版中，此命令和<code>/tp</code>命令之间的主要区别是，<code>/teleport</code>使用基于命令执行位置的相对坐标，而<code>/tp</code>使用基于传送目标当前位置的相对坐标。
 </p><p>大多数命令只能影响已经生成的区块，但是<code>/teleport</code>可以将实体传送到尚未生成的区块中。若被传送的目标是玩家，则传送后玩家所在的区块及附近的区块会自动开始生成。
 </p><p>在携带版中，此命令的效果与<code>/tp</code>完全一样。
@@ -3612,18 +3588,18 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dd> <code>teleport &lt;<i>传送目标：目标</i>&gt; &lt;<i>目的地：目标</i>&gt;</code></dd>
 <dd> <code>teleport &lt;<i>传送目标：目标</i>&gt; &lt;<i>目的地：x y z</i>&gt; [<i>y-旋转角度：角度</i>] [<i>x-旋转角度：角度</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>目标实体</i>（携带版：<i>传送目标：目标</i>）
+<dl><dd> <i>目标实体</i>(携带版：<i>传送目标：目标</i>)
 <dl><dd> 指定要传送的实体。必须是玩家名称或目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>目的地：x y z</i>）
-<dl><dd> 指定传送的目的地坐标。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间（含，不输入逗号）的整数，且<i>y</i>必须在-4096和4096之间（含）。可以使用波浪号来指定基于命令执行位置的相对坐标（使用<code>/tp</code>或<code>/execute</code>来进行基于传送目标当前位置的传送）。</dd></dl></dd></dl>
+<dl><dd> <i>x y z</i>(携带版：<i>目的地：x y z</i>)
+<dl><dd> 指定传送的目的地坐标。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间(含，不输入逗号)的整数，且<i>y</i>必须在-4096和4096之间(含)。可以使用波浪号来指定基于命令执行位置的相对坐标(使用<code>/tp</code>或<code>/execute</code>来进行基于传送目标当前位置的传送)。</dd></dl></dd></dl>
 <dl><dd> <i>目的地：目标</i> <sup>[<i>仅基岩版</span></i>]</sup>
 <dl><dd> 指定传送的目的地实体。必须为一个玩家名或目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>y-旋转角度</i>（携带版：<i>y-旋转角度：角度</i>）（可选）
-<dl><dd> 指定水平旋转角度（正北方为-180.0，正东为-90.0，正南为0.0，正西为90.0，正北以西为179.9，之后回到-180.0）。可使用波浪号指定基于当前旋转角度的相对偏移。</dd></dl></dd></dl>
-<dl><dd> <i>x-旋转角度</i>（携带版：<i>x-旋转角度：角度</i>）（可选）
-<dl><dd> 指定垂直旋转角度（竖直上方为-90.0，至竖直下方90.0）。可使用波浪号指定基于当前旋转角度的相对偏移。</dd></dl></dd></dl>
+<dl><dd> <i>y-旋转角度</i>(携带版：<i>y-旋转角度：角度</i>)(可选)
+<dl><dd> 指定水平旋转角度(正北方为-180.0，正东为-90.0，正南为0.0，正西为90.0，正北以西为179.9，之后回到-180.0)。可使用波浪号指定基于当前旋转角度的相对偏移。</dd></dl></dd></dl>
+<dl><dd> <i>x-旋转角度</i>(携带版：<i>x-旋转角度：角度</i>)(可选)
+<dl><dd> 指定垂直旋转角度(竖直上方为-90.0，至竖直下方90.0)。可使用波浪号指定基于当前旋转角度的相对偏移。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 如果参数未正确指定，或<i>目标实体</i>无法解析为一个或多个实体（以名称指定的玩家必须在线）时，命令失败。<sup>[<i>需要验证</span></i>]</sup></dd></dl>
+<dl><dd> 如果参数未正确指定，或<i>目标实体</i>无法解析为一个或多个实体(以名称指定的玩家必须在线)时，命令失败。<sup>[<i>需要验证</span></i>]</sup></dd></dl>
 <dl><dd> 成功时，将目标传送到指定的目的地。</dd></dl>
 <p> 
 </p>
@@ -3638,7 +3614,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 无</li><li>
 加入版本:
 Alpha 1.0.16_02,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>将一条私聊信息发送给一个或多个玩家。
@@ -3653,13 +3629,13 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dd> <code>msg &lt;<i>收信者：目标</i>&gt; &lt;<i>信息：字符串</i>&gt;</code></dd>
 <dd> <code>w &lt;<i>收信者：目标</i>&gt; &lt;<i>信息：字符串</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>收信者：目标</i>）
-<dl><dd> 指定私聊信息的接收玩家。必须是一个玩家的名字（或一个目标选择器，仅管理员可以使用）。</dd></dl></dd></dl>
-<dl><dd> <i>信息</i>（携带版：<i>信息：字符串</i>）
+<dl><dd> <i>玩家</i>(携带版：<i>收信者：目标</i>)
+<dl><dd> 指定私聊信息的接收玩家。必须是一个玩家的名字(或一个目标选择器，仅管理员可以使用)。</dd></dl></dd></dl>
+<dl><dd> <i>信息</i>(携带版：<i>信息：字符串</i>)
 <dl><dd> 指定要发送的信息，可以包括空格；在服务器控制台中执行时还能使用目标选择器。通过<code>/execute</code>执行此命令时亦可使用目标选择器。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 当参数设置不正确，或任意一个目标选择器无法解析为至少一个在线玩家，或以名称指定的玩家不在线时、命令执行失败。</dd></dl>
-<dl><dd> 成功时, 只有指定的目标玩家能在聊天框里看到这条私聊信息。若<i>信息</i>中使用的目标选择器指定了多个玩家（例如@a），则玩家名单的格式为或“名字1和名字2”，或“名字1, 名字2……名字N”。在携带版中，消息中的目标选择器不被解析。</dd></dl>
+<dl><dd> 成功时, 只有指定的目标玩家能在聊天框里看到这条私聊信息。若<i>信息</i>中使用的目标选择器指定了多个玩家(例如@a)，则玩家名单的格式为或“名字1和名字2”，或“名字1, 名字2……名字N”。在携带版中，消息中的目标选择器不被解析。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 私信告诉Alice：“Start the mission!”: <code>tell Alice Start the mission!</code></dd></dl>
 <p> 
@@ -3673,7 +3649,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.7.2（13w37a ）
+1.7.2(13w37a )
 
 </li></ul>
 <p>玩家发送一条JSON格式的消息。
@@ -3684,7 +3660,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dl><dd> <i>玩家</i>
 <dl><dd> 指定该消息的接收玩家。必须是一个玩家的名字或目标选择器。</dd></dl></dd></dl>
 <dl><dd> <i>原始JSON消息</i>
-<dl><dd> 指定要发送的消息。必须是有效的原始JSON文本。（例如，<code>{text:"Hi there!",bold:true}</code>）。</dd></dl></dd></dl>
+<dl><dd> 指定要发送的消息。必须是有效的原始JSON文本。(例如，<code>{text:"Hi there!",bold:true}</code>)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 如果参数指定不正确, 或者当 <i>玩家</i> 无法解析到一个或多个在线玩家时，命令失败。</dd></dl>
 <dl><dd> 成功时，目标玩家在自己的聊天框接收到指定的JSON格式消息。</dd></dl>
@@ -3702,11 +3678,11 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.5（13w03a ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.5(13w03a ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
-<p>检测并统计符合指定条件的实体（玩家、生物、物品等）。
+<p>检测并统计符合指定条件的实体(玩家、生物、物品等)。
 </p>
 <dl><dt>语法</dt></dl>
 <ul><li> <b>PC版</b></li></ul>
@@ -3714,12 +3690,12 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>testfor &lt;<i>检测目标：目标</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>检测目标：目标</i>）
-<dl><dd> 指定计数的目标。必须是一个玩家名称或一个目标选择器（可以使用<code>@e</code>来指定非玩家实体）。</dd></dl></dd></dl>
-<dl><dd> <i>数据标签</i>（可选）<sup>[<i>仅Java版</i>]</sup>
-<dl><dd> 指定需要匹配的数据标签，拥有该数据标签的实体才会被计入。必须是一个NBT标签组合（例如<code>{XpLevel:3}</code>）。</dd></dl></dd></dl>
+<dl><dd> <i>玩家</i>(携带版：<i>检测目标：目标</i>)
+<dl><dd> 指定计数的目标。必须是一个玩家名称或一个目标选择器(可以使用<code>@e</code>来指定非玩家实体)。</dd></dl></dd></dl>
+<dl><dd> <i>数据标签</i>(可选)<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定需要匹配的数据标签，拥有该数据标签的实体才会被计入。必须是一个NBT标签组合(例如<code>{XpLevel:3}</code>)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 若参数设置不正确，或<i>玩家</i>无法解析为一个或多个实体（以名称指定的玩家必须在线）时，命令失败。</dd></dl>
+<dl><dd> 若参数设置不正确，或<i>玩家</i>无法解析为一个或多个实体(以名称指定的玩家必须在线)时，命令失败。</dd></dl>
 <dl><dd> 成功时，将命令成功计数设置为匹配目标数量，可以通过朝外的靠着命令方块的红石比较器测量。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 探测Alice是否在线: <code>testfor Alice</code></dd></dl>
@@ -3738,8 +3714,8 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.7.2（13w37a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.7.2(13w37a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>探测某个方块是否在特定位置。
@@ -3750,18 +3726,18 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>testforblock &lt;<i>位置：x y z</i>&gt; &lt;<i>方块名：字符串</i>&gt; [<i>数据值：整数</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>位置：x y z</i>）
-<dl><dd> 指定待探测的方块的坐标。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间（含，不输入逗号）的整数，且<i>y</i>必须在0和255之间（含）。可以使用波浪号来指定基于命令执行位置的相对坐标。</dd></dl></dd></dl>
-<dl><dd> <i>方块名</i>（携带版：<i>方块名：字符串</i>）
-<dl><dd> 指定要探测的方块类型。必须是有效的方块ID（例如<code>minecraft:stone</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>数据值</i>（携带版：<i>数据值：整数</i>）（可选）
-<dl><dd> 指定要探测的方块数据。<i>数据值</i>必须在-1和15之间（含)。如果未指定或为<code>-1</code>，则<i>数据值</i>匹配任意的数据值。</dd></dl></dd></dl>
-<dl><dd> <i>状态</i>（可选）<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> <i>x y z</i>(携带版：<i>位置：x y z</i>)
+<dl><dd> 指定待探测的方块的坐标。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间(含，不输入逗号)的整数，且<i>y</i>必须在0和255之间(含)。可以使用波浪号来指定基于命令执行位置的相对坐标。</dd></dl></dd></dl>
+<dl><dd> <i>方块名</i>(携带版：<i>方块名：字符串</i>)
+<dl><dd> 指定要探测的方块类型。必须是有效的方块ID(例如<code>minecraft:stone</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>数据值</i>(携带版：<i>数据值：整数</i>)(可选)
+<dl><dd> 指定要探测的方块数据。<i>数据值</i>必须在-1和15之间(含)。如果未指定或为<code>-1</code>，则<i>数据值</i>匹配任意的数据值。</dd></dl></dd></dl>
+<dl><dd> <i>状态</i>(可选)<sup>[<i>仅Java版</i>]</sup>
 <dl><dd> 指定要探测的方块状态。必须对于<i>方块名</i>所指定的方块有效。若未指定或为<code>*</code>，则<i>状态</i>匹配所有的方块状态。</dd></dl></dd></dl>
-<dl><dd> <i>数据标签</i>（可选）<sup>[<i>仅Java版</i>]</sup>
-<dl><dd> 指定要探测的数据标签。必须是一个NBT标签组合（例如，<code>{CustomName:Fred}</code>）。如果未指定，<i>数据标签</i>匹配任意的数据标签。</dd></dl></dd></dl>
+<dl><dd> <i>数据标签</i>(可选)<sup>[<i>仅Java版</i>]</sup>
+<dl><dd> 指定要探测的数据标签。必须是一个NBT标签组合(例如，<code>{CustomName:Fred}</code>)。如果未指定，<i>数据标签</i>匹配任意的数据标签。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 如果没有正确指定参数，或指定位置的方块不匹配指定的方块ID、方块数据或数据标签（<i>数据标签</i>的内容不需要与被测方块的数据标签完全一致；命令参数中未定义数据标签项目也不会造成失败）时，命令失败。</dd></dl>
+<dl><dd> 如果没有正确指定参数，或指定位置的方块不匹配指定的方块ID、方块数据或数据标签(<i>数据标签</i>的内容不需要与被测方块的数据标签完全一致；命令参数中未定义数据标签项目也不会造成失败)时，命令失败。</dd></dl>
 <dl><dd> 成功时，返回命令成功计数1。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 检测坐标(0,64,0)处是否为任意颜色的羊毛：
@@ -3782,8 +3758,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.8（14w07a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.8(14w07a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>测试两个区域中的方块是否相同。
@@ -3795,18 +3771,18 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dl><dd> <code>testforblocks <span style="background-color:#FDD">&lt;<i>源区域起始：x y z</i>&gt;</span> <span style="background-color:#FFD">&lt;<i>源区域终止：x y z</i>&gt;</span> <span style="background-color:#DDF">&lt;<i>目标区域基点：x y z</i>&gt;</span> [<i>模式：字符串</i>]</code></dd></dl>
 <dl><dd> <i>以上的背景色是为了方便阅读。</i></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <span style="background-color:#FDD"><i>x1 y1 z1</i></span>与<span style="background-color:#FFD"><i>x2 y2 z2</i></span>（携带版：<span style="background-color:#FDD">&lt;<i>源区域起始：x y z</i>&gt;</span>与<span style="background-color:#FFD">&lt;<i>源区域终止：x y z</i>&gt;</span>）
-<dl><dd> 指定作为样式基准的区域（源区域）的两个对角方块。<i>x1</i>、<i>z1</i>、<i>x2</i>及<i>z2</i>必须在-30,000,000和30,000,000之间（含，不输入逗号），且<i>y1</i>及<i>y2</i>必须在0和255之间（含）。可以使用波浪号来指定基于命令执行位置的相对坐标。源区域中的方块数量不能超过524,288个。</dd></dl></dd></dl>
-<dl><dd> <span style="background-color:#DDF"><i>x y z</i></span>（携带版：<span style="background-color:#DDF"><i>目标区域基点：x y z</i></span>）
-<dl><dd> 指定待检查区域（目标区域）的下西北角（具有最小坐标值的边角）。<i>x</i>和<i>z</i>必须在-30,000,000和30,000,000之间（含，不输入逗号），且<i>y</i>必须在0和255之间（含）。可以使用波浪号来指定基于命令执行位置的相对坐标。源区域和目标区域可以重叠。</dd></dl></dd></dl>
-<dl><dd> <i>模式</i>（携带版：<i>模式：字符串</i>）（可选）
+<dl><dd> <span style="background-color:#FDD"><i>x1 y1 z1</i></span>与<span style="background-color:#FFD"><i>x2 y2 z2</i></span>(携带版：<span style="background-color:#FDD">&lt;<i>源区域起始：x y z</i>&gt;</span>与<span style="background-color:#FFD">&lt;<i>源区域终止：x y z</i>&gt;</span>)
+<dl><dd> 指定作为样式基准的区域(源区域)的两个对角方块。<i>x1</i>、<i>z1</i>、<i>x2</i>及<i>z2</i>必须在-30,000,000和30,000,000之间(含，不输入逗号)，且<i>y1</i>及<i>y2</i>必须在0和255之间(含)。可以使用波浪号来指定基于命令执行位置的相对坐标。源区域中的方块数量不能超过524,288个。</dd></dl></dd></dl>
+<dl><dd> <span style="background-color:#DDF"><i>x y z</i></span>(携带版：<span style="background-color:#DDF"><i>目标区域基点：x y z</i></span>)
+<dl><dd> 指定待检查区域(目标区域)的下西北角(具有最小坐标值的边角)。<i>x</i>和<i>z</i>必须在-30,000,000和30,000,000之间(含，不输入逗号)，且<i>y</i>必须在0和255之间(含)。可以使用波浪号来指定基于命令执行位置的相对坐标。源区域和目标区域可以重叠。</dd></dl></dd></dl>
+<dl><dd> <i>模式</i>(携带版：<i>模式：字符串</i>)(可选)
 <dl><dd> 指定测试模式。必须为下列其中之一：
 <ul><li> <code>all</code> — 两个区域的所有方块必须完全相同。</li>
 <li> <code>masked</code> — 源区域的空气方块可匹配目标区域的任意方块。</li></ul></dd>
 <dd> 若未指定，默认为<code>all</code>。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 如果参数未正确指定，或源区域和目标区域不匹配，则失败。</dd></dl>
-<dl><dd> 成功时，返回匹配方块的总数量（<code>all</code>模式下所有方块的数量，或<code>masked</code>模式下的源区域非空气方块的数量）。</dd></dl>
+<dl><dd> 成功时，返回匹配方块的总数量(<code>all</code>模式下所有方块的数量，或<code>masked</code>模式下的源区域非空气方块的数量)。</dd></dl>
 <p> 
 </p>
 
@@ -3818,8 +3794,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.3.1（12w16a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.3.1(12w16a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>更改或查询世界的游戏时间。在携带版中，<code>time add</code>、<code>time query</code>、<code>time set</code>是3个独立的命令。
@@ -3832,19 +3808,19 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dd> <code>time query &lt;<i>时间：字符串</i>&gt;</code></dd>
 <dd> <code>time set &lt;<i>时间值：整数</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>时间值</i>（携带版：<i>时间值：整数</i>或<i>时间：字符串</i>）
+<dl><dd> <i>时间值</i>(携带版：<i>时间值：整数</i>或<i>时间：字符串</i>)
 <dl><dd> 要增加或设置的时间值，或要查询的时间类型：
-<ul><li> <code>add</code> - 必须为介于0和2,147,483,647之间（含，不输入逗号）的整数。</li>
+<ul><li> <code>add</code> - 必须为介于0和2,147,483,647之间(含，不输入逗号)的整数。</li>
 <li> <code>query</code> - 必须为<code>daytime</code>、<code>gametime</code>或<code>day</code>。</li>
-<li> <code>set</code> - 必须为介于0和2,147,483,647之间（含，不输入逗号）的整数，或为<code>day</code>或<code>night</code>。</li></ul></dd></dl></dd></dl>
+<li> <code>set</code> - 必须为介于0和2,147,483,647之间(含，不输入逗号)的整数，或为<code>day</code>或<code>night</code>。</li></ul></dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 如果参数没有被正确指定，则命令失败。</dd></dl>
 <dl><dd> 成功时：
 <ul><li> <code>add</code> - 世界时间增加<i>时间值</i>数值。</li>
 <li> <code>query daytime</code> - 返回自当天日出后流逝的游戏刻数。</li>
 <li> <code>query gametime</code> - 返回世界总共流逝的游戏刻数。</li>
-<li> <code>query day</code> - 返回已流逝的游戏天数（与调试屏幕显示的数据相符）。</li>
-<li> <code>set</code> - 世界时间被设置为<i>数值</i>（<code>day</code> = 1000，<code>night</code> = 13000）。</li></ul></dd></dl>
+<li> <code>query day</code> - 返回已流逝的游戏天数(与调试屏幕显示的数据相符)。</li>
+<li> <code>set</code> - 世界时间被设置为<i>数值</i>(<code>day</code> = 1000，<code>night</code> = 13000)。</li></ul></dd></dl>
 <dl><dt></dt></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 设置时间为1,000：<code>time set 1000</code>或<code>time set day</code></dd></dl>
@@ -3860,36 +3836,36 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.8（14w20a ）,
-PE 1.0.5（PE 1.0.5 build 1 ）
+1.8(14w20a ),
+PE 1.0.5(PE 1.0.5 build 1 )
 
 </li></ul>
 <p>控制屏幕标题。
-</p><p>屏幕标题会以一行粗体大号文字的形式出现在玩家屏幕的中央，并且可以附加第二行作为副标题。标题和副标题均可使用高级文字格式。屏幕标题可以设置为淡入淡出过渡，而显示持续时间同样可以设定。屏幕标题的大小取决于界面尺寸设置，而过长的标题不会自动换行（只会溢出屏幕之外）。
+</p><p>屏幕标题会以一行粗体大号文字的形式出现在玩家屏幕的中央，并且可以附加第二行作为副标题。标题和副标题均可使用高级文字格式。屏幕标题可以设置为淡入淡出过渡，而显示持续时间同样可以设定。屏幕标题的大小取决于界面尺寸设置，而过长的标题不会自动换行(只会溢出屏幕之外)。
 </p>
 <dl><dt>语法</dt></dl>
 <dl><dd> 此命令有6个变种，参数各不相同。</dd></dl>
 <ul><li> <b>PC版</b></li></ul>
-<dl><dd> <code>title &lt;<i>玩家</i>&gt; clear</code>（移除屏幕标题）</dd>
-<dd> <code>title &lt;<i>玩家</i>&gt; reset</code>（将各选项复位至默认值）</dd>
-<dd> <code>title &lt;<i>玩家</i>&gt; title &lt;<i>原始JSON格式标题</i>&gt;</code>（将文字显示为主标题）</dd>
-<dd> <code>title &lt;<i>玩家</i>&gt; subtitle &lt;<i>原始JSON格式标题</i>&gt;</code>（将文字显示为副标题）</dd>
-<dd> <code>title &lt;<i>玩家</i>&gt; actionbar &lt;<i>原始JSON格式标题</i>&gt;</code>（在快捷栏上方显示的标题）</dd>
-<dd> <code>title &lt;<i>玩家</i>&gt; times &lt;<i>渐入</i>&gt; &lt;<i>保持</i>&gt; &lt;<i>渐出</i>&gt;</code>（设置渐入、保持和渐出的持续时间）</dd></dl>
+<dl><dd> <code>title &lt;<i>玩家</i>&gt; clear</code>(移除屏幕标题)</dd>
+<dd> <code>title &lt;<i>玩家</i>&gt; reset</code>(将各选项复位至默认值)</dd>
+<dd> <code>title &lt;<i>玩家</i>&gt; title &lt;<i>原始JSON格式标题</i>&gt;</code>(将文字显示为主标题)</dd>
+<dd> <code>title &lt;<i>玩家</i>&gt; subtitle &lt;<i>原始JSON格式标题</i>&gt;</code>(将文字显示为副标题)</dd>
+<dd> <code>title &lt;<i>玩家</i>&gt; actionbar &lt;<i>原始JSON格式标题</i>&gt;</code>(在快捷栏上方显示的标题)</dd>
+<dd> <code>title &lt;<i>玩家</i>&gt; times &lt;<i>渐入</i>&gt; &lt;<i>保持</i>&gt; &lt;<i>渐出</i>&gt;</code>(设置渐入、保持和渐出的持续时间)</dd></dl>
 <ul><li> <b>携带版</b></li></ul>
-<dl><dd> <code>title &lt;<i>玩家：目标</i>&gt; clear</code>（移除屏幕标题）</dd>
-<dd> <code>title &lt;<i>玩家：目标</i>&gt; reset</code>（将各选项复位至默认值）</dd>
-<dd> <code>title &lt;<i>玩家：目标</i>&gt; title &lt;<i>标题文字：字符串</i>&gt;</code>（将文字显示为主标题）</dd>
-<dd> <code>title &lt;<i>玩家：目标</i>&gt; subtitle &lt;<i>标题文字：字符串</i>&gt;</code>（将文字显示为副标题）</dd>
-<dd> <code>title &lt;<i>玩家：目标</i>&gt; actionbar &lt;<i>标题文字：字符串</i>&gt;</code>（在快捷栏上方显示的标题）</dd>
-<dd> <code>title &lt;<i>玩家：目标</i>&gt; times &lt;<i>渐入：整数</i>&gt; &lt;<i>保持：整数</i>&gt; &lt;<i>渐出：整数</i>&gt;</code>（设置渐入、保持和渐出的持续时间）</dd></dl>
+<dl><dd> <code>title &lt;<i>玩家：目标</i>&gt; clear</code>(移除屏幕标题)</dd>
+<dd> <code>title &lt;<i>玩家：目标</i>&gt; reset</code>(将各选项复位至默认值)</dd>
+<dd> <code>title &lt;<i>玩家：目标</i>&gt; title &lt;<i>标题文字：字符串</i>&gt;</code>(将文字显示为主标题)</dd>
+<dd> <code>title &lt;<i>玩家：目标</i>&gt; subtitle &lt;<i>标题文字：字符串</i>&gt;</code>(将文字显示为副标题)</dd>
+<dd> <code>title &lt;<i>玩家：目标</i>&gt; actionbar &lt;<i>标题文字：字符串</i>&gt;</code>(在快捷栏上方显示的标题)</dd>
+<dd> <code>title &lt;<i>玩家：目标</i>&gt; times &lt;<i>渐入：整数</i>&gt; &lt;<i>保持：整数</i>&gt; &lt;<i>渐出：整数</i>&gt;</code>(设置渐入、保持和渐出的持续时间)</dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)
 <dl><dd> 指定显示标题的目标玩家，必须为一个玩家名或是目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>原始JSON格式标题</i>（携带版：<i>标题文字：字符串</i>）（仅限<code>subtitle</code>、<code>title</code>和<code>actionbar</code>模式）
-<dl><dd> 指定标题、副标题或快捷栏标题的内容。必须为有效的原始JSON文本。（例如<code>{"text":"Chapter I","bold":true}</code>）。</dd></dl></dd></dl>
-<dl><dd> <i>渐入</i>、<i>保持</i>和<i>渐出</i>（携带版：<i>渐入：整数</i>、<i>保持：整数</i>和<i>渐出：整数</i>）（仅限<code>times</code>模式）
-<dl><dd> 指定标题的淡入、保持和淡出时间，以游戏刻（1/20秒）为单位。所有数值必须在-2147483648和2147483647之间（含），但负数会被视为0。如果没有指定（被重置后），默认值分别是10（0.5秒）、70（3.5秒）和20（1 秒）。</dd></dl></dd></dl>
+<dl><dd> <i>原始JSON格式标题</i>(携带版：<i>标题文字：字符串</i>)(仅限<code>subtitle</code>、<code>title</code>和<code>actionbar</code>模式)
+<dl><dd> 指定标题、副标题或快捷栏标题的内容。必须为有效的原始JSON文本。(例如<code>{"text":"Chapter I","bold":true}</code>)。</dd></dl></dd></dl>
+<dl><dd> <i>渐入</i>、<i>保持</i>和<i>渐出</i>(携带版：<i>渐入：整数</i>、<i>保持：整数</i>和<i>渐出：整数</i>)(仅限<code>times</code>模式)
+<dl><dd> 指定标题的淡入、保持和淡出时间，以游戏刻(1/20秒)为单位。所有数值必须在-2147483648和2147483647之间(含)，但负数会被视为0。如果没有指定(被重置后)，默认值分别是10(0.5秒)、70(3.5秒)和20(1 秒)。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <p> 
 <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/mingling1.png" />
@@ -3919,8 +3895,8 @@ PE 1.0.5（PE 1.0.5 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.3.1（12w16a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.3.1(12w16a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>切换天气。
@@ -3941,10 +3917,10 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 是管理员</li><li>
 加入版本:
 Alpha 1.0.16_01,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
-<p>传送实体（玩家、生物、物品等）。
+<p>传送实体(玩家、生物、物品等)。
 </p><p>在PC版中，此命令和<code>/teleport</code>命令之间的主要区别是，<code>/tp</code>使用基于传送目标当前位置的相对坐标，而<code>/teleport</code>使用基于命令执行位置的相对坐标。在携带版中，<code>/teleport</code>命令的效果与<code>/tp</code>完全一样。
 </p><p><br />
 大多数命令只能影响已经生成的区块，但是<code>/tp</code>可以将实体传送到尚未生成的区块中。若被传送的目标是玩家，则传送后玩家所在的区块及附近的区块会自动开始生成。
@@ -3959,18 +3935,18 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dd> <code>tp &lt;<i>传送目标：目标</i>&gt; &lt;<i>目的地：目标</i>&gt;</code></dd>
 <dd> <code>tp &lt;<i>传送目标：目标</i>&gt; &lt;<i>目的地：x y z</i>&gt; [<i>y-旋转角度：角度</i>] [<i>y-旋转角度：角度</i>]</code></dd></dl>
 <dl><dt>参数</dt>
-<dd> <i>传送目标</i>（携带版：<i>传送目标：目标</i>）（可选）
+<dd> <i>传送目标</i>(携带版：<i>传送目标：目标</i>)(可选)
 <dl><dd> 指定要传送的实体。必须是玩家名称或目标选择器。若未指定，则默认为命令的使用者。在命令方块中使用时为必需参数。</dd></dl></dd></dl>
-<dl><dd> <i>目的地目标</i>（携带版：<i>目的地：目标</i>）
+<dl><dd> <i>目的地目标</i>(携带版：<i>目的地：目标</i>)
 <dl><dd> 指定传送的目的地实体。必须是一个玩家的名字或一个目标选择器。</dd></dl></dd></dl>
-<dl><dd> <i>x y z</i>（携带版：<i>目的地：x y z</i>）
-<dl><dd> 传送目标至指定坐标。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间（含，不输入逗号）的整数，且<i>y</i>必须在-4096和4096之间（含）。可以使用波浪号来指定基于传送目标当前位置的相对坐标<sup>[<i>仅Java版</i>]</sup>——这是波浪号的一种特殊使用情况，正常情况下波浪号指基于命令执行位置的相对坐标。使用<code>/teleport</code>来进行基于命令执行位置的传送。</dd></dl></dd></dl>
-<dl><dd> <i>y-旋转角度</i>（携带版：<i>y-旋转角度：角度</i>）（可选）
-<dl><dd> 指定水平旋转角度（正北方为-180.0，正东为-90.0，正南为0.0，正西为90.0，正北以西为179.9，之后回到-180.0）。可使用波浪号指定基于当前旋转角度的相对偏移。</dd></dl></dd></dl>
-<dl><dd> <i>x-旋转角度</i>（携带版：<i>x-旋转角度：角度</i>）（可选）
-<dl><dd> 指定垂直旋转角度（竖直上方为-90.0，至竖直下方90.0）。可使用波浪号指定基于当前旋转角度的相对偏移。</dd></dl></dd></dl>
+<dl><dd> <i>x y z</i>(携带版：<i>目的地：x y z</i>)
+<dl><dd> 传送目标至指定坐标。<i>x</i> 和 <i>z</i>必须是在-30,000,000和30,000,000之间(含，不输入逗号)的整数，且<i>y</i>必须在-4096和4096之间(含)。可以使用波浪号来指定基于传送目标当前位置的相对坐标<sup>[<i>仅Java版</i>]</sup>——这是波浪号的一种特殊使用情况，正常情况下波浪号指基于命令执行位置的相对坐标。使用<code>/teleport</code>来进行基于命令执行位置的传送。</dd></dl></dd></dl>
+<dl><dd> <i>y-旋转角度</i>(携带版：<i>y-旋转角度：角度</i>)(可选)
+<dl><dd> 指定水平旋转角度(正北方为-180.0，正东为-90.0，正南为0.0，正西为90.0，正北以西为179.9，之后回到-180.0)。可使用波浪号指定基于当前旋转角度的相对偏移。</dd></dl></dd></dl>
+<dl><dd> <i>x-旋转角度</i>(携带版：<i>x-旋转角度：角度</i>)(可选)
+<dl><dd> 指定垂直旋转角度(竖直上方为-90.0，至竖直下方90.0)。可使用波浪号指定基于当前旋转角度的相对偏移。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
-<dl><dd> 当参数没有被正确指定，或<i>传送目标</i>无法被解析为一个或多个实体（以名称指定的玩家必须在线），或<i>目的地目标</i>无法被解析为单个实体（以名称指定的玩家必须在线）时，命令失败。若被指定的待传送玩家之中，存在所处维度与目的地处世界维度不相同的情况，则这一部分玩家的传送会失败，其余玩家传送成功。</dd>
+<dl><dd> 当参数没有被正确指定，或<i>传送目标</i>无法被解析为一个或多个实体(以名称指定的玩家必须在线)，或<i>目的地目标</i>无法被解析为单个实体(以名称指定的玩家必须在线)时，命令失败。若被指定的待传送玩家之中，存在所处维度与目的地处世界维度不相同的情况，则这一部分玩家的传送会失败，其余玩家传送成功。</dd>
 <dd> 成功时，将目标传送到指定的目的地。</dd></dl>
 <dl><dt>示例</dt></dl>
 <dl><dd> 将自己传送到Alice的位置： <code>tp Alice</code></dd></dl>
@@ -3988,15 +3964,14 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 无</li><li>
 加入版本:
-PE 1.0.3（PE 1.0.3 build 1 ）
+PE 1.0.3(PE 1.0.3 build 1 )
 
 </li></ul>
 <p>将玩家转送至另一服务器。
 </p>
 <dl><dt>语法</dt></dl>
 <dl><dd> <code>transferserver &lt;<i>服务器：字符串</i>&gt; &lt;<i>端口：整数</i>&gt;</code></dd></dl>
-<p><br />
-</p>
+
 <dl><dt>参数</dt></dl>
 <dl><dd> <i>服务器：字符串</i>
 <dl><dd> 输入转送目标服务器的地址。数字形式的IP地址必须使用双引号括住，例如<code>"123.456.78.9"</code>。</dd></dl></dd></dl>
@@ -4016,7 +3991,7 @@ PE 1.0.3（PE 1.0.3 build 1 ）
 限制条件:
 无</li><li>
 加入版本:
-1.8（14w06a ）
+1.8(14w06a )
 
 </li></ul>
 <p>修改一个准则为“触发器”的记分板目标。
@@ -4045,8 +4020,8 @@ PE 1.0.3（PE 1.0.3 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.4.2（12w32a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.4.2(12w32a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>更改游戏中的天气。
@@ -4057,12 +4032,12 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <ul><li> <b>携带版</b></li></ul>
 <dl><dd> <code>weather &lt;<i>类型：字符串</i>&gt; [<i>持续时间：整数</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>clear|rain|thunder</i>（携带版：<i>类型：字符串</i>）
+<dl><dd> <i>clear|rain|thunder</i>(携带版：<i>类型：字符串</i>)
 <ul><li> <code>clear</code> - 将天气设为晴天。</li>
-<li> <code>rain</code> - 将天气设为雨天（寒冷的生物群系会下雪）。</li>
-<li> <code>thunder</code> - 将天气设为雷暴雨（寒冷的生物群系会下雷暴雪）。</li></ul></dd></dl>
-<dl><dd> <i>持续时间</i>（携带版：<i>持续时间：整数</i>）（可选）
-<dl><dd> 指定以秒为单位的天气持续时间。必须在1和1,000,000之间（含，不输入逗号）。若<i>持续时间</i>未指定，天气的持续时间会设为6,000刻和18,000刻之间的随机值。</dd></dl></dd></dl>
+<li> <code>rain</code> - 将天气设为雨天(寒冷的生物群系会下雪)。</li>
+<li> <code>thunder</code> - 将天气设为雷暴雨(寒冷的生物群系会下雷暴雪)。</li></ul></dd></dl>
+<dl><dd> <i>持续时间</i>(携带版：<i>持续时间：整数</i>)(可选)
+<dl><dd> 指定以秒为单位的天气持续时间。必须在1和1,000,000之间(含，不输入逗号)。若<i>持续时间</i>未指定，天气的持续时间会设为6,000刻和18,000刻之间的随机值。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 如果参数未正确指定，则失败。</dd></dl>
 <dl><dd> 成功时，在数秒内将天气更改为指定持续时间的天气。</dd></dl>
@@ -4098,7 +4073,7 @@ Beta 1.3
 <dd> <code>whitelist reload</code></dd>
 <dd> <code>whitelist remove &lt;<i>玩家</i>&gt;</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>玩家</i>（仅在<code>add</code>和<code>remove</code>模式下）
+<dl><dd> <i>玩家</i>(仅在<code>add</code>和<code>remove</code>模式下)
 <dl><dd> 指定要从白名单中添加或删除的玩家。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 当参数设置不正确，或<i>玩家</i>不存在时失败。</dd></dl>
@@ -4107,7 +4082,7 @@ Beta 1.3
 <li> <code>list</code> — 列出白名单中的玩家名。</li>
 <li> <code>off</code> — 在此服务器上禁用白名单验证。</li>
 <li> <code>on</code> — 在此服务器上启用白名单验证。</li>
-<li> <code>reload</code> — 从硬盘中重新读取<code>white-list.txt</code>（1.7.5及以前）或<code>whitelist.json</code>（1.7.6及以后）中的白名单列表（当<code>white-list.txt</code>或<code>whitelist.json</code>在<i>Minecraft</i>外被修改时使用）。</li>
+<li> <code>reload</code> — 从硬盘中重新读取<code>white-list.txt</code>(1.7.5及以前)或<code>whitelist.json</code>(1.7.6及以后)中的白名单列表(当<code>white-list.txt</code>或<code>whitelist.json</code>在<i>Minecraft</i>外被修改时使用)。</li>
 <li> <code>remove</code> — 将玩家名从白名单中移除。改玩家不需要在线。</li></ul></dd></dl>
 <p> 
 </p>
@@ -4120,46 +4095,46 @@ Beta 1.3
 限制条件:
 是管理员</li><li>
 加入版本:
-1.8（14w17a ）
+1.8(14w17a )
 
 </li></ul>
 <p>此命令管理世界边界。
 </p>
 <dl><dt>语法</dt></dl>
 <dl><dd> 该命令有8个变种，参数各不相同：</dd>
-<dd> <code>worldborder add &lt;<i>距离</i>&gt; [<i>时间</i>]</code>（增减世界边界的直径，即正方形边长）</dd>
-<dd> <code>worldborder center &lt;<i>x</i>&gt; &lt;<i>z</i>&gt;</code>（设置世界边界的中心）</dd>
-<dd> <code>worldborder damage amount &lt;<i>每方格伤害值</i>&gt;</code>（指定世界边界外伤害速度）</dd>
-<dd> <code>worldborder damage buffer &lt;<i>距离</i>&gt;</code>（指定世界边界伤害缓冲区距离）</dd>
-<dd> <code>worldborder get</code>（返回世界边界的当前直径）</dd>
-<dd> <code>worldborder set &lt;<i>距离</i>&gt; [<i>时间</i>]</code>（设置世界边界的直径大小）</dd>
-<dd> <code>worldborder warning distance &lt;<i>距离</i>&gt;</code>（指定世界边界出现警告的距离）</dd>
-<dd> <code>worldborder warning time &lt;<i>时间</i>&gt;</code>（指定世界边界的警告时间）</dd></dl>
+<dd> <code>worldborder add &lt;<i>距离</i>&gt; [<i>时间</i>]</code>(增减世界边界的直径，即正方形边长)</dd>
+<dd> <code>worldborder center &lt;<i>x</i>&gt; &lt;<i>z</i>&gt;</code>(设置世界边界的中心)</dd>
+<dd> <code>worldborder damage amount &lt;<i>每方格伤害值</i>&gt;</code>(指定世界边界外伤害速度)</dd>
+<dd> <code>worldborder damage buffer &lt;<i>距离</i>&gt;</code>(指定世界边界伤害缓冲区距离)</dd>
+<dd> <code>worldborder get</code>(返回世界边界的当前直径)</dd>
+<dd> <code>worldborder set &lt;<i>距离</i>&gt; [<i>时间</i>]</code>(设置世界边界的直径大小)</dd>
+<dd> <code>worldborder warning distance &lt;<i>距离</i>&gt;</code>(指定世界边界出现警告的距离)</dd>
+<dd> <code>worldborder warning time &lt;<i>时间</i>&gt;</code>(指定世界边界的警告时间)</dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>距离</i>（仅<code>add</code>、<code>damage buffer</code>、<code>set</code>和<code>warning distance</code>模式）
+<dl><dd> <i>距离</i>(仅<code>add</code>、<code>damage buffer</code>、<code>set</code>和<code>warning distance</code>模式)
 <dl><dd> 指定以方格数表示的距离：
 <ul><li> <code>add</code> — 指定世界边界直径的加数。</li>
 <li> <code>damage buffer</code> — 指定玩家超出边界后受到伤害前的缓冲区方格数。必须至少为0.0。初始值为5.0。</li>
-<li> <code>set</code> — 设定新的世界边界的直径。必须介于1.0和60,000,000之间（含，不输入逗号）。</li>
+<li> <code>set</code> — 设定新的世界边界的直径。必须介于1.0和60,000,000之间(含，不输入逗号)。</li>
 <li> <code>warning distance</code> – 指定在世界边界内开始向玩家显示靠近边界警告信息时与世界边界的距离。必须至少为0。初始值为5。</li></ul></dd></dl></dd></dl>
-<dl><dd> <i>时间</i>（仅<code>add</code>、<code>set</code>和<code>warning time</code>模式）
+<dl><dd> <i>时间</i>(仅<code>add</code>、<code>set</code>和<code>warning time</code>模式)
 <dl><dd> 以秒为单位指定时间：
 <ul><li> <code>add</code> – 指定原世界边界变化至新边界的秒数。必须至少为0。若未指定，默认为0。</li>
 <li> <code>set</code> – 指定原世界边界变化至新边界的秒数。必须至少为0。若未指定，默认为0。</li>
 <li> <code>warning time</code> – 指定在世界边界内的玩家在其当前位置即将被移动的世界边界越过前显示警告的秒数。必须至少为0。若未指定，默认为15。</li></ul></dd></dl></dd></dl>
-<dl><dd> <i>x z</i>（仅<code>center</code>模式）
-<dl><dd> 指定世界中心的水平坐标。必须介于-30,000,000和30,000,000之间（含）。可以使用波浪号表示与命令执行处的相对坐标。</dd></dl></dd></dl>
-<dl><dd> <i>每方格伤害值</i>（仅<code>damage amount</code>模式）
-<dl><dd> 指定玩家在越过世界边界外缓冲区后每秒受到的伤害。例如，如果<i>每方格伤害值</i>是0.1，则处于缓冲区5方格外的玩家每秒会受到0.5点伤害（伤害少于半颗心可能不会改变生命条的视觉效果，但仍会累积）。必须至少为0.0。预设为0.2。</dd></dl></dd></dl>
+<dl><dd> <i>x z</i>(仅<code>center</code>模式)
+<dl><dd> 指定世界中心的水平坐标。必须介于-30,000,000和30,000,000之间(含)。可以使用波浪号表示与命令执行处的相对坐标。</dd></dl></dd></dl>
+<dl><dd> <i>每方格伤害值</i>(仅<code>damage amount</code>模式)
+<dl><dd> 指定玩家在越过世界边界外缓冲区后每秒受到的伤害。例如，如果<i>每方格伤害值</i>是0.1，则处于缓冲区5方格外的玩家每秒会受到0.5点伤害(伤害少于半颗心可能不会改变生命条的视觉效果，但仍会累积)。必须至少为0.0。预设为0.2。</dd></dl></dd></dl>
 <dl><dt>效果</dt>
 <dd> 若参数指定不正确，或指定的世界边界大小小于1.0或大于60,000,000时，命令失败。</dd></dl>
 <dl><dd> 成功时：</dd></dl>
-<dl><dd><ul><li> <code>add</code> — 世界边界的直径开始根据指定值变化。若<i>距离</i>为正，则世界边界变为绿色且开始扩增；若为负，世界边界变为红色且开始缩减。若<i>时间</i>为0或未指定，则世界边界的变化会立即完成，否则边界每秒增减速率为（<i>距离</i>/2)/<i>时间</i>）方格每秒。</li></ul></dd></dl>
+<dl><dd><ul><li> <code>add</code> — 世界边界的直径开始根据指定值变化。若<i>距离</i>为正，则世界边界变为绿色且开始扩增；若为负，世界边界变为红色且开始缩减。若<i>时间</i>为0或未指定，则世界边界的变化会立即完成，否则边界每秒增减速率为(<i>距离</i>/2)/<i>时间</i>)方格每秒。</li></ul></dd></dl>
 <dl><dd><ul><li> <code>center</code> — 世界边界中心会立刻更改为指定值。</li></ul></dd></dl>
 <dl><dd><ul><li> <code>damage amount</code> — 设定世界边界外造成的伤害量至指定值。任何超出世界边界外缓冲区的玩家每超出一方格每秒会受到此数值的伤害。</li></ul></dd></dl>
 <dl><dd><ul><li> <code>damage buffer</code> — 设定玩家允许超出边界的距离。玩家在超出此范围前不会受到伤害。</li></ul></dd></dl>
 <dl><dd><ul><li> <code>get</code> — 在聊天框中显示当前的世界边界直径大小。</li></ul></dd></dl>
-<dl><dd><ul><li> <code>set</code> — 开始增减世界边界的直径。若<i>距离</i>比当前半径大，则世界边界变绿色且开始扩增；若比当前的半径小，世界边界变红色且开始缩减。若<i>时间</i>为0或未指定，则世界边界的变化会立即完成，否则边界每秒增减速率为（<i>距离</i>/2)/<i>时间</i>）方格每秒。</li></ul></dd></dl>
+<dl><dd><ul><li> <code>set</code> — 开始增减世界边界的直径。若<i>距离</i>比当前半径大，则世界边界变绿色且开始扩增；若比当前的半径小，世界边界变红色且开始缩减。若<i>时间</i>为0或未指定，则世界边界的变化会立即完成，否则边界每秒增减速率为(<i>距离</i>/2)/<i>时间</i>)方格每秒。</li></ul></dd></dl>
 <dl><dd><ul><li> <code>warning distance</code> — 设定世界边界的警告距离。</li></ul></dd></dl>
 <dl><dd><ul><li> <code>warning time</code> — 设定世界边界的警告时间。</li></ul></dd></dl>
 <p> 
@@ -4174,7 +4149,7 @@ Beta 1.3
 限制条件:
 无</li><li>
 加入版本:
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>“wsserver”指“WebSocket Server”。此命令用于连接WebSocket服务器，WebSocket服务器使用命令信息与客户端交互。主要用于教育版中。
@@ -4200,8 +4175,8 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.3.1（12w16a ）,
-PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
+1.3.1(12w16a ),
+PE Alpha 0.16.0(PE Alpha 0.16.0 build 1 )
 
 </li></ul>
 <p>将经验值给予一个玩家。
@@ -4214,10 +4189,10 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dl><dd> <code>xp &lt;<i>数量：整数</i>&gt; [<i>玩家：目标</i>]</code></dd>
 <dd> <code>xp &lt;<i>数量：整数</i>&gt;L [<i>玩家：目标</i>]</code></dd></dl>
 <dl><dt>参数</dt></dl>
-<dl><dd> <i>数量</i>（携带版：<i>数量：整数</i>）
-<dl><dd> 指定给予玩家的经验值数量。必须在0和2,147,483,647之间（含，不输入逗号）。</dd></dl></dd></dl>
-<dl><dd><dl><dd> 若出现字符<code>L</code>作为后缀，则改为提升玩家的经验等级。等级数量必须在-2,147,483,648和2,147,483,647之间（含）——负的等级数量将会扣除玩家等级。</dd></dl></dd></dl>
-<dl><dd> <i>玩家</i>（携带版：<i>玩家：目标</i>）
+<dl><dd> <i>数量</i>(携带版：<i>数量：整数</i>)
+<dl><dd> 指定给予玩家的经验值数量。必须在0和2,147,483,647之间(含，不输入逗号)。</dd></dl></dd></dl>
+<dl><dd><dl><dd> 若出现字符<code>L</code>作为后缀，则改为提升玩家的经验等级。等级数量必须在-2,147,483,648和2,147,483,647之间(含)——负的等级数量将会扣除玩家等级。</dd></dl></dd></dl>
+<dl><dd> <i>玩家</i>(携带版：<i>玩家：目标</i>)
 <dl><dd> 指定命令作用的目标。若没有指定，则默认为命令执行者。对命令方块而言，此为必需参数。</dd></dl></dd></dl>
 <dl><dt> 效果</dt></dl>
 <dl><dd> 若参数未正确设置，或<i>玩家</i>无法解析为一个或多个在线玩家，则命令执行失败。</dd></dl>
@@ -4240,7 +4215,7 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 限制条件:
 是管理员</li><li>
 加入版本:
-1.7.2（13w36a ）</li><li>
+1.7.2(13w36a )</li><li>
 移除版本:
 17w13a
 
@@ -4254,14 +4229,14 @@ PE Alpha 0.16.0（PE Alpha 0.16.0 build 1 ）
 <dl><dd> 定义要修改的成就名。必须为下列之一：
 <ul><li> <code>achievement.<i>成就名</i></code>，<i>成就名</i>为有效的成就标识符；</li>
 <li> <code>*</code>，表示<i>所有</i>成就。</li></ul></dd></dl></dd></dl>
-<dl><dd> <i>玩家</i>（可选）
+<dl><dd> <i>玩家</i>(可选)
 <dl><dd> 必须是玩家名称或目标选择器。若未定义，默认为命令执行者。在命令方块上是必需参数。</dd></dl></dd></dl>
 <dl><dt>效果</dt></dl>
 <dl><dd> 若参数没有正确定义或<i>玩家</i>未能指定一个及以上的在线玩家，则命令失败。</dd></dl>
-<dl><dd> 成功时，添加或移除指定玩家的成就（且添加或删除该成就的前置需求或后续依赖）。</dd></dl>
+<dl><dd> 成功时，添加或移除指定玩家的成就(且添加或删除该成就的前置需求或后续依赖)。</dd></dl>
 <dl><dt>示例</dt></dl>
-<dl><dd> 为自己添加成就“赶尽杀绝”（Overkill）：<code>achievement give achievement.overkill</code></dd></dl>
-<dl><dd> 为Alice添加成就“打开物品栏”（Taking Inventory）：<code>achievement give achievement.openInventory Alice</code></dd></dl>
+<dl><dd> 为自己添加成就“赶尽杀绝”(Overkill)：<code>achievement give achievement.overkill</code></dd></dl>
+<dl><dd> 为Alice添加成就“打开物品栏”(Taking Inventory)：<code>achievement give achievement.openInventory Alice</code></dd></dl>
 <dl><dd> 移除全部玩家的所有成就：<code>achievement take * @a</code></dd></dl>
 <p> 
 </p>
@@ -4319,13 +4294,13 @@ Classic 0.0.16a_01
 限制条件:
 无</li><li>
 加入版本:
-1.8 （14w30a ）</li><li>
+1.8 (14w30a )</li><li>
 移除版本:
 ?
 
 </li></ul>
 <p>作用未知。可能用于查询区块信息，譬如方块总数和是否为空等。
-</p><p>en_us.lang（及其余翻译版本）中存在此命令的翻译字段，但命令本身不存在于游戏中。
+</p><p>en_us.lang(及其余翻译版本)中存在此命令的翻译字段，但命令本身不存在于游戏中。
 </p>
 <dl><dt>语法</dt></dl>
 <dl><dd> <code>/chunkinfo [&lt;x&gt; &lt;y&gt; &lt;z&gt;]</code></dd></dl>
@@ -4424,7 +4399,7 @@ Indev 0.31</li></ul>
 
 
         
-</div>
+<p><br/></p></div>
 </body>
 
 </html>

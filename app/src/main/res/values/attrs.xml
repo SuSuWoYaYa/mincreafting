@@ -2,6 +2,7 @@
 <resources>
     <attr  name="navigationIcon_back" format="reference"/>
     <attr  name="navigationIcon_menu" format="reference"/>
+    <attr  name="navigationIcon_refresh" format="reference"/>
     <attr  name="toolbar_search" format="reference"/>
     <attr  name="toolbar_clean" format="reference"/>
     <attr  name="textColorPrimary" format="reference|color"/>

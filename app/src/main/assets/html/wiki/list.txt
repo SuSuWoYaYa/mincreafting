@@ -190,7 +190,7 @@
 4 选择一种燃料 xuanzheyizhongrangliao.html
 
 10红石
-这些教程将为你介绍复杂（或简单）的红石电路。
+这些教程将为你介绍复杂(或简单)的红石电路。
 0 红石图例 hongshituli.html
 1 飞行技术  feixingjishu.html
 $$$$ 命令详解 mingling.html
@@ -258,7 +258,7 @@ $$$$ 命令详解 mingling.html
 9 音效索引  xingxiaosuoying.html
 10 恢复损坏的地图数据 huifushunhuaideditushuju.html
 11 将游戏数据保存到 Dropbox 云端 save_game_to_dropbox.html
-12 将游戏数据保存到(仅限地图数据） Dropbox 云端 save_game_to_dropbox_only_map.html
+12 将游戏数据保存到(仅限地图数据) Dropbox 云端 save_game_to_dropbox_only_map.html
 13  在闪存盘中运行及保存Minecraft zaishancunpanzhongyunxingjibaocunyouxi.html
 14 更新Java到最新版本 update_java_to_last.html
 15 携带版 xiedaiban.html

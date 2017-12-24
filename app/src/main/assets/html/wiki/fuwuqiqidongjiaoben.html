@@ -29,7 +29,7 @@
 你可以帮助我们来更新此页面
 </p>
 <p class="yellow">
-<b>此页面的（部分）内容需要被翻译。</b>
+<b>此页面的(部分)内容需要被翻译。</b>
 <br />
 你可以帮助我们来翻译此页面
        </p> -->
@@ -51,13 +51,13 @@
 <p>CentOS 和基于 Red Hat ® 系统的命令如下：</p>
 <pre>yum install screen
 </pre>
-<p>基于 Debian 系统（如 Ubuntu 等）的命令如下：</p>
+<p>基于 Debian 系统(如 Ubuntu 等)的命令如下：</p>
 <pre>apt-get install screen
 </pre>
 
 <h2>下载</h2>
-<p>要使用 wget 方法，运行下列脚本。（<b>注意脚本需要修改</b> - 更改 WORLD、MCPATH 和 BACKUPPATH 变量）</p>
-<p><b>重要：</b>如果你使用 wget 方法，每行的第一个字符必须是空格，否则脚本不会工作，并且 update-rc.d 会输出错误。如果出现了，你不得不移除每行所有的前导空格。（注意不要删除过多的空格！）</p>
+<p>要使用 wget 方法，运行下列脚本。(<b>注意脚本需要修改</b> - 更改 WORLD、MCPATH 和 BACKUPPATH 变量)</p>
+<p><b>重要：</b>如果你使用 wget 方法，每行的第一个字符必须是空格，否则脚本不会工作，并且 update-rc.d 会输出错误。如果出现了，你不得不移除每行所有的前导空格。(注意不要删除过多的空格！)</p>
 <pre>wget -O minecraft "http://minecraft.gamepedia.com/Tutorials/Server_startup_script/Script?action=raw"
 </pre>
 <pre> #!/bin/bash
@@ -287,13 +287,13 @@
 <p>确保你新创建的文件得到了所需的权限，你可以通过运行下列命令设置权限：</p>
 <pre>chmod a+x /etc/init.d/minecraft
 </pre>
-<p>然后运行（在基于 Debian 系统的发行版上）</p>
+<p>然后运行(在基于 Debian 系统的发行版上)</p>
 <pre>update-rc.d minecraft defaults
 </pre>
 <p>启动 Debian 6.0。如果使用 dependency-based 启动开启，则使用 insserv 命令替代。如果一切正常，insserv 将不会有任何的输出。如果你想确认哪个地方出错，检查 $? 里面的错误代码。</p>
 <pre>insserv minecraft
 </pre>
-<p>在 CentOs 和 RHEL（Redhat enterprise Linux）</p>
+<p>在 CentOs 和 RHEL(Redhat enterprise Linux)</p>
 <p>你将会在 systemd 里向 chkconfig 列表的 chkconfig 启动脚本管理器添加过程。</p>
 <pre>chkconfig --add minecraft
 </pre>
@@ -315,10 +315,10 @@
 </pre>
 
 <h2>卸载</h2>
-<p>（基于 Debian 的 GNU/Linux 发行版）</p>
+<p>(基于 Debian 的 GNU/Linux 发行版)</p>
 <pre>update-rc.d -f  minecraft remove
 </pre>
-<p>（在 CentOs/RHEL 里）</p>
+<p>(在 CentOs/RHEL 里)</p>
 <pre>chkconfig --del minecraft
 </pre>
 
@@ -352,7 +352,7 @@
 <ul>
 <li><a target="_self" rel="nofollow" class="external text" href="http://marcuswhybrow.github.com/minecraft-server-manager/">Minecraft Server Manager</a> 该脚本的改进版本，添加了压缩功能和多服务器支持。
 <ul>
-<li>功能包括“super responsive”（尽快返回），把玩家的等待时间缩减到最小。</li>
+<li>功能包括“super responsive”(尽快返回)，把玩家的等待时间缩减到最小。</li>
 <li>使用可配置的游戏内信息对玩家进行通知，例如“Shutting down in 10 seconds!”。</li>
 <li>定期备份世界，兼容 <a target="_self" rel="nofollow" class="external text" href="http://wiki.sk89q.com/wiki/WorldEdit/Snapshots">WorldEdit</a>。</li>
 <li>从内存中加载世界以减少访问延迟。</li>
@@ -388,7 +388,7 @@
 </li>
 <li><a target="_self" rel="nofollow" class="external text" href="https://github.com/Ahtenus/minecraft-init">minecraft init</a>
 <ul>
-<li>注意该脚本拥有更多功能（如多世界）</li>
+<li>注意该脚本拥有更多功能(如多世界)</li>
 </ul>
 </li>
 <li><a target="_self" rel="nofollow" class="external text" href="https://github.com/edvind/minecraft-service">Minecraft Service</a></li>
@@ -403,7 +403,7 @@
 
         
 
-</div>
+<p><br/></p></div>
 </body>
 
 </html>

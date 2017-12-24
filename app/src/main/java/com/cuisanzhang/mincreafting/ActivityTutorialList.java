@@ -59,6 +59,7 @@ public class ActivityTutorialList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ActivityTutorial.class);
                 intent.putExtra(ActivityTutorial.EXTRA_URI, tutorialFiles[position]);
+                intent.putExtra(ActivityTutorial.EXTRA_TUTORIAL_NAME, tutorialNames[position]);
                 startActivity(intent);
             }
         });

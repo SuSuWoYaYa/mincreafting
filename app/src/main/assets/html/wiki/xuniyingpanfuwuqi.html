@@ -29,7 +29,7 @@
 你可以帮助我们来更新此页面
 </p>
 <p class="yellow">
-<b>此页面的（部分）内容需要被翻译。</b>
+<b>此页面的(部分)内容需要被翻译。</b>
 <br />
 你可以帮助我们来翻译此页面
        </p> -->
@@ -41,22 +41,22 @@
 <p>该教程向你大概描述什么是虚拟硬盘，怎样和 Minecraft 使用，以及如何设置一个虚拟硬盘服务器。</p>
  
 <h2>虚拟硬盘描述</h2>
-<p>传统上，文件和文件夹储存在硬盘驱动器，但以今天的标准来看，普通数据的传输速度（80MB/秒 到 200MB/秒之间）的提升空间还很大。虚拟硬盘是一个虚拟的文件系统（不像硬盘那样是硬件），会把文件数据完全实时储存在计算机内存条里。它们的普通数据传输速度（3000MB/秒 到 15000MB/秒之间）非常高，但会失去稳定性（重启电脑数据就会丢失）以及空间（受系统安装内存条的数量限制，包括交换空间）。然而，有许多实用工具可以每隔一段时间备份虚拟硬盘里面的数据，以及在关机前备份，然后在系统启动时加载上次保存的数据。</p>
+<p>传统上，文件和文件夹储存在硬盘驱动器，但以今天的标准来看，普通数据的传输速度(80MB/秒 到 200MB/秒之间)的提升空间还很大。虚拟硬盘是一个虚拟的文件系统(不像硬盘那样是硬件)，会把文件数据完全实时储存在计算机内存条里。它们的普通数据传输速度(3000MB/秒 到 15000MB/秒之间)非常高，但会失去稳定性(重启电脑数据就会丢失)以及空间(受系统安装内存条的数量限制，包括交换空间)。然而，有许多实用工具可以每隔一段时间备份虚拟硬盘里面的数据，以及在关机前备份，然后在系统启动时加载上次保存的数据。</p>
 <h2>优点和缺点</h2>
 <h3>优点</h3>
-<ul><li>非常高的传输速度（从数据到应用）</li>
-<li>非常低的寻道时间（在文件之间搜索）</li></ul>
+<ul><li>非常高的传输速度(从数据到应用)</li>
+<li>非常低的寻道时间(在文件之间搜索)</li></ul>
 <h3>缺点</h3>
 <ul><li>在系统重启时会清除虚拟硬盘的数据</li> 
  <li>如果世界尺寸大于内存条可用空间则很难实现</li></ul>
  
 <h2>为什么它对 Minecraft 服务器有意义</h2>
-<p>在一个 Minecraft 服务器，最大的一个瓶颈是相关的磁盘 I/O 操作（如区块管理）。通过向内存移动数据，访问时间会被大大缩减，数据传输速度也会大大提高，让区块加载和保存区块操作变得更快。因为一个 Minecraft 世界包含了许多区块文件，寻道时间没多大变化，因为重要的是整体速度。</p>
+<p>在一个 Minecraft 服务器，最大的一个瓶颈是相关的磁盘 I/O 操作(如区块管理)。通过向内存移动数据，访问时间会被大大缩减，数据传输速度也会大大提高，让区块加载和保存区块操作变得更快。因为一个 Minecraft 世界包含了许多区块文件，寻道时间没多大变化，因为重要的是整体速度。</p>
 
 <h2>基础 Minecraft 和虚拟硬盘安装</h2>
 <b>确保在开始前备份了你的文件！</b>
 
-<h3>GNU/Linux（简单方法）</h3>
+<h3>GNU/Linux(简单方法)</h3>
 <p>2011年3月12日，在Aimless Bits的博客里<br/> <a target="_self" rel="nofollow" class="external text" href="http://www.aimlessbits.com/?p=12">http://www.aimlessbits.com/?p=12</a>，<br/>发布了把一个 Minecraft 服务器加载到虚拟硬盘的简单方法。它包含了修改过的 Wiki 脚本，以及一些小更改。本指南充实了这一过程，并在 Aimless Bits 的脚本里做了一些小更改。</p>
 <p>这个快速指南假设你已为加载 Minecraft 设定了一个用户、Minecraft 目录和运行中的服务器。它还有助于熟悉 /etc/init.d/minecraft 启动脚本。</p>
 <ul>
@@ -65,7 +65,7 @@
 </ul>
 <pre>sudo nano /etc/fstab
 </pre>
-<p>然后添加这行，确保路径（用户名、目录名称等）是正确的。</p>
+<p>然后添加这行，确保路径(用户名、目录名称等)是正确的。</p>
 <pre>tmpfs  /home/username/minecraft_ramdisk tmpfs  defaults,size=512m      0       0
 </pre>
 <p>虚拟硬盘的尺寸必须比 Minecraft 的世界目录还要大。确保你已经预留多了一些空间。</p>
@@ -335,8 +335,8 @@ chmod a+x /etc/init.d/minecraft
 <p>但愿这能够对管理员有帮助，祝你好运！</p>
 
 
-<h3>GNU/Linux（备选方法）</h3>
-<p>在多数的 GNU/Linux 发行版，虚拟硬盘已经设置好了（通常挂载在 /dev/shm （<b>sh</b>ared <b>m</b>emory（共享的内存））），默认最多使用已安装内存的一半） 如果未设置，互联网上有许多资源教你如何设置。</p>
+<h3>GNU/Linux(备选方法)</h3>
+<p>在多数的 GNU/Linux 发行版，虚拟硬盘已经设置好了(通常挂载在 /dev/shm (<b>sh</b>ared <b>m</b>emory(共享的内存)))，默认最多使用已安装内存的一半) 如果未设置，互联网上有许多资源教你如何设置。</p>
 <p>可以把任何东西移到虚拟硬盘，但本教程只专注于把地图移动到虚拟硬盘里，并将服务器文件留在传统驱动器上。</p>
 <p>在用户根目录里的“minecraft_server/”服务器目录里分成下面几个基本文件，含有世界“world”和其他所需要的文件。</p>
 <table >
@@ -359,7 +359,7 @@ chmod a+x /etc/init.d/minecraft
 <td>...</td>
 </tr>
 </table>
-<p>接下来的目标是把“world/”移动到共享内存里。由于虚拟硬盘的不稳定性，我们要创建一个新文件夹，在里面放上一个自动备份的脚本，通过复制当前目录到一个新名称目录来定期储存当前世界的名为（例如）“world_storage”的快照。</p>
+<p>接下来的目标是把“world/”移动到共享内存里。由于虚拟硬盘的不稳定性，我们要创建一个新文件夹，在里面放上一个自动备份的脚本，通过复制当前目录到一个新名称目录来定期储存当前世界的名为(例如)“world_storage”的快照。</p>
 <pre>$ cd ~/minecraft_server/
 $ cp -r world/ world_storage/
 </pre>
@@ -372,7 +372,7 @@ $ mv world/ /dev/shm/minecraft
 </pre>
 <p>这将会创建一个名为“world/”的链接，其链接到服务器目录“/dev/shm/minecraft/world/”，服务器会把它当作实际的世界文件夹使用，但是这个文件夹在内存里。</p>
 <p>现在我们需要注意虚拟硬盘的不稳定性，要定期保存内存“world_storage/”里面的世界。下面将使用 cron 进行计划任务和 rsync 进行同步。</p>
-<p>首先，创建一个叫作 cron 的脚本（它不能是一个脚本，因为你可以直接从 cron 命令行直接调用 rsync，但这样允许在晚些时候更容易的进行自定义）</p>
+<p>首先，创建一个叫作 cron 的脚本(它不能是一个脚本，因为你可以直接从 cron 命令行直接调用 rsync，但这样允许在晚些时候更容易的进行自定义)</p>
 <pre>#!/bin/sh
 
 VOLATILE="/home/$USER/minecraft_server/world/"
@@ -381,13 +381,13 @@ PERMANENT="/home/$USER/minecraft_server/world_storage/"
 #TODO: Check if both directories actually exist, skipped here for clearness
 rsync -r -t -v "$VOLATILE" "$PERMANENT"
 </pre>
-<p>然后每隔几分钟运行该脚本（这里将会隔5分钟，你可以测试一下隔多长时间对你是最合适的）</p>
+<p>然后每隔几分钟运行该脚本(这里将会隔5分钟，你可以测试一下隔多长时间对你是最合适的)</p>
 <pre>$ crontab -e
 </pre>
-<p>你将会被带到一个编辑器（更精确的说：你的“EDITOR”环境变量编辑器）来编辑你的用户 cron 表。添加下列行：</p>
+<p>你将会被带到一个编辑器(更精确的说：你的“EDITOR”环境变量编辑器)来编辑你的用户 cron 表。添加下列行：</p>
 <pre>*/5 * * * * bash /home/&lt;your_username&gt;/minecraft_server/save_world.sh &amp;&gt;/dev/null
 </pre>
-<p>现在你的服务器将会重启，你将会在晚些时候在共享内存里(/dev/shm/minecraft/world)重新创建世界文件夹（/dev/shm/minecraft），因为重启后 /dev/shm/ 是空的。你可以写一个简单的可执行脚本来做到这点。</p>
+<p>现在你的服务器将会重启，你将会在晚些时候在共享内存里(/dev/shm/minecraft/world)重新创建世界文件夹(/dev/shm/minecraft)，因为重启后 /dev/shm/ 是空的。你可以写一个简单的可执行脚本来做到这点。</p>
 <p>因此制作一个简单的可执行脚本：</p>
 <pre>exec 1&gt;/tmp/backup_world.log 2&gt;&amp;1 #sends the output to this file
 #!/bin/sh
@@ -406,7 +406,7 @@ rsync -r -t -v "$PERMANENT" "$VOLATILE"
 
 
 <h3>Windows</h3>
-<p>使用一个像Dataram RAMDisk之类的虚拟硬盘实用工具来在内存中创建一个磁盘（下载免费的版本）之类的虚拟硬盘实用工具来在内存中创建一个磁盘，<br /> <a target="_self" rel="nofollow" class="external text" href="http://memory.dataram.com/products-and-services/software/ramdisk">http://memory.dataram.com/products-and-services/software/ramdisk</a><br />并将服务器文件放进里面。 <i>Dataram RAMDisk</i> 提供了在其关闭的时候或隔几分钟自动保存图像的选项。</p>
+<p>使用一个像Dataram RAMDisk之类的虚拟硬盘实用工具来在内存中创建一个磁盘(下载免费的版本)之类的虚拟硬盘实用工具来在内存中创建一个磁盘，<br /> <a target="_self" rel="nofollow" class="external text" href="http://memory.dataram.com/products-and-services/software/ramdisk">http://memory.dataram.com/products-and-services/software/ramdisk</a><br />并将服务器文件放进里面。 <i>Dataram RAMDisk</i> 提供了在其关闭的时候或隔几分钟自动保存图像的选项。</p>
 <p><b>开始之前：</b></p>
 <ul>
 <li>至少要4G内存</li>
@@ -417,32 +417,32 @@ rsync -r -t -v "$PERMANENT" "$VOLATILE"
 <li>确保你为虚拟硬盘分配了足够的空间，可以装得下“Minecraft Server”文件夹 - 记得 Minecraft 世界数据可以增加很多！</li>
 <li>...最后，确保剩余的内存空间足够让 Windows 和服务器本身运行</li>
 </ul>
-<p><b>设置你的虚拟硬盘（简单用法）</b></p>
+<p><b>设置你的虚拟硬盘(简单用法)</b></p>
 <ol>
 <li>下载并安装  Dataram RAMDisk </li>
-<li>设置硬盘尺寸（不推荐设置到最大）</li>
-<li>如果硬盘尺寸少于等于 2048 MB，选择“FAT16 Partition”否则就选“FAT32 Partition”（高级用户可能会选择“unformatted”并手动格式化硬盘）</li>
-<li>前往 Load/Save 标签页，并选择所有3种虚拟硬盘保存方法（“AutoSave”、“Save Disk Image on Shutdown”和“Load Disk Image on Startup”）</li>
+<li>设置硬盘尺寸(不推荐设置到最大)</li>
+<li>如果硬盘尺寸少于等于 2048 MB，选择“FAT16 Partition”否则就选“FAT32 Partition”(高级用户可能会选择“unformatted”并手动格式化硬盘)</li>
+<li>前往 Load/Save 标签页，并选择所有3种虚拟硬盘保存方法(“AutoSave”、“Save Disk Image on Shutdown”和“Load Disk Image on Startup”)</li>
 <li>要启动你的虚拟硬盘 - 点击“Start RAMDisk”</li>
-<li>现在前往“计算机”（Win XP 为我的电脑、Win 7、Win 10 为计算机、Win 8 为此计算机），你应该会看见新的硬盘</li>
+<li>现在前往“计算机”(Win XP 为我的电脑、Win 7、Win 10 为计算机、Win 8 为此计算机)，你应该会看见新的硬盘</li>
 <li>打开它并复制所有的 Minecraft 服务器到这个硬盘里。</li>
 <li>像平常一样启动你的服务器，只不过现在是从刚刚创建的虚拟硬盘启动 - 你现在就能启动和运行了！</li>
 </ol>
 <p>你的虚拟硬盘现在会在关机时自动保存，并在开机时自动加载。你会注意到开机/关机的时间更长了，而增加的时间取决于你设置的尺寸。</p>
-<p>同时，你可能希望调整 AutoSave （自动保存）间隔。</p>
+<p>同时，你可能希望调整 AutoSave (自动保存)间隔。</p>
 <p><b>如果你没有选择“Save Disk Image on Shutdown”，继续看下去！</b></p>
 <p>你需要在'<i>每次'</i><b>关闭计算机</b>时完成下列步骤，否则<b>数据就会丢失</b>！</p>
 <dl>
-<dd><b>手动停止虚拟硬盘（在关闭计算机之前）</b>
+<dd><b>手动停止虚拟硬盘(在关闭计算机之前)</b>
 <ol>
 <li>如果你的 Minecraft 服务器正在运行，停止它</li>
-<li>打开 Dataram RAMDisk configuration Utility（再次）</li>
+<li>打开 Dataram RAMDisk configuration Utility(再次)</li>
 <li>在 Load/save 标签页开启“Load Disk Image on Startup”</li>
 <li>点击“Save disk image now”</li>
 <li>点击“Stop RAMDisk”</li>
 </ol>
 </dd>
-<dd>（如果你希望再次启动服务器，按照你第一次启动服务器的操作去做。如果你勾选了“Load Disk Image at Startup”才能做这个）</dd>
+<dd>(如果你希望再次启动服务器，按照你第一次启动服务器的操作去做。如果你勾选了“Load Disk Image at Startup”才能做这个)</dd>
 <dd><b>备选方法：</b>
 <ol>
 <li>停止你的服务器</li>
@@ -450,7 +450,7 @@ rsync -r -t -v "$PERMANENT" "$VOLATILE"
 <li>在 Dataram RAMDisk configuration Utility 点击“Stop RAMDisk”</li>
 </ol>
 </dd>
-<dd>（要再次启动它，按照你第一次启动虚拟硬盘的操作去做，然后把所有文件复制到虚拟硬盘里，然后启动你的服务器。）</dd>
+<dd>(要再次启动它，按照你第一次启动虚拟硬盘的操作去做，然后把所有文件复制到虚拟硬盘里，然后启动你的服务器。)</dd>
 </dl>
 
 
@@ -463,7 +463,7 @@ rsync -r -t -v "$PERMANENT" "$VOLATILE"
         
 
 
-</div>
+<p><br/></p></div>
 </body>
 
 </html>

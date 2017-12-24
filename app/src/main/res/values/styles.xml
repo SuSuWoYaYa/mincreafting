@@ -6,6 +6,7 @@
 
         <item name="navigationIcon_back">@drawable/ic_left_back_white</item>
         <item name="navigationIcon_menu">@drawable/ic_settings_white</item>
+        <item name="navigationIcon_refresh">@drawable/ic_refresh</item>
         <item name="toolbar_search">@drawable/ic_search_white</item>
         <item name="toolbar_clean">@drawable/ic_clean</item>
         <!-- textColor 定义标题文字的颜色 -->
