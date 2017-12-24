@@ -17,7 +17,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private int pageCount = 0;
     private String tabTitles[] = new String[]{
-            "基础教程",
+            "教程",
 
             "合成表大全",
             "生物.物品.方块",

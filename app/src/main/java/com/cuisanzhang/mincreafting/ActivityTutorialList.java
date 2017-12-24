@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +65,10 @@ public class ActivityTutorialList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        checkFirstTimeOpen();
+
+
 
     }
 
@@ -128,6 +134,22 @@ public class ActivityTutorialList extends AppCompatActivity {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.webView_toolbar);
 //        toolbar.setTitle("");
 //        setSupportActionBar(toolbar);
+    }
+
+    private void checkFirstTimeOpen() {
+        boolean isFirstTimeOpen = SettingUtils.isFirstTimeOpen(getApplicationContext());
+        if(isFirstTimeOpen){
+            showAboutImageDialog();
+        }
+    }
+
+    private void showAboutImageDialog() {
+//        Log.e("ActivityTutorialList", "getApplicationContext="+getApplicationContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityTutorialList.this, R.style.AlertDialog);
+        builder.setTitle("关于教程图片");
+        builder.setMessage("教程是离线的\n但是图片是在线的\n请注意流量\n所有的教程图片超过了500M");
+        builder.setPositiveButton("确定", null);
+        builder.show();
     }
 
 }

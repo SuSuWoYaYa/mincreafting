@@ -12,6 +12,13 @@ import android.net.NetworkInfo;
 
 public class SettingUtils {
 
+    private static final String PREF_SETTING = "pref_setting";
+    private static final String THEME = "theme";
+    private static final String COLOR = "color";
+    private static final String USER_NAME = "user_name";
+    private static final String VIP_STATE = "vip_state";
+    private static final String IsFirstTimeOpen = "IsFirstTimeOpen";
+
 
     static String  VIP_URL = "http://owpvbuvtf.bkt.clouddn.com/vip.txt";
 
@@ -27,6 +34,20 @@ public class SettingUtils {
         }
         return false;
     }
+
+    public  static  boolean isFirstTimeOpen(Context context){
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        boolean isFirstTimeOpen = sp.getBoolean(IsFirstTimeOpen, true);
+        if (isFirstTimeOpen == true) {
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean(IsFirstTimeOpen, false);
+            editor.apply();
+        }
+
+        return isFirstTimeOpen;
+    }
+
+
 
 //        作者：AlicFeng
 //        链接：http://www.jianshu.com/p/10ed9ae02775
@@ -88,11 +109,7 @@ public class SettingUtils {
         public static final int THEME_PURPLE = R.style.Base_Theme_Design_purple;
         public static final int THEME_RED = R.style.Base_Theme_Design_red;
 
-        private static final String PREF_SETTING = "pref_setting";
-        private static final String THEME = "theme";
-        private static final String COLOR = "color";
-        private static final String USER_NAME = "user_name";
-        private static final String VIP_STATE = "vip_state";
+
 
 
 
@@ -105,7 +122,7 @@ public class SettingUtils {
 
         public static int getTheme(Context context) {
             SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-            return sp.getInt(THEME, THEME_DEEPGRAY);
+            return sp.getInt(THEME, THEME_DEEP_DRAK);
         }
 
         public static void setTitleColor(Context context, int color) {
@@ -117,7 +134,7 @@ public class SettingUtils {
 
         public static int getTitleColor(Context context) {
             SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-            return sp.getInt(COLOR, R.color.colorPrimary_deep_gray);
+            return sp.getInt(COLOR, R.color.colorAccent_deep_drak);
         }
 
         public  static  void setUserName(Context context, String userName){
@@ -144,6 +161,7 @@ public class SettingUtils {
             SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
             return sp.getBoolean(VIP_STATE, false);
         }
+
 
     }
 

@@ -1,9 +1,12 @@
 package com.cuisanzhang.mincreafting;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -171,10 +174,14 @@ public class FragmentTutorial extends Fragment {
                 intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_FILES, tutorialFiles);
                 intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_CATEGARY, tutorialCategary);
 //                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
+
+
                 startActivity(intent);
 
 
             }
+
+
         };
 
         layout_btn_newplay.setOnClickListener(onClickListener);
@@ -194,4 +201,6 @@ public class FragmentTutorial extends Fragment {
 
         return view;
     }
+
+
 }
