@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>铁傀儡陷阱</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+  </head>
+
+<body>
+    <h1  >
+        铁傀儡陷阱</h1>
+ <div>
+    
+  <p> 
+      一座铁傀儡农场是获取很多铁锭(和一些没什么用的虞美人)并在建造后不需付出很多努力的很好方法。它是一座(或几座，隔开足够距离)让铁傀儡生成后立即被杀死，或移动到一个固定位置(在村庄外面，这样新的铁傀儡可以继续生成)之后再杀死的人造村庄。如果你选择了第一种方法，你需要在收集点AFK(Away From Keyboard，挂机等待)，用漏斗收集物品，或定时查看村子，在掉落物消失之前收集它们。上述缺点可以通过选择第二种方法避免，它可以在你工作时将铁傀儡收集，在你准备好时就可以一次杀死它们，这样你就不会错过任何掉落物了。
+      
+</p>   
+
+
+
+
+
+
+    <h2 >总体需求</h2>
+    
+    <p> 
+      铁傀儡自然生成在至少有着10个村民以及21座房屋(以有效的门来计数)的村庄中 (无论是天然的还是玩家建造的)。每刻生成的概率是7000分之1 , 大概平均每6个分钟生成一个。
+     </p>     <p>  
+
+有一些设计建造铁傀儡农场的方法，但是最佳方案似乎是利用一个双层生成空间(16*16*6)，把门全部打开让村民们呆在这个区域外面，并让无论是中心的上方和下方还是外面的“环”都在一个水平面上。这是为了使空出来让铁傀儡生成的空间达到最大，这反过来又会减少尝试生成时失败的次数，让生成效率尽可能高。
+      
+</p>     <p> 
+这可比通过简单的通过增加村民数量来提高效率的方法奏效多了，之间只需大概几秒的时间，就会有一个铁傀儡生成，并马上被杀掉。
+      </p>     <p> 
+
+若想进一步提高效率，你可以建立几个独立的铁傀儡农场，只要它们之间相距64格远，并且设计一个装置来将它们都集中到一个中心收集区域。最强力的铁傀儡农场会让许许多多的村庄重叠起来。
+      </p>     <p> 
+
+Tango Tek独自发现了这个过程。当铁傀儡免疫摔落和溺水伤害后，剩下的杀伤方法还有熔岩法和窒息法(或像docm77的视频里介绍的那样，两种方法都使用)。
+      
+</p>     <p> 
+      
+
+错过生成发生的几率: 前半部分是普遍正确的但是包含了一个关于几率的无效的假设。
+      
+</p>     <p> 
+在一个16×16×6的生成的区域里有512个可用的生成点。 如果做一个铁傀儡农场只用了一半的可用生成区域(256格)，这并不会减少一半的生成几率。这是因为游戏随机的“尝试”去寻找十次可用的铁傀儡生成点，每次都有机会使铁傀儡产生。所以，你的几率就是每10次尝试的一半。
+      
+</p>     <p> 
+在这种情况下，错过一次出生的机会等同于抛十次硬币并且十次全出反面的几率。大概是1/2^10，或者更为直白的说，一千次才会出一次的。
+      </p>     <p> 
+
+另一种比较好的方法是利用一些区域将生成的铁傀儡移走，以免堵塞区域阻止新的铁傀儡生成。跟错过生成发生的几率相比，因堵塞而使生成停止的概率要高得多。
+      
+</p>     <p> 
+
+
+      
+
+错过生成发生的几率可用如下公式计算：
+      </p>     <pre> ( 1 - ( 可用的生成点数量 / (16*16*6) ) )^10 * 100% </pre>     <p> 
+
+      
+所以在有256个可用生成点的情况下有16.2%的几率错过生成，而有512个可用生成点时则仅有1.7%。
+      
+</p>     
+
+    <h2>JL2579的设计(教程由 docm77制作)</h2>
+     <p>
+
+需要出生点区块：否
+</p>     <p>
+每小时铁获得数：160
+</p>     <p>
+可拓展：是
+</p>     <p>
+描述：JL2579设计的铁傀儡农场拥有4个生成区域，每层两个，每个区域均由门环绕。此设计可以重复放置以形成大型的铁傀儡农场。农场中包含了可对铁傀儡造成伤害的熔岩系统，提升了活塞窒息装置的效率。Youtube主播docm77为此设计制作了教程。
+</p>    
+   <p>youtube视频  
+
+<a href="https://www.youtube.com/embed/xE04Ui90sQY?">https://www.youtube.com/embed/xE04Ui90sQY?</a>
+ 
+</p>
+
+<h2>Tango Tek的设计</h2>
+     <p> 
+The Iron Titan(钢铁巨人)
+</p>     <p> 
+需要出生点区块：是
+</p>     <p> 
+每小时铁获得数：2600
+</p>     <p> 
+可拓展：是
+</p>     <p> 
+描述：Tango Tek发现了在游戏中直接毗连放置村庄的方法(仅适用于1.8.1之后版本)。他在设计中使用了此方法，从而可以在一座铁傀儡农场中安置32，64，甚至128个村庄，完成了迄今为止效率最高的铁傀儡农场。作为他最新也是最好的设计，The Iron Titan采用了模块化思路，可以以32为单位增加村庄数量。Tango本人推荐的设计中建造了64个村庄，每小时可获得多达2600块铁。理论上该设计可一直堆叠到地图的高度上限，但这将非常昂贵且没有必要(除非你非常狂热或者在巨型服务器中游玩)。
+ </p>
+
+<p>youtube视频  
+
+<a href="https://www.youtube.com/embed/STs4wDJewNw?">https://www.youtube.com/embed/STs4wDJewNw?</a>
+ 
+</p><p>youtube视频  
+
+<a href=" https://www.youtube.com/embed/uLpkVE5kGLo?"> https://www.youtube.com/embed/uLpkVE5kGLo?</a>
+ 
+</p>
+
+
+ <h2 >塔形设计</h2>
+    
+    <p> 
+      这个设计非常适合生存模式，每2小时给你大约一组物品。
+      
+  </p> 
+ <p><b>起始步 - 资源</b></p> 
+     <p> 
+
+      要建造一座铁傀儡农场，你需要大量的资源，比如圆石和木板，和让村民生成的方式一样。
+      
+</p>     <p> 
+ 你将需要：    </p>
+      <ul>
+        <li>最少1100块圆石(大约18组) </li>
+        <li>64扇门(每3扇门6个木板=132个木板或大约3组)</li>
+        <li>18桶水(或从一个水源引出的20条水流) </li>
+        <li>1桶熔岩 </li>
+        <li>4个告示牌</li>
+      </ul>
+      
+
+
+    
+
+
+
+
+ <p><b>第1步 - 位置</b></p> 
+    
+   <p> 
+      要建造一座铁傀儡农场，
+      
+</p>     <p> 
+你应该：</p>  
+      <ul>
+        <li>选择一个好的位置。不要将它建在远离你的家或主基地的地方，因为你想要让铁傀儡在你不在农场时生成。一个理想的地点是在你家的上面。 </li>
+        <li>获取上述的资源。 </li>
+        <li>跟随下面的说明来开始建造。</li>
+      </ul>
+
+    
+
+
+ <p><b>第2步 - 建造说明</b></p> 
+    <p> 
+
+      1.用圆石建造一个4x4的地基。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin1.png" />
+    </p>     <p> 
+
+ 2.继续建造直到你有了一座10格高的塔。接下来，打一个2x3的洞，这样铁傀儡就可以穿过。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin2.png" />
+ 
+</p>     <p> 
+ 3. 在顶部造一个18x18的平台，中间留一个2x2的洞。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin3.png" />
+   </p>     <p> 
+
+ 4. 在每个角建造一个7x7的三角形。
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin4.png" />
+ 
+</p>     <p> 
+ 5. 围绕三角形再建造一个1格宽的平台，现在平台是20x20的了。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin5.png" />
+    </p>     <p> 
+
+ 6. 现在建造一面有窗户的墙，就像下图。
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin6.png" />
+  
+</p>     <p> 
+ 下图是这些窗户的尺寸：
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin7.png" />
+  
+</p>     <p> 
+ 7. 密封窗户后面，再建造一些小空间来收集村民。这些小空间外面应该是4x4，所以有2x2x3的空气在里面。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin8.png" />
+    </p>     <p> 
+
+ 8. 在每个缺口的入口处放置门。这会让村民们感觉这里是家。 它看起来应该像这样：
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin9.png" />
+   </p>     <p> 
+
+ 9. 在4个村民空间内各放1格水，并在每两个三角的中间放置2格水。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin10.png" />
+
+</p>     <p> 
+ 10. 在四角各放1格水。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin11.png" />
+  <br />现在顶部已经完成，铁傀儡会在每个村民空间内有3个村民的情况下生成。 
+    <br />(补充:最好在这附近先造一个人工村庄,然后--
+
+  <br />1.用轨道和矿车把村民们运上来.
+  <br />
+2.当人工村庄地势更高时,使用船和水流运送村民.
+  <br />
+3.使用活塞和粘液块将村民顶进空间.
+  <br />
+4.使用钓鱼竿,这会需要一点技巧.
+  <br />
+--直到你认为村民足够.当然,你可以跳过将村民放进来这个步骤,直接下一步.)
+  <br />
+接下来建造铁傀儡磨床。
+ </p>     <p> 
+
+ 11. 在底部洞的两侧建造2面4x3的墙，在最后放置2个方块，来防止铁傀儡逃出。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin12.png" />
+   </p>     <p> 
+
+ 12. 接下来。将4个告示牌摆成杯形，来存放杀死铁傀儡的熔岩。
+      
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin13.png" />
+  
+</p>     <p> 
+ 13. 将熔岩倒入。
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin14.png" />
+   
+</p>     <p> 
+ 14. 在通道的最后放置2格水，来将铁傀儡推向熔岩。
+
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin15.png" />
+ 
+</p>     <p> 
+ 15. 放置2个通向大箱子的漏斗来自动收集掉落物(不是必须的，但这是个让你不会错过任何掉落物的好主意。)
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/tiekuileixiangjin16.png" />
+  
+</p>     <p> 
+
+    
+
+ <p><br/></p></div>
+</body>
+
+</html>

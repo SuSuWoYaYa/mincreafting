@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>边境之地</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">边境之地</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+		<p class="say">
+      <i>  该文章是关于在Beta1.8之前的地图边界区域的。关于在14w17a之后的边界，请参阅世界边界。关于边界以外的世界，请参阅世界界限。
+		</i></p>
+		<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi1.png" />
+<br />坐标X/Z的值大于和小于12,550,821时地形的对比。</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi2.png" />
+<br />
+边境之地的“拐角”，在X=12,550,821，Z=12,550,821处。</p>
+   <p> 
+		边境之地(Far Lands，也叫遥远之陆) 为Beta 1.8之前版本中组成“无限”地图的“边缘”地带的区域。边境之地在目前的基岩版仍然存在。
+		</p>  
+	
+<h2>位置</h2>
+    <p> 在任何方向的轴上，边境之地会在±12,550,821与±12,550,825之间的位置生成。修改自定义世界和使用模组可以重新启用边境之地的生成，坐标比例可以修改这个位置。[2]
+</p>     <p> 
+边境之地不会正常地在纵轴生成，虽然受到自定义世界设置的影响。
+</p> 
+<h2>到达</h2>
+    <p> 要到达边境之地，是一项十分困难的事情(至少很浪费时间)。要从地图中心点出发到边境之地至少要约820个小时(34天)。而编辑level.dat可以让玩家快捷地传送到边境之地。
+</p>     <p> 
+边境之地与正常地图的界限(定义为地图开始扭曲之处)是X或Z=±12,550,821。
+</p>     <p> 
+目前区块最大数量的界限是X或Z=±34,359,738,368，对应地球与太阳的距离大约23%。在X或Z=±2,147,483,648(游戏崩溃时为±2,147,483,439)中，物品位置、生物寻路系统和其它使用32位整数值的功能会溢出，并表现异常，通常会导致游戏的崩溃。
+</p>     <p> 
+在X或Z=±1.798×10308处，玩家的位置坐标，一个双精度浮点数，会溢出。这时关于位置坐标的各种运算都会开始出现问题。(如：X坐标×2000÷2000≠X坐标)
+</p>     <p> 
+使用游戏命令，玩家可以使用传送功能快捷地到达边境之地。打开聊天窗口并使用"tp"命令，后接X,Y,Z坐标值就可传送到玩家想去的地方。例如：
+</p>    
+<ul><li>
+
+要到达边境之地之墙，使用命令"tp 12550820 129 0"。使用前请确认已经开启飞行模式或已经关闭伤害系统，否则会摔死。
+</li><li>要到达边境之地之角(边境之地之墙的交接处)，使用命令"tp 12550820 129 12550820"。同样，要做好掉落伤害的防御准备。
+  </li></ul> <p> 但是，在边境之地中会有严重的卡顿现象，性能较低的电脑甚至会在传送后崩溃。这时打开一个界面可以使游戏画面的渲染速度加快。即可以按Esc键进入游戏菜单，或者重新打开聊天窗口，来减轻卡顿。
+ </p>  <p> 
+若你向边境之地更远或更高处探索，游戏生成“坏区块”的可能性会增加。坏区块包含被严重破坏的数据，并会导致突然的严重卡顿并很容易使游戏崩溃。
+</p> 
+	<h2>结构</h2>
+  <p><b>  Java版</b></p> 
+
+	<p class="yellow">  <b> 该页面的内容关于过时或已移除的功能。<br />
+这些内容只存在于旧版本的Minecraft。
+</b></p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi4.png" />
+<br />
+边境之地的纵截图，显示出所有低于海平面的大洞穴都被水淹。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi7.png" />
+<br />
+边境之地的制图。</p>
+   <p> 
+边境之地的两种形态，边境之墙和边境之角，都有十分奇怪的地形，但两者地形有很明显的差别。
+</p>     <p> 
+在边境之墙和边境之角，任何在海平面以下的区域，都会被水淹没(洞穴除外)。在边境之地生物群系也会生成，但若不依靠草地的颜色，大多数生物群系都难以区分。沙漠生物群系会被沙子覆盖，而覆雪的生物群系中，方块表面会覆雪(除了最顶一层，因为高度限制，雪不能再在其上生成)。树木会比较正常地生成，但一般只会在上部的空间中出现，因为天然生成树木需要草。不过，如果你启用了调试屏幕，生物群系就永远是森林。
+</p>     <p> 
+矿石可以在其对应的海拔中找到，就如在正常的世界当中。但由于边境之地的海平面之下几乎都被水掩盖，因此除了煤矿石外，其它种类的矿石都很难得到。在边境之地的固体区域中，小型洞穴会随机出现，但受到限制显得比较小。与洞穴相似，地牢(极其稀有)、村庄(仅携带版)和湖泊也可以在固体区域中生成。水泉和熔岩泉也可以在洞穴中出现甚至流出洞穴外。
+</p>     <p> 
+边境之地大多数开阔地都没有光亮，因此怪物猖獗。在边境之地之角中尤其明显，因为其地形是堆叠的。而被水掩盖的区域则满是鱿鱼。
+</p>     <p> 
+在天域中，边境之地不会被水掩盖，且基岩不会出现在底部。
+</p> 
+
+
+ <p><b> 边境之墙 </b></p> 
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi5.png" />
+<br />
+在边境之墙附近制作的地图。
+ </p>
+ 
+ 
+    <p> 边境之墙的边界(墙与正常世界交接处)看上去就是一堵高墙，一直延伸到地图最大高度限制(当时为Y=127)。墙上有许多垂直墙面的洞。这些洞会延伸得很长，可能是无限的，且无论玩家如何深入探索，这些洞的形态变化很小。这些洞可能会被堵塞，但很稀有并且是暂时的。这样的“蜂窝乳酪式”高墙在地表之下一直到地图底部都会出现。边境之墙像是由于地图生成器输出错误导致在一个方向上地形扭曲的结果。这个区域有时被称为“循环”。
+</p>     <p> 
+边境之墙的平均方块数量分数：36%石头、25%空气、23%水、10%泥土/草方块、2%基岩以及4%的其他方块(基于14×14个区块)。
+</p> 
+
+<p><b> 边境之角 </b></p>
+  <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi3.png" />
+<br /> 在边境之角附近制作的地图。
+</p>
+    <p>   
+两幅边境之墙的拐角即为边境之角。不同于边境之墙的蜂窝高墙，边境之角的地形正常一些。边境之角以一个较为正常的地形为基础，一个一个地往上堆叠，中间留下空气夹层，成为一个巨大的“三明治”。每一层地形都像是一个巨大的浮空岛，但除了最顶端的一层，其余各层都是几乎黑暗的。
+</p>     <p>   
+游戏生成的最大世界中，大部分都是边境之角。由于世界的正常部分(在12,550,821米前)只是整个世界的中心；而边境之墙只是其本身的不断重复。
+</p>     <p>   
+边境之角的堆叠层数不是固定的，有可能是5层到7层。这些堆叠层可以分为3类：
+</p> 
+<ul><li>
+
+最顶层：这一层在世界的最高处。有时候这一层可以矮一些，但阳光可以直射到，且也不会被水掩盖。因此这一层地形的下陷处会出现树木和被动型生物。由于地形的较高处几乎就达到了世界的高度限制，因此很少会出现树木和动物。
+</li><li>干燥层：这些堆叠层会稍微平坦一些，也会出现树木，但整体是几乎处于黑暗当中的。在海平面附近，会出现大量的浮空沙滩，一经触动就会倒塌。由于阳光被遮挡，攻击性生物很常见。在很稀有的情况下，上层会留下空洞使得阳光可以照进下一层。以干燥层其中一层作为“表面”的洞穴会以泥土而不是石头组成。这些堆叠层都有类似洞穴的天花板，由石头、沙砾和泥土构成。
+</li><li>淹没层：跟干燥层相似，这些堆叠层会稍微平坦一些，但主要由石头构成。沙子和砂岩也会出现，甚至在海平面以下30米处。除了煤矿石外，其它矿石都只能在淹没层中找到。
+ </li></ul>    <p>   有时候边境之角存在从世界底部直通天限的柱子。同时也有些由于浮空海滩坍塌而导致的沙子高塔，虽然沙子本身总量并不多。边境之角的天花板或底部也会出现嵌入的几乎完美的对角线。这些对角线最终消失在最外的拐角(X/Z为±12,550,821)。这可能说明了边境之角和边境之墙的地形都有共通点(对角线与边境之墙的长洞相似)，但不同点更明显。
+</p>     <p>   
+边境之角的平均方块数量分数：40%石头、16%空气、28%水、10%泥土/草方块、2%基岩以及4%的其他方块(基于14×14个区块)。
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi6.png" />
+<br />游戏世界结构示意图。</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi8.png" />
+<br />由原版的modern custom world生成的边境之地。
+ </p>
+
+
+<p><b>基岩版  </b></p> 
+     <p>  基岩版的边境之地不同于Java版的边境之地，其不同之处如下：
+</p>
+<ul><li>
+
+在边境之角，超过正Z方向和低于负Z方向的边境之地，草方块将会不同寻常的以网格图形出现，而不是正常的堆叠出现。在海洋上面的三维空间分布的草方块就是这个结果的最佳体现。
+</li><li>在基岩版中的边境之地的生物群系和结构稍有不同。
+</li><li>在正X方向，边境之地全部是海洋。
+</li><li>生成海洋，以及最低处的基岩层，没有其他。
+</li><li>沙漠神殿、地牢、废弃矿井、林地府邸、丛林神庙、化石均不会在这里生成。
+</li><li>奇怪的是，如果生成雪地小屋，它将会在水底下的基岩层表面生成，会用石砖替换底部的基岩层，还有一个品红色床。
+</li><li>在Java版中，边境之地更多地有着复杂的结构，而不是单纯的星空波纹效应，特别是在边境之角里。
+</li><li>携带版边境之地的一个特点是其条纹状的地形，这是一个渲染漏洞。[3][4]
+</li><li>到达边境之地的唯一途径是飞行。如果玩家以行走的方式到达边境之地，那么玩家将会从地形上掉下去并因此死亡。
+</li><li>任何在边境之地的移动都将会引发难以置信的区块抖动。
+</li><li>在携带版中，有关边境之地的特性是会生成条纹之地，这是一个描绘了一个可见一个不可见的方块图案的漏洞。[5][4]条纹之地会从X/Z ±16,777,216处生成，只生成水、基岩和冻洋，在超平坦世界生成草方块。
+</li><li>在基岩版，生成的沙子和砂砾不会自然散落，使得性能相对稳定。
+</li><li>在1.0生成的新世界，边境之地的顶部仍然受到旧世界高度的影响，结果树会在顶部生成，但不会在顶部生成地形。1.0之前的旧世界不受影响，除非走入新生成的区块中。
+  </li></ul>  <p>  在Windows 10版，传统的边境之地仍然不生成，只会留下海洋和基岩。在下界和末地产生天空网格。
+</p>     <p>  
+其他基岩版(如Xbox One版)的边境之地的特性仍然未知。
+</p>
+
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi9.jpg" />
+<br />
+在X轴正方形的边境之地，除了海洋还是海洋。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi10.jpg" />
+<br />
+从另一个方向看的海洋边境之地。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi11.jpg" />
+<br />
+由Tommaso Checchi发布的第一个条纹之地截图，在X/Z 32,000,000。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi12.png" />
+<br />
+边境之地的正方向被切去，因为到达了空的负方向的边境之地。注意天空网格不在这里生成。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi13.png" />
+<br />
+边境之角内部。
+  </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi14.png" />
+<br />
+正Z方向的边境之地，其正X方向的边境之地已经被截去。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi15.png" />
+<br />
+正Z方向的边境之地。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi16.png" />
+<br />
+在负X方向的边境之地，负Z方向的天空网格没有被截去。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi17.png" />
+<br />
+在基岩版看到的远处的边境之地。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi18.png" />
+<br />
+在Windows 10版本，同样的种子却不生成边境之地。
+
+ </p>
+
+ 
+<h2> 不同维度</h2>
+   <p>  下界、末地甚至是天域的边境之地都与主世界边境之地大同小异。
+ </p>  
+ <p><b>下界中  </b></p> 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi19.png" />
+<br />
+
+下界中的边境之地。</p>
+    <p>  下界边境之地与主世界边境之地几乎相同，只是主要由地狱岩和少量灵魂沙构成。荧石也可以在这种蜂窝煤式的地形中出现。天花板和地底的基岩也会出现，同时也有熔岩海(Y=31)。下界边境之角的结构与主世界边境之角也基本相同。下界边境之角也是由几层地形相似的堆叠层构成，在Y=31以下都被熔岩海淹没。
+
+</p>     <p>  在下界中，十分严重的卡顿现象不会出现。这是因为下界中没有沙子，且沙砾也没有多少。
+</p>     <p>  
+若在下界边境之地中建立传送门并进入，则紫色的眩晕效果会在离开传送门后仍然一直持续。as X/Z 32,000,000, the limit at which block physics and lighting cease to function, divided by 8 (as 1 block in the nether corresponds to 8 blocks in the Overworld), is X/Z 4,000,000, within the limits of X/Z 12,550,820, where the distortion starts. Conversely, a Nether Portal built in the Nether Far Lands will not function, as even at the limit of 12,550,820 blocks as the beginning of the Far Lands would cause the player to come out at X/Z 100,406,560, far past X/Z 32,000,000.
+</p>     <p>  
+由于一些明显的原因，边境之地不会在基岩顶部生成，即使边境之地修改成了新的版本。
+</p>    
+<p><b> 末地 </b></p> 
+    <p> 在没有mods的情况下，Java版的末地一定不会出现边境之地，因为末地城是在Beta 1.8边境之地移除之后在1.9加入的。不过，基岩版依然存在末地边境之地，它没有那么有趣，几乎全部都是由末地石组成，比主世界有更对的挤压和拉伸。末地小岛仍然在边境之地内生成，即使是在它们消失之后由于边境之地没有流体，其虚空处不会被填充，不存在基岩层。
+</p>     <p> 
+有趣的是，如果边境之地被改回Java版1.9之前，末地的边境之地会在陆地上到处生成黑曜石柱；末地城和紫颂果会更多。
+</p>     <p> 
+末地的边境之地不会在y=128或更高的地方生成，除了建筑物。
+</p>    
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi20.png" />
+<br />
+Java版的边境之角。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi21.png" />
+<br />
+Java版的边境之墙。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi22.png" />
+<br />
+一个在Java版的边境之角里创建的地图。
+  </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi23.png" />
+<br />
+基岩版的边境之角。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi24.png" />
+<br />
+基岩版的边境之角。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi25.png" />
+<br />
+一个在基岩版的边境之角里创建的地图。
+  </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi26.png" />
+<br />
+Java版1.9以前的边境之角。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi27.png" />
+<br />
+Java版1.9以前的边境之墙。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi28.png" />
+<br />
+一个在Java版1.9以前的边境之角里创建的地图。
+  </p>
+
+  
+  
+   <h2>现象</h2>
+   <p>  
+边境之地中最明显的异常现象；随玩家位置离地图中心的距离变大，地图更新需时越长。
+在离开地图中心上百万米远后，最初出现的异常现象就是跳跃掉帧式的轻微卡顿。这种现象不是直接与边境之地相关的，而是由于实体位置坐标的双精度浮点数开始出现错误导致的。这种跳跃卡顿甚至在X或Z坐标为±500,000处就开始出现。这种卡顿伴随着帧率的大幅下降和CPU占用率奇高，若再持续下去，还会导致游戏卡住。在多人世界中，客户端不会出现帧率下降，但会使服务器本身性能下降，具体依赖于服务器的内存大小。在单人世界和多人世界中，边境之地中的严重卡顿则是因为存在大量的掉落中的沙子和沙砾实体。这些实体会导致更多的实体位置坐标出现错误。
+</p>     <p>  
+当玩家在边境之地更深入探索时，异常现象会严重至开始影响游戏的进行。在X或Z坐标为±32,000,000时[6]，方块的物理性质开始停止工作。光照消失，而应该是固体的方块也变成了非固体状态。若玩家试图走上这些方块，就会穿过并掉进虚空中。因此，不借助Mod或编辑器，要靠近X或Z=±500,000或±2,147,483,648是不可能的。世界渲染器停止工作，至少也会占用能占用到的所有CPU性能，并消耗极长的时间。最后，游戏必须通过结束进程才能退出。
+</p>     <p>  
+在边境之地中，天气系统不受影响，且具体的天气也取决于不同的生物群系。闪电可被看到落在地图的顶部(Y=127)但不会生火。雨水掉落在地的水花颗粒由正常的蓝色变成黑色。雪不会在地表堆积(由于没有空间)。在 Beta 1.6 后，由于玩家不能手动将固体方块放置在Y=127处，因此这些效果对于边境之地都是唯一的。
+</p>   
+
+<p><b>  在 Beta 1.8 及之后 </b></p> 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi29.gif" />
+<br />
+正式版 1.2.5 中的边境之角，图片底部是正常的地形。注意，海底没有任何沙子或粘土。
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi30.png" />
+<br />
+虚空颗粒效果显得十分特别。</p>
+     <p>   
+在 Beta 1.8 后，边境之地的扭曲地形已不复存在，但另外一些现象还存在。
+</p>
+<ul><li>
+
+在X或Z=±30,000,000起，游戏开始生成假区块，假区块中光照消失，方块不能再提供支撑。假区块只能由泥土、基岩、石头(或下界中的地狱岩)、水和熔岩组成。
+</li><li>假区块呈非固体状态；进入假区块就会掉进虚空。
+</li><li>继续飞过一个假区块32方块后会牢牢卡在空中。对玩家和其它所有实体都有效。
+</li><li>同样，云也会表现异常，会飞快地飞过。退出此世界重新载入会修复此错误，但玩家还是会卡住，无法逃脱。
+</li><li>在X或Z≈±30,000,064处区块开始停止渲染。
+</li><li>貌似在快照12w27a后不会。
+</li><li>在X或Z坐标数值过大时，颗粒效果(雨水、水花、雪花等)不能再交错落下，而会排成异常整齐的行列。
+</li><li>在 Beta 1.8 中，边境之地附近不会出现卡顿现象。
+  </li></ul>   <p>   在正式版 1.0.0 中的额外效果：
+</p>
+<ul><li>
+
+火把的火焰会与火把棍子本身错开一个方块。
+</li><li>活塞头部在激活时消失，掉落的沙子也有相同效果(也消失了)。
+</li><li>在边境之地附近，画上可以继续挂画。
+</li><li>附魔台上的书本在玩家靠近时表现怪异。
+</li><li>红石粉有时候会表现得十分畸形，显示图像也会被拉长。红石粉会显示错位，或直接消失掉，但指向红石粉时显示出的高亮边框指示出它的实际存在位置。
+</li><li>从炼药锅和花盆之内看出去，内壁其中一边是透明的，且这一边缺失的材质在距离另一边一个方块的位置出现。
+</li><li>蛋糕的高亮边框显示不正常。
+</li><li>刷怪箱的火焰只能在特定一边才能看到。
+</li><li>在多人世界中会出现许多光照错误和水中气穴，但在单人世界中未被测试通过。
+</li><li>末地传送门方块的图像显示错误，而红石矿石的颗粒效果只会在边角中出现。
+</li><li>把动物用拴绳拴在栅栏上后，栅栏上的绳结会与栅栏本身错开一个方块。
+</li></ul>    <p>  
+在快照12w18a后，假区块会继续向外生成，玩家可以越过32方块的界限。
+</p> 
+ <p><b>地图编辑器  </b></p> 
+    <p>  在3D地图编辑器中查看边境之地时，会遇到错误。在 MCEdit 中，选择方块会开始扭曲，查看地图时地形也会开始扭曲。
+</p> 
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi32.png" />
+<br />
+在 MCEdit 中选择方块开始扭曲。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi33.png" />
+<br />
+MCEdit 中使用玩家工具时看到的地形扭曲。 </p>
+
+
+ <p><b> 在游戏旧版本中 </b></p> 
+    <p>   由于多种原因，在旧版本中关于边境之地的纪录很少：当时边境之地没有官方名称，且很少人知道它的存在。知道的玩家也很少公开，因此边境之地还是很少人知道。当 Notch 在他的博客中提到边境之地并为其起名后[1]，引起了许多人的兴趣。
+</p>     <p>   
+在 Infdev 中，边境之地地形存在，但异常现象极少。不过，火焰颗粒效果和门表现异常。没有跳跃掉帧式现象的出现；在X或Z坐标超过±32,000,000时，方块开始不渲染。走下这个断层边缘会导致玩家卡住不得动弹。
+</p>     <p>   
+已经证实在 Alpha v1.1.2 中，X或Z坐标超过±32,000,000时方块不再渲染，与早前的 Infdev版本相同。[6]在Alpha 1.2.0 万圣节更新后，假区块出现。
+</p> 
+ <p><b> 携带版中的“条纹之地”和边境之地 </b></p> 
+    <p> 在携带版0.9.0更新发布之时，无限世界被加入，但是可用范围比电脑版小得多。Tommaso Checchi发布了在Twitter上一张他自己的截图，当时他在X/Z坐标为32,000,000的地方，他叫这些错乱的陆地“条纹之地”。
+</p> 
+<ul><li>
+
+在X/Z坐标大于大约100,000时，区块之间的缝隙就能被注意到
+</li><li>在X/Z坐标大于大约700,000时，“战战兢兢”的画面就会出现，世界变得有点卡顿而且没法玩了。区块看起来开始快速震动。
+</li><li>超过X/Z坐标900,000时，世界完全卡死而且会经常崩溃。[4]
+</li><li>在条纹之地里，如果碰到水面，那么玩家就会被甩进虚空。[10]
+</li><li>在0.9.0预览版本中，边境之地和PC版中的一样都在距离出生点12,550,745个的地方出现。携带版边境之地在生物群系和结构上有所不同。
+</li><li>草方块很不平常的格子图案会取代原来的“一丛一丛”的样子。高草丛会在这些方块上生成。结果就是在一个完美的三维数组的高草丛飘浮在水面很高的上方。
+</li><li>条纹会在泥土和空气之间快速闪烁
+ </li></ul><p><b> 到安卓或Kindle Fire设备上的边境之地 </b></p> 
+    <p> 要求:
+</p> <ul><li>
+Minecraft携带版
+</li><li>PocketInvEditor (或任何可以移动玩家位置的游戏编辑器)
+</li><li>创建一个新的“无限”世界 (名字和种子不限)
+</li><li>加载该世界并稍等一会， 然后完全关闭游戏。
+</li><li>打开你选择的编辑器， 并移动/传送玩家到一个在 X/Z: 12,550,780 附近的地方。
+</li><li>重新打开游戏，并且加载该世界, 然后等一小会， (你也许需要走一小段) 你就可以看到携带版游戏的边境之地了。
+</li><li>当你在第四步时加载世界后，游戏崩溃了，不用担心，这很正常, 重新试一次。
+</li><li>在边境之地移动会有很多故障，你最好只进行短时间移动。
+</li><li>确保你处于飞行状态, 边境之地的方块不是固体。
+</li><li>边境之地的地形生成很慢，渲染距离很短。
+  </li></ul>
+  
+  
+<h2>导致生成边境之地地形的原因</h2>
+     <p>  地形是通过16维Perlin噪声倍频函数生成的。每个噪声生成器需要输入一个浮点值和一个插值。它是这样工作的：
+</p>
+ 
+<ol><li> Java 将1个整数向下取整到0，并挑选最接近表示值来处理溢出。</li>
+<li> 如果这个整数大于原来输入的数字，那么将这个数字减1，然后向下取整。</li>
+<li> 将原始数字与该数字相减，获得一个余数，并在插入到 [0,1] 区间内的合适区域。</li></ol>
+<p>它在 [−2<sup>31</sup>, 2<sup>31</sup>] 之前不会造成任何问题。问题是，许多倍频函数的涵盖范围比一个方块还要小，每个方块最多只能够有 171.103 个噪点。要注意的是，2<sup>31</sup>≈171.103×12,550,824.053，一旦超过这个值，这个整数将永远是 2<sup>31</sup>−1，因此在一个轴上每次都会生成相同的噪声值。这个是造成边境之地和边境之地的隧道地形长期不变的原因。
+</p><p>正数的余数通常从一个相当小的值开始，但在通常情况下比1要大得多，并以每个方块 171.103 的速度递增。负数的余数从−2<sup>32</sup>开始。然后通过((6x−15)x+10)x<sup>3</sup>
+五次样条曲线拟合函数进行调整。甚至在每个方块的正数那一段，调整后的值已经在 10<sup>11</sup> 附近，并且负数将总会从 −10<sup>49</sup> 附近开始！对于边境之角，就是边境之地的值相乘的结果。当插值(外推法)尝试变成与这些数字一样大时，它同样会产生巨大的输出。这个输出让所有的其它地形变矮，并将会赋予地形规则的形状，而不是通过这个噪声函数生成有效的地形。
+</p><p>在输入被除以 2<sup>24</sup> 时并求余时，该问题被修复。无论如何，当噪点每重复 2<sup>8</sup> 单位时，不会产生任何的副作用。但是它并不能防止溢出。通过移除这些命令，边境之地的地形可以被转化为当前游戏版本的地形。
+</p><p>有几种因素使这种情况更复杂：
+</p>
+<ul><li> 噪声只抽取4个样本，并往其中线性插值。这就是为什么当 12,550,824 时会被漏洞影响，它从 12,550,821 延伸了3个方块。</li>
+<li> 每个噪声生成器会随机在 [0, 256] 的一个偏移位置中添加它的输入。这通常会将世界边界移动到 12,550,824 以下，边境之地从 12,550,821 开始，一些少数的种子会在 12,550,825 开始。非常罕见的是，如果世界边界罕见的在 12,550,824 以内，那么边境之地的第一对方块看起来差不多和正常的方块一样。边境之地的南部和北部是各自独立的。在负数的那一端，边境之地通常在坐标方块 -12,550,825 开始，而正数则在 -12,550,824 开始。</li>
+<li> 实际上有2组噪声生成器，它们都互相混在一起并互相依赖对方，这相当于负责生成2组的隧道或平原。偶尔的，如果一个噪声生成器由于它使用了一个不同的偏移位置，在另一个生成边境之地前开始生成边境之地，那么将会产生不协调的边界。</li>
+<li> 当另一个倍频函数溢出时，第2组边境之地开始在 ±25,101,648 附近生成。在那里将没有任何视觉上的变化，因为原始的边境之地会让那里的一切东西缩小。</li></ul>
+  
+  
+ <h2>你知道吗</h2>
+     <p>   在边境之地中，怪物的生成速度比正常世界大出很多，由于黑暗的区域十分大。在边境之角中，怪物生成速度差不多达到最大值，因为堆叠的地形等效于一个巨型刷怪塔。
+</p>     <p>   边境之角的最顶层在日夜交替中光照表现异常。这是因为当整个区块的Y=127处都被非透明方块覆盖时，日夜交替计算不会工作。
+</p>     <p>   就算是通过下界走路去边境之地，也要花费102小时。
+</p>     <p>   进入一个通往边境之地的下界传送门(无论处于哪个维度)都会导致游戏崩溃。例如，在下界世界中心2,000,000米外处建立一个传送门，则传送门会带到主世界中心的16,000,000米开外的边境之地，这就会导致崩溃。反过来也无法实现，因为要建造会传送到下界中心12,550,820米开外的主世界传送门，玩家必须到达主世界X或Z坐标超过100,000,000的地方，但那个地方早已不能放置方块。
+</p>     <p>   在边境之地中，栅栏再也不能围住动物或玩家。
+</p>     <p>   若玩家挂上一幅画，则画会的位置错开几个方块远。
+</p>     <p>   尽管在 Beta 1.6 中无法在Y=127处放置方块，但边境之地的平坦“天花板”仍会占用Y=127出现。
+</p>     <p>   对于是否将末影人改名为“边境之人”的争议，Notch 戏谑地建议将边境之地改为末路之地。 
+</p>     <p>   Notch 仍然未确认是否会将边境之地重新加入到游戏中，由于玩家不通过作弊或单人命令Mod很难到达边境之地。
+</p>     <p>   边境之地的最主要负面影响为帧率下降，屏幕冻结，和游戏崩溃。
+</p>     <p>   虽然边境之地的地形被移除了，但一些漏洞还是会出现，如颗粒效果的错位。这可以通过一根火把看到：火把的火焰和黑烟会脱离火把棍子飘浮。同样，红石粉看上去会伸出附着的方块外。
+</p>     <p>   玩家若在30,000,000米的假区块界限外飞过34个方块而卡住，这时四处张望，则他的视图模型会错位。
+</p>     <p>   Kurt(YouTube 用户名为"kurtjmac"，频道为"farlandsorbust")试图不通过任何作弊和Mod走路去边境之地。他在视频中记录了整个过程。
+</p>     <p>   由于边境之地地形在 Beta 1.8 后消失，Kurt 使用的游戏版本保持在 Beta 1.7.3 。
+</p>     <p>   在2015年6月8日，Kurt 已经走过了全程的 18.06% ，已经向西走了 2,266,779 米。他目前仍然继续，但从此未曾检查过自己的位置坐标。
+</p>     <p>   JL2579(YouTube 用户名"JL2579"，频道同名)从2014年7月1日，乘坐事先生成之红石轨道前往边界，在17天6小时的乘坐(途中游戏曾崩溃)，到达了14w11a的世界边界。("影片")
+</p>     <p>   当玩家走过X=30000000或/且Z=30000000时地面可以穿过。(在正式版 1.5.2 和快照 12w27a 中测试通过)
+</p>     <p>   在Xbox 360 版游戏中虽然不存在边境之地，但在地图边缘玩家会被一堵空气墙阻挡。
+</p>     <p>   即使是在正式版1.7中，边境之地也会出现，与Xbox360版一样，会被一堵空气墙堵住，物品和生成区块会发生异常：如方块组成错误、沙子不受重力影响不会掉落，红石是以往的6倍大且不能随便放置(有些已经放置但无法发现)，活塞运动会有异常，区块生成缓慢，某些地方可以发现区块分隔的阴影，水、熔岩无法继续流动，动植物无法生成在假区块中，虚空中的基岩会显得特别明亮等。
+</p>     <p>  在正式版1.8后的边境之地的附近建造一个地狱门，进入的X、Z是主世界的三分之一至五分之一左右，但在边境之地向前的地狱中建造地狱门，则地狱门会在主世界29，999，999米以内生成，不会生成进边境之地里面。
+</p>
+  
+  
+  
+  
+
+    <h2>画廊</h2>
+  <p><b>  边境之地中的特色</b></p> 
+   
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi34.png" />
+<br />
+  边境之地中的奇观。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi35.png" />
+<br />
+X和Z=±32,000,000处的边境之角。上面就是最顶层。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi36.png" />
+<br />
+边境之角堆叠地形顶层的俯瞰图。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi37.png" />
+<br />
+边境之角之间的一层。使用Mod照亮。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi38.png" />
+<br />
+边境之角底下的一层。使用Mod照亮。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi39.png" />
+<br />
+边境之墙的俯瞰图。
+  </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi40.png" />
+<br />
+超过32,000,000米外的边境之地，没有树木、生物，光照系统消失。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi41.png" />
+<br />
+边境之墙中的“海洋”。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi42.png" />
+<br />
+边境之角纵切后的图像，显示出3个不同的堆叠层。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi43.png" />
+<br />
+边境之角的俯瞰图。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi44.png" />
+<br />
+第三人称视角中世界的尽头。 </p>
+ 
+ 
+ <h2>边境之地的BUG</h2>
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi45.png" />
+<br />
+蛋糕的碰撞箱显示错误，看起来有些像台阶的碰撞箱。但是吃了一半的蛋糕的碰撞箱会恢复正常。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi46.png" />
+<br />
+错位的水流。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi47.png" />
+<br />
+错位的熔岩流。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi48.png" />
+<br />
+边境之地附近的红石粉。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi49.png" />
+<br />
+颗粒效果会变得很奇怪，并且放置在地上的线和红石都会向外拉伸。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi50.png" />
+<br />
+一个已被充能的向右的活塞。活塞臂被向外拉伸了，但是尽管如此碰撞箱仍然和原来一样。
+  </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi51.png" />
+<br />
+一个已被充能的向上的活塞，注意活塞臂变成了一个名副其实的“方块”。
+ </p>
+ 
+<h2>边境之地附近</h2>
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi52.png" />
+<br />
+边境之地附近生成的村庄。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi53.png" />
+<br />
+树木延伸过边境之地限制的部分不会被生成。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi54.png" />
+<br />
+边境之地中的蘑菇岛生物群系，注意没有产生蘑菇以及巨型蘑菇。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi55.png" />
+<br />
+边境之地中的沙漠。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi56.png" />
+<br />
+X/Z=500,000,000时的下界中的边境之地，有许多严重拉伸的熔岩。(Beta 1.7.3)
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi57.png" />
+<br />
+在距离出生点 32,000,000 的 X = 268,435,456 处生成的树，与正常地形相比，这些树延伸了几个区块。 (Beta 1.7.3)
+  </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi58.png" />
+<br />
+Beta1.7.3下的下界中的边境之地在X坐标2,000,000,000和Z坐标125,508,200时出现了严重掉帧现象并伴有剧烈卡顿。
+ </p>
+ 
+
+<h2>携带版中的边境之地</h2>
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi59.jpg" />
+<br />
+在携带版中 X=152,556,832 的地形，不可能在这里向前或向后移动。在这个地形中有水，但是它们是不可见的。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi60.jpg" />
+<br />
+Mojang发布的第一张条纹之地的截图，由Tommaso Checchi发布，图中的坐标是X/Z=32,000,000。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi61.jpg" />
+<br />
+携带版中的边境之墙。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi62.jpg" />
+<br />
+携带版中的平顶山生物群系的边境之地，在PC版中需要mod。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi63.png" />
+<br />
+在携带版中边境之角的一个视角，它生成为网格状，不像PC那样的正常地形。
+ </p>
+ 
+<h2>老版本中的边境之地</h2>
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi64.png" />
+<br />
+Infdev 中的边境之地。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi65.png" />
+<br />
+Infdev 中的边境之角。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi66.png" />
+<br />
+Infdev 中边境之角的俯瞰图。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi67.png" />
+<br />
+Infdev 中世界的尽头。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi68.png" />
+<br />
+Infdev 中，晚上，第三人称视角中的世界尽头。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi69.png" />
+<br />
+Infdev 2010年4月15日中的边境之地。
+  </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi70.png" />
+<br />
+在一个用1.5打开的Beta1.7的世界中的边境之地。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/bianjingzhidi71.png" />
+<br />
+边境之地在X坐标=2,147,483,647的区域。注意严重低帧。
+  </p>
+ 
+        
+
+        <!-- End Article -->
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>地面的惊喜：平地隐藏楼梯</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">地面的惊喜：平地隐藏楼梯</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+		<p> 在本教程中，将会学习到图中所示的2×4平地完全无痕隐藏楼梯的做法，机械在关闭状态下为平地状态，看不到任何元件，在开启状态下会呈现出楼梯状通道，也是看不到任何元件。同时，还会了解到双漏斗非门的运用方法、纵向向上三次递归的简化方案、互推方块的原理等等。机械体积为4x7x15=420 Blocks(地面计入体积)，为目前该结构下，不使用侦测器所能达到的最小体积。</p>
+
+<p> 开门状态：</p>
+
+<p ><img alt="1" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/1a4d5cd5-2ddb-495b-9839-02784e816c56.jpg" /></p>
+
+<p ><img alt="2" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/99e11884-466f-4ee7-8e91-f39fbf6b4989.jpg" /></p>
+
+<p> 关门状态：</p>
+
+<p ><img alt="3" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/bf45c873-28e8-42ca-ae08-f092b10377bf.jpg" /></p>
+
+<p ><img alt="4" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/733efe69-01ee-4528-9c47-d40f6a49ca82.jpg" /></p>
+
+<h2>二、制作教程</h2>
+
+<p> 楼梯的长度为4，也就代表着需要处理四排</p>
+
+<p> 首先来处理第一排，如图放置指定方块，左右的活塞均为普通活塞</p>
+
+<p ><img alt="5" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/7b92084a-9ac0-49c3-ac2f-d54320a4d409.jpg" /></p>
+
+<p> 接下来在方块底部放置两个向上的粘性活塞</p>
+
+<p ><img alt="6" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/13228f1c-2316-49b0-84c0-00e53b53b5f8.jpg" /></p>
+
+<p> 手动激活一下左侧的两个活塞，达到下图的状态</p>
+
+<p ><img alt="7" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/cbd74273-d894-4037-96f8-5631e8c3d74a.jpg" /></p>
+
+<p> 楼梯状态时，左侧把楼梯推到活塞上，然后活塞上推</p>
+
+<p> 平地状态时，右侧把方块推到活塞上，然后活塞上推</p>
+
+<p> 开始布线，首先如下图所示布线，激活两个活塞，把楼梯推到活塞上</p>
+
+<p ><img alt="8" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/910f731d-0014-478f-9b25-f7d524a19b46.jpg" /></p>
+
+<p> 如图布线，激活底部两个活塞。中继器分别是1档和2档</p>
+
+<p ><img alt="9" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/5f56a64f-75c0-4110-87d7-64854e186e40.jpg" /></p>
+
+<p> 在如图位置放置双漏斗非门，在箭头所指的方块侧面放置拉杆，拉杆处于关闭状态</p>
+
+<p ><img alt="10" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/a52f4b52-fb9f-400e-8010-c14ca38a7eae.jpg" /></p>
+
+<p> 在任意一个漏斗中放置7个任意物品</p>
+
+<p ><img alt="11" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/53405f1b-587e-41da-b8be-72cd7b547d92.jpg" /></p>
+
+<p> 这里介绍一下双漏斗非门的运用</p>
+
+<p ><img alt="12" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/668dd47d-2ad2-499e-828a-a053cf8092ff.jpg" /></p>
+
+<p> 双漏斗非门拥有两个输出端，要么A输出B关闭，要么A关闭B输出。与常规非门不同的是，它可以让两个输出端都保持有一定时间的关闭状态，而不是立马转换信号状态。也就是在切换状态的时候，会有一个时间段是A关闭B也关闭，而持续时间取决于漏斗内的物品数量，物品越多，时间越长。这个元件多用于处理两种会互相冲突的机械状态。在隐藏楼梯的实际运用中，楼梯状态和平地状态分别是两边活塞推动方块来实现切换状态的，这两个状态是会冲突的，所以使用双漏斗非门来控制</p>
+
+<p> 蓝色线路用于控制楼梯状态</p>
+
+<p> 接下来使用红色羊毛来标识控制平地状态的线路，如图布线，四个中继器都是1档</p>
+
+<p ><img alt="13" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/ec1fe854-fe5f-44d9-90be-b8545861e244.jpg" /></p>
+
+<p> 如图布线，用于激活侧边两个活塞，推动方块，注意中继器有一个是3档的</p>
+
+<p ><img alt="14" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/a3109a9c-09ec-4c9d-b4b3-245ea56c3a16.jpg" /></p>
+
+<p> 如图布线，中继器分别是1档和3档</p>
+
+<p ><img alt="15" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/fd766a01-7748-46e1-8d00-b8382585f530.jpg" /></p>
+
+<p> 翻到另一面，需要放置一个火把+方块，用于激活底部的活塞</p>
+
+<p ><img alt="16" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/8ef87443-14da-450c-9461-b2a951d34260.jpg" /></p>
+
+<p> 至此，第一排已经处理完了，开启拉杆就可以看到状态被成功切换了</p>
+
+<p> 在关闭拉杆的状态下继续布线</p>
+
+<p> 首先如图放置指定方块，两侧活塞均为普通活塞，注意这里的方块放置和第一排略有不同</p>
+
+<p ><img alt="17" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/e764817e-70ca-460d-a236-f93ff56eb5c7.jpg" /></p>
+
+<p> 在如下图位置放置两个粘性活塞，用于上推方块</p>
+
+<p ><img alt="18" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/e72897be-a9f8-4aac-b5eb-2a9bd1c67d29.jpg" /></p>
+
+<p> 如图布线，三个中继器分别为两个4档和一个1档</p>
+
+<p ><img alt="19" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/f33cff05-1643-4457-b370-28256ddfc0b0.jpg" /></p>
+
+<p> 激活两个活塞，将楼梯往另一侧推动</p>
+
+<p> 同时在紫色羊毛标识的位置上放置一个火把，默认会被熄灭</p>
+
+<p ><img alt="20" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/ce778788-135a-4607-9d52-743840da806a.jpg" /></p>
+
+<p> 那么此时已经完成了楼梯状态的电路了</p>
+
+<p> 接下来处理平地状态的线路，用红色羊毛标识</p>
+
+<p> 如图布线，接出信号，两个中继器均为1档</p>
+
+<p ><img alt="21" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/96f67c17-e740-48b6-9b43-dba2c43a1af7.jpg" /></p>
+
+<p> 翻到另一侧，中继器都是1档</p>
+
+<p ><img alt="22" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/7a6d759a-3383-4a78-a76f-7377ca603db0.jpg" /></p>
+
+<p> 至此，第二排已经处理完毕</p>
+
+<p ><img alt="23" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/92b91163-feff-4f9e-b892-cd9ff984fdf1.jpg" /></p>
+
+<p> 开启拉杆，测试一下效果</p>
+
+<p ><img alt="24" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/f90301cd-e1ba-4d64-a06c-7710fe0975a9.jpg" /></p>
+
+<p> 可见成功切换状态</p>
+
+<p> 关闭拉杆，保持楼梯状态，继续布线</p>
+
+<p> 如图放置三个向右的普通活塞</p>
+
+<p ><img alt="25" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/656bd324-d773-4dd2-aa21-7f2bce6f389d.jpg" /></p>
+
+<p> 如图放置方块，最右侧三个向左的是普通活塞，两个向上的是粘性活塞</p>
+
+<p ><img alt="26" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/1a919fe5-243d-467d-82ce-f0ddd1c72372.jpg" /></p>
+
+<p> 在如图所示的两侧放置粘性活塞，并且在前方放上方块</p>
+
+<p ><img alt="27" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/c615ac07-ee69-4451-9f86-edcd580a426f.jpg" /></p>
+
+<p> 在关闭状态时，右侧会把两个向上的粘性活塞往左推，随后上方两个粘性活塞将方块推出，最后底部两个粘性活塞将方块上推，填充地面</p>
+
+<p> 接下来如图布线，两个中继器均为1档，注意漏斗顶上的是半砖，不能是可充能方块，避免漏斗被锁定从而影响电路</p>
+
+<p ><img alt="28" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/d591d6fa-7e3a-4cbb-a34e-8456d6a574ba.jpg" /></p>
+
+<p> 接出一个1档中继器+火把，火把默认会被熄灭</p>
+
+<p ><img alt="29" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/fc06c1ee-d5c8-485f-a615-304497e59ffd.jpg" /></p>
+
+<p> 如图布线，用于激活左侧上方的粘性活塞</p>
+
+<p ><img alt="30" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/3ca9d80b-e812-4c6b-a72d-cd1547855a75.jpg" /></p>
+
+<p> 接下来翻到另一侧，处理另一边侧面上方的粘性活塞，接出一个3档的中继器，目的是统一延迟</p>
+
+<p ><img alt="31" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/a459bc13-f631-4106-88dc-57def678cfd7.jpg" /></p>
+
+<p> 放置一个向上的粘性活塞，上推一个炼药锅，炼药锅里必须有水，用比较器检测炼药锅，输出信号，熄灭火把</p>
+
+<p ><img alt="32" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/f8ae4372-1492-4596-a648-79275864de48.jpg" /></p>
+
+<p> 如图布线，激活右侧上方的粘性活塞</p>
+
+<p ><img alt="33" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/40a6e20a-9f90-416f-bfea-1331107d0ab4.jpg" /></p>
+
+<p> 接下来开启拉杆，测试一下效果</p>
+
+<p ><img alt="34" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/fd593e01-4035-40ef-b865-26875f4824e9.jpg" /></p>
+
+<p> 可见活塞已经被推动到正确位置，并且方块已就绪</p>
+
+<p> 在这个状态下继续布线，注意这个中继器是4档，激活底部左边的粘性活塞</p>
+
+<p ><img alt="35" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/3a2b26b8-463a-478a-9c4e-74a6b0a93c38.jpg" /></p>
+
+<p> 如图布线，中继器为3档，锁定侧边的中继器，延长侧边上方粘性活塞的激活时间，使其有足够的激活时间将方块拉回。注意红石粉下方必须是半砖，目的是为了防止和接下来的电路冲突</p>
+
+<p ><img alt="36" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/0a117066-4cf4-49c3-9338-6a914316ea6c.jpg" /></p>
+
+<p> 处理另一边，如图接出一个1档中继器</p>
+
+<p ><img alt="37" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/a64c048e-64fe-4ab7-aed1-e5012e499290.jpg" /></p>
+
+<p> 如图放置三个中继器，档位加起来必须是8t延迟，激活底部右边的粘性活塞</p>
+
+<p ><img alt="38" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/b5cb28a1-2ae2-4499-8876-dd98d047254b.jpg" /></p>
+
+<p> 和左边一样，接出一个4档中继器，锁定比较器，延长右侧上方的粘性活塞的激活时间</p>
+
+<p ><img alt="39" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/2d189765-ffa0-4701-9060-687ff3ce8aed.jpg" /></p>
+
+<p> 第三排处理完毕，关闭拉杆测试一下效果，可见成功切换为楼梯状态</p>
+
+<p ><img alt="40" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/bd79897f-3fc3-4c8a-b442-4a878e4cee10.jpg" /></p>
+
+<p> 接下来处理第四排，也就是最后一排，采用的是三次递归的结构</p>
+
+<p> 平地状态时，三排粘性活塞将方块上推，作为地面</p>
+
+<p ><img alt="41" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/767cdbcf-602d-454d-b29d-d242891d2dc7.jpg" /></p>
+
+<p> 先来看看这里用到的布线方案，作者是来自The Red Pixel团队的镍</p>
+
+<p> 电路采用了火把时钟的原理来简化时序，体积十分理想，速度也很快</p>
+
+<p> 注意在拉杆所依附的方块下方还有个火把</p>
+
+<p ><img alt="42" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/d9493538-8435-4400-9f53-02975dbbc719.jpg" /></p>
+
+<p> 从开关处的漏斗接出一个比较器，用绿色羊毛标识线路</p>
+
+<p ><img alt="43" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/9f34605d-3cd8-4dc8-a36a-86ef86f838d9.jpg" /></p>
+
+<p> 再接出一个1档中继器</p>
+
+<p ><img alt="44" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/1c736f51-c138-417c-b880-3b1ec8c0e891.jpg" /></p>
+
+<p> 在内侧接上一个火把，随后连着两个4档中继器，提供足够的延迟</p>
+
+<p ><img alt="45" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/ab914ce9-13ea-409a-bcc9-da0c2267a082.jpg" /></p>
+
+<p> 接上一条4格长的红石线</p>
+
+<p ><img alt="46" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/6f9e6e94-7a98-4e6e-b0e5-6999b49f5c54.jpg" /></p>
+
+<p> 接下来处理三次递归的线路，要对起先的三次递归原型进行灵活变形</p>
+
+<p> 首先在如图位置放置一个火把，然后在其上方放置一个方块，形成一个持续时间有限的火把高频</p>
+
+<p> 可以看到活塞已经开始乱了，但是没关系，继续布线</p>
+
+<p ><img alt="47" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/13f3f5ab-5ce6-4830-af96-7fc3ed8d0315.jpg" /></p>
+
+<p> 如图布线，这个中继器是3档的</p>
+
+<p ><img alt="48" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/afbda4d1-a200-4d56-bee7-9d5afefa9894.jpg" /></p>
+
+<p> 放置漏斗+投掷器，投掷器向左，朝着漏斗，漏斗口对准投掷器</p>
+
+<p ><img alt="49" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/0b16eec4-f2c7-4f17-89e5-ff6bb7c79244.jpg" /></p>
+
+<p> 把漏斗旁边的方块换成半砖，避免误锁定漏斗</p>
+
+<p ><img alt="50" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/2bee4e74-2d3f-461f-8bed-5b79011500d3.jpg" /></p>
+
+<p> 放置一个比较器，用于检测来自投掷器的信号</p>
+
+<p ><img alt="51" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/26ddbcb9-de44-4510-850f-1612e5734219.jpg" /></p>
+
+<p> 在漏斗中放置任意一个物品</p>
+
+<p ><img alt="52" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/3f0a8579-18b2-46f7-b2b8-0a6872466608.jpg" /></p>
+
+<p> 在其上方放置中继器+火把，火把上方需要有个方块</p>
+
+<p> 为了更直观地观察，这里拆出来截图</p>
+
+<p ><img alt="53" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/dab4b967-0bc6-4a89-aaa4-0b419ae2bd7c.jpg" /></p>
+
+<p> 接下来处理另一边，如图接出信号，这个中继器是3档的</p>
+
+<p ><img alt="54" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/fa5ae681-8804-4a8d-bc29-d8974d28575d.jpg" /></p>
+
+<p> 和左边一样，只是反过来而已</p>
+
+<p ><img alt="55" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/03bc8fc1-9178-48f9-8e7c-ebec21c57717.jpg" /></p>
+
+<p ><img alt="56" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/aa2981e7-1034-4b03-9cc2-e35f2b0e7169.jpg" /></p>
+
+<p> 最后，手动把三次递归复原</p>
+
+<p ><img alt="57" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/ea3c2b5e-f0a7-44a5-b915-28cdf4a44f9c.jpg" /></p>
+
+<p> 开启拉杆，大功告成</p>
+
+<p ><img alt="58" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/44429e80-9977-42f0-9642-db3010a3a22b.jpg" /></p>
+
+<p> 至此，已完成制作</p>
+
+        
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

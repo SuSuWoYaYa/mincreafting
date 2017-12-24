@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <title>命令方块</title>
+		  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all'/>
+  </head>
+
+<body>
+    <h1  >
+        命令方块</h1>
+<div>
+ <p class="yellow">
+<b>此页面的(部分)内容需要被翻译。 </b> 
+<br />
+你可以帮助我们来翻译此页面
+</p>
+  <p>  
+      命令方块是一种帮助和支持冒险模式、SMP的自动化和自定义地图。如果你想了解更多细节，请参见命令方块页。如果你不知道在某些命令中如何设置x,y,z的值最好先看看坐标。
+      
+</p>
+
+
+    <h2 >一般的应用</h2>
+<p>命令方块可以使用在许多事情，改变难度，改变天气的状态，或者给你预先指定的物品。他们在这些领域特别有用：<code>/weather</code> 和 <code>/time set x</code> 命令。他们只能在作弊模式之外。 <code>/time set x</code> 命令很有用，它允许你改变当前预定时间再按下一个开关。
+</p><p>命令方块也可以被用来使文本出现在人的聊天菜单。命令是 <code>tell @p &lt;message&gt;</code>, 或者 <code>tell &lt;username&gt; &lt;message&gt;</code>.如果加上@p在tell的后面，那么只有最近的玩家会看到信息. 而如果制定了一个username，那么对应的玩家会看到信息. 你也可以输入: <code>/tell &lt;your username&gt; @p</code> ，当有人走过时，它会跟你说："@ whispers to you: &lt;username&gt;<i>.</i>
+</p><p>你可以用已下命令去改变难度 <code>/difficulty x</code> 0=和平，1=简单，2=普通，3=困难，或者在后面直接打上难度的名字。(例如：<code>/difficulty peaceful)</code>
+</p><p>另外一种使用命令方块的方法是使用代码<code>/tp @p &lt;目的地坐标&gt;</code>在两个不同的基地之间传送。
+</p>
+
+
+
+    <h2 >给予一个随机玩家一个物品并告诉所有人</h2>
+    <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai1.png" />
+ <br />
+
+ 
+      曲奇给予器 5000X</p>
+<p>这个装置会给予一个随机玩家五个曲奇，然后告诉所有人。
+</p><p>首先创建一个记分板(名字任意，注意除非在你测试时，不要显示它)，比如说“cookie”(曲奇)
+</p><p><code>/scoreboard objectives add cookie dummy cookie</code>
+</p><p>第一个命令方块的命令：
+</p><p><code>/scoreboard players set @r cookie 1</code>
+</p><p>第二个和第三个命令(两者可颠倒，但要同时被激活)
+</p><p><code>/say @a[score_cookie_min=1] has been given 5 cookies.</code>
+</p><p><code>/give @a[score_cookie_min=1] minecraft:cookie 5</code>
+</p><p>第四个命令方块的命令
+</p><p><code>/scoreboard players set @a[score_cookie_min=1] cookie 0</code>
+</p><p>"I" 代表输入红石信号端。(建议可使用循环红石电路)
+</p>
+
+
+
+    <h2 >传送</h2>
+<p>你可以通过使用<code>/tp x y z</code>来传送。其中<code>y<code>表示上下方向的移动，<code>x和z<code>表示前后和左右方向的移动，玩家可以通过这个命令传送到(x y z)这一个坐标的位置。如果要以目前站的位置为标准进行传送的话就只要在x y z前面加上一个~即可，例如<code>/tp ~x ~y ~z<code>。如果当玩家位于(x y z)坐标为(-36 96 -12)的时候输入<code>/tp @p ~3 ~4 ~5</code>,这时他会被传送到<code>(-33 100 -7)<code>这个坐标，和玩家输入<code>/tp @p -34 100 -8</code>是一个效果。
+</p>
+    
+
+
+
+    <h2 >玩家安全系统</h2>
+    
+<p>命令方块同时也可以用来制作安全系统。 只要在你房子入口的铁门前放置一个压力板，输入命令：<code>/tp @p[r=&lt;radius&gt;,name=!&lt;yourname&gt;] &lt;x&gt; &lt;y&gt; &lt;z&gt;</code>。对于怪物，简单的栅栏或熔岩护城河就能达到目的。
+</p>
+
+
+
+    <h2 >Moving Sidewalk</h2>
+<p>A similar concept to the elevator but made to move a player along the x or z coordinates.
+This can be created by:
+</p>
+<ul><li> Use the /fill command with your coordinates. (/fill x y z x2 y2 z2)</li>
+<li> For the block you fill it with, use this:</li></ul>
+<pre>    command_block 1 replace {Command:/tp @p ~-1 ~ ~}
+</pre>
+<ul><li> Edit the coordinates inside the brackets to change the direction you will move</li>
+<li> Place pressure plates on top of all the command blocks.</li>
+<li> Step on it</li></ul>
+<p>You might want to turn command block output off....the chat will explode in your face.
+</p>
+
+    <h2 >Eternal Day</h2>
+	<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai2.png" />
+ <br />
+</p>
+
+    <p><b>Note:</b> As of 13w24a, there is a gamerule, doDaylightCycle, which can be used to obtain eternal day by typing in the chat, <code>/gamerule doDaylightCycle false</code>, and then <code>/time set 6000</code>.
+</p><p>By using Cobweb and a minecart, you can skip nights using <code>/time set 0</code>. A minecart takes 31 seconds to fall through a cobweb. Therefore, by using 23 stacked cobweb with a Detector Rail and several Powered Rail will keep the sun in the sky.
+</p><p>Alternatively you can use an item de-spawning on a wooden pressure pad. The item de-spawns off of the pad every 5 mins, at this time it triggers a command block reset of the time to 0, also it triggers a dispenser (or dropper) to drop a new item on the wooden pad. 5 Mins is the day cycle and will trigger before mobs spawn. This method however is limited to 64x9 = 576 cycles = 48 IRL hours of gameplay with that chunk loaded. In the snapshot 13w01a and higher, hoppers are added into the game that can pick up items and deposit them into blocks with an inventory. A mob grinder can keep the dispenser full with gunpowder, arrows, and zombie flesh. Another technique is to simply use a command block to create the item out of thin air (e.g.: <code>/summon Item ~1 ~0 ~1 {Item:brown_mushroom}</code>). The advantage to this is that it has no 64x9 item limit like using dispensers does.
+</p><p>Both of these methods require the chunk to be loaded to allow the system to work.
+</p><p>Alternatively, you could connect the command block to a repeating redstone pulse, such as a five-clock, some type of loop, or a daylight sensor as seen on the right. To prevent this filling up the chat box, set the gamerule "commandBlockOutput" to false using the command <code>/gamerule commandBlockOutput false</code>. Note: This method can be used to set a variety of things by using a different command. (I.E. to have eternal sun, add another command block to the loop and use the command <code>/weather clear</code>)
+</p><p>Also, to make it toggle-able, use one of these designs, but put an  AND Gate before the command block, with a lever on one side, and the mechanism on the other side.
+</p><p>Using a daylight sensor is a more direct approach for eternal day.
+</p>
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai3.png" />
+ <br />
+</p><p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai4.png" />
+ <br />
+</p>
+
+<p>The sensor deactivates the Redstone torch which will activate the Command Block which will set the time to 8000 when there's not enough light for the sensor to power the Redstone torch across the far distance. In other words, the Command Block will set the time to Noon when it's dark enough. The light level when the command will be activated varies with the distance of the Redstone wire. The time it sets to varies with the time typed in the Command Block.
+</p>
+
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai5.png" />
+ <br />
+</p>
+<p>To make it, first, you place the Daylight Sensor on an open area. Then you place some Redstone wire away from it. The distance of the Redstone wire depends on your need of precious time. You can only have a max of 15 blocks worth of Redstone wire away from the daylight sensor to send the signal to its destination. Next, you put a block on the other end of the Redstone. Put a Redstone Torch on the block's side and a Command Block on top of the torch. Right click the command block and start with "/time set" and enter a valid time value and the end. The value depends on when you want to set the time to. 14000 is night and 8000 is noon.
+</p>
+
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai6.png" />
+ <br />
+</p>
+
+<p>This design can be used in maps to keep it a certain time of day/night. This simple contraption can only be used in Creative mode or when you enable Cheats.
+</p><p>There is an alternative, more compact design. If you put a comparator facing away from the sunlight detector and a 15 strength redstone line (one redstone with a torch) into the second input. Then set the comparator to subtraction mode. The comparator will activate right after noon.
+</p>
+
+
+ <p><b>Easy set day/night   </b></p> 
+    <p> 
+Place a Daylight Sensor atop a Command Block then right-click on it to set it to a night sensor. Add "/time set day" to the Command Block. Or if you want it to always be night, add a Daylight Sensor and don't right-click it, then add "/time set night" to the Command Block.
+ </p> 
+    <h2 >Wireless redstone</h2>
+        <p> 
+      Wireless Redstone can be achieved using command blocks and the scoreboard system. The process involves using a scoreboard variable that is searched for by a command block attached to the output of a clock circuit. A comparator is then used on the wireless output command block that will trigger when the variable is found true.
+	  </p><p>Wireless Redstone can also be achieved by using objectives instead of variables. If the output command block is set to try and remove a non-existent objective, a redstone signal can be created by adding said objective via command block or chat command. The advantage to this method over the variable method is that it is not dependent on players.
+</p><p>To do this, place a command block at the input and type the command: /scoreboard objectives add &lt;objective name&gt; dummy. At the output location, place a command block, type <code>/scoreboard objectives remove &lt;objective name&gt;</code>, hook it up to a clock, and put a comparator then a repeater leading out of the command block. Then just use the repeater as an output.
+</p>
+          <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai7.png" />
+           <br />Off state.</p>
+          <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai8.png" />
+          <br /> On state</p>
+          <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai9.png" />
+           <br />On state command.</p>
+          <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai10.png" />
+           <br />Off state command.</p>
+          <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai11.png" />
+           <br />Wireless output setup.</p>
+         <p>  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai12.png" />
+           <br />Wireless output command.</p>
+          <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai13.png" />
+          <br /> Another way of having wireless redstone using the <code> "/summon"  </code>command. The command used here is  <code>/summon FallingSand -118 150 -60.5 {TileID:76,Time:1,DropItem:0} </code>
+              </p><p>  You can also achieve wireless redstone by using the <code>/setblock</code> command instead of the scoreboard system. All you have to do is let the command block set a redstone_block to the destination coordinates - together with an air block (or
+          anything that does not output a signal) being set to the same coordinates from a command block connected to the inverted signal.
+
+           <p> 
+    
+
+
+
+    <h2 >Wireless Button</h2>
+    
+<p>This can be done with any block, technically, but buttons, levers, and other interchangeable blocks add an interesting effect. It's surprisingly simple, despite the mysteriousness on servers. It uses the 1.8 command <code>testforblock</code>. The setup is simply a command block, a comparator to translate the command into a redstone signal, a block to be tested for, and a clock to repeatedly activate the command block. Here's the example for a button:<code>/testforblock 123 12 123 stone_button 10</code>. You use the coordinates and name for the specific block you want to test for, in this case a stone button located at <code>123 12 123</code>. This can be interchangeable for any block that changes data value. The number <code>10</code> after the coordinates corresponds the data value of the button that we want the command block to test for. In this case we want the command block to activate when a button facing west is pushed, so we set the value to <code>10</code>.
+</p><p>Note: this value changes depending on which direction the button/lever is facing. The initial value for a button facing west that is not pressed is <code>2</code>. When a button is pressed, it adds a value of <code>8</code> to the initial state, so a button facing west when pressed would then have a data value of <code>10</code>.
+Refer to: Button#Data values &amp;  Lever#Data values for the data values.
+</p>
+
+
+    <h2 >Starter Kits</h2>
+<p>By using m=, you can make a kit on a server/custom map that can only be obtained once! First, dig <b>3</b> squares down in the ground, then place a row of command blocks (one for each item in the kit). In the GUI, type <code>/give[m=&lt;starting gamemode, in number form&gt;] &lt;item id&gt; &lt;amount&gt;</code>. Do this for each item you wish to give. Make an extra command block that has the command <code>/gamemode &lt;a different gamemode than the starting mode&gt;</code>, then string redstone across all of the command blocks (this can be done easily by sneaking and placing). Fill in the hole and place a pressure plate over it. When players walk over it, they will get the desired kit of items and it will change their gamemode so they cannot receive it anymore (unless cheats are used) (Note: This method can also be done by using the method above only using (First name your kit do <code>/scoreboard objectives add &lt;kitName&gt; dummy &lt;kitName&gt;</code>) scoreboard commands! <code>/give @p[score_&lt;kitName&gt;=0] &lt;item id&gt; &lt;amount&gt;</code> for the row of command blocks giving you the items and <code>/scoreboard players add @p &lt;kitName&gt; &lt;any number greater than 0&gt;</code> to make it a one time use. Also you can make more than one kit if you repeat the steps and use a different &lt;kitName&gt;).
+</p>
+
+
+<h2 >As a replacement for pressure plates</h2>
+<p>是不是已经厌烦了压力板只有四种材质可用了呢(石质，橡木质，铁质和金质)？现在你可以不再为这个问题困扰了。你可以使用包含命令<code >/testfor</code>，区域大小的带有时钟电路的命令方块来代替压力板了。命令<code>/testfor @p[r=2]</code>会检测2格内(朝任意方向两个方块加上命令方块本身的区域内)是否有任意玩家。当命令方块在一层地板下面的时候，r＝2刚好是希望达到的效果。记住玩家是在一个球形区域内(而不是方形区域)触发这个命令的，所以r＝2的区域大约是5*5*5，r＝1的区域大约是3*3*3(其实更像是一个＋号上下各加一个方块)。你可以用dx，dy，dz这些参数来编辑命令。你也可以在代码里指定xyz坐标(比如<code>/testfor @p[x=50,y=64,z=46,r=1]</code>)，但是注意不能把区域缩小到一个方块。因为在不包含坐标的命令中区域大小代表着命令方块本身加上周围r个方块厚的区域，对于命令方块来说比较合理(如果缩小到只有一个中心方块，那就只有你站在命令方块那个位置时才会触发命令了，所以并不合理)。至少来说一个r＝1的触发区域(即＋号上下各加一个方块)可以被埋在地层下，只露出上表面，前提是你知道玩家不可能在地表下两层的位置行走。如果实现这一效果且不使用xyz坐标则要求命令方块嵌在地表上，可以被玩家看到。
+</p>
+
+
+
+<h2 >Using Command Blocks in Single Player Non-Creative Maps 
+</h2>
+<p>By swapping gamemode it is possible to use command blocks in single player outside of creative mode. Simply swap to creative mode with the /gamemode 1 command, set the command block command to whatever you want, then swap back to /gamemode 0. The command block only needs to be set in creative, but will still function once back in normal.
+</p><p>It can also be used to teleport to certain areas (for ex. a far-away Stronghold, a deep mining operation, or a floating island). If it took you a very long time to get there, and if you don't mind sort-of cheating, then you can set up a teleport system. Make sure that you are on Creative mode while setting it (use the command /gamemode 1. If you don't have cheats enabled, open the LAN and set the cheats on), but you can still activate it in Survival mode. Type this command in when having the Command Block GUI open /tp @p x y z . Then, activate the command block with redstone (including buttons, levers, and pressure plates), and you will be sent to your far-away destination. You can set up multiple different teleports. This can also be used when doing a big project that spans over a very large area or if you are transferring chests to from an old house to a newer house.
+</p>
+
+
+  <h2 >探险家地图绘制</h2>
+  
+<p>如果一个人希望创造一个单人玩家的探险家地图，做 <code>/publish</code>命令来让其他的命令(见下方)被使用。
+</p>
+
+
+
+<h2 >在多人中的应用 (SMP)</h2>
+<p>这个章节详细介绍了命令方块在多人游戏中的应用。
+</p>
+<ul><li> <b>传送/运输</b></li></ul>
+<p>通过 <code>/tp</code>命令,可以制作一个所有人都可以使用的传送装置。可以在每个地方都使用。 例如，在整个世界里做一个庞大的传送系统，所有的传送点入口都汇集到传送大厅中，而传送大厅可以进入每个传送点入口处进而达到出口。这样就可以建造一个“快速交通中心”了。
+</p>
+<ul><li> <b>"定格动画"</b></li></ul>
+<p>通过使用/tp，或者Minecraft地图编辑器，例如MC地图编辑器可以复制一张图片(利用方块做出来的绘画)，然后粘贴到一处遥远的地方，并变动绘画的一些方块，利用一些压力板或者绊线钩,在玩家短时间欣赏绘画后,命令方块做出/tp命令，将玩家传送到下一张绘图点. 如果大量的复制粘贴这样的零件，让玩家按顺序的在这些之间传送并稍稍弄出一点点的延迟，那么玩家就会产生幻觉，认为这个绘画是在运动的(甚至认为是某MOD做出来)，这就是利用命令方块来实现定格动画技术。
+</p><p>1.7+里可以使用/setblock来直接放置和删除方块，利用/setblock还可以免除传送时不必要的卡顿和一大堆的房间，而1.8+的/fill更是可以极其方便地放置大量的方块。
+</p>
+<ul><li> <b>抽奖</b></li></ul>
+<p>用<code>/give @r</code>命令,可以创造一个抽奖。但是记住， <code>/give</code>命令是直接把物品放进他们的背包，而不是放在他们面前。
+</p>
+<ul><li> <b>监狱</b></li></ul>
+<p>通过连接高频红石到一个命令方块和用<code>/tp</code>命令,你可以强制玩家留在某个地方。如果你想让这个方法成为可行的，在你的聊天窗内使用命令<code>/gamerule commandBlockOutput false</code>.。使用"Range"(最大范围)和"Minimum Range"(最小范围)两个参数,你可以在玩家离开一定距离后再将他们传送回来。
+</p>
+<ul><li> <b>只针对管理员</b></li></ul>
+<p>如果使用参数<code>[m=1]</code>，那么只有创造模式的玩家才会受到这条命令的影响，当然输入m=0既只对生存模式的玩家有效。
+</p>
+<ul><li> <b>戏弄创造模式玩家</b></li></ul>
+<p>你可以放置一个命令方块，输入“/tp @p[m=1] &lt;坐标&gt;”或者一些整人命令。当创造模式的玩家激活这个命令方块就会被传送到某个地方或者变成生存模式，好无聊的恶作剧！
+</p>
+<ul><li> <b>公告</b></li></ul>
+<p>注：使用AutoMessage等服务端插件就可以达到自动公告的功能
+</p><p>通过在命令方块中使用 <code>/me</code>，可以创造一个无人自动广播(需要连接循环红石等不断发出激活信号的红石元件)，不需要OP，用1.7+的新命令/tellraw {text:"&lt;信息&gt;"}可以免除开头的[@]并且可以做到悬浮事件和点击事件等。
+</p>
+<ul><li> <b>安全扫描</b></li></ul>
+<p>注：大部分服务器管理插件支持封禁危险物品。
+</p><p>使用 <code>/clear</code>命令， 你可以清除玩家背包中的某物品。具体步骤是这样的，使用 <code>/clear @a(或者某玩家ID) &lt;清除的物品名&gt;</code>。如果想实现自动清理危险品需要连接循环红石。
+</p>
+<ul><li> <b>比赛裁判</b></li></ul>
+<p>使用<code>/say @p</code>，命令方块就能报告最近的玩家。如果命令方块放在终点线后，他会很方便的说出赢家，但是/say会给所有玩家发送信息，为了防止刷屏，建议使用/tell或/tellraw。
+</p>
+<ul><li> <b>建立保护区域</b></li></ul>
+<p>注：Residence等服务器领地插件的拓展插件可以实现领地内游戏模式的变化。
+</p><p>你可以通过命令方块创造一个“创造/生存模式区域”，但是很繁琐。可以通过用命令方块的范围限制来制作一个“围栏”，通过围栏的玩家会变成生存或创造模式。在命令方块中输入命令 <code> /gamemode 2 @a[x=&lt;区域中心坐标&gt; y=&lt;区域中心坐标&gt; z=&lt;区域中心坐标&gt; r=&lt;最大的玩家搜索半径&gt; rm=&lt;最小的玩家搜索半径&gt;]<code> 这样放置两个搜索区域不重合的命令方块，就可以将规定半径内的玩家改变模式。
+</p>
+<ul><li> <b>无插件PVP</b></li></ul>
+<p>使用命令 /gamerule keepInventory true 来关闭玩家死亡后的物品掉落(同样在重生后会保留物品和经验等，所以需要在玩家重生后清空背包) 。使用 /give @p &lt;物品ID&gt;可以给予玩家武器(可以添加NBT标签)，你可以设计一套完善的职业系统，玩家选择不同的职业会有不同的装备。使用 /spawnpoint [x y z坐标] 设置玩家重生地点，使用 /tp [x y z坐标]移动地图中的玩家到指定区域。
+</p>
+<ul><li> <b>新手工具包</b></li></ul>
+<p>你可以很简单的给新手工具包不用任何插件使用命令方块: <code>"/give @p[r=2] 274"</code>.
+为了防止有人第二次按下按钮得到他们的工具包，您可以设置按钮激活两个命令方块：: 1. <code>"/give @p[r=2,m=2] 274"</code> <code>2."/gamemode 0 @p[r=2]"</code>(玩家一开始是冒险模式，获得工具包后调成生存模式，然后再限定工具包仅限冒险模式能拿即可)
+</p>
+<ul><li> <b>特殊的彩字</b></li></ul>
+<p>虽然你不能够直接输入彩色/粗体/斜体文本到命令方块中，但是通过McEdit滤器可以编辑那些服务器内的文本。
+SethBling's McEdit Filter: ColourCommandBlockText
+</p><p>同时/tellraw可以直接利用color等参数来弄出彩色字体
+</p>
+<ul><li> <b>警报系统</b></li></ul>
+<p>当玩家走上踏板时，他能触发命令方块 /say @p &lt;警告内容&gt;
+</p>
+<ul><li> <b>奖励屋</b></li></ul>
+<p>如果某个玩家在服务器有着过人的贡献或者有元老资历，但却不足给他管理，你可以奖励他一组钻石或者一些奇怪的东西....
+创建一个只有通过传送命令才能进入的房间，将有卓越贡献的玩家传送进去，玩家会激活房间中的命令方块从而获得奖励，而后他又会被另一个命令方块传送回原地，如果服务器允许/back的话，连续2次传送到原点，这样/back就无效了。(可以避免玩家二次领取奖励)
+</p>
+<ul><li> <b>天气机</b></li></ul>
+<p>使用<code>/toggledownfall</code>和<code>/weather thunder</code>来开始或者结束降雨(雷雨。)合理安排这个命令的权限会十分有用， 你可以顺随自己的意愿开始或停止降雨。这个技术可以用于村民和一些由降水控制的红石机械，不用输入任何命令就可以控制天气(需要管理员激活命令方块自动执行)， 合理利用将会十分有效，比如在森林火灾时或者在雨天刷怪
+</p>
+<ul><li> <b>有奖竞赛</b></li></ul>
+<p>使用/tp @p 和 /give @p，你可以制作一个障碍赛跑或者奖励迷宫，游戏结束后就将玩家传送汇出生点或其他地方。
+</p>
+<ul><li> <b>时间机器</b></li></ul>
+<p>在地图上模拟两个十分相似的环境，通过命令方块将玩家从一个传送到另一个，并且时间也会被设置为开始的时刻，这就好像是时间倒退。
+注：可以广泛用于剧情RPG地图。
+</p>
+<ul><li> <b>地雷</b></li></ul>
+<p>使用命令<code>/testfor @p[r=&lt;检测范围&gt;,name=&lt;玩家名(如果没有限制可不写)&gt;]</code> 使用红石中继器连接命令方块和TNT，当命令方块检测到有玩家经过就会激活TNT！Boom！
+注：命令方块的/testfor命令为一次性命令，命令方块检测到一次就会一直输出信号，如果需要多次性的话，你可以直接使用/summon召唤出TNT。
+</p>
+<ul><li> <b>安全门</b></li></ul>
+<p>通过使用 <code>/testfor @p[r=5,name=&lt;房主&gt;]</code>，命令方块会在一定范围内检测房主并且为他开门，也只会为他开门。
+注：命令方块的/testfor命令为一次性命令，命令方块检测到一次就会一直输出信号。
+</p>
+
+
+<h2 >在自定义地图中的应用</h2>
+<p>这一节详细介绍了命令方块在自定义地图的应用。
+</p><p>Minecraft中使用大量命令方块的地图有很多优势。
+比如：SethBling's TF2 Map
+</p>
+ <p>youtube视频  
+
+<a href="https://www.youtube.com/watch?v=_f2brU8hBWc&amp;feature=plcp">https://www.youtube.com/watch?v=_f2brU8hBWc&amp;feature=plcp</a>
+ 
+</p>
+ <p>另一个优秀的应用例子是 Hypixel's Gladiator Arena，这个地图中的战斗职业系统完全依赖于命令方块。
+</p>
+ <p>youtube视频  
+
+<a href="https://www.youtube.com/watch?v=jryJkWcqmzM">https://www.youtube.com/watch?v=jryJkWcqmzM</a>
+ 
+</p>
+ 
+<ul><li> <b>“沉默的”命令方块</b></li></ul>
+<p>在地图中控制命令方块不输出提示信息很重要，这可以保持玩家对地图的未知性和剧情的隐蔽性，如果玩家看到了各种命令的提示信息，地图将会索然无味。 关闭命令方块输出信息(除非是/say这类的命令)使用<code>/gamerule commandBlockOutput false</code>就可以实现。
+</p>
+<ul><li> <b>庇护所/角斗场</b></li></ul>
+<p>使用压力板或者绊线 (以安全城堡为例)设置进入城堡内的玩家为和平模式(对于不同区域视情况而定)。城堡大门可以有连接命令方块的绊线，玩家一旦走过绊线，激活命令方块，就会变为和平模式，这样就可以创造一个“避难所”。反之，你可以用同样的方法创造一个“困难模式区域”，所有玩家进入会变为困难模式。
+</p>
+<ul><li> <b>对于不同游戏模式玩家的控制</b></li></ul>
+<p>使用值<code>[m=1]</code>你就可以设置命令只对创造模式的玩家有效，生存模式就是<code>[m=0]</code>。
+例：传送所有创造模式的玩家到254，47，-874，使用的命令为 /tp @a[m=1] 254 47 -874
+</p>
+<ul><li> <b>“联合”住宅</b></li></ul>
+<p>在房间的入口或者出口设置一个 /tp 命令的命令方块，你不必将你的建筑都在同一个地方建设，它们可以在任何地方，只需要入口的命令方块传送过去，玩家会忽然觉得外面感觉很小的建筑内部空间竟如此之大。用这种方法联合多个建筑，可用作与服务器或单人地图中的场景瞬移。
+</p>
+<ul><li> <b>出生地</b></li></ul>
+<p>使用 <code>/spawnpoint</code> 可以设定玩家出生地点。(应用十分广泛，PVP地图，RPG地图等等)
+</p>
+<ul><li> <b>熔岩跑酷</b></li></ul>
+<p>之前的内容提到过，<code>/gamerule keepInventory true</code>可以在玩家死后保存背包物品。 在跑酷地图的出发点设置一个这样的命令方块，就可以使掉落熔岩死亡的玩家不会丢失物品，同时记录点可以用<code>/spawnpoint</code>来做。
+</p>
+<ul><li> <b>我要睡觉！</b></li></ul>
+<p>使用 <code>/spawnpoint</code> 可以直接设置出生点，但是要跳过白天就需要 <code>/time set &lt;时间&gt;</code> 命令，18000为夜晚(并非绝对，可以按喜好设置，不要少于12500)，这样就可以模拟出睡觉的效果了。(可用/time set 700 直接转为白天，/spawnpoint命令和/time set 700配合不就行了么？)
+</p>
+<ul><li> <b>时间和天气下的场景</b></li></ul>
+<p>比方说，你的地图开始在一个寒冷的暴风雨之夜，你可以设置突然天晴了，外面有灿烂的阳光(光影mod么？)！或者，如果你想开始一个光明的一天，想让雨突然下起来又没办法？不要怕，有/weather命令。只需使用/weather，输入就行了！你也可以使用/time set输入：0是凌晨，6000是中午，12000是黄昏，18000是午夜(月亮还挂在头上呐！)。
+</p>
+<ul><li> <b>检测玩家是否切换到了和平模式</b></li></ul>
+<p>创建一个攻击型生物，把它放在压力板上。(请确保它会保持始终按下状态，所以一定要确保它不能跳或走开)。做一个红石电路，让压力板在没有接收到红石信号的时候激活命令方块。命令方块里设置一个消息，通知玩家的地图由于和平模式了已经损坏，需要的怪物已经消失，必须重新下载这个地图。你甚至可以做一个隐形传输命令方块，把那些故意切换到和平模式的玩家换成冒险模式后传送到一间基岩屋内，并让他不能使用/kill或/tp命令，并把他的重生点设在那个房子里，让他永生见不得光明！(单人的话，可以点“对局域网开放”，或用修改器)
+</p>
+<ul><li> <b>Talking Adventure Map(featuring an easy Quest System!)</b></li></ul>
+<p><code> /say</code>命令非常有用因为它可以直接给玩家发送消息. 用命令方块将会更好，这样你就不需要放很多的告示牌和编页码长到不行的书来告诉玩家游戏规则. 你只需要把命令方块放成一条线然后在中间铺中继器来弄各个语段之间的延迟(so the player isn't spammed)接着你就可以把那堆告示牌和放着书的箱子移走。
+</p><p>有一些是和NPC配合使用的. 想象一下你进了铁匠铺并且你想要让里面的铁匠说些什么。在命令方块出现之前, 你需要一些书和告示牌来充当对话的效果, 然后在铁匠铺里造些房间并放些杂物，这样会让这个铁匠铺看起来变得非常乱，但是现在，你只需要使用<code>/say</code>命令来制造铁匠说话的效果. Maybe a pig behind the counter will even beg for mercy! Let's take another example: you are in a factory and an alarm suddenly rings and says that it's going to explode. Having it in the chat, especially if the text is long, keeps the stressfull mood; the same thing works for bomb timers. The player will get more into the map's mood if the chat displays '10...' '9...' '8...' also.
+</p><p>Last but not least, it makes it easier to create a Quest System. Let's say the player gets in a butchery. He activates through a pressure plate connected to a RS NOR Latch (so it can't be activated twice) and a command block with the <code>/say</code> command in which the butcher asks for the player's help: he needs to kill a pig (shame on him). The player gets to the pig that is standing on a stone pressure plate, that turns off when the pig is dead. So, when the player gets back to the butchery, he activates another circuit containing yet another RS NOR Latch and two command blocks with two commands. First, the <code>/say</code> command in which the butcher thanks the player, and other one, the <code>/give</code> command, so the player gets the reward. Along with that, don't forget to use the @p command so the butcher says the player's name. For example, if the command block is set to do this: <code>/say Thanks, @p. You helped me a lot killing that pig.</code>, the channel will say: "@]: Thanks, &lt;name of the player&gt;. You helped me a lot killing that pig." This makes the map way cooler and looks like it's made for the player as it says his/her name!
+</p>
+<ul><li> <b>创建商店</b></li></ul>
+<p>使用<code>/give @p[lm=(等级)] (物品) (数量)<code>和<code>/xp -(等级)l @p[lm=(等级)]<code> ，你可以创建一个使用经验交易物品的商店系统。例如，如果你创建了一个使用<code>/give @p[lm=5] 2 64<code>的命令方块以及一个使用<code>/xp -5l @p[lm=5]<code>的命令方块，并把它们连接到同一个红石电路，那么激活时就会从最近的玩家身上扣除5级经验并给他64个草方块。
+</p>
+<p> <code>* Subtracting xp <b>CAN</b> work as a currency, by using the command /xp -3l @p[lm=3] where l (L for level) is subtracted. The minimum xp for the command to work can be listed inside the brackets, where lm is short for minimum level necessary.</li></ul>
+</code>
+</p>
+<p> <code> You can make a Store using xp as a currency. Just place a command block before all the others with the following instructions: <code> /testfor @p[lm=5]<code> with a Comparator in front of the command block. That way you can only do the trade if you're at least at level 5 (in this case, but you can choose what level you want).</li></ul></li></ul>
+ 
+</p>
+<p><code><code>*The last two "updates" are pointless, as the <code>[lm=(level)]<code> in the first post will keep players from getting the item or losing their xp unless they are that level or higher. so if the command says <code>[lm=5]<code>, they will <b>NOT</b> be able to use the "store" if they are level 4 or below, but <b>WILL</b> be able to if they are level 5 or above. 
+</p><p>The blocks must be in order for this to work. If the blocks are powered at the same time, the cost block will subtract as per normal, but the block giving the item will not function unless your level is double or higher what the cost of the block is. (example: item costs 5, you have 7 levels, you will lose the 5 levels, but will not gain the item. You would only receive the item if your starting level is 10 or higher) The fix for this is to power the blocks linearly, give block first followed by xp block.
+</p>
+ 
+ 
+
+
+ <h2>1.7命令的用法</h2><p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai14.png" />
+ <br />
+
+ Minecarts over floating rails created with the setblock command.
+ </p>
+ <p>在1.7版本中, the command block gained an expanded potential. 也就是 <code> /summon </code> and <code> /setblock </code> 命令的添加, and can be used to automatically build structures, 填充箱子, 以及生成以前不能生成的实体。 下面是这些命令的语法:
+<i>setblock</i>的使用方法:<code>/setblock &lt;x&gt; &lt;y&gt; &lt;z&gt; &lt;方块名&gt; [数据值] [旧方块处理方式] [数据标签] </code>
+<i>summon</i>的使用方法:<code>/summon &lt;实体名&gt; [x] [y] [z] [数据标签]</code>
+<i>setblock</i>命令也可以用于做突然消失的地板或突然出现的墙。
+</p><p><b>setblock命令的例子:</b>
+</p><p><b>* MobSpawners pt 1: The Basics</b>
+This code will create a zombie spawner 2 blocks from you in the x direction. Note that the name given for mob spawners in this code ("minecraft:mob_spawner") is the long version and you can leave out the "minecraft:" part.<br>
+</p><p><code>/setblock ~2 ~0 ~0 minecraft:mob_spawner 0 replace {EntityId:Zombie}</code><br>
+</p><p>This next code is also pretty basic but it includes the 6 basic parameters that can be set.<br>
+</p><p><code>/setblock ~0 ~-1 ~-3 mob_spawner 0 replace {EntityId:Skeleton,SpawnRange:4,RequiredPlayerRange:16,SpawnCount:4,MaxNearbyEntities:6,MinSpawnDelay:200,MaxSpawnDelay:800}</code><br>
+</p><p>A few things to note:<br>
+A) All times are in game ticks (20ths of a second). 200-800 is 10-40 seconds.<br>
+B) Keep in mind that they are in groups of 2 and won't work if their partner is missing. SpawnRange requires RequiredPlayerRange (and vice-versa), MinSpawnDelay requires MaxSpawnDelay, and I assume SpawnCount needs MaxNearbyEntities (although I haven't actually heard confirmation on that last one).<br>
+C) There is also a parameter called "Delay" which contains the amount of time before next spawn (20 ticks for the first time, whatever random number it picks between MaxSpawnDelay and MinSpawnDelay every other time).<br>
+D) the coordinates given are ~0 ~-1 ~-3 (so 3 blocks in the negative Z direction from the commandblock's current position and 1 block down). This presumably will imbed it in the surface of the floor. Keep in mind that a spawners "SpawnRange" setting only applies horizontally not vertically. Vertically it will only spawn at the same height or 1 lower or higher, so imbedding it in the surface of the floor cuts the available spawn area by 2/3rds (but can help hide it). Naturally occuring spawners have their height cut by 1/3rd due to appearing 1 block above the floor instead of 2.<br>
+E) All the values used here are the defaults.<br>
+</p><p><b>* MobSpawners pt 2: Custom monsters</b>
+Now we get into the SpawnData. That's the stuff that tells the spawner you want a non-standard version of a monster, like a Zombie with a Diamond Sword and a Chainmail Helmet.<br>
+</p><p><code> /setblock ~ ~1 ~ mob_spawner 0 replace {EntityId:Zombie,SpawnData:{Equipment:[{id:276,Count:1},{},{},{},{id:302,Count:1}]}} </code><br>
+</p><p>Using ~ without any number after it in the coordinates counts as zero. Since none of those 6 parameters from last example are used they will all be defaults.<br>
+Note that the 5 equipment slots are: Hand, Boots, Legs, Chest, Helmet. You must even specify empty slots (the { }, parts) unless they're after the last non-empty slot. So if you want him to have a helmet you have to specify all 5 slots, but if it's just a weapon you can leave off the other 4. Or if you want him to have leg armor you have to specify weapon and boot slots but not chest and helmet slots.<br>
+By the way, creatures that burn in sunlight are safe if they have a helmet on, although it damages the helmet instead.<br/>
+About the Count tag: most codes can get away with leaving it out, however it is important. An item without a count tag is a stack of zero, better known in the community as a "Ghost Item". A player trying to use a ghost item will have it disappear out of his hands with it's first use (which is a failure). While monsters can use ghost items without problem (hence why codes get away with leaving it out sometimes) if they drop the items the player who picks it up won't be able to use it, SO INCLUDE COUNT!<br>
+</p><p>Next up we have a Skeleton with an enchanted bow (Flame), a custom mobhead (Spider, internet connection required or it's just steve) with Protection 2, and riding a Skeletal Horse.<br>
+</p><p><code> /setblock ~2 ~1 ~2 mob_spawner 0 replace {EntityId:Skeleton,SpawnData:{Equipment:[{id:261,Count:1,tag:{ench:[{id:50,lvl:1}]}},{},{},{},{id:397,Count:1,Damage:3,tag:{ench:[{id:0,lvl:2}],SkullOwner:MHF_Spider}}],Riding:{id:"EntityHorse",Type:4,Tame:1,SaddleItem:{id:329,Count:1,Damage:0}}}} </code><br>
+</p><p>Well actually sitting on a Skeletal Horse, since the lower creature controls the movement and the horse isn't hostile. Don't try zombies on horseback, they just sit there ineffectually while the horse eats grass and snorts. Luckily this is a skeleton and can shoot you from wherever the horse decides to wander.<br>
+As for the horse itself, it's type 4 (skeletal horse), Tame is set to 1 (yes), and it's got a saddle (and the fact that they make us specify which saddle hints that they may eventually have more than one type). Technically you can have multiple levels of riders, although this gets silly quickly.<br>
+</p><p><b>MobSpawners pt 3: SpawnPotentials</b>
+Using the SpawnPotentials tag lets us create a mobspawner with multiple mobs in it. It will randomly pick one each time it resets the timer (a second after spawning the previous mobs). Since these codes contain multiple mobs they tend to be quite long codes. Thanks to some youtuber whose name escapes me (Dragnoz) the fact that you can "break up" your code is known (command blocks ignore line breaks, so you can start a new line to clarify where one section ends and another begins and it won't ruin your code). Here's a more easy on the eye version of a SpawnPotentials code<br>
+</p><p><code>/setblock ~0 ~1 ~1 mob_spawner 0 replace {EntityId:Zombie,SpawnRange:6,RequiredPlayerRange:12,SpawnCount:1,MaxNearbyEntities:6,MinSpawnDelay:100,MaxSpawnDelay:600,SpawnData:{Equipment:[{id:268,Count:1},{id:301,Count:1},{id:300,Count:1,tag:{display:{color:5013401}}},{id:299,Count:1,tag:{display:{color:6717235}}},{id:397,Count:1,Damage:3,tag:{SkullOwner:Reimac}}]},SpawnPotentials:[
+</p><p>{Type:Zombie,Weight:4,Properties:{Equipment:[{id:268,Count:1,Damage:58},{id:301,Count:1},{id:300,Count:1,tag:{display:{color:5013401}}},{id:299,Count:1,tag:{display:{color:6717235}}},{id:397,Count:1,Damage:3,tag:{SkullOwner:Reimac}}]}},
+</p><p>{Type:Skeleton,Weight:2,Properties:{Equipment:[{id:267},{id:301,Count:1,tag:{display:{color:1644825}}},{id:300,Count:1,tag:{display:{color:1644825}}},{id:299,Count:1,tag:{display:{color:1644825}}},{id:397,Count:1,Damage:3,tag:{SkullOwner:2insanepeople}}]}},
+</p><p>{Type:Zombie,Weight:4,Properties:{Equipment:[{id:272,Count:1},{id:305,Count:1},{id:304,Count:1},{id:303,Count:1},{id:397,Count:1,Damage:3,tag:{ench:[{id:0,lvl:2}],SkullOwner:Flixnore}}]}},
+</p><p>{Type:Zombie,Weight:4,Properties:{Fire:2400,Equipment:[{id:283,Count:1,tag:{ench:[{id:20,lvl:1}]}},{id:317,Count:1},{id:316,Count:1},{id:315,Count:1},{id:86,Count:1,tag:{ench:[{id:0,lvl:2},{id:1,lvl:10}]}}]}},
+</p><p>{Type:Zombie,Weight:4,Properties:{Equipment:[{id:267,Count:1,tag:{ench:[{id:16,lvl:2}]}},{id:309,Count:1},{id:308,Count:1},{id:307,Count:1},{id:397,Count:1,Damage:3,tag:{ench:[{id:0,lvl:2}],SkullOwner:2zqa}}]}},
+</p><p>{Type:Zombie,Weight:1,Properties:{Equipment:[{id:278,Count:1,tag:{ench:[{id:16,lvl:4},{id:17,lvl:4},{id:18,lvl:4},{id:21,lvl:3},{id:34,lvl:3}]}},{id:313,Count:1,tag:{ench:[{id:1,lvl:4},{id:2,lvl:4}]}},{id:312,Count:1,tag:{ench:[{id:3,lvl:4}]}},{id:311,Count:1,tag:{ench:[{id:0,lvl:4}]}},{id:397,Count:1,Damage:3,tag:{SkullOwner:MHF_Herobrine,ench:[{id:0,lvl:4},{id:1,lvl:4},{id:3,lvl:4},{id:5,lvl:3},{id:6,lvl:1}]}}],CustomNameVisible:1,CustomName:Herobrine,PersistenceRequired:1}},
+</p><p>]}</code>
+</p><p>Wow that's a mouthful! But then it is 6 separate mobs. In order we have:<br>
+0) Before the "SpawnPotentials" tag: The starter, which will never pop up again after the first time. If we want to see him again we have to include him a second time under SpawnPotentials. He is just some random dude in bluejeans (blue dyed leather leg armor) and a cactus green shirt (green dyed leather tunic) with a wooden sword. He's a zombie under that random-dood-mobhead of his of course. They all are.<br>
+1) Same random dood, only this time his wooden sword is 2 hits away from breaking.<br>
+2) Hey who let a ninja into the game?!? This one is a skeleton under his mask, but he's been given an iron sword. All his leather armor is dyed ninja-black. Skeletons with swords close the gap quicker than zombies so watch out.<br>
+3) Stone Sword and Chain Armor guy. Protection II on his mobhead.<br>
+4) One of my favorites. Gold Sword, Golden Armor, Pumpkin Helmet, and ON FIRE!!! Originally I wanted to give him a flaming pumpkin helmet but I realized the Fire tag only applies to entities not armor. The pumpkin is enchanted with Protection II and Fire Resistance X (10!) in a desperate attempt to keep him on his feet and threatening the player for more than 5 seconds. It works but if the player plays keepaway then Mr Pumpkinhead does tend to burn to death. Oh his sword has fire aspect too.<br>
+5) Iron Sword and Armor guy. Sharpness II on his Sword, Protection II on his mobhead.<br>
+6) Diamond Weapons and Armor guy. Wait who is that. Is...is that...Oh Em Gee it is! Run!...No of course it's not really him. Because he doesn't exist. FakeHB here has highly enchanted Diamond Armor (Boots with Fire Protection IV and Feather Falling IV, Leggings with Blast Protection IV, Chestplate with Protection IV, Mobhead with Protection IV, Fire Protection IV, Blast Protection IV, Respiration III) and a Diamond Pickaxe enchanted with Sharpness IV, Smite IV, Bane of Arthropods IV, Looting III and Unbreaking III. He's also got the previously unseen CustomNameVisible (set to 1 for yes), a CustomName, and PersistenceRequired (set to 1 for yes). That last one will prevent him from ever despawning, although he can be killed normally. If you can get through that Diamond Armor. And level 4 resistances. Luckily he's rarer (see below).<br>
+</p><p>Other than the ninja it's a straight tour of the 5 tiers of swords and armor. Note the Weight tag, used right after the mob name in each SpawnPotential. That determines how rarely it's picked. Specific numbers don't mean anything, just the ratios between the numbers. For example if you want all the potentials to have an equal chance just set all the weights to 1. Changing them all to 8 wouldn't do anything different (they're still all the same size as each other), however changing all but one to 8 would make that one 1/8th as likely as the rest. In this code 4 is the default. The ninja only has a weight of 2 (making him half as likely to be picked) and FakeHB has a weight of 1 (making him 1/4th as likely to be picked, and thank god!)<br>
+<b>* MobSpawners pt 4: Rideable Monsters</b>
+Mobs can be ridden by using Minecarts or Boats on their heads. The command is fairly simple <br>
+<code>/setblock ~ ~1 ~ mob_spawner {EntityId:MinecartRideable(or Boat), SpawnData:{Riding:{id:&lt;Entity&gt;}}}</code><br>
+Tips: <br>
+</p>
+<ul><li> Some mobs simply can't be spawned with a spawner, sad to say, like bosses and Iron Golems. Adding a Minecart isn't going to change that.</li>
+<li> Hostile Mobs with shooting abilities can and will use them against survival players. Watch out.</li>
+<li> Ghasts cannot be ridden. The minecart becomes stuck in their head, no use to anyone.</li>
+<li> Endermen cannot be walked around, but they can be forced to teleport by shooting a projectile at them (eg; snowball).</li>
+<li> Ocelots (Ozelots in the game format) are some of the fastest mobs to ride, seeing they're trying to get away from you. They can also be partially controlled, by pointing away from the place you want to go.</li>
+<li> Spiders are the only mobs that slow down when ridden.</li>
+<li> Slimes and their cousins, Magma Cubes (game format LavaSlime) cannot have their sizes changed.</li></ul>
+
+
+
+<h2>1.8 uses</h2>
+<p><b>New commands</b>
+There are several new commands and tags added in 1.8. One of the most useful being @e. It allows the player to target entities.
+You can now teleport creepers, or kill a minecart. Others include <code>/fill, /clone, /execute, /worldborder (set|health, etc}, /trigger, /title, /blockdata, /testforblocks,</code> and <code>/stats.</code>. Check out the command s page to see how they work.
+</p>
+
+<h2>Commanding Passwords</h2>
+<p>You can now create passwords with command blocks, using <code>/testforblock</code>. Place a command block. This will be the one you put input in. Place another command block, and type in the command <code>/testforblock (x,y,z of first command block) command_block 0 {Command:(input)}</code>. Here's an example: <code>/testforblock ~2 ~ ~ command_block 0 {Command:That's Numberwang!}</code>. Place a comparator connected to the second command block, and place a button on or next to it to power the block. Now type "That's Numberwang!" (without quotes). If the second command block properly finds the first, the comparator will activate whatever it's wired to. If you want the first command block to reset so the password isn't used by someone else, also place a command block with <code>/setblock</code> that activates after the <code>/testforblock</code>.
+</p><p>If you don't want to let people edit your command block, you can test for a sign  instead, but this means having to test for the password separately on each of the sign's 4 lines. To add a touch, you can fill the sign with air, but remember to give it back using <code>/give @p sign</code>
+</p>
+
+
+<h2>The Destroyer</h2>
+
+<p>This allows you to destroy a cube of materials around you as you walk, using <code>/execute</code>. Here's the command: <code>/execute @p ~ ~ ~ fill ~1 ~2 ~1 ~-1 ~0 ~-1 air</code>. Attach a clock or some sort of repeating device to it, and the cube of air will follow you wherever you go. Confused? <code>fill</code> takes out a specified amount of space, similar to setblock, but it uses two xyz's and fills the space in between them with the material you choose. In this case it's air. Now, every time you move, it will fill a 3x3 cube of air around you. Great for enemy bases, or simply being a crazy griefer.
+</p>
+<ul><li> This also deletes water, so you basically become a moving sponge.</li>
+<li> This works in any game mode, even spectator.</li></ul>
+
+
+
+<h2>Landscaper</h2>
+<p>This is a reversed version of Destroyer. <code>/execute @p ~ ~ ~ fill ~1 ~-1 ~1 ~-1 ~-1 ~-1 grass</code>. This puts a 3x3 grass square under your feet. Only problem: Don't jump. It becomes a mountain of a problem.
+</p>
+
+
+
+
+
+<h2>Examples</h2>
+<ul><li> The player can make a kind of world guard using the command block. (e.g. code: <code >/<gamemode &lt;<i>模式</i>:[0|1|2|3]&gt; @a[r=&lt;radius&gt;]</code>)</li>
+<li> Using the radius argument with a teleporter hooked up to a clock circuit can be used to create an exclusion zone ("forcefield") around an x y z coordinate (which should not be centered on the command block itself, otherwise it will be difficult to edit or disable it later). Simply program it to teleport any player within a certain range to a further away point, or just back 10 meters using relative coordinates. Note that such a forcefield wouldn't know which direction you were approaching from, and may result in pulling a player <i>in</i> before pushing them back <i>out</i> the other side.</li>
+<li> The commands <code >/ay Hello, @p</code>, <code >/tell @p Hello, @p</code>, and <code >/me Hello, @p</code> will cause the command block to say user name of the nearest player in the message.</li>
+<li> You can also clear players inventories, to prevent griefing and/or cheating: <code >/clear &lt;<i>玩家</i>&gt; &lt;<i>物品</i>&gt; &lt;<i>数据</i>&gt; &lt;<i>最大量</i>&gt; &lt;<i>数据标签</i>&gt;</code></li></ul>
+
+
+
+
+<h2>Spawners</h2>
+<p>Command Blocks can create spawners using the setblock command, e.g.: <code style="display:block;padding:0.8em 1em;margin-bottom:0.4em;word-wrap:break-word">/setblock ~1 ~-1 ~0 mob_spawner 0 replace {EntityId:Zombie,SpawnData:{Equipment:[{id:276,Count:1}]}}</code> Anything that counts as an entity can be spawned (except a player), which includes all hostile, neutral and passive mobs, as well as animals, minecarts, fireballs, arrows, snowballs, ender pearls, custom thrown potions, fireworks, primed TNT, falling sand, red sand, or gravel, paintings and item frames, experience orbs, and even dropped items of any type.
+</p><p>Pig/Cow/Chicken spawners can be placed in the butcher's backyard in a village to create a constant meat supply. E.g.: <code style="display:block;padding:0.8em 1em;margin-bottom:0.4em;word-wrap:break-word">/setblock ~1 ~-1 ~0 mob_spawner 0 replace {EntityId:Chicken,MaxNearbyEntities:10,RequiredPlayerRange:16,SpawnCount:6,SpawnRange:2,MinSpawnDelay:50,MaxSpawnDelay:200,SpawnData:{Riding:{id:"Pig"}}}</code> Note that the spawner in the last code example will spawn a chicken riding a pig. There doesn't seem to be a limit to how many levels of riders you can use (e.g.: a chicken riding a pig riding a cow riding a horse riding a silverfish riding a villager ("Say, that's a mighty odd hat you have on, Farmer Brown")).
+</p><p>Please note that if you want to use the RequiredPlayerRange tag you have to use the MaxNearbyEntities tag as well. Same deal with MinSpawnDelay and MaxSpawnDelay. Lastly, note that the y value used in both of those spawner example codes was ~-1, which (assuming you're not flying) will put the spawner in the surface level of the ground at your feet.
+</p><p>If you don't want to target a specific player, you can use <code>@a</code>, <code>@p</code>, or <code>@r</code> instead of <code>&lt;<i>player</i>&gt;</code>. Keep in mind that you can use @p (which means "closest player") in player issued commands as an easy to type 2 character replacement for your own name as the closest player to you will always be you.
+</p>
+
+
+<h2>Booby traps</h2>
+<p>The most lethal booby trap would be a command block set to teleport someone into the void .
+</p><p>As of 1.8 you can do <code  >/kill @e[r=2]</code> in a command block below a block with a pressure plate to make a multi-use landmine that kills all nearby entities upon stepping on it (including players, item frames, and paintings)
+</p><p>Note that booby traps that use @p can be dangerous due to the fact that non-player entities could trigger them (if something like a pressure plate is used), resulting in the teleportation of the nearest player, no matter how far away they are and regardless of the fact that they haven't actually stepped on the plate. To get around this, you can either use the <code  >/testfor </code> command as an invisible pressure plate, or you can do <code  >/tp @p[r=radius] x y z</code>. Hook a clock circuit up to a command block programmed with <code  >/testfor @p[x=1, y=2, z=3, r=radius]</code>, with the coordinates changed as appropriate. Note that as of 1.8 a range of zero can now be specified.
+</p>
+
+<h2>Teleporters</h2>
+<p>It is possible to make teleporters using the command block. (e.g. code: <code  >/tp @p x y z</code>) Taking it one step further, a teleporting station can be made, with multiple button-activated teleporters that each teleport to different locations. Scouting and testing teleportation destinations first is advisable, to make sure players don't end up stuck inside blocks or in other unintended places. If you appear in ground while testing coordinates, use <code  >/tp @p ~0 ~8 ~0</code> to get out (may require multiple uses).
+</p><p>If you use the teleport command with the command block, you can use relative coordinates in the destination coordinates by placing an <code>~</code> in front of a Coordinate (e.g. code: <code  >/tp @p ~0 ~8 ~0</code> This would teleport the player 8 blocks into the air).
+</p><p>Commands that use coordinates (e.g. <code  >/tp </code> or <code  >/spawnpoint </code>) add 0.5 to whole numbers when no decimal follows. This is so you appear centered over the block you appear on instead of at the edge or corner of it. For example, the number -33 would execute as -32.5, and 187 as 187.5. To prevent this behavior, add .0 (25.3, 90.0) after them, as these values are executed left as-is. <br/>
+With the 1.8 update, you can now also teleport minecarts or boats, with you in them. The command is <code>/tp @e[type=Boat] (coordinates)</code>.
+</p>
+
+
+<h2>More commands in fewer blocks</h2>
+<p>There are several ways to combine groups of commands into just one command.
+</p>
+<ul><li> <code>/execute</code> will run its command as many times as the number of targets it selects. If it doesn't matter what entity runs a particular command, you can use <code>@e[c=10]</code> to ensure the code always runs 10 times (as long as there are always at least 10 entities in the loaded world).</li>
+<li> To run multiple commands, /summon a command-block minecart riding another command-block minecart riding another, with the commands in reverse order, on an activator rail . There are also commands called one-command mods that use this tactic. Mr. Garretto makes one-commands and maps here .</li></ul>
+
+
+<h2>Exp Shop</h2>
+ <p> This will allow server owners to sell effects, items, and more to any player using level ups and exp. All they have to do is press one button
+ </p> 
+
+
+<h2>Using a map item as a scroll</h2>
+<p>In his recent videos, Sethbling uses a map as a scroll to perform commands (summon creatures, teleport). He has an empty map in his inventory and when he uses it, it becomes a filled map which immediately disappears and a redstone task is done. In this tutorial I will show you how to build a redstone mechanism to detect the use of a map as a scroll and perform a task (give an effect, open a door,...).
+</p><p>Pros
+</p>
+<ul><li> Fast redstone interaction.</li>
+<li> Compact system.</li>
+<li> At-will triggered system, just right-click to activate it.</li>
+<li> Single use&#160;: the map disappears during the inventory check, but you can give it back through a /give command</li></ul>
+<p>Cons
+</p>
+<ul><li> There can only be one purpose for the scroll. I.E. you cannot do a scroll of teleporting and a scroll of strength without using complicated data values.</li>
+<li> You may see the map animation when activating the map before it gets deleted.</li>
+<li> You cannot use the map item during your playthrough (showing a text message, a path, a drawing,...).</li></ul>
+<p><b>Building the mechanism</b>
+</p><p>You can change the display name of an item to give the player a better understanding of the object and use the tooltip display. Use the following command to give the player a custom named map&#160;:
+</p>
+<pre>/give &lt;player&gt; map 1 0 {display:{Name:"&lt;displayName&gt;",Lore:["&lt;tooltip&gt;"]}}
+</pre>
+<ul><li> <b>player</b>&#160;: the player you want to reach (@p, @a[arguments],...).</li>
+<li> <b>displayName</b>&#160;: the name displayed when you scroll in the hotbar or when you hover the item with your mouse.</li>
+<li> <b>tooltip</b>&#160;: the text below the item name when you hover it.</li></ul>
+<p><b>Detecting the activation of the map</b>
+</p>
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai15.jpg" />
+ <br />
+</p>
+<ul><li> The two hoppers form a redstone clock. You can use other clocks shown here .</li><li> The Command block 1 contains the /give command described in the section above. It can be dismissed if you don't want the scroll to come back after being activated.</li>
+<li> The Command block 2 contains the inventory check command&#160;:</li></ul>
+<pre>/clear &lt;player&gt; filled_map
+</pre>
+<ul><li> The Command block 3 is the output in case of success. You can do whatever you want&#160;: give an effect to the player, teleport him somewhere,... You can also wire this output to a door, a piston,...</li></ul>
+<p><br />
+<b>Going further</b>
+The /clear command can check for other interactive items&#160;:
+</p>
+<ul><li> check for a glass_bottle if the player just drank a potion.</li>
+<li> Sethbling also uses a fishing rod which works when the line is reeled in. The /clear syntax involves another argument, the damage value, after the item name:</li></ul>
+<pre>/clear &lt;player&gt; fishing_rod 2
+</pre>
+<p>Note that spamming the reel, or hooking a mob, may damage it more than 2, so make another one of these every 2.
+</p>
+
+
+
+
+<h2 >Command-Piston-Repeater Fun</h2>
+<ul><li> Command block: /setblock x y z minecraft:sand</li>
+<li> 1st Piston Front: Showing to set /setblock x y z to that position</li></ul>
+<p><b> Fast Pusher </b></p> 
+<ul><li> Repeaters are risen by 1 block from 1-3 so you can see them<br><br></li>
+<li> 1(Repeater): Set to 1 <br></li>
+<li> 2(Repeater): Set to 3 <br></li>
+<li> 3(2 Repeaters): Set to 4 and 2 <br></li>
+<li> 4(Repeater): Set to 2(Default) <br></li>
+<li> 5(2 Repeaters): Set to 4 and 1 <br></li>
+<li> 6(2 Repeaters): Set to 4 and 4 <br></li>
+<li> 7(Repeater): Set to 2 <br></li>
+<li> 8 and 9(Repeaters): Set to 4 and 4 <br></li></ul>
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai16.gif" />
+ <br />
+</p>
+
+<p><b> Slow Pusher </b></p> 
+<ul><li> 1(Repeater): Set to 4 <br></li>
+<li> 2(Repeater): Set to 4 <br></li>
+<li> 3(Repeater): Set to 4 <br></li>
+<li> 4(Repeater): Set to 1(Default) <br></li>
+<li> 5(Repeater): Set to 1 <br></li>
+<li> 6(Repeater): Set to 1 <br></li>
+<li> 8(Repeater): Set to 4 <br></li>
+<li> 9(Repeater): Set to 2 <br></li>
+<li> 10(Repeater): Set to 2 <br></li></ul>
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/minglingfangkuai17.gif" />
+ <br />
+</p>
+
+
+ <p><br/></p></div>
+</body>
+</html>

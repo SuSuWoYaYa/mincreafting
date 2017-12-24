@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>制作Mods</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">制作Mods</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <p class="red">该页面的内容不受Mojang AB、Minecraft Wiki、Minecraft IRC频道与Minecraft论坛的官方支持。</p>
+        <p class="yellow">ModLoader或者直接修改源代码的方法不再被推荐；Forge(或liteloader或其他的加载器)更受欢迎。另外，可能很多信息只是在使用过时的技术；本文需要进行一次编辑，以确保所有内容都是最新的。</p>
+         <p><b>Minecraft Mod制作</b>是这个社区中最重要的功能之一。世上有很多种类的Mod，这个教程将会给你提供制作你自己的Mod的信息无论它将基于ModLoader或直接在核心代码中编写。一些Java的编程知识是必要的，这个教程将假设读者已经熟悉Java编程语言的基础语法。你可以为所有的计算机运作系统(Windows、OS X、Linux、Android、IOS、Raspberry Pi和Windows Phone)创建mod。你不能在控制台制作mod。你可以使用本页面提供的工具和知识为Minecraft制作mod，还可以改进使用的Java甚至是一些进展中的程序语言。希望该过程一路顺利。</p>
+         <h2>工具</h2>
+
+<p>许多工具都可以开发Minecraft的mod。下面的工具列表是人们放置的或在讨论页中推荐的。Minecraft通常是使用的Java语言，所以为Minecraft制作mod时几乎全部都是在编译Java。同时Java 9快照不能用于Minecraft，但是Java 8快照可以，如果你需要运行最新的Java 8快照，下面的这些Java都是可以使用的：</p>
+<ul>
+    <li>Java SE(Java标准版)，能够用于下列包：Java的正常运行环境，JRE(Java运行环境)和JDK(Java开发工具)。JDK是为Java开发者和编译者设计的，需要用来编译Minecraft的mod。</li>
+    <li>Java EE(Java企业版)，用于商业、公司和大型项目，与标准版Java相比，有更多的类。</li>
+    <li>Java ME(Java微型版)是Java的小型版本。</li>
+    <li>JavaFX，现在已经被包括在所有的Java包。</li>
+    <li>嵌入Java，对于嵌入的设备(是，你可以在一些有Windows、OS X或Linux操作系统的系统运行Minecraft)。</li>
+</ul>
+<p><i><b>任何设备都通用的Java编码工具可以用来帮助创建mod。</b></i></p>
+<p><b>Mod loading API</b>(应用编程接口)标准化的东西，允许Mod之间兼容。官方Minecraft API尚未发布。在此期间，Minecraft开发者社区填补了这片空白：</p>
+<ul>
+    <li>ModLoader 是最旧的 API，在以前非常流行，在 Minecraft Forge 普及后它的受欢迎程度也渐渐消失了。
+    <li>FML(Forge ModLoader)基本上只有Forge，但没有Forge API而且只是mod加载器。FML也与ModLoader、ModLoaderMP、LiteLoader和M3L反向兼容并且用途相同。FML支持小mod，但是Forge还可以支持大的Mod。Lex Manos开发了FML和Forge。FML可以 在这里下载。FML是开源的，其源代码可以在此处查看。自从1.1开始，FML就已经分别对Forge发布了 。modloader的mod用来作为java类，但是现在是.jar和.zip文件。FML可以在客户端和服务端运作。</li>
+    <li>Minecraft Forge与ModLoader、ModLoaderMP、LiteLoader和M3L反向兼容，同时添加了成千上万个的附加方法、类以及帮助Mod作者的实用工具。它增加了mods文件夹并且与安装器一并产生。它对客户端和服务端都有用。Forge已经被Risugami's ModLoader代替。Forge是和Forge API一起的FML。Forge自从Beta 1.7.3就有了。Forge和FML的制作者闻名于Lex Manos。Forge可以在此处下载。Forge是开源的，源代码可以在此处查看 。Minecraft支持包、Forge文档、ForgeGradle(也是开源的，代码可以在此处查看)、Forge安装器、mod列表输出器(ModsList Outputter)和DiscourseForge都是开源的。Forge与损坏的Java 8版本20兼容，但对于Java版本20的兼容性问题已经在LegacyJavaFixerMod修复。modloader的mod用来作为java的类，但现在是.jar和.zip文件。从Beta 1.7.3到正式版1.12.1，Forge对这些版本都支持。旧版本的Forge可以在此处、此处和此处下载。LuaForge是用Python和Lua编写并且也是开源的，开源代码可以在此处查看，然而该项目不再维护，只保留历史用途。</li>
+    <li>Bukkit是一个服务端流行的API。</li>
+</ul>
+
+<p><b>反编译</b> 工具帮助你与 Minecraft 源代码一起工作，不过这并不是由 Mojang 发布的。</p>
+<ul>
+    <li>Minecraft Coder Pack 实用工具(MCP)是社区标准工具，用于反编译和反混淆 Minecraft 代码，让代码更容易修改和阅读。</li>
+    <li>通用 Java 反编译器。例如 JD、JAD 和 fernflower，会帮助你在 MCP 未发布或不可用(例如为快照编写 Mod)时查看代码。最好的一个可能是 CRF，因为它可能是唯一的支持最新 Java 和 JDK ，Java 8的 Java 反编译器这里是 Java 反编译器列表。</li>
+</ul>
+<p>一个 <b>IDE</b> (集成开发环境)对于任何不平凡的开发都是有用的。MCP 会自动生成 Eclipse IDE 的项目文件。当前最流行的 IDE 是 Eclipse，但是其它2个竞争对手是 NetBeans和IntelliJ(第三)。Xcode 比 IntelliJ 还要流行，但 Xcode 仅可用于苹果电脑。</p>
+<ul>
+<li>JBoss Developer 是一个大型的、非常好的 Eclipse 插件开发工具。i</li>
+</ul>
+<p>把源代码<b>编译</b>成编程语言。你可以在 GitHub 和 BitBucket 看见你自己的 Mod 的源代码以及其它 Mod 的源代码。</p>
+<ul>
+    <li>Javac 是当下最流行的编译器。但是 Power J 编译器(第二)使用人数非常接近 Javac，曾经也都非常流行。紧随其后的是 Jikes(第三)，ECJ(Eclipse Java 编译器)(第四)和GCJ(GNU Java 编译器)(第五)。</li>
+    <li>ECJ 是 Eclipse IDE 的一部分，Power J 是其它 IDE 的一部分</li>
+</ul>
+<p><b>调试器</b>用于搜索 Mod 代码里的漏洞并帮助修复它们。</p>
+<p><b>简单 Mod 生成器</b>，例如 Mod Maker 和 MCreator，专门为不想编写和编译 Java 代码的 Mod 作者而制定。不推荐使用它们，因为它们创建的代码质量很低，并且由很大的限制。</p>
+<p><b>3D 建模和材质</b>工具，例如 MCAnimator 或 Techne，帮助创建或修改一个实体或实体附加值。</p>
+<p><b>原始记录分析</b>工具，许多这些工具都在 http://wiki.vg/Utility 上有描述，对多人游戏 Mod 调试很有用。</p>
+<p><b>其它 API</b> 也是很有用的。示例：GuiAPI、LibShapeDraw、Player API，许多 1.7.10 Mod 的：核心、库、工具或 API 都可以在<a target="_self" class="external text" href="http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1285356-list-of-mods-for-1-8">这个 Mod 列表(英文)</a>中找到。然而，一些 API 如IC2 API、Waila API、MattparksCore、Baubles API 和 Galacticraft API 没被列出。</p>
+
+<h2>Minecraft Forge API</h2>
+
+<p>Minecraft Forge API 对开发 Mod 来说是非常有用的。它最重要的功能就是避免 Mod 之间的冲突。它也包含了开发 Mod 的便利方法，使开发 Mod 更容易；例如， addSmelting 方法只需要一行代码就能添加烧炼配方。还有许多类似的方法。Forge API 教程随处可见，<a target="_self" rel="nofollow" class="external text" href="http://files.minecraftforge.net/">这里</a>是 Forge 官方下载点。</p>
+
+
+<h2>学习Java</h2>
+<p>学使用的Java语言可能会让新加入的玩家们感到困惑，建议不了解Java编程语言的玩家们先了解有关Java结构及各语法所代表的意义。
+
+<p>什么是对象(Object)？</p>
+<p>什么是类(Class)？</p>
+<p>什么是继承(Inheritance)？</p>
+<p>什么是接口(Interface)？</p>
+<p>什么是包(Package)？</p>
+
+<h2>小贴士</h2>
+<p>一个最简单的mod类型就是增加一些新的模块或物品。复制一个相似的类，并进行必要的修改。如果新的模块或物品与已存在的物品分享了大部分的行为，那么就可以保留那些相同的部分，而只修改少量的不同部分。根据所期望的它的行为，以及它将如何与其他的对象进行交互，或许有必要对其他的类进行修改，但那会增加与其他mod冲突的可能性。</p>
+<h2>不使用 MCP 来开发 Mod</h2>
+<p>有时候不用 MCP 开发 Mod 是很有用的。例如，MCP 不会发布快照版。</p>
+<p>为了不使用 MCP 开发 Mod，你必须反编译、反混淆代码或修改 Java 字节代码。反编译很容易，但是你只能反编译一些简单的类。</p>
+<h2>其他教程</h2>
+<p>对于本页面没有包括的教程，<a target="_self" class="external text" href="http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials">Minecraft Forums的Mod开发教程(英文)</a>可以帮助我们去建立第一个Mod。ModLoader和Minecraft Forge也都有各种教程。</p>
+       
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

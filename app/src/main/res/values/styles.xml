@@ -6,6 +6,7 @@
 
         <item name="navigationIcon_back">@drawable/ic_left_back_white</item>
         <item name="navigationIcon_menu">@drawable/ic_settings_white</item>
+        <item name="navigationIcon_refresh">@drawable/ic_refresh</item>
         <item name="toolbar_search">@drawable/ic_search_white</item>
         <item name="toolbar_clean">@drawable/ic_clean</item>
         <!-- textColor 定义标题文字的颜色 -->
@@ -27,6 +28,13 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark_blue_purple</item>
     </style>
 
+
+    //天蓝色
+
+    <style name="Base.Theme.Design.sky_blue" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_sky_blue</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_sky_blue</item>
+    </style>
 
     //深蓝色
 
@@ -111,6 +119,14 @@
         <item name="colorPrimary">@color/colorPrimary_deep_gray</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_deep_gray</item>
     </style>
+
+    //深黑色
+
+    <style name="Base.Theme.Design.deep_drak" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary_deep_drak</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_deep_drak</item>
+    </style>
+
 
     //粉红
     <style name="Base.Theme.Design.hotpink" parent="Theme.AppCompat.Light.NoActionBar">

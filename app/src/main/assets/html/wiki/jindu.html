@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>进度列表</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">进度列表</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+
+  <p class="yellow">仅限Java版
+ </p>
+<p class="say">
+这一整个叫“进度”的系统，其目的就是指导和跟踪玩家在游戏中的进展(在原版的生存模式以及那些有创意的地图制作者的自定义插件或者mod中)。大部分进度就如字面所言——你在游戏中的前进。„
+<br /><br />——Dinnerbone评论于进度系统 </p>
+
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu1.png" />
+<br />
+进度完成时弹出的提示。</p>
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu2.png" />
+<br />
+目标进度完成时弹出的提示。</p>
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu3.png" />
+<br />
+特殊的挑战进度完成时弹出的提示。</p>
+<p>进度(Advancements)是一种只存在于Java版中的、用来逐步引导新手玩家融入Minecraft，并给予他们需完成的挑战的途径的系统，它类似于原主机版和基岩版中更简单的成就系统。
+
+</p>
+
+<h2>获取</h2>
+   <p> 进度和成就的获取方式基本相同。类似于成就，进度也可以在任何模式下完成，在每个世界独立获得以及保存，也可以使用命令/advancement来获得进度。
+  </p>    <p> 
+虽然进度也是像成就一项一步一步引导玩家，与成就不同的是，每一个进度彼此独立，不需要完成其上一个进度即可完成。
+  </p>    <p> 
+若一个进度被完成，屏幕右上角会显示一个滚动通知，聊天框内也会有消息通知。通知中标题文字的颜色取决于每一个进度：普通和目标进度完成时有黄色标题文本弹出，而特殊的挑战进度具有粉红色标题文本。完成一个普通进度时会显示“进度已达成！”，完成一个目标进度时标题会显示“目标已达成！”，完成一个挑战进度时标题会显示“挑战已完成！”。
+  </p> 
+
+<h2>界面</h2>
+
+   <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu4.png" />
+<br /> 进度界面。其中“这不是铁镐么”进度被选中。
+  </p>    <p>  与成就一样，进度界面也是在暂停界面内调出。玩家也可以按下L来打开此屏幕(可在游戏内的选项菜单中更改)。
+
+进度系统包含若干棵进度树，每棵进度树的开端是一个根进度，末端则是目标或挑战进度。通过点击与拖动，可以查看进度树的不同分支。每棵树分为不同的标签(这些标签本身就是一个进度)。目前原版Minecraft中有5个标签(尽管之后还会继续添加[2][3])：
+  </p>    <ul><li>
+
+
+<b>Minecraft：</b> 游戏的核心与故事。  
+</li><li><b>冒险：</b> 冒险、探索与战斗。
+</li><li><b>下界：</b> 记得带夏装。
+</li><li><b>末地：</b> 还是开始了？
+</li><li><b>农牧业：</b> 世界无处没有朋友与美食。</li></ul> 
+   <p>  每个标签具有不同的背景和重复纹理。
+  </p>    <p>  
+进度标签图标在鼠标悬停于其上时显示标题名称和描述。当这个进度完成时，这个进度标签只会显示一串进程分支 。但是，每个进度是独立的，不需要完成其上一个进度即可完成。“目标”进度的图标框架更加圆润，而“挑战”进度则具有更加清晰的外观。每个进度的图标一开始为浅灰色，但在完成后变为深黄色。
+  </p>    <p>  
+图标的框架能随难度变化，无论其是否完成。图例如下：
+  </p> 
+  <table >
+<tr>
+<th colspan="2"> 图标
+</th>
+<th rowspan="2"> 描述
+</th></tr>
+<tr>
+<th> 常规
+</th>
+<th> 已完成
+</th></tr>
+<tr>
+<td> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu5.png" /></td>
+<td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu6.png" /></td>
+<td> 普通的进度。
+</td></tr>
+<tr>
+<td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu7.png" /></td>
+<td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu8.png" /></td>
+<td> 目标进度。
+</td></tr>
+<tr>
+<td> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu9.png" /></td>
+<td> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu10.png" /></td>
+<td> 挑战进度。
+</td></tr>
+</table>
+    <p> 
+可以使用JSON文件添加和定制额外的进度和其选项卡，见后面所述。
+  </p>
+
+  
+  <h2>Minecraft</h2>
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu11.png" />
+<br />
+
+“Minecraft”标签中的进度树。</p>
+
+ <table>
+ 
+<tr><th width="50px">图标</th><th>进度</th><th>游戏内描述</th><th>实际需求</th><th>内部ID</th><tr>
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_1.png" /></td><td><b>Minecraft</b></td><td>游戏的核心与故事</td><td>在物品栏中获得工作台。</td><td>minecraft:story/root</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_2.png" /></td><td><b>石器时代</b></td><td>用你的新镐挖掘石头</td><td>在物品栏中获得圆石。</td><td>minecraft:story/mine_stone</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_3.png" /></td><td><b>获得升级</b></td><td>制作一把更好的镐</td><td>在物品栏中获得石镐。</td><td>minecraft:story/upgrade_tools</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_4.png" /></td><td><b>来硬的</b></td><td>冶炼出一块铁锭</td><td>在物品栏中获得铁锭。</td><td>minecraft:story/smelt_iron</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_5.png" /></td><td><b>整装上阵</b></td><td>用铁盔甲来保护你自己</td><td>在物品栏中获得任意类型的铁盔甲。</td><td>minecraft:story/obtain_armor</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_6.png" /></td><td><b>热腾腾的</b></td><td>用桶装点熔岩</td><td>在物品栏中获得熔岩桶。</td><td>minecraft:story/lava_bucket</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_7.png" /></td><td><b>这不是铁镐么</b></td><td>升级你的镐子</td><td>在物品栏中获得铁镐。</td><td>minecraft:story/iron_tools</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_8.png" /></td><td><b>抱歉，今天不行</b></td><td>用盾牌弹开一根箭</td><td>用盾牌弹开一个弹射物。</td><td>minecraft:story/deflect_arrow</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_9.png" /></td><td><b>冰桶挑战</b></td><td>创造并挖掘一块黑曜石</td><td>在物品栏中获得黑曜石。</td><td>minecraft:story/form_obsidian</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_10.png" /></td><td><b>钻石！</b></td><td>获得钻石</td><td>在物品栏中获得钻石。</td><td>minecraft:story/mine_diamond</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_11.png" /></td><td><b>我们需要再深入些</b></td><td>建造、启动并进入一个下界传送门</td><td>进入下界维度。</td><td>minecraft:story/enter_the_nether</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_12.png" /></td><td><b>用钻石包裹我</b></td><td>钻石盔甲能救人</td><td>在物品栏中获得任意类型的钻石盔甲。</td><td>minecraft:story/shiny_gear</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_13.png" /></td><td><b>附魔师</b></td><td>在附魔台里附魔一件物品</td><td>—</td><td>minecraft:story/enchant_item</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_14.png" /></td><td><b>僵尸科医生</b></td><td>弱化并治疗一名僵尸村民</td><td>向僵尸村民扔出喷溅型虚弱药水并喂它吃一个金苹果(手持金苹果并对着僵尸村民，按下使用键)。</td><td>minecraft:story/cure_zombie_villager</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_15.png" /></td><td><b>隔墙有眼</b></td><td>跟随末影之眼</td><td>进入要塞。</td><td>minecraft:story/follow_ender_eye</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_16.png" /></td><td><b>结束了？</b></td><td>进入末地传送门</td><td>进入末路之地维度。</td><td>minecraft:story/enter_the_end</td></tr>
+
+</table>
+
+
+<h2>下界</h2>
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu12.png" />
+<br />
+“下界”标签中的进度树。
+</p>
+
+ <table>
+ 
+<tr><th width="50px">图标</th><th>进度</th><th>游戏内描述</th><th>实际需求</th><th>内部ID</th><tr>
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_17.png" /></td><td><b>下界</b></td><td>记得带夏装。</td><td>进入下界维度。</td><td>minecraft:nether/root</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_18.png" /></td><td><b>子空间泡泡</b></td><td>利用下界移动对应主世界7千米的距离</td><td>利用下界移动对应主世界两个点至少7000个方块的水平距离。</td><td>minecraft:nether/fast_travel</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_19.png" /></td><td><b>可怕的要塞</b></td><td>用你的方式进入下界要塞</td><td>进入下界要塞。</td><td>minecraft:nether/find_fortress</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_20.png" /></td><td><b>见鬼去吧</b></td><td>用一团火球干掉一只恶魂</td><td>用恶魂火球杀死恶魂。</td><td>minecraft:nether/return_to_sender</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_21.png" /></td><td><b>与火共舞</b></td><td>让烈焰人从烈焰棒中解放吧</td><td>在物品栏中获得烈焰棒。</td><td>minecraft:nether/obtain_blaze_rod</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_22.png" /></td><td><b>诡异又可怕的骷髅</b></td><td>获得凋灵骷髅的头颅</td><td>在物品栏中获得凋灵骷髅头颅。</td><td>minecraft:nether/get_wither_skull</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_23.png" /></td><td><b>不稳定的同盟</b></td><td>把一只恶魂从下界救出，将其安全带到主世界……然后干掉它。</td><td>在主世界中杀死一只恶魂。</td><td>minecraft:nether/uneasy_alliance</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_24.png" /></td><td><b>本地的酿造厂</b></td><td>酿造一瓶药水</td><td>从酿造台的输出栏取得药水。将药水放入再取出也能达标。</td><td>minecraft:nether/brew_potion</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_25.png" /></td><td><b>凋零山庄</b></td><td>召唤一只凋灵</td><td>凋灵生成时玩家处于以凋灵为中心的100.9×100.9×103.5区域里。</td><td>minecraft:nether/summon_wither</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_26.png" /></td><td><b>狂乱的鸡尾酒</b></td><td>同时拥有所有药水效果</td><td>在你身上同时拥有这11种药水效果。</td><td>minecraft:nether/all_potions</td></tr>
+
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_27.png" /></td><td><b>带信标回家</b></td><td>建造并放置一个信标</td><td>当信标被激活时，处在以其为中心的20×20×14区域里。</td><td>minecraft:nether/create_beacon</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_28.png" /></td><td><b>为什么会变成这样呢？</b></td><td>同时拥有所有状态效果</td><td>在你身上同时拥有这20种效果。</td><td>minecraft:nether/all_effects</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_29.png" /></td><td><b>信标工程师</b></td><td>让一个信标发挥最大功效</td><td>当4层信标塔的的信标方块被激活时，处在以其为中心的20×20×14区域里。</td><td>minecraft:nether/create_full_beacon</td></tr>
+</table>
+
+
+<h2>末地</h2>
+
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu13.png" />
+<br />
+“末地”标签中的进度树。
+</p>
+
+
+ <table>
+ 
+<tr><th width="50px">图标</th><th>进度</th><th>游戏内描述</th><th>实际需求</th><th>内部ID</th><tr>
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_30.png" /></td><td><b>末地</b></td><td>还是开始了？</td><td>进入末路之地维度。</td><td>minecraft:end/root</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_31.png" /></td><td><b>解放末地</b></td><td>祝君好运</td><td>杀死末影龙。</td><td>minecraft:end/kill_dragon</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_32.png" /></td><td><b>下一世代</b></td><td>获得龙蛋</td><td>在物品栏中获得龙蛋。</td><td>minecraft:end/dragon_egg</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_33.png" /></td><td><b>远程折跃</b></td><td>逃离这个岛屿</td><td>将末影珍珠扔进末地折跃门。</td><td>minecraft:end/enter_end_gateway</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_34.png" /></td><td><b>结束了…再一次…</b></td><td>复活末影龙。</td><td>召唤末影龙。</td><td>minecraft:end/respawn_dragon</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_35.png" /></td><td><b>你需要来点薄荷糖</b></td><td>用玻璃瓶收集一些龙息。</td><td>在物品栏中获得龙息。</td><td>minecraft:end/dragon_breath</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_36.png" /></td><td><b>在游戏尽头的城市</b></td><td>进去吧，又能发生什么呢？</td><td>进入末地城。</td><td>minecraft:end/find_end_city</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_37.png" /></td><td><b>天空即为极限</b></td><td>找到鞘翅</td><td>在物品栏中获得鞘翅。</td><td>minecraft:end/elytra</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_38.png" /></td><td><b>这上面的风景不错</b></td><td>利用潜影贝的攻击向上漂浮50个方块。</td><td>拥有漂浮状态效果，并移动50个方块的垂直距离。</td><td>minecraft:end/levitate</td></tr>
+</table>
+
+
+
+<h2>冒险</h2>
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu14.png" />
+<br />
+
+“冒险”标签中的进度树。</p>
+
+
+ <table>
+ 
+<tr><th width="50px">图标</th><th>进度</th><th>游戏内描述</th><th>实际需求</th><th>内部ID</th><tr>
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_39.png" /></td><td><b>冒险</b></td><td>冒险、探索与战斗</td><td>杀死任意实体，或被任意实体杀死。</td><td>minecraft:adventure/root</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_40.png" /></td><td><b>怪物猎人</b></td><td>杀死任意敌对性怪物</td><td>杀死这22种生物中的一种。其他生物被此进度忽略。</td><td>minecraft:adventure/kill_a_mob</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_41.png" /></td><td><b>这交易不错！</b></td><td>成功与一名村民进行交易</td><td>—</td><td>minecraft:adventure/trade</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_42.png" /></td><td><b>甜蜜的梦</b></td><td>改变你的重生点</td><td>成功在床上睡觉，可以是睡到黎明，或者在多人游戏中睡觉5秒以上。</td><td>minecraft:adventure/sleep_in_bed</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_43.png" /></td><td><b>瞄准目标</b></td><td>用弓箭射点什么</td><td>拉弓，让箭射到实体上。</td><td>minecraft:adventure/shoot_arrow</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_44.png" /></td><td><b>怪物狩猎完成</b></td><td>杀死每一种敌对性怪物。</td><td>杀死这22种生物。其他生物被此进度忽略。</td><td>minecraft:adventure/kill_all_mobs</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_45.png" /></td><td><b>超越生死</b></td><td>利用不死图腾逃离死神</td><td>—</td><td>minecraft:adventure/totem_of_undying</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_46.png" /></td><td><b>招募援兵</b></td><td>召唤一只铁傀儡来帮忙守卫村庄</td><td>生成一只铁傀儡。</td><td>minecraft:adventure/summon_iron_golem</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_47.png" /></td><td><b>探索的时光</b></td><td>发现所有的生物群系</td><td>到访这36个生物群系。其他生物群系会被此进度忽略。</td><td>minecraft:adventure/adventuring_time</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_48.png" /></td><td><b>狙击手间的对决</b></td><td>用弓箭从50米外干掉一只骷髅</td><td>在水平距离50米外用弓箭杀死一只骷髅。</td><td>minecraft:adventure/sniper_duel</td></tr>
+</table>
+
+
+ 
+
+
+<h2>农牧业</h2>
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu15.png" />
+<br />“农牧业”标签中的进度树。
+ </p>
+ <table>
+ 
+<tr><th width="50px">图标</th><th>进度</th><th>游戏内描述</th><th>实际需求</th><th>内部ID</th><tr>
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_49.png" /></td><td><b>农牧业</b></td><td>世界无处没有朋友与美食</td><td>吃一种能被吃下的东西。</td><td>minecraft:husbandry/root</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_50.png" /></td><td><b>我从哪儿来？</b></td><td>繁殖一对动物</td><td>使这10种生物中的一种进行繁殖。其他生物被此进度忽略。</td><td>minecraft:husbandry/breed_an_animal</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_51.png" /></td><td><b>永恒的伙伴</b></td><td>驯服一只动物</td><td>驯服一只这5种生物中的一只生物。</td><td>minecraft:husbandry/tame_an_animal</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_52.png" /></td><td><b>开荒垦地</b></td><td>种下种子，见证它的成长</td><td>种植这5种植物中的一种。其他植物被此进度忽略。</td><td>minecraft:husbandry/plant_seed</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_53.png" /></td><td><b>成双成对</b></td><td>繁殖每种动物！</td><td>使这10种生物中的每一种进行繁殖。其他生物被此进度忽略。</td><td>minecraft:husbandry/breed_all_animals</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_54.png" /></td><td><b>均衡饮食</b></td><td>尝遍天下食材，</td><td>即便是对身体不好的吃下这35种食物中的每一种。其他食物被此进度忽略。</td><td>minecraft:husbandry/balanced_diet</td></tr>
+
+<tr><td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jindu_icon_55.png" /></td><td><b>终极奉献</b></td><td>用坏一把钻石锄，然后重新考虑你的人生抉择</td><td>用光钻石锄的所有耐久，使其损毁。</td><td>minecraft:husbandry/break_diamond_hoe</td></tr>
+</table>
+
+<h2>JSON格式</h2>
+<p>Minecraft世界的“data/advancements”目录下以分开的json文件储存了此世界的进度数据：
+</p><p>这些JSON文件根据以下格式排列：
+</p>
+ 
+<ul><li>根标签
+<ul><li>display：可选的显示数据。
+<ul><li> icon：一个物品或方块ID，用于显示进度窗口。
+<ul><li> item：物品的ID</li>
+<li> data：物品的损害值</li></ul></li>
+<li> title：进度的名称</li>
+<li> title：JSON文本(包含文本，格式和/tellraw等命令中使用的类似)</li>
+<li> frame：图标边框的可选种类。<code>challenge</code>为有穗的边框标题，其用于杀死所有种类生物的进度；<code>goal</code>为更圆的边框标题，其用于完整信标进度；<code>task</code>为普通进度(默认)。</li>
+<li> background：用于此进度标签的背景的可选目录(仅根进度)。</li>
+<li> description：进度的描述</li>
+<li> description：进度的描述。</li>
+<li> show_toast：可以为<code>true</code>或<code>false</code>。是否在完成此进度后显示提示信息。默认为true。</li>
+<li> announce_to_chat：可以为<code>true</code>或<code>false</code>。是否在完成此进度后广播此信息。默认为true。</li>
+<li> hidden：可以为<code>true</code>或<code>false</code>。是否直到完成进度前在进度屏幕隐藏进度。对根进度无效，但会影响其子进度。当父进度值为<code>true</code>后便无法覆盖。默认为false。</li></ul></li>
+<li> parent：此进度的可选的父目录(不适用于根进度)。</li>
+<li> criteria：必须达成的条件。
+<ul><li> &lt;criteriaName&gt;：给予此条件的名称(可以为任何字符串，必须唯一)。
+<ul><li> trigger：此进度的触发条件；指定游戏为进度检查的条件。</li>
+<li> conditions：当触发器激活时所有需要达成的条件。</li></ul></li></ul></li>
+<li> requirements：可选，所有条件(&lt;criteriaName&gt;)列表。如果所有条件都需要，此项可以被忽略。有多个条件：要求包含了要求条件列表(所有条件都需要被提及)。任一列表中所有条件达成后，进度会完成。(基本上是“与”、“或”的条件分组)</li>
+<li> rewards：可选，当进度达到时获得的所有奖励。
+<ul><li> recipes：配方列表(标签)。</li>
+<li> loot：战利品列表(标签)。</li>
+<li> experience：经验值总数。</li>
+<li> function：运行的函数。函数为.minecraft\saves\XXXX\data\functions\中的纯文本文件，包含运行的命令列表。</li></ul></li></ul></li></ul>
+
+
+<h2>你知道吗</h2>
+   <p>  17个原电脑版的成就被重制为进度：这是？工作台！(改为 Minecraft)、采矿时间到！(改为 石器时代)、获得升级、来硬的、我们需要再深入些、结束了？、结束了。(改为 解放末地)、见鬼去吧！、与火共舞、本地的酿造厂、开始了？(改为 凋零山庄)、信标工程师、钻石！、附魔师、探索的时光、怪物猎人、狙击手的对决。
+  </p>    <p>  6个原其他版本的成就被重制为进度： 保镖(改为 招募援兵)、逃脱死亡(改为 超越生死)、僵尸科医生、你需要来点薄荷糖、结束了…再一次…、这上面的风景不错。
+ </p>
+ 
+ 
+ <p><b>进度:为什么会变成这样呢？  </b></p> 
+    <p>
+ 挑战：同时获得所有效果。
+  </p>    <p>
+你要做许多准备才能完成这个进度并获得1000点经验值奖励：
+  </p> 
+<table>
+<tr><th>效果</th><th> 如何获得</th><tr>
+<tr><td>伤害吸收</td><td>
+吃一个金苹果<br />
+吃一个附魔金苹果</td></tr>
+<tr><td>抗火</td><td>
+喝下抗火药水<br />
+吃一个附魔金苹果</td></tr>
+<tr><td>发光</td><td>
+用光灵箭射自己</td></tr>
+<tr><td>急迫</td><td>
+使用信标</td></tr>
+<tr><td>饥饿</td><td>
+被尸壳攻击<br />
+吃一个河豚(100%)、腐肉(80%)或者生鸡肉(30%)</td></tr>
+<tr><td>隐身</td><td>
+喝下隐身药水</td></tr>
+<tr><td>跳跃提升</td><td>
+使用信标
+喝下跳跃药水</td></tr>
+<tr><td>漂浮</td><td>
+被潜影贝的导弹击中</td></tr>
+<tr><td>挖掘疲劳</td><td>
+靠近远古守卫者</td></tr>
+<tr><td>反胃</td><td>
+吃一个河豚</td></tr>
+<tr><td>夜视</td><td>
+喝下夜视药水</td></tr>
+<tr><td>中毒</td><td>
+被洞穴蜘蛛攻击(处于普通或困难难度)<br />
+吃一个毒马铃薯(60%)蜘蛛眼(100%)，或河豚(100%)<br />
+被女巫扔出的药水砸中<br />
+喝下剧毒药水</td></tr>
+<tr><td>生命恢复</td><td>
+使用信标<br />
+吃一个金苹果或附魔金苹果<br />
+使用再生药水</td></tr>
+<tr><td>抗性提升</td><td>
+使用信标<br />
+吃一个附魔金苹果</td></tr>
+<tr><td>缓慢 </td><td>
+被流髑攻击<br />
+被女巫扔出的药水砸中<br />
+喝下缓慢药水</td></tr>
+<tr><td>速度</td><td>
+使用信标<br />
+喝下迅捷药水</td><td>
+<tr><td>力量</td><td>
+使用信标<br />
+喝下力量药水</td></tr>
+<tr><td>水下呼吸</td><td>
+喝下水肺药水</td></tr>
+<tr><td>虚弱</td><td>
+喝下虚弱药水</td></tr>
+<tr><td>凋零</td><td>
+被凋灵或凋灵骷髅攻击</td></tr>
+ <p><br/></p></div>
+</body>
+
+</html>

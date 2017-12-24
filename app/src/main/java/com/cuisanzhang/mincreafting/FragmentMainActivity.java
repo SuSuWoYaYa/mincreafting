@@ -3,6 +3,7 @@ package com.cuisanzhang.mincreafting;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.PaintDrawable;
@@ -12,7 +13,6 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -20,17 +20,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -55,7 +55,7 @@ public class FragmentMainActivity extends AppCompatActivity {
     public static String EXTRA_CATEGORY = "category";
 
     private static String SAVE_FILE = "save.txt";
-    private static String  DB_VERSION = "db_version";
+    private static String DB_VERSION = "db_version";
 
     public int MESSAGE_PROGRESS_CHANGE = 0;
     public int MESSAGE_PROGRESS_COMPLATE = 1;
@@ -66,12 +66,15 @@ public class FragmentMainActivity extends AppCompatActivity {
     private Handler mHandler;
 
 
+    private String userName;
+    private EditText editText_settingName;
+    private TextView textUserName;
     private static SharedPreferences preferences = null;
 
 
     //for change Theme
-    private int mainBackgroup = Utils.ChangeTheme.THEME_DEEPGRAY;
-    private int titleBackgroup = Utils.ChangeTheme.THEME_DEEPGRAY;
+    private int mainBackgroup = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
+    private int titleBackgroup = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
     private int theme = 0;
     private int selectColor = 0;
     private TextView textViewSelectColor = null;
@@ -81,7 +84,7 @@ public class FragmentMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
 
         super.onCreate(savedInstanceState);
@@ -92,23 +95,19 @@ public class FragmentMainActivity extends AppCompatActivity {
 
         //设置选中和缓存
         int pageCount = pagerAdapter.getPageCount();
-        viewPager.setOffscreenPageLimit(pageCount);
-        viewPager.setCurrentItem(0);
+//        viewPager.setOffscreenPageLimit(2);
+        viewPager.setCurrentItem(1);
 
         tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
 
 
-
-
         initActionBar();
-
 
 
         preferences = getSharedPreferences(SAVE_FILE,
                 Context.MODE_APPEND);
-
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -146,12 +145,34 @@ public class FragmentMainActivity extends AppCompatActivity {
         mNavigationView.setItemIconTintList(null);
 
 
-        int  db_version = preferences.getInt(DB_VERSION, 0);
+        View headerView = mNavigationView.getHeaderView(0);
+        textUserName = (TextView) headerView.findViewById(R.id.textUserName);
+        textUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSettingUserNameDialog();
+//                    textUserName.setText(userName);
+//
+////                    if (mPopupWindow != null && mPopupWindow.isShowing())
+////                        mPopupWindow.dismiss();
+//
+//                    return;
+//                }
+            }
+
+
+        });
+        textUserName.setText(SettingUtils.ChangeTheme.getUserName(FragmentMainActivity.this));
+
+
+        int db_version = preferences.getInt(DB_VERSION, 0);
         //System.out.println("db_version = " + db_version);
         if (db_version != MyDatabaseHelper.DB_VERSION) {
             initDatabase();
         }
     }
+
+
     public void initActionBar() {
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
@@ -165,7 +186,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FragmentMainActivity.this, ActivitySearch.class);
-                startActivity(intent );
+                startActivity(intent);
             }
         });
     }
@@ -177,13 +198,12 @@ public class FragmentMainActivity extends AppCompatActivity {
         Intent intent = activity.getIntent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         activity.finish();
-  //      Toast.makeText(FragmentMainActivity.this, "ReStartActivity",Toast.LENGTH_SHORT).show;
+        //      Toast.makeText(FragmentMainActivity.this, "ReStartActivity",Toast.LENGTH_SHORT).show;
         activity.startActivity(intent);
     }
 
 
     protected void initPopupWindow() {
-
 
 
         if (mPopupWindow != null && mPopupWindow.isShowing())
@@ -209,51 +229,49 @@ public class FragmentMainActivity extends AppCompatActivity {
         });
 
 
+        textViewSelectColor = (TextView) layout.findViewById(R.id.textViewSelectColor);
 
-         textViewSelectColor = layout.findViewById(R.id.textViewSelectColor);
-
-        CheckBox checkBoxChangeMainColor = layout.findViewById(R.id.checkBoxChangeMainColor);
+        CheckBox checkBoxChangeMainColor = (CheckBox) layout.findViewById(R.id.checkBoxChangeMainColor);
         checkBoxChangeMainColor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
+                if (b) {
                     changeMainBackgroup = true;
-                }else
-                {
-                    changeMainBackgroup =false;
+                } else {
+                    changeMainBackgroup = false;
                 }
             }
         });
 
-        CheckBox checkBoxChangeTitleColor = layout.findViewById(R.id.checkBoxChangeTitleColor);
+        CheckBox checkBoxChangeTitleColor = (CheckBox) layout.findViewById(R.id.checkBoxChangeTitleColor);
         checkBoxChangeTitleColor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
+                if (b) {
                     changeTitleBackgroup = true;
 
-                }else {
+                } else {
                     changeTitleBackgroup = false;
                 }
             }
         });
 
-        Button button_changeColor = layout.findViewById(R.id.button_changeColor);
+        Button button_changeColor = (Button) layout.findViewById(R.id.button_changeColor);
         button_changeColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectColor != 0){
-                    if (changeMainBackgroup){
-                        Utils.ChangeTheme.setTheme(getApplicationContext(), theme);
+                if (selectColor != 0) {
+                    if (changeMainBackgroup) {
+                        SettingUtils.ChangeTheme.setTheme(getApplicationContext(), theme);
                     }
-                    if (changeTitleBackgroup){
-                        Utils.ChangeTheme.setTitleColor(getApplicationContext(), selectColor);
+                    if (changeTitleBackgroup) {
+                        SettingUtils.ChangeTheme.setTitleColor(getApplicationContext(), selectColor);
                     }
                 }
 
 //                if (changeMainBackgroup) {
-                    mPopupWindow.dismiss();
-                    ReStartActivity(FragmentMainActivity.this);
+                mPopupWindow.dismiss();
+                ReStartActivity(FragmentMainActivity.this);
 //                }
 
             }
@@ -263,12 +281,14 @@ public class FragmentMainActivity extends AppCompatActivity {
         TextView textViewGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToGreen);
         TextView textViewDeepDrakGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToDrakGreen);
         TextView textViewBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToBlue);
+        TextView textViewSkyBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToSkyBlue);
         TextView textViewDeepBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToDeepBlue);
         TextView textViewBlown = (TextView) layout.findViewById(R.id.layoutPopChangeToBlown);
         TextView textViewDeepSaddleBrown = (TextView) layout.findViewById(R.id.layoutPopChangeToSaddleBrown);
         TextView textViewHotPink = (TextView) layout.findViewById(R.id.layoutPopChangeToHotPink);
         TextView textViewPink = (TextView) layout.findViewById(R.id.layoutPopChangeToPink);
 
+        TextView textViewDeepDark = (TextView) layout.findViewById(R.id.layoutPopChangeToDeepDrak);
         TextView textViewDeepGray = (TextView) layout.findViewById(R.id.layoutPopChangeToDeepGray);
         TextView textViewGray = (TextView) layout.findViewById(R.id.layoutPopChangeToGray);
         TextView textViewLightGray = (TextView) layout.findViewById(R.id.layoutPopChangeToLightGray);
@@ -281,7 +301,6 @@ public class FragmentMainActivity extends AppCompatActivity {
         TextView textViewRed = (TextView) layout.findViewById(R.id.layoutPopChangeToRed);
 
 
-
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -290,67 +309,73 @@ public class FragmentMainActivity extends AppCompatActivity {
                 switch (v.getId()) {
 
                     case R.id.layoutPopChangeToGreen:
-                        theme = Utils.ChangeTheme.THEME_GREEN;
+                        theme = SettingUtils.ChangeTheme.THEME_GREEN;
                         selectColor = R.color.colorPrimary_green;
                         break;
                     case R.id.layoutPopChangeToDrakGreen:
-                        theme = Utils.ChangeTheme.THEME_DRAKGREEN;
+                        theme = SettingUtils.ChangeTheme.THEME_DRAKGREEN;
 
                         selectColor = R.color.colorPrimary_darkgreen;
                         break;
                     case R.id.layoutPopChangeToBlue:
-                        theme = Utils.ChangeTheme.THEME_BLUE;
-
+                        theme = SettingUtils.ChangeTheme.THEME_BLUE;
                         selectColor = R.color.colorPrimary_blue;
                         break;
+                    case R.id.layoutPopChangeToSkyBlue:
+                        theme = SettingUtils.ChangeTheme.THEME_SKY_BLUE;
+                        selectColor = R.color.colorPrimary_sky_blue;
+                        break;
                     case R.id.layoutPopChangeToDeepBlue:
-                        theme = Utils.ChangeTheme.THEME_DEEP_BLUE;
+                        theme = SettingUtils.ChangeTheme.THEME_DEEP_BLUE;
 
                         selectColor = R.color.colorPrimary_deep_blue;
                         break;
                     case R.id.layoutPopChangeToBlown:
-                        theme = Utils.ChangeTheme.THEME_BROWN;
+                        theme = SettingUtils.ChangeTheme.THEME_BROWN;
 
                         selectColor = R.color.colorPrimary_brown;
                         break;
                     case R.id.layoutPopChangeToSaddleBrown:
-                        theme = Utils.ChangeTheme.THEME_SADDLEBROWN;
+                        theme = SettingUtils.ChangeTheme.THEME_SADDLEBROWN;
 
                         selectColor = R.color.colorPrimary_saddlebrown;
                         break;
                     case R.id.layoutPopChangeToHotPink:
-                        theme = Utils.ChangeTheme.THEME_HOTPINK;
+                        theme = SettingUtils.ChangeTheme.THEME_HOTPINK;
 
                         selectColor = R.color.colorPrimary_hotpink;
                         break;
                     case R.id.layoutPopChangeToPink:
-                        theme = Utils.ChangeTheme.THEME_PINK;
+                        theme = SettingUtils.ChangeTheme.THEME_PINK;
 
                         selectColor = R.color.colorPrimary_pink;
                         break;
 
+                    case R.id.layoutPopChangeToDeepDrak:
+                        theme = SettingUtils.ChangeTheme.THEME_DEEP_DRAK;
+                        selectColor = R.color.colorPrimary_deep_drak;
+                        break;
                     case R.id.layoutPopChangeToDeepGray:
-                        theme = Utils.ChangeTheme.THEME_DEEPGRAY;
-
+                        theme = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
                         selectColor = R.color.colorPrimary_deep_gray;
                         break;
                     case R.id.layoutPopChangeToGray:
-                        theme = Utils.ChangeTheme.THEME_GRAY;
+                        theme = SettingUtils.ChangeTheme.THEME_GRAY;
 
                         selectColor = R.color.colorPrimary_gray;
                         break;
                     case R.id.layoutPopChangeToLightGray:
-                        theme = Utils.ChangeTheme.THEME_LIGHTGRAY;
+                        theme = SettingUtils.ChangeTheme.THEME_LIGHTGRAY;
 
                         selectColor = R.color.colorPrimary_light_gray;
                         break;
                     case R.id.layoutPopChangeToOrangeRed:
-                        theme = Utils.ChangeTheme.THEME_ORANGE_RED;
+                        theme = SettingUtils.ChangeTheme.THEME_ORANGE_RED;
 
                         selectColor = R.color.colorPrimary_orange_red;
                         break;
                     case R.id.layoutPopChangeToOrange:
-                        theme = Utils.ChangeTheme.THEME_ORANGE;
+                        theme = SettingUtils.ChangeTheme.THEME_ORANGE;
 
                         selectColor = R.color.colorPrimary_orange;
                         break;
@@ -361,20 +386,20 @@ public class FragmentMainActivity extends AppCompatActivity {
 //                        theme = Utils.ChangeTheme.THEME_YELLOW;
 //                        break;
                     case R.id.layoutPopChangeToBluePurple:
-                        theme = Utils.ChangeTheme.THEME_BLUE_PURPLE;
+                        theme = SettingUtils.ChangeTheme.THEME_BLUE_PURPLE;
 
                         selectColor = R.color.colorPrimary_blue_purple;
                         break;
                     case R.id.layoutPopChangeToPurple:
-                        theme = Utils.ChangeTheme.THEME_PURPLE;
+                        theme = SettingUtils.ChangeTheme.THEME_PURPLE;
                         selectColor = R.color.colorPrimary_purple;
                         break;
                     case R.id.layoutPopChangeToRed:
-                        theme = Utils.ChangeTheme.THEME_RED;
+                        theme = SettingUtils.ChangeTheme.THEME_RED;
                         selectColor = R.color.colorPrimary_red;
                         break;
                     default:
-                        theme = Utils.ChangeTheme.THEME_DEEPGRAY;
+                        theme = SettingUtils.ChangeTheme.THEME_DEEPGRAY;
                         selectColor = R.color.colorPrimary_deep_gray;
                 }
                 textViewSelectColor.setBackgroundColor(ContextCompat.getColor(FragmentMainActivity.this, selectColor));
@@ -382,26 +407,28 @@ public class FragmentMainActivity extends AppCompatActivity {
 
             }
         };
-          textViewGreen.setOnClickListener(onClickListener);
-          textViewDeepDrakGreen.setOnClickListener(onClickListener);
-          textViewBlue.setOnClickListener(onClickListener);
-          textViewDeepBlue.setOnClickListener(onClickListener);
-          textViewBlown.setOnClickListener(onClickListener);
-          textViewDeepSaddleBrown .setOnClickListener(onClickListener);
-          textViewHotPink.setOnClickListener(onClickListener);
-          textViewPink.setOnClickListener(onClickListener);
+        textViewGreen.setOnClickListener(onClickListener);
+        textViewDeepDrakGreen.setOnClickListener(onClickListener);
+        textViewBlue.setOnClickListener(onClickListener);
+        textViewSkyBlue.setOnClickListener(onClickListener);
+        textViewDeepBlue.setOnClickListener(onClickListener);
+        textViewBlown.setOnClickListener(onClickListener);
+        textViewDeepSaddleBrown.setOnClickListener(onClickListener);
+        textViewHotPink.setOnClickListener(onClickListener);
+        textViewPink.setOnClickListener(onClickListener);
 
 
+        textViewDeepDark.setOnClickListener(onClickListener);
         textViewDeepGray.setOnClickListener(onClickListener);
-          textViewGray.setOnClickListener(onClickListener);
-          textViewLightGray.setOnClickListener(onClickListener);
-          textViewOrangeRed.setOnClickListener(onClickListener);
-          textViewOrange.setOnClickListener(onClickListener);
+        textViewGray.setOnClickListener(onClickListener);
+        textViewLightGray.setOnClickListener(onClickListener);
+        textViewOrangeRed.setOnClickListener(onClickListener);
+        textViewOrange.setOnClickListener(onClickListener);
 //          textViewGold .setOnClickListener(onClickListener);
 //          textViewYellow.setOnClickListener(onClickListener);
-          textViewBluePurple .setOnClickListener(onClickListener);
-          textViewPurple .setOnClickListener(onClickListener);
-          textViewRed .setOnClickListener(onClickListener);
+        textViewBluePurple.setOnClickListener(onClickListener);
+        textViewPurple.setOnClickListener(onClickListener);
+        textViewRed.setOnClickListener(onClickListener);
     }
 
     @Override
@@ -418,10 +445,35 @@ public class FragmentMainActivity extends AppCompatActivity {
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setTitle("关于 Mincreafting");
-        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
+        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft中文WIKI, 网易,网络以及网友的贡献");
         builder.setPositiveButton("确定", null);
         builder.show();
     }
+
+
+    private boolean showSettingUserNameDialog() {
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View settingNameView = inflater.inflate(R.layout.layout_setting_name, null);
+        editText_settingName = (EditText) settingNameView.findViewById(R.id.editText_settingName);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
+        builder.setTitle("请输入你的昵称");
+        builder.setView(settingNameView);
+//        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
+        builder.setNegativeButton("取消", null);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                userName = editText_settingName.getText().toString();
+                SettingUtils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
+                textUserName.setText(userName);
+            }
+        });
+        builder.show();
+        return true;
+    }
+
 
     //第一次启动插入数据库
     private void initDatabase() {
@@ -463,7 +515,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                 dbManage.closeDatabase();
             }
         };
-        timer.schedule(timerTask,0);
+        timer.schedule(timerTask, 0);
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(DB_VERSION, MyDatabaseHelper.DB_VERSION);

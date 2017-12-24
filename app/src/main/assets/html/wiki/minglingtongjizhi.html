@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>命令统计值</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">命令统计值</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此页面的部分内容由于太久没更新而已过期。</b>
+<br />
+你可以帮助我们来更新此页面
+</p>
+<p class="yellow">
+<b>此页面的(部分)内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> 
+<p class="red"><b>警告</b>
+<br />
+在依照本页面上的所有步骤架设服务器之前，请注意如果您不清楚您自己在做什么而运行服务端软件，将会导致您的系统出现错误甚至出现崩溃。[1]
+       </p> 
+-->
+<p class="yellow">
+<b>此页面的(部分)内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> 
+       
+       
+<p>这篇教程将告诉你如何使用命令统计值(Command stats) (执行命令后的返回值)。此教程已假定读者已熟知/stats命令格式。</p>
+ 
+<h2>侧边栏</h2>
+<p>这些例子演示如何在侧边栏显示命令统计数据。这可能是有用的测试命令,监控命令方块的作品等。
+</p>
+
+<h3>Player sidebar</h3>
+<p>我们将会用五个"虚拟玩家"来实现五个命令统计,让我们称他为"Blocks"，"Entities"，"Items"，"Query"，和"Success"。
+</p><p>第一,创建一个计分牌对象来用作命令方块统计
+</p>
+<dl><dd> <code>scoreboard objectives add CommandStats dummy</code></dd></dl>
+<p>第二,设置栏显示CommandStats目标。
+</p>
+<dl><dd> <code>scoreboard objectives setdisplay sidebar CommandStats</code></dd></dl>
+<p>第三,将玩家添加到侧栏和把他们的CommandStats目标设置为0。这五个命令可以在任何顺序执行,和一个新的假的玩家应该出现在侧边栏。
+</p>
+<dl><dd> <code>scoreboard players set Blocks CommandStats 0</code></dd>
+<dd> <code>scoreboard players set Entities CommandStats 0</code></dd>
+<dd> <code>scoreboard players set Items CommandStats 0</code></dd>
+<dd> <code>scoreboard players set Query CommandStats 0</code></dd>
+<dd> <code>scoreboard players set Success CommandStats 0</code></dd></dl>
+<p>最后，使用 <code class="nowrap">/stats </code>命令来指定哪个玩家应该用于更新栏命令数据的命令执行。这五个命令可以在任何顺序执行。 下面的命令替换玩家与玩家的名字(命令运行时玩家不需要在线)。If the player runs the commands themself, the Entities and Success entries in the sidebar will start updating after each command after they each are set up (because each command below should return a command stat of 1 for AffectedEntities and SuccessCount).
+</p>
+<dl><dd> <code>stats entity <i>player</i> set AffectedBlocks Blocks CommandStats</code></dd>
+<dd> <code>stats entity <i>player</i> set AffectedEntities Entities CommandStats</code></dd>
+<dd> <code>stats entity <i>player</i> set AffectedItems Items CommandStats</code></dd>
+<dd> <code>stats entity <i>player</i> set QueryResult Query CommandStats</code></dd>
+<dd> <code>stats entity <i>player</i> set SuccessCount Success CommandStats</code></dd></dl>
+
+<h3>Command block sidebar</h3>
+<p>侧边栏显示命令的特定命令的数据,而不是玩家,运行上述前三个步骤在玩家设置栏, 这是使用这些命令的最后一步(取代x y z命令块的位置在绝对坐标或~符号)。
+</p>
+<dl><dd> <code>stats block <i>x y z</i> set AffectedBlocks Blocks CommandStats</code></dd>
+<dd> <code>stats block <i>x y z</i> set AffectedEntities Entities CommandStats</code></dd>
+<dd> <code>stats block <i>x y z</i> set AffectedItems Items CommandStats</code></dd>
+<dd> <code>stats block <i>x y z</i> set QueryResult Query CommandStats</code></dd>
+<dd> <code>stats block <i>x y z</i> set SuccessCount Success CommandStats</code></dd></dl>
+
+<h3>Multiple sidebars</h3>
+<p>侧边栏可以设置显示不同的目标,不同的队伍。通过设置多个目标由不同的区块或实体更新,玩家可以开关的命令数据看他们切换到哪支队伍让我们尝试建立两个队伍，一个用于监视命令数据的玩家，另一个用于监控命令的命令数据区块。
+</p><p>首先,创建记分板目标将用于存储数据。
+</p>
+<dl><dd> <code>scoreboard objectives add BlockStats dummy</code></dd>
+<dd> <code>scoreboard objectives add PlayerStats dummy</code></dd></dl>
+<p>第二,创建队伍.
+</p>
+<dl><dd> <code>scoreboard teams add TeamBlock</code></dd>
+<dd> <code>scoreboard teams add TeamPlayer</code></dd></dl>
+<p>第三,为团队设定的颜色所以侧边栏会显示团队。让我们用“block”,“蓝色”和“红色”“玩家”。
+</p>
+<dl><dd> <code>scoreboard teams option TeamBlock color blue</code></dd>
+<dd> <code>scoreboard teams option TeamPlayer color red</code></dd></dl>
+<p>第四,设置侧边栏显示BlockStats和PlayerStats目标正确的团队。
+</p>
+<dl><dd> <code>scoreboard objectives setdisplay sidebar.team.blue BlockStats</code></dd>
+<dd> <code>scoreboard objectives setdisplay sidebar.team.red PlayerStats</code></dd></dl>
+<p>第五，add the fake players to both sidebars by setting their BlockStats and PlayerStats objectives to 0. If you're running these commands from the chat, it might be useful to put yourself on one team or the other now to see the fake players getting added.
+</p>
+<dl><dd> <code>scoreboard players set Blocks BlockStats 0</code></dd>
+<dd> <code>scoreboard players set Entities BlockStats 0</code></dd>
+<dd> <code>scoreboard players set Items BlockStats 0</code></dd>
+<dd> <code>scoreboard players set Query BlockStats 0</code></dd>
+<dd> <code>scoreboard players set Success BlockStats 0</code></dd></dl>
+<dl><dd> <code>scoreboard players set Blocks PlayerStats 0</code></dd>
+<dd> <code>scoreboard players set Entities PlayerStats 0</code></dd>
+<dd> <code>scoreboard players set Items PlayerStats 0</code></dd>
+<dd> <code>scoreboard players set Query PlayerStats 0</code></dd>
+<dd> <code>scoreboard players set Success PlayerStats 0</code></dd></dl>
+<p>最后,使用 <code class="nowrap">/stats </code>命令指定哪个区块和队伍应该用于更新栏命令数据的命令执行。
+</p>
+<dl><dd> <code>stats block <i>x y z</i> set AffectedBlocks Blocks BlockStats</code></dd>
+<dd> <code>stats block <i>x y z</i> set AffectedEntities Entities BlockStats</code></dd>
+<dd> <code>stats block <i>x y z</i> set AffectedItems Items BlockStats</code></dd>
+<dd> <code>stats block <i>x y z</i> set QueryResult Query BlockStats</code></dd>
+<dd> <code>stats block <i>x y z</i> set SuccessCount Success BlockStats</code></dd></dl>
+<dl><dd> <code>stats entity <i>player</i> set AffectedBlocks Blocks PlayerStats</code></dd>
+<dd> <code>stats entity <i>player</i> set AffectedEntities Entities PlayerStats</code></dd>
+<dd> <code>stats entity <i>player</i> set AffectedItems Items PlayerStats</code></dd>
+<dd> <code>stats entity <i>player</i> set QueryResult Query PlayerStats</code></dd>
+<dd> <code>stats entity <i>player</i> set SuccessCount Success PlayerStats</code></dd></dl>
+<p>现在玩家可以切换统计他们看到在侧边栏通过改变他们所在的队伍。玩家可以执行命令可以使用以下命令:
+</p>
+<dl><dd> <code>scoreboard teams join TeamBlock @p</code></dd>
+<dd> <code>scoreboard teams join TeamPlayer @p</code></dd></dl>
+
+        
+
+
+<p><br/></p></div>
+</body>
+
+</html>

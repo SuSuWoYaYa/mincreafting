@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ubuntu 启动脚本</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">Ubuntu 启动脚本</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此页面的部分内容由于太久没更新而已过期。</b>
+<br />
+你可以帮助我们来更新此页面
+</p>
+<p class="yellow">
+<b>此页面的(部分)内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> -->
+<p class="red"><b>警告</b>
+<br />
+因为这是 Wiki 的一个条目，可以在任何时间内被任何人编辑，因此建议你不要完全使用这个脚本，而是将其当作编写脚本的指导手册看待.      </p> 
+
+ 
+<h2>先决条件</h2>
+<p>这是一个简单的 Ubuntu 服务器启动脚本，它没有控制台，因为这不是问题。因为游戏内已经有一个控制台。该脚本不会更新 Minecraft，但在晚些时候会加入这个功能。</p>
+
+<ul>
+<li>设置一个用户和组，以便不会作为管理员运行。</li>
+</ul>
+<pre>sudo adduser --system --no-create-home --home /srv/minecraft-server minecraft
+sudo addgroup --system minecraft
+sudo adduser minecraft minecraft # this adds user "minecraft" the group "minecraft"
+</pre>
+<ul>
+<li>把你的服务器安装到新用户，该脚本将会把服务器安装到 /srv/minecraft-server</li>
+</ul>
+<pre>sudo chown -R minecraft.minecraft /srv/minecraft-server
+</pre>
+<ul>
+<li>创建并编辑开始/停止脚本吗，该脚本是位于 /etc/init/minecraft-server 的新文件(<b>不是</b> /etc/init.d 而是 /etc/init (没有.d))</li>
+</ul>
+<pre>sudo nano /etc/init/minecraft-server
+</pre>
+<p>并粘贴下列内容。安装时不要忘记改变“chdir”后面的目录。</p>
+<pre># description "start and stop the minecraft-server"
+
+start on runlevel [2345]
+stop on runlevel [^2345]
+
+console log
+chdir YOUR_INSTALLATION_DIRECTORY
+setuid minecraft
+setgid minecraft
+
+respawn
+respawn limit 20 5
+
+exec /usr/bin/java -Xms1536M -Xmx2048M -jar minecraft_server.jar nogui
+</pre>
+<p>每行命令解释(注意，该脚本不能使用。)：</p>
+<pre># description "start and stop the minecraft-server" &lt;-- 为脚本添加提示
+
+start on runlevel [2345] &lt;-- 告诉 Ubuntu 何时启动服务器。Runlevels 2、3、4、和 5 都是“正常操作”。
+stop on runlevel [^2345] &lt;-- 告诉 Ubuntu 何时停止服务器、^ 意为从不。
+
+console log &lt;-- 登录
+chdir YOUR_INSTALLATION_DIRECTORY &lt;-- 把活动目录更改到安装目录
+setuid minecraft &lt;-- 设置 UserID 为 “minecraft”(Minecraft 用户)
+setgid minecraft &lt;-- 设置 GroupID 为 “minecraft”(Minecraft 组)
+
+respawn &lt;-- 允许软件遇到严重错误时重启
+respawn limit 20 5 &lt;-- 允许软件在5秒内重启20次
+
+exec /usr/bin/java -Xms1536M -Xmx2048M -jar minecraft_server.jar nogui &lt;-- 详见下面...
+'exec' &gt; 运行命令
+'/usr/bin/java' &gt; 运行 Java。
+'-Xms1536M' &gt; 设置最低内存分配限制。
+'-Xmx2048M' &gt; 设置内存最高分配限制。
+'-jar minecraft-server.jar' &gt; 告诉 Java 运行 minecraft_server.jar
+'nogui' &gt; 告诉 minecraft-server.jar 不带 GUI 运行。
+</pre>
+<ul>
+<li>现在安装开始/停止到默认 Runlevels。</li>
+</ul>
+<pre>sudo initctl reload-configuration
+</pre>
+<p>如果你遇到一个错误，该错误表面找不到文件，尝试移动 minecraft-server 文件到 /etc/init.d/。如果使用 sudo 运行 minecraft-server 提示没有它的 job，尝试运行“sudo /etc/init.d/minecraft-server start”</p>
+
+<h2>用法</h2>
+<ul>
+<li>启动服务器</li>
+</ul>
+<pre>sudo start minecraft-server
+</pre>
+<ul>
+<li>停止服务器</li>
+</ul>
+<pre>sudo stop minecraft-server
+</pre>
+
+<h2>遇到问题？</h2>
+<p>使用下列命令检查服务器日志：</p>
+<pre>sudo tail /var/log/upstart/minecraft-server.log
+</pre>
+<p>如果还是没能得到帮助，请联系：<a href="https://minecraft-zh.gamepedia.com/UserProfile:Cel1ne" title="User:Cel1ne">Cel1ne</a>(注：只能够使用英语与他交流)</p>
+
+        
+
+
+<p><br/></p></div>
+</body>
+
+</html>

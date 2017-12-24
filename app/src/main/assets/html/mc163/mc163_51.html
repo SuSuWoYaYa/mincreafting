@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>竞技的乐趣：PVP角斗场</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">竞技的乐趣：PVP角斗场</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+		
+		<p> 在多人联机的时候，PVP是游戏中的一个有趣的部分，PVP不但考验玩家的战斗技巧也能够锻炼玩家的合作能力。想要PVP的话就必须要有个战斗的平台，所以下面就详细为大家介绍如何建造一个小型PVP角斗场，该角斗场提供传送、清空/分发道具等功能。这个角斗场建造相对比较简单，需要一系列的指令支持，但是这些指令都不会太难，有兴趣的玩家可以尝试一下。</p>
+
+<p> 第一步：搭建一个传送入口，可以根据不同的风格修建，下图中修建的是一个区分队伍的角斗场，也可以搭建一个混战的角斗场。这里的传送入口通往的是装备过滤室而不是角斗场。</p>
+
+<p ><img alt="1" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/ae4280c5-b51c-4b07-a14f-25c94b4e82cc.jpg" /></p>
+
+<p> 第二步：创建队伍及加入， 如果是区分队伍的角斗场，需要创建队伍并让玩家分别加入各自的队伍。</p>
+
+<p> 创建队伍指令：/scoreboard teams add [队伍名]</p>
+
+<p> 玩家加入队伍指令：/scoreboard teams join [队伍名] @p。</p>
+
+<p> 同时也要关闭队友伤害避免队友之间误伤。</p>
+
+<p> 指令：/scoreboard teams option [teamname] friendlyfire false</p>
+
+<p> 第三步：然后在不同队伍的传送入口设置不同的传送点来传送到装备过滤室，可以用命令方块实现传送。传送指令/tp @p &lt;x&gt; &lt;y&gt; &lt;z&gt;。</p>
+
+<p> 另外，也可以利用VanillaTeleporter密码传送模组将队员传送到装备过滤室。因为背包清空指令无差别清空，过滤室建议设置在偏僻的地下。传送方块右键可以打开放置密码方块，玩家站在传送方块上即可传送至放有相同密码方块的传送块上(如图2)。</p>
+
+<p ><img alt="2" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/47a3ed8b-ab17-42a8-a424-883625cc90fd.jpg" /></p>
+
+<p> 第四步：使用红石和命令方块建造装备过滤室，装备过滤室将起到防作弊、分装备和传送到角斗场的作用。装备过滤室能够将玩家背包清空并给予相同的武器装备。</p>
+
+<p> 下面这张图是激活按钮，由于装备过滤室中命令方块的对象都是@p，即距离最近的玩家，所以如果想要把自己传送到角斗场的话，最好紧贴按钮点击，否则有可能出现自己点击按钮却把别人传送到角斗场的情况。不过就算出现这种情况，玩家还是能再次点击传送，所以并没有什么太大的问题。</p>
+
+<p ><img alt="3" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/5777219b-0fdf-43ae-bd7b-9ad875f207e1.jpg" /></p>
+
+<p> 下图是装备过滤室，就是利用红石电路和命令方块来实现装备过滤以及传送的功能，最左边的是传送命令方块，最上方的是清空命令方块，其余为给予命令方块。这里的命令方块摆放并不需要严格按照图中的来，只要在每个命令方块之间放一个红石中继器来增加延时就能确保命令成功执行。(如果不放红石中继器可能会导致两个指令间的间隔太短，命令可能会执行失败。)</p>
+
+<p ><img alt="4" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/54759eda-9f17-4c9d-b31b-2770df9d33be.jpg" /></p>
+
+<p> 下面介绍一下装备过滤室中命令方块的指令：</p>
+
+<p> 1.下图是清空命令方块的设置，指令为/clear @p</p>
+
+<p ><img alt="5" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/4574bed2-d5b4-4913-823b-00761b94956a.jpg" /></p>
+
+<p> 2.下图是传送命令方块的设置，传送点就是角斗场的出发点，如果组队PVP的话，可以在两个过滤室设置不同的传送点。传送的指令是：/tp @p &lt;x&gt; &lt;y&gt; &lt;z&gt;</p>
+
+<p ><img alt="6" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/1d772eb3-d728-4ba4-a564-9fca68005a53.jpg" /></p>
+
+<p> 3.下图是给予命令方块的设置，指令的格式是/give @p [物品ID]</p>
+
+<p> 常见的PVP物品ID有钻石剑：diamond_sword、钻石斧：diamond_axe、弓：bow、箭：arrow等，给予命令方块的数量也和角斗初始装备的数量对应。</p>
+
+<p ><img alt="7" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/433d7197-86d2-49bb-84ad-641efb49844e.jpg" /></p>
+
+<p> 第五步：建造角斗场，建议搭建一个空间大小适中左右对称的空中角斗场，示例如下图，可以根据实际情况设置一些障碍和陷阱等等。</p>
+
+<p ><img alt="8" src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/bb81790d-3684-4eb1-8633-cd61b12690bf.jpg" /></p>
+
+<p> 如果是在服务器中建造的还可以设置传送入口，装备过滤室以及角斗场的领地不可破坏，同时别忘了将角斗场的设置为允许PVP。</p>
+
+
+        
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

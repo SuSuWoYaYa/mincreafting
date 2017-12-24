@@ -16,6 +16,7 @@ import java.util.TimerTask;
 
 public class ActivityLoding extends AppCompatActivity {
 
+    private static final int WAIT_SECOND = 500;
     private String TAG = "ActivityLoding";
 
 //    private SoundPool mSoundPool = null;
@@ -66,7 +67,7 @@ public class ActivityLoding extends AppCompatActivity {
             }
 
         };
-        timer.schedule(timerTask, 2000);
+        timer.schedule(timerTask, WAIT_SECOND);
 
 //
 //        //loading sound

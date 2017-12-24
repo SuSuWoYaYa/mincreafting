@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>矿车储存</title>
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+  </head>
+
+<body>
+    <h1  >
+        矿车储存</h1>
+
+    <div  >      <p>
+      在这个教程中会涉及到基础的矿车系统，其中包含运输矿车或者漏斗矿车。
+      
+
+ </p>    
+
+
+    <h2 >物品装载器</h2>
+   
+</p>     <p>
+      一个物品装载器会自动使运输矿车或者漏斗矿车停下来，并给它们输入物品，当漏斗里的物品输出完毕后会再次让它们开动。
+
+      </p>     <p>
+
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu1.png" />
+<br />   设计A
+</p>     <p>
+ 设计A是最简单的一种设计。当漏斗里有任何物品时会让充能铁轨失去能量，当一个运输矿车或者漏斗矿车来到这里时会自动停住。当漏斗输空它的物品时，会再次激活充能铁轨让矿车继续开动。但是这个设计有个缺点：漏斗在输空物品时会激活充能铁轨，所以如果一个矿车走到了没有物品的漏斗那里，矿车会立即撞击到墙上，反弹回去，如果物品装载器和物品卸载器的间隔越远，这个系统的效率就会越低，因为这种设计可能会产生无效运输(也就是矿车没有运输任何物品，白白跑了一次无意义的路程)。
+      </p>     <p>
+
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu2.png" />
+<br /> 
+设计 A' 
+</p>     <p>设计A'则是设计A的平坦版本。
+      
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu3.png" />
+<br />设计 B<br />
+在图中，最上方的红石中继器延迟被设为4个红石刻，最左边的则设为了2个红石刻。
+      </p>     <p>
+
+ 设计B是一个漏斗和下落边缘探测器的组合。当漏斗输空时，它会激活充能铁轨4个红石刻，之后就不会激活了，直到它再次获得物品并再次输空它们时才会激活充能铁轨，所以当一个矿车跑到装载点时你必须给漏斗一些物品，让漏斗把所有的物品输进矿车里之后矿车才会继续行进。
+      </p>     <p>
+
+ <i>在上述的设计中，如果有满仓的矿车驶过装载点时，都会卡住。</i>
+      </p>    
+
+
+ 
+
+
+
+    <h2 >物品卸载器</h2>
+ </p>     <p>
+      一个物品卸载器会自动使运输矿车或者漏斗矿车停下来，并抽走它们的物品，当运输矿车或者漏斗矿车里的物品输出完毕后会再次让它们开动。
+      
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu4.png" />
+<br />设计A
+
+      </p>     <p>
+
+设计A是最简单的一种设计。当漏斗从矿车里获得了任意一件物品时，就会让充能铁轨失去能量，当一个运输矿车或者漏斗矿车来到这里时会自动停住。当矿车抽空它的物品时，会再次激活充能铁轨让矿车继续开动。但是这个设计有个缺点：充能铁轨在没有检测到带有物品的矿车时是一直激活的，如果一个矿车跑的太快，系统虽然会检测到它，但是在切断充能铁轨的电源之前，矿车有可能会弹回去。
+      </p>     <p>
+
+ 设计B是设计A的一个变种：它带有一个探测铁轨，探测铁轨会暂时性截断充能铁轨的电源，防止了矿车弹回去的情况。
+      
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu5.png" />
+<br /> 第1层 (底部) </p>     <p>
+
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu6.png" />
+<br />第2层
+</p>        <p>
+
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu7.png" />
+<br />第3层
+</p>       <p>
+
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu8.png" />
+<br />第4层 (顶端)
+</p>    <p>
+      
+
+ 设计 C 是一种可重复使用的卸载器。比设计 A 更大，而且它可通过以关闭木质栅栏来阻止矿车弹回。
+      </p>     <p>
+
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/kuanchechunchu9.png" />
+<br /> 设计C。可重复使用。倾斜的铁轨是一个探测铁轨。 </p>     <p>
+ 
+      
+
+ <i>在上述的设计中，如果箱子满了，那么驶过这里的矿车都会卡住。 </i>
+      </p>    
+
+
+    <p><br/></p></div>
+
+
+ 
+</body>
+
+</html>

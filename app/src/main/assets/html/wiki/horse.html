@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>马</title>
+    <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+  </head>
+<body  >
+    <h1  >
+        马</h1>
+
+
+<div  >     <p>
+受限于新马种的产生方式，由于现有马种已非常优秀，繁殖更优的马种已相当困难。
+</p>     
+
+<h2 >测量</h2>
+     <p>
+<b>生命值</b></p><p>
+可以通过查看HUD来确定。
+
+</p><p><b>跳跃高度</b></p><p>
+马所能跳跃高度的数据值从0.4到1.0不等，即大约1.08到5.29个方块(与通常的1.0到5.0个方块有些许出入)。测量这一数值的装置非常简单：建造多个逐渐增高且互相平行的墙，中间间隔三个方块。测试跳跃高度时，只需要从最矮的墙开始一个一个跳，直到不能继续跳过墙为止。你跳过的最后一面墙的高度即为你的马的最大跳跃高度。半砖和雪层可以被用于创造一些非完整方块高度。
+
+</p>
+<table  style="text-align:center">
+<caption> 数据值与最大跳跃高度转换表
+</caption>
+<tr>
+<th> 数据值
+</th>
+<td> 0.4
+</td>
+<td> 0.5
+</td>
+<td> 0.6
+</td>
+<td> 0.7
+</td>
+<td> 0.8
+</td>
+<td> 0.9
+</td>
+<td> 1.0
+</td>
+<td> 玩家
+</td></tr>
+<tr>
+<th> 最大高度
+</th>
+<td> 1.086
+</td>
+<td> 1.620
+</td>
+<td> 2.222
+</td>
+<td> 2.892
+</td>
+<td> 3.627
+</td>
+<td> 4.428
+</td>
+<td> 5.293
+</td>
+<td> 1.250
+</td></tr></table>
+
+<p><b>速度</b></p><p>
+速度应该是最难测量的属性了。马的内部速度数据值在0.1125到0.3375之间。一个测量速度的建议是建造有延迟的红石中继器，使用中继器锁定。创建一个非常长的中继器链。
+</p><p>
+用一个活塞拦住马。连接红石让活塞放开并且同时让中继器开始往中继器链上开始脉冲。在这些方块的终点(大概45格)，加上压力板，它们通常比绊线钩更可靠。当这些压力板被触发的时候，用一个很长的红石线来锁住每一个中继器。这将会“冻结”中继器链，脉冲也会被冻结在某个位置。你可以在中继器被冻结的地方放一个方块来标记。
+</p><p>
+记住你可能需要中继器来让红石信号足够长来锁住整个中继器链，而这将会有一段延迟。你可以调节这段延迟，直到所有中继器在同一时刻锁定，这个机器就可以使用了。
+</p><p>
+你也要留意如果要让结果始终如一，你每次都要让马笔直前进。在Java版中，你可以打开调试屏幕并找到玩家面向的方向，它显示了玩家摄像机角度的数据值。你可以暂时地在设置中将鼠标灵敏度调低以对齐。
+</p><p>
+这个设备不能测量马的精确速度(米每秒)，但可以准确地测量它与其他马的相对速度。撇开服务器的延迟，它是非常稳定的，并且可以用于较为准确的比较。
+</p> 
+
+<table style="text-align:center">
+<caption> 内部速度转换
+</caption>
+<tr>
+<th> 内部单位
+</th>
+<td> 0.1125 (最小值)
+</td>
+<td> 0.1688
+</td>
+<td> 0.2250
+</td>
+<td> 0.2813
+</td>
+<td> 0.3375 (最大值)
+</td>
+<td> 1.0000 (参照)
+</td></tr>
+<tr>
+<th> 米/秒
+</th>
+<td> 4.85
+</td>
+<td> 7.28
+</td>
+<td> 9.70
+</td>
+<td> 12.13
+</td>
+<td> 14.55
+</td>
+<td> 43.10
+</td></tr></table>
+
+<h2 >育种难度</h2>
+   <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/horse1.png" />
+<br />
+随着马匹质量越来越高，想让它们变得优良就越来越难，如本图所示。
+</p>
+   <p>
+  通过平衡双亲属性，两头马交配并随机生成了一头新的马。平均/算术平均值将始终小于被平均数值的最大值，除非所有数字相同。
+</p>    <p>
+  按照这个逻辑，如果可以生出一匹完美的马，那么它的双亲也会是完美的，那么这三匹马任意交配所得出的平均值也足以生成一只完美的马。所以，如果没有两只完美的马交配产生后代，就没有完美的马会被生出来。
+</p>   
+<table class="wikitable" style="text-align:center">
+<caption> 育种难度
+</caption>
+<tr>
+<th colspan="3">双亲属性
+</th>
+<th rowspan="2">育种优良子代的几率
+</th>
+<th colspan="3">子代最大属性
+</th></tr>
+<tr>
+<th> 跳跃高度
+</th>
+<th> 生命值
+</th>
+<th> 速度
+</th>
+<th> 跳跃高度
+</th>
+<th> 生命值
+</th>
+<th> 速度
+</th></tr>
+<tr>
+<td> 0.40 (1.09m)
+</td>
+<td> <span class="nowrap">15(<img src="local\Mob_Half_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" />)</span>
+</td>
+<td> 0.1125 (4.8m/s)
+</td>
+<td> 100%
+</td>
+<td> 0.60 (2.22m)
+</td>
+<td> <span class="nowrap">20(<img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" />)</span>
+</td>
+<td> 0.1875 (8.1m/s)
+</td></tr>
+<tr>
+<td> 0.55 (1.91m)
+</td>
+<td> <span class="nowrap">18(<img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" /><img src="local\Mob_Heart.png" />)</span>
+</td>
+<td> 0.1686 (7.3m/s)
+</td>
+<td> 75%
+</td>
+<td> 0.70 (2.89m)
+</td>
+<td> <span class="nowrap">22(<img src="local\Mob_Heart.png" />&#32;× 11)</span>
+</td>
+<td> 0.2250 (9.7m/s)
+</td></tr>
+<tr>
+<td> 0.70 (2.89m)
+</td>
+<td> <span class="nowrap">22(<img src="local\Mob_Heart.png" />&#32;× 11)</span>
+</td>
+<td> 0.2250 (9.7m/s)
+</td>
+<td>50%
+</td>
+<td> 0.80 (3.63m)
+</td>
+<td> <span class="nowrap">24(<img src="local\Mob_Heart.png" />&#32;× 12)</span>
+</td>
+<td> 0.2625 (11.3m/s)
+</td></tr>
+<tr>
+<td> 0.85 (4.02m)
+</td>
+<td> <span class="nowrap">26(<img src="local\Mob_Heart.png" />&#32;× 13)</span>
+</td>
+<td> 0.2813 (12.1m/s)
+</td>
+<td> 25%
+</td>
+<td> 0.90 (4.43m)
+</td>
+<td> <span class="nowrap">27(<img src="local\Mob_Heart.png" />&#32;× 13.5)</span>
+</td>
+<td> 0.3000 (12.9m/s)
+</td></tr>
+<tr>
+<td> 1.00 (5.29m)
+</td>
+<td> <span class="nowrap">30(<img src="local\Mob_Heart.png" />&#32;× 15)</span>
+</td>
+<td> 0.3375 (14.5m/s)
+</td>
+<td> 0%
+</td>
+<td> 1.00 (5.29m)
+</td>
+<td> <span class="nowrap">30(<img src="local\Mob_Heart.png" />&#32;× 15)</span>
+</td>
+<td> 0.3375 (14.5m/s)
+</td></tr></table>
+
+ <p>
+在属性达到跳跃高度3.13个方块、22点生命值、或者9.7方块(或米)/每秒之后，任何的繁殖行为都会有更大的几率生产出更差属性的子代。因为比亲代的属性更好的马随着亲代属性的变化而变化，在生成优良子代的范围中，亲代的属性越好，范围越小。结果是，为了得到更好的马匹所需要的马匹数成倍的增加了，直到得到了比不可能得到的完美的马稍小一些的马匹
+</p>    <p>
+属性最大值在表格中。
+</p>    <p>
+这个图表表示了在1000次繁育后，某位玩家的最好的马的跳跃高度，蓝线表示最好的马的平均跳跃高度，且马匹的跳跃高度在红线中的概率为95%。
+</p>
+   <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/horse2.png" />
+<br />
+</p>
+
+<p><b>最优育种方案</b></p><p>
+
+最佳的育种方案是，首先用两匹马开始繁殖，如果子代比最差的马好，就用子代替换最差的马。每生产一个子代算进行了一次育种尝试，无论它是否代替了亲代。
+</p>    <p>
+这个育种方案证明很难在数学上建模，因为每次尝试都会改变概率
+</p>    <p>
+注意：马匹属性的最大值是不可能通过繁殖来实现的。
+</p>  
+
+<table style="text-align:center">
+<caption> 跳跃高度 (0.4–1.0)
+</caption>
+<tr>
+<th rowspan="2">对象
+</th>
+<th colspan="6">双亲
+</th></tr>
+<tr>
+<th> 0.4
+</th>
+<th> 0.5
+</th>
+<th> 0.6
+</th>
+<th> 0.7
+</th>
+<th> 0.8
+</th>
+<th> 0.9
+</th></tr>
+<tr>
+<th> 0.5
+</th>
+<td> 1
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.6
+</th>
+<td> 4
+</td>
+<td> 2
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.7
+</th>
+<td> 7
+</td>
+<td> 6
+</td>
+<td> 3
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.8
+</th>
+<td> 14
+</td>
+<td> 13
+</td>
+<td> 11
+</td>
+<td> 7
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.9
+</th>
+<td> 36
+</td>
+<td> 34
+</td>
+<td> 32
+</td>
+<td> 29
+</td>
+<td> 22
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.95
+</th>
+<td> 78
+</td>
+<td> 77
+</td>
+<td> 75
+</td>
+<td> 71
+</td>
+<td> 64
+</td>
+<td> 44
+</td></tr>
+<tr>
+<th> 0.99
+</th>
+<td> 404
+</td>
+<td> 403
+</td>
+<td> 400
+</td>
+<td> 394
+</td>
+<td> 390
+</td>
+<td> 368
+</td></tr>
+</table>
+<table   style="text-align:center">
+<caption> 生命值 (15–30)
+</caption>
+<tr>
+<th rowspan="2">对象
+</th>
+<th colspan="6">双亲
+</th></tr>
+<tr>
+<th> 15
+</th>
+<th> 18
+</th>
+<th> 21
+</th>
+<th> 24
+</th>
+<th> 27
+</th>
+<th> 28
+</th></tr>
+<tr>
+<th> 16
+</th>
+<td> 1
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 18
+</th>
+<td> 2
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 20
+</th>
+<td> 3
+</td>
+<td> 2
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 23
+</th>
+<td> 8
+</td>
+<td> 6
+</td>
+<td> 3
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 26
+</th>
+<td> 20
+</td>
+<td> 18
+</td>
+<td> 15
+</td>
+<td> 9
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 28
+</th>
+<td> 46
+</td>
+<td> 45
+</td>
+<td> 42
+</td>
+<td> 36
+</td>
+<td> 19
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 29
+</th>
+<td> 100
+</td>
+<td> 98
+</td>
+<td> 95
+</td>
+<td> 89
+</td>
+<td> 73
+</td>
+<td> 56
+</td></tr>
+</table>
+<table   style="text-align:center">
+<caption> 速度 (0.1125–0.3375)
+</caption>
+<tr>
+<th rowspan="2">对象
+</th>
+<th colspan="6">双亲
+</th></tr>
+<tr>
+<th> 0.1125
+</th>
+<th> 0.15
+</th>
+<th> 0.2
+</th>
+<th> 0.25
+</th>
+<th> 0.3
+</th>
+<th> 0.33
+</th></tr>
+<tr>
+<th> 0.125
+</th>
+<td> 1
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.15
+</th>
+<td> 1
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.2
+</th>
+<td> 4
+</td>
+<td> 3
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.25
+</th>
+<td> 11
+</td>
+<td> 10
+</td>
+<td> 7
+</td>
+<td> —
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.3
+</th>
+<td> 36
+</td>
+<td> 34
+</td>
+<td> 31
+</td>
+<td> 25
+</td>
+<td> —
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.33
+</th>
+<td> 207
+</td>
+<td> 205
+</td>
+<td> 203
+</td>
+<td> 195
+</td>
+<td> 173
+</td>
+<td> —
+</td></tr>
+<tr>
+<th> 0.337
+</th>
+<td> 2913
+</td>
+<td> 2917
+</td>
+<td> 2916
+</td>
+<td> 2929
+</td>
+<td> 2896
+</td>
+<td> 2738
+</td></tr>
+</table>
+
+  <p><br/></p></div>
+ 
+</body>
+</html>

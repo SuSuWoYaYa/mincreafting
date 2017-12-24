@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">我的世界合成表大全</string>
-    <string name="versionCode">v7.0</string>
+    <string name="versionCode">v8.0</string>
     <string name="action_settings">Settings</string>
     <string name="toolbar_search">搜索</string>
     <string name="menu_change_theme">切换主题</string>
@@ -60,11 +60,11 @@
     <string name="feedback">意见反馈</string>
     <string name="color_orange">橙色</string>
     <string name="color_purple">紫色</string>
-    <string name="color_blue">蓝色</string>
+    <string name="color_blue">浅蓝</string>
     <string name="color_brown">棕色</string>
     <string name="color_orange_red">红色</string>
     <string name="color_blue_purple">紫蓝</string>
-    <string name="color_deep_blue">深蓝</string>
+    <string name="color_deep_blue">蓝色</string>
     <string name="color_drak_green">深绿</string>
     <string name="color_green">绿色</string>
     <string name="color_gold">金色</string>
@@ -74,5 +74,33 @@
 
     <string name="change_item_title_color">改变物品名称背景颜色</string>
     <string name="change_main_title_color">改变主标题栏背景颜色</string>
+    <string name="check_vip">去广告</string>
+    <string name="user_name_tip">点击设置名字</string>
+    <string name="click_hint_setting_username">点击输入</string>
+    <string name="tip_you_are_vip_now">广告已经没有啦</string>
+    <string name="tip_you_are_not_a_vip">亲, 没查询到你的状态</string>
+    <string name="tip_check_vip_error">查询的时候出错了</string>
+    <string name="tip_dashang1">打赏后请联系作者</string>
+    <string name="tip_dashang2">打赏后请把留言和昵称发给作者</string>
+    <string name="tip_email">cuisanzhang@163.com</string>
+    <string name="tip_qq">QQ: 1135899918</string>
+    <string name="tip_no_network">没有网络啊, 我查不到</string>
+    <string name="tip_back_door">苦逼的作者</string>
+    <string name="color_sky_blue">深蓝</string>
+    <string name="color_deepdrak">深黑</string>
+    <string name="btn_new_play">新手</string>
+    <string name="btn_huangjingjieshao">环境</string>
+    <string name="btn_jinjiezhinan">进阶</string>
+    <string name="btn_building">建筑</string>
+    <string name="btn_zhongzhi">种植</string>
+    <string name="btn_shuaguai">刷怪</string>
+    <string name="btn_caikuaijishu">采矿</string>
+    <string name="btn_fumoshaolian">附魔烧炼</string>
+    <string name="btn_chujihongshi">初级红石</string>
+    <string name="btn_hongshijinjie">红石进阶</string>
+    <string name="btn_gaojijishu">高级技术</string>
+    <string name="btn_gengduotiaozhan">挑战</string>
+    <string name="btn_mc163">网易教程</string>
+    <string name="btn_wangluojiaocheng">网络教程</string>
 
 </resources>

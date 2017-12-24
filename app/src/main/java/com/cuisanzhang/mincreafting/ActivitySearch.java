@@ -3,12 +3,10 @@ package com.cuisanzhang.mincreafting;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -70,6 +67,7 @@ public class ActivitySearch extends AppCompatActivity {
     //    for admob
 //    private AdRequest adRequest;
     boolean isNetworkConnected = false;
+    boolean isVip ;
 
     private String[] search;
 
@@ -79,8 +77,8 @@ public class ActivitySearch extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
-        int color = Utils.ChangeTheme.getTitleColor(getApplicationContext());
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
+        int color = SettingUtils.ChangeTheme.getTitleColor(getApplicationContext());
         setTheme(theme);
         selectColor = ContextCompat.getColor(ActivitySearch.this,color);
 
@@ -88,13 +86,9 @@ public class ActivitySearch extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
 
-//        google admob
-        MobileAds.initialize(this, getString(R.string.admob_uni_id));
-
 //        adRequest = new AdRequest.Builder()
 ////                .addTestDevice(getString(R.string.my_test_device_id))
 //                .build();
-        isNetworkConnected = Utils.isNetworkConnected(ActivitySearch.this);
 
         Intent intent = getIntent();
         search = intent.getStringArrayExtra(EXTRA_ARRAY_LIST);
@@ -106,21 +100,34 @@ public class ActivitySearch extends AppCompatActivity {
         imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         listView = (ListView) findViewById(R.id.listView);
 
-        //add admob in listView
-        LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
-        NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
-        if (!isNetworkConnected){
-            nativeExpressAdView.setVisibility(View.GONE);
-        }else {
-            nativeExpressAdView.loadAd(new AdRequest.Builder().build());
+
+
+        isVip = SettingUtils.ChangeTheme.getVipState(ActivitySearch.this);
+
+        isNetworkConnected = SettingUtils.isNetworkConnected(ActivitySearch.this);
+
+        if (!isVip) {
+//        google admob
+            MobileAds.initialize(this, getString(R.string.admob_uni_id));
+//
+//            //add admob in listView
+//            LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+//            NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
+//            if (!isNetworkConnected) {
+//                nativeExpressAdView.setVisibility(View.GONE);
+//            } else {
+//                nativeExpressAdView.loadAd(new AdRequest.Builder().build());
+//            }
+//            listView.addFooterView(tipEndViw);
         }
-        listView.addFooterView(tipEndViw);
+
 
         LinearLayout emptyView;
         emptyView = (LinearLayout) findViewById(R.id.emptyView);
         listView.setEmptyView(emptyView);
 //        listView.setDivider();
 //        listView.setDividerHeight(2);
+
 
 
         textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);
@@ -326,7 +333,7 @@ public class ActivitySearch extends AppCompatActivity {
             private String FileName;
             private TextView textViewName;
             private TextView textViewMaterial;
-//            private ImageView imageViewHideMore;
+            private ImageView imageViewHideMore;
             private TextView textViewUse;
 
             private TextView textViewShowBlockDetail;
@@ -400,6 +407,11 @@ public class ActivitySearch extends AppCompatActivity {
             // TODO Auto-generated method stub
             final int pos = position;
 
+            //  防止内存回收后返回到这个界面崩溃
+            if ((searchResults ==null) || (searchResults.size() <=0)){
+                finish();
+            }
+
             Block block = searchResults.get(position);
             String filename = block.getFileName();
 
@@ -423,7 +435,7 @@ public class ActivitySearch extends AppCompatActivity {
                         .findViewById(R.id.use);
                 holder.textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
-//                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
+                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
                 holder.checkBox = (CheckBox) convertView
                         .findViewById(R.id.checkBox1);
                 convertView.setTag(holder);
@@ -439,6 +451,9 @@ public class ActivitySearch extends AppCompatActivity {
             }
 
 
+//            if(!isVip){
+//                holder.mAdView.setVisibility(View.GONE);
+//            }
             holder.textViewName.setText(block.getName());
 //            TextView textViewBuilding = (TextView) findViewById(R.id.textViewBuilding);
 
@@ -461,7 +476,7 @@ public class ActivitySearch extends AppCompatActivity {
                 public void onClick(View v) {
                     String str = Material.get(pos);
 
-                    str = Utils.filterString(str);
+                    str = SettingUtils.filterString(str);
 
                     String[] searchNames = str.split("\\s+");
 //                    searchString(searchNames);
@@ -495,16 +510,14 @@ public class ActivitySearch extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
-//            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // 按照列表位置更新checkbox状态
-//                    checkBoxStateList.set(pos, false);
-//                    listviewAdapter.notifyDataSetChanged();
-//
-//
-//                }
-//            });
+            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 按照列表位置更新checkbox状态
+                    checkBoxStateList.set(pos, false);
+                    listviewAdapter.notifyDataSetChanged();
+                }
+            });
 
             holder.checkBox
                     .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -525,16 +538,16 @@ public class ActivitySearch extends AppCompatActivity {
             if (ischecked) {
 ////				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
-//                holder.imageViewHideMore.setVisibility(View.VISIBLE);
-
-                if(isNetworkConnected){
+                holder.imageViewHideMore.setVisibility(View.VISIBLE);
+//            }
+                if(!isVip && isNetworkConnected){
                     holder.mAdView.setVisibility(View.VISIBLE);
                     holder.mAdView.loadAd(new AdRequest.Builder().build());
                 }
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
-//                holder.imageViewHideMore.setVisibility(View.GONE);
+                holder.imageViewHideMore.setVisibility(View.GONE);
                 holder.mAdView.setVisibility(View.GONE);
             }
 

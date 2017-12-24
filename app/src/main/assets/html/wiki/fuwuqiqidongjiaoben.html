@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>服务器启动脚本</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">服务器启动脚本</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此页面的部分内容由于太久没更新而已过期。</b>
+<br />
+你可以帮助我们来更新此页面
+</p>
+<p class="yellow">
+<b>此页面的(部分)内容需要被翻译。</b>
+<br />
+你可以帮助我们来翻译此页面
+       </p> -->
+<p class="red"><b>警告</b>
+<br />
+因为这是 Wiki 的一个条目，可以在任何时间内被任何人编辑，因此建议你不要完全使用这个脚本，而是将其当作编写脚本的指导手册看待。
+       </p> 
+
+
+<p>
+这是一个可供参考的 Minecraft 启动脚本示例，并使用 GNU/Linux distros 对脚本进行维护。</p>
+
+<p></p>
+ 
+<h2>先决条件</h2>
+<ol>
+<li>必须安装 Screen 包。如果不安装 Screen，服务器进程将在断开服务器连接后被系统杀掉。<br /></li>
+</ol>
+<p>CentOS 和基于 Red Hat ® 系统的命令如下：</p>
+<pre>yum install screen
+</pre>
+<p>基于 Debian 系统(如 Ubuntu 等)的命令如下：</p>
+<pre>apt-get install screen
+</pre>
+
+<h2>下载</h2>
+<p>要使用 wget 方法，运行下列脚本。(<b>注意脚本需要修改</b> - 更改 WORLD、MCPATH 和 BACKUPPATH 变量)</p>
+<p><b>重要：</b>如果你使用 wget 方法，每行的第一个字符必须是空格，否则脚本不会工作，并且 update-rc.d 会输出错误。如果出现了，你不得不移除每行所有的前导空格。(注意不要删除过多的空格！)</p>
+<pre>wget -O minecraft "http://minecraft.gamepedia.com/Tutorials/Server_startup_script/Script?action=raw"
+</pre>
+<pre> #!/bin/bash
+ # /etc/init.d/minecraft
+ # version 0.4.1 2015-05-07 (YYYY-MM-DD)
+ #
+ ### BEGIN INIT INFO
+ # Provides:   minecraft
+ # Required-Start: $local_fs $remote_fs screen-cleanup
+ # Required-Stop:  $local_fs $remote_fs
+ # Should-Start:   $network
+ # Should-Stop:    $network
+ # Default-Start:  2 3 4 5
+ # Default-Stop:   0 1 6
+ # Short-Description:    Minecraft server
+ # Description:    Starts the minecraft server
+ ### END INIT INFO
+
+ #Settings
+ SERVICE='minecraft_server.jar'
+ SCREENNAME='minecraft_server'
+ OPTIONS='nogui'
+ USERNAME='minecraft'
+ WORLD='world'
+ MCPATH='/home/minecraft'
+ BACKUPPATH='/media/remote.share/minecraft.backup'
+ MAXHEAP=2048
+ MINHEAP=1024
+ HISTORY=1024
+ CPU_COUNT=1
+ INVOCATION="java -Xmx${MAXHEAP}M -Xms${MINHEAP}M -XX:+UseConcMarkSweepGC \
+ -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=$CPU_COUNT -XX:+AggressiveOpts \
+ -jar $SERVICE $OPTIONS" 
+
+ ME=`whoami`
+ as_user() {
+   if [ "$ME" = "$USERNAME" ] ; then
+     bash -c "$1"
+   else
+     su - "$USERNAME" -c "$1"
+   fi
+ }
+
+ mc_start() {
+   if  pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+   then
+     echo "$SERVICE is already running!"
+   else
+     echo "Starting $SERVICE..."
+     cd $MCPATH
+     as_user "cd $MCPATH &amp;&amp; screen -h $HISTORY -dmS ${SCREENNAME} $INVOCATION"
+     sleep 7
+     if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+     then
+       echo "$SERVICE is now running."
+     else
+       echo "Error! Could not start $SERVICE!"
+     fi
+   fi
+ }
+
+ mc_saveoff() {
+   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+   then
+     echo "$SERVICE is running... suspending saves"
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"say SERVER BACKUP STARTING. Server going readonly...\"\015'"
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"save-off\"\015'"
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"save-all\"\015'"
+     sync
+     sleep 10
+   else
+     echo "$SERVICE is not running. Not suspending saves."
+   fi
+ }
+
+ mc_saveon() {
+   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+   then
+     echo "$SERVICE is running... re-enabling saves"
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"save-on\"\015'"
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"say SERVER BACKUP ENDED. Server going read-write...\"\015'"
+   else
+     echo "$SERVICE is not running. Not resuming saves."
+   fi
+ }
+
+ mc_stop() {
+   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+   then
+     echo "Stopping $SERVICE"
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"say SERVER SHUTTING DOWN IN 10 SECONDS. Saving map...\"\015'"
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"save-all\"\015'"
+     sleep 10
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"stop\"\015'"
+     sleep 7
+   else
+     echo "$SERVICE was not running."
+   fi
+   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+   then
+     echo "Error! $SERVICE could not be stopped."
+   else
+     echo "$SERVICE is stopped."
+   fi
+ } 
+
+ mc_update() {
+   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+   then
+    echo "$SERVICE is running! Will not start update."
+   else
+     as_user "cd $MCPATH &amp;&amp; wget -q -O $MCPATH/versions <a target="_self" rel="nofollow" class="external free" href="http://s3.amazonaws.com/Minecraft.Download/versions/versions.json">http://s3.amazonaws.com/Minecraft.Download/versions/versions.json</a>"
+        snap=`awk -v linenum=3 'NR == linenum {print; exit}' "$MCPATH/versions"`
+        snapVersion=`echo $snap | awk -F'\"' '{print $4}'`
+        re=`awk -v linenum=4 'NR == linenum {print; exit}' "$MCPATH/versions"`
+        reVersion=`echo $re | awk -F'\"' '{print $4}'`
+        as_user "rm $MCPATH/versions"
+        if [ "$1" == "snapshot" ]; then
+        MC_SERVER_URL=<a target="_self" rel="nofollow" class="external free" href="http://s3.amazonaws.com/Minecraft.Download/versions/$snapVersion/minecraft_server.$snapVersion.jar">http://s3.amazonaws.com/Minecraft.Download/versions/$snapVersion/minecraft_server.$snapVersion.jar</a>
+        else
+        MC_SERVER_URL=<a target="_self" rel="nofollow" class="external free" href="http://s3.amazonaws.com/Minecraft.Download/versions/$reVersion/minecraft_server.$reVersion.jar">http://s3.amazonaws.com/Minecraft.Download/versions/$reVersion/minecraft_server.$reVersion.jar</a>
+        fi
+     as_user "cd $MCPATH &amp;&amp; wget -q -O $MCPATH/minecraft_server.jar.update $MC_SERVER_URL"
+     if [ -f $MCPATH/minecraft_server.jar.update ]
+     then
+       if `diff $MCPATH/$SERVICE $MCPATH/minecraft_server.jar.update &gt;/dev/null`
+       then 
+         echo "You are already running the latest version of $SERVICE."
+       else
+         as_user "mv $MCPATH/minecraft_server.jar.update $MCPATH/$SERVICE"
+         echo "Minecraft successfully updated."
+       fi
+     else
+       echo "Minecraft update could not be downloaded."
+     fi
+   fi
+ }
+
+ mc_backup() {
+    mc_saveoff
+   
+     NOW=`date "+%Y-%m-%d_%Hh%M"`
+    BACKUP_FILE="$BACKUPPATH/${WORLD}_${NOW}.tar"
+    echo "Backing up minecraft world..."
+    #as_user "cd $MCPATH &amp;&amp; cp -r $WORLD $BACKUPPATH/${WORLD}_`date "+%Y.%m.%d_%H.%M"`"
+    as_user "tar -C \"$MCPATH\" -cf \"$BACKUP_FILE\" $WORLD"
+
+    echo "Backing up $SERVICE"
+    as_user "tar -C \"$MCPATH\" -rf \"$BACKUP_FILE\" $SERVICE"
+    #as_user "cp \"$MCPATH/$SERVICE\" \"$BACKUPPATH/minecraft_server_${NOW}.jar\""
+
+    mc_saveon
+
+    echo "Compressing backup..."
+    as_user "gzip -f \"$BACKUP_FILE\""
+    echo "Done."
+ }
+
+ mc_command() {
+   command="$1";
+   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+   then
+     pre_log_len=`wc -l "$MCPATH/logs/latest.log" | awk '{print $1}'`
+     echo "$SERVICE is running... executing command"
+     as_user "screen -p 0 -S ${SCREENNAME} -X eval 'stuff \"$command\"\015'"
+     sleep .1 # assumes that the command will run and print to the log file in less than .1 seconds
+     # print output
+     tail -n $[`wc -l "$MCPATH/logs/latest.log" | awk '{print $1}'`-$pre_log_len] "$MCPATH/logs/latest.log"
+   fi
+ }
+
+ #Start-Stop here
+ case "$1" in
+   start)
+     mc_start
+     ;;
+   stop)
+     mc_stop
+     ;;
+   restart)
+     mc_stop
+     mc_start
+     ;;
+   update)
+     mc_stop
+     mc_backup
+     mc_update $2
+     mc_start
+     ;;
+   backup)
+     mc_backup
+     ;;
+   status)
+     if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null
+     then
+       echo "$SERVICE is running."
+     else
+       echo "$SERVICE is not running."
+     fi
+     ;;
+   command)
+     if [ $# -gt 1 ]; then
+       shift
+       mc_command "$*"
+     else
+       echo "Must specify server command (try 'help'?)"
+     fi
+     ;;
+
+   *)
+   echo "Usage: $0 {start|stop|update|backup|status|restart|command \"server command\"}"
+   exit 1
+   ;;
+ esac
+
+ exit 0
+</pre>
+
+<h2>需求</h2>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/GNU_Screen" class="extiw" title="wikipedia:GNU Screen">GNU Screen</a></li>
+</ul>
+
+<h2>安装</h2>
+<p>使用你喜欢的编辑器在 /etc/init.d/ 目录里创建 minecraft 的文件，将上面的内容粘贴到那个文件里。</p>
+<p>修改 USERNAME 和 MCPATH - 你安装时要使用的变量。如果你使用 Wrapper Script，更改 INVOCATION 来开始执行而不是直接启动服务器。</p>
+<p>确保你新创建的文件得到了所需的权限，你可以通过运行下列命令设置权限：</p>
+<pre>chmod a+x /etc/init.d/minecraft
+</pre>
+<p>然后运行(在基于 Debian 系统的发行版上)</p>
+<pre>update-rc.d minecraft defaults
+</pre>
+<p>启动 Debian 6.0。如果使用 dependency-based 启动开启，则使用 insserv 命令替代。如果一切正常，insserv 将不会有任何的输出。如果你想确认哪个地方出错，检查 $? 里面的错误代码。</p>
+<pre>insserv minecraft
+</pre>
+<p>在 CentOs 和 RHEL(Redhat enterprise Linux)</p>
+<p>你将会在 systemd 里向 chkconfig 列表的 chkconfig 启动脚本管理器添加过程。</p>
+<pre>chkconfig --add minecraft
+</pre>
+<p>要检查是否已正确添加过程，使用 ntsysv 命令，然后一直滚动，直到你看见有 minecraft 过程。如果你看不见，重复 chkconfig 命令，然后加上一些需要的符号链接。</p>
+<p>注：你的系统更多时候会警告你脚本不能满足所有的需求，但是脚本仍然会工作。</p>
+<p>你也可以在 <a href="http://en.wikipedia.org/wiki/Cron" class="extiw" title="wikipedia:Cron">crontab</a> 里设置一个条目来备份服务器。</p>
+<p>该示例 crontab 会每隔半小时进行备份：</p>
+ 
+<ul>
+<li>使用你想运行的用户账户，运行：</li>
+</ul>
+<pre>crontab -e
+</pre>
+<p>然后加上这个：</p>
+<pre>0,30 * * * * /etc/init.d/minecraft backup
+</pre>
+<p>如果因为你不知道如何使用 vi 而造成上面的效果不佳，尝试：</p>
+<pre>VISUAL=/usr/bin/nano crontab -e
+</pre>
+
+<h2>卸载</h2>
+<p>(基于 Debian 的 GNU/Linux 发行版)</p>
+<pre>update-rc.d -f  minecraft remove
+</pre>
+<p>(在 CentOs/RHEL 里)</p>
+<pre>chkconfig --del minecraft
+</pre>
+
+<h2>用法</h2>
+<p>在多数系统里，脚本可以通过命令运行。“(command)”为“stop”、“start”、“restart”命令，还可以为这些命令指定支持的参数。</p>
+<pre>/etc/init.d/minecraft (command)
+</pre>
+<p>在多数的 RedHat 或 Debian 分支发行版系统，可用 “service” 命令，其运行命令为：</p>
+<pre>service minecraft (command)
+</pre>
+<p>查看屏幕，使用：</p>
+<pre>screen -r
+</pre>
+<p>退出屏幕，使用：</p>
+<pre>CTRL+a+d
+</pre>
+
+<h2>参考</h2>
+<ul>
+<li><a target="_self" rel="nofollow" class="external free" href="http://www.debian-administration.org/articles/28">http://www.debian-administration.org/articles/28</a></li>
+<li><a target="_self" rel="nofollow" class="external free" href="https://wiki.debian.org/LSBInitScripts/DependencyBasedBoot">https://wiki.debian.org/LSBInitScripts/DependencyBasedBoot</a></li>
+</ul>
+
+<h2>附加信息</h2>
+<p>如果你想查看实时日志输出，在服务器目录里使用下列命令。</p>
+<pre>tail -f logs/latest.log
+</pre>
+
+<h2>可选的服务器启动脚本</h2>
+ <p>下列脚本与上面的脚本都包含了相同的功能，但是下面的脚本还带有了更多有用的功能：</p>
+<ul>
+<li><a target="_self" rel="nofollow" class="external text" href="http://marcuswhybrow.github.com/minecraft-server-manager/">Minecraft Server Manager</a> 该脚本的改进版本，添加了压缩功能和多服务器支持。
+<ul>
+<li>功能包括“super responsive”(尽快返回)，把玩家的等待时间缩减到最小。</li>
+<li>使用可配置的游戏内信息对玩家进行通知，例如“Shutting down in 10 seconds!”。</li>
+<li>定期备份世界，兼容 <a target="_self" rel="nofollow" class="external text" href="http://wiki.sk89q.com/wiki/WorldEdit/Snapshots">WorldEdit</a>。</li>
+<li>从内存中加载世界以减少访问延迟。</li>
+<li>为所有命令贴上标签，让学习使用命令更容易。</li>
+<li>访问 <a target="_self" rel="nofollow" class="external text" href="http://marcuswhybrow.github.com/minecraft-server-manager/">Minecraft Server Manager GitHub 页面</a>获取完整功能。</li>
+</ul>
+</li>
+<li><a target="_self" rel="nofollow" class="external text" href="https://github.com/spikegrobstein/mcwrapper">mcwrapper</a></li>
+<li><a target="_self" rel="nofollow" class="external text" href="https://github.com/sandain/MinecraftServerControlScript">[Multi World] Minecraft Server Control Script</a>
+<ul>
+<li>运行多个 Minecraft 世界。</li>
+<li>启动、停止和重启单/多个世界。</li>
+<li>创建、删除、关闭和开启世界。</li>
+<li>为原生 Mojang 服务器发行版提供 <a target="_self" class="external text" href="http://bukkit.org/">CraftBukkit</a> 支持。</li>
+<li>向用户推送重要的服务器活动通知。</li>
+<li>使用 <a target="_self" rel="nofollow" class="external text" href="http://wiki.vg/Query">Minecraft Query protocol</a> 来追踪服务器的活动。</li>
+<li>脚本内置LSB 和 systemd 编译，允许与你的服务器脚本进行无限集成和关闭序列。</li>
+<li>使用 <a target="_self" rel="nofollow" class="external text" href="http://overviewer.org/">Minecraft Overviewer</a> 地图软件。</li>
+<li>备份世界，并且移除 X 天前的备份。</li>
+<li>更新服务端软件以及安装插件。</li>
+<li>从命令行向世界服务器发送命令。</li>
+</ul>
+</li>
+<li><a target="_self" class="external text" href="http://www.minecraftforum.net/topic/112218-mc-sheller-automation-shell-script-v240403">MC Sheller</a></li>
+<li><a target="_self" rel="nofollow" class="external text" href="https://teilgedanken.de/Blog/post/8/">Minecraft Systemd Service</a> 一个好的 systemd 服务，功能包括：
+<ul>
+<li>使用 rcon 安全关闭</li>
+<li>通过让系统只读来保护系统</li>
+<li>使用 systemd journal 进行日志记录</li>
+<li>可与 <a target="_self" rel="nofollow" class="external text" href="https://teilgedanken.de/Blog/post/9/">commandcenter script</a> 结合</li>
+<li>完全整合 systemd-toolchain</li>
+</ul>
+</li>
+<li><a target="_self" rel="nofollow" class="external text" href="https://github.com/Ahtenus/minecraft-init">minecraft init</a>
+<ul>
+<li>注意该脚本拥有更多功能(如多世界)</li>
+</ul>
+</li>
+<li><a target="_self" rel="nofollow" class="external text" href="https://github.com/edvind/minecraft-service">Minecraft Service</a></li>
+<li><a target="_self" class="external text" href="http://www.minecraftforum.net/topic/186525-sysv-init-script-v106-for-linux/">Dagmar d'Surreal's Sysv init script</a></li>
+<li><a target="_self" rel="nofollow" class="external text" href="http://coriolis-storm.com/stuff/minecraft">Setsuna-Xero's OpenRC(Gentoo) 编译的脚本，默认在 conf.d</a></li>
+<li><a target="_self" rel="nofollow" class="external text" href="http://www.homebrewtechnology.org/2011/12/mineserv-automatic-startstop-perl-init.html">Mineserv Perl Init Script</a>
+<ul>
+<li>一个非常简单的自动开始/停止脚本，带有备份和清理功能，能够向服务器控制台发送命令。</li>
+</ul>
+</li>
+</ul>
+
+        
+
+<p><br/></p></div>
+</body>
+
+</html>

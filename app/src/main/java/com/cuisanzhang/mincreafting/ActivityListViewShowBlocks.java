@@ -1,6 +1,5 @@
 package com.cuisanzhang.mincreafting;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +19,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.util.Util;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -33,7 +29,7 @@ import com.google.android.gms.ads.NativeExpressAdView;
 
 public class ActivityListViewShowBlocks extends AppCompatActivity {
 
-    public static String TAG = "getView";
+//    public static String TAG = "getView";
 
     public static String EXTRA_TABLE_NAME = "table_name";
     public static String EXTRA_CATEGORY = "category";
@@ -56,7 +52,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     //    for admob
 //    private AdRequest adRequest;
     boolean isNetworkConnected = false;
-
+    boolean isVip;
 
     //for change title color
     int selectColor;
@@ -64,10 +60,10 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        int theme = Utils.ChangeTheme.getTheme(getApplicationContext());
-        int color = Utils.ChangeTheme.getTitleColor(getApplicationContext());
+        int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
+        int color = SettingUtils.ChangeTheme.getTitleColor(getApplicationContext());
         setTheme(theme);
-        selectColor = ContextCompat.getColor(ActivityListViewShowBlocks.this,color);
+        selectColor = ContextCompat.getColor(ActivityListViewShowBlocks.this, color);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_listview_of_blocks);
@@ -109,31 +105,28 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
         dbManage.closeDatabase();
 
 
-//        google admob
-        MobileAds.initialize(this, getString(R.string.admob_uni_id));
-
-//        AdRequest adRequest = new AdRequest.Builder() .build();
-
-        isNetworkConnected = Utils.isNetworkConnected(ActivityListViewShowBlocks.this);
-
-//        if (blocks == null) {
-//            System.out.println("getDatabase is null");
-//        } else {
-//            System.out.println("blocks.size=" + blocks.size());
-//        }
-
         ListView listView = (ListView) findViewById(R.id.listView1);
 
-        //add admob in listView
-        LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
-        NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
-        if (!isNetworkConnected){
-            nativeExpressAdView.setVisibility(View.GONE);
-        }else {
-            nativeExpressAdView.loadAd(new AdRequest.Builder().build());
-        }
-        listView.addFooterView(tipEndViw);
+        isVip = SettingUtils.ChangeTheme.getVipState(ActivityListViewShowBlocks.this);
 
+        isNetworkConnected = SettingUtils.isNetworkConnected(ActivityListViewShowBlocks.this);
+
+        if (!isVip) {
+////        google admob
+            MobileAds.initialize(this, getString(R.string.admob_uni_id));
+//
+//            //add admob in listView
+//            LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+//            NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
+//
+//
+//            if (!isNetworkConnected) {
+//                nativeExpressAdView.setVisibility(View.GONE);
+//            } else {
+//                nativeExpressAdView.loadAd(new AdRequest.Builder().build());
+//            }
+//            listView.addFooterView(tipEndViw);
+        }
 
         adapter = new MyAdapter(getApplicationContext());
 
@@ -156,7 +149,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             private String FileName;
             private TextView textViewName;
             private TextView textViewMaterial;
-//            private ImageView imageViewHideMore;
+            private ImageView imageViewHideMore;
             private TextView textViewUse;
 
             private TextView textViewShowBlockDetail;
@@ -196,6 +189,10 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             // TODO Auto-generated method stub
             final int pos = position;
 
+            //  防止内存回收后返回到这个界面崩溃
+            if ((blocks ==null) || (blocks.size() <=0)){
+                finish();
+            }
             Block block = blocks.get(position);
             String filename = block.getFileName();
 
@@ -219,9 +216,9 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                         .findViewById(R.id.use);
                 holder.textViewShowBlockDetail = (TextView) convertView
                         .findViewById(R.id.textViewShowBlockDetail);
-//                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
+                holder.imageViewHideMore = (ImageView) convertView.findViewById(R.id.imageViewHideMore);
                 holder.checkBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
-                convertView.setTag(holder);
+
 
                 holder.mAdView = (AdView) convertView.findViewById(R.id.adView);
 
@@ -229,12 +226,13 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //                holder.textViewName.setBackgroundColor(getResources().getColor(R.color.colorPrimary_brown);
                 holder.textViewName.setBackgroundColor(selectColor);
 
+                convertView.setTag(holder);
+
             } else {
 
                 holder = (ViewHolder) convertView.getTag();
 
             }
-
 
 
             holder.textViewName.setText(block.getName());
@@ -258,6 +256,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 Material.add(block.getMaterial());
             }
 
+            //有的分类是不需要原料查询的
             if (isCreating) {
 
                 holder.imageView.setOnClickListener(new View.OnClickListener() {
@@ -265,7 +264,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                     public void onClick(View v) {
                         String str = Material.get(pos);
 
-                        str = Utils.filterString(str);
+                        str = SettingUtils.filterString(str);
 
                         String[] searchNames = str.split("\\s+");
 //
@@ -310,16 +309,16 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                 checkBoxStateList.add(false);
             }
 
-//            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // 按照列表位置更新checkbox状态
-//                    checkBoxStateList.set(pos, false);
-//                    adapter.notifyDataSetChanged();
-//
-//
-//                }
-//            });
+            holder.imageViewHideMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 按照列表位置更新checkbox状态
+                    checkBoxStateList.set(pos, false);
+                    adapter.notifyDataSetChanged();
+
+
+                }
+            });
 
             holder.checkBox
                     .setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -340,24 +339,24 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
             if (ischecked) {
 //				holder.textViewDetail.setVisibility(View.VISIBLE);
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
-//                holder.imageViewHideMore.setVisibility(View.VISIBLE);
-//                if(holder.mAdView != null){
-                if(isNetworkConnected){
+                holder.imageViewHideMore.setVisibility(View.VISIBLE);
+                if(holder.mAdView != null){
+                if (!isVip && isNetworkConnected) {
                     holder.mAdView.setVisibility(View.VISIBLE);
 //                    if (holder.mAdView.)
                     holder.mAdView.loadAd(new AdRequest.Builder().build());
                 }
 
-//                }
+                }
 //
 
             } else {
 //				holder.textViewDetail.setVisibility(View.GONE);
                 holder.textViewShowBlockDetail.setVisibility(View.GONE);
-//                holder.imageViewHideMore.setVisibility(View.GONE);
-//                if(holder.mAdView != null){
+                holder.imageViewHideMore.setVisibility(View.GONE);
+                if(holder.mAdView != null){
                 holder.mAdView.setVisibility(View.GONE);
-//                }
+                }
 
             }
 
@@ -386,7 +385,6 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
 
     }
-
 
 
 }
