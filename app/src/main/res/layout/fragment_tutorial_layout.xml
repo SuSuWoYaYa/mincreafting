@@ -250,7 +250,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_diamond_ore" />
+                android:src="@drawable/icon_gao" />
 
             <TextView
                 android:layout_width="300dp"
@@ -263,10 +263,8 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
         </LinearLayout>
-
-
         <LinearLayout
-            android:id="@+id/layout_btn_fumoshaolian"
+            android:id="@+id/layout_btn_gengduotiaozhan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="6dp"
@@ -282,7 +280,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_enchant" />
+                android:src="@drawable/icon_jian" />
 
             <TextView
                 android:layout_width="300dp"
@@ -291,10 +289,12 @@
                 android:clickable="false"
                 android:gravity="center"
                 android:paddingRight="10dp"
-                android:text="@string/btn_fumoshaolian"
+                android:text="@string/btn_gengduotiaozhan"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
         </LinearLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -379,6 +379,37 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/layout_btn_fumoshaolian"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_shape"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_enchant" />
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:clickable="false"
+                android:gravity="center"
+                android:paddingRight="10dp"
+                android:text="@string/btn_fumoshaolian"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/layout_btn_gaojijishu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -410,36 +441,7 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/layout_btn_gengduotiaozhan"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="6dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:padding="5dp"
-                android:src="@drawable/icon_eyeofender" />
-
-            <TextView
-                android:layout_width="300dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:clickable="false"
-                android:gravity="center"
-                android:paddingRight="10dp"
-                android:text="@string/btn_gengduotiaozhan"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -468,7 +470,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_books" />
+                android:src="@drawable/icon_others" />
 
             <TextView
                 android:layout_width="300dp"
@@ -500,7 +502,7 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:padding="5dp"
-                android:src="@drawable/icon_books" />
+                android:src="@drawable/icon_others" />
 
             <TextView
                 android:layout_width="300dp"

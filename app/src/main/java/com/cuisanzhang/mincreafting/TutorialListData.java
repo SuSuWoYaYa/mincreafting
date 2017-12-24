@@ -700,6 +700,8 @@ public class TutorialListData {
 
 
             "我的世界命令教程(国服手机端)",
+            "我的世界手机端附魔教程",
+            "我的世界命名符彩蛋",
             "基本操作与合成玩法",
             "挖矿教程",
             "食物与生命值",
@@ -742,6 +744,8 @@ public class TutorialListData {
     public static String[] tutorial_wangluojiaocheng_files = {
 
             "file:///android_asset/html/wangluojiaocheng/costem1.html",
+            "file:///android_asset/html/wangluojiaocheng/costem2.html",
+            "file:///android_asset/html/wangluojiaocheng/costem3.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen1.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen2.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen3.html",
