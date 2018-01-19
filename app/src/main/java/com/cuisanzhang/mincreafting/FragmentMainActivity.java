@@ -533,6 +533,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                 "正在初始化数据库 ");
         progressDialog.setCancelable(false);
         progressDialog.show();
+
     }
 
     private class MyHandler extends Handler {
