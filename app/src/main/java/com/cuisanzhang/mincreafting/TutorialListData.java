@@ -631,6 +631,8 @@ public class TutorialListData {
         "《我的世界》自动收瓜机",
 //57
     "高效垂直挖矿技巧",
+            //58
+            "解决饥饿！《我的世界》无需合成的食物",
     };
     public static String[] tutorial_mc163_files = {
             "file:///android_asset/html/mc163/mc163_1.html",
@@ -695,6 +697,7 @@ public class TutorialListData {
                     "file:///android_asset/html/mc163/mc163_55.html",
                     "file:///android_asset/html/mc163/mc163_56.html",
                     "file:///android_asset/html/mc163/mc163_57.html",
+                    "file:///android_asset/html/mc163/mc163_58.html",
 
     };
 
