@@ -17,7 +17,8 @@ public class SettingUtils {
     private static final String COLOR = "color";
     private static final String USER_NAME = "user_name";
     private static final String VIP_STATE = "vip_state";
-    private static final String IsFirstTimeOpen = "IsFirstTimeOpen";
+    private static final String IsFirstTimeOpenTutorial = "isFirstTimeOpenTutorial";
+    private static final String IsFirstTimeOpenCreating = "isFirstTimeOpenCreating";
 
 
     static String  VIP_URL = "http://owpvbuvtf.bkt.clouddn.com/vip.txt";
@@ -35,19 +36,29 @@ public class SettingUtils {
         return false;
     }
 
-    public  static  boolean isFirstTimeOpen(Context context){
+    public  static  boolean isFirstTimeOpenTutorial(Context context){
         SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-        boolean isFirstTimeOpen = sp.getBoolean(IsFirstTimeOpen, true);
-        if (isFirstTimeOpen == true) {
+        boolean isFirstTimeOpenTutorial = sp.getBoolean(IsFirstTimeOpenTutorial, true);
+        if (isFirstTimeOpenTutorial == true) {
             SharedPreferences.Editor editor = sp.edit();
-            editor.putBoolean(IsFirstTimeOpen, false);
+            editor.putBoolean(IsFirstTimeOpenTutorial, false);
             editor.apply();
         }
 
-        return isFirstTimeOpen;
+        return isFirstTimeOpenTutorial;
     }
 
+    public  static  boolean isFirstTimeOpenCreating(Context context){
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        boolean isFirstTimeOpenCreating = sp.getBoolean(IsFirstTimeOpenCreating, true);
+        if (isFirstTimeOpenCreating == true) {
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean(IsFirstTimeOpenCreating, false);
+            editor.apply();
+        }
 
+        return isFirstTimeOpenCreating;
+    }
 
 //        作者：AlicFeng
 //        链接：http://www.jianshu.com/p/10ed9ae02775

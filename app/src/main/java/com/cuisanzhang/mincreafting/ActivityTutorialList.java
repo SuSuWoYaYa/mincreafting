@@ -137,8 +137,8 @@ public class ActivityTutorialList extends AppCompatActivity {
     }
 
     private void checkFirstTimeOpen() {
-        boolean isFirstTimeOpen = SettingUtils.isFirstTimeOpen(getApplicationContext());
-        if(isFirstTimeOpen){
+        boolean isFirstTimeOpenTutorial = SettingUtils.isFirstTimeOpenTutorial(getApplicationContext());
+        if(isFirstTimeOpenTutorial){
             showAboutImageDialog();
         }
     }

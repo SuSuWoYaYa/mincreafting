@@ -57,6 +57,7 @@ public class TutorialListData {
             "去边境之地",
             "世界界限",
             "世界边界",
+            "生物群系",
             "信标金字塔",
             "多人联机",
             "繁殖",
@@ -97,6 +98,7 @@ public class TutorialListData {
             "file:///android_asset/html/wiki/qubianjingzhidi.html",
             "file:///android_asset/html/wiki/shijiejixian.html",
             "file:///android_asset/html/wiki/shijiebianjie.html",
+            "file:///android_asset/html/wiki/shenwuqunxi.html",
             "file:///android_asset/html/wiki/xinbiaojingzhita.html",
             "file:///android_asset/html/wiki/duorenliangji.html",
             "file:///android_asset/html/wiki/fangzhi.html",
@@ -175,7 +177,7 @@ public class TutorialListData {
             "导航",
             "庇护所",
             "庇护所类型",
-            "生物群系",
+
             "最佳居住生物群系",
             "给工程添加美感",
             "空气闸",
@@ -202,7 +204,7 @@ public class TutorialListData {
             "file:///android_asset/html/wiki/navigate.html",
             "file:///android_asset/html/wiki/safe_place.html",
             "file:///android_asset/html/wiki/house_type.html",
-            "file:///android_asset/html/wiki/shenwuqunxi.html",
+
             "file:///android_asset/html/wiki/beast_place.html",
             "file:///android_asset/html/wiki/geigongchengtianjiameigan.html",
             "file:///android_asset/html/wiki/kongqizha.html",
@@ -629,6 +631,8 @@ public class TutorialListData {
         "《我的世界》自动收瓜机",
 //57
     "高效垂直挖矿技巧",
+            //58
+            "解决饥饿！《我的世界》无需合成的食物",
     };
     public static String[] tutorial_mc163_files = {
             "file:///android_asset/html/mc163/mc163_1.html",
@@ -693,6 +697,7 @@ public class TutorialListData {
                     "file:///android_asset/html/mc163/mc163_55.html",
                     "file:///android_asset/html/mc163/mc163_56.html",
                     "file:///android_asset/html/mc163/mc163_57.html",
+                    "file:///android_asset/html/mc163/mc163_58.html",
 
     };
 

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -140,6 +141,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //			//
 //		}
 
+        checkFirstTimeOpen();
     }
 
     private class MyAdapter extends BaseAdapter {
@@ -386,5 +388,20 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
     }
 
+    private void checkFirstTimeOpen() {
+        boolean isFirstTimeOpenCreating = SettingUtils.isFirstTimeOpenCreating(getApplicationContext());
+        if(isFirstTimeOpenCreating){
+            showAboutImageDialog();
+        }
+    }
+
+    private void showAboutImageDialog() {
+//        Log.e("ActivityTutorialList", "getApplicationContext="+getApplicationContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListViewShowBlocks.this, R.style.AlertDialog);
+        builder.setTitle("小提示");
+        builder.setMessage("点击图片可以查看材料来源\n图片都是离线的,不需要联网");
+        builder.setPositiveButton("确定", null);
+        builder.show();
+    }
 
 }
