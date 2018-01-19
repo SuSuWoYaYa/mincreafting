@@ -145,23 +145,40 @@ public class ActivitySearch extends AppCompatActivity {
 
         Material = new ArrayList<String>();
 
-
         getHistory();
 
-        initActionBar();
-
         setAdapter();
+
+        initActionBar();
 
         if (search != null) {
             //有传搜索参数就关闭输入模式,不弹出输入法
             autoCompleteTextView.setInputType(InputType.TYPE_NULL);
 
-
             searchString(search);
-
+        }else {
+            // 防止sdk8.0崩溃
+            autoCompleteTextView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if(autoCompleteTextView == null
+                            || ActivitySearch.this == null
+                            || ActivitySearch.this.isFinishing()){
+                        return;
+                    }
+                    autoCompleteTextView.showDropDown();
+                }
+            }, 1000);
         }
 
 
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        autoCompleteTextView = null;
     }
 
     private void getHistory() {
@@ -212,21 +229,23 @@ public class ActivitySearch extends AppCompatActivity {
             }
         });
 
-        autoCompleteTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
 
 
-            public void onFocusChange(View v, boolean hasFocus) {
-
-                AutoCompleteTextView view = (AutoCompleteTextView) v;
-//                view.setText("");
-                //有传搜索参数就不弹出下拉框
-                if (search == null && hasFocus) {
-                    view.showDropDown();
-                }
-
-            }
-        });
+//        autoCompleteTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//
+//
+//            public void onFocusChange(View v, boolean hasFocus) {
+//
+//                AutoCompleteTextView view = (AutoCompleteTextView) v;
+////                view.setText("");
+//                //有传搜索参数就不弹出下拉框
+//                if (search == null && hasFocus) {
+//                    view.showDropDown();          //sdk26 android8.0会崩溃
+//                }
+//
+//            }
+//        });
 
         //监听输入法完成按钮,模拟点击
         autoCompleteTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
