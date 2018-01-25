@@ -3,51 +3,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/list_background"
-    >
+    android:orientation="vertical">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/list_item_shape"
         android:layout_margin="5dp"
-        >
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:padding="@dimen/list_of_item_title_paidding"
-        android:text=" 钻石镐"
-        android:background="@color/list_item_title_background"
-        android:textColor="@color/list_item_title_textColor"
-        android:textSize="@dimen/detail_title_text_size"
-        android:textStyle="normal"
-        />
+        android:background="@drawable/list_item_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@color/list_item_title_background"
+            android:gravity="center"
+            android:padding="@dimen/list_of_item_title_paidding"
+            android:text=" 钻石镐"
+            android:textColor="@color/list_item_title_textColor"
+            android:textSize="@dimen/detail_title_text_size"
+            android:textStyle="normal" />
 
 
-    <TextView
-        android:id="@+id/material"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:gravity="center|bottom"
-        android:text="木板"
-        android:textColor="@color/list_item_material_textColor"
-        android:textSize="16dp" />
+        <TextView
+            android:id="@+id/material"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:paddingTop="8dp"
+            android:text="木板"
+            android:textColor="@color/list_item_material_textColor"
+            android:textSize="16dp" />
 
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:layout_gravity="center"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"/>
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scaleType="fitCenter" />
 
 
 
@@ -55,16 +54,16 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/use"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
                 android:layout_weight="1"
-                android:text="TextView4"
                 android:gravity="center"
+                android:padding="4dp"
+                android:text="TextView4"
                 android:textColor="@android:color/black"
                 android:textSize="12dp" />
 
@@ -72,47 +71,44 @@
                 android:id="@+id/checkBox1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:button="@drawable/checkbox_selector"
                 android:gravity="right"
                 android:scaleX="0.7"
-                android:scaleY="0.7"
-                android:button="@drawable/checkbox_selector"
-                />
+                android:scaleY="0.7" />
 
         </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/textViewShowBlockDetail"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/list_background"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"
-        android:padding="4dp"
-        android:text="detail"
-        android:textColor="@android:color/black"
-        android:textSize="12dp" />
+        <TextView
+            android:id="@+id/textViewShowBlockDetail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/list_background"
+            android:padding="4dp"
+            android:text="detail"
+            android:textColor="@android:color/black"
+            android:textSize="12dp" />
 
         <ImageView
             android:id="@+id/imageViewHideMore"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_hide_more"/>
+            android:src="@drawable/ic_hide_more" />
 
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/ad_banner_id">
-        </com.google.android.gms.ads.AdView>
+            ads:adUnitId="@string/ad_banner_id"></com.google.android.gms.ads.AdView>
 
     </LinearLayout>
 </LinearLayout>
