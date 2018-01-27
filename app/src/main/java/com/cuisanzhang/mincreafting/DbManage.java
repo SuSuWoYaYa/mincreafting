@@ -230,9 +230,18 @@ public class DbManage {
 
         for (int i = MyDatabaseHelper.TABLE_NAMES.length - 1; i >= 0; i--) {
 
+            Cursor cursor = null;
 //            Cursor cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], new String[]{"file_name", "name", "material", "use", "detail"}, "name like '%" + searchName + "%'", null, null, null, null);
-            Cursor cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], columns, selection, selectionArgs, null, null, null);
 
+            //根据语言搜索不同的数据库
+            String Language = LanguageUtil.getLocaleLanguage(context);
+
+            if(Language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                 cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES_ZW[i], columns, selection, selectionArgs, null, null, null);
+            }else {
+                 cursor = dbRead.query(MyDatabaseHelper.TABLE_NAMES[i], columns, selection, selectionArgs, null, null, null);
+
+            }
 //            Log.e(TAG, "SeachString " + MyDatabaseHelper.TABLE_NAMES[i] + " return cursor getcount = " + cursor.getCount());
             if (!cursor.moveToFirst()) {
                 continue;

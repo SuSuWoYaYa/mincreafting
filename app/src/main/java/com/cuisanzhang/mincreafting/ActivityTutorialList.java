@@ -118,7 +118,7 @@ public class ActivityTutorialList extends AppCompatActivity {
             }
 
 
-            holder.textView.setText(tutorialNames[position]);
+            holder.textView.setText(position+1 +" " + tutorialNames[position]);
             return convertView;
         }
     }

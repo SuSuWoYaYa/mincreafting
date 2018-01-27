@@ -94,73 +94,136 @@ public class FragmentCreating extends Fragment {
 //                int layout = R.layout.layout_listview_item_block;
                 int loding = R.drawable.loading_of_blocks;
 
+
+                String language = LanguageUtil.getLocaleLanguage(getContext());
+
                 switch (v.getId()) {
                     case R.id.layout_btn_building:
-                        tableName = MyDatabaseHelper.TABLE_BUILDING;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
+                        }else{
+                            tableName = MyDatabaseHelper.TABLE_BUILDING;
+                        }
                         category = getString(R.string.jianzhuleihecheng);
                         break;
                     case R.id.layout_btn_decoration:
-                        tableName = MyDatabaseHelper.TABLE_DECORATION;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_DECORATION;
+                        }else{
+                            tableName = MyDatabaseHelper.TABLE_DECORATION;
+                        }
                         category = getString(R.string.zhuangshileihecheng);
                         break;
                     case R.id.layout_btn_dye:
-                        tableName =  MyDatabaseHelper.TABLE_DYE;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_DYE;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_DYE;
+                        }
                         category = getString(R.string.rangliaoleihecheng);
                         break;
                     case R.id.layout_btn_food:
-                        tableName =  MyDatabaseHelper.TABLE_FOOD;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_FOOD;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_FOOD;
+                        }
                         category = getString(R.string.shiwuleihecheng);
                         break;
                     case R.id.layout_btn_lighting:
-                        tableName =  MyDatabaseHelper.TABLE_LIGHTING;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_LIGHTING;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_LIGHTING;
+                        }
                         category = getString(R.string.zhaomingleihecheng);
                         break;
                     case R.id.layout_btn_ore:
-                        tableName =  MyDatabaseHelper.TABLE_ORE;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ORE;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_ORE;
+                        }
                         category = getString(R.string.kuangshileihecheng);
                         break;
                     case R.id.layout_btn_redstone:
-                        tableName =  MyDatabaseHelper.TABLE_REDSTONE;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_REDSTONE;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_REDSTONE;
+                        }
                         category = getString(R.string.redstonehezhuanzhileihechen);
                         break;
                     case R.id.layout_btn_tannsport:
-                        tableName =  MyDatabaseHelper.TABLE_TANNSPORT;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_TANNSPORT;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_TANNSPORT;
+                        }
                         category = getString(R.string.yunshuleihecheng);
                         break;
                     case R.id.layout_btn_tools:
-                        tableName =  MyDatabaseHelper.TABLE_TOOLS;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_TOOLS;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_TOOLS;
+                        }
                         category = getString(R.string.gongjuleihecheng);
                         break;
                     case R.id.layout_btn_weapon:
-                        tableName =  MyDatabaseHelper.TABLE_WEAPON;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_WEAPON;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_WEAPON;
+                        }
                         category = getString(R.string.wuqileihecheng);
                         break;
                     case R.id.layout_btn_others:
-                        tableName =  MyDatabaseHelper.TABLE_OTHERS;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_OTHERS;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_OTHERS;
+                        }
                         category = getString(R.string.qitaleihecheng);
                         break;
                     case R.id.layout_btn_semlting:
-                        tableName =  MyDatabaseHelper.TABLE_SMELTING;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_SMELTING;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_SMELTING;
+                        }
                         category = getString(R.string.shaolianlei);
                         loding =R.drawable.loading_of_smelting;
 //                        isCreating = false;
 //                        layout= R.layout.layout_listview_item_smelting;
                         break;
                     case R.id.layout_btn_brewing:
-                        tableName =  MyDatabaseHelper.TABLE_BREWING;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_BREWING;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_BREWING;
+                        }
                         category = getString(R.string.yaoshuilei);
                         loding = R.drawable.loading_of_brewing;
 //                        isCreating = false;
 //                        layout= R.layout.layout_listview_item_brewing;
                         break;
                     case R.id.layout_btn_enchant:
-                        tableName =  MyDatabaseHelper.TABLE_ENCHANT;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_ENCHANT;
+                        }
                         category = getString(R.string.fumolei);
                         loding = R.drawable.loading_of_enchant;
                         isCreating = false;
                         break;
                     default:
-                        tableName = MyDatabaseHelper.TABLE_BUILDING;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_BUILDING;
+                        }
                         category = getString(R.string.jianzhuleihecheng);
                         break;
                 }

@@ -44,6 +44,39 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_ITEM_BLOCK_PLANTS		=	"table_item_block_plants";      //植物类
 
 
+	//繁体,每个分类数据库的表名,用来传递给分类详情页使用
+	public static final String ZW_TABLE_BUILDING    =   "zw_table_building";	//建筑 building
+	public static final String ZW_TABLE_DECORATION  =   "zw_table_decoration";	//装饰 decoration
+	public static final String ZW_TABLE_DYE         =   "zw_table_dye";		//染料类 dye
+	public static final String ZW_TABLE_FOOD        =   "zw_table_food";		//食物 food
+	public static final String ZW_TABLE_LIGHTING    =   "zw_table_lighting";	//照明 lighting
+	public static final String ZW_TABLE_ORE         =   "zw_table_ore";		//矿石 ore
+	public static final String ZW_TABLE_REDSTONE    =   "zw_table_redstone";	//红石 redstone
+	public static final String ZW_TABLE_TANNSPORT   =   "zw_table_tannsport";	//运输 tannsport
+	public static final String ZW_TABLE_TOOLS       =   "zw_table_tools";		//工具 tools
+	public static final String ZW_TABLE_WEAPON      =   "zw_table_weapon";		//武器 weapon
+	public static final String ZW_TABLE_OTHERS      =   "zw_table_others";		//杂项类 others
+	public static final String ZW_TABLE_SMELTING    =   "zw_table_smelting";		//烧炼类 smelting
+	public static final String ZW_TABLE_BREWING     =   "zw_table_brewing";		//药水类 brewing
+	public static final String ZW_TABLE_ENCHANT     =   "zw_table_enchant";		//附魔类 enchant
+
+	public static final String ZW_TABLE_MOBS_BOSS	    =	"zw_table_mobs_boss"; 			//Boss boss
+	public static final String ZW_TABLE_MOBS_HOSTILE	=	"zw_table_mobs_hostile";       // 攻击型
+	public static final String ZW_TABLE_MOBS_NEUTRAL	=	"zw_table_mobs_neutral";       // 中立型
+	public static final String ZW_TABLE_MOBS_PASSIVE	=	"zw_table_mobs_passive"; 		//被动型
+	public static final String ZW_TABLE_MOBS_TAMEABLE	=	"zw_table_mobs_tameable";      // 可驯服
+	public static final String ZW_TABLE_MOBS_UTILITY	=	"zw_table_mobs_utility";        // 效用型
+	public static final String ZW_TABLE_MOBS_UNUSE		=	"zw_table_mobs_unuse";      	// 其他的生物
+
+
+	public static final String ZW_TABLE_ITEM_BLOCK_NATURAL		=	"zw_table_item_block_natural";     //自然生成
+	public static final String ZW_TABLE_ITEM_BLOCK_STRUCTURES	=	"zw_table_item_block_structures";  //结构方块
+	public static final String ZW_TABLE_ITEM_BLOCK_COMMANDS		=	"zw_table_item_block_commands";    //命令类
+	public static final String ZW_TABLE_ITEM_BLOCK_FOOD	    	=	"zw_table_item_block_food";      	//食物类
+	public static final String ZW_TABLE_ITEM_BLOCK_OTHERS	    =	"zw_table_item_block_others";      //其他
+	public static final String ZW_TABLE_ITEM_BLOCK_MATERIALS	=	"zw_table_item_block_materials";   //材料类
+	public static final String ZW_TABLE_ITEM_BLOCK_PLANTS		=	"zw_table_item_block_plants";      //植物类
+
 
 	public static void initLanguageMessage (Context context){
 
@@ -160,6 +193,44 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	};
 
+	//繁体, 排序影响搜索结果
+	public static final String[] jsons_zw = {
+
+			"jsons_zw/creating/brewing.json",       //药水类 brewing
+			"jsons_zw/creating/enchant.json",		//附魔类 enchant
+			"jsons_zw/creating/dye.json",         //染料类 dye
+			"jsons_zw/creating/decoration.json",  //装饰 decoration
+			"jsons_zw/creating/weapon.json",      //武器 weapon
+			"jsons_zw/creating/tannsport.json",   //运输 tannsport
+			"jsons_zw/creating/tools.json",       //工具 tools
+			"jsons_zw/creating/building.json",    //建筑 building
+			"jsons_zw/creating/redstone.json",    //红石 redstone
+//            "jsons_zw/daily.json",       //日常 daily
+			"jsons_zw/creating/food.json",        //食物 food
+			"jsons_zw/creating/lighting.json",    //照明 lighting
+			"jsons_zw/creating/ore.json",         //矿石 ore
+			"jsons_zw/creating/others.json",      //杂项类 others
+			"jsons_zw/creating/smelting.json",      //烧炼类 others
+
+			//物品和方块
+			"jsons_zw/item_block/item_block_natural.json",     //自然生成
+			"jsons_zw/item_block/item_block_structures.json",  //结构方块
+			"jsons_zw/item_block/item_block_commands.json",    //命令类
+			"jsons_zw/item_block/item_block_food.json",        //食物类
+			"jsons_zw/item_block/item_block_others.json",      //其他
+			"jsons_zw/item_block/item_block_materials.json",   //材料类
+			"jsons_zw/item_block/item_block_plants.json",      //植物类
+
+			"jsons_zw/mobs/mobs_boss.json",         //Boss boss
+			"jsons_zw/mobs/mobs_hostile.json",         // 攻击型生物
+			"jsons_zw/mobs/mobs_neutral.json",         // 中立型生物
+			"jsons_zw/mobs/mobs_passive.json",         // 被动型生物
+			"jsons_zw/mobs/mobs_tameable.json",         // 可驯服生物
+			"jsons_zw/mobs/mobs_utility.json",         // 效用型生物
+			"jsons_zw/mobs/mobs_unuse.json",         // 其他的生物
+
+	};
+
     //每个分类数据库的表名, 便于循环使用数据库
 	//排序影响搜索结果
 	public static final String[] TABLE_NAMES = {
@@ -200,6 +271,44 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	};
 
+	//繁体
+	public static final String[] TABLE_NAMES_ZW = {
+
+			"zw_table_brewing",		//药水类 brewing
+			"zw_table_enchant",		//附魔类 enchant
+			"zw_table_dye",		//染料类 dye
+			"zw_table_decoration",	//装饰 decoration
+			"zw_table_weapon",		//武器 weapon
+			"zw_table_tannsport",	//运输 tannsport
+			"zw_table_tools",		//工具 tools
+			"zw_table_building", 	//建筑 building
+			"zw_table_redstone",	//红石 redstone
+//			"zw_table_daily",		//日常 daily
+			"zw_table_food",		//食物 food
+			"zw_table_lighting",	//照明 lighting
+			"zw_table_ore",		//矿石 ore
+			"zw_table_others",		//杂项类 others
+			"zw_table_smelting",		//烧炼类 weapon
+
+			//物品和方块
+			"zw_table_item_block_natural",     //自然生成
+			"zw_table_item_block_structures",  //结构方块
+			"zw_table_item_block_commands",    //命令类
+			"zw_table_item_block_food",        //食物类
+			"zw_table_item_block_others",      //其他
+			"zw_table_item_block_materials",   //材料类
+			"zw_table_item_block_plants",      //植物类
+
+			"zw_table_mobs_boss",         //Boss boss
+			"zw_table_mobs_hostile",         // 攻击型生物
+			"zw_table_mobs_neutral",         // 中立型生物
+			"zw_table_mobs_passive",         // 被动型生物
+			"zw_table_mobs_tameable",         // 可驯服生物
+			"zw_table_mobs_utility",         // 效用型生物
+			"zw_table_mobs_unuse",         // 其他的生物
+
+
+	};
 
 
 	public MyDatabaseHelper(Context context) {
@@ -220,6 +329,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 					+ " use TEXT,"
 					+ " detail TEXT)");
 //					+ " isgif INTEGER)");
+			db.execSQL("CREATE TABLE " + TABLE_NAMES_ZW[i]
+					+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+//					+ " res_id INTEGER,"
+					+ " file_name TEXT,"
+					+ " name TEXT,"
+					+ " material TEXT,"
+					+ " use TEXT,"
+					+ " detail TEXT)");
 		}
 		//附魔取消单独一个表
 //		db.execSQL("CREATE TABLE " + TABLE_ENCHANT

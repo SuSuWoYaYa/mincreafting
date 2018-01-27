@@ -80,87 +80,149 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                 int loading;
                 boolean isCreating = false;
 
+                String language = LanguageUtil.getLocaleLanguage(getContext());
+
                 switch (v.getId()) {
                     case R.id.layout_btn_boss:
-                        tableName = MyDatabaseHelper.TABLE_MOBS_BOSS;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_MOBS_BOSS;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_MOBS_BOSS;
+                        }
                         category = getString(R.string.boss);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_hostile:
-                        tableName =  MyDatabaseHelper.TABLE_MOBS_HOSTILE;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_MOBS_HOSTILE;
+                        }else {
+                            tableName =  MyDatabaseHelper.TABLE_MOBS_HOSTILE;
+                        }
                         category =  getString(R.string.gongjixingshengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_neutral:
-                        tableName = MyDatabaseHelper.TABLE_MOBS_NEUTRAL;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_MOBS_NEUTRAL;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_MOBS_NEUTRAL;
+                        }
                         category =  getString(R.string.zhonglixingshengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_passive:
-                        tableName = MyDatabaseHelper.TABLE_MOBS_PASSIVE;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_MOBS_PASSIVE;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_MOBS_PASSIVE;
+                        }
                         category = getString(R.string.beidongxingshengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_tameable:
-                        tableName = MyDatabaseHelper.TABLE_MOBS_TAMEABLE;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_MOBS_TAMEABLE;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_MOBS_TAMEABLE;
+                        }
                         category =  getString(R.string.kexunfushengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_utility:
-                        tableName = MyDatabaseHelper.TABLE_MOBS_UTILITY;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_MOBS_UTILITY;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_MOBS_UTILITY;
+                        }
                         category = getString(R.string.xiaoyongxingshengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_other_mobs:
-                        tableName = MyDatabaseHelper.TABLE_MOBS_UNUSE;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_MOBS_UNUSE;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_MOBS_UNUSE;
+                        }
                         category = getString(R.string.qitashengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
 
 
                     case R.id.layout_btn_food:
-                        tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_FOOD;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_FOOD;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_FOOD;
+                        }
                         category = getString(R.string.shiwuleiwuping);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
                     case R.id.layout_btn_plants:
-                        tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_PLANTS;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_PLANTS;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_PLANTS;
+                        }
                         category = getString(R.string.zhiwuleiwuping);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
                     case R.id.layout_btn_materials:
-                        tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_MATERIALS;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_MATERIALS;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_MATERIALS;
+                        }
                         category = getString(R.string.cailiaoleiwuping);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
                     case R.id.layout_btn_natural:
-                        tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_NATURAL;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_NATURAL;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_NATURAL;
+                        }
                         category = getString(R.string.zhirangshengchengfankuai);
                         loading= R.drawable.loading_of_wuping;
                         break;
                     case R.id.layout_btn_structures:
-                        tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_STRUCTURES;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_STRUCTURES;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_STRUCTURES;
+                        }
                         category = getString(R.string.jiegoufangkuai);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
                     case R.id.layout_btn_commands:
-                        tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_COMMANDS;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_COMMANDS;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_COMMANDS;
+                        }
                         category = getString(R.string.minglingleifankuai);
                         loading= R.drawable.loading_of_wuping;
                         break;
                     case R.id.layout_btn_other_block:
-                        tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_OTHERS;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_OTHERS;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_OTHERS;
+                        }
                         category = getString(R.string.qitawuping);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
 
                     default:
-                        tableName = MyDatabaseHelper.TABLE_MOBS_BOSS;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_MOBS_BOSS;
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_MOBS_BOSS;
+                        }
                         category = getString(R.string.boss);
                         loading= R.drawable.loading_of_mobs;
                         break;

@@ -513,6 +513,8 @@ public class FragmentMainActivity extends AppCompatActivity {
                     mHandler.sendMessage(message);
                     dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
                             MyDatabaseHelper.jsons[i]);
+                    dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES_ZW[i],
+                            MyDatabaseHelper.jsons_zw[i]);
 //                    System.out.println("Start dbManage.insertDataToTable " + MyDatabaseHelper.TABLE_NAMES[i]);
 
                 }

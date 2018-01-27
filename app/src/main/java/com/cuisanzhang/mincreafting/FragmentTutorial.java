@@ -90,75 +90,150 @@ public class FragmentTutorial extends Fragment {
                 
                 String tutorialCategary;
 
+                String language = LanguageUtil.getLocaleLanguage(getContext());
+
                 switch (v.getId()) {
                     case R.id.layout_btn_newplay:
-                        tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names;
-                        tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files_zw;
+                        } else {
+                            tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names;
+                            tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files;
+                        }
                         tutorialCategary = getString(R.string.xingshouzhinan);
                         break;
                     case R.id.layout_btn_huanjingjieshao:
-                        tutorialNames = TutorialListData.tutorial_huangjingjieshao_names;
-                        tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_huangjingjieshao_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files_zw;
+                        } else {
+
+                            tutorialNames = TutorialListData.tutorial_huangjingjieshao_names;
+                            tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files;
+                        }
                         tutorialCategary = getString(R.string.huangjinjieshao);
                         break;
                     case R.id.layout_btn_jinjiezhinan:
-                        tutorialNames = TutorialListData.tutorial_jingjiezhinan_names;
-                        tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files_zw;
+                        } else {
+                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names;
+                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files;
+                        }
                         tutorialCategary = getString(R.string.jingjiezhinan);
                         break;
                     case R.id.layout_btn_building:
-                        tutorialNames = TutorialListData.tutorial_build_names;
-                        tutorialFiles = TutorialListData.tutorial_build_files;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_build_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_build_files_zw;
+                        } else {
+                            tutorialNames = TutorialListData.tutorial_build_names;
+                            tutorialFiles = TutorialListData.tutorial_build_files;
+                        }
                         tutorialCategary = getString(R.string.jianzhujiaocheng);
                         break;
                     case R.id.layout_btn_zhongzhi:
-                        tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names;
-                        tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files_zw;
+                        } else {
+
+                            tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names;
+                            tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files;
+                        }
                         tutorialCategary = getString(R.string.zhongzhijiaocheng);
                         break;
                     case R.id.layout_btn_shuaguai:
-                        tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names;
-                        tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files_zw;
+                        } else {
+                            tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names;
+                            tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files;
+                        }
                         tutorialCategary = getString(R.string.shuaguaijiaocheng);
                         break;
                     case R.id.layout_btn_caikuaijishu:
-                        tutorialNames = TutorialListData.tutorial_caikuangjishu_names;
-                        tutorialFiles = TutorialListData.tutorial_caikuangjishu_files;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_caikuangjishu_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_caikuangjishu_files_zw;
+                        } else {
+                            tutorialNames = TutorialListData.tutorial_caikuangjishu_names;
+                            tutorialFiles = TutorialListData.tutorial_caikuangjishu_files;
+                        }
                         tutorialCategary = getString(R.string.caikuanjishu);
                         break;
                     case R.id.layout_btn_fumoshaolian:
-                        tutorialNames = TutorialListData.tutorial_fumoheshaolian_names;
-                        tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files;
+                        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_fumoheshaolian_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files_zw;
+                        }else {
+
+                            tutorialNames = TutorialListData.tutorial_fumoheshaolian_names;
+                            tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files;
+                        }
                         tutorialCategary = getString(R.string.fumoshaoliao);
                         break;
                     case R.id.layout_btn_chujihongshi:
-                        tutorialNames = TutorialListData.tutorial_chujihongshi_names;
-                        tutorialFiles = TutorialListData.tutorial_chujihongshi_files;
+                        if(language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_chujihongshi_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_chujihongshi_files_zw;
+                        }else {
+                            tutorialNames = TutorialListData.tutorial_chujihongshi_names;
+                            tutorialFiles = TutorialListData.tutorial_chujihongshi_files;
+                        }
                         tutorialCategary = getString(R.string.chujichongshi);
                         break;
                     case R.id.layout_btn_hongshijinjie:
-                        tutorialNames = TutorialListData.tutorial_hongshijingjie_names;
-                        tutorialFiles = TutorialListData.tutorial_hongshijingjie_files;
+                        if(language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_hongshijingjie_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_hongshijingjie_files_zw;
+                        }else{
+                            tutorialNames = TutorialListData.tutorial_hongshijingjie_names;
+                            tutorialFiles = TutorialListData.tutorial_hongshijingjie_files;
+                        }
                         tutorialCategary = getString(R.string.hongshigaoji);
                         break;
                     case R.id.layout_btn_gaojijishu:
-                        tutorialNames = TutorialListData.tutorial_gaojijishu_names;
-                        tutorialFiles = TutorialListData.tutorial_gaojijishu_files;
+                        if(language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_gaojijishu_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_gaojijishu_files_zw;
+                        }else {
+                            tutorialNames = TutorialListData.tutorial_gaojijishu_names;
+                            tutorialFiles = TutorialListData.tutorial_gaojijishu_files;
+                        }
                         tutorialCategary = getString(R.string.gaojijishu);
                         break;
                     case R.id.layout_btn_gengduotiaozhan:
-                        tutorialNames = TutorialListData.tutorial_tiaozhan_names;
-                        tutorialFiles = TutorialListData.tutorial_tiaozhan_files;
+                        if(language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_tiaozhan_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_tiaozhan_files_zw;
+                        }else {
+                            tutorialNames = TutorialListData.tutorial_tiaozhan_names;
+                            tutorialFiles = TutorialListData.tutorial_tiaozhan_files;
+                        }
                         tutorialCategary = getString(R.string.gengduotiaozhang);
                         break;
                     case R.id.layout_btn_mc163:
-                        tutorialNames = TutorialListData.tutorial_mc163_names;
-                        tutorialFiles = TutorialListData.tutorial_mc163_files;
+                        if(language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_mc163_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_mc163_files_zw;
+                        }else {
+                            tutorialNames = TutorialListData.tutorial_mc163_names;
+                            tutorialFiles = TutorialListData.tutorial_mc163_files;
+                        }
                         tutorialCategary = getString(R.string.wangyijiaocheng);
                         break;
                     case R.id.layout_btn_wangluojiaocheng:
-                        tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
-                        tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
+                        if(language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+                            tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names_zw;
+                            tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files_zw;
+                        }else {
+                            tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
+                            tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
+                        }
                         tutorialCategary = getString(R.string.wangluojiaocheng);
                         break;
                     default:

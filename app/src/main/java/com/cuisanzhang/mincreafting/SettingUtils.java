@@ -157,7 +157,7 @@ public class SettingUtils {
 
         public static String getUserName(Context context) {
             SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-            return sp.getString(USER_NAME, "请输入你的昵称");
+            return sp.getString(USER_NAME, context.getString(R.string.enter_name));
         }
 
 
