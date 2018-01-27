@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>計算器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">計算器</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此頁面的部分內容由於太久沒更新而已過期</b>
+<br />
+你可以幫助我們來更新此頁面
+</p>
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> 
+<p class="red"><b>警告</b>
+<br />
+在依照本頁面上的所有步驟架設服務器之前，請注意如果您不清楚您自己在做什麼而運行服務端軟件，將會導致您的系統出現錯誤甚至出現崩潰。[1]
+       </p> 
+-->
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> 
+       
+       
+<p></p>
+ 
+<h2>摘要</h2>
+<p>這是目前已經建立的計算器計劃：
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi1.png" />
+<br /> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi2.png" />
+<br />計算器計劃
+</p>
+<p><br>
+當然，所有的編譯都是用二進制的形式。這就是為什麼會要有很多不同的解碼器。
+</p>
+
+<h2>目前的零件</h2>
+ <p>這篇文章會盡量使用一些邏輯順序來描述組成零件。
+</p>
+
+<h3>控制面板(室)</h3>
+<p>控制面板是你設置輸入和決定操作的房間。
+</p>
+
+<h3>數字輸入面板</h3>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi3.png" />
+<br />數字輸入面板
+</p>
+<p>在這裡，用戶將決定他要用什麼號碼。現在，我使用基於拉桿的二進制輸入系統，所以用戶必須分解他想用的數為二進制。
+</p>
+<h3>計算面板</h3>
+<p>在這個面板，用戶要從各個運算符號之間選取他要用的一個：加(+)，減(-)，乘(*)，除(/)。現在，我再次使用拉桿系統。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi4.png" />
+<br />計算面板
+</p>
+
+<h3>輸入端 (白色和橙色)</h3>
+<p>這些電線連接輸入面板和計算面板到不同的邏輯單元。試著去改變他們的方式讓相同的值集合在一起。所以，你的電線看起來應該像這樣，從左到右：A1; B1; A2; B2; A4; B4; ...
+</p>
+
+<h3>邏輯單元</h3>
+<p>這是執行的操作的機器。
+</p>
+
+<h3>加法器/減法器(黃色和紅色)</h3>
+<p><b>注：在這個計劃中，減法器和加法器是分開的。我會盡快修復它。</b>
+</p><p>我已經建立了自己版本的一個加法器/減法器。它的結構很簡單，因為它是被調整過的(由許多相同的部件組成)。這意味著，如果你使用更多的位元，你可以只添加更多的部分在側邊，但你有時要改變一些鏈接。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jisuanqi5.png" />
+<br />二合一加法器/減法器
+</p>
+<p>在這台機器上，您的輸入(二進制)進入底部的 全加器 (黃色)。每一個加法器需要兩個具有相同的值的輸入(A和B)。而且，最低的位元要在左邊，所以他們都應該由他們的進位進行連接。基本上，你的輸入會像在 #Input Wires (白色和橙色) 部分中的線。使用基本的橋梁在其他線路之上通過，而不會連接到其他線路。你的A輸入(左邊)是被減數(X-Y=Z中的X)，它會直接傳到加法器。你的B輸入是減數(X-Y=Z中的Y)，它必須通過一個多路復用器，它由一個在需要進行減法的情況下給加法器一個反相信號的 異或門組成。多路復用器由一個開關控制(在圖中，那個開關在左邊)。加法和會進入另一個多路復用器，它同樣會在減法的情況下給出一個反相輸入。這是由一個如果開關是「減法」而且last carry為真的話會輸出真的 蘊含門 (在右上方)控制。這是有必要的因為在一個減法，Last進位實際上是「-」(減號)標誌。
+<br>
+白色的機器是 半加器 ，作為輸入last的加法器的進位和各自的全加法器的總和。我們需要這個因為如果答案是否定的，它使用方程」-A =&#160;!A (inverted A)+ 1」， 這裡 。最後的輸出是所有的最上方的wires可以觀察，加wire在右邊(從最後的全加法器進位)和進位在第一個(左邊)半加法器是負號。
+</p><p>The white machines are  half-adders , that use, as inputs, the carry of the last adder and the sum of their respective full adder. We need this because, if the answer is negative, it uses the equation " -A =&#160;!A (inverted A)+ 1 ", as explained  here .
+The final outputs are all of the top-most wires you can observe, plus the wire on the right (the carry from the last full adder) and the carry that goes in the first (left) half-adder, as the negation sign.
+</p>
+
+<h3>乘法器 (淺藍色)</h3>
+<p>讓我們從基本知識開始，因為這是最複雜的地方。如果你上過學，你應該要知道，乘法只是一個重復的加法。那即是，我們會在這裡再次使用加法器。其實在開始之前，你需要先設置一些與門(不包括the control one)。它的用途十分簡單：在二進制的乘法中，因為我們只會使用0和1，我們可以製造輸出的唯一方法是將1乘以1。
+<br>
+我將按由低位到高位的順序。
+<br>
+最低的位元：
+1*1 = 1。
+即是第二個與門的輸出(the control one) 直接傳到輸出紅石線集合。
+<br>
+倒數第二：
+1*2 = 2和2*1 = 2。
+兩個輸出會進入全加器。和會進入輸出，進位則會進入下一位。
+<br>
+下一個：
+1*4 = 4；2*2 = 4和4*1 = 4。
+來自the last bit的進位會第一個加法器的進位進入。The two normal inputs are 三個與門中的兩個。它們的和會進入第二個加法器，第二個輸入則是第三個與門。Both carry outs go to the next stage，他們的和會進入輸出。
+<br>
+你可以用這種方式一直継續直到你 run out of AND gates, or equations.
+</p>
+
+<h3>除法器(粉紅色)</h3>
+<p>這個很容易和乘法器比較。我們將會繼續使用全加器。基本上，每個A輸入端, 會設置<i><b>n</b></i>個加法器，<i><b>n</b></i>=B輸入端的數量。Also, this time, 你需要「將它們反相」. 現在the most significant bit should pass its carry downwards.
+</p>
+
+
+<h3>輸出線</h3>
+<p>此線必須接收到從每一個機器發出的每一條輸出信號，並且將他們重定向到另一部分
+</p>
+
+<h3>二進制-十進制解碼器</h3>
+<p>這個部件會把二進制轉換成十進制輸出。它的尺寸會是(二進制輸入*2)*(十進制輸出)<br>
+*快速筆記* 它用於一個 "可編程的" 異或門 cane 傾向於一個非門.這樣會激活一行紅石火把輸出正確答案。
+</p>
+ 
+ 
+
+        
+
+
+<p><br/></p></div>
+</body>
+
+</html>

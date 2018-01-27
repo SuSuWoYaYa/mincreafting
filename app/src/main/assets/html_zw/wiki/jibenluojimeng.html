@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>基本邏輯門</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+</head>
+
+<body class="single single-post  single-format-standard">
+  
+
+
+    
+
+      
+
+        <!-- Start Article -->
+        
+
+          
+
+            <h1 class="title single-title">基本邏輯門</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+    <p> 邏輯門是一種使用紅石電路及紅石信號達到目標輸出的方法。它與計算機邏輯門原理相近。
+</p> <h2>基本信息</h2>
+<p>以下是一些要知道的基本的紅石電路和邏輯門信息：</p>
+<ul>
+<li>紅石電源有好幾種：拉桿、壓力板、紅石火把、紅石塊、探測鐵軌、陷阱箱、陽光傳感器、以及絆線鈎。</li>
+<li>開關最常用於邏輯門，因為它們易於製作及使用。</li>
+<li>當紅石火把有供電，它們反而會熄滅，並停止提供電源。</li>
+<li>紅石幾乎能放置在所有方塊上，除了玻璃、樹葉、仙人掌、TNT等。</li>
+<li>紅石能放置在熒石塊上，但紅石火把、紅石中繼器等不可以。</li></ul>
+<h2>關鍵圖</h2>
+<p>
+  <br/>
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng1.png" />
+
+</p><p>從左至右：</p>
+<ol>
+<li>空氣(空)</li>
+<li>開關(電源)</li>
+<li>方塊(通用)</li>
+<li>紅石火把(方塊側)</li>
+<li>紅石火把(地上)</li>
+<li>紅石火把(方塊上)</li>
+<li>紅石(地上)</li>
+<li>紅石(方塊上)</li>
+<li>紅石(輸出)</li>
+</ol>
+
+<h2>使用邏輯門</h2>
+<p>邏輯門可以非常複雜，但最簡單可以是開-開，關-關邏輯門。透過使用紅石火把的特性，你可以製作開-關，關-開或更高級的邏輯門。邏輯門更加能夠組合成計算機。</p>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng2.png" /><br/>
+最基本的邏輯門。當電源開著，則輸出開著。反之亦然
+</p>
+
+<h2>邏輯門例子</h2>
+ <p>  <b>非門</b></p> <p>非門(¬A)，亦稱逆變器，是一個電源與輸出的狀態相反的邏輯門。當電源開著，則輸出會關掉。反之亦然。</p>
+<table  style="text-align:center; color:black">
+<tr style="color:black">
+<th>電源</th>
+<th>輸出</th>
+</tr>
+<tr>
+<td>開</td>
+<td>關</td>
+</tr>
+<tr>
+<td>關</td>
+<td>開</td>
+</tr>
+</table>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng3.png" /><br/>最常用的非門，亦稱逆變器。</p>
+
+
+
+ <p>  <b>與門</b></p> 
+<p>與門(A∧B)，通常為擁有兩個或兩個以上電源的邏輯門。當所有電源開著時，輸出才會開著。</p>
+<table  style="text-align:center; color:black">
+<tr style="color:black">
+<th>電源1</th>
+<th>電源2</th>
+<th>輸出</th>
+</tr>
+<tr>
+<td>開</td>
+<td>開</td>
+<td>開</td>
+</tr>
+<tr>
+<td>開</td>
+<td>關</td>
+<td>關</td>
+</tr>
+<tr>
+<td>關</td>
+<td>開</td>
+<td>關</td>
+</tr>
+<tr>
+<td>關</td>
+<td>關</td>
+<td>關</td>
+</tr>
+</table>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng4.png" /><br/>常用的與門。</p>
+
+ <p>  <b>與非門</b></p> 
+<p>與非門(A↑B)是與門的相反。只有所有電源開著時，輸出才會關掉。</p>
+<table  style="text-align:center; color:black">
+<tr style="color:black">
+<th>電源1</th>
+<th>電源2</th>
+<th>輸出</th>
+</tr>
+<tr>
+<td>開</td>
+<td>開</td>
+<td>關</td>
+</tr>
+<tr>
+<td>開</td>
+<td>關</td>
+<td>開</td>
+</tr>
+<tr>
+<td>關</td>
+<td>開</td>
+<td>開</td>
+</tr>
+<tr>
+<td>關</td>
+<td>關</td>
+<td>開</td>
+</tr>
+</table>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng5.png" /><br/>常用的與非門。和與門相似</p>
+
+ <p>  <b>或門</b></p> 
+<p>或門(A∨B)和與非門相似。只要一個電源打開，輸出就會打開 。</p>
+<table  style="text-align:center; color:black">
+<tr style="color:black">
+<th>電源1</th>
+<th>電源2</th>
+<th>輸出</th>
+</tr>
+<tr>
+<td>開</td>
+<td>開</td>
+<td>開</td>
+</tr>
+<tr>
+<td>開</td>
+<td>關</td>
+<td>開</td>
+</tr>
+<tr>
+<td>關</td>
+<td>開</td>
+<td>開</td>
+</tr>
+<tr>
+<td>關</td>
+<td>關</td>
+<td>關</td>
+</tr>
+</table>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng6.png" /><br/>簡單的或門。</p>
+
+
+ <p>  <b>或非門</b></p> <p> <p>或非門(A↓B)是或門的相反。只要一個電源開著，輸出就會關著。</p>
+<table  style="text-align:center; color:black">
+<tr style="color:black">
+<th>電源1</th>
+<th>電源2</th>
+<th>輸出</th>
+</tr>
+<tr>
+<td>開</td>
+<td>開</td>
+<td>關</td>
+</tr>
+<tr>
+<td>開</td>
+<td>關</td>
+<td>關</td>
+</tr>
+<tr>
+<td>關</td>
+<td>開</td>
+<td>關</td>
+</tr>
+<tr>
+<td>關</td>
+<td>關</td>
+<td>開</td>
+</tr>
+</table>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng7.png" /><br/>簡單的或非門，與或門相似。</p>
+
+
+ <p>  <b>異或門</b></p> 
+<p>異或門(A⊕B)是擁有兩個電源的邏輯門。只有其中一個電源開著時，輸出才會開著。</p>
+<table style="text-align:center; color:black">
+<tr style="color:black">
+<th>電源1</th>
+<th>電源2</th>
+<th>輸出</th>
+</tr>
+<tr>
+<td>開</td>
+<td>開</td>
+<td>關</td>
+</tr>
+<tr>
+<td>開</td>
+<td>關</td>
+<td>開</td>
+</tr>
+<tr>
+<td>關</td>
+<td>開</td>
+<td>開</td>
+</tr>
+<tr>
+<td>關</td>
+<td>關</td>
+<td>關</td>
+</tr>
+</table>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng8.png" /><br/>常用的異或門。</p>
+
+ <p>  <b>同或門</b></p> 
+<p>同或門(A⊙B)是異或門的相反。只有其中一個電源開著時，輸出才會關掉。</p>
+<table  style="text-align:center; color:black">
+<tr style="color:black">
+<th>電源1</th>
+<th>電源2</th>
+<th>輸出</th>
+</tr>
+<tr>
+<td>開</td>
+<td>開</td>
+<td>開</td>
+</tr>
+<tr>
+<td>開</td>
+<td>關</td>
+<td>關</td>
+</tr>
+<tr>
+<td>關</td>
+<td>開</td>
+<td>關</td>
+</tr>
+<tr>
+<td>關</td>
+<td>關</td>
+<td>開</td>
+</tr>
+</table>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng9.png" /><br/>常用的同或門，與異或門相似。</p>
+
+<h2>二極管</h2>
+
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng10.png" /><br/>使用了紅石中繼器，兩條電路相交時並不受干擾。</p>
+  <p>二極管阻止電流在電路中倒流。<br />
+  當需要隔離輸入線以避免反饋，或是從兩個輸入合併為一個(如在上述「或門」)，這二極管顯得非常有用。<br />
+  二極管通常可分為三種形態：佔一個空間的紅石中繼器 延時 1 至 4 個刻度；佔三個空間的紅石火把中繼器(也稱為經典或傳統中繼器)延時 2 個刻度，與及佔兩個空間的熒石<二極管不會延時。</p>
+ <p>  <b>紅石中繼器</b></p> 
+<p>基於紅石中繼器的二極管製作是最簡單方便的，只需將一個紅石中繼器垂直放置在紅石電路即可。<br />
+此二極管電路完成後有 1 個刻度的延時，並可調至最多延時 4 個刻度。<br />
+右圖示範了這種簡單的架構。</p>
+ <p>  <b>紅石火把中繼器</b></p> 
+<p>紅石火把中繼器可以很有效地製作二極管(但它有兩個刻度的延時作為沈重代價)<br />
+因應紅石火把的特性：單方向的信號(火把底部連接點若有能量，火把將會熄滅)，兩個紅石火把組合形成兩道「非門」，產生出二極管的效果。<br />
+此設計還可以把間隔加寬許多，從而允許比中繼器更低的成本傳送距離更遠的範圍。<br />
+製作方法是兩道「非門」，每道「非門」都需要一個固體方塊(不是玻璃，熒石，樹葉等)連接一個紅石火把。<br />
+在靠近電路輸入的「非門」，紅石火把放置在固體方塊的頂部；而靠近電路輸出的「非門」，紅石火把放置在固體方塊的側面。<br />
+第二個紅石火把因為受到第一個火把產生的電流影響而初始熄滅(但將會有一次短暫的脈衝，小心！)。<br />
+若有需要，兩個「非門」之間可以放置紅石粉延長電路(最多15個空間)。</p>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng11.png" /><br/>一個傳統中繼器的設計圖.</p>
+
+ <p>  <b>熒石、樓梯和台階</b></p> 
+<p>熒石、樓梯和台階在紅石電路中皆能夠發揮出功用，這是由於它們在能量傳送時都一些奇妙的特性：<br /></p>
+<ul>
+<li>允許能量經過其底部或邊頂部的邊緣(見下文垂直電路連接)。<br /></li>
+<li>允許在其表面(頂部)放置紅石粉連接其他電路。<br /></li>
+<li><b>不</b>允許能量從他的表面傳送到它的底部。<br /></li>
+</ul>
+<p><br />
+這最後一個特性是最常用的，運用此特性可以構造一個二極管。<br />
+在同一水平的位置，把紅石粉放置到這些非固體方塊的頂部，跨越到一個固體方塊，然後回落(見圖)，便可創建一個沒有延時的二極管，能夠在高度靈敏的紅石電路中防止能源方向反饋。<br />
+<br />
+同樣的功能還允許 寬度1空間、深度2空間，沒有延時的垂直紅石連接。<br /></p>
+<p> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng12.png" /><br/>用熒石做的二極管.</p>
+  <p> 
+    <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng13.png" /><br/>不同情況的例子.</p>
+    <p> 
+      <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/jibenluojimeng14.png" /><br/>用台階做的垂直紅石連接.</p>
+
+        
+
+<p><br/></p></div></body>
+
+</html>

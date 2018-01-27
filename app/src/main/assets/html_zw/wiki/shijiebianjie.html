@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>世界邊界</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">世界邊界</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        <p class="say">
+      <i> 該文章是關於可自定義的世界邊界的。關於可遊玩世界的硬性界限，請參閱世界界限。關於Beta 1.8之前可見的一種現象，請參閱邊境之地。
+		</i></p>
+		<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/shijiebianjie1.gif" />
+<br />
+ 世界邊界(World border)是Minecraft世界的當前定義邊界。
+		<br />版本1.8: 
+首次出現
+</p>		
+     
+ <h2>外觀</h2>
+     <p>   世界邊界由一種動態的、相互平行的對角線密集排列而成。當世界邊界處於靜止狀態時，這些斜線顯示為半透明的亮藍色；若邊界正在擴展，則斜線會變成綠色；若邊界正在收縮，則斜線會變成紅色。
+</p>
+ <p><b>大小  </b></p> 
+   <p>   世界邊界本質上是一個巨大的邊界框。在默認設置下，世界邊界的中心位於坐標x=0, z=0處，長度和寬度約為三千萬(29,999,984)方格。世界邊界的視覺效果在Y=1以下及Y=256以上便會消失，但其造成的效果在高度約Y=2^31-1(21.47億，2,147,483,647)處才會消失。
+
+</p>     <p>   使用命令可以修改世界邊界的大小及位置。世界邊界的改變永遠以1方格為最小單位，無論數據中是否有小數點。默認情況下的世界邊界基於坐標軸對稱。
+</p>  
+ <h2>效果</h2>
+ <p><b> 對於實體 </b></p> 
+     <p>   大部分實體(某些彈射物為例外)無法移動至世界邊界之外。
+</p>     <p>   
+若發射器和投擲器的出口直接緊挨世界邊界，則物品、彈射物、TNT等均可被發射至世界邊界之外。所有被發射器發射的物品均會懸浮在半空中；若物品是從玩家的物品欄中掉落的，則會正常落地。
+</p>     <p>   
+若使用發射器發射刷怪蛋在世界邊界之外生成生物，則該生物表現正常。蜘蛛可以攀爬世界邊界，而末影人可以傳送出界外。
+</p>     <p>   
+所有位於世界邊界之外的玩家(除創造模式和旁觀模式外)都會受到持續傷害。
+</p>     <p>   
+雖然玩家無法直接走過世界邊界，但可以通過其他方式越過，包括：
+</p>
+<ul><li>
+
+讓正在收縮的世界邊界越過自身
+</li><li>往世界邊界以外投擲末影珍珠
+</li><li>騎乘礦車、船、馬和豬
+</li><li>在邊界的北角、西角離開騎乘物
+</li><li>使用諸如/tp等命令
+</li><li>貼近世界邊界處睡覺</li></ul>
+ <p><b>  對於方塊</b></p> 
+     <p> 玩家無法正常放置和破壞世界邊界之外的方塊，也無法和邊界外的對象進行互動，因為不會顯示其碰撞箱。但如果要在邊界外放置方塊，仍然是可以做到的，因為可以通過對邊界內方塊的側面放置方塊、或者通過命令來實現。
+</p>     <p> 
+大多數方塊在世界邊界外仍然能正常工作，大多數紅石結構也可以正常運行。例外情況包括正在下落的方塊(譬如沙子和沙礫)，它們會掉落成物品；活塞和粘性活塞會停止工作，TNT和其它來源的爆炸會正常工作，改變世界邊界外的地形。火把和其它來源的光不會受到影響。
+</p>     <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/shijiebianjie2.png" />
+<br />
+源頭放置在世界邊界之內的液體可以流出邊界外。
+</p>     <p> 液體可以流出世界邊界之外，直至達到其流動限制。液體無法放置於世界邊界之外。[1]通過發射器放置在邊界外的液體會正常流動。使用發射器在邊界外混合水和熔岩會導致流動的液體直接截斷消失，這可能是因為本應生成的石頭、圓石或黑曜石無法在邊界外生成。
+</p> 
+
+
+ <h2>命令</h2>
+ <p>以下命令中，大小、距離以方格為單位，時間以秒為單位。
+</p>
+<p><b>設置邊界大小</b></p>
+<p><code  >/worldborder  set &lt;大小&gt; [過渡時間]</code></p>
+<p>將世界邊界設置為正方形區域，長度和寬度為制定的<i>大小</i>值。<i>過渡時間</i>為可選項，可指定世界邊界從舊邊界過渡到新邊界所持續的時間。若未指定<i>過渡時間</i>，則世界邊界的變化會瞬間完成。要重置世界邊界大小為默認值，將<i>大小</i>設為29999984。在遊戲暫停時世界邊界仍會繼續變化，邊界的動態外觀仍會持續。</p>
+<p><b>設置邊界中心</b></p>
+<p><code  >/worldborder  center &lt;x&gt; &lt;z&gt;</code></p>
+<p>將世界邊界的中心設置為坐標<i>&lt;x&gt; &lt;z&gt;</i>處。可使用相對坐標(波浪號<code>~</code>)。要重置邊界中心為默認值，將<i>&lt;x&gt; &lt;z&gt;</i>均設為0。</p>
+<p><b>改變邊界大小</b></p>
+<p><code  >/worldborder  add &lt;改變量&gt; [過渡時間]</code></p>
+<p>將當前的世界邊界長度和寬度同時增加或縮減<i>改變量</i>。<i>改變量</i>可以為正數或負數。<i>過渡時間</i>為可選項，可指定世界邊界從舊邊界過渡到新邊界所持續的時間。</p>
+<p><b>設置邊界傷害</b></p>
+<p><code  >/worldborder  damage buffer &lt;距離&gt;</code></p>
+<p>設置玩家越過世界邊界後仍不受傷害的安全緩衝距離。默認為5方格。</p>
+<p><code  >/worldborder  damage amount &lt;每方格傷害量&gt;</code></p>
+<p>設置玩家在世界邊界緩衝區外超出每方格每秒所受到的傷害量。默認為每方格每秒0.2。</p>
+<p><b>設置邊界接近警告</b></p>
+<p><code  >/worldborder  warning time &lt;提前時間&gt;</code></p>
+<p>當正在收縮的世界邊界預計在指定時間內達到玩家所在位置時，將玩家的屏幕染紅作為警告。默認提前時間為15秒。若玩家的圖像品質設為「流暢」，則屏幕不會泛紅。</p>
+<p><code  >/worldborder  warning distance &lt;警告距離&gt;</code></p>
+<p>當玩家與世界邊界的距離小於警告距離時，將玩家的屏幕染紅作為警告。默認警告距離為5方格。若玩家的圖像品質設為「流暢」，則屏幕不會泛紅。</p>
+<p><b>獲取當前邊界大小</b></p>
+<p><code  >/worldborder  get</code></p>
+<p>返回世界邊界的當前長寬。</p>
+
+
+<h2>你知道嗎</h2>
+     <p>   世界邊界的默認範圍為X/Z ±29,999,984的原因是Dinnerbone為了避免玩家掉到世界外而預留了1個區塊(16方格)的空間
+</p> 
+
+
+<h2>畫廊</h2>
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/shijiebianjie3.png" />
+<br />
+世界邊界外沒有碰撞箱。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/shijiebianjie4.png" />
+<br />
+由於目前存在的漏洞，液體可以放置在世界邊界以外，但不會流動。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/shijiebianjie5.png" />
+<br />
+生物和物品會懸浮在世界邊界以外。
+ 
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/shijiebianjie6.png" />
+<br />
+因世界邊界傷害死亡的玩家的死亡消息為「[玩家]在牆里窒息而亡」。
+ </p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/shijiebianjie7.png" />
+<br />
+方塊可以放在世界邊界的兩側。
+  </p>
+ 
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

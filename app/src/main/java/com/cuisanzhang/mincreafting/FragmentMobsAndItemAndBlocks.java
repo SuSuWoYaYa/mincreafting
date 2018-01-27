@@ -83,85 +83,85 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                 switch (v.getId()) {
                     case R.id.layout_btn_boss:
                         tableName = MyDatabaseHelper.TABLE_MOBS_BOSS;
-                        category = "BOSS";
+                        category = getString(R.string.boss);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_hostile:
                         tableName =  MyDatabaseHelper.TABLE_MOBS_HOSTILE;
-                        category =  "攻击型生物";
+                        category =  getString(R.string.gongjixingshengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_neutral:
                         tableName = MyDatabaseHelper.TABLE_MOBS_NEUTRAL;
-                        category =  "中立型生物";
+                        category =  getString(R.string.zhonglixingshengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_passive:
                         tableName = MyDatabaseHelper.TABLE_MOBS_PASSIVE;
-                        category = "被动型生物";
+                        category = getString(R.string.beidongxingshengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_tameable:
                         tableName = MyDatabaseHelper.TABLE_MOBS_TAMEABLE;
-                        category =  "可驯服生物";
+                        category =  getString(R.string.kexunfushengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_utility:
                         tableName = MyDatabaseHelper.TABLE_MOBS_UTILITY;
-                        category = "效用型生物";
+                        category = getString(R.string.xiaoyongxingshengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_other_mobs:
                         tableName = MyDatabaseHelper.TABLE_MOBS_UNUSE;
-                        category = "其他的生物";
+                        category = getString(R.string.qitashengwu);
                         loading= R.drawable.loading_of_mobs;
                         break;
 
 
                     case R.id.layout_btn_food:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_FOOD;
-                        category = "食物类物品";
+                        category = getString(R.string.shiwuleiwuping);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
                     case R.id.layout_btn_plants:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_PLANTS;
-                        category = "植物类物品";
+                        category = getString(R.string.zhiwuleiwuping);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
                     case R.id.layout_btn_materials:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_MATERIALS;
-                        category = "材料类物品";
+                        category = getString(R.string.cailiaoleiwuping);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
                     case R.id.layout_btn_natural:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_NATURAL;
-                        category = "自然生成方块";
+                        category = getString(R.string.zhirangshengchengfankuai);
                         loading= R.drawable.loading_of_wuping;
                         break;
                     case R.id.layout_btn_structures:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_STRUCTURES;
-                        category = "结构方块";
+                        category = getString(R.string.jiegoufangkuai);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
                     case R.id.layout_btn_commands:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_COMMANDS;
-                        category = "命令类方块";
+                        category = getString(R.string.minglingleifankuai);
                         loading= R.drawable.loading_of_wuping;
                         break;
                     case R.id.layout_btn_other_block:
                         tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_OTHERS;
-                        category = "其他物品";
+                        category = getString(R.string.qitawuping);
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;
 
                     default:
                         tableName = MyDatabaseHelper.TABLE_MOBS_BOSS;
-                        category = "BOSS";
+                        category = getString(R.string.boss);
                         loading= R.drawable.loading_of_mobs;
                         break;
                 }

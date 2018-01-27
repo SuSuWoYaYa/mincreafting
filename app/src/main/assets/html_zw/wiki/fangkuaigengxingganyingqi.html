@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>方塊更新感應器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+</head>
+
+<body class="single single-post  single-format-standard">
+  
+
+
+    
+
+      
+
+        <!-- Start Article -->
+        
+
+          
+
+            <h1 class="title single-title">方塊更新感應器</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+
+            <p>方塊更新感應器(<b>B</b>lock <b>U</b>pdate <b>D</b>etector)，英文縮寫為<b>BUD</b>，是一種利用遊戲中方塊的更新範圍不同來檢測附近方塊更新的紅石設備。有很多種方塊更新感應器的設計方案，它們都基於同一思想：將紅石電路置於一種本應不穩定的狀態,但是因為一些本應影響電路穩定的方塊並沒有對電路的變化產生反應，從而使整個電路保持穩定狀態。這些「懶惰」的方塊就將充當「傳感器」的作用。當相臨方塊處於某種原因改變了狀態時,這個(相鄰的發生變化的)方塊將發送一個信號來「喚醒」傳感器方塊。這個電路就將表現出其他動作，然後回歸「沈睡」。</p>
+            <p>這個方法最早被Cored發現。 之後被Etho公佈並被很多玩家共同發展。</p>
+
+<h2>檢測項</h2>
+<p>方塊更新檢測器可以檢測方塊ID或附加值的更改 當以下事件在方塊更新感應器的傳感方塊旁發生時，可以被方塊更新感應器所感應到：</p>
+<ul>
+<li>放置方塊</li>
+<li>破壞方塊</li>
+<li>水或熔岩的重新計算流向</li>
+<li>霜冰、冰的形成或融化</li>
+<li>沙礫或沙子落到地面</li>
+<li>被活塞移動的方塊,還有活塞本身的移動。</li>
+<li>末影人拾取和放置方塊</li>
+<li>樹苗長成樹木</li>
+<li>蘑菇長成巨型蘑菇</li>
+<li>植物的生長,包括:小麥、蘑菇、馬鈴薯、 蘑菇、甘蔗、花、草叢、仙人掌、南瓜、西瓜。(可可豆、南瓜梗、西瓜梗等除外)</li>
+<li>樹葉的生長或枯萎</li>
+<li>草的生長或死亡</li>
+<li>泥土變成耕地,耕地變得濕潤,耕地重新成為泥土(但是這可以用充能的方法更簡單地檢測到)</li>
+<li>火的點燃或熄滅</li>
+<li>紅石礦石開始或停止發光</li>
+<li>紅石線或紅石火把狀態的改變(包括充能等級，但不包括改變指向)，紅石設備的激活</li>
+<li>設置紅石中繼器的延時</li>
+<li>熔爐開始或停止熔煉</li>
+<li>鐵軌改變方向</li>
+<li>TNT被點燃並成為實體</li>
+<li>蠹蟲鑽進方塊</li>
+<li>草方塊變為草徑</li>
+<li>蛋糕被食用</li>
+<li>打開或關上箱子或陷阱箱</li>
+<li>在柵欄上套上拴繩</li>
+</ul>
+<p>方塊與方塊的狀態改變將不會檢測到(他們當中的一些可以被CUD或偵測器檢測到)包括：</p>
+
+<ul>
+<li>藤蔓、瓜梗、地獄疣、可可豆、紫頌植物的生長</li>
+<li>羊「吃」草</li>
+<li>龍蛋在傳送時替換空氣方塊</li>
+<li>打開或關閉門、活板門或柵欄門</li>
+<li>從唱片機中插入或移除音樂唱片</li>
+<li>將末影之眼置入末地傳送門框架</li>
+<li>樹的自然生長(使用骨粉使樹生長可以被檢測)</li>
+<li>煉藥鍋水位的變化</li>
+<li>打開或關閉末影箱、潛影盒</li>
+<li>在釀造台上放置玻璃瓶</li>
+<li>鐵砧被輕微損壞或嚴重損壞</li>
+<li>紅石比較器從比較模式向減法模式切換(這僅發生在沒有側向輸入時)</li>
+<li>改變雪層的厚度</li>
+<li>容器內容物的改變</li>
+</ul>
+
+<h2>方塊更新感應器的種類</h2>
+ <p>  <b>遊戲內置</b></p> 
+<p>偵測器是在1.11的16w39a快照中加入的內置方塊更新檢測器，但是要注意這種方塊更新檢測器與常規方塊更新檢測器的檢測方式並不相同，因此檢測內容也不完全吻合。</p>
+ <p>  <b>水型方塊更新感應器</b></p> 
+<p>(1.9以後已失效) 把冰放在空中，確保周圍沒有其他方塊，用光源融化冰，形成靜態水，周圍方塊一旦有更新，就會出現水流，但是這種BUD很難復位。</p>
+ <p>  <b>活塞BUD位充能</b></p> 
+ <p>  <b>活塞BUD位充能型單穩態BUD</b></p> 
+<p>有很多方塊更新感應器設計方案都是基於活塞被供電因而未傳遞給方塊更新信號。活塞如若在受到信號時並沒有接收到方塊更新信號，那麼它就會進入BUD態 在這種設計中,活塞只會在旁邊方塊更新時伸長,但是當伸長後又會因為活塞臂注意到其旁邊的紅石中繼器被關閉而立即縮回。這是活塞型方塊更新感應器重置的方法:通過對伸長的活塞臂旁邊的電路的變化。 這個設計方案可以拓展為多傳感器，所有的活塞都被設計為傳感器。</p>
+<p>
+
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi1.png" />
+  <br/>
+  一個活塞型方塊更新感應器陣列,有著多個傳感器。所有活塞都是粘性活塞。
+  <br/><br/>
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi2.png" />
+  <br/>
+一個簡單的利用粘性活塞的方塊更新感應器。
+</p>
+<p>利用1.8之後的粘液塊我們可以製作一些BUD，一般把利用了粘液塊的BUD叫做粘液塊BUD<br />
+由於紅石塊處於活塞的BUD位，所以這個機械構成一個單穩態活塞BUD。</p>
+
+ <p>  <b>活塞BUD位充能型雙穩態BUD</b></p> 
+<p>通過移除一個方塊更新感應器的復位裝置，這個方塊更新感應器就可以成為雙穩態方塊更新感應器。這個設備有著<i>兩種</i>可以通過方塊更新來切換的穩定狀態。因此成為「雙穩態BUD」這相當於與T觸發器相連的普通方塊更新感應器。這種方塊更新感應器在檢測熔爐、草/泥土和床的狀態時十分有用。</p>
+<p>
+
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi3.png" />
+  <br/>
+  雙穩態方塊更新感應器在第一個狀態
+  <br/><br/>
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi4.png" />
+  <br/>
+雙穩態方塊更新感應器在第二個狀態
+</p>
+
+ <p>  <b>滿足活塞推出條件但並不給活塞更新信號</b></p> 
+<p>如若將本不滿足推出條件的活塞滿足條件，並且不給予活塞方塊更新信號，那麼活塞將進入BUD態。 下一個設計方案是基於伸長的活塞並不能被其他活塞推動的事實。當活塞縮回時，它並不會激活其他試圖推它的活塞。附加著一個方塊的粘性活塞是傳感器。這種方塊更新感應器的優點在於節約，並且其利用的遊戲特性不太可能在未來被改變。</p>
+<p>中繼器延時為2刻。</p>
+<p>
+
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi5.png" />
+  <br/>
+  一個「卡住的活塞」型方塊更新感應器，後面的活塞是粘性活塞。
+  <br/><br/>
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi6.png" />
+  <br/>
+從前面看。
+</p>
+
+
+ <p>  <b>紅石導線指向BUG</b></p> 
+<p>利用紅石導線改變並不產生方塊更新信號的BUG，我們可以製作方塊更新感應器</p>
+
+
+ <p>  <b>充能鐵軌型方塊更新感應器</b></p> 
+<p>
+  與活塞型相似,充能鐵軌可以通過上方的一格空間被供電,但是在以這種方法供電時，並不能被正確地更新。與探測鐵軌和礦車相組合,這就可以被用來製作下方的這種方塊更新感應器。 所有的充能鐵軌都可以作為傳感器。 這種設計最短可以至單個充能鐵軌，最長可以延伸至14個充能鐵軌。
+</p>
+<p>
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi7.png" />
+  <br/>
+基於一個充能鐵軌漏洞的方塊更新感應器陣列。注意在探測鐵軌下方的方塊上附著一個用來給最左邊的石頭充能的紅石火把。礦車下方同樣有一個充能鐵軌。
+ </p> <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi8.png" />
+<br/>單傳感器充能鐵軌型方塊更新感應器
+ </p> <p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi9.png" />
+<br/>14傳感器充能鐵軌型方塊更新感應器
+</p>
+
+ <p>  <b>探測鐵軌型方塊更新感應器</b></p> 
+<p>
+  可以通過探測鐵軌和礦車來建造一個方塊更新感應器。下面是一個例子。
+</p>
+<p>
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi10.png" />
+  <br/>右側活塞感應方塊更新。礦車下方是一個探測鐵軌
+</p>
+
+
+ <p>  <b>基於紅石火把</b></p> 
+<p>
+  在14w25a(修復了MC-56541)以後，一個燒毀的紅石火把 可以用於製作BUD。一旦火把燒毀，紅石火把會在方塊更新下重新點亮。這是最小且最簡單的BUD只需要一支紅石火把和紅石線 (再加上兩個中繼器即可成為一個固態的信號輸出。)
+ <br/> 
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi11.png" />
+  <br/>一個燒毀的火把BUD和一個固態輸出。</p>
+  <p>
+    一支在方塊側面的紅石火把，然後放置紅石線，使紅石信號循環，它自身也就是一個BUD。紅石火把周圍 (包括上下兩面)是檢測區域，但紅石線不是。這支紅石火把會閃爍16 ticks，它最後會燒毀(熄滅)。它會冷卻(熄滅)56 ticks。它不能檢測被使用的床。
+   <br/>
+  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/fangkuaigengxingganyingqi12.png" />
+ </p>
+
+      
+
+<p><br/></p></div></body>
+
+</html>

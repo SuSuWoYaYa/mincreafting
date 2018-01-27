@@ -146,9 +146,9 @@ public class ActivityTutorialList extends AppCompatActivity {
     private void showAboutImageDialog() {
 //        Log.e("ActivityTutorialList", "getApplicationContext="+getApplicationContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityTutorialList.this, R.style.AlertDialog);
-        builder.setTitle("关于教程图片");
-        builder.setMessage("教程是离线的\n但是图片是在线的\n请注意流量\n所有的教程图片超过了500M");
-        builder.setPositiveButton("确定", null);
+        builder.setTitle(R.string.about_tutorial);
+        builder.setMessage(R.string.aout_turorial_message);
+        builder.setPositiveButton(R.string.queding, null);
         builder.show();
     }
 

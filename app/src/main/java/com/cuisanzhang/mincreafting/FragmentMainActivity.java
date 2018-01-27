@@ -6,10 +6,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.PaintDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -19,6 +23,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -30,8 +35,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -80,6 +88,10 @@ public class FragmentMainActivity extends AppCompatActivity {
     private TextView textViewSelectColor = null;
     private boolean changeMainBackgroup = true;
     private boolean changeTitleBackgroup = true;
+
+    private RadioGroup radioGroup;
+    private RadioButton radio_btn_zh;
+    private RadioButton radio_btn_zw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,12 +146,16 @@ public class FragmentMainActivity extends AppCompatActivity {
                     case R.id.menu_about:
                         showAboutDialog();
                         break;
+                    case R.id.menu_changelanguage:
+                        showChangeLanguageDialog();
+                        break;
                 }
 
                 mDrawerLayout.closeDrawers();
 
                 return true;
             }
+
         });
         //显示他本身的颜色
         mNavigationView.setItemIconTintList(null);
@@ -444,9 +460,9 @@ public class FragmentMainActivity extends AppCompatActivity {
 
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
-        builder.setTitle("关于 Mincreafting");
-        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft中文WIKI, 网易,网络以及网友的贡献");
-        builder.setPositiveButton("确定", null);
+        builder.setTitle(R.string.about_mincreafting);
+        builder.setMessage(R.string.about_mincreafting_message);
+        builder.setPositiveButton(R.string.queding, null);
         builder.show();
     }
 
@@ -458,11 +474,11 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
-        builder.setTitle("请输入你的昵称");
+        builder.setTitle(R.string.enter_name);
         builder.setView(settingNameView);
 //        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
-        builder.setNegativeButton("取消", null);
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.quxiao, null);
+        builder.setPositiveButton(R.string.queding, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 userName = editText_settingName.getText().toString();
@@ -524,13 +540,16 @@ public class FragmentMainActivity extends AppCompatActivity {
     }
 
     private void initProgressDialog() {
+
+        MyDatabaseHelper.initLanguageMessage(FragmentMainActivity.this);
+
         progressDialog = new ProgressDialog(FragmentMainActivity.this);
         progressDialog.setMax(MyDatabaseHelper.DATA_BASE_CATEGORYS.length);
         progressDialog.setProgress(0);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.setTitle("请稍等");
+        progressDialog.setTitle(getString(R.string.please_wait));
         progressDialog.setMessage("" +
-                "正在初始化数据库 ");
+                getString(R.string.init_datebase));
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -546,16 +565,74 @@ public class FragmentMainActivity extends AppCompatActivity {
 //                        progressDialog.getProgress();
 //                        progress +=1;
                     progressDialog.setProgress(progress);
-                    progressDialog.setMessage("正在初始化数据库\n" + MyDatabaseHelper.DATA_BASE_CATEGORYS[progress]);
+
+                    progressDialog.setMessage(getString(R.string.init_datebaseing) + MyDatabaseHelper.DATA_BASE_CATEGORYS[progress]);
                     break;
                 case 1:
                     progressDialog.dismiss();
                     break;
                 default:
-                    progressDialog.setMessage("出现未知错误");
+                    progressDialog.setMessage(getString(R.string.unknow_error));
                     break;
             }
             super.handleMessage(msg);
         }
+    }
+
+//    private  void setLanguage() {
+//        Resources resources = FragmentMainActivity.this.getResources();
+//        DisplayMetrics dm = resources.getDisplayMetrics();
+//        Configuration config = resources.getConfiguration();
+//        String locale = LanguageUtil.getLocaleLanguage(FragmentMainActivity.this);
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            config.setLocale(locale);
+//        } else {
+//            config.locale = locale;
+//        }
+//        resources.updateConfiguration(config, dm);
+//    }
+
+    private void showChangeLanguageDialog() {
+
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View changelanguageView = inflater.inflate(R.layout.changelanguage_layout, null);
+
+
+        radioGroup = (RadioGroup) changelanguageView.findViewById(R.id.radiogroup_changelanguage);
+//        radio_btn_zh = (RadioButton) changelanguageView.findViewById(R.id.radio_btn_zh);
+//        radio_btn_zw = (RadioButton) changelanguageView.findViewById(R.id.radio_btn_zw);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId){
+                    case R.id.radio_btn_zh:
+                        LanguageUtil.setLocaleLanguage(FragmentMainActivity.this, LanguageUtil.SIMPLIFIED_CHINESE);
+                        break;
+                    case R.id.radio_btn_zw:
+                        LanguageUtil.setLocaleLanguage(FragmentMainActivity.this, LanguageUtil.TRADITIONAL_CHINESE);
+                        break;
+                    default:
+                        LanguageUtil.setLocaleLanguage(FragmentMainActivity.this, LanguageUtil.SIMPLIFIED_CHINESE);
+                        break;
+                }
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
+        builder.setTitle(R.string.changelanguage);
+        builder.setView(changelanguageView);
+//        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
+        builder.setNegativeButton(R.string.quxiao, null);
+        builder.setPositiveButton(R.string.queding, null);
+//        builder.setPositiveButton(R.string.queding, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                radio_btn_zh.isChecked();
+//            }
+//        });
+        builder.show();
+        return ;
     }
 }

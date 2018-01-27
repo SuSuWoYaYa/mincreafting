@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>製作資源包</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">製作資源包</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        <p class="red">此頁面的部分內容由於太久沒更新而已過期你可以幫助我們來更新此頁面</p>
+        <p>要製作資源包，首先前往 minecraft 文件夾。在 Windows 平台上，這個文件夾被叫作 .minecraft，它的位置在 AppData 文件夾，你可以前往開始菜單並鍵入&#160;%appdata%。在 Mac 平台上，它被叫作 minecraft，你可以在 Finder 打開這個文件夾，按下 Shift-Command-G 並輸入「~/Library/Application Support/minecraft」並輸入回車。在 Linux 上，它被叫作 .minecraft 並在您的根目錄(默認隱藏)中。你也可以通過打開選項進入那個文件夾，然後點擊 Resource Packs... 然後就打開了資源包文件夾。</p>
+<p>你進入到 minecraft 之後，就打開 <code>resourcepacks</code> 文件夾。為你的新資源包新建一個文件夾，把這個文件夾命名為新資源包的名稱。</p>
+<p>如果你對資源包的結構不夠瞭解，你可以參照一下現成的資源包，並看看遊戲主文件如<code>1.12.2.jar</code>中的內容，因為這些內容和資源包的結構比較相似</p>
+ <h2>pack.mcmeta</h2>
+<p>你需要的第一個文件是 <code>pack.mcmeta</code>。這個文件讓 Minecraft 知道這個文件夾是一個資源包，並允許你自定義遊戲里選擇資源包時顯示的說明。要創建你的 <code>pack.mcmeta</code> 文件，打開一個文字編輯器並粘貼下列行：</p>
+<pre>{
+   "pack":{
+      "pack_format":1,
+      "description":"<span style="color:red">My Resource Pack</span>"
+   }
+}
+</pre>
+<p><code>"pack_format"</code>在1.9以前的版本需要輸入<code>1</code>，1.9及1.10版本則需要輸入<code>2</code>，而1.11及以後的版本需要輸入<code>3</code>。</p>
+<p>你可以保留說明文字「My Resource Pack」不變，或者把它改成一些更令人興奮的文字。如果你確定你需要使用一些特殊字符，你可以使用該字符對應的Unicode字符編碼。也就是說，如果你想要使用Þ字符，那麼你就要在說明文字裡輸入<code>\u00DE</code>。確保你輸入的符號是反斜槓，而不是斜槓。</p>
+<p><b>注意</b></p>
+<p>請將文件存儲為<code>pack.mcmeta</code>格式，也就是修改版的JSON格式。我們現在不會把重點放在文件格式上，但請確保文件內容正確。<b>注意不要忘記引號、冒號、大括號或中括號。缺少任何一個都可能導致資源包無法正常運行。</b></p>
+
+<h2>pack.png</h2>
+<p>如果你想在資源包選擇界面中顯示自定義圖像，你可以製作一張128×128分辨率的 .png 文件，並重命名為 <code>pack.png</code>。它的位置與 <code>pack.mcmeta</code> 的一樣。</p>
+
+<h2>assets</h2>
+<p>下一步，你需要新建一個叫作 <code>assets</code> 的文件夾，並在這個文件夾內新建一個叫作 <code>minecraft</code> 的文件夾。裡面的 <code>minecraft</code> 文件夾是放置所有的自定義文件，製作你獨一無二的材質包的地方。</p>
+<p>現在你已經準備好自定義你想要的文件了。你不需要往裡面放任何東西，也不需要改變任何默認的東西，因為 Minecraft 會自動過濾資源包以便可以選擇它們。通常，下一個資源包就是默認的資源包。所以說，你希望所有東西都是相同的，除非你要把你的磚材質製作成紫色而不是紅色。你將會需要新建一張帶有紫色的磚的新圖像文件，但它需要與原始路徑的名稱和文件名相同。因此對於磚來說，你將要轉到 <code>minecraft</code> 裡面的 assets 文件夾，並新建一個叫作 <code>textures</code> 的文件夾。之後，你需要新建一個 <code>blocks</code> 文件夾，在裡面你就可以放置你的紫色磚圖像文件。確保這個文件的文件名為 <code>brick.png</code>。</p>
+<p>你可能想知道如何找到它們的名字，文件結構分布如何。如果你只是想作出一個細微的變化，而不是如何開始，如何尋找原始的材質文件。要做到這點，你不得不查看兩處地方，這取決於你要改變的文件的類型。</p>
+<p>如果你想自定義圖標、音樂、唱片或音效，前往第一個 <code>minecraft</code> 含有 <code>resourcepacks</code> 的文件夾。現在打開 <code>assets</code> 文件夾(這與你做的不同)。你應該看見被命名為 <code>icons</code>、<code>music</code>、<code>records</code> 和 <code>sounds</code> 的文件夾。在這些文件夾的裡面，你就會找到原始材質文件。如果你想要更新一個圖標，只需要複製那個圖標，然後前往你最近創建的 <code>minecraft</code> 文件，在裡面新建 <code>icon</code> 文件夾，並粘貼你的圖標文件進去。現在你可以打開這個文件並進行編輯了。這個文件仍然擁有正確的文件名和文件路徑。</p>
+<p>對於1.8及以上版本，你將會需要使用下面的音效目錄結構。<code>sounds</code> 文件夾必須要在 <code>minecraft</code> 文件夾中首先創建，並且 <code>music</code> 和 <code>records</code> 文件夾必須在 <code>sounds</code> 文件夾里創建。在 <code>music</code> 文件夾中，你將要創建 <code>game</code> 和 <code>menu</code> 文件夾。這些附加的文件夾可以讓你創建適當的附加音效類型，但這些文件應該要以你的方式放置好。要創建你的 ogg 文件，把它們的名字改為存在的音效的文件的文件名，然後放置它們到適當的文件夾，你可以把你的文件代替默認的文件。</p>
+<p>要尋找字體、語言、文字和材質文件，就需要做多一點的工作。回到第一個包含 <code>resourcepacks</code> 的 <code>minecraft</code> 文件夾，打開 <code>versions</code> 文件夾。你應該能看見文件夾裡面有當前的版本(例如 1.7.2)。使用壓縮軟件打開 1.7.2 jar，你將會看見一些列的 class 文件， 但在那裡你會找到另外一個含 <code>assets</code> 的 <code>minecraft</code> 文件夾。打開文件夾，你將會看見 <code>font</code>、<code>lang</code>、<code>texts</code> 和 <code>textures</code> 文件夾。你會再次找到裡面的默認文件，你可以複製你想要進行更改的文件到隱藏在 <code>resourcepack</code> 的 <code>minecraft</code> 文件夾。</p>
+<p>如果感覺這太混亂了，那麼看一個或兩個教學視頻可能會有幫助。你也可以下載一個你可以複製和修改的默認資源包，刪除所有你不需要的文件夾分支。那可能更簡單，取決於你要做什麼。</p>
+
+<h2>添加語言</h2>
+<p>你可以通過資源包向 <i>Minecraft</i> 添加新語言。假定你的語言代碼是「LANG」(可能是 ISO 639裡面的)，國家/地圖代碼為 「COUNTRY」(ISO 3166-1)。<code>pack.mcmeta</code> 看起來將會是這樣的：</p>
+<pre>{
+   "pack":{
+      "pack_format":1,
+      "description":"<span style="color:red">Resource pack sample</span>"
+   },
+   "language":{
+      "<span style="color:red">LANG_COUNTRY</span>":{
+         "name":"<span style="color:red">Language name</span>",
+         "region":"<span style="color:red">Country/region name</span>",
+         "bidirectional":false
+      }
+   }
+}
+</pre>
+<p>然後，放置 <code>LANG_COUNTRY.lang</code> 到 <code>assets/minecraft/lang</code>里。在遊戲里，選擇你的資源包，然後打開語言選擇屏幕，你的新語言將會出現在哪裡。請注意，<code>pack.mcmeta</code> 在 <code>assets/minecraft</code>，而不是在 <code>assets/minecraft/lang</code>里。另外也要注意上面的 <code>pack.mcmeta</code> 與之前儲存資源包元數據的 <code>pack.mcmeta</code> 是相同的。如果你已有 <code>pack.mcmeta</code> 文件，你必須更新它的信息以作為新語言。</p>
+<p><b>注意</b>：在1.7，你可以一次同時選擇多個資源包。如果你想使用1.6.4-1.6的資源包，你需要手動合併它們。因為在1.7之前，它們不能被同時選擇。</p>
+
+<h2>動態圖像屬性</h2>
+<pre>{ 
+   "animation":{
+      "width":1,
+      "height":7,
+      "interpolate": true,
+      "frametime":1,
+      "frames":[{
+         "index":0,
+         "time": 0
+         },
+         1,2,3,4,5,6,4,2]
+   }
+}
+</pre>
+<p><tt>width</tt> 和 <tt>height</tt> 是每一幀的尺寸(單位：像素)<tt>interpolate</tt>(true/false)決定了 Minecraft 是否在2幀內是否生成更多幀。<tt>frametime</tt> 是兩幀之間的默認延遲，為50毫秒。 <tt>frames</tt> 是幀列表，按照要播放的順序進行排列。<tt>index</tt> 和 <tt>time</tt> 都可被用來指定一個幀，這一幀比默認幀的時間間隔都不同。</p>
+<p><b>注</b>：如果你真的需要製作一個動態材質，使用下列代碼，這將會一幀一幀地播放。</p>
+<pre>{
+  "animation": {}
+}
+</pre>
+<p>保存文件，把文件名改成你想動畫化的材質文件的名稱(就像你想動畫化 <tt>stone.png</tt>，你應該保存它為 <tt>stone.png.mcmeta</tt>)。然後把這個文件放置到與材質相同的文件夾(或許是 <tt>stone.png</tt>)。</p>
+ 
+ <h2>材質屬性</h2>
+ <pre>{ 
+   "texture":{
+      "blur":false,
+      "clamp":true
+   }
+}
+</pre>
+<p>這個可選的部分可以通過對應的.png.mcmeta文件添加特殊的屬性到您的材質中。<tt>blur</tt>將允許材質啓用雙線性過濾,而<tt>clamp</tt>將防止材質出現可能的重復情況(通過設置shadow.png.mcmeta中的<tt>clamp</tt>屬性為false，這可以很容易地看出 - 一些生物下面會出現多個陰影。)</p>
+ 
+ <h2>字體</h2>
+ <p>字體的字符尺寸由最後一行含非零的 alpha 像素決定。這允許通過1級 alpha 等級添加一個顏色來添加額外的填充字符，<i>Minecraft</i> 會認為它是文字的一部分。</p>
+ 
+ <h2>把地圖和資源包一起打包</h2>
+ <p>要在單人遊戲世界里使用這個，你可以把你的資源包打包為一個名為「resources.zip」的 ZIP 文件，存放在你的世界目錄里。這會在遊玩單人遊戲世界時自動加載這個資源包。</p>
+  <h2>服務器資源包</h2>
+ <p>當完成資源包的製作時，如果你是服務器的管理，你可以設置它為多人遊戲服務器的默認資源包。</p>
+ 
+
+
+<p><br/></p></div>
+</body>
+
+</html>

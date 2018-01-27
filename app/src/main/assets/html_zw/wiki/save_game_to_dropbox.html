@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>將遊戲數據保存到 Dropbox 雲端</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">將遊戲數據保存到 Dropbox 雲端</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+                <p class="red"><b>該頁面的內容不受Mojang AB、Minecraft Wiki、Minecraft IRC頻道與Minecraft論壇的官方支持。</b></p>
+         
+        <p class="red"><b>警告</b><br/>因為這是 Wiki 的一個條目，可以在任何時間內被任何人編輯，因此建議你不要完全使用這個腳本，而是將其當作編寫腳本的指導手冊看待。</p>
+          
+         <p>該教程將會將會介紹如何把存檔移動到 Dropbox 上，以便可以讓你在多台計算機上遊玩這個存檔。</p>
+<p><i>警告：</i>你只能在一台計算機遊玩一次存檔，並且在別的計算機遊玩存檔之前必須允許 Dropbox 自動同步整個存檔文件夾。如果不這樣做，那麼你將會丟失你當前的進度，而且有可能會損壞你的存檔。</p>
+     
+
+<h2>下載和安裝 Dropbox</h2>
+<p>第一步就是下載 Dropbox。Dropbox 會自動同步服務器的內容，允許你在線或通過PC客戶端訪問這些內容。Dropbox 是跨平台的，再加上可以通過網頁或手機網頁進行訪問。</p>
+<p>前往http://www.dropbox.com，註冊一個免費賬戶，下載應用程序並安裝它。你會自動獲得2GB的免費雲存儲空間。</p>
+<p>安裝了 Dropbox 後，你需要知道 Dropbox 的文件夾位置：</p>
+<ul>
+<li>在 Windows XP 里，Dropbox 文件夾在用戶的「My Documents」文件夾里。引用該文件夾最簡單的方法就是使用環境變量，例如： <tt>"%HomeDrive%%HomePath%\My Documents\Dropbox"</tt>。因為「My Documents」含有空格，因此變量最前面和最後面的雙引號是必需的。</li>
+<li>在 Windows 7、8 和 10 里，默認 Dropbox 文件夾在 C:\Users\<i>用戶名</i>\Dropbox。使用環境變量 <tt>%HomeDrive%%HomePath%\Dropbox</tt>。</li>
+<li>在 Linux 里，默認位置在用戶的 home 文件夾。例如在 Ubuntu，其文件夾就在 ~/Dropbox</li>
+<li>在 Mac OS 里，其位置也應該在用戶的 home 文件夾。</li>
+</ul>
+<p>無論你使用哪個系統，Dropbox 都有對應的非常好的文檔，可以協助你查找幫助：http://www.dropbox.com/help</p>
+
+<h2>移動你的 Minecraft 存檔數據到你的 Dropbox 文件夾</h2>
+
+<p>下一步，我們將會需要複製你的 Minecraft 數據到 Dropbox 服務器，然後把原始數據重命名。
+<h3>Windows</h3>
+<p>在 Windows 上，你的 Minecraft 數據被保存在你的應用程序數據(AppData)文件夾里。你可以通過按下 Windows+R 或點擊開始菜單上面的運行，然後在運行文本框並輸入&#160;%AppData%\.minecraft。如果沒有打開文件夾，點擊資源管理器上面的<b>工具</b>菜單，點擊<b>視圖</b>標籤，在<b>高級設置</b>下面勾選「顯示隱藏的文件、文件夾和驅動器」。</p>
+<p>複製該文件夾的所有文件到你的 Dropbox 文件夾。為了方便，通常在 Dropbox 文件夾下面新建一個子文件夾，並命名為「Minecraft」。</p>
+<p>一旦這些文件被複製後，回到你的 AppData 文件夾，然後重命名文件夾為 .minecraft2(以「.」為首字符命名文件，Windows 可能會顯示一個錯誤信息並拒絕應用新名字。如果這發生了，請把文件夾命名為「.minecraft2.」，這將會把文件命名為「.minecraft2」。</p>
+<p>確保你已完成下列步驟：</p>
+<ol>
+<li>確保你的文件已經進行備份 。</li>
+<li>允許在稍後的一個步驟製作符號鏈接到正確的位置。</li>
+</ol>
+<h3>備選方法(命令行)</h3>
+<p><code>xcopy /I /E&#160;%AppData%\.minecraft&#160;%HomeDrive%%HomePath%\Dropbox\Minecraft<br />
+cd&#160;%AppData%<br />
+rename .minecraft .minecraft2</code><br />
+<b>注</b>：嘗試使用 <code>rename&#160;%AppData%\.minecraft&#160;%AppData%\.minecraft2</code> 將會顯示錯誤信息： <code>The syntax of the command is incorrect.</code>，應該要使用：<code>rename&#160;%AppData%\.minecraft .minecraft2</code></p>
+<h3>Mac OS X</h3>
+<p>在 Mac OS X 里，Minecraft 數據文件夾在你的 用戶名 &gt; Library &gt; Application Support 文件夾。你可以通過打開 Finder &gt; Go &gt; Go To Folder &gt; 然後輸入 <i>~/Library/Application Support/minecraft</i> 來快速到達這個文件夾。要在稍後的時候引用該文件夾，最好為該文件夾製作一個別名，然後複製它到你的桌面。注：Mountain Lion 隱藏在用戶的 Library 文件夾。按下 option 鍵然後就能在 GO 菜單中看見 Library 菜單。</p>
+<p>現在，複製存檔文件夾(~/Library/Application Support/minecraft/saves/)到你的 Minecraft 文件夾(~/Dropbox/Minecraft/)，除非你已經從 Windows 或 Linux 那裡保存了存檔。</p>
+<h3>備選方法(命令行)</h3>
+<p><code>mkdir ~/Dropbox/Minecraft/<br />
+cp -r ~/Library/Application\ Support/minecraft/saves ~/Dropbox/Minecraft/<br />
+mv ~/Library/Application\ Support/minecraft/saves ~/Library/Application\ Support/minecraft/saves.old</code></p>
+<h3>Linux</h3>
+<p>在 Linux 里，你的 Minecraft 數據文件夾位置在你的 user home 文件夾。然而，它可能隱藏在視圖里。如果你正在使用 GUI，確保已勾選 View &gt; Show Hidden Files。</p>
+<p>複製 .minecraft 文件夾到你的 Dropbox 文件夾。和之前提到的一樣，在 Dropbox 裡面新建一個「Minecraft」文件夾。</p>
+<p>一旦複製完成後，重命名 .minecraft 文件夾為 .minecraft2</p>
+<h3>備選方法(命令行)</h3>
+<p>打開 Terminal，並輸入：</p>
+<pre>cp -r ~/.minecraft ~/Dropbox/Minecraft
+mv ~/.minecraft ~/.minecraft2
+</pre>
+
+<h2>創建符號鏈接</h2>
+<p>這是允許我們連接到文件的在線版本的最後一步。</p>
+<h3>Windows</h3>
+<p>符號鏈接和快捷鍵類似，但是更強大。在 Windows 里， <b>mklink</b> 或 <b>junction</b> 命令會允許我們創建一個符號鏈接。</p>
+<p>打開命令提示符。在 Windows 7 和 8，你可以通過搜索「命令提示符」打開，右擊它並選擇「<b>以管理員身份運行</b>」。這樣做是必要的，即使你當前機器上使用的用戶是管理員用戶。否則，你將會接收到「<tt>你沒有足夠的權限來完成這個操作」的信息，那麼創建符號鏈接將會失敗。</tt></p>
+<h3>Windows Vista, 7 & 8</h3>
+<p><tt><b>警告：在 Vista 及之前的系統創建或刪除硬鏈接時要小心操作！</b>硬連接創造一個鏈接到文件數據的別名。在 Vista 或 XP 上刪除硬鏈接會刪除其關聯的數據。</tt></p>
+<p><tt><code>mklink /d "%AppData%\.minecraft" "%HomeDrive%%HomePath%\Dropbox\Minecraft"</code></tt></p>
+<p><tt>如果出現了一個錯誤<tt>不能創建已存在文件的文件</tt>，確保在&#160;%AppData% 的 .minecraft 文件夾已被刪除或重命名。<tt>mklink</tt>會嘗試新建一個叫作 <tt><b>.minecraft</b></tt> 的「文件夾」，不會替換存在相同名稱的文件或文件夾。</tt></p>
+<p><b>刪除一個硬鏈接</b></p>
+<p>在 Vista 或 XP 上使用下列命令斷開對該硬鏈接的鏈接：</p>
+<pre><i>fsutil reparsepoint delete &lt;path&gt;</i>
+</pre>
+<p>這將會移除鏈接，但是會留下一個相同名稱的空文件，然後你就可以安全的移除它了。(在刪除前確保文件夾是空的)</p>
+<p>在 Windows 7、8 和 10 你可以通過資源管理器安全地刪除一個硬鏈接。</p>
+<h3>Windows XP(安裝了 junction.exe 後)</h3>
+<p>如果正在運行 Windows XP，首先要從 SysInternals 下載 <b>junction.exe</b>，
+<br/>http://download.sysinternals.com/files/Junction.zip
+<br/>然後放置它到你的根目錄里以便開啓符號鏈接。</p>
+<p>打開命令提示符，輸入：</p>
+<p><code>junction "%AppData%\.minecraft" "%HomeDrive%%HomePath%\My Documents\Dropbox\Minecraft"</code></p>
+<p>如果成功，那麼 .minecraft 文件夾應該重新出現在 AppData 文件夾。之後，當你啓動 Minecraft 時，你就會擁有之前生成的所有世界！</p>
+
+<h3>Mac OS X</h3>
+<p>在 Mac OS X 創建符號鏈接是很容易的，這要感謝一個叫作 SymboliceLinker 的免費程序，它允許你通過在 Finder 右擊文件夾來創建一個符號鏈接。</p>
+<p>安裝該程序後，移動你的 Minecraft 文件夾(位於 <i>~/Library/Application Support/</i>)到你的 Dropbox 里。右擊該新文件夾並選擇 <i>Make symbolic link</i>。這將會在相同文件夾中創建依個符號鏈接。移動該文件夾到原本的位置里(確保它和原始文件夾名稱相同)，並且你已經拉取全部的遊戲數據到互聯網上。</p>
+<h3>備選方法(命令行)</h3>
+<p>打開 Terminal，並輸入：</p>
+<pre>ln -s ~/Dropbox/Minecraft/ ~/Library/Application\ Support/minecraft/saves
+</pre>
+
+<h3>Linux</h3>
+<p>要在 Linux 創建符號鏈接，打開 Terminal 並鍵入下列命令。</p>
+<pre>ln -s ~/Dropbox/Minecraft ~/.minecraft
+</pre>
+<p>現在，.minecraft 文件夾應該出現在你的 home 目錄，並且你在啓動 Minecraft 時會看見你保存的世界。</p>
+<p><i>要在其它電腦上遊玩這些存檔，你都需要執行這些步驟——安裝 Dropbox 以及創建符號鏈接。</i></p>
+
+
+
+<h2>備選方法</h2>
+<p>前往<a target="_self" class="external text" href="http://www.minecraftforum.net/topic/814010-100how-to-play-minecraft-off-your-usb-drive-any-computer-any-minecraft-version/">http://www.minecraftforum.net/topic/814010-100how-to-play-minecraft-off-your-usb-drive-any-computer-any-minecraft-version/</a>，並按照說明操作，但不用把「minecraft」文件夾放進可攜帶設備里，而是把它移動到你的 Dropbox 文件夾。你只需要在你遊玩之前運行 .bat 文件，然後就完成了！要安裝 Mod、資源包或地圖，你必須使用 Dropbox 文件夾裡面的 Mod 文件夾。</p>
+<h3>百度網盤</h3>
+<p>你可以通過http://pan.baidu.com 百度網盤來把遊戲數據上傳到雲端。只需要把整個.minecraft文件夾上傳即可，不用創建符號鏈接。</p>
+
+
+
+
+
+
+   
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

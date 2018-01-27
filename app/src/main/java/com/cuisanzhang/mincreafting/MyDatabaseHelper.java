@@ -45,6 +45,41 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
 
+	public static void initLanguageMessage (Context context){
+
+		DATA_BASE_CATEGORYS[0] = context.getString(R.string.yaoshuilei);
+		DATA_BASE_CATEGORYS[1] = context.getString(R.string.fumolei);
+		DATA_BASE_CATEGORYS[2] = context.getString(R.string.rangliaoleihecheng);
+		DATA_BASE_CATEGORYS[3] = context.getString(R.string.zhuangshileihecheng);
+		DATA_BASE_CATEGORYS[4] = context.getString(R.string.wuqileihecheng);
+
+		DATA_BASE_CATEGORYS[5] = context.getString(R.string.yunshuleihecheng);
+		DATA_BASE_CATEGORYS[6] = context.getString(R.string.gongjuleihecheng);
+		DATA_BASE_CATEGORYS[7] = context.getString(R.string.jianzhuleihecheng);
+		DATA_BASE_CATEGORYS[8] = context.getString(R.string.redstonehezhuanzhileihechen);
+
+		DATA_BASE_CATEGORYS[9] = context.getString(R.string.shiwuleihecheng);
+		DATA_BASE_CATEGORYS[10] = context.getString(R.string.zhaomingleihecheng);
+		DATA_BASE_CATEGORYS[11] = context.getString(R.string.kuangshileihecheng);
+		DATA_BASE_CATEGORYS[12] = context.getString(R.string.qitaleihecheng);
+		DATA_BASE_CATEGORYS[13] = context.getString(R.string.shaolianlei);
+
+		DATA_BASE_CATEGORYS[14] = context.getString(R.string.zhirangshengchengfankuai);
+		DATA_BASE_CATEGORYS[15] = context.getString(R.string.jiegoufangkuai);
+		DATA_BASE_CATEGORYS[16] = context.getString(R.string.minglingleifankuai);
+		DATA_BASE_CATEGORYS[17] = context.getString(R.string.shiwuleiwuping);
+		DATA_BASE_CATEGORYS[18] = context.getString(R.string.qitawuping);
+		DATA_BASE_CATEGORYS[19] = context.getString(R.string.cailiaoleiwuping);
+		DATA_BASE_CATEGORYS[20] = context.getString(R.string.zhiwuleiwuping);
+
+		DATA_BASE_CATEGORYS[21] = context.getString(R.string.boss);
+		DATA_BASE_CATEGORYS[22] = context.getString(R.string.gongjixingshengwu);
+		DATA_BASE_CATEGORYS[23] = context.getString(R.string.zhonglixingshengwu);
+		DATA_BASE_CATEGORYS[24] = context.getString(R.string.beidongxingshengwu);
+		DATA_BASE_CATEGORYS[25] = context.getString(R.string.kexunfushengwu);
+		DATA_BASE_CATEGORYS[26] = context.getString(R.string.xiaoyongxingshengwu);
+		DATA_BASE_CATEGORYS[27] = context.getString(R.string.qitashengwu);
+	}
 	//排序影响搜索结果,搜索从后搜到前
     //每个分类数据的类别,初始化数据库提示用
     public static final String[] DATA_BASE_CATEGORYS = {
@@ -83,7 +118,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "其他生物",
 
     };
-
 
 //	public static String jsonEnchant = "jsons/creating/enchant.json";
 

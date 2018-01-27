@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>活塞電路</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">活塞電路</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此頁面的部分內容由於太久沒更新而已過期</b>
+<br />
+你可以幫助我們來更新此頁面
+</p>
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> 
+<p class="red"><b>警告</b>
+<br />
+在依照本頁面上的所有步驟架設服務器之前，請注意如果您不清楚您自己在做什麼而運行服務端軟件，將會導致您的系統出現錯誤甚至出現崩潰。[1]
+       </p> 
+-->
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> 
+       
+<p>活塞 允許了玩家設計更小的，擁有比常規速度更快的與/或 門的(只用紅石的相應部分)的電路。對紅石電路有著正確的理解會對你很有幫助，因為這個教程集中在電路設計而不是它的功能。
+</p><p>活塞式電路有著三個優勢：
+
+<ul> 
+<li>中繼器和活塞都會像紅石火把一樣「燒毀」。</li>
+<li>活塞電路比它們對應的紅石部分更小。</li>
+<li>活塞電路用的材料找起來十分的簡單。</li></ul></p>
+ <p>活塞電路的主要部件是粘性活塞，紅石線，紅石中繼器和紅石火把。
+</p>
+<p>除非另有陳述，所有的活塞都應該是粘性活塞。
+</p>
+
+ 
+
+<h2>原理</h2>
+
+<p>
+ <b>能源與中繼器</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu1.png" />
+<br />最上面的兩行在工作，底部的不在工作。
+<br /><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu2.png" />
+<br />最有效率的長距離線路是18個方塊一記。
+</p>
+<p>對活塞有用的能量可以以多種形式來傳輸。首先要注意的是，這裡有兩種不同類型的方塊；透明的 和 固體的。透明方塊通常指的是和玻璃，半台階，或和空氣一個類型的方塊，同時固體方塊指的是更常見的材料，例如泥土，石頭或者羊毛。
+</p><p>
+紅石信號的關鍵是能夠穿過固體方塊來傳輸信號，但是不能穿過透明方塊來傳輸信號。然而，信號可以一次穿過一個固體方塊，它不能從一個固體方塊傳輸到另一個固體方塊中去。一個固體方塊只有在它是被"強力充能"(被一個紅石火把，紅石中繼器，或者紅石比較器，但是紅石線不行。)的情況下才可以向從其延伸的電線充能。 紅石粉可以被放置在某些透明方塊上，但是這樣放置的紅石粉只會向上傳輸信號，而不會向下傳輸(這就是因為紅石信號不能穿過透明方塊的原因)。
+</p><p>
+紅石火把只有在它們會在邏輯門使用之後改變狀態之時才會被考慮成一個邏輯部件。(否則它們只是一個信號供應器。)如果它們很頻繁的改變狀態的話，它們極易燒毀。如果一個固體方塊在一個紅石火把之上的話，任何連接到那個方塊的紅石線都會被充能。然而，如果那個方塊是一個透明方塊的話，紅石火把則不會幫紅石線充能。在創造模式中，因為紅石塊的出現，把紅石火把當做一個方塊的信號供應器是很不適用的，因為紅石塊是被永久充能的。不過它們更加的昂貴。
+</p><p>
+當一個紅石中繼器對著一個固體方塊時，它會用和紅石火把一樣的方式把信號傳遞進那個方塊。一個中繼器還可以從一個被充能的固體方塊中獲得信號，甚至是很弱的充能程度(這就是紅石中繼器可以把弱充能的信號轉換成一個更強的信號的功能)。然而信號不會通過透明方塊進行傳遞。
+</p><p>
+活塞會在被充能時伸縮，但是值得注意的是它們可以從在它們上面的方塊處接受信號——即使那個方塊是空氣，如果它能夠被充能，活塞也同樣會被充能。活塞還可以通過它們伸縮出的活塞部分來接受信號，這就產生了幾種廣泛在電路中使用的混雜模式。一個活塞在它伸縮的時候能夠給推動至多12個方塊；然而，一個粘性活塞縮回的時候只能拉回一個方塊。某些方塊能夠免疫被推動或拉動，尤其是黑曜石和任何帶有圖形用戶界面(GUI)或者儲存空間的方塊(除了工作台)。其他的方塊被活塞推動的時候會"蹦出來"然後掉落成為物品——這也包括了大部分"附加"在那個方塊上的方塊，例如任何種類的火把，或者門，但是也有一些其他的，例如南瓜燈。
+</p> 
+
+
+<h2>活塞門設計</h2>
+ <p>活塞可以衍生出能夠代替許多傳統的邏輯門的設計。活塞門也可以使用紅石火把來提供一個持續的信號來源，或者為了其他目的。</p> 
+
+
+<h3>非門/變頻器</h3>
+ <p><b>活塞非門</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu3.png" />
+<br />活塞非門，側面視角
+ </p>
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu4.png" />
+<br />活塞非門，俯視視角
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu5.png" />
+<br />使用紅石塊的一層高的版本
+</p><p>
+只用活塞的非門比常規的紅石非門要稍稍大一些，所以它很少被單獨使用。然而，它論證了使用在許多活塞機械中的一個重要的概念，即在固體方塊之下的紅石火把能夠在任何周圍的紅石線中產生一道信號電流。當一個輸入線路被觸發的時候，活塞伸縮，不再遮擋住有著紅石火把的坑，並且消除了從輸出線路來的信號。輸入線路可以為幾乎任何方向的活塞進行充能。非此即彼，一個紅石塊可以用於縮小這個設計。
+</p>
+
+<h3>或門</h3>
+<p><b>活塞或門</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu6.png" />
+<br />
+活塞或門。 火把在非固定方塊之下的一個坑里</p>
+<p>這個有可比性的設計比起常規的紅石或門稍稍快一些。它使用了一個從任意一條輸入線路充能伸縮後能夠覆蓋一個紅石火把的活塞。
+</p>
+
+<h3>與門</h3>
+<p><b>活塞與門</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu7.png" />
+<br />活塞與門。
+不固定方塊(不)遮蓋一個有著紅石粉的坑
+</p>
+<p>非常快速的與門。在停止充能的時候，粘性活塞會從坑上拉回方塊，阻斷整個電路。當充能後，它會伸縮，然後讓紅石電能流入/出那個坑。一條輸入線路為活塞提供能量，另外一條為活塞阻斷的電路部分提供能量，要釋放一個信號，這兩者都必須是開啓的。
+</p>
+
+<h3>蘊含門</h3>
+<p>活塞蘊含門電路與一般的紅石蘊含門電路的大小和運行速率相近。
+</p><p>蘊含門是一種邏輯門：在A→B(「如果A則B」，或稱「A蘊含B」)為真時輸出1，反之輸出0。這意味著僅當A為真 (1) 且B為假 (0) 時輸出0(即條件為真、但結論卻為假)。
+</p><p>它在邏輯上等於B或(非A)。
+</p>
+
+<h3>異或門</h3>
+<p><b>活塞異或門</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu8.png" />
+<br />活塞異或門</p>
+<p>一個只會在某一條輸入線路被開啓時才會激活的設備。讀作"ex-or" (XOR)，它是 "exclusive or" (異或)的簡寫。若是在尾端增加一個非門就會變為同或門，是一種會在輸入線路互相相等時才會激活的邏輯門。異或門和同或門有著一個有用的特質：如果當一個異或門或同或門的輸入線路變化時，它們的輸出線路總是會跟著一起變化，這允許了混合兩個開關來開關一個門，或激活另一個設備。這個設計比相同意義下只用紅石的設計要小得多，而且還比其稍快一些。
+</p>
+
+<h3>同或門</h3>
+<p><b>活塞同或門</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu9.png" />
+<br />活塞同或門</p>
+<p>一個會在兩個輸入線路都相等的情況下激活的設備，所以它對做門來說很有用，這樣的話，如果輸入線路變化的話輸出線路總是會跟著一起變化。就像異或門一樣，這個設計比相同意義下只用紅石的設計更小更快。
+</p>
+
+
+<h2>鎖存器</h2>
+<p>鎖存器是記憶電路。自然的來說，活塞能夠在物理上移動方塊到新位置的能力使得它們自然而然的能成為鎖存器中的一個工具。
+</p>
+
+<h3>復位置位鎖存器</h3>
+<p><b>活塞復位置位鎖存器</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu10.png" />
+<br />活塞復位置鎖存器
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu11.png" />
+<br />簡易的紅石塊復位置位鎖存器
+</p>
+<p>基本的活塞RS鎖存小，容易做。 這裡使用的活塞是普通的活塞，不是粘性活塞, 並推一個方塊在包含一個紅石火把之兩個連在一起的洞。如果只需要一個輸出訊號，有一個洞可以省略。使用紅石磚讓電路變得更小，並且逆向輸出。
+</p>
+
+
+<h3>觸發式雙穩態多諧振蕩器 (T-Flip Flops)</h3>
+<p>這些T字型觸發器使用一個輸入兩種狀態之間切換。
+</p>
+<p>當他們收到1剔信號，粘性活塞會運行異常。如果一個方塊在活塞的直接旁邊時，活塞將推動方塊，但是當信號結束不會拉回來。如果活塞接收另一個1剔信號，活塞將伸出和縮回該塊。這可以用來切換塊的位置。
+</p>
+<p>
+設計A，4x2x4。使用普通的活塞。這兩個活塞都是普通活塞。該觸發器是相當快，相當小。當輸入從1到0的推移它將切換。注意，可以反轉輸入以增加電路的速度。
+</p>
+
+<p><b>活塞觸發器A</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu12.png" />
+<br />活塞觸發器A，水平面0/1.
+紅石火把在非固定方塊下面
+的一個洞中
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu13.png" />
+<br />活塞觸發器A，水平面2/3
+</p>
+<p>
+Design B (5x3x2) is actually an RST latch, combining the functionality of both the Set/Reset (RS) and toggle (T) latches. Uses regular pistons. This flip flop doesn't use torches for logic so it can work with signals of any length. The dust on level 1 is there to redirect the redstone wire away from block X which powers the piston. However, this circuit does not have an inverse output.
+</p>
+<p><b>活塞觸發器B</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu14.png" />
+<br />活塞復位觸發器B，水平面1
+<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu15.png" />
+<br />活塞復位觸發器B，水平面2
+</p>
+
+
+<h2>環形記憶存儲器</h2>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/huoshaidianlu16.png" />
+<br />
+A simple ring of blocks, rotated by pistons. The reading head is on the right side of the ring. The rightmost circuit is a clock which drives the pistons
+</p><p>
+This is a ring of blocks attached to regular pistons at the corners so it can rotate. The blocks are usually a combination of solid and non-solid blocks. The pistons are often connected to a clock so that they will rotate the ring. Most (if not all) rings have a reading head which consists of a repeater pointing at the ring and a redstone torch powering the repeater. By using redstone on the other side of a ring, one can see which type of block is in front of the reading head (1 = Solid; 0 = Non-solid). This information now can be passed to a circuit.
+</p>
+
+<h3>頻段控制</h3><p>
+When you add several rings together in a row, you create a band. A band stores even more information and works similar to punched tape. Examples include music machines, combination locks, and memory.
+</p>
+
+<h2>鐘</h2>
+<h3>速射活塞鐘</h3>
+<p>This rapidfire clock is fairly simple to build. It is demonstrated in this video from May 18, 2012. You will need 2 non-sticky pistons, 2 repeaters, and 6 redstone. You will also use 5 solid blocks, but will probably be digging two out of the ground. The repeaters must be set to at least 2 ticks, and they must match. Place the mobile block last to start the clock, and take output from either end or any wire. Note that this clock is not switchable, and if it does stop for any reason, it's difficult to restart by a redstone signal. The player can restart it by breaking and replacing the mobile block, or by changing the repeater delays (both of them, the clock will restart when they match and are set to at least 2 ticks).
+</p>
+
+<h3>交替速射活塞鐘</h3>
+<p>This piston clock is a very simple way of repeating a circuit that goes at high speed without burning out. It does not require repeaters or redstone torches. A tutorial is available here. You will need a single sticky piston, one lever, a small amount of redstone, and some solid blocks. From the lever, the redstone has to be placed so it goes up a block, before linking up to the piston. The piston has to be placed in a way that, when it is extended, it blocks the redstone from going up the side of the block without breaking the redstone. This breaks the circuit, removing power from the piston and thus retracting it, causing the circuit to open again. The signals are too fast to affect lighting sources such as lamps and redstone torches. Doors and dispensers both work well at this speed.
+</p>
+
+
+
+<h3>脈衝發生器</h3>
+<p>A small, stable pulser in a space of 2x3x2. The period can be adjusted with the repeater, and the clock can be turned off or on with the lever. (Turning the lever ON stops the clock, and vice versa.) The lever can be placed on any of the solid blocks.
+</p>
+
+<h2>邊界檢測器</h2>
+<p>A rising edge detector creates a brief signal when the input turns on. Conversely, a falling edge detector creates a brief signal when the input is turned off, and a dual-edge (aka "zero-crossing") detector responds to both.
+</p>
+<p>Design A can be a rising- or falling-edge detector depending on the delays of the repeaters.
+ <ul><li>For a rising edge, set both repeaters to 1 delay.</li>
+<li>For a falling edge, set the left repeater to four and the right repeater to one. This will create a 2-tick signal.</li></ul>
+</p>
+
+<p>Design B is a variant of the piston XOR gate, and a dual-edge detector. The right-hand repeater can be adjusted to output a longer or shorter pulse.
+</p>
+<p>Designs D, E, and F are straight-line versions, 1x2x2. Design D is a rising edge detector; design F, a falling edge detector; both with an output pulse of 2 ticks. Design E is a zero crossing detector, activating on both rising and falling edges. However, it only produces a single-tick pulse output. This can be moderated by adding a 2-tick repeater to the output, producing a 2-tick pulse, same as the other two.
+</p>
+<h2>雙重擴充器</h2>
+<p>This design will push and pull a block two spaces instead of one. The first and second repeaters must be set to delays of 2 and 4 respectively. The pistons are sticky and the device will correctly push and retract the block. The main trick is properly sequencing the retraction since the back piston will not pull back the forward piston when it is extended. Additionally, the back piston will only retract the forward piston, not the block. To handle these issues the forward piston must be retracted, pulled back, then extended and retracted again. Triple extenders and so forth are possible, but involve much more complex circuitry.
+</p>
+<p>A more advanced (and much larger) circuit can double-push pistons, without extending them (and stopping the system). This circuit can also can be powered with torches from below, to hide all the wiring. Either way, input to any of the green-marked squares, so the signal reaches all the way round without needing extra repeaters. The design can be mirrored to push a pair of pistons on the same switch.
+</p>
+<p>Vertical double extenders are more difficult to make than horizontal extenders; the bottom piston will not retract unless the wire that extends the forward piston after it has been pulled back is not powered. This 5x5x5 design can push and retract a block two spaces vertically instead of one. The two repeaters closest to the pistons must be set to delay 2.
+</p>
+<p>Longer vertical extenders require very complex circuitry, and are often used as elevators. To slightly simplify the required circuits, a gravity-affected block like gravel or sand can be used as the elevator platform. This avoids the need for the top piston to be sticky and for it to execute multiple extensions to pull down the top block at each stage of descent. If more than two pistons are used in total, multiple extensions of lower sticky pistons will still be required to pull down the pistons higher in the stack, which are not gravity-affected.
+</p> 
+
+        
+
+
+<p><br/></p></div>
+</body>
+
+</html>

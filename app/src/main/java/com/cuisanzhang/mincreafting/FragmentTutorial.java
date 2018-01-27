@@ -23,22 +23,22 @@ public class FragmentTutorial extends Fragment {
     private int mPage;
 
 
-    public static String DATA_BASE_tutorialCategaryS[] = {
-            "新手指南",
-            "环境介绍",
-            "进阶指南",
-            "建筑教程",
-            "种植教程",
-            "刷怪教程",
-            "采矿技术",
-            "附魔烧炼",
-            "初级红石",
-            "红石进阶",
-            "高级技术",
-            "更多挑战",
-            "网易教程",
-            "网络教程",
-    };
+//    public static String DATA_BASE_tutorialCategaryS[] = {
+//            "新手指南",
+//            "环境介绍",
+//            "进阶指南",
+//            "建筑教程",
+//            "种植教程",
+//            "刷怪教程",
+//            "采矿技术",
+//            "附魔烧炼",
+//            "初级红石",
+//            "红石进阶",
+//            "高级技术",
+//            "更多挑战",
+//            "网易教程",
+//            "网络教程",
+//    };
 
     public static FragmentTutorial newInstance(int page) {
         Bundle args = new Bundle();
@@ -94,77 +94,77 @@ public class FragmentTutorial extends Fragment {
                     case R.id.layout_btn_newplay:
                         tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names;
                         tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files;
-                        tutorialCategary = "新手指南";
+                        tutorialCategary = getString(R.string.xingshouzhinan);
                         break;
                     case R.id.layout_btn_huanjingjieshao:
                         tutorialNames = TutorialListData.tutorial_huangjingjieshao_names;
                         tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files;
-                        tutorialCategary = "环境介绍";
+                        tutorialCategary = getString(R.string.huangjinjieshao);
                         break;
                     case R.id.layout_btn_jinjiezhinan:
                         tutorialNames = TutorialListData.tutorial_jingjiezhinan_names;
                         tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files;
-                        tutorialCategary = "进阶指南";
+                        tutorialCategary = getString(R.string.jingjiezhinan);
                         break;
                     case R.id.layout_btn_building:
                         tutorialNames = TutorialListData.tutorial_build_names;
                         tutorialFiles = TutorialListData.tutorial_build_files;
-                        tutorialCategary = "建筑教程";
+                        tutorialCategary = getString(R.string.jianzhujiaocheng);
                         break;
                     case R.id.layout_btn_zhongzhi:
                         tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names;
                         tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files;
-                        tutorialCategary = "种植教程";
+                        tutorialCategary = getString(R.string.zhongzhijiaocheng);
                         break;
                     case R.id.layout_btn_shuaguai:
                         tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names;
                         tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files;
-                        tutorialCategary = "刷怪教程";
+                        tutorialCategary = getString(R.string.shuaguaijiaocheng);
                         break;
                     case R.id.layout_btn_caikuaijishu:
                         tutorialNames = TutorialListData.tutorial_caikuangjishu_names;
                         tutorialFiles = TutorialListData.tutorial_caikuangjishu_files;
-                        tutorialCategary = "采矿技术";
+                        tutorialCategary = getString(R.string.caikuanjishu);
                         break;
                     case R.id.layout_btn_fumoshaolian:
                         tutorialNames = TutorialListData.tutorial_fumoheshaolian_names;
                         tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files;
-                        tutorialCategary = "附魔烧炼";
+                        tutorialCategary = getString(R.string.fumoshaoliao);
                         break;
                     case R.id.layout_btn_chujihongshi:
                         tutorialNames = TutorialListData.tutorial_chujihongshi_names;
                         tutorialFiles = TutorialListData.tutorial_chujihongshi_files;
-                        tutorialCategary = "初级红石";
+                        tutorialCategary = getString(R.string.chujichongshi);
                         break;
                     case R.id.layout_btn_hongshijinjie:
                         tutorialNames = TutorialListData.tutorial_hongshijingjie_names;
                         tutorialFiles = TutorialListData.tutorial_hongshijingjie_files;
-                        tutorialCategary = "红石高级";
+                        tutorialCategary = getString(R.string.hongshigaoji);
                         break;
                     case R.id.layout_btn_gaojijishu:
                         tutorialNames = TutorialListData.tutorial_gaojijishu_names;
                         tutorialFiles = TutorialListData.tutorial_gaojijishu_files;
-                        tutorialCategary = "高级技术";
+                        tutorialCategary = getString(R.string.gaojijishu);
                         break;
                     case R.id.layout_btn_gengduotiaozhan:
                         tutorialNames = TutorialListData.tutorial_tiaozhan_names;
                         tutorialFiles = TutorialListData.tutorial_tiaozhan_files;
-                        tutorialCategary = "更多挑战";
+                        tutorialCategary = getString(R.string.gengduotiaozhang);
                         break;
                     case R.id.layout_btn_mc163:
                         tutorialNames = TutorialListData.tutorial_mc163_names;
                         tutorialFiles = TutorialListData.tutorial_mc163_files;
-                        tutorialCategary = "网易教程";
+                        tutorialCategary = getString(R.string.wangyijiaocheng);
                         break;
                     case R.id.layout_btn_wangluojiaocheng:
                         tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
                         tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
-                        tutorialCategary = "网络教程";
+                        tutorialCategary = getString(R.string.wangluojiaocheng);
                         break;
                     default:
                         tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
                         tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
-                        tutorialCategary = "新手指南";
+                        tutorialCategary = getString(R.string.xingshouzhinan);
                         break;
                 }
 

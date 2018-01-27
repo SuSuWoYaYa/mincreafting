@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>使用ngrok搭建服務器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">使用ngrok搭建服務器</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此頁面的部分內容由於太久沒更新而已過期</b>
+<br />
+你可以幫助我們來更新此頁面
+</p>
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> 
+<p class="red"><b>警告</b>
+<br />
+在依照本頁面上的所有步驟架設服務器之前，請注意如果您不清楚您自己在做什麼而運行服務端軟件，將會導致您的系統出現錯誤甚至出現崩潰。[1]
+       </p> 
+-->
+
+<p>以下的教程會幫助你使用ngrok搭建一個幾個人玩的臨時或小型服務器。</p>
+
+<h2>緒論</h2>
+<p>ngrok是一個隧道連接的工具。它可以使得建立一個臨時的小型服務器變得更加簡單。</p>
+<p>ngrok通常用來搭建測試的服務器，但用來進行多人Minecraft聯機也是可以的。ngrok類似於一個反向代理，基本的原理是：四個端，ngrok客戶端，ngrok服務端，Minecraft服務端，Minecraft客戶端。Minecraft服務端通過ngrok客戶端建立一個到ngrok服務端的隧道連接。這樣當ngrok服務端接收到來自Minecraft客戶端的連接時能通過隧道連接到Minecraft服務端。</p>
+
+
+<h2>選擇服務器</h2>
+<p>由於ngrok官方服務器被國內封鎖，所以需要尋找國內可以使用的第三方服務器。請善用搜索引擎，目前比較穩定的有 phpor服務器 <a target="_self" rel="nofollow" class="external text" href="http://blog.phpor.me/tools/2015/11/04/share-ngrok.html"> http://blog.phpor.me/tools/2015/11/04/share-ngrok.html </a>等等。</p>
+
+<h2>配置ngrok</h2>
+<p>由於第三方ngrok服務器通常採用自簽名證書的方式，所以你可能需要下載服務器提供的ngrok客戶端，而不是官方服務端。下載可執行文件後，應該創建一個配置文件，具體內容取決於你選擇的服務器。通常情況下它的格式為：</p>
+<blockquote>
+<p>server_addr: "&lt;服務器&gt;"</p>
+</blockquote>
+<blockquote>
+<p>trust_host_root_certs: false</p>
+</blockquote>
+<p>當然，一般服務器會給出推薦配置文件，直接套用即可。</p>
+
+<h2>啓動服務器</h2><p>和一般ngrok服務器給出的命令中所述不同，我們需要使用tcp協議，而不是http。首先打開你的Minecraft服務端，比如官方minecraft_server_1.x.jar，或Bukkit、Spigot、Cauldron等等，並按照常規方法配置server.properties、地圖等等，或使用Minecraft客戶端打開局域網聯機。</p>
+<p>然後，你需要準備一個ngrok啓動腳本。這只是推薦的方法，你也可以從命令提示符或終端輸入命令來啓動ngrok。</p>
+<p>在Windows下，你需要新建一個cmd或bat文件，放入ngrok可執行文件相同位置下，鍵入：</p>
+<blockquote>
+<p>@echo off</p>
+</blockquote>
+<blockquote>
+<p>XXXXXX -config=YYYYYY -proto=tcp ZZZZZ</p>
+</blockquote>
+<p>XXXXXX為你的ngrok可執行文件名。通常為ngrok.exe，或你下載的可執行文件名稱。</p>
+<p>YYYYYY為你的配置文件名稱。</p>
+<p>ZZZZZ為你的Minecraft服務器端口號(局域網聯機的時候為左下角提示的端口號)。</p>
+<p>一個示例：</p>
+<blockquote>
+<p>@echo off</p>
+</blockquote>
+<blockquote>
+<p>ngrok.exe -config=ngrok.cfg -proto=tcp 25565</p>
+</blockquote>
+<p>在Linux/Mac/Unix下，你需要建立一個sh文件，放入ngrok可執行文件相同位置下，鍵入：</p>
+<blockquote>
+<p>!/bin/bash</p>
+</blockquote>
+<blockquote>
+<p>./XXXXXX -config=YYYYYY -proto=tcp ZZZZZ</p>
+</blockquote>
+<p>XXXXXX為你的ngrok可執行文件名。通常為ngrok，或你下載的可執行文件名稱。</p>
+<p>YYYYYY為你的配置文件名稱。 ZZZZZ為你的Minecraft服務器端口號(局域網聯機的時候為左下角提示的端口號)。</p>
+<p>一個示例：</p>
+<blockquote>
+<p>@echo off</p>
+</blockquote>
+<blockquote>
+<p>./ngrok -config=ngrok.cfg -proto=tcp 25565</p>
+</blockquote>
+<p>記著使腳本和可執行文件可以執行(chmod 744 &lt;腳本名稱&gt; &amp;&amp; chmod 744 &lt;可執行文件名稱&gt;)！</p>
+<p>最後，執行你的腳本即可啓動一個隧道，在ngrok窗口內執行Ctrl+C可以關閉ngrok。</p>
+
+
+<h2>ngrok提供的信息</h2>
+<p>ngrok啓動後，會顯示一些信息。通常，對我們有用的為Tunnel Status與Forwarding。</p>
+<p>Tunnel Status提示了當前隧道的狀態。Connecting表示正在連接到ngrok服務端；reconnecting表示正在重新連接到ngrok服務端，如果剛剛打開ngrok，顯示connecting後就提示reconnecting，通常就表示服務器無法連接了；online即在線，表示隧道成功建立。</p>
+<p>Forwarding提示了當前ngrok工作的代理地址。格式通常為：tcp://AAAAAAAAA -&gt; 127.0.0.1:BBBBB</p>
+<p>AAAAAAAAA代表ngrok服務端分配給你的地址，可以將這個地址分享給你的夥伴，使他們可以通過此地址連接到你的服務器，方法與連接普通服務器完全一樣。 BBBBB代表了當前的本機端口號。</p>
+
+
+<h2>警告</h2>
+<p>由於國內ngrok服務器由網友搭建，所以請不要濫用它們，不要對服務器造成過大壓力，不要讓過多玩家進入服務器，服務器的卡頓通常與ngrok服務端過載導致。</p>
+<p>本教程編寫者、貢獻者與ngrok開發者無關，與任何ngrok服務器無關。</p>
+
+<h2>自己搭建ngrok服務</h2>
+<p>公眾的ngrok服務器可能會因為使用人數過多而過載，造成遊戲卡頓。如果你有可以端口映射的主機，或者有雲服務器、VPS，可以考慮自己搭建ngrok服務。</p>
+<p>關於如何自己搭建服務器可以參閱<a target="_self" rel="nofollow" class="external text" href="http://tonybai.com/2015/03/14/selfhost-ngrok-service/">http://tonybai.com/2015/03/14/selfhost-ngrok-service/</a> 搭建自己的ngrok服務 、<a target="_self" rel="nofollow" class="external text" href="https://imququ.com/post/self-hosted-ngrokd.html">https://imququ.com/post/self-hosted-ngrokd.html</a> 搭建ngrok服務實現內網穿透，並請善用搜索引擎。</p>
+
+        
+
+
+<p><br/></p></div>
+</body>
+
+</html>

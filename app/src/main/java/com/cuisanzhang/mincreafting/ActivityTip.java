@@ -18,7 +18,10 @@ public class ActivityTip extends AppCompatActivity {
     //http://owpvbuvtf.bkt.clouddn.com/vip.txt
     static String URL = "http://cuisanzhang.u.qiniudn.com/vip.txt";
 
+    ImageView TipimageView;
     Button btnCheckVip ;
+    Button btn_weixin;
+    Button btn_zhifubao;
     private Handler mHandler;
     String result = "";
     String userName;
@@ -37,9 +40,25 @@ public class ActivityTip extends AppCompatActivity {
         setContentView(R.layout.activity_tip);
         initActionBar();
 
+        TipimageView = (ImageView) findViewById(R.id.ImageViewTip);
+
+        btn_weixin = (Button) findViewById(R.id.btn_weixin);
+        btn_weixin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TipimageView.setImageResource(R.drawable.weixin);
+            }
+        });
+        btn_zhifubao =(Button)  findViewById(R.id.btn_zhifubao);
+        btn_zhifubao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TipimageView.setImageResource(R.drawable.zhifubao);
+            }
+        });
+
         userName = SettingUtils.ChangeTheme.getUserName(ActivityTip.this);
         isVip = SettingUtils.ChangeTheme.getVipState(ActivityTip.this);
-
 
         btnCheckVip = (Button) findViewById(R.id.btnCheckVip);
 

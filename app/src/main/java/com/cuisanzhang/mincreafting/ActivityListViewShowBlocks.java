@@ -398,9 +398,9 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     private void showAboutImageDialog() {
 //        Log.e("ActivityTutorialList", "getApplicationContext="+getApplicationContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListViewShowBlocks.this, R.style.AlertDialog);
-        builder.setTitle("小提示");
-        builder.setMessage("点击图片可以查看材料来源\n图片都是离线的,不需要联网");
-        builder.setPositiveButton("确定", null);
+        builder.setTitle(R.string.xiaotishi);
+        builder.setMessage(R.string.xiaotishi_message);
+        builder.setPositiveButton(R.string.queding, null);
         builder.show();
     }
 

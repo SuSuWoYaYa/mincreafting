@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>恢復損壞的地圖數據</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">恢復損壞的地圖數據</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        <p>有時候 Minecraft 會出現一些小問題，並且把保存的世界從可用的存檔列表中移除。這個存檔的文件與其它世界存檔都在那裡，但它只是被損壞了。這個不見了的世界，以及你所有的努力，都<i>可以</i>被恢復。但是不能恢復你正在穿戴或攜帶的物品。</p>
+        
+        <h2>Windows</h2>
+        <ul>
+<li><b>在運行窗口鍵入&#160;%appdata% 來訪問 <i>C:\Users\your username\appdata\roaming\.minecraft\saves</i>。</b></li>
+</ul>
+<dl>
+<dd>你應該看見你保存的世界的文件夾。例如，假設你的損壞的地圖的名字為 <b>LostWorld</b>。</dd>
+</dl>
+<ul>
+<li><b>複製整個 LostWorld 文件夾。</b></li>
+</ul>
+<dl>
+<dd>這個備份文件夾的文字可以隨便改。例如就叫它 <b>LostWorldCopy</b>。</dd>
+</dl>
+<ul>
+<li><b>啓動 Minecraft 並創建一個新世界，然後保存並關閉 Minecraft。</b></li>
+</ul>
+<dl>
+<dd>我們把這個保存的世界叫作 <b>BlankWorld</b>。不需要擔心新世界的樣子，我們只需要在它裡面提取一些文件。</dd>
+<dd>該世界的物品欄也會被使用(例如你正在攜帶的)。因為新世界的物品欄是空的，因此在被恢復的世界里物品欄也是空的。你可以通過在 <b>BlankWorld</b> 的創造模式里放你需要的東西到物品欄里，然後關閉遊戲，從而「捏造」一個被恢復的物品欄。不要忘記你的護甲以及有附魔的護甲和工具。</dd>
+</dl>
+<ul>
+<li><b>回到 <i>.minecraft\saves</i> 文件夾</b></li>
+</ul>
+<dl>
+<dd>這裡你會找到你剛創建的新文件夾 <b>BlankWorld</b>。</dd>
+</dl>
+<ul>
+<li><b>從 BlankWorld 文件夾中複製以下文件到 LostWorldCopy 文件夾：</b>
+<ul>
+<li>level.dat</li>
+<li>level.dat_mcr <i>(並不是一直出現的)</i></li>
+<li>level.dat_old</li>
+<li>session.lock</li>
+</ul>
+</li>
+</ul>
+<dl>
+<dd>注意不要複製任何一個文件夾</dd>
+<dd>可以通過常規方法完成複製：複製(或剪切)和粘貼，選擇和拖動或者其它的方法也可以。</dd>
+</dl>
+<ul>
+<li><b>重啓 Minecraft</b></li>
+</ul>
+<dl>
+<dd>你應該看見一個叫作 <b>BlankWorld</b> 的世界，在保存的地方還有一個 <i>LostWorldCopy</i> 文件夾。這就是你恢復前的世界。</dd>
+<dd><b>BlankWorld</b> 裡面還有一個 <i>BlankWorld</i> 文件夾，忽略它。</dd>
+</dl>
+<ul>
+<li><b>要進行測試來確保世界能被正確加載。</b></li>
+</ul>
+<dl>
+<dd>你將會在一個隨機位置中開始，並且找回你的設置。</dd>
+<dd>你可能會在地下開始，並且窒息。如果這發生了，那麼你將會再次失去你所有的物品(在 BlankWorld 創造模式放置到物品欄的物品)。如果你想保住你的物品，回到恢復存檔的第一步，重新開始。之後，在 BlankWorld 中填充你的物品欄，確保在第一格放置了一組末影珍珠。當你窒息時，盡量不要看上面，然後使用末影珍珠。你也可以嘗試把你自己放在 BlankWorld 的更高海拔處。你可能會摔死，但是重生後你的物品還在你摔死的地方那裡。</dd>
+</dl>
+<ul>
+<li><b>在 Minecraft 世界選擇界面，重命名 BlankWorld 為 LostWorld。</b></li>
+</ul>
+<dl>
+<dd>這個就是你恢復後的世界。</dd>
+</dl>
+<ul>
+<li><b>進行清理，刪除 BlankWorld 世界(保存在 <i>BlankWorld</i> 文件夾的那個)。</b></li>
+</ul>
+<p>恢復並不是最好的途徑，因為：</p>
+<ul>
+<li>任何保存的 Mod 信息(例如自定義NPC)都將會丟失。</li>
+<li>除非使用之前提到的「偽造物品欄」方法，否則你的物品欄將會是空的。你也可以使用 NBT 編輯器從 players/你的名字.dat 的根節點複製到 level.dat 文件的「Player」節點。</li>
+<li>末影箱裡面的物品可能會丟失。</li>
+</ul>
+        <h2>Mac OS X</h2>
+        <ul>
+<li><b>前往 Finder 里的「前往」菜單，點擊「前往文件夾」，並輸入 <i>~/Library/Application Support/minecraft/saves</i></b></li>
+<li><b>執行上面 Windows 提到的所有步驟</b></li>
+<li>複製 <i>LostWorld</i> 文件夾，可以通過右擊文件夾並在菜單中選擇 <b>Duplicate</b>。</li>
+<li>複製/移動可以通過從 <i>BlankWorld</i> 文件夾拖動到 <i>LostWorldCopy</i> 文件夾從而完成操作。</li>
+</ul>
+
+        <h2>Linux</h2>
+        <ul>
+<li><b>訪問 ~/.minecraft 文件夾</b></li>
+<li><b>執行上面 Windows 的所有步驟</b></li>
+</ul>
+        <h2>Minecraft 攜帶版</h2>
+        <p>上述操作在 Minecraft 攜帶版也生效，但只需要你把 <i>level.dat</i> 文件覆蓋。其它文件並不存在。這在 MCPE 0.10.5 測試過，不過它也可能在其它版本上生效。(在0.11中，遊戲會嘗試修復存檔)</p>
+        
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

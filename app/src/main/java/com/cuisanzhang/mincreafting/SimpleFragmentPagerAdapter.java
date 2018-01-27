@@ -28,6 +28,9 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
     public SimpleFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
+        tabTitles[0] = context.getString(R.string.wiki_turorial);
+        tabTitles[1] = context.getString(R.string.hechengbiaodaquan);
+        tabTitles[2] = context.getString(R.string.shengwu_wuping_fangkuai);
         pageCount = tabTitles.length;
     }
 

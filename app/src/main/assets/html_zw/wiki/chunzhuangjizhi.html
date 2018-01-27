@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>村莊機制</title>
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' /> </head>
+
+<body>
+    <h1  >      村莊機制</h1>
+
+    <div  >    <p>
+      如果你想要用鐵傀儡蓋一個刷鐵廠，又或許你在村子里想要里有更多的村民來交易，那麼你來對地方了。
+      </p>    
+
+ 
+
+    <h2 >術語</h2>
+     <p>
+      村莊有著下列數據：村莊中心、村莊半徑、房屋數、人口(村民數)、最大人口(可容納的最多村民數，以門的數量為基準)、鐵傀儡數量、鐵傀儡最大數量(以人口為準)。
+      
+</p>     <p>
+ 一個村莊需要兩個要素。它們是房屋(至少一個)和村民(至少有一個)。「房屋」可以被簡單地定義為一個有著「內部」和「外部」的木門(詳見下一節)。村莊將試圖維持其人口在「房屋」(門)數量的35%以上(詳情見下文)。
+      
+</p>     <p>
+ 村莊中心是村莊的幾何中心點，即所有門的「平均坐標」。村莊的半徑是32格或從中心點到最遠的門的距離，取其最大值。這意味著半徑總是大於等於32，如果有距中心點超過32格的門，那幺半徑就是中心點到最遠的門的距離。中心點和半徑都是取整後的整數，尚不清楚具體是向上取整、向下取整還是四捨五入取整。
+      </p>     <p>
+
+ 對稱的村莊很容易計算出其中心點，但對於更複雜的村莊，如自然生成的村莊，最好給自己多留幾格空間。然後嘗試從距離您最近的門開始計算自己與村莊的距離。
+      
+ </p>    
+
+    <h2 >房屋</h2>
+     <p>
+      如果一扇木門同時擁有「裡面」和「外面」，那麼就形成了一間房屋。所謂「裡面」指的是一扇木門面向的兩側各五格(成一條水平直線)範圍內，地面被屋頂遮擋的方塊數較多一側。當一個不透明的方塊(可以在任何高度)遮擋住了垂直照射下的陽光，以至於陽光不能到達其下方的「地面方塊」時，這個不透明的方塊被稱為屋頂。
+      
+</p>     <p>
+ 另一個放置屋頂的方法是：被稱為「外面」的空間內可以垂直向上看到天空的風景，因此在「外面」的空間亮度值是15；而被稱為「裡面」的空間不能夠垂直向上看到天空的風景(總之，垂直向上看是看不見天空的)，因此「裡面」的空間亮度值要低於15。那麼，「裡面」指的是這扇木門的兩側(同樣成一條直線)中擁有更多的「內部空間」的一側(反過來說，「外面」比「裡面」擁有更多的「外部空間」)。
+      
+</p>     <p>
+ 一扇門如果沒有屋頂或者是兩邊被遮擋的方塊數相同時，不能稱之為房屋。
+      </p>     <p>
+
+ 例如 - 這扇門被放置在一個木板上。此時遊戲會檢測這些區域(在圖中用淺藍色羊毛表示)是否有被「屋頂方塊」 遮擋。
+</p>  
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi1.png" />
+<br />
+</p>
+    <p>
+最簡單的房屋像這樣：一扇木門以及一個被放置在旁邊地面上的泥土方塊。
+  </p>    
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi2.png" />
+<br />
+</p>     
+     <p>
+這真的是房屋嗎？但對遊戲來說，這確實合乎標準。這個泥土方塊遮擋住了垂直射下的陽光，陽光沒有到達其下方的方塊(在圖中用紅色羊毛表示)，因此這個方塊被看作是一個「屋頂方塊」。圖片中的右側有一個「內部空間」，其被一個屋頂方塊所覆蓋(在圖中為紅色羊毛)，而在左邊沒有任何「內部空間」。既然一比零更大，也即門的一側比另一側擁有更多被遮擋的方塊，所以將此視作一個房屋。
+   </p>     
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi3.png" />
+<br />
+</p>
+
+     <p>
+ 以下這些同樣可以被視作房屋：
+   </p>   
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi4.png" />
+<br />
+</p>
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi5.png" />
+<br />
+</p>  
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi6.png" />
+<br />
+</p>   
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi7.png" />
+<br />
+</p>   
+
+    <p>
+ 你可以把房屋設計成任何樣式。除了位於紅色羊毛正上方的「屋頂方塊」外，其餘的方塊你可以隨意放置，也可以不放置任何額外的方塊。
+   </p>   
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi8.png" />
+<br />
+</p>    
+    <p>
+ 一扇門有兩個方塊的高度，如果有必要，遊戲會對每扇門檢測兩次。如果首次「屋頂檢測」失敗，那麼遊戲會跳過最底部的一層，從更高的一層開始，執行第二次檢測。這一次，遊戲僅檢測更高一層的綠色羊毛部分。
+    </p>  
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi9.png" />
+<br />
+</p>    
+   <p>
+ 例如 - 對於下面的門來說，首次的「房屋檢測」發現：左邊有兩個方塊被屋頂遮擋，而右邊同樣有兩個方塊被屋頂遮擋。由於門的兩側有相同的數目被遮擋的方塊，遊戲不能區分門的「裡面」和「外面」，所以這扇門不被視作一個房屋(儘管檢測還沒有徹底結束):
+   </p>   
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi10.png" />
+<br />
+</p>    
+   <p>
+然後，既然首次檢測失敗了，那麼底部的一層被跳過，我們執行第二次檢測，這一次僅需要檢測綠色羊毛的上方是否有遮擋。這一次，僅左邊的一側有兩個方塊被屋頂遮擋，那麼第二次房屋檢測通過，這扇門仍然被視作一個房屋，「裡面」指的是門的左側，其擁有更多數目的被遮擋方塊。
+   </p> 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi11.png" />
+<br />
+</p>
+      
+     <p>
+在下面的例子中，這扇門通過了首次檢測，其左邊有一個被遮擋方塊，而右邊有兩個被遮擋方塊。這就形成了一個屋子，右邊是「裡面」。它同樣也能通過第二次檢測(這次左邊「裡面」)，但既然第一次已經檢測通過了，我們就不需要進行第二次檢測了。這扇門已經被視作一間房屋，「裡面」位於右邊(以第一次為準)。
+     </p>    
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi12.png" />
+<br />
+</p> 
+   <p>
+被遮擋的方塊並不是一定要連續，下面的門被視作一間房屋，「裡面」位於右側，在五格範圍內，右邊有三個方塊被遮擋，而左邊只有兩個。
+      </p>     
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi13.png" />
+<br />
+</p>
+     
+     <p>
+下面的門的兩邊各有三個被遮擋的方塊，因此不被視作一間房屋。
+      </p>  
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi14.png" />
+<br />
+</p>   
+   <p>
+一間房屋只有在附近有村民時，才有效。附近沒有村民，其不會被視作「房屋」，僅僅是一些方塊和一扇門。
+      </p>  
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi15.png" />
+<br />
+</p>     <p>
+但只要村民一出現，它就變成了一間房屋(和一個村民)。
+      
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi16.png" />
+<br />
+</p>     <p>
+村民會識別在兩個方向的水平坐標軸16個方塊內的房屋，以村民所站在的地面為基準，上至3個方塊內、下至5個方塊內的有效門，村民都會將其視作一個房屋。
+      
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi17.png" />
+<br />
+</p>    
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi18.png" />
+<br />
+</p>     
+ 
+
+
+    <h2 >邊界重合</h2>
+      <p>
+      當兩個村莊的邊界有重疊時，它們會被合併成單個大的村莊。 在一個已經存在的村莊內(半徑32格)新生成的房子會被認為是一個獨立村莊，並與已經存在的村莊重疊，然後變成該村莊的一部分。這將導致村莊中心點和半徑的重新計算，並且有時候會使它再與另一個已經存在的村莊重疊。這種情況下，程序並不能每次都正確的處理。
+      
+</p>     <p>
+ 最終有可能發生兩個村莊重疊了但是仍然被認為是兩個獨立村莊的情況。 幸運的是，這種情況的修正方法很簡單，只要退出遊戲並重新載入，程序便會重新評估所有的位置，這時將會被認為只有一個大的村莊存在，而不是兩個小村莊的重疊。
+      
+</p>     <p>
+ 同樣，反過來會有這樣的情況：如果一個大型村莊的中心的房子都被移除了，剩下的房子雖然可以組成兩個獨立的，半徑範圍內不重疊的小村莊，但是遊戲仍會認為它們是一個大的村莊直到下一次重啓。此時，它會再次執行評估，正確地將它們作為兩個單獨的村莊識別。
+      </p>     <p>
+
+ 當放置或拆除方塊導致一個房子不再是一個房子的時候，遊戲無法及時更新判定，並且仍然會把這個門所在的地方算作房子，可以重啓來修復這個問題，但是不保證每次都奏效。又是你可能需要拆除和重新放置門本身來讓它不再被判定為一個有效的房子。並且，如果你跑足夠遠使門所在的區塊從內存被卸載，再次回來的時候，將會重新評估並正確的識別剩下的房子。
+      </p>    
+ 
+
+    <h2 >透明方塊</h2>
+      <p>
+      遊戲中有三種透明方塊。有完全透明方塊，如玻璃塊、火把與柵欄。
+      </p>     <p>
+
+ 還有「部分透明」方塊，如台階、樓梯和樹葉，都被遊戲渲染引擎視為透明的，甚至熒石也被當作透明方塊，儘管你不能看穿它的任何部分。部分透明方塊仍然會阻止光線穿過(至少部分是，就像樹葉和水那樣)，所以他們仍然以某種方式被照明引擎認為是不透明的。由於這些部分透明方塊會阻止陽光，所以也會被算作屋頂方塊。但完全透明方塊仍然不算在內。
+      </p>     <p>
+
+ 水和熔岩(包括流動與靜止的)部分透明，所以會被算作屋頂方塊。樹葉、台階和樓梯也會被算作屋頂方塊。
+      
+</p>    
+ 
+
+
+    <h2 >抵消</h2>
+    <p>
+      有謠言說，當兩個門相距一定距離時會以某種方式抵消，而其中沒有一個(有另一種說法說只有一個，這取決於你聽到的版本)將被視為「房屋」。這不是真的！它只不過是一種誤解、謠言。
+    </p>     <p>  
+
+ 左側的門不被算做門的原因不是因為它們彼此面對，而是因為每一個門兩側有相同數量的屋頂方塊。因此，你可以看到，這與門是否面對並沒有任何的關係！
+     </p>     <p> 
+
+ 下面這張圖將說明兩個門的屋頂方塊檢測區域之間的重疊。左邊的門檢測粉色區域，右邊的門檢測藍色區域(實際上門只會檢測中間一行，這是做是為了讓其更易理解)。紫色區域代表其中兩個區域重疊的區域，而這個空間兩個門都會檢測：
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi19.png" />
+<br />
+</p>     <p>    
+
+因為這些門內外都具有相同數量的屋頂方塊，它們並沒有一個「內部」或「外部」，因此不能被被判定為「房屋」。但是如果你在門後添加一個方塊(或者將它們移開一格)，那麼那些屋頂方塊就距離較遠的門6格了，在其探測範圍之外，但這方塊仍然在距離較近的門的探測範圍內。這樣門左右的屋頂方塊就不一樣了，這才會被判定為「房屋」：
+      
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi20.png" />
+<br />
+</p>     <p> 
+
+有了這些附加的方塊，兩個門現在都是有效的「房屋」。
+      
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi21.png" />
+<br />
+</p>     
+
+ 
+
+
+    <h2 >搬運村民</h2>
+      <p>
+      有許多辦法來搬運村民，其中一些辦法非常的乏味。第一個並且是最出名的方法是使用礦車，首選建造一條從村莊到目的地的鐵軌，然後一個一個的把村民推上礦車，並把礦車推到目的地，然後摧毀礦車(或使用激活鐵軌)。第二種方法更無趣，但是需要的資源要少一些，這種方法被稱作水道技術。從村莊到目的地之間創造一條水道，並且在路上沒有出口(比如建造2×2的水道)，然後拿兩桶水，使用水把村民推遠一些，然後使用第二桶水繼續，跑回去收集第一桶水，如此往復。
+      </p>     <p>
+
+ 使用在這個wiki上收集到的信息，發現有個比礦車和水道更簡單的方法來搬運村民。首先找到一個村莊，留下一扇門來聚集所有的村民，摧毀其他的門。然後可以以創建假房子的方式移動村民。當村民發現了對房子的需求，村民就會‘跟隨’著門。最簡單的辦法就是在門後放2個方塊，移除掉舊的門，然後村民就會跟著你跑啦。
+      </p>    
+
+ 
+
+
+    <h2 >繁殖和最大人口</h2>
+    <p>
+      村民可以自主地繁殖，但至少應該有兩個可以彼此接觸到的成年村民。如果你從別的村子里抓來了一個村民、或者治療了一個僵屍村民、又或者村子里沒有了村民(或僅剩下一個村民)，那麼你想要找來更多的村民。以下是僅有的幾種方式：
+     </p>    <ul>
+        <li>從另一個村子里搬運過來</li>
+        <li>他們可以用礦車來運輸或者用一連串假房子引導過來</li>
+        <li>治療感染的僵屍村民</li>
+        <li>用作弊命令或者創造模式中的刷怪蛋</li>
+      </ul>      <p>
+      得到一對村民後，一個村子的最大人口是村子房屋數目的0.35倍(前文有提到)。更具體的說，他們會一直繁殖直到成年村民數達到最大人口，而此後，尚未長大的幼年村民仍會繼續成長至成年。
+      </p>     <p>
+
+ 村子的居民在沒有達到最大人口時，他們會不停地進入「戀愛模式」，你可以看到他們的頭上冒出的紅心(至少你應該開啓視頻設置中的部分顆粒可見，即使你看不見也沒關係，他們仍然會進行繁殖)。這更像農場中動物的繁殖，當兩個村民感覺到「浪漫」並且可以看見彼此，他們會緩緩移動之對方面前，然後「親吻」幾秒鐘，之後，一個更小的(小孩)村民會在他們旁邊誕生。這個新的村民的職業是隨機的(你可以從他的服飾和顏色上作出判斷)，並不一定與父母的職業相同。
+      </p>     <p>
+
+ 因為每個村莊都必須有村民，如果村莊被摧毀或是村民被殺完了，那這個村莊的所有數據，都會被清除掉。這個可能對於設計村莊來說是有用的，如果只有一個村民被限制在門的範圍內並維持著這個村莊的存在，一旦村莊的範圍移動過遠或是村民被殺，那麼村莊將不復存在，村民的無限繁殖也會因此停止。
+      
+</p>    
+ 
+
+    <h2 >意願</h2>
+    <p>
+      此外，村民只有在「有意願」的狀態下才會進行繁殖。在結婚後，他們不會再「有意願」結婚，所以你必須再次讓他們變得「有意願」。
+      
+</p>     <p>
+ 與村民交易，可能會使村民處於「有意願」的狀態。在第一次完成一個新的交易組合時，村民會變得「有意願」，或者完成下一次舊的交易組合後，有20%的幾率會使他們變得有意願。然而，你可能需要稍等片刻(而不是馬上)，他才會去尋找一個伴侶。
+      
+</p>     <p>
+ 當某個村民的存貨中有一個方格(類似於玩家的儲存箱中的方格)中有3個麵包、12個胡蘿蔔、12個馬鈴薯或者12個甜菜根時，他們也會變得「有意願」。任意一個農民村民會向其它村民丟棄收穫的作物，允許其它村民撿起地上的食物，以達到變得「有意願」的要求。
+      </p>    
+
+ 
+
+
+    <h2 >治癒僵屍村民</h2>
+   <p>
+      有兩種辦法來治癒僵屍村民。第一種辦法需要你到下界至少收集一個烈焰棒，用釀造台釀造。然後你需要釀造一個虛弱噴濺藥水，然後製作一個金蘋果(由金錠製作的那個「普通的」蘋果)。當你找到一個僵屍村民後，將虛弱藥水噴在它身上，然後使用金蘋果右鍵點擊它。僵屍村民會搖晃幾分鐘，然後就會被一個對應職業的村民代替。
+      </p>     <p>
+
+ 另外對於禁止下界的服務器還有一種辦法，在不使用釀造台的情況下對僵屍村民使用虛弱藥水。你需要一個女巫和僵屍村民來達到這個目的。女巫有時候會扔出噴濺虛弱藥水，你可以利用這點稍下功夫。這種方法就像是利用骷髏射手殺死一個爬行者一樣，就根據類似的教程來執行就可以。但是，這個方法同樣需要一個金蘋果。
+      </p>     <p>
+
+ 最開始找到一個僵屍村民不是那麼複雜。大約每20個僵屍中就有一個僵屍村民，所以找到兩個僵屍村民並將它們治癒不會非常耗時(大概就40個僵屍左右)，然後他們就可以以更……「自然」的方式來生成更多村民了。另外，當一個村民被僵屍攻擊時(任何僵屍都可以)，會有一定幾率(普通模式50%，困難模式100%)轉化成僵屍村民，而不是死亡。同樣也有更難捕捉的小僵屍村民，但是也可以被治癒。
+      </p>     <p>
+
+ 僵屍村民是人工建造一個村莊的好方法，因為它不像村民那樣不會長途追逐玩家。把它們吸引到一個目標位置時就可以治癒它們了。
+      </p>  
+
+ 
+
+    <h2 >無限繁殖</h2>
+  <p>
+      遊戲中有一個漏洞，就是村民可以被誘導繁殖無限次而不受人口上限影響。
+      </p>     <p>
+
+ 村民們需要在圍繞村莊中心的一個球體(球體半徑=村莊半徑)範圍內繁殖。但是村莊僅計算圍繞村莊中心的一個長方體範圍內的村民數量(寬度與長度=村莊半徑×2、高度=9[永遠都是!])。因此無論球體範圍有多大，長方體範圍的高度也只有9格高。所以有一些區域僅由球體範圍(上方與下方的村莊中心)覆蓋，這是顯而易見的事情。
+      </p>     <p>
+
+ 你可以利用這個漏洞，在地面上建造6個房屋(只要能讓村民數量限制設置為2或更高就行)，將2個(或更多)村民移至6格深的坑里。在地面上讓1個村民「活著」。那麼地下的村民將會無限繁殖，因為村民的數量始終到達不了上限。在 Minecraft 1.8 版本里，你需要通過給它們食物(或一個農場、一個農作物和一個農夫)或與它們交易讓村民「有意願」繁殖。
+      </p>   
+ 
+
+
+    <h2 >鐵傀儡</h2>
+  <p>
+      鐵傀儡會在至少擁有10個村民和21個房屋的村莊的中心生成。第21個房屋之後的附加房屋對鐵傀儡的生成沒有影響，但是你會需要29個房屋，至少在最開始的時候，為了自然生成10個村民(儘管如果你想的話，可以在之後減少到21個房屋)。
+      </p>     <p>
+
+但是，多餘的村民將會生成更多的鐵傀儡。對應的增量是每10個村民生成一個鐵傀儡。
+      </p>     <p>
+
+所以，0-9個村民將不生成鐵傀儡，生成因子會被設定為0；10-19個村民會將生成因子設置成1，20-29個村民將會設置成2，以此類推。
+      
+</p>     <p>
+ 這個生成因子只限定了在村莊中同時存在的鐵傀儡數量；如果一個鐵傀儡被殺或者離開了村莊的範圍，會立刻在村中生成一個新的鐵傀儡。
+      </p>     <p>
+
+ 鐵傀儡的生成區域是在村莊中心點16*16*6的區域中。當所有的條件都滿足時(10個村民，21個房屋，鐵傀儡的生成因子沒達到)，然後每個遊戲刻(20分之1秒的時間)，有7000分之1的概率生成一個鐵傀儡。基本上它會在0到6999中隨機挑選一個數，如果選到0，然後嘗試10次去生成一個鐵傀儡。
+      
+</p>     <p>
+在生成區中隨機選擇一個點，如果這個點包括一個實體方塊，上方有2*2*4的空間(也會在水中生成，這個是下面的連接中製造刷鐵廠的關鍵)，然後一個鐵傀儡會在那裡生成。
+      </p>     <p>
+
+無論哪個條件達成，會重復嘗試10次或者直到一個傀儡生成。然後再每個遊戲時鐘繼續檢查，直到生成了足夠多個滿足生成因子的鐵傀儡。直到鐵傀儡消失或者生成因子擴大。
+      </p>     <p>
+
+這就意味著平均的生成幾率(對於刷鐵廠來說)，如果鐵傀儡被殺掉、或者快速的被衝到村莊範圍外，生成因子將會永遠都達不到，隨即生成新的鐵傀儡，是大概每小時10個鐵傀儡(如果你採集的話，30-50個鐵錠)。
+      </p>     <p>
+
+所以，如果你能達到最大值，你將會獲得無限的鐵錠，其它的則不會發生。
+      
+</p>    
+ 
+
+
+
+
+    <h2 >刷鐵廠</h2>
+ 
+   <p>
+
+      刷鐵廠實際上是一個人造的村莊(或是幾個村莊，只要間隔夠遠且保持各自獨立)，在其中鐵傀儡會生成，然後它們會被移出，或是集中屠殺，或是使其自動死亡。
+      </p>     <p>
+
+在舊版本中的Minecraft中，就需要準備一個鐵錠的收集點，或是在一個集中的區域里在它們被清除之前殺掉他們。
+      </p>     <p>
+
+在正式版1.5之後，你就可以自動殺死它們，並用漏斗來收集它們的掉落物。
+      </p>     <p>
+
+
+ 有幾種方法可以建造一個刷鐵廠，其中最有效的方法應該是那些利用兩層中空的鐵傀儡生成區的方法，並使所有在外面的門和村民，村莊的上方和下方中心或外部的「環」在同一水平面上。這是為了最大化可用空間的鐵傀儡生成數量，進而減少失敗的刷新嘗試，並保持生成率盡可能高。
+      </p>     <p>
+
+這是很有效的，而且並不是僅僅提高村民數量來提高鐵傀儡刷新速率，無論如何，當一個鐵傀儡生成並被移走或被殺死之間都會有幾秒的間隔。
+      </p>     <p>
+
+為了進一步提高您的刷鐵廠的輸出速度，您可以建造幾個獨立的「刷鐵廠」，把鐵傀儡移到中央區域集合。由於鐵傀儡免疫摔落和溺水傷害，因此可用的方法是使用熔岩或使其窒息死亡。
+      </p>   
+
+ 
+
+    <h2 >僵屍圍城</h2>
+ 
+   <p>
+      在晚上，有一定幾率會發生僵屍圍城。這時，大量的僵屍在村莊附近生成，攻擊村民所到之處，圍在一起，撞擊那些他們不能進入的門。要發生僵屍圍城，這個村莊至少應有10間房屋和20個村民。
+      </p>     <p>
+
+ 攻城的僵屍會忽視掉亮度等級和24格以內的玩家，除此之外，它們表現絕對是正常的(也就是說，它們不會生成在瑩石、透明方塊和下半台階方塊上面，需要一個2×1×1的最低生成空間等)。
+      
+</p>     <p>
+它們還會讓鐵傀儡此時不會在困難難度下生成，在困難難度下它們還會破壞掉門(在其他難度下它們也會嘗試破壞門，但不會成功)。
+      
+</p>     <p>
+但是僵屍不會在距離你128格之外生成，即使是使用了一些命令，所​​以，如果你距離地面很高你會很安全。
+      
+</p>     <p>
+
+ 「你可以讓你的房子變成僵屍防禦模式」，你只需要挖去一個門前的地板方塊就行。這樣，門和它所在的地板方塊就和牆一樣了。
+      
+</p>     <p>
+這是因為，僵屍只能破壞門的上半部分，並且如果他們跳躍的話，他們將永遠無法通過這扇門。
+      </p>     
+
+      
+      
+    <h2 >Imgur畫廊 by Derrick </h2>
+      <p>
+    一個簡單的，更加緊湊的村莊設計，並且可以有更多的村民。這種設計可以在11×10的範圍內使村民達到35個。
+            </p>    
+           <p>      Minecraft Village Doors <a href="https://imgur.com/a/xGhDP#0" >https://imgur.com/a/xGhDP#0</a></p> <p>   by ninti  Jun 20 2012   </p>  
+           
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi22.png" />
+<br />
+</p>
+    <p>
+The max number of villagers is 35% of the number of valid doors. What makes a valid door? It is any door (within the city radius) where the number of outside blocks within 5 spaces (in a straight line) on one side of the door is not the same as the number of outside blocks on within 5 spaces on the other side of the door. 
+</p>     <p>
+In the picture here, you will see the 10 squares it will check. The door has been placed on the white square's right side, and is in the closed position. It checks the 5 squares perpendicular to the doors default (closed) position, but it doesn't matter if the door is placed on the left or right side.
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi23.png" />
+<br />
+</p>     <p>
+A space is considered to be "outside" if it is hit by the sun during the day. In this image, you can see the 1st space to the left of the door is not hit by the sun, therefore it is not "outside". The other 4 spaces (of the 5 spaces it checks) to the left are outside.
+</p>     <p>
+Since the number of outside spaces on the left side of the door (4) is not equal to the number of spaces on the right side of the door (5). This is considered to be a valid door.
+
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi24.png" />
+<br />
+</p>     <p>
+ 
+ It doesn't matter which side of the door the "inside" space is on, or exactly how many inside or outside spaces there are, as long as the count on each side is not the same.
+ 
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi25.png" />
+<br />
+</p>     <p>
+
+
+ In this picture, the number of "outside" spaces is the same on both sides, so this is not a valid village door.
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi26.png" />
+<br />
+</p>     <p>
+
+
+ Here we have 10 doors (the middle space has no door). Since each door has exactly one "inside" space on only one side within the 5 block range, this will count as 10 doors for breeding purposes.
+ 
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi27.png" />
+<br />
+</p>     <p>
+
+ This counts as 100 village doors, which will get you about 35 villagers.
+</p>     <p>
+Of course, when you do stuff like this, the villagers get very confused about what is outside and inside, and you may end up having problems when a zombie horde shows up.
+
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi28.png" />
+<br />
+</p>     <p>
+
+It will, if required, do two checks, once for looking at the 5 blocks to either side of the bottom of the door, and if that fails, again for the 5 blocks to either side of the top of the door. 
+</p>     <p>
+This is an invalid door, because all of the 20 blocks to each side are transparent blocks that are hit by the sun (i.e. outside blocks).
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi29.png" />
+<br />
+</p>     <p>
+
+This is a valid door. It will do the check of the bottom row (The nether post block row), and see that one block is not a clear block with direct sky access on the right, but all the posts on the left are. Since the sides are not equal, it is a valid door.
+
+</p>     <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/chunzhuangjizhi30.png" />
+<br />
+</p>     <p>
+
+This is also valid door. It will do the check of the bottom row (The nether post block row), and see that one of the nether posts is shaded on the left, and one of the blocks on the right is not transparent. Since there is one block on each side that is not outside, the two sides are equal, and the test will fail. 
+</p>     <p>
+It will then test the upper blocks (the fence post blocks). It will see one block on the left is not transparent, but all of the blocks on the right are. Since the two sides are not equal, the test will pass, and the door is ruled valid.
+</p>     <p>
+How village doors work.
+</p>     <p>
+
+      
+<p><br/></p></div>
+
+ 
+</body>
+
+</html>

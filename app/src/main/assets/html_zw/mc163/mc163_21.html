@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[紅石技巧]MC中的計算器！簡單串行乘法器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">[紅石技巧]MC中的計算器！簡單串行乘法器</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        <p> 在《我的世界》里，利用紅石能夠製作很多高科技的裝置，比如計算器以及電腦，這些高科技的裝置複雜之處在於不僅要懂得紅石的基本原理，還需要瞭解到一些算法的知識。</p>
+<p> 我們知道算法中的加法和減法在《我的世界》利用紅石比較器能夠比較簡單的實現，但是乘除法就相對複雜得多，所以下面就為大家介紹一個比較精簡的二進制串行乘法器~</p>
+<h2>一、算法原理</h2>
+<p> 1.十進制的乘法運算</p>
+<p> 當我們進行兩位數乘兩位數運算的時候(如32&#215;46)，我們通常會先將其中一個兩位數拆成一位數(4和6)，然後用另一個兩位數(32)去乘那兩個一位數(32&#215;4=128,32&#215;6=192)，將位權高的位數對應的乘積移動到指定位置(因為4在十位，所以32&#215;4的128理應是32&#215;40=1280，所以將128左移一位得到1280)，將乘積們相加(1280+192=1472)即可得到結果(32&#215;46=1472)。(注：移位的本質是乘以10，任何進制都是這樣，只不過這個「10」的含義隨著進制變化而改變，如十六進制的10在10進制下是16，二進制下的10在10進制下是2。)</p>
+<p> 2.二進制數的多位數乘一位數</p>
+<p> 二進制的多位數乘一位數的乘法比十進制要簡單很多，因為一位數只有兩種情況。一個多位數n在乘以一位數的時候，若一位數是0，那麼結果肯定是0.若一位數是1，那麼結果就是n。這裡如果用傳統數電方法就用一排與門就好，與門只有在兩個輸入都為1的時候才會輸出1，與二進制的一位數乘一位數不謀而合。而二進制下的多位數乘一位數不存在進位問題，所以一排與門就可以解決了。</p>
+<p> 3.二進制數的多位數乘多位數</p>
+<p> 按照1中的步驟來看，現在只需要將這一堆多位數乘一位數的結果進行左移與相加了。但是這兩步實際上可以同時進行。比如用十進制來舉例，2000&#215;52=104000,2&#215;52=104，這裡移位需要進行3次，而其他還會有數需要進行2次或1次移位的。那麼不妨最高位得到的乘積移位一次後就與低一位的數相加，這時再進行移位的話就相當於將兩個數都進行了移位，總體算來最高位那個數已經移位兩次了。所以，移位與相加這兩步可以混合在一起。如a乘b首先引入一個新的變量t=0，a與b的最高位用2中的方法相乘後的結果與t相加存入t(這一步叫累加，存儲t的存儲器連著對應的加法器還有一個名字叫累加器)，然後t左移一位存入t。接著用a乘以b低一位的數累加入t，t左移，以此類推。當a與b最低位相乘出結果並與t累加後，就不用再移位了，因為a與b最低位乘出來的數是不需要移位的，而更高位的結果此時已經移位完成了。此時，計算已經完成。</p>
+<h2>二、如何將算法運用到《我的世界》實際遊戲中</h2>
+<p> 1.beta1.7就存在的遠古累加器</p>
+<p> 從算法原理部分我們知道，實現乘法器要用到累加，因此我們先來介紹一下累加器，如下圖，這是一個十分傳統的累加器單元，以至於生存測試階段出現粘性活塞之後就已經可以使用這個架構了。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b05d60c2.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 下圖中，從右往左的淡藍色羊毛分別表示從低位到高位，抬起的羊毛代表「0」，落下的羊毛代表「1」。如下圖的狀態是0000000(二進制)。按鈕從右向左分別表示+1(二進制)，+10(二進制，換算回十進制就是+2)，+100(還是二進制)，+1000+…。於是這個累加器就可以直接將一個二進制數累加進這個存儲器了。如果輸出的數字很大，但是輸入不大，那麼也需要酌情砍掉一部分的輸入(或者說增加一部分存儲器)。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b05ee552.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 例如，按兩下右數第二個按鈕，表示10+10(二進制)=2+2(十進制)，如下圖所示，可以看到，輸出為100(二進制)=4。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b06174dc.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 原理就是粘性活塞接收「短脈衝」的時候只會進行一次推出或收回的動作，不會同時推出和收回。例如上圖，當按下右數第三個按鈕時，信號傳遞給粘性活塞並且讓羊毛充能，充能的羊毛將信號向左傳遞，同時粘性活塞推出羊毛，這樣就完成了移位。</p>
+<h2>三、建造過程</h2>
+<p> 知道了算法和累加器的原理之後，應該就比較好理解乘法器的建造思路了，那麼接下來我們就開始一步步建造這個乘法器吧。</p>
+<p> 首先注意，按照這種建造方法建造的最小乘法器為4位乘4位的，那麼接下來為大家介紹的乘法器就以8位乘8位為例。</p>
+<p> 第一步：搭出基礎框架，這裡用不同羊毛來區分乘法器中起著不同作用的部分。淡灰色羊毛表示刪除或者復位部分，其作用是將運算結果清除復位乘法器以方便下一次運算。綠色羊毛表示輸入部分，藍色羊毛表示累加器及輸出部分，紫色羊毛表示時序控制和循環部分。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b06334c2.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 第二步：按照下圖所示放置熔爐和粘性活塞，並在每個熔爐中放入一個物品。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b064db2e.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 第三步：如圖所示鋪設紅石電路，注意紅石中繼器和紅石比較器的方向，圖中中間位置的紅石中繼器下方需要放置半磚，否則會將下方的紅石線阻斷。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b06652ab.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 下面這張是反面，在中間的藍色羊毛上放一個絆線鈎。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0682c86.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 當拉動綠色羊毛處的拉桿時，表示輸入為1，粘性活塞將方塊推出，將輸入部分和加法器的電路連接，從而將輸入載入移位寄存器中。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b06a8735.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 第四步：接著如下圖所示把這個模塊密排堆疊8個，這樣就代表了二進制的8位數，其中每個拉桿代表一個位數的輸出。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b06d6a7a.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 第五步：緊貼著綠色羊毛模塊的高位建造另一個乘數(橙色羊毛)部分，如下圖，右邊(輸出)部分和綠色羊毛部分的構造是一模一樣的。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b07137e7.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 第六步：下面兩張圖是左半部分的構造，添加了漏斗和投擲器，上方的投擲器和漏斗朝向綠色羊毛部分，下方兩個漏斗的方向和上面的相反。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b074d3b4.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b076a7fb.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 第七步：.然後在剛才那8個綠色羊毛模塊的左側(也就是高位側)堆疊8個出來。如下圖所示，這樣一個8位乘8位的乘法器的框架就出來了。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0783971.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 第八步：.接下來我們需要在一些地方補充裝置，使得乘法器每個部分能夠連接起來，正常運作~</p>
+<p> 1.把橙色部分的最左側(高位處)修改成下圖這樣~ 右側那三個方塊都是投擲器，其中一個投擲器是原來就存在的，向著模塊內部的方向，剩下兩個都是向上，漏斗向左。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b07a16b3.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 2.然後在前面增加一層，變成下圖這樣。中間的沙子可以替換成不受重力影響的方塊，還有三個熔爐，上面和左下的熔爐放一個任意物品，中間的熔爐放一個不可堆疊物品(如最便宜的木鏟或石鏟)，左上角的白色羊毛處增加一個按鈕作為啓動鍵。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b07c7acf.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 3.連接橙色部分和啓動部分的電路修改成如下圖所示：</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b07ebeee.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 4.這裡增加兩個粘性活塞以及補一些羊毛。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0815573.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 5.下圖中連接部分加一堆漏斗，這些漏斗連接高位部分的漏斗。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b08361fb.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 6.找到末尾的位置，改成下面這樣，注意原來左下角的那個中繼器變成了紅石線。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b08510c4.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 7.重要，下圖中末尾部分的四個中繼器改成4tick增加延遲，保證下一次運算不會出錯。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b086dec0.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 8.下圖十字准星所指向的投擲器內部放兩個不可堆疊物品(如木鏟)</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b088c591.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 9.下圖中加上一個紅石火把，注意先破壞掉中繼器。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b08a63ca.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 到這裡，所有的修改都完成了，同時乘法器也就大功告成了。</p>
+<p> 使用的時候，橙色部分輸入其中一個乘數，綠色部分輸入另一個乘數，按照習慣左側輸入高位，右側輸入低位，按下按鈕就可以計算了。比如，我們計算3*3，換算成二進制就是11*11，如下圖所示把相應的拉桿拉起。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b08c4ab8.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 得到紅石比較器的輸出是1001，也就是2^4+1=9 (注意，從這個方向看的話，輸出端左側是低位，右側是高位。)</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b08dd7ff.jpg" alt="[紅石技巧]MC中的計算器！簡單串行乘法器" /></p>
+<p> 當投擲器旁邊的比較器高頻時鐘閃爍之後，表示此次運算已經完成，方可進行下一次運算。當運算結束後，再次輸入乘數並按下按鈕，灰色羊毛部分開始運作，會將輸出端的粘性活塞推出，先將上一次的運算結果，同時啓動加法器和移位寄存器開始下一輪的計算。</p>
+<p> 以上就是精簡串行乘法器的教程，本篇教程介紹的乘法器相比於其他乘法器具有體積更小的優點，不足是運算速度較慢。但是由於建造起來比較方便，同時體積小也彌補了在運算速度上的缺憾，所以這個乘法器還是比較實用的，希望大家能夠喜歡~</p>
+        
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

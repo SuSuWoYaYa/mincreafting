@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>脈衝電路</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">脈衝電路</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+           <p> 
+		脈衝電路(Pulse Circuit)為一種能夠生成，改變，感應以及其他對紅石脈衝的操作的紅石電路。
+		</p>  
+		
+		 <h2>脈衝</h2>
+  <p><b>    脈衝(Pulse)</b>為紅石能量能夠最終回到起始狀態的暫時性改變。在物理電學中，脈衝指波幅在同一象限的週期性變化，因此紅石信號的有無變化和紅石信號強度大小的變化都能算作脈衝，而我們通常指的脈衝是信號01變化的脈衝。
+</p>
+  <p><b>  正脈衝(On-pulse)</b>指紅石信號從無到有，再到無的過程。如果不刻意與負脈衝區分，正脈衝一般可以簡寫為「脈衝」。
+</p>
+  <p><b>   負脈衝(Off-pulse)</b>指紅石信號從有到無，再到有的過程。
+</p>
+  <p><b>   脈衝長度(Pulse Length)</b>指脈衝持續的時間，短脈衝通常用紅石刻衡量(1紅石刻=0.1秒)，長脈衝一般可以用任何較為方便的時間單位衡量。
+</p>
+<p>脈衝的  <b>  上升沿(Rising Edge)</b>指信號從無到有的瞬間——即正脈衝的開始，負脈衝的結束。
+</p> 
+<p>脈衝的  <b>下降沿(Falling Edge)  </b> 指信號從有到無的瞬間——即正脈衝的結束，負脈衝的開始。
+</p>
+  <p><b>  脈衝響應</b></p> 
+    <p>  某些紅石元件響應短脈衝時會有不同的現象：
+</p> 
+<ul><li>
+
+
+活塞以及粘性活塞完全伸展活塞臂一般需要1.5刻。如果激活活塞的脈衝短於1.5刻，活塞或粘性活塞會將其推動的方塊留在推出的位置，且活塞臂會瞬間縮回。這樣，粘性活塞無法拉回自己推出的方塊。
+</li><li>紅石比較器無法傳導半刻脈衝，只能傳導長度大於或等於1刻的脈衝。
+</li><li>紅石燈無法因短於2刻的負脈衝而熄滅。
+</li><li>紅石中繼器會將任何短於自身延遲的脈衝的長度提升到與自身延遲相同(例如，設置為4刻延遲的中繼器會將任何短於4刻的脈衝延長到4刻長度)。
+</li><li>紅石火把無法因短於1.5刻的脈衝而熄滅。
+ </li></ul> <p><b> 脈衝分析 </b></p> 
+    <p>建造電路時，觀察脈衝可能會對確定其長度或間隔很有幫助。
+</p> 
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu.png" />
+ <br />
+
+示波器(Oscilloscope) <br />
+<i>  
+1×N×2，平面，靜音 <br />
+示波器能夠讓你直觀地觀察脈衝。</i>
+</p>
+ 
+  <p><b>  示波器 </b>能夠以1刻的精度測量脈衝。
+</p>
+   <p> 示波器構造簡單，僅僅是1刻紅石中繼器的長鏈。示波器長度應該至少要比待測脈衝的長度大幾個方塊(中繼器越多，觀察越方便)。對於週期性脈衝(時鐘電路)，示波器長度應該大於時鐘週期(時鐘週期=正脈衝長度+負脈衝長度)。
+
+</p>     <p> 示波器暫停的方法有：
+</p>  
+<ul><li>
+
+調出遊戲菜單(默認為esc)，或
+</li><li>按F2截圖，或
+</li><li>示波器側面配置可以鎖存示波器的一排中繼器，同時激活這些中繼器即可鎖定示波器。
+  </li></ul>   <p> 示波器無法直接顯示非整數長度的脈衝，但對於超過1刻的非整數長度脈衝，在示波器里看上去的脈衝長度像是隨時在變化。例如，3.5刻脈衝可能有時激活3個中繼器，有時激活4個中繼器。
+</p>     <p> 
+半刻脈衝激活中繼器的表現與1刻脈衝沒什麼差異，區分它們只能靠紅石比較器——1刻脈衝能夠激活紅石比較器，但半刻脈衝不能。
+</p>     <p> 
+多個示波器可以平行鋪設，用以直觀比較不同的脈衝。例如，你可以將一個電路的輸入脈衝和輸出脈衝平行顯示，用來判斷兩個脈衝之間的延時。
+</p>     <p> 
+示波器很實用，但有時需要你站在一個不容易到達的制高點觀察。
+</p>
+
+<h2>單穩態電路</h2>
+   <p> 電路的單穩態(Monostable)指電路輸出只有一個穩定態。
+
+</p>     <p> 電路輸出可被激活或反激活。如果電路輸出在下一次電路觸發之前保持不變，那麼稱這個輸出狀態為「穩態」。輸出在輸入不變時也會改變的話，就是不穩定的(不一定要求變化是隨機的——只需要在設計的延時後輸出有改變就可以)
+
+</p>     <p> 如果電路只有一個穩態輸出，那麼稱之為「單穩態」。
+
+</p>     <p> 當在Minecraft中使用「單穩態電路」的稱呼時，通常其代表的就是脈衝發生器或脈衝限制器。然而，嚴格意義上講，任何產生有限脈衝數量的電路都可以叫做「單穩態電路」(本文中所有電路都包含在內)，因此如果不使用「單穩態電路」的稱謂，用下面的特定術語會更加明確且不易混淆：
+</p>  
+<ul><li>
+
+脈衝發生器能產生一個脈衝
+</li><li>脈衝限制器減短長脈衝的長度
+</li><li>脈衝穩定器延長短脈衝的長度
+</li><li>脈衝增殖器接收一個輸出脈衝，產生多個輸出脈衝
+</li><li>脈衝除法器接收特定數量的多個輸入脈衝，產生一個輸出脈衝
+</li><li>邊沿感應器感應到輸入脈衝的特定邊沿時輸出一個脈衝
+</li><li>脈衝長度感應器感應到特定長度的輸出脈衝時產生一個輸出脈衝
+</li><li>方塊更新感應器特定方塊更新時，產生一個輸出脈衝
+</li><li>比較器更新感應器在特定比較器被一個容器更新觸發而更新時，產生一個輸出脈衝
+</li><li>時鐘電路也能產生脈衝，並且是持續的脈衝，但由於輸出無穩態，不能稱之為單穩態電路(除非時鐘電路被外部干涉強制切斷)。邏輯電路與記憶電路也因為具有兩個穩態(稱之為「雙穩態」)而不屬於單穩態電路。
+</li></ul>    <p>  另見：Wikipedia:zh:單穩態
+</p> 
+
+<h2>脈衝發生器</h2>
+  <p><b>  脈衝發生器(Pulse Generator)</b>在被觸發時產生一個輸出脈衝，如果需要發生持續的脈衝請使用時鐘電路。
+</p> 
+   <p>大多數脈衝發生器均由一個開關與一個脈衝限制器組合而成。當然，如果想產生長脈衝，可以換用脈衝穩定器。
+</p>  
+  <p><b> 斷路器脈衝發生器 </b></p> 
+  <p><b> 斷路器脈衝發生器圖示 </b></p> 
+ 
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu2.png" />
+ <br />
+
+粘性斷路器脈衝發生器
+ </p>
+ 
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu3.png" />
+ <br />
+
+沙子斷路器脈衝發生器
+</p>
+   <p>  <i> 
+1×3×3 (9方塊)，1格寬 <br />
+電路延遲：1刻 <br />
+輸出脈衝長度：0.5刻 </i> </p>  
+    <p> 由於體積小且輸出可調，斷路器為最常見的脈衝發生器。
+</p>     <p>  <i> 替代方案： </i> 輸出端的中繼器可以設為任意延遲，延遲量與輸出脈衝長度相等。當整個模塊為南北走向時，輸出端的中繼器也可以用任何機械元件代替，這樣機械元件能接收到0.5刻的激活脈衝。
+ </p>  <p><b> 紅石粉斷路脈衝發生器 </b></p> 
+
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu4.png" />
+ <br />紅石粉斷路脈衝發生器
+</p>
+
+
+   <p>  <i> 
+1×4×3 (12方塊)，1格寬 <br />
+電路延遲：0刻 <br />
+輸出脈衝長度：1.5刻</i> </p> 
+     <p> 紅石粉斷路脈衝發生器通過移動方塊切斷輸出線來限制輸出脈衝的長度。
+ </p> <p><b>  非門脈衝發生器</b></p> 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu5.png" />
+ <br />
+非門脈衝發生器
+</p>
+
+   <p>  <i> 
+1×4×3 (12方塊)，1格寬，靜音<br />
+電路延遲：2刻<br />
+輸出脈衝長度：1刻</i> </p> 
+    <p>非門脈衝發生器會將當前信號與2刻之前的信號對比——如果當前信號為激活狀態，2刻前為非激活狀態，那麼輸出火把會短暫點亮。
+</p>     <p> 本方案用了一個小技巧將輸出脈衝限制到1刻。紅石火把無法被1刻脈衝激活，但被2刻脈衝激活的火把可以將自己短接到1刻脈衝中。若想把輸出脈衝加長到2刻，移除輸出火把上的方塊即可；若要把輸出脈衝加長到3刻，設置中繼器延時為4刻即可。
+ </p>      <p><b>中繼器鎖存脈衝發生器  </b></p> 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu6.png" />
+ <br />
+中繼器鎖存脈衝發生器
+</p>
+
+   <p>  <i> 
+2×3×2 (12方塊)，平面，靜音<br />
+電路延遲：2刻<br />
+輸出脈衝長度：1刻</i> </p> 
+    <p>拉桿關閉時，鎖存狀態的中繼器允許一個脈衝通過。
+</p>     <p><i>替代方案：</i> 鎖存中繼器可設置為任何延時。這能夠加長輸出脈衝，但也會提高電路延遲。
+ </p>  <p><b> 負脈衝發生器 </b></p> 
+ <p><b> 負脈衝發生器(Off-pulse Generator)  </b>具有穩態為激活態的輸出信號，觸發時產生負脈衝。
+</p> 
+ <p><b> 或門負脈衝發生器  </b></p> 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu7.png" />
+ <br />
+或門負脈衝發生器
+</p>
+
+   <p>  <i> 
+1×3×3 (9方塊)，1格寬，靜音<br />
+電路延遲：1刻<br />
+輸出脈衝長度：1刻(負)</i> </p> 
+   <p>觸發時，底部的火把熄滅，但上部的火把1刻後才會亮起，這樣能夠輸出一個1刻負脈衝。
+</p>  
+
+
+<h2>脈衝限制器</h2>
+  <p><b>   脈衝限制器(Pulse Limiter)</b>(即「脈衝縮短器」)可以縮短長脈衝的長度。
+</p>
+    <p> 理想的脈衝限制器能夠使短脈衝無改變地通過，但實際應用中，由於一般輸入脈衝的長度都是可以大概估計範圍的，因此，接受長脈衝並產生短脈衝的電路就足以扮演脈衝限制器的角色了。
+
+</p>     <p> 任何上升沿感應器都可以兼任脈衝限制器。
+</p> 
+ <p><b>  斷路器脈衝限制器</b></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu8.png" />
+ <br />
+
+斷路器脈衝限制器
+</p>
+   <p>  <i> 
+1×3×3 (9方塊)，1格寬<br />
+電路延遲：1刻<br />
+輸出脈衝長度：0.5刻</i> </p> 
+   <p>  由於體積小且輸出可調，斷路器為最常見的脈衝限制器。
+</p>     <p>  <i>替代方案：</i>輸出端的中繼器可以設為任意延遲，延遲量與輸出脈衝長度相等。當整個模塊為南北走向時，輸出端的中繼器也可以用任何機械元件代替，這樣機械元件能接收到0.5刻的激活脈衝。
+</p>  
+  <p><b> 紅石粉斷路脈衝限制器 </b></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu9.png" />
+ <br />
+紅石粉斷路脈衝限制器
+</p>
+   <p>  <i> 
+1×5×3 (15方塊)，1格寬，瞬時<br />
+電路延遲：0刻<br />
+輸出脈衝長度：1.5刻</i> </p> 
+    <p> 紅石粉斷路脈衝限制器通過移動方塊切斷輸出線來限制輸出脈衝的長度。
+</p>     <p> 紅石粉斷路脈衝限制器無法中繼輸入信號(即將信號加強到滿強度)，因此輸出端可能需要額外的中繼器(這樣也會引入額外延遲)。
+</p>     <p> 紅石粉斷路脈衝限制器為理想的脈衝限制器(見上文)。短於1.5刻的脈衝可以無改變地通過。
+</p> 
+
+  <p><b> 方塊移動脈衝限制器 </b></p> 
+
+ 
+
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu10.png" />
+ <br />
+方塊移動脈衝限制器
+</p>
+   <p>  <i> 
+3×3×2 (18方塊)，平面<br />
+電路延遲：1刻<br />
+輸出脈衝長度：1刻</i> </p> 
+     <p>利用了與斷路器脈衝限制器相同的原理。
+</p>     <p><i> 替代方案：</i> 底部的中繼器可以設置為較長延時，這樣輸出脈衝長度可以為2或3刻.
+</p>  <p><b> 或非門脈衝限制器 </b></p> 
+
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu11.png" />
+ <br />
+或非門脈衝限制器
+</p>
+   <p>  <i> 
+2×4×3 (24方塊)，靜音<br />
+電路延遲：2刻<br />
+輸出脈衝長度：1刻</i> </p> 
+     <p> 或非門脈衝限制器會將當前信號與2刻之前的信號對比——如果當前信號為激活狀態，2刻前為非激活狀態，那麼輸出火把會短暫點亮。
+</p>     <p> 本方案用了一個小技巧將輸出脈衝限制到1刻。紅石火把無法被1刻脈衝激活，但被2刻脈衝激活的火把可以將自己短接到1刻脈衝中。若想把輸出脈衝加長到2刻，移除輸出火把上的方塊即可；若要把輸出脈衝加長到3刻，設置中繼器延時為4刻即可。
+ </p> <p><b> 中繼器鎖存脈衝限制器 </b></p> 
+
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu12.png" />
+ <br />
+中繼器鎖存脈衝限制器
+</p>
+   <p>  <i> 
+2×4×2 (16方塊)，平面，靜音<br />
+電路延遲：3刻<br />
+輸出脈衝長度：1刻</i> </p> 
+     <p> 拉桿關閉時，鎖存狀態的中繼器允許一個脈衝通過。
+</p>     <p> <i> 替代方案：</i>  鎖存中繼器可設置為任何延時。這能夠加長輸出脈衝，但也會提高電路延遲。
+ </p><p><b> 投擲器-漏斗脈衝限制器  </b></p> 
+ 
+
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu13.png" />
+ <br />
+投擲器-漏斗脈衝限制器
+
+投擲器內含一個物品。
+</p>
+   <p>  <i> 
+1×4×2 (8方塊)，1格寬，平面，靜音<br />
+電路延遲：3刻<br />
+輸出脈衝長度：3.5刻</i> </p> 
+     <p> 輸入端激活時，投擲器向漏斗輸入一個物品，比較器從而激活，直到漏斗將物品推回投擲器。
+</p>     <p> 開頭的方塊的作用是在不充能投擲器的同時激活投擲器(充能投擲器的話，漏斗會因此被禁用，從而無法將物品返回)。
+</p>     <p> 由於輸出脈衝依賴比較器的容器容量判定功能，因此輸出信號強度很低(物品可堆疊的話強度只有1，不可堆疊也只有3)——故輸出端需要中繼器提高信號強度。
+</p>     <p> <i>替代方案：</i>如果輸入端和輸出端沒有必要在同一高度，你可以將漏斗放在投擲器頂部，投擲器投擲方向朝上(這樣電路尺寸會縮減到1×3×2)
+ </p> <p><b>  負脈衝限制器</b></p> 
+  <p><b>  負脈衝限制器(Off-pulse Limiter)</b> 具有穩態為激活態的輸出，但會減小通過的負脈衝的長度。.
+   </p> <p>  
+任何反相下降沿感應器均可兼職負脈衝限制器。
+</p> 
+  <p><b> 或門負脈衝限制器 圖示</b></p> 
+ 
+
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu14.png" />
+ <br />
+平面或門負脈衝限制器
+</p>
+   <p>  <i> 
+2×3×2 (12方塊)<br />
+flat，靜音<br />
+電路延遲：1刻<br />
+輸出脈衝長度：1刻(負)</i> </p> 
+ 
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu15.png" />
+ <br />
+1格寬或門負脈衝限制器
+</p>
+   <p>  <i> 
+1×4×4 (16方塊)<br />
+1-wide，瞬時，靜音<br />
+電路延遲：0刻<br />
+輸出脈衝長度：1刻(負)</i> </p> 
+
+    <p>   
+或門負脈衝限制器將輸入域延遲反相輸入結合以限制負脈衝長度。
+</p>     <p>   1格寬的版本無法中繼輸入信號(即將信號加強到滿強度)，因此輸出端可能需要額外的中繼器(這樣也會引入額外延遲)。
+</p>     <p>  <i> 替代方案：</i>平面版底部的中繼器可設置為任何延遲，這樣會提高負脈衝的長度到與中繼器延遲相等(但整體電路延遲不會提升)。
+</p>     <p>   1格寬的版底部的紅石粉可以用中繼器替代，這樣能提高負脈衝的長度。
+ </p>  <p><b>  方塊移動負脈衝限制器</b></p> 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu16.png" />
+ <br />
+方塊移動負脈衝限制器
+</p>
+   <p>  <i> 
+1×4×2 (8方塊)，1格寬，瞬時<br />
+電路延遲：0刻<br />
+輸出脈衝長度：2.5刻(負)</i> </p> 
+    <p>  輸入變0時，活塞開始縮回。1刻之後，火把點亮，間接重新激活粘性活塞，使其再次伸出。
+</p> 
+
+<h2>脈衝穩定器</h2>
+ <p><b> 脈衝穩定器(Pulse Sustainer) </b>(即「脈衝延長器(Pulse Lengthener)」)能夠加長脈衝的長度。
+</p>     <p> 
+對於短於1-2秒的脈衝，使用中繼器(最高4刻)、中繼器鏈脈衝穩定器(最高1秒)或RS鎖存器脈衝穩定器(最高若干秒)均可。
+</p>     <p> 
+對於較長脈衝，通常投擲器-鎖存器脈衝穩定器是最佳選擇，其體積不會因脈衝加長而增加。
+</p>     <p> 
+對於長達數分鐘或數小時的脈衝，可以使用MHC脈衝穩定器。
+</p> 
+ 
+
+  <p><b>紅石中繼器  </b></p> 
+<p> <i><b>1×1×2，1格寬，平面，靜音</b>  <br />
+電路延遲： 1-4刻 <br />
+輸出脈衝長度： 1-4刻</i> </p> <p>
+紅石中繼器能夠將任何短於自身延遲的脈衝加長到與自身延遲相同。
+</p>     <p> 多個中繼器只會起到延遲作用而不是加長作用。
+ </p>  <p><b>  中繼器鏈脈衝穩定器</b></p> 
+<p> <i><b>2×N×2，平面，靜音，瞬時</b>  <br />
+電路延遲： 0(瞬時版)或4刻(延遲版)<br />
+輸出脈衝長度：最長每中繼器4刻</i> </p> <p>
+       對於瞬時版，輸入脈衝長度必須至少為鏈路中延遲最長的中繼器的延遲(通常為4刻)——如果無法保證，請使用延遲版)。
+  </p><p><b>RS鎖存器脈衝穩定器  </b></p> 
+ <p> <i> 
+輸出脈衝長度：最長每中繼器8刻</i> </p> <p>
+    <p>  RS鎖存器脈衝穩定器通過對鎖存器R端、S端的激活時間延遲來控制輸出脈衝長度。
+</p>     <p>  兩種方案都利用了將中繼器延遲加倍的小技巧。這意味著對中繼器延遲的調整會導致輸出脈衝長度2倍的改變。
+ </p>  <p><b>  衰減器脈衝穩定器</b></p> 
+<p> <i><b>2×N×2，平面，靜音</b>  <br />
+電路延遲： 0刻<br />
+輸出脈衝長度：最長每比較器14刻</i> </p> <p>
+      延遲取決於輸入信號強度——對於強度為S的輸入，延遲則為每個比較器(S-1)刻。輸出的信號會逐漸減弱，因此可能需要中繼器加強。
+ </p>  <p><b> 投擲器-鎖存器脈衝穩定器 </b></p> 
+<p> <i><b>2×6×2 (24方塊)，平面，靜音</b>  <br />
+電路延遲： 5刻<br />
+輸出脈衝長度： 5刻-256秒</i> </p> <p>
+中間漏斗里的每個物品都能對輸出脈衝添加8刻的長度。輸出脈衝可以此精確調節：提高1刻中繼器到3刻，減小4刻中繼器到3刻，或用方塊取代4刻中繼器以降低延遲4刻(這些措施會影響到總脈衝長度，調節範圍為5刻到256秒之間的任意整數刻)。
+ </p>       <p><b>漏斗時鐘脈衝穩定器  </b></p> 
+<p> <i><b>電路延遲： 1刻</b>  <br />
+輸出脈衝長度： 4刻-256秒</i> </p> <p>
+   漏斗時鐘脈衝穩定器為用普通活塞代替粘性活塞的脈衝時鐘，這樣普通活塞無法拉回方塊，整個裝置就只能等待新的輸入信號觸發新一輪時鐘週期。
+</p>     <p>  漏斗時鐘脈衝穩定器的漏斗中有一個物品的話能產生4刻輸出脈衝。每多一個物品，脈衝長度增加8刻。輸出脈衝長度只能以8刻為單位進行調整。
+</p>     <p>  等待輸入端激活時，粘性活塞事實上已經充能，但直到輸入激活才會表現為激活狀態。而且，你必須保證粘性活塞周圍不會出現其他紅石更新，以免引起活塞誤動作。
+ </p>  <p><b> MHC脈衝穩定器 </b></p> 
+<p> <i><b>6×6×2 (72方塊)</b>  <br />
+電路延遲： 3刻<br />
+輸出脈衝長度：最高22小時</i> </p> <p>
+   「MHC」即「倍乘漏斗時鐘(Multiplicative Hopper Clock)」(一個漏斗時鐘使另一個時鐘的時鐘週期倍乘)。
+</p>     <p>  輸入端激活，火把熄滅，這樣兩個時鐘都開始循環，下面的時鐘在完成一個時鐘循環週期前一直使火把保持熄滅。頂部漏斗存儲的物品數量決定了上部時鐘的循環週期，紅石塊每半個週期移動一次，使得下部時鐘移動一個物品。
+</p>     <p> 半循環週期=頂部漏斗物品數&#215;4刻——對於滿數量的320個物品能達到128秒。底部時鐘能在若干半循環週期之後才改變一次輸出信號。總的輸出脈衝長度等於0.4秒&#215; &lt;頂部漏斗的物品數&gt; &#215; (2 &#215; &lt;底部漏斗的物品數&gt; - 1).</p> 
+   
+<table  style="text-align: center">
+<tr>
+<th colspan="3">輸出脈衝長度對應的物品數量
+</th></tr>
+<tr>
+<th> 輸出脈衝長度
+</th>
+<th> 頂部漏斗的物品數
+</th>
+<th> 底部漏斗的物品數
+</th></tr>
+<tr>
+<td>5分鐘</td>
+<td>150</td>
+<td>3
+</td></tr>
+<tr>
+<td>10分鐘</td>
+<td>300</td>
+<td>3
+</td></tr>
+<tr>
+<td>15分鐘</td>
+<td>150</td>
+<td>8
+</td></tr>
+<tr>
+<td>20分鐘</td>
+<td>200</td>
+<td>8
+</td></tr>
+<tr>
+<td>30分鐘</td>
+<td>300</td>
+<td>8
+</td></tr>
+<tr>
+<td>1小時</td>
+<td>200</td>
+<td>23
+</td></tr>
+<tr>
+<td>1.5小時</td>
+<td>300</td>
+<td>23
+</td></tr>
+<tr>
+<td>2小時</td>
+<td>240</td>
+<td>38
+</td></tr>
+<tr>
+<td>3小時</td>
+<td>200</td>
+<td>68
+</td></tr>
+<tr>
+<td>4小時</td>
+<td>288</td>
+<td>63
+</td></tr>
+<tr>
+<td>6小時</td>
+<td>240</td>
+<td>113
+</td></tr>
+<tr>
+<td>12小時</td>
+<td>288</td>
+<td>188
+</td></tr></table>
+
+<h2>脈衝增殖器</h2>
+  <p><b> 脈衝增殖器(Pulse Multiplier) </b>能將一個輸入脈衝變成多個輸出脈衝。
+</p>
+   <p>  現有三種主要的設計脈衝增殖器的思路：:
+</p>  
+<ul><li>
+
+將輸入脈衝分割為多路，每一路加上不同的延遲，使得最終先後相繼輸出
+</li><li>輸入脈衝激活時，使得一個內置時鐘運行
+</li><li>觸發一個只能運行有限次數的時鐘，時鐘與輸入脈衝長度無關
+ </li></ul> <p><b> 分路脈衝增殖器 </b></p>
+  <p><b> 分路脈衝增殖器(Split-path Pulse Multiplier) </b>將輸入脈衝分割為多路，每一路加上不同的延遲，使得最終先後相繼輸出。通常需要用脈衝限制器縮短輸入脈衝長度，這樣可以減小脈衝之間的延遲需求。
+</p>
+  <p><b>發射器脈衝加倍器  </b></p>
+
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu17.png" />
+ <br />
+
+發射器脈衝加倍器
+</p>
+  <p> <i>
+1×6×3 (18方塊)，1格寬 <br />
+電路延遲：1刻 <br />
+輸出脈衝長度：0.5刻 </i></p> 
+    <p> 本電路還能使發射器迅速放置-吸回水或熔岩。
+ </p> <p><b> 時鐘使能脈衝增殖器  </b></p>
+ <p><b>時鐘使能脈衝增殖器(Enabled-clock Pulse Multiplier)   </b>的輸入信號只要激活，時鐘就會保持運行，產生與輸入脈衝長度相關的若干數量脈衝。
+</p>
+  <p><b> 減法1刻時鐘脈衝增殖器 </b></p>
+<p> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu18.png" />
+ <br />減法1刻時鐘脈衝增殖器
+</p>
+  <p> <i>
+2×3×2 (12方塊)，平面，靜音 <br />
+電路延遲：1刻 <br />
+輸出脈衝長度：1刻</i></p> 
+    <p>  該脈衝增殖器不會中繼輸入信號，故可能輸出端需要中繼器(但會引入延遲)。
+ </p>  <p><b>  減法N刻時鐘脈衝增殖器</b></p>
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu19.png" />
+ <br />減法N刻時鐘脈衝增殖器
+</p>
+  <p> <i>
+2×3×2 (12方塊)，平面，靜音<br />
+電路延遲：1刻<br />
+輸出脈衝長度：2+刻</i></p> 
+   <p>  輸出脈衝比中繼器延遲長1刻。若想獲取更長的脈衝，將中繼器後面的紅石粉用另一個中繼器代替即可。
+</p>     <p>  該脈衝增殖器不會中繼輸入信號，故可能輸出端需要中繼器(但會引入延遲)。
+ </p>   <p><b>  火把中繼器N刻時鐘脈衝增殖器</b></p>
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu20.png" />
+ <br />火把中繼器N刻時鐘脈衝增殖器
+</p>
+  <p> <i>
+2×4×2 (16方塊)，平面，靜音<br />
+電路延遲：2刻3<br />
+輸出脈衝長度：3+刻</i></p> 
+     <p>  輸出脈衝比中繼器延遲長1刻。中繼器不能設定為1刻延遲，否則會使右側火把燃盡(不過你可以利用這個副作用以限制輸出脈衝數量為最大8個)。
+ </p> <p><b> 時鐘觸發脈衝增殖器 </b></p>
+  <p><b>  時鐘觸發脈衝增殖器(Triggered-clock Pulse Multiplier)</b>里的時鐘電路一旦被輸入脈衝觸發，就能產生特定數量的輸出脈衝。一般的設計思路為利用鎖存器限制輸出數量，或是利用脈衝穩定器完成。
+</p>
+  <p><b> 投擲器鎖存2刻時鐘脈衝增殖器 </b></p>
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu21.png" />
+ <br />頂部的投擲器有一個物品。底部的投擲器的物品數量決定輸出脈衝的數量。
+</p>
+  <p> <i>
+3×4×2 (24方塊)，平面，靜音<br />
+電路延遲：3刻<br />
+輸出脈衝長度：1-320個2刻脈衝</i></p> 
+    <p>  底部的投擲器的物品數量決定輸出脈衝的數量(實質上是負脈衝的數量)。
+</p>     <p>  增殖器完成輸出後，需要0.4秒×輸出脈衝數量的復位時間。如果在冷卻期間重新使用增殖器，那麼產生的脈衝數會低於預期。
+ </p>  <p><b>  投擲器鎖存1刻時鐘脈衝增殖器</b></p>
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu22.png" />
+ <br />
+頂部的投擲器有一個物品。中部的投擲器的物品數量決定輸出脈衝的數量。
+</p>
+  <p> <i>
+2×8×2 (32方塊)，平面，靜音<br />
+電路延遲：5刻<br />
+輸出脈衝長度：2-777個1刻脈衝</i></p> 
+    <p>  該增殖器能夠輸出的脈衝數量可調節範圍相當寬，而且不需要復位時間。
+</p>     <p>  中央漏斗中存放的第一個與第二個物品必須為不可堆疊物品(為了給輸出端足夠運行減法時鐘的信號強度)。兩個不可堆疊物品之間最多可放置3組可堆疊物品(這樣兩個不可堆疊物品分別佔據第一個和最後一個物品欄，以確保兩個方向運作時，首先輸出的都是不可堆疊物品)。
+</p>     <p>  中間漏斗每放置1格物品，電路就會多輸出4個1刻脈衝(脈衝間隔也是1刻)。若將設置為4刻延遲的中繼器設置為2刻延遲，輸出脈衝數量會減1；代替為方塊的話則會減2。將1刻延遲中繼器設置為3刻則會加1。
+</p> 
+
+
+
+
+  <p><b> 脈衝分割器 </b></p> 
+<p><b> 脈衝分割器(Pulse Divider) </b>(即「脈衝計數器)能夠在接到多個輸入脈衝後輸出一個脈衝——或者可以說，其將多個輸入脈衝變為1個輸出脈衝。
+</p>
+    <p> 脈衝分割器類似於環路計數器(具有n種狀態，但只有一種為激活態)。區別在於，脈衝分割器在指定數量脈衝之後會輸出一個脈衝，而環路計數器完成計數後會維持激活態(即前者為單穩態，後者為雙穩態)。任何環路計數器都可以與脈衝限制器組合成為脈衝分割器。
+</p> 
+  <p><b> 漏斗環脈衝分割器 </b></p> 
+
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu23.png" />
+ <br />
+ 
+
+ 底層右側的漏斗存有一個物品。
+</p>
+  <p> <i>
+2×(3 + 脈衝數量/2)×3<br />
+輸出脈衝長度：3刻</i></p> 
+     <p>本裝置實質為輸出端組合了脈衝限制器的漏斗環環路計數器。
+</p>     <p>每個輸入脈衝都能使紅石粉產生1刻的負脈衝，使得物品被傳遞到下一個漏斗。物品到達投擲器時會激活輸出端，直到紅石信號返回，將物品從投擲器傳到下一個漏斗。
+</p>     <p>若想測量偶數個脈衝，用投擲器代替另一個漏斗即可。如果把第二個投擲器放在第一個投擲器之前，輸出脈衝會變為6刻。
+</p>     <p>輸出脈衝信號強度只有1(活塞內為可堆疊物品)或3(不可堆疊物品)，故可能需要中繼器加強。
+ </p><p><b>  投擲器-漏斗脈衝分割器 </b></p> 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu24.png" />
+ <br />
+
+投擲器容納與脈衝數量相等的物品數。底部靠左的漏斗有1個物品。
+</p>
+  <p> <i>
+3×4×2 (24方塊)，平面<br />
+輸出脈衝長度：(0.4 × 脈衝數量)秒</i></p> 
+    <p>投擲器-漏斗脈衝分割器能最高計數320個脈衝。
+</p>     <p>每個輸入脈衝會從投擲器推動1個物品到旁邊的漏斗。投擲器物品最終排空時，連接的比較器則失去信號，使得底部靠左的漏斗開始向右邊輸送物品，即電路復位開始。頂部漏斗將物品全數送回投擲器後，底部漏斗的物品會移回左側，終止復位進程(復位完成)。
+</p>     <p>輸出脈衝一旦開始，脈衝分割器會持續輸出(0.4 × 脈衝數量)秒的復位週期(與輸出脈衝長度相同)。任何在此期間新的輸入脈衝都不會被計數，但會延長復位時間。因為此復位時間的存在，本脈衝分割器最好應用於輸入脈衝間隔大於復位時間的場合。
+</p>     <p>輸出脈衝信號強度只有1(活塞內為可堆疊物品)或3(不可堆疊物品)，故可能需要中繼器加強。輸出脈衝長度也可能過長，故可能需要脈衝限制器縮短。
+ </p>  <p><b>  投擲器-投擲器脈衝分割器</b></p> 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu25.png" />
+ <br />
+ 
+左側的投擲器含有的物品數量等於脈衝數量。左側的漏斗含有1個不可堆疊物品。
+</p>
+  <p> <i>
+3×6×2 (36方塊)，平面 <br />
+輸出脈衝長度：(0.2 × 脈衝數量)秒</i></p> 
+     <p>投擲器-投擲器脈衝分割器能最高計數576個脈衝。
+</p>     <p>每個輸入脈衝會從左邊的投擲器推動1個物品到右邊的投擲器。左側投擲器物品最終排空時，連接的比較器則失去信號，使得底部靠左的漏斗開始向右邊輸送物品，開啓減法1刻時鐘，即電路復位開始(雖然減法時鐘也會激活投擲器，但僅會對電路輸出產生脈衝長度的改變)。右側投擲器將物品全數送回左側投擲器後，底部漏斗的物品會移回左側，終止復位進程(復位完成)。
+</p>     <p>輸出脈衝一旦開始，脈衝分割器會持續輸出(0.2 × 脈衝數量)秒的復位週期(與輸出脈衝長度相同)。任何在此期間新的輸入脈衝都不會被計數，但會延長復位時間。因為此復位時間的存在，本脈衝分割器最好應用於輸入脈衝間隔大於復位時間的場合。
+</p>     <p>輸出脈衝信號強度只有1(活塞內為可堆疊物品)或3(不可堆疊物品)，故可能需要中繼器加強。輸出脈衝長度也可能過長，故可能需要脈衝限制器縮短。
+</p>
+
+
+<h2>邊沿感應器</h2>
+ <p><b>  邊沿感應器(Edge Detector)</b>能夠在輸入信號產生特定變化時輸出一個脈衝。
+</p> 
+<ul><li>
+
+
+上升沿感應器在輸入變為1的瞬間輸出脈衝。
+</li><li>下降沿感應器在輸入變為0的瞬間輸出脈衝。
+</li><li>雙邊沿感應器在輸入改變的瞬間輸出脈衝。</li></ul>
+<p><b>  反相邊沿感應器(Inverted Edge Detector) </b>即輸出負脈衝的邊沿感應器。
+</p> 
+<ul><li>
+
+反相上升沿感應器在輸入變為1的瞬間輸出負脈衝。
+</li><li>反相下降沿感應器在輸入變為0的瞬間輸出負脈衝。
+</li><li>反相雙邊沿感應器在輸入改變的瞬間輸出負脈衝。</li></ul>
+ <p><b> 上升沿感應器 </b></p> 
+ <p><b> 上升沿感應器(Rising Edge Detector) </b> 在輸入變為1的瞬間(即「上升沿」)輸出脈衝。
+</p>
+     <p>任何上升沿感應器也能用作脈衝限制器，或(若由玩家手動激活電源)脈衝發生器。
+</p>
+
+ <p><b> 電路斷路器 </b></p> 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu26.png" />
+ <br />
+電路斷路器
+</p>
+  <p> <i>
+1×3×3 (9方塊)，1格寬 <br />
+電路延遲：1刻, 輸出脈衝長度：0.5刻</i></p> 
+    <p>電路斷路器具有體積小、輸出端適應性強等優點，故為最常見的上升沿感應器。
+</p>     <p> <i> 替代方案 </i> ： 輸出端的中繼器可以設為任意延遲，延遲量與輸出脈衝長度相等。當整個模塊為南北走向時，輸出端的中繼器也可以用任何機械元件代替，這樣機械元件能接收到0.5刻的激活脈衝。
+</p> 
+<p><b> 紅石粉斷路上升沿感應器 </b></p> 
+    <p> 紅石粉斷路上升沿感應器通過移動方塊切斷輸出線來限制輸出脈衝的長度為1刻。
+</p>     <p> 由於輸出脈衝很短，可能需要中繼器配合粘性活塞以防其無法拉回推出的物品。
+</p>  <p><b> 紅石粉斷路上升沿感應器圖示 </b></p> 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu27.png" />
+ <br /><b>
+電路斷路器</b> <br />
+
+1×3×3(9方塊體積) <br />
+1格寬 <br /><i> 
+電路延遲： 1刻 <br />
+輸出脈衝： 0.5刻</i></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu28.png" />
+ <br /><b>
+紅石粉斷路上升沿感應器(無中繼)</b> <br />
+
+1×5×3(15方塊體積) <br />
+1格寬、即時<br /><i> 
+電路延遲： 0刻 <br />
+輸出脈衝： 1.5刻</i></p>
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu29.png" />
+ <br /><b>
+紅石粉斷路上升沿感應器(有中繼)</b> <br />
+
+1×5×3(15方塊體積) <br />
+1格寬<br /><i> 
+電路延遲： 1刻 <br />
+輸出脈衝： 1.5刻</i></p>
+ 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu30.png" />
+ <br /><b>
+減數上升沿感應器(無中繼)</b> <br />
+
+2×4×2(16方塊體積) <br />
+平面、靜默<br /><i> 
+電路延遲： 1刻 <br />
+輸出脈衝： 1刻</i></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu31.png" />
+ <br /><b>
+減數上升沿感應器(有中繼)</b> <br />
+
+2×4×2(16方塊體積) <br />
+平面、靜默<br /><i> 
+電路延遲： 2刻 <br />
+輸出脈衝： 1刻</i></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu32.png" />
+ <br /><b>
+Locked-Repeater Rising Edge Detector (In-line)</b> <br />
+
+3×3×2 (18 block volume) <br />
+flat, silent<br /><i> 
+circuit delay: 3 ticks <br />
+output pulse: 1 tick</i></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu33.png" />
+ <br /><b>
+Locked-Repeater Rising Edge Detector (Corner)</b> <br />
+
+2×4×2 (16 block volume) <br />
+flat, silent<br /><i> 
+circuit delay: 3 ticks <br />
+output pulse: 1 tick</i></p>
+ 
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu34.png" />
+ <br /><b>
+Dropper-Hopper Rising Edge Detector</b> <br />
+
+The dropper has a single item in it. <br />
+
+1×4×2 (8 block volume) <br />
+1-wide, silent<br /><i> 
+circuit delay: 3 ticks <br />
+output pulse: 3.5 ticks</i></p>
+ 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu35.png" />
+ <br /><b>
+Moved-Block Rising Edge Detector</b> <br />
+
+3×3×2 (18 block volume) <br />
+flat<br /><i> 
+circuit delay: 1 tick <br />
+output pulse: 1 to 3 ticks</i></p>
+ 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu36.png" />
+ <br /><b>
+Moved-Block Rising Edge Detector (In-line)</b> <br />
+
+3×3×2 (18 block volume) <br />
+flat<br /><i> 
+circuit delay: 1 tick <br />
+output pulse: 1 to 4 ticks</i></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu37.png" />
+ <br /><b>
+Moved-Block Rising Edge Detector (Offset)</b> <br />
+
+3×3×2 (18 block volume) <br />
+flat<br /><i> 
+circuit delay: 1 tick <br />
+output pulse: 1 to 4 ticks</i></p>
+ 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu38.png" />
+ <br /><b>
+NOR-Gate Rising Edge Detector</b> <br />
+
+1×4×3 (12 block volume) <br />
+1-wide, silent<br /><i> 
+circuit delay: 2 ticks <br />
+output pulse: 1 tick</i></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu39.png" />
+ <br /><b>
+NOR-Gate Rising Edge Detector (Laid-back)</b> <br />
+
+1×4×4 (16 block volume) <br />
+1-wide, silent<br /><i> 
+circuit delay: 2 ticks <br />
+output pulse: 1 tick</i></p>
+ 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu40.png" />
+ <br /><b>
+NOR-Gate Rising Edge Detector (Triple-Torch)</b> <br />
+
+1×5×4 (20 block volume) <br />
+1-wide, silent<br /><i> 
+circuit delay: 2 ticks <br />
+output pulse: 1 tick</i></p>
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu41.png" />
+ <br /><b>
+NOR-Gate Rising Edge Detector (In-line)</b> <br />
+
+2×4×3 (24 block volume) <br />
+silent<br /><i> 
+circuit delay: 2 ticks <br />
+output pulse: 1 tick</i></p>
+
+  <p><b> Subtraction Rising Edge Detector </b></p> 
+     <p>  減法上升沿感應器利用紅石比較器的減法功能切斷輸出脈衝。
+</p>     <p>  <i>替代方案：</i>移除最後的方塊與紅石粉能將輸出脈衝加長到2刻。
+ </p>
+ 
+
+
+ <p><b>  中繼器鎖存上升沿感應器</b></p> 
+    <p>  利用中繼器鎖存功能將輸出脈衝長度限制為1刻。
+ 
+</p> 
+
+<p><b>投擲器-漏斗上升沿感應器  </b></p> 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu42.png" />
+ <br />
+ 
+投擲器內有1個物品。
+</p> 
+    <p>  <i> 
+1×4×2 (8方塊)，1格寬，靜音 <br />
+電路延遲：3刻，輸出脈衝長度：3.5刻</i> </p> 
+     <p> 輸入端激活時，投擲器向漏斗輸入一個物品，比較器從而激活，直到漏斗將物品推回投擲器。
+</p>     <p> 開頭的方塊的作用是在不充能投擲器的同時激活投擲器(充能投擲器的話，漏斗會因此被禁用，從而無法將物品返回)。
+</p>     <p> 由於輸出脈衝依賴比較器的容器容量判定功能，因此輸出信號強度很低(物品可堆疊的話強度只有1，不可堆疊也只有3)——故輸出端需要中繼器提高信號強度。
+</p>     <p> <i>替代方案：</i>如果輸入端和輸出端沒有必要在同一高度，你可以將漏斗放在投擲器頂部，投擲器投擲方向朝上。
+</p>
+<p><b> 方塊移動上升沿感應器 </b></p> 
+     <p> 與電路斷路器原理相同。
+ </p>
+
+
+<p><b> 或非門上升沿感應器 </b></p> 
+     <p> 或非門上升沿感應器會將當前信號與2刻之前的信號對比——如果當前信號為激活狀態，2刻前為非激活狀態，那麼輸出火把會短暫點亮。
+</p>     <p> 本方案用了一個小技巧將輸出脈衝限制到1刻。紅石火把無法被1刻脈衝激活，但被2刻脈衝激活的火把可以將自己短接到1刻脈衝中。若想把輸出脈衝加長到2刻，移除輸出火把上的方塊即可。
+ </p>
+
+<p><b> 下降沿感應器 </b></p> 
+<p><b> 下降沿感應器(Falling Edge Detector) </b> 在輸入變為0的瞬間(即「下降沿」)輸出脈衝。
+</p>
+<p><b>紅石粉斷路下降沿感應器  </b></p> 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu43.png" />
+ <br />
+紅石粉斷路下降沿感應器
+</p> 
+    <p>  <i> 
+1×4×3 (12方塊)，1格寬<br />
+電路延遲：0刻, 輸出脈衝長度：2刻</i> </p> 
+    <p> 輸入變為0時，活塞馬上拉回方塊，使得仍然激活的中繼器繼續輸出2刻的信號。輸入重新變為1時，活塞伸出，在信號到達中繼器之前切斷連接。
+</p>  <p><b> 方塊移動下降沿感應器 </b></p> 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu44.png" />
+ <br />
+方塊移動下降沿感應器
+</p> 
+    <p>  <i> 
+
+1×3×3 (9方塊)，1格寬<br />
+電路延遲：1.5刻, 輸出脈衝長度：0.5刻</i> </p> 
+<p>在某些朝向與輸入情況下，中繼器可能需要設置到3刻以成功激活機械元件。
+ </p>  <p><b> 漏斗鎖定下降沿感應器 </b></p> 
+ 
+<p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu45.png" />
+ <br />
+漏斗有1個物品，輸入紅石粉必須指向漏斗(紅石粉為點狀無指向亦可)。
+</p> 
+    <p>  <i> 
+
+1×4×2 (8方塊)，1格寬，靜音<br />
+電路延遲：1刻, 輸出脈衝長度：4刻</i> </p> 
+    <p> 輸入變為0時，火把需要1刻點亮，給漏斗A將物品輸送到右側並激活輸出的機會。
+</p>     <p> 本電路也需要復位時間(因為將物品送回漏斗A需要時間)，因此其能承受的最快時鐘信號為4刻時鐘。
+</p>     <p> 由於輸出脈衝依賴比較器的容器容量判定功能，因此輸出信號強度很低(物品可堆疊的話強度只有1，不可堆疊也只有3)——故輸出端需要中繼器提高信號強度。
+ </p>  <p><b>  中繼器鎖存下降沿感應器</b></p>
+    <p> <i><b>2×3×2 (12方塊)，平面，靜音</b><br />
+電路延遲：2刻, 輸出脈衝長度：1刻</i> 
+</p>     <p> 拉桿關閉時，鎖存狀態的中繼器允許一個脈衝通過。
+</p>     <p> <i>替代方案：</i> 鎖存中繼器可設置為任何延時。這能夠加長輸出脈衝(最高4刻)，但也會提高電路延遲。
+ </p> 
+
+<p><b>  減法下降沿感應器</b></p> 
+
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu46.png" />
+ <br />
+減法下降沿感應器
+</p> 
+    <p>  <i> 
+
+2×5×2 (20方塊)，平面，靜音<br />
+電路延遲：1刻, 輸出脈衝長度：1刻</i> </p> 
+    <p><i>替代方案：</i>移除最後的方塊與紅石粉能將輸出脈衝加長到2刻，提高中繼器延遲可以將輸出脈衝加長到3或4刻。
+</p> <p><b> 或非門下降沿感應器 </b></p> 
+     <p> 或非門下降沿感應器會將當前信號與2刻之前的信號對比——如果當前信號為激活狀態，2刻前為非激活狀態，那麼輸出火把會短暫點亮。
+</p>     <p> 本方案用了一個小技巧將輸出脈衝限制到1刻。紅石火把無法被1刻脈衝激活，但被2刻脈衝激活的火把可以將自己短接到1刻脈衝中。若想把輸出脈衝加長到2刻，移除輸出火把上的方塊即可。
+ </p>
+
+<p><b> 雙邊沿感應器 </b></p> 
+<p><b>  雙邊沿感應器(Dual Edge Detector)</b> 在輸入改變的瞬間(即上升沿下降沿均可)輸出1個脈衝。
+</p>
+<p><b>  方塊移動雙邊沿感應器</b></p> 
+ <p> 
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/maichongdianlu47.png" />
+ <br />
+方塊移動雙邊沿感應器
+</p> 
+    <p>  <i> 
+
+1×4×3 (12方塊)，1格寬<br />
+電路延遲：1刻, 輸出脈衝長度：1刻</i> </p> 
+    <p> 紅石塊在信號變為0瞬間或變為1瞬間都會移動，移動時其無法激活下方紅石線，因此火把會在紅石塊移動到位前保持點亮。火把上的方塊與火把自己短接形成1刻時鐘——如果移除這個方塊，輸出信號直接從火把導出，那麼輸出脈衝長度會變成1.5刻。
+</p>     <p> <i>替代方案：</i> 整個電路可以改為平面配置：活塞、紅石塊及其移動軌跡可以與紅石線同高度並列，並將火把移到其上方的方塊側面。
+</p> <p><b> 紅石粉斷路雙邊沿感應器 </b></p> 
+     <p> 簡潔版集合了上升沿感應器和下降沿感應器的特點。瞬時版能夠零延遲響應上升沿。
+ </p>
+
+<p><b> 中繼器鎖存雙邊沿感應器 </b></p> 
+   <p> 中繼器鎖存雙邊沿感應器利用中繼器鎖存的時間探測信號邊沿。
+</p>     <p> 或非門版用了一個小技巧將輸出脈衝限制到1刻。紅石火把無法被1刻脈衝激活，但被2刻脈衝激活的火把可以將自己短接到1刻脈衝中。若想把輸出脈衝加長到3刻，移除輸出火把上的方塊即可。
+ </p>  
+
+<p><b>  減法雙邊沿感應器</b></p> 
+    <p> 減法雙邊沿感應器將比較器與ABBA電路結合，利用減法功能限制脈衝長度。
+ </p> 
+
+<p><b> 反相上升沿感應器 </b></p> 
+<p><b> 反相上升沿感應器(Inverted Rising Edge Detector) </b> 在輸入變為1的瞬間輸出負脈衝。
+</p>
+
+<p><b> 或門反相上升沿感應器 </b></p> 
+<p><b>  <i> 1×3×3 (9方塊)，1格寬，靜音</b> <br />
+電路延遲：1刻, 輸出脈衝長度：1 to 3刻(負脈衝)</i> </p> 
+     <p>  或門反相上升沿感應器將當前輸入與之間輸入比較——如果當前為1，之前為0，則輸出一個負脈衝。
+</p>
+<p><b>  方塊移動反相上升沿感應器</b></p> 
+<p><b>  <i> 1×4×3 (12方塊)，1格寬，瞬時</b> <br />
+電路延遲：0刻, 輸出脈衝長度：1.5刻(負脈衝)</i> </p> 
+     <p>   本裝置實質上是利用中繼器抑制下降沿輸出的方塊移動雙邊沿感應器 。
+ </p>
+
+<p><b> 反相下降沿感應器 </b></p> 
+<p><b> 反相下降沿感應器(Inverted Falling Edge Detector) </b> 在輸入變為0的瞬間輸出負脈衝。
+</p>
+
+<p><b> 或門反相下降沿感應器 </b></p> 
+    <p>   輸入到輸出有2條線路，兩條線路的延遲巧妙配置，這樣輸入變為0瞬間，輸出也會短時間內保持0。
+</p> 
+<p><b>方塊移動反相下降沿感應器  </b></p> 
+<p><b>  <i> 1×4×2 (8方塊)，1格寬，瞬時</b> <br />
+電路延遲：0刻, 輸出脈衝長度：2.5刻(負脈衝)</i> </p> 
+
+<p><b>  中繼器鎖存反相下降沿感應器</b></p> 
+<p><b>  <i> 2×3×2 (12方塊)，平面，靜音</b> <br />
+電路延遲：2刻, 輸出脈衝長度：1刻(負脈衝)</i> </p> 
+    <p>  輸入變為1時，輸出中繼器被鎖存；輸入變為0時，鎖存取消，中繼器會被其後的方塊作用從而輸出一個短負脈衝。
+</p> 
+
+<p><b> 反相雙邊沿感應器 </b></p> 
+<p><b>  反相雙邊沿感應器(Inverted Dual Edge Detector)</b>在信號變化的瞬間輸出一個負脈衝。
+</p> 
+
+<p><b> 方塊移動反相雙邊沿感應器 </b></p> 
+<p><b>  <i> 1×3×3 (9方塊)，1格寬，瞬時</b> <br />
+電路延遲：0刻, 輸出脈衝長度：1.5刻(負脈衝)</i> </p> 
+     <p> <i> 替代方案：</i> 整個電路可以改為2格寬的平面配置：活塞、紅石塊及其移動軌跡可以與紅石線同高度並列。
+</p>
+<p><b> 中繼器鎖存反相雙邊沿感應器 </b></p> 
+<p><b>  <i> 3×4×2 (24方塊)，平面，靜音</b> <br />
+電路延遲：2刻, 輸出脈衝長度：3刻(負脈衝)</i> </p> 
+     <p>  利用中繼器鎖存的時間探測信號邊沿。
+</p>
+
+
+<h2>脈衝長度感應器</h2>
+    <p>有時可能需要測得另一個電路輸出脈衝的長度，特別是可能需要瞭解是否該脈衝長於或短於指定值。此類電路可以用作識別摩爾斯電碼。
+</p>     <p>  
+測量長脈衝可以用結合紅石中繼器的與門完成(F)。本電路只允許長度長於中繼器延遲的脈衝通過。方案G原理相同，只不過用活塞構建與門。值得注意的是通過本裝置的長脈衝可能會被縮短到最小1刻。
+</p>     <p>  
+短脈衝感應器H體積為3x4x3。中繼器D為時控端。任何長度短於D+1刻的脈衝都能通過。通過的脈衝長度不會改變。</p> 
+ 
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

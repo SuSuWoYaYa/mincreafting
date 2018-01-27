@@ -27,22 +27,22 @@ public class FragmentCreating extends Fragment {
     private int mPage;
 
 
-    public static String DATA_BASE_CATEGORYS[] = {
-            "建筑类",
-            "装饰类",
-            "染料类",
-            "食物类",
-            "照明类",
-            "矿石类",
-            "红石类",
-            "运输类",
-            "工具类",
-            "武器类",
-            "其他类",
-            "烧炼类",
-            "药水类",
-            "附魔类",
-    };
+//    public static String DATA_BASE_CATEGORYS[] = {
+//            "建筑类",
+//            "装饰类",
+//            "染料类",
+//            "食物类",
+//            "照明类",
+//            "矿石类",
+//            "红石类",
+//            "运输类",
+//            "工具类",
+//            "武器类",
+//            "其他类",
+//            "烧炼类",
+//            "药水类",
+//            "附魔类",
+//    };
 
     public static FragmentCreating newInstance(int page) {
         Bundle args = new Bundle();
@@ -97,71 +97,71 @@ public class FragmentCreating extends Fragment {
                 switch (v.getId()) {
                     case R.id.layout_btn_building:
                         tableName = MyDatabaseHelper.TABLE_BUILDING;
-                        category = "建筑类合成";
+                        category = getString(R.string.jianzhuleihecheng);
                         break;
                     case R.id.layout_btn_decoration:
                         tableName = MyDatabaseHelper.TABLE_DECORATION;
-                        category = "装饰类合成";
+                        category = getString(R.string.zhuangshileihecheng);
                         break;
                     case R.id.layout_btn_dye:
                         tableName =  MyDatabaseHelper.TABLE_DYE;
-                        category = "染料类合成";
+                        category = getString(R.string.rangliaoleihecheng);
                         break;
                     case R.id.layout_btn_food:
                         tableName =  MyDatabaseHelper.TABLE_FOOD;
-                        category = "食物类合成";
+                        category = getString(R.string.shiwuleihecheng);
                         break;
                     case R.id.layout_btn_lighting:
                         tableName =  MyDatabaseHelper.TABLE_LIGHTING;
-                        category = "照明类合成";
+                        category = getString(R.string.zhaomingleihecheng);
                         break;
                     case R.id.layout_btn_ore:
                         tableName =  MyDatabaseHelper.TABLE_ORE;
-                        category = "矿石类合成";
+                        category = getString(R.string.kuangshileihecheng);
                         break;
                     case R.id.layout_btn_redstone:
                         tableName =  MyDatabaseHelper.TABLE_REDSTONE;
-                        category = "红石和装置类合成";
+                        category = getString(R.string.redstonehezhuanzhileihechen);
                         break;
                     case R.id.layout_btn_tannsport:
                         tableName =  MyDatabaseHelper.TABLE_TANNSPORT;
-                        category = "运输类合成";
+                        category = getString(R.string.yunshuleihecheng);
                         break;
                     case R.id.layout_btn_tools:
                         tableName =  MyDatabaseHelper.TABLE_TOOLS;
-                        category = "工具类合成";
+                        category = getString(R.string.gongjuleihecheng);
                         break;
                     case R.id.layout_btn_weapon:
                         tableName =  MyDatabaseHelper.TABLE_WEAPON;
-                        category = "武器类合成";
+                        category = getString(R.string.wuqileihecheng);
                         break;
                     case R.id.layout_btn_others:
                         tableName =  MyDatabaseHelper.TABLE_OTHERS;
-                        category = "其他类合成";
+                        category = getString(R.string.qitaleihecheng);
                         break;
                     case R.id.layout_btn_semlting:
                         tableName =  MyDatabaseHelper.TABLE_SMELTING;
-                        category = "烧炼类";
+                        category = getString(R.string.shaolianlei);
                         loding =R.drawable.loading_of_smelting;
 //                        isCreating = false;
 //                        layout= R.layout.layout_listview_item_smelting;
                         break;
                     case R.id.layout_btn_brewing:
                         tableName =  MyDatabaseHelper.TABLE_BREWING;
-                        category = "药水类";
+                        category = getString(R.string.yaoshuilei);
                         loding = R.drawable.loading_of_brewing;
 //                        isCreating = false;
 //                        layout= R.layout.layout_listview_item_brewing;
                         break;
                     case R.id.layout_btn_enchant:
                         tableName =  MyDatabaseHelper.TABLE_ENCHANT;
-                        category = "附魔类";
+                        category = getString(R.string.fumolei);
                         loding = R.drawable.loading_of_enchant;
                         isCreating = false;
                         break;
                     default:
                         tableName = MyDatabaseHelper.TABLE_BUILDING;
-                        category = "建筑类";
+                        category = getString(R.string.jianzhuleihecheng);
                         break;
                 }
 

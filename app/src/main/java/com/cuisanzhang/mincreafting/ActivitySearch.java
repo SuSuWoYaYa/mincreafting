@@ -318,7 +318,7 @@ public class ActivitySearch extends AppCompatActivity {
         }
 //        Toast.makeText(ActivitySearch.this, "搜索 " + text, Toast.LENGTH_SHORT).show();
 
-        text += "的搜索结果";
+        text += getString(R.string.append_search);
         autoCompleteTextView.setText(text);
 
         DbManage dbManage = new DbManage(ActivitySearch.this);

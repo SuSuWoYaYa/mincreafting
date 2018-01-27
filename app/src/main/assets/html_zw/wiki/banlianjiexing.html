@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>半連接性</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">半連接性</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此頁面的部分內容由於太久沒更新而已過期</b>
+<br />
+你可以幫助我們來更新此頁面
+</p>
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> 
+<p class="red"><b>警告</b>
+<br />
+在依照本頁面上的所有步驟架設服務器之前，請注意如果您不清楚您自己在做什麼而運行服務端軟件，將會導致您的系統出現錯誤甚至出現崩潰。[1]
+       </p> 
+-->
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> 
+       
+<p>半連接性(Quasi-connectivity)是發射器，漏斗和活塞的特性。它們可以在不直接接觸的情況下被能夠被可以激活此方塊上面的方塊所激活。因為這個特性，讓有時組建電路變的很困難，而且這可能被視為bug。這是官方設定的特性，這種特性讓某些建造變得簡單了(比如活塞牆)。
+</p><p>
+「半連接」的意思是這個方塊的激活源與這個方塊是非完整連接的(「半」的意思是「好像是」或「大概是」)，簡稱「QC」。另外也有人稱其為「活塞連接性」(因為這種連接性起源於活塞)、「間接充能」(但是它有時也被用於毗鄰強充能方塊的方塊)、「BUD充能」(雖然半連接性和BUD並非同義)。
+</p><p>
+本教程只會介紹活塞，因為發射器和漏斗可以通過類比活塞教程得出。</p>
+</p><p>&#160;<b>半連接性並不存在於攜帶版，這種與PC版的不同是有意為之的。詳見<span class="bug" data-id="MCPE-14664"><a target="_self" rel="nofollow" class="external text" href="https://bugs.mojang.com/browse/MCPE-14664">MCPE-14664</a></span>。</b>
+</p>
+
+ 
+<h2>普通激活方法</h2>
+<p><b>機械元件的激活</b><br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing1.png" />
+<br /> 機械元件在放置正確的情況下可被電源元件、充能的方塊、紅石線、紅石中繼器以及紅石比較器(圖中沒有顯示)激活(例如紅石火把)。
+</p>
+<p>在討論使用半連接性來激活前，我們先來討論一些激活的普通方法。
+</p><p>機械元件(活塞、門、紅石燈等等)可以被<b>激活</b>，激活後的機械元件會工作(推動方塊，開門，開燈等等)。
+</p><p>所有的機械元件都會在如下的條件中激活：
+</p>
+<ul><li> 一個相鄰的<b>供能元件</b>，包括上方和下方。
+<ul><li> <i>例外</i>：紅石火把不會激活它附著的機械元件，活塞也不會被面前的供能元件激活。</li></ul></li>
+<li> 一個<b>相鄰且充能的不透明方塊</b>(強弱充能皆可)，包括上方或下方。</li>
+<li> 一個<b>充能的紅石比較器或紅石中繼器</b>，輸出端朝向機械元件。</li>
+<li> <b>充能的紅石粉</b>，連接到機械元件上(如果這一元件可以在上方放置紅石粉，則上方亦可，但不能在它下方)；或相鄰的「無方向」的紅石粉；如果沒有連接到機械元件上，紅石粉不能讓機械元件充能。</li></ul>
+
+
+<h2>通過半連接激活</h2>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing2.png" />
+<br />
+<b>半連接</b> — 任何可以同時激活紅石燈以及活塞的東西<i>即使紅石燈不在那個位置</i>。
+</p>
+<p>除了上述的正常激活方式，活塞還有另外的激活方法：如果以上任一方式可以激活活塞上方的那個方塊，則這一方式也可以激活活塞。即使活塞的上方根本沒有機械元件，這一方式仍可使用(甚至在上方方塊是空氣或透明方塊時仍然有效)。
+</p><p>另一種看待這一現象的方法是，認為活塞有一個類似門的「激活形狀」。任何可以激活門上半邊的方法也可以同時激活門的下半邊。與此類似，任何可以激活活塞上方空間的方法也同樣可以激活活塞。
+</p><p>這種激活方法被稱為<b>「半連接法」(quasi-connectivity)</b>，常被記為此元件可以被對角線上方或兩個方塊高度上方的方塊激活，但也有其他激活方法(記載見下)。
+</p><p>
+有些半連接法激活(簡稱「QC激活」)會立刻更新活塞狀態(「瞬時QC激活」)，而另一些則會讓活塞進入一個理應被激活，但活塞本身未察覺的狀態，並在活塞更新狀態時激活(「更新QC激活」)
+</p>
+
+
+<h3>即時半連接激活</h3>
+<p><b>即時半連接激活</b>是通過即時的半連接來激活活塞並且這種做法不需要活塞分別的進行更新。這僅僅在一個紅石元件能激活間隔兩個方塊的其他的紅石元件。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing3.png" />
+<br />曼哈頓距離中的「間隔兩個方塊」
+</p>
+<p>以下的紅石元件可以<i>激活</i>一格外的機械原件，但會<i>更新</i>兩格外的所有紅石元件：</p>
+<ul><li> 紅石比較器</li>
+<li> 紅石粉 </li>
+<li> 紅石中繼器 </li>
+<li> 紅石火把 </li></ul> 
+<p>這意味著當這些紅石元件激活活塞(一格外)上的空間，它們同時也會更新活塞(兩格外)。紅石比較器和紅石中繼器只能激活它們對著的機械元件，但紅石粉和紅石火把也可以激活它們下方的機械元件(紅石火把也可以激活上面的方塊，但對半連接性沒有幫助)。</dd></dl>
+</p>
+
+<p>
+<b>紅石中繼器的即時的半連接激活</b><p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing4.png" />
+<br />當紅石比較器被激活時活塞臂會立刻伸出。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing5.png" />
+<br />當紅石粉被激活時兩個活塞臂都會伸出(紅石粉的下面不是一個固體方塊的原因是那個方塊的充能會直接激活兩個活塞)。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing6.png" />
+<br />當紅石中繼器被激活時活塞臂會立刻伸出。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing7.png" />
+<br />當紅石火把被激活時兩個活塞臂都會伸出。
+</p>
+
+<h3>組件和附件方塊的臨近方塊</h3>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing8.png" />
+<br />組件和附件方塊的臨近方塊
+</p>
+<p>以下的紅石元件能<i>激活</i>一格外的機械元件，同時會<i>更新</i>它附著的方塊周圍的機械元件(也包括上面和下面的方塊)和它周圍的機械元件：
+<ul><li> 按鈕 (能附著任意方向的方塊)</li>
+<li>  探測鐵軌 (只能附著下方的方塊)</li>
+<li> 拉桿  (能附著任意方向的方塊)</li>
+<li> 壓力板 (只能附著下方的方塊)</li>
+<li> 陷阱箱 (實際上不附著任何方塊，但當附著下面的方塊時會更新)</li>
+<li> 絆線鈎 (只能附著側面的方塊)</li>
+<li> 測重壓力板 (只能附著下方的方塊)</li></ul></p>
+<p>這意味著如果這些紅石元件附著一個它下面的方塊，它可以激活活塞上面的方塊(在一格外)，同時也會更新那個活塞(在兩格外)。陷阱箱更新它下面的方塊周圍的紅石元件，但不需要附著任何方塊(就像一個浮空的壓力板)— 下面的另一個例子用了顛倒的台階而不是一個方塊，因為一個充能的方塊能直接激活那些活塞。絆線鈎不能附著它下方的方塊，所以不能用作一個即時半連接激活。</p>
+<p>
+<b>按鈕的即時QC激活</b></p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing9.png" />
+<br />當按鈕按下時兩個活塞會立即被激活。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing10.png" />
+<br />當探測鐵軌被礦車激活時兩個活塞會立即被激活。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing11.png" />
+<br />當拉桿被開啓時兩個活塞會立即被激活。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing12.png" />
+<br />當壓力板被踩踏時兩個活塞會立即被激活。測重壓力板同理。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing13.png" />
+<br />當陷阱箱被打開時兩個活塞會立即被激活。
+</p>
+<p>
+其他的紅石元件不能對一格以外的紅石元件進行更新，因此不能即時QC激活，只能用於更新QC的激活。</p>
+
+
+<h3>更新QC激活</h3>
+<p><b>更新QC激活</b>是將一個活塞放置在它可以被QC激活的地方，但它並沒有收到一個紅石更新，所以沒有激活——它會一直等待，直到其收到更新信號。
+</p>
+<h3>充能的方塊</h3>
+<p> 一個充能方塊可以從側面或上面激活活塞上方的空間而不更新活塞，從而產生一個更新QC激活:</p>
+
+ 
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing14.png" />
+<br /><b>被按鈕充能的方塊產生的更新QC激活</b> — 當任一個按鈕被按下時，除非在按鈕彈起之前接受到更新，否則兩個活塞都不會被激活。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing15.png" />
+<br /><b>被比較器充能的方塊產生的更新QC激活</b> — 直到被更新時活塞才會被激活。
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing16.png" />
+<br /><b>被探測鐵軌充能的方塊產生的更新QC激活</b> — 當探測鐵軌被激活時，直到被更新時活塞才會被激活。
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing17.png" />
+<br /><b>被紅石粉充能的方塊產生的更新QC激活</b> — 直到被更新時活塞才會被激活。
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing18.png" />
+<br /><b>被拉桿充能的方塊產生的更新QC激活</b> — 當任一個拉桿被開啓時，直到被更新時活塞才會被激活。
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing19.png" />
+<br /><b>被壓力板充能的方塊產生的更新QC激活</b> — 當壓力板被激活時，直到被更新時活塞才會被激活。
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing20.png" />
+<br /><b>被中繼器充能的方塊產生的更新QC激活</b> — 直到被更新時活塞才會被激活。
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing21.png" />
+<br /><b>被陷阱箱充能的方塊產生的更新QC激活</b> — 當陷阱箱被激活時，直到被更新時活塞才會被激活。
+</p> 
+
+<p>紅石塊的行為如同一個被充能的方塊，但是它並不能被關閉，所以紅石塊只能通過被從能夠激活活塞上方空間的位置的側面或上面移入或移出的方式QC連接激活或解除激活活塞。</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing22.png" />
+<br /><b>紅石塊產生的更新QC激活</b>— 直到被更新時活塞才會被激活。
+</p> 
+
+
+<h3>組件和附件方塊的臨近方塊</h3>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing23.png" /><br />組件和附件方塊的臨近方塊</p>
+<p>以下的紅石元件能「激活」一格外的機械元件，同時會更新它附著的方塊周圍的機械元件(也包括上面和下面的方塊)和它周圍的機械元件：
+</p>
+<ul><li>按鈕(能附著任意方向的方塊) </li>
+<li>
+探測鐵軌(只能附著下方的方塊) </li>
+<li>
+拉桿(能附著任意方向的方塊) </li>
+<li>
+壓力板(只能附著下方的方塊)
+ </li><li>
+陷阱箱(實際上不附著任何方塊，但當附著下面的方塊時會更新) </li>
+<li>
+絆線鈎(只能附著側面的方塊) </li>
+<li>
+測重壓力板(只能附著下方的方塊) </li> </ul>
+<p>
+在這些紅石元件中，只有按鈕，拉桿，和絆線勾可以附著在側面的方塊上，並可以被用來產生更新QC激活。其他的可以附著在它們下方的方塊上，但此時則是它們下方被充能了的方塊產生了更新QC激活，像前面解釋的那樣。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing24.png" />
+<br /><b>Update QC Activation by Button</b> — When the button is activated, neither piston will activate unless updated before the button pops out.
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing25.png" />
+<br /><b>Update QC Activation by Lever</b> — When the lever is activated, neither piston will activate until updated.
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing26.png" />
+<br /><b>Update QC Activation by Tripwire Hook</b> — When the tripwire hook is activated, neither piston will activate until updated.
+</p>
+
+<h3>Immediate neighbors</h3>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing27.png" />
+<br />Immediate neighbors
+</p>
+
+
+
+<p>
+下面的紅石元件只在它們改變狀態時更新它們的比鄰方塊，包含上面和下面：
+</p>
+<ul><li>激活鐵軌</li>
+
+<li>陽光傳感器</li>
+
+<li>絆線 (can also activate tripwire hooks in valid tripwire circuit)</li>
+
+<li>活塞以及粘性活塞 (from both the piston base and the piston head when extended)</li>
+
+<li>充能鐵軌</li>
+
+<li>鐵軌</li> </ul>
+<p>
+在這些紅石元件中，只有陽光傳感器可以激活活塞上方的空間，從而可以產生更新QC激活。
+</p>
+
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing28.png" />
+<br /><b>
+Update QC Activation by Daylight Sensor</b> — When the daylight sensor is activated, neither piston will activate until updated.
+</p>
+<p>The redstone components which cannot be used to put a piston into a QC activation may still be useful for updating them. For example, tripwire will update adjacent blocks when an entity moves into or out of its space, tripwire hooks will randomly update their neighbors (and the neighbors of their attachment blocks) when they receive a block tick, and activator rails and powered rails are useful in that they will update adjacent blocks when activated or deactivated (thus updates can be controlled with redstone without directly powering neighbors).
+</p>
+
+<h2>半連接性的優勢</h2>
+<p>雖然有些難以理解，但是半連接性也有其優點。
+</p>
+
+<h3>更多的激活方法</h3><p>
+Because a piston can be activated in its own space or the space above it, there are simply more options when figuring out how to activate it.
+</p>
+<h3>遠程激活</h3><p>
+Because a piston can be activated by anything that would activate the space above it, pistons can be activated from two spaces away while most redstone components can only be activated from one space away.
+</p>
+<h3>方塊更新感應器</h3><p>
+Update QC activation can be used to create a block update detector: a redstone circuit which is triggered by a block update rather than a redstone power input.
+</p>
+A piston activated by quasi-connectivity is sometimes described as "BUD-powered". However, quasi-connectivity and block update detectors (BUDs) are neither synonymous nor even subsets of each other. There are methods of QC activation that do not produce block update detectors (for example, any immediate QC activation method) and there are block update detectors that do not depend on quasi-connectivity (for example, stuck-piston BUDs).
+</p>
+<h3>火把鑰匙</h3><p>
+A torch key is a circuit which can react to the placement of a redstone torch in a particular location, even when the circuit is hidden beneath the ground. They are used to create a hidden method of activating another mechanism (for example, a piston door).
+</p><p>
+There are two primary methods of designing a torch key. The first is to place a block update detector under the ground so that the placement of a redstone torch will update the BUD -- however, BUDs can also be updated remotely by other redstone components, increasing the chances of discovery. The second method is to use immediate QC activation by placing the torch so that it simply activates a piston by quasi-connectivity.
+</p>
+<h3>浮空的按鈕</h3>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing29.png" />
+<br /><b>Piston-Based Floating Button</b>
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing30.png" />
+<br /><b>Dropper-Based Floating Button</b> — The dropper and the bottom right hopper each have a single item in them.
+</p>
+<p>
+與火把鑰匙類似，但是有明顯的輸入端，一個浮空的按鈕看起來不與任何地方連接，但是依然可以用。 The strategy is to put a button far enough away that it can activate a piston by update QC activation and then repeatedly update the piston (without activating it) so that it responds quickly to the button turning on and off.
+</p><p>
+For example, the schematic on the left shows one way to build a floating button. The clock circuit on the left repeatedly powers and unpowers the powered rail next to the piston. When the powered rail changes state it will update the piston without activating it. If the piston is updated while the button has been pushed, it will extend because the button would activate a mechanism in the space above the piston. Similarly, if the piston is updated after the button pops back out, the piston will retract again.
+</p><p>
+A quieter floating button (right schematic) can be created by using a dropper instead of a piston and using it to push an item into a hopper which pushes it right back (unlike the dropper, the hopper isn't affected by redstone components two blocks above it), but briefly activates a comparator output. This version updates the dropper with a hopper clock, which is a little slower and thus slightly less responsive, but smaller than a torch-repeater clock.
+</p>
+
+<h2>半連接性的缺點</h2><p>
+Quasi-connectivity can make it difficult to do things above pistons compactly without also activating them. For example, you can't run redstone dust over a block on a piston because the dust will affect the piston even if the block is a top slab.
+</p>
+
+<h3>應對方法</h3>
+<p>
+ There are a number of strategies for getting a signal over a piston without affecting the piston:</p>
+<p><b>
+Go up a block and use redstone dust on a top slab</b></p><p>
+Fastest transmission, but takes up the most vertical space.</p>
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing31.png" />
+<br /> 
+Redstone dust over piston</p>
+<p>
+<b>"Insulate" the space below with a repeater or comparator</b></p><p>
+Adds minimum 1 tick delay to transmission, takes up two spaces above piston.</p>
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing32.png" />
+<br /> 
+Repeater or comparator over piston 1</p>
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing33.png" />
+<br /> 
+Repeater or comparator over piston 2</p>
+
+<h3>移動煉藥鍋來激活比較器</h3><p>
+信號上升沿增加了2.5刻的延遲(活塞臂伸出需要1.5刻，比較器自身延遲1刻)，只佔據活塞上方一格的空間。上升沿和下降沿的延遲差會導致脈衝被縮短1.5刻。若推動煉藥鍋的活塞接收到短於1.5刻的脈衝，它將把煉藥鍋「丟」在伸出的位置，一直激活輸出端直到輸入端再一次激活而後進入非激活狀態。
+</p><p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/banlianjiexing34.png" />
+<br /> 
+</p>
+        
+
+
+<p><br/></p></div>
+</body>
+
+</html>
