@@ -168,6 +168,6 @@
     <string name="simplified_chinese">簡體中文</string>
     <string name="traditional_chinese">繁體中文</string>
     <string name="changelanguage">切換語言</string>
-    <string name="changelanguage_message">請同時切換系統語言設置</string>
+    <string name="changelanguage_message">該設置僅應用於數據庫\n請同時切換系統語言設置</string>
 
 </resources>

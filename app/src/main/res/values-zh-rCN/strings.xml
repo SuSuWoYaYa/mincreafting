@@ -167,6 +167,6 @@
     <string name="simplified_chinese">简体中文</string>
     <string name="traditional_chinese">繁體中文</string>
     <string name="changelanguage">切换语言</string>
-    <string name="changelanguage_message">请同时切换系统语言设置</string>
+    <string name="changelanguage_message">该设置仅应用于数据库\n请同时切换系统语言设置</string>
 
 </resources>

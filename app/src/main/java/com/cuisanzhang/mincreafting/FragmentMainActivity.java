@@ -626,7 +626,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         builder.setTitle(R.string.changelanguage);
         builder.setView(changelanguageView);
 //        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
-        builder.setNegativeButton(R.string.quxiao, null);
+//        builder.setNegativeButton(R.string.quxiao, null);
         builder.setPositiveButton(R.string.queding, null);
 //        builder.setPositiveButton(R.string.queding, new DialogInterface.OnClickListener() {
 //            @Override
