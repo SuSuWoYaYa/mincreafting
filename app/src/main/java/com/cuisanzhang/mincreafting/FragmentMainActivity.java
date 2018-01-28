@@ -149,6 +149,10 @@ public class FragmentMainActivity extends AppCompatActivity {
                     case R.id.menu_changelanguage:
                         showChangeLanguageDialog();
                         break;
+                    case R.id.menu_downgame:
+                        intent = new Intent(getApplicationContext(), DownGameActivity.class);
+                        startActivity(intent);
+                        break;
                 }
 
                 mDrawerLayout.closeDrawers();

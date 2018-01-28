@@ -18,6 +18,10 @@
             android:id="@+id/menu_tip"
             android:icon="@drawable/ic_tip"
             android:title="@string/tip_me" />
+        <item
+            android:id="@+id/menu_downgame"
+            android:icon="@drawable/ic_tip"
+            android:title="游戏下载" />
 
          <item
             android:id="@+id/menu_about"

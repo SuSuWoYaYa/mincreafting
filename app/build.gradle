@@ -44,12 +44,10 @@ dependencies {
 //    compile 'com.android.support:support-v4:25.3.0'
 //}
 
-
 //old glide
 repositories {
     mavenCentral() // jcenter() works as well because it pulls from Maven Central
 }
-
 
 //StringUtils
 dependencies {
@@ -93,4 +91,7 @@ repositories {
 //    compile 'com.android.support.constraint:constraint-layout:+'
 //}
 
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
 apply plugin: 'com.google.gms.google-services'

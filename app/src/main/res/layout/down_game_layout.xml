@@ -1,6 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+
+    //标题栏
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="?attr/colorPrimary">
+
+        <ImageView
+            android:id="@+id/imageViewToolbar_menu"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:scaleType="centerInside"
+            android:src="?attr/navigationIcon_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/toolbar_title"
+            android:textColor="?attr/textColorPrimary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/minecraftpe"
+            android:scaleType="centerInside"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的世界-网易版 (免费)"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/btn_down_game_mc163"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下载"
+            android:gravity="center"
+            android:background="@drawable/cling_button_normal"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/minecraftpe"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的世界-GooglePlay (收费)"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/btn_down_game_googleplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下载"
+            android:gravity="center"
+            android:background="@drawable/cling_button_normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/minecraftpe"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的世界(国际版)"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/btn_down_game_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下载"
+            android:gravity="center"
+            android:background="@drawable/cling_button_normal"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_other_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="查看其它版本"
+        android:background="@drawable/cling_button_normal"/>
 </LinearLayout>
