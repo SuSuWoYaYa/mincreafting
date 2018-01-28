@@ -150,6 +150,7 @@
     <string name="gengduotiaozhang">更多挑战</string>
     <string name="wangyijiaocheng">网易教程</string>
     <string name="wangluojiaocheng">网络教程</string>
+    <string name="about_tutorial">关于教程图片</string>
     <string name="aout_turorial_message">教程是离线的\n但是图片是在线的\n请注意流量\n所有的教程图片超过了500M</string>
     <string name="queding">确定</string>
     <string name="xiaotishi">小提示</string>

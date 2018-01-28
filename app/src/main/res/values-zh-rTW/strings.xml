@@ -150,6 +150,7 @@
     <string name="gengduotiaozhang">更多挑戰</string>
     <string name="wangyijiaocheng">網易教程</string>
     <string name="wangluojiaocheng">網絡教程</string>
+    <string name="about_tutorial">關於教程圖片</string>
 
     <string name="aout_turorial_message">教程是離線的\n但是圖片是在線的\n請注意流量\n所有的教程圖片超過了500M</string>
     <string name="queding">確定</string>
