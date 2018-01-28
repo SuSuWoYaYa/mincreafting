@@ -80,7 +80,7 @@ public class ActivityTip extends AppCompatActivity {
                 }
 
                 else  {
-                    Toast.makeText(ActivityTip.this, "嗯! 一定是你点错了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityTip.this, R.string.areyousure, Toast.LENGTH_SHORT).show();
                     return;
                 }
 //                isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTip.this);

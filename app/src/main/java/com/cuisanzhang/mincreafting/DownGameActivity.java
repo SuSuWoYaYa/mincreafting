@@ -10,17 +10,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class DownGameActivity extends AppCompatActivity {
 
-    String  mc163 = "https://mc.163.com/m/pe/index.html";
-//String  mc163 = "https://mc.163.com/download/";
-    String  googleplay = "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe";
-    String  other = "https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/apk/matou.html";
+    String mc163 = "https://mc.163.com/m/pe/index.html";
+    //String  mc163 = "https://mc.163.com/download/";
+    String googleplay = "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe";
+    String other = "https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/apk/apk.txt";
 
 
     Button btn_down_game_mc163;
 
-    Button btn_down_game_googleplay ;
+    Button btn_down_game_googleplay;
 
     LinearLayout linearlayout_other;
     Button btn_down_game_other;
@@ -28,6 +37,11 @@ public class DownGameActivity extends AppCompatActivity {
 
 
     Uri content_url;
+    URL url;
+
+    String userName;
+    boolean isVip;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
@@ -38,21 +52,22 @@ public class DownGameActivity extends AppCompatActivity {
         setContentView(R.layout.down_game_layout);
         initActionBar();
 
+
         btn_down_game_mc163 = (Button) findViewById(R.id.btn_down_game_mc163);
 
         btn_down_game_googleplay = (Button) findViewById(R.id.btn_down_game_googleplay);
 
         btn_down_game_mc163.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
+                                                   @Override
+                                                   public void onClick(View v) {
+                                                       Intent intent = new Intent();
 //Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-                intent.setAction("android.intent.action.VIEW");
-                content_url = Uri.parse(mc163);
-                intent.setData(content_url);
-                startActivity(intent);
-            }
-        }
+                                                       intent.setAction("android.intent.action.VIEW");
+                                                       content_url = Uri.parse(mc163);
+                                                       intent.setData(content_url);
+                                                       startActivity(intent);
+                                                   }
+                                               }
         );
         btn_down_game_googleplay.setOnClickListener(
                 new View.OnClickListener() {
@@ -78,26 +93,35 @@ public class DownGameActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Toast.makeText(DownGameActivity.this, "获取中", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent();
-//Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-                        intent.setAction("android.intent.action.VIEW");
-                        content_url = Uri.parse(other);
-                        intent.setData(content_url);
-                        startActivity(intent);
+                        openother();
+
+
                     }
-                }
 
-        );
+                    ;
+                });
         btn_other_version = (Button) findViewById(R.id.btn_other_version);
-        btn_other_version.setOnClickListener(new View.OnClickListener() {
+        btn_other_version.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
-                if (SettingUtils.ChangeTheme.getVipState(DownGameActivity.this) == true){
+
+                userName = SettingUtils.ChangeTheme.getUserName(DownGameActivity.this);
+
+
+                if (userName.equals(getString(R.string.tip_back_door))) {
+                    SettingUtils.ChangeTheme.setVipState(DownGameActivity.this, true);
+                }
+
+                isVip = SettingUtils.ChangeTheme.getVipState(DownGameActivity.this);
+
+                if (isVip) {
                     linearlayout_other.setVisibility(View.VISIBLE);
                     btn_other_version.setVisibility(View.GONE);
-                }else {
-                    Toast.makeText(DownGameActivity.this, "打赏作者后可以查看", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(DownGameActivity.this, getString(R.string.areyousure), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -105,8 +129,47 @@ public class DownGameActivity extends AppCompatActivity {
     }
 
 
+    private void openother() {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(other);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setConnectTimeout(60 * 1000);
+                    urlConnection.setReadTimeout(600 * 1000);
+                    InputStream inputStream = urlConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder sb = new StringBuilder();
+                    String line = null;
+                    line = bufferedReader.readLine();
+
+                    while (bufferedReader.readLine() != null) {
+
+                    }
+                    other = line;
+                } catch (IOException e) {
+                    Toast.makeText(DownGameActivity.this, "出错了", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+
+                Intent intent = new Intent();
+//Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                intent.setAction("android.intent.action.VIEW");
+                content_url = Uri.parse(other);
+                intent.setData(content_url);
+                startActivity(intent);
+            }
+        };
+        timer.schedule(timerTask, 0);
+
+    }
+
     public void initActionBar() {
-        ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
+        ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

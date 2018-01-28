@@ -358,6 +358,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 		for (int i = 0; i < TABLE_NAMES.length; i++) {
 			db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAMES[i]);
 		}
+		for (int i = 0; i < TABLE_NAMES.length; i++) {
+			db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAMES_ZW[i]);
+		}
 		//附魔取消单独一个表
 		//db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENCHANT);
 		onCreate(db);
