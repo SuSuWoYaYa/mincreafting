@@ -56,11 +56,26 @@
             <!--android:textSize="24sp"-->
             <!--android:textColor="@color/textColorPrimary_white"/>-->
     <!--</android.support.v7.widget.Toolbar>-->
+
     <WebView
         android:id="@+id/webView"
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
     </WebView>
+
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_below="@id/webView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/ad_banner_id"></com.google.android.gms.ads.AdView>
+
+
 </LinearLayout>

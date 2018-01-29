@@ -11,6 +11,12 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
+import java.util.Random;
+
 public class ActivityTutorial extends AppCompatActivity {
 
     public static String EXTRA_URI = "file_name";
@@ -30,6 +36,11 @@ public class ActivityTutorial extends AppCompatActivity {
 ////打开指定URL的html文件
 //wView.loadUrl(" http://m.oschina.net");
 
+    private boolean isNetworkConnected = false;
+    private boolean isVip;
+    private AdView mAdView;
+
+    private  boolean showAd = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
@@ -45,6 +56,42 @@ public class ActivityTutorial extends AppCompatActivity {
 
 
         initActionBar();
+
+        isVip = SettingUtils.ChangeTheme.getVipState(ActivityTutorial.this);
+
+        isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTutorial.this);
+
+        mAdView = (AdView) findViewById(R.id.adView);
+
+
+        //2分之一的几率广告
+        int random = new Random().nextInt(4);
+
+        if(random < 2) {
+            showAd = true;
+        }
+
+        if (!isVip && isNetworkConnected && showAd) {
+////        google admob
+            MobileAds.initialize(this, getString(R.string.admob_uni_id));
+            mAdView.loadAd(new AdRequest.Builder().build());
+//            //add admob in listView
+//            LinearLayout tipEndViw = (LinearLayout) LayoutInflater.from(getApplicationContext()).inflate(R.layout.admob_native_layout, null);
+//            NativeExpressAdView nativeExpressAdView = (NativeExpressAdView) tipEndViw.findViewById(R.id.nativeExpressAdView);
+//
+//
+//            if (!isNetworkConnected) {
+//                nativeExpressAdView.setVisibility(View.GONE);
+//            } else {
+//                nativeExpressAdView.loadAd(new AdRequest.Builder().build());
+//            }
+//            listView.addFooterView(tipEndViw);
+        }else {
+            if(mAdView != null){
+               mAdView.setVisibility(View.GONE);
+            }
+
+        }
 
         mWebview = (WebView) findViewById(R.id.webView);
         mWebSettings = mWebview.getSettings();
