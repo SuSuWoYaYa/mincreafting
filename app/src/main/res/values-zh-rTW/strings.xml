@@ -166,7 +166,7 @@
     <string name="init_datebaseing">正在初始化數據庫\n</string>
     <string name="unknow_error">出現未知錯誤</string>
     <string name="nothing">暫無數據</string>
-    <string name="simplified_chinese">簡體中文</string>
+    <string name="simplified_chinese">简体中文</string>
     <string name="traditional_chinese">繁體中文</string>
     <string name="changelanguage">切換語言</string>
     <string name="changelanguage_message">該設置僅應用於數據庫\n請同時切換系統語言設置</string>

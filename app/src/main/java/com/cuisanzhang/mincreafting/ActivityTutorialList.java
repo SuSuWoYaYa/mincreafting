@@ -146,9 +146,17 @@ public class ActivityTutorialList extends AppCompatActivity {
     private void showAboutImageDialog() {
 //        Log.e("ActivityTutorialList", "getApplicationContext="+getApplicationContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityTutorialList.this, R.style.AlertDialog);
-        builder.setTitle(R.string.about_tutorial);
-        builder.setMessage(R.string.aout_turorial_message);
-        builder.setPositiveButton(R.string.queding, null);
+
+       if(LanguageUtil.getLocaleLanguage(ActivityTutorialList.this).equals(LanguageUtil.TRADITIONAL_CHINESE)){
+           builder.setTitle("關於教程圖片");
+           builder.setMessage("教程是離線的\n但是圖片是在線的\n請注意流量\n所有的教程圖片超過了500M");
+           builder.setPositiveButton("確定", null);
+       }else {
+           builder.setTitle("关于教程图片");
+           builder.setMessage("教程是离线的\n但是图片是在线的\n请注意流量\n所有的教程图片超过了500M");
+           builder.setPositiveButton("确定", null);
+       }
+
         builder.show();
     }
 

@@ -30,6 +30,13 @@ public class ActivityTip extends AppCompatActivity {
 
     boolean isNetworkConnected = false;
 
+    private String language;
+    private boolean is_language_of_traditional_chinese  = false;
+
+    private String noAd;
+
+    private String notVip;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
@@ -39,6 +46,13 @@ public class ActivityTip extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
         initActionBar();
+
+        language = LanguageUtil.getLocaleLanguage(ActivityTip.this);
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            is_language_of_traditional_chinese = true;
+        }
+
+
 
         TipimageView = (ImageView) findViewById(R.id.ImageViewTip);
 
@@ -57,30 +71,39 @@ public class ActivityTip extends AppCompatActivity {
             }
         });
 
+
         userName = SettingUtils.ChangeTheme.getUserName(ActivityTip.this);
         isVip = SettingUtils.ChangeTheme.getVipState(ActivityTip.this);
 
         btnCheckVip = (Button) findViewById(R.id.btnCheckVip);
+
+        if (is_language_of_traditional_chinese)
+        {
+            noAd = "廣告已經沒有啦";
+            notVip = "嗯! 一定是你點錯了";
+            btn_zhifubao.setText("支付寶");
+            btnCheckVip.setText("去廣告");
+        }else {
+            noAd = "广告已经没有了";
+            notVip = "嗯! 一定是你点错了";
+            btn_zhifubao.setText("支付宝");
+            btnCheckVip.setText("去广告");
+        }
+
 
         btnCheckVip.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                if (isVip){
-                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-
-                else if (userName.equals(getString(R.string.tip_back_door))){
-                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
+                if (isVip || userName.equals(getString(R.string.tip_back_door))){
+                    Toast.makeText(ActivityTip.this, noAd, Toast.LENGTH_SHORT).show();
                     SettingUtils.ChangeTheme.setVipState(ActivityTip.this, true);
                     return;
                 }
 
                 else  {
-                    Toast.makeText(ActivityTip.this, R.string.areyousure, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityTip.this, notVip, Toast.LENGTH_SHORT).show();
                     return;
                 }
 //                isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTip.this);

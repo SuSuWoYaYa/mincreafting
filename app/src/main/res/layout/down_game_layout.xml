@@ -47,6 +47,7 @@
             android:src="@drawable/minecraftpe"
             android:scaleType="centerInside"/>
         <TextView
+            android:id="@+id/textViewMc163"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="我的世界-网易版 (免费)"
@@ -71,6 +72,7 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/textViewGoogleplay"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:src="@drawable/minecraftpe"/>
@@ -102,6 +104,7 @@
             android:layout_height="100dp"
             android:src="@drawable/minecraftpe"/>
         <TextView
+            android:id="@+id/textViewOther"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="我的世界(国际版)"
@@ -121,6 +124,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="查看其它版本"
+        android:text="其他"
         android:background="@drawable/cling_button_normal"/>
 </LinearLayout>

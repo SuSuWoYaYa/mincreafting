@@ -26,6 +26,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,11 +94,18 @@ public class FragmentMainActivity extends AppCompatActivity {
     private RadioButton radio_btn_zh;
     private RadioButton radio_btn_zw;
 
+    private String language;
+    private boolean is_language_of_traditional_chinese = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
+
+        language = LanguageUtil.getLocaleLanguage(getApplicationContext());
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            is_language_of_traditional_chinese = true;
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main_layout);
@@ -125,6 +133,30 @@ public class FragmentMainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
 
+        Menu menuNav = mNavigationView.getMenu();
+        MenuItem menu_changeTheme = menuNav.findItem(R.id.menu_changeTheme);
+        MenuItem menu_feedback = menuNav.findItem(R.id.menu_feedback);
+        MenuItem menu_tip = menuNav.findItem(R.id.menu_tip);
+        MenuItem menu_about = menuNav.findItem(R.id.menu_about);
+        MenuItem menu_changelanguage = menuNav.findItem(R.id.menu_changelanguage);
+        MenuItem menu_downgame = menuNav.findItem(R.id.menu_downgame);
+
+        if (is_language_of_traditional_chinese) {
+            menu_changeTheme.setTitle("切換主題");
+            menu_feedback.setTitle("意見反饋");
+            menu_tip.setTitle("打賞作者");
+            menu_about.setTitle("關於");
+            menu_changelanguage.setTitle("切換語言");
+            menu_downgame.setTitle("遊戲下載");
+
+        }else {
+            menu_changeTheme.setTitle("切换主题");
+            menu_feedback.setTitle("意见反馈");
+            menu_tip.setTitle("打赏作者");
+            menu_about.setTitle("关于");
+            menu_changelanguage.setTitle("切换语言");
+            menu_downgame.setTitle("游戏下载");
+        }
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -298,6 +330,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         });
 
 
+
+
         TextView textViewGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToGreen);
         TextView textViewDeepDrakGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToDrakGreen);
         TextView textViewBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToBlue);
@@ -320,6 +354,61 @@ public class FragmentMainActivity extends AppCompatActivity {
         TextView textViewPurple = (TextView) layout.findViewById(R.id.layoutPopChangeToPurple);
         TextView textViewRed = (TextView) layout.findViewById(R.id.layoutPopChangeToRed);
 
+
+
+        if (is_language_of_traditional_chinese) {
+            checkBoxChangeMainColor.setText("改變主標題欄背景顏色");
+            checkBoxChangeTitleColor.setText("改變物品名稱背景顏色");
+            button_changeColor.setText("確定");
+
+            textViewGreen.setText("綠色");
+            textViewDeepDrakGreen.setText("深綠");
+            textViewBlue.setText("淺藍");
+            textViewSkyBlue.setText("深藍");
+            textViewDeepBlue.setText("藍色");
+            textViewBlown.setText("棕色");
+            textViewDeepSaddleBrown.setText("褐色");
+            textViewHotPink.setText("粉色");
+            textViewPink.setText("粉紅");
+
+            textViewDeepDark.setText("深黑");
+            textViewDeepGray.setText("深灰");
+            textViewGray.setText("灰色");
+            textViewLightGray.setText("亮灰");
+            textViewOrangeRed.setText("紅色");
+            textViewOrange.setText("橙色");
+//        textViewGold = (TextView) layout.findViewById(R.id.layoutPopChangeToGold);
+//        textViewYellow = (TextView) layout.findViewById(R.id.layoutPopChangeToBlueYellow);
+            textViewBluePurple.setText("紫藍");
+            textViewPurple.setText("紫色");
+            textViewRed.setText("深紅");
+        }else{
+            checkBoxChangeMainColor.setText("改变主标题栏背景颜色");
+            checkBoxChangeTitleColor.setText("改变物品名称背景颜色");
+            button_changeColor.setText("确定");
+
+            textViewGreen.setText("绿色");
+            textViewDeepDrakGreen.setText("深绿");
+            textViewBlue.setText("浅蓝");
+            textViewSkyBlue.setText("深蓝");
+            textViewDeepBlue.setText("蓝色");
+            textViewBlown.setText("棕色");
+            textViewDeepSaddleBrown.setText("褐色");
+            textViewHotPink.setText("粉色");
+            textViewPink.setText("粉红");
+
+            textViewDeepDark.setText("深黑");
+            textViewDeepGray.setText("深灰");
+            textViewGray.setText("灰色");
+            textViewLightGray.setText("亮灰");
+            textViewOrangeRed.setText("红色");
+            textViewOrange.setText("橙色");
+//        textViewGold = (TextView) layout.findViewById(R.id.layoutPopChangeToGold);
+//        textViewYellow = (TextView) layout.findViewById(R.id.layoutPopChangeToBlueYellow);
+            textViewBluePurple.setText("紫蓝");
+            textViewPurple.setText("紫色");
+            textViewRed.setText("深红");
+        }
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
@@ -464,10 +553,17 @@ public class FragmentMainActivity extends AppCompatActivity {
 
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
-        builder.setTitle(R.string.about_mincreafting);
-        builder.setMessage(R.string.about_mincreafting_message);
-        builder.setPositiveButton(R.string.queding, null);
-        builder.show();
+
+        if (is_language_of_traditional_chinese) {
+            builder.setTitle("關於 Mincreafting");
+            builder.setMessage("這是一個Minecraft合成表的APP\n所有內容來自於\nMinecraft中文WIKI\n網易\n網絡\n以及網友的貢獻");
+            builder.setPositiveButton("確定", null);
+        }else {
+            builder.setTitle("关于 Mincreafting");
+            builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于\nMinecraft中文WIKI\n网易\n网络\n以及网友的贡献");
+            builder.setPositiveButton("确定", null);
+        }
+            builder.show();
     }
 
 
@@ -478,18 +574,33 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
-        builder.setTitle(R.string.enter_name);
+
         builder.setView(settingNameView);
 //        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
-        builder.setNegativeButton(R.string.quxiao, null);
-        builder.setPositiveButton(R.string.queding, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                userName = editText_settingName.getText().toString();
-                SettingUtils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
-                textUserName.setText(userName);
-            }
-        });
+        if (is_language_of_traditional_chinese) {
+            builder.setTitle("我的暱稱");
+            builder.setNegativeButton("取消", null);
+            builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    userName = editText_settingName.getText().toString();
+                    SettingUtils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
+                    textUserName.setText(userName);
+                }
+            });
+        }
+        else {
+            builder.setTitle("我的昵称");
+            builder.setNegativeButton("取消", null);
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    userName = editText_settingName.getText().toString();
+                    SettingUtils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
+                    textUserName.setText(userName);
+                }
+            });
+        }
         builder.show();
         return true;
     }
@@ -627,17 +738,24 @@ public class FragmentMainActivity extends AppCompatActivity {
         });
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
-        builder.setTitle(R.string.changelanguage);
         builder.setView(changelanguageView);
-//        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
-//        builder.setNegativeButton(R.string.quxiao, null);
-        builder.setPositiveButton(R.string.queding, null);
-//        builder.setPositiveButton(R.string.queding, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                radio_btn_zh.isChecked();
-//            }
-//        });
+        if (is_language_of_traditional_chinese) {
+            builder.setTitle("切換語言");
+            builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ReStartActivity(FragmentMainActivity.this);
+                }
+            });
+        }else {
+            builder.setTitle("切换语言");
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ReStartActivity(FragmentMainActivity.this);
+                }
+            });
+        }
         builder.show();
         return ;
     }

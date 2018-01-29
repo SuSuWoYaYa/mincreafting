@@ -25,12 +25,30 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
     };
     private Context context;
 
+    private String language;
+    private boolean is_language_of_traditional_chinese  = false;
+
     public SimpleFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
-        tabTitles[0] = context.getString(R.string.wiki_turorial);
-        tabTitles[1] = context.getString(R.string.hechengbiaodaquan);
-        tabTitles[2] = context.getString(R.string.shengwu_wuping_fangkuai);
+
+        language = LanguageUtil.getLocaleLanguage(context);
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            is_language_of_traditional_chinese = true;
+        }
+
+        tabTitles[0] = "Wiki.教程";
+        tabTitles[1] = "合成表大全";
+
+        if (is_language_of_traditional_chinese){
+            tabTitles[2] = "生物.物品.方塊";
+        }
+        else {
+
+            tabTitles[2] = "生物.物品.方块";
+
+        }
+
         pageCount = tabTitles.length;
     }
 

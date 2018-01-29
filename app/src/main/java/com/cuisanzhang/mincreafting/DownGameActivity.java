@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -18,6 +19,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static com.cuisanzhang.mincreafting.R.id.btnCheckVip;
+import static com.cuisanzhang.mincreafting.R.id.btn_zhifubao;
 
 public class DownGameActivity extends AppCompatActivity {
 
@@ -42,6 +46,14 @@ public class DownGameActivity extends AppCompatActivity {
     String userName;
     boolean isVip;
 
+
+    private String language;
+    private boolean is_language_of_traditional_chinese  = false;
+
+    private String geting;
+
+    private String notVip;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
@@ -51,6 +63,11 @@ public class DownGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.down_game_layout);
         initActionBar();
+
+        language = LanguageUtil.getLocaleLanguage(DownGameActivity.this);
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            is_language_of_traditional_chinese = true;
+        }
 
 
         btn_down_game_mc163 = (Button) findViewById(R.id.btn_down_game_mc163);
@@ -93,7 +110,7 @@ public class DownGameActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(DownGameActivity.this, "获取中", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DownGameActivity.this, geting, Toast.LENGTH_SHORT).show();
 
                         openother();
 
@@ -121,10 +138,35 @@ public class DownGameActivity extends AppCompatActivity {
                     linearlayout_other.setVisibility(View.VISIBLE);
                     btn_other_version.setVisibility(View.GONE);
                 } else {
-                    Toast.makeText(DownGameActivity.this, getString(R.string.areyousure), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DownGameActivity.this, notVip, Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+
+        TextView textViewMc163 = (TextView) findViewById(R.id.textViewMc163);
+        TextView textViewOther = (TextView) findViewById(R.id.textViewOther);
+
+        if (is_language_of_traditional_chinese)
+        {
+            geting = "獲取中";
+            notVip = "嗯! 一定是你點錯了,請先去廣告";
+            btn_down_game_mc163.setText("下載");
+            btn_down_game_googleplay.setText("下載");
+            btn_other_version.setText("下載");
+            textViewMc163.setText("我的世界-網易版 (免費)");
+            textViewOther.setText("我的世界(國際版)");
+
+        }else {
+            geting = "获取中";
+            notVip = "嗯! 一定是你点错了,请先去广告";
+            btn_down_game_mc163.setText("下载");
+            btn_down_game_googleplay.setText("下载");
+            btn_other_version.setText("下载");
+            textViewMc163.setText("我的世界-网易版 (免费)");
+            textViewOther.setText("我的世界(国际版)");
+        }
+
 
     }
 

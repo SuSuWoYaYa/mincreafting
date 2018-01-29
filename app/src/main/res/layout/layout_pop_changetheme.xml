@@ -182,7 +182,7 @@
                 android:background="@color/colorPrimary_deep_gray"
                 android:gravity="center"
                 android:padding="14dp"
-                android:text="深灰"
+                android:text="@string/color_deep_gray"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
 
@@ -210,7 +210,7 @@
                 android:background="@color/colorPrimary_light_gray"
                 android:gravity="center"
                 android:padding="14dp"
-                android:text="亮灰"
+                android:text="@string/color_light_gray"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
 

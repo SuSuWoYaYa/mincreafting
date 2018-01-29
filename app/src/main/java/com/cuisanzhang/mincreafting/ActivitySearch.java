@@ -75,6 +75,10 @@ public class ActivitySearch extends AppCompatActivity {
     //for change title color
     int selectColor;
 
+
+    private String language;
+    private boolean is_language_of_traditional_chinese  = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
@@ -84,6 +88,11 @@ public class ActivitySearch extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        language = LanguageUtil.getLocaleLanguage(ActivitySearch.this);
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            is_language_of_traditional_chinese = true;
+        }
 
 
 //        adRequest = new AdRequest.Builder()
@@ -124,6 +133,17 @@ public class ActivitySearch extends AppCompatActivity {
 
         LinearLayout emptyView;
         emptyView = (LinearLayout) findViewById(R.id.emptyView);
+        TextView textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);
+
+        if(is_language_of_traditional_chinese){
+            autoCompleteTextView.setHint("輸入文字進行搜索");
+            textViewEmpty.setText("暫無數據");
+        }else {
+            autoCompleteTextView.setHint("输入文字进行搜索");
+            textViewEmpty.setText("暂无数据");
+
+        }
+
         listView.setEmptyView(emptyView);
 //        listView.setDivider();
 //        listView.setDividerHeight(2);
@@ -318,7 +338,13 @@ public class ActivitySearch extends AppCompatActivity {
         }
 //        Toast.makeText(ActivitySearch.this, "搜索 " + text, Toast.LENGTH_SHORT).show();
 
-        text += getString(R.string.append_search);
+        if(is_language_of_traditional_chinese){
+            text += "的搜索結果";
+        }else {
+            text += "的搜索结果";
+
+        }
+
         autoCompleteTextView.setText(text);
 
         DbManage dbManage = new DbManage(ActivitySearch.this);
@@ -495,7 +521,7 @@ public class ActivitySearch extends AppCompatActivity {
                 public void onClick(View v) {
                     String str = Material.get(pos);
 
-                    str = SettingUtils.filterString(str);
+                    str = SettingUtils.filterString(ActivitySearch.this, str);
 
                     String[] searchNames = str.split("\\s+");
 //                    searchString(searchNames);

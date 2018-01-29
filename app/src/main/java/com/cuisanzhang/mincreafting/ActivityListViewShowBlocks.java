@@ -266,7 +266,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
                     public void onClick(View v) {
                         String str = Material.get(pos);
 
-                        str = SettingUtils.filterString(str);
+                        str = SettingUtils.filterString(ActivityListViewShowBlocks.this, str);
 
                         String[] searchNames = str.split("\\s+");
 //
@@ -399,8 +399,14 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //        Log.e("ActivityTutorialList", "getApplicationContext="+getApplicationContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListViewShowBlocks.this, R.style.AlertDialog);
         builder.setTitle(R.string.xiaotishi);
-        builder.setMessage(R.string.xiaotishi_message);
-        builder.setPositiveButton(R.string.queding, null);
+        if(LanguageUtil.getLocaleLanguage(ActivityListViewShowBlocks.this).equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+
+            builder.setMessage("點擊圖片可以查看材料來源\n圖片都是離線的,不需要聯網");
+            builder.setPositiveButton("確定", null);
+        }else {
+            builder.setMessage("点击图片可以查看材料来源\n图片都是离线的,不需要联网");
+            builder.setPositiveButton("确定", null);
+        }
         builder.show();
     }
 
