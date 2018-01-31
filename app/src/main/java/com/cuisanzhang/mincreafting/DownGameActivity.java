@@ -150,19 +150,17 @@ public class DownGameActivity extends AppCompatActivity {
         if (is_language_of_traditional_chinese)
         {
             geting = "獲取中";
-            notVip = "嗯! 一定是你點錯了,請先去廣告";
+            notVip = "嗯! 一定是你點錯了";
             btn_down_game_mc163.setText("下載");
             btn_down_game_googleplay.setText("下載");
-            btn_other_version.setText("下載");
             textViewMc163.setText("我的世界-網易版 (免費)");
             textViewOther.setText("我的世界(國際版)");
 
         }else {
             geting = "获取中";
-            notVip = "嗯! 一定是你点错了,请先去广告";
+            notVip = "嗯! 一定是你点错了";
             btn_down_game_mc163.setText("下载");
             btn_down_game_googleplay.setText("下载");
-            btn_other_version.setText("下载");
             textViewMc163.setText("我的世界-网易版 (免费)");
             textViewOther.setText("我的世界(国际版)");
         }

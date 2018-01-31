@@ -64,8 +64,8 @@ public class ActivityTutorial extends AppCompatActivity {
         mAdView = (AdView) findViewById(R.id.adView);
 
 
-        //2分之一的几率广告
-        int random = new Random().nextInt(4);
+        //3分之一的几率广告
+        int random = new Random().nextInt(6);
 
         if(random < 2) {
             showAd = true;
