@@ -145,6 +145,7 @@ public class DownGameActivity extends AppCompatActivity {
 
 
         TextView textViewMc163 = (TextView) findViewById(R.id.textViewMc163);
+        TextView textViewGoogleplay = (TextView) findViewById(R.id.textViewGoogleplay);
         TextView textViewOther = (TextView) findViewById(R.id.textViewOther);
 
         if (is_language_of_traditional_chinese)
@@ -154,6 +155,7 @@ public class DownGameActivity extends AppCompatActivity {
             btn_down_game_mc163.setText("下載");
             btn_down_game_googleplay.setText("下載");
             textViewMc163.setText("我的世界-網易版 (免費)");
+            textViewGoogleplay.setText("我的世界-GooglePlay (收費)");
             textViewOther.setText("我的世界(國際版)");
 
         }else {
@@ -162,6 +164,7 @@ public class DownGameActivity extends AppCompatActivity {
             btn_down_game_mc163.setText("下载");
             btn_down_game_googleplay.setText("下载");
             textViewMc163.setText("我的世界-网易版 (免费)");
+            textViewGoogleplay.setText("我的世界-GooglePlay (收费)");
             textViewOther.setText("我的世界(国际版)");
         }
 

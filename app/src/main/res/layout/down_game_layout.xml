@@ -72,11 +72,11 @@
         android:gravity="center">
 
         <ImageView
-            android:id="@+id/textViewGoogleplay"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:src="@drawable/minecraftpe"/>
         <TextView
+            android:id="@+id/textViewGoogleplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="我的世界-GooglePlay (收费)"
