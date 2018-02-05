@@ -715,6 +715,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         View changelanguageView = inflater.inflate(R.layout.changelanguage_layout, null);
 
+        TextView changelanguage_messageTextView = (TextView) changelanguageView.findViewById(R.id.changelanguage_messageTextView);
+
 
         radioGroup = (RadioGroup) changelanguageView.findViewById(R.id.radiogroup_changelanguage);
 //        radio_btn_zh = (RadioButton) changelanguageView.findViewById(R.id.radio_btn_zh);
@@ -747,6 +749,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                     ReStartActivity(FragmentMainActivity.this);
                 }
             });
+            changelanguage_messageTextView.setText("改變語言設置會影響搜索結果");
         }else {
             builder.setTitle("切换语言");
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -755,6 +758,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                     ReStartActivity(FragmentMainActivity.this);
                 }
             });
+            changelanguage_messageTextView.setText("改变语言设置会影响搜索结果");
         }
         builder.show();
         return ;
