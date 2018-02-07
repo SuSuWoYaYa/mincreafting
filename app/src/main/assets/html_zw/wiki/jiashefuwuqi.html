@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>架設服務器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">架設服務器</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+<p class="yellow"><b>此頁面的部分內容由於太久沒更新而已過期</b>
+<br />
+你可以幫助我們來更新此頁面
+</p>
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> 
+<p class="red"><b>警告</b>
+<br />
+在依照本頁面上的所有步驟架設服務器之前，請注意如果您不清楚您自己在做什麼而運行服務端軟件，將會導致您的系統出現錯誤甚至出現崩潰。
+       </p> 
+<p>在這個教程中，我們將通過手把手的方式，一步步地幫助您建立屬於你自己的Minecraft服務器。在該教程中，我們使用Mojang發佈的供玩家免費下載的服務器端程序，該程序在大部分操作系統(比如Windows,Mac OS以及Linux等)上都可以運行。</p>
+<p>首先，你可以根據你所使用的操作系統，前往官方的 https://minecraft.net/zh-hans/download/ 下載頁面 ，下載所需的Minecraft服務器端程序。我們建議你新建一個文件夾用於保存服務器端文件。(下載後請確認下載的服務器端文件是否是 <i>minecraft_server.jar</i> 或者 <i>minecraft_server.exe</i>，因為有時你的瀏覽器會將可執行文件重命名。)</p>
+<p><i>注意：網上也有許多Minecraft的第三方服務器端程序，不過它們都是不受Mojang技術支持的。</i>——這類服務器可能有更好的性能和一些額外功能。此類服務器的搭建建議另外尋找文檔。</p>
+
+<h2>注意事項</h2>
+<p>鑒於您正在一步步地開啓您自己的服務器，您應該要注意所有可能出現的危險性。雖然我們並不能阻止其他人運行服務器而導致產生各種針對系統的危害，但我們至少可以呼籲各位：如果您不知道您自己在做什麼，請不要根據下面的教程架設服務器。運行下面的所有教程(應該)不會導致您的系統出錯，但是與此同時我們並不知道您的系統配置與軟件運行情況。我們並不能保證您的系統不會出現問題。為了確保您根據下面的教程架設服務器而不會出現問題，我們強烈推薦您至少知道以下的內容：</p>
+<ul>
+<li>基本的網絡搭建術語(IP、DHCP、網絡端口等)</li>
+<li>您的系統配置</li>
+<li>您的網絡構成環境</li>
+<li>(如果您有路由器或交換機等)您的路由器配置</li>
+</ul>
+<p>當然，如果您並不希望自己搭建服務器，我們歡迎您加入其他服務器，其他服務器列表可以在 http://www.minecraft.net/servers.jsp 這裡找到。</p>
+
+<h2>快速配置</h2>
+<p>該自然段是對本文內容的簡要概括。如果您有閱讀困難，或者需要對於您的平台的特殊指導，請閱讀余下的段落。</p>
+<ol>
+<li>在終端或命令提示符輸入<code>java -version</code>，檢查是否安裝了java 且版本至少1.6。</li>
+<li>若未安裝，前往java.com下載，或者是用自帶的包管理器搜索安裝。您也可以將PATH變量做以下調整，如果您有java程序的話：
+<ul>
+<li>Windows用戶在bat文件中在程序運行前進行<code>set "PATH=&lt;java目錄&gt;;%PATH%"</code></li>
+<li>Linux/Mac/*nix用戶使用 <code>PATH=&lt;java目錄&gt;:$PATH</code></li>
+</ul>
+</li>
+<li>在服務器文件目錄下新建一個.bat文件。Mac/Linux用戶使用.sh。</li>
+<li>內容：<code>java &lt;需要的額外java參數&gt; -Xmx&lt;最大內存&gt; -Xms&lt;最小內存&gt; -jar "&lt;文件名&gt;" &lt;需要的服務器參數，如nogui&gt;</code>不過也可以cd進入服務器文件目錄直接這樣做，不製作腳本文件。</li>
+<li>運行腳本文件。Windows直接雙擊，Linux/Mac/*nix 建議<code>chmod +x &lt;文件名&gt; &amp;&amp; sh &lt;文件名&gt;</code></li>
+<li>啓動成功，第一次啓動會進行地圖生成。有關配置按
+server.properties文件的定義操作。</li>
+</ol>
+
+<h2>Windows 操作指導</h2>
+
+<h3>需求：確認你的操作系統安裝了最新版本的Java環境</h3>
+<ol>
+
+<li>確保你安裝了Java 8。除非Sun公司官方發佈，否則不要安裝Java 9，除非你想做軟件調試。為了檢查當前的Java環境，我們可以打開一個命令提示符(CMD)窗口。
+<ul>
+<li>Windows Vista/7 系統下，點「開始菜單」，在搜索框中輸入 cmd，回車。</li>
+<li>Windows XP 系統下，點「開始菜單」-&gt; 「運行」，然後輸入 cmd 並回車。你也可以使用「運行」的快捷鍵：Windows鍵 + R。</li>
+<li>在命令提示符窗口，輸入命令<code>java -version</code>並回車。</li>
+<li>窗口中應該會顯示當前你的電腦的Java版本，應該為 "Java version 1.8"。</li>
+</ul>
+</li>
+
+<li>如果你得到了無效的命令錯誤提示， "<code>'Java' 不是內部或外部命令，也不是可運行的程序或批處理文件</code>"，那麼你的電腦上運行的可能是早期Java版本(比1.6早)或者根本就沒有Java環境。
+<ul>
+<li>可以到
+http://www.java.com/zh_CN/download/manual.jsp" 此處 下載最新版本的Java，並選擇32位系統或64位系統。</li>
+<li>在你安裝了最新版的Java之後，你可以嘗試在命令提示符窗口再次輸入<code>java -version</code>並回車。</li>
+</ul>
+</li>
+
+
+<li>如果你依舊得到錯誤提示，請嘗試以下步驟，將Java添加到你的系統環境變量中去。
+<ul>
+<li>右鍵點擊「此電腦/計算機」。</li>
+<li>點「屬性」。</li>
+<li>點「高級系統設置」。</li>
+<li>點「環境變量」。</li>
+<li>在「系統變量下」，選中「Path」變量。</li>
+<li>點編輯，在內容的<i>結尾</i>處加上<code>;"c:\Program Files\Java\jre1.8.x_xxx\bin"</code>。如果你在64位系統上使用32位Java，則使用<code>;"c:\Program Files (x86)\Java\jre1.8.x_xxx\bin"</code>。</li>
+<li>重啓電腦。</li>
+<li>再次打開命令提示符輸入<code>java -version</code>並回車，驗證。</li>
+</ul>
+</ol>
+
+
+
+<h3>啓動Minecraft服務器端程序 (.exe 版)</h3>
+<p>雙擊「Minecraft_Server.exe」文件。服務器程序將會以默認配置啓動。</p>
+<ul>
+<li>第一次啓動時，會顯示一些「file not found」(文件無法找到)的錯誤提示。這是正常的，這些文件正在創建當中。</li>
+<li>第一次啓動之後，我們可以開始配置服務器文件了。首先將打開的服務器程序關閉：在命令窗口裡輸入<code>stop</code>。之後我們開始按照下面的指導進行服務器配置。</li>
+</ul>
+
+<h3>增加Minecraft服務器端程序所佔用的內存</h3>
+<p>如果你想讓你的服務器端程序佔用更多的內存，你就需要創建一個批處理文件。沒關係，這比聽起來容易。</p>
+<ol>
+<li>打開「記事本」(不是「寫字板」喲)，新建一個文本文件。</li>
+<li>確認下你的Windows系統是32位的還是64位的，可以在控制面板裡面查看。並且確認下你的Java版本是32位的還是64位的。</li>
+<li>根據你的系統以及Java版本……
+<ol>
+<li>如果Windows系統是32位的或者是64位且安裝的是64位的Java，複製下面的內容到你的文本文件中(只佔一行。如果使用Java 6，請根據命令中的目錄)：
+<dl>
+<dd><code>"C:\Program Files\Java\jre1.8.x_xxx\bin\javaw.exe" -Xmx2048M -Xms2048M -jar "Minecraft_Server.exe"</code></dd>
+</dl>
+</li>
+<li>如果你因為一些奇怪的原因，正在64位系統上運行32位的Java，<i>升級你的Java</i>。並且，如果你把Java裝載其他目錄里了，或者你重命名了Minecaft服務器程序文件，見下:</li>
+<li>如果你在64位系統上有32位的Java，Java.com會通過瀏覽器判別你的版本，對於一些32位的瀏覽器，會推薦給你下載32位的Java。在這樣情況下，為確保萬無一失，請把32位和64位的Java都下載並安裝了吧。</li>
+</ol>
+<ul>
+<li>文本文件這一行到底是什麼意思呢？ 這條可執行命令(<code>"C:\Program Files\Java\jre1.8.x_xxx\bin\javaw.exe"</code>))是一個文件地址，指向你系統最新的javaw.exe。<i>如果你把Java安裝在了其他地址下，你就需要找到那個地址，複製粘貼過來，替換到上面這個錯誤地址。</i> 下一部分(<code>-Xmx2048M -Xms2048M</code>)表示你分配的內存大小。以MB(MegaBytes，兆)計算。默認情況下，你服務器只會使用100MB內存，這對於Minecraft服務器來說太小了。大部分用戶會分配給服務器程序1024MB(也就是1GB)，或者2048MB(2GB)也是一般推薦的。 下一個，參數<code>-jar</code>，是用來表示Minecraft_Server.exe是Java架構程序的。</li>
+<li>在這條可執行命令的最後是我們的.exe文件的名字(<code>Minecraft_Server.exe</code>)。一般來說，名字是Minecraft_Server.exe. <i>大小寫不區分，不一樣沒關係</i>，如果你的.exe文件已經改名，就把這條命令里的文件名也改成你相應的名字。最後，點 文件-&gt;另存為...，將文件取名為<code>run.bat</code>，並且確保在窗口的文件類型那，選中為<code>所有文件(*.*)</code>。 然後保存到和你服務器端程序所在相同的目錄下。雙擊剛建立的<code>run.bat</code>文件。如果一切都按照正確步驟坐下來，你就會注意到現在你的服務器程序申請到更多的內存了！</li>
+</ul>
+</li>
+</ol>
+<p>如果Windows沒有識別出文件類型(你可能會被提示選擇用什麼程序來打開)，這也許是因為Minecraft_Server缺少了.exe文件名後綴。我們可以通過重命名Minecraft_Server為Minecraft_Server.exe來修正這個問題。如果問題解決，程序的圖標就會變成Minecraft的圖標(方塊)。 如果還是沒解決，你需要打開命令提示符窗口，點「運行」，輸入cmd回車。然後你需要將命令提示符窗口當前地址定位到你創建的文件夾地址去。</p>
+<p>按照以下步驟來：</p>
+<ol>
+<li>確保你在正確的盤符(一般是C盤)。輸入 <code>C:</code> 然後回車來進入C盤。</li>
+<li>現在你需要打開你的目錄。輸入 <code>cd \"folder name"</code> 然後回車，要包含引號部分。</li>
+<li>確認你在正確的目錄下了，輸入 <code>dir</code> 然後回車你會看到你當前所在目錄下的所有文件和目錄。如果正確的話，你應該可以看到minecraft_server在其中。</li>
+<li>重命名Minecraft。輸入 <code>rename minecraft_server minecraft_server.exe</code> 然後回車，這麼做會將.exe後綴添加到文件名上，使文件變成可執行文件。之後就應該可以正確的打開運行了。</li>
+</ol>
+
+<h3>啓動Minecraft服務器端程序 (.jar 版)</h3>
+<ol>
+<li>如果你用的是.jar版的服務器端程序，你需要在環境變量中添加正確的Java地址。要完成這一操作，請回到前面的「確認你的操作系統安裝了最新版本的Java環境」指導章節。</li>
+<li>要在Windows上運行jar版本的Minecraft服務器端程序，先用「記事本」新建一個文本文件，然後粘帖以下內容進去：</li>
+<li><code>java -Xms512M -Xmx1024M -jar minecraft_server.jar</code></li>
+<li>保存為 startserver.bat，放在與minecraft_server.jar相同的目錄下。 .bat文件是批處理文件。</li>
+<li>雙擊 startserver.bat，服務器就開始運行了。</li>
+</ol>
+
+<h3>在不改動環境變量的情況下，啓動jar格式服務器端程序</h3>
+<p>要在不改動你系統環境變量的情況下啓動jar格式服務器端程序，你需要在你的start.bat批處理文件中添加java路徑。因為不需要改動系統變量，所以這個方法比之前的要方便並且安全。</p>
+<ol>
+<li>首先用「記事本」打開你之前建立的批處理文件start.bat(或者別的什麼名字)</li>
+<li>在首行，加入<br />
+<code>@echo off</code><br />
+，這行命令使得「命令提示符」窗口隱藏，不會在你啓動批處理文件時跳出來。</li>
+<li>第二行，確保你的系統上可以找到Java(也叫Java運行庫或JRE)。目前的Windows計算機上最普遍的是"C:\Program Files (x86)\Java\jre7\bin\java.exe"，因此，你需要在第二行寫上：<br />
+<code>path=%PATH%;%ProgramFiles(x86)%\Java\jre7\bin\java.exe</code><br />
+，在此 <code>%PATH%</code> 包含著已經存在的系統變量，而 <code>%ProgramFiles(x86)%</code> 會指向你的系統Project Files目錄，一般是 "C:\Program Files (x86)"。</li>
+<li>最後，確保最後一行是服務器啓動命令：<br />
+<code>java -Xms512M -Xmx1024M -jar minecraft_server.jar</code></li>
+<li>如果你不想使用圖形界面(GUI)，只需要在這行結尾加上 <code>nogui</code>。也就是：<br />
+<code>java -Xms512M -Xmx1024M -jar minecraft_server.jar nogui</code>。</li>
+</ol>
+
+<h2>Mac OS X 設置指南</h2>
+<p>在Mac OSX上設置Minecraft服務器，相比Windows上要 http://minecraft.net/download.jsp ，原因是官方並沒提供簡單的Mac OSX支持的應用程序。在<a target="_self" rel="nofollow" class="external text" href="http://www.youtube.com/watch?v=amiwO6PFFBQ">http://www.youtube.com/watch?v=amiwO6PFFBQ</a>提供了一個完整的視頻教程。須知服務器端在OSX 10.4 Tiger 上無法正確運行並且可能使電腦崩潰。</p>
+
+<h3>下載</h3>
+<p>確保你有最新的服務器端應用軟件。服務器端軟件可以到<a target="_self" rel="nofollow" class="external text" href="https://minecraft.net/download">https://minecraft.net/download</a>下載。在頁面上的「Multiple Server」下面找到「Minecraft_Server.X.X.X.jar」(X.X.X為服務器端版本號。)並下載。</p>
+
+
+<h3>安裝Java環境</h3>
+<p>Mac OS X系統本身已經包含了Java 1.6，如果沒有Java，可以運行Minecraft程序，就會提示是否安裝Java 1.6。 (注意，運行服務器不需要使用Java 1.7或更高。除非必要，否則不需要下載Java 1.7)</p>
+
+<h3>架設Minecraft服務器</h3>
+<p>確保你根據已經完成了上面的下載步驟，然後開始接下來的操作：</p>
+<ul>
+<li>創建一個文件夾，將minecraft_server.jar放入其中。比如，在桌面上創建一個名為「minecraft_server」的文件夾，然後把.jar文件拖進去。</li>
+<li>打開「文本編輯」，設定格式為純文本(格式 &gt; 製作純文本)，然後複製下面的內容到編輯器中：</li>
+</ul>
+<pre><code>#!/bin/bash
+cd "$(dirname "$0")"
+exec java -Xmx1G -Xms1G -jar minecraft_server.jar</code></pre>
+<ul>
+<li>保存文件到.jar所在的目錄並重命名為"start.command"。
+<ul>
+<li>這個就可以給服務器端足夠的內存來運行。佔用內存總數可以通過改變文本中的 <code>1G</code> 來實現，比如把它改成 <code>2G</code>，那麼你的服務器就會用2G的內存來運行。</li>
+</ul>
+</li>
+<li>打開「終端」(在/應用程序/實用工具/終端)。</li>
+<li>給予該可執行文件運行權限給用戶，組和公共。來完成這部，在終端中輸入 <code>chmod a+x</code> ，別忘了後面有個空格；然後拖 start.command 文件到終端窗口中，然後按下回車鍵。 (這就給了該腳本運行權限。)</li>
+<li>請記得在開啓start前請更改eula.txt 裡頭的 false 改成true。</li>
+<li>雙擊start.command來運行服務器端程序。</li>
+<li>一個新的終端窗口會打開，但你第一次運行該腳本時，會出現很多錯誤信息，提示你一些文件(files/directories)無法找到。這是正常的。現在你可以開始配置你的服務器了。</li>
+</ul>
+
+<h3>作為後台進程運行</h3>
+
+<p>你也可以讓服務器程序在系統開機後自動後台運行。</p>
+
+<h3>OS X</h3>
+<p>OS X 的 launchd-launchctl 機制負責在系統啓動時打開服務。</p>
+
+<h3>Linux</h3>
+<p>大多數 Linux 發行版都兼容 sysvinit 的 /etc/init.d 控制方式。首先 sudo su 切換為 root，cd /etc/init.d 進入目錄，然後 cp skeleton mcserver 複製模板文件，再用文本編輯器按內有的注釋編輯即可。</p>
+<p>init.d 腳本片段中主要要修改的是頭部的 INIT INFO。</p>
+<pre>### BEGIN INIT INFO
+# Provides: mcserver
+# Required-Start:    $network $local_fs $remote_fs
+# Required-Stop:     $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: MC Server
+# Description:       A minecraft server
+#                    
+### END INIT INFO
+# …
+DESC='A mc 1.7.2 server'
+NAME=mcserver
+DAEMON= # 此處加啓動腳本路徑
+DAEMON_ARGS # 如果有參數的話這裏寫
+# …
+# 用戶設置—實際上使用 root 十分危險，建議使用一個一般用戶身份的帳號。
+: ${USER:="root"}
+: ${GROUP:="root"}
+</pre>
+<p>接下來的操作各發行版稍有不同，可以參閱 update-rc.d 等命令的使用方式。</p>
+
+
+<h3>Windows</h3>
+<p>將啓動 bat 腳本複製一份到啓動文件夾即可。</p>
+
+<h2>Linux 設置指南</h2>
+<p>本章教學部分是給那些對Linux系統不太瞭解的用戶們準備的。在論壇 <a target="_self" class="external text" href="http://www.minecraftforum.net/viewtopic.php?t=628">http://www.minecraftforum.net/viewtopic.php?t=628</a> 上，有一個更進階的教程。 這個教程在32位的Ubuntu 9.10操作系統上測試通過，不過也應該可以適用與其他基於Debian的操作系統。</p>
+
+<h3>下載</h3>
+<p>確保你有最新的服務器端程序。請前去官方<a target="_self" rel="nofollow" class="external text" href="http://minecraft.net/download.jsp">http://minecraft.net/download.jsp</a>下載。</p>
+<h3>安裝Java</h3>
+<p>如果你的系統沒有安裝Java或者Java版本低於1.6，請你安裝或更新你的Java。 我們推薦你去Sun公司官網上下載Java。有許多人反映安裝有OpenJDK會造成影響，所以我們建議你在安裝官方Java環境之前，移除OpenJDK。</p>
+<p>然而，編譯安裝的OpenJDK常常性能更高(對於-Os -march=native -mtune=native來說，一些情況下不用編譯安裝性能也可能更高……)，儘管OpenJDK不被Mojang技術支持。因此我們推薦在openjdk工作正常時不去額外安裝Sun Java。</p>
+
+<h3>Debian</h3>
+<p>確保非自由軟件庫正被apt掃描到。將<b>non-free</b>加入你的<code>/etc/apt/sources.list</code>文件。e.g:</p>
+<p><code>deb http://ftp.uk.debian.org/debian/ squeeze main non-free</code></p>
+<p>以root身份更新你的軟件列表: <code>apt-get update</code></p>
+<p>然後簡單地以root身份將以下命令輸入終端並回車來安裝Java: <code>apt-get install sun-java6-jre</code></p>
+
+<h3>Ubuntu</h3>
+<p>對於 Ubuntu 10.04 LTS及更高版本, sun-java6 安裝包已經從Ubuntu的Multiverse中刪除. 你需要手動添加一下代碼:</p>
+<ul>
+<li>對於 Ubuntu 10.04 LTS (Lucid Lynx):</li>
+</ul>
+<p><code>sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"</code></p>
+<ul>
+<li>對於 Ubuntu 10.10 (Maverick Meerkat):</li>
+</ul>
+<p><code>sudo add-apt-repository "deb http://archive.canonical.com/ maverick partner"</code></p>
+<ul>
+<li>對於 Ubuntu 11.04 (Natty Narwhal):</li>
+</ul>
+<p>Some distros have the command "add-apt-repository" removed. If this is the case, you will need to add the python properties by running the following command:<br />
+<code>sudo apt-get install python-software-properties</code><br />
+Then you can proceed to add the source:<br />
+<code>sudo add-apt-repository "deb http://archive.canonical.com/ubuntu natty partner"</code></p>
+<ul>
+<li>對於 Ubuntu 11.10 (Oneiric Ocelot):</li>
+</ul>
+<p><code>sudo add-apt-repository ppa:ferramroberto/java</code></p>
+<ul>
+<li>Then install the packages:</li>
+</ul>
+<p><code>sudo apt-get update<br />
+sudo apt-get install sun-java6-jre<br />
+sudo update-alternatives --config java</code></p>
+<ul>
+<li>對於 Ubuntu 12.10 (Quantal Quetzal):</li>
+</ul>
+<p>注意：你可能需要安裝 <code>software-properties-common</code> 套件以執行 <code>apt-add-repository</code> 命令，用法如下：<br />
+<code>sudo apt-get install software-properties-common</code><br />
+輸入下列命令以加入 PPA 庫，並更新來源列表列表安裝 java：<br />
+<code>sudo apt-add-repository ppa:webupd8team/java<br />
+sudo apt-get update<br />
+sudo apt-get install oracle-java7-installer</code><br />
+安裝完成後，輸入下列命令並查看是否出現 java 版本號以確認JAVA是否正確安裝：<br />
+<code>java -version</code><br />
+輸出結果類似如下(以版本號 1.7.0 Update 10 為例)：<br />
+<code>java version "1.7.0_10"<br />
+Java(TM) SE Runtime Environment (build 1.7.0_10-b18)<br />
+Java HotSpot(TM) 64-Bit Server VM (build 23.6-b04, mixed mode)</code><br />
+</p>
+
+<h3>openSUSE</h3>
+<p>Use <code>zypper in java-1_6_0-sun</code></p>
+
+<h3>Arch Linux</h3>
+<p>打開一個終端並以root身份運行<code>pacman -Syu openjdk6</code></p>
+
+<h3>其他發行版</h3>
+<p>作為另一種選擇，你可以直接訪問Java主頁<a target="_self" rel="nofollow" class="external text" href="http://www.java.com/en/download/manual.jsp">http://www.java.com/en/download/manual.jsp</a>下載Linux的Java包。許多發行版可以使用這種方式(32位、64位都適用)。在網頁中，有這些包的安裝指南。</p>
+<p>如果在安裝過程中提示需要密碼，請輸入你的密碼。如果出現「是否確認？」，按「確定」，如果需要的話再按下回車。Java就裝好了。</p>
+
+<h3>啓動Minecraft服務器</h3>
+<p>打開命令列模式(terminal)，從「所有程序」&gt;「附屬應用程序」&gt;「命令提示字元」。<br />
+<span><span class="google-src-text" style="direction: ltr; text-align: left">輸入下列命令：<br />
+<br />
+<code>cd 'minecraft_server'<br /></code><br />
+您可能需要重新命名 minecraft_server 改成您所解壓縮到的文件夾名稱<br />
+<br />
+<code>java -Xms1024M -Xmx1024M -jar minecraft_server.jar nogui<br /></code><br /></span></span></p>
+
+<h3>當少於1GB可用的內存時</h3>
+<p>若您的RAM少於1024MB，下列的命令可能會導致虛擬內存不斷地交換分頁而最終內存用盡，這會使得遊戲更難以運行 <code>cd 'minecraft_server'</code> <code>java-Xms1024M-Xmx1024M-jar minecraft_server.jar nogui</code></p>
+<p><span><span class="google-src-text" style="direction: ltr; text-align: left">測量您目前所有可用的RAM: <code>free -m</code> It may look like this: File:ram left.png You are interested in the last number in the third line, 2163 in this case</span> <code>free-m</code></span></p>
+<p><span><span class="google-src-text" style="direction: ltr; text-align: left">Subtract some RAM as safety</span></span></p>
+<p><span><span class="google-src-text" style="direction: ltr; text-align: left">On this computer, the server may use up to 1536 MB RAM</span></span></p>
+<p><span><span class="google-src-text" style="direction: ltr; text-align: left">Now, replace the 1024 in the above example with the calculated number: <code>java -Xms1536M -Xmx1536M -jar minecraft_server.jar nogui</code> if minecraft_server.exe is being used you use: <code>java -Xms1536M -Xmx1536M -jar minecraft_server.exe nogui</code> Voila, it should run smoothly now</span></span></p>
+<p><span><span class="google-src-text" style="direction: ltr; text-align: left"><b>Tip:</b> If you want to spare more memory, you may set the -Xms parameter even lower, say: <code>java -Xms32M -Xmx512M -jar minecraft_server.jar nogui</code> The parameter controls how much memory is reserved on startup</span></span></p>
+<p><span><span class="google-src-text" style="direction: ltr; text-align: left">Your server will start with 32MB RAM and whenever it needs more memory it will allocate some until it reaches the maximum of 512 MB</span></span></p>
+<p><span><span class="google-src-text" style="direction: ltr; text-align: left">However, this will result in a little slowdown whenever the allocation is done.</span></span></p>
+
+<!-- <h3>Startup and maintenance script</h3>
+<h3>Configure and connect</h3> -->
+
+<h2>配置Minecraft服務器</h2>
+<ol>
+<li>通過修改 server.properties 文件來配置Minecraft服務器. 確保你在編輯的時候使用的文本編輯器不會添加各種格式 (比如，斜體). 額外的配置並不是很有必要，因為大多數的服務器使用默認配置就能很好的運行</li>
+<li>將您的用戶名加入到 admin.txt 和/或 ops.txt 文件中(新版本的Minecraft中可能沒有 admin.txt 文件).
+<ul>
+<li>Ops.txt 和admin.txt 決定了誰可以執行 服務器命令 . 換句話說, 管理員("op") 權限允許你控制遊戲的某些方面 (例如, 傳送玩家).</li>
+<li>Op 權限也可以通過服務器圖形界面給予: 輸入"op &lt;username&gt;" 後 &lt;username&gt; 就會自動被添加到 ops.txt 中.</li>
+</ul>
+</li>
+</ol>
+
+<h2>連接到Minecraft服務器</h2>
+<ul>
+<li>如果你是在作為服務端的電腦上玩Minecraft，先選擇「多人遊戲」，輸入「localhost」或者是「127.0.0.1」，而不是你的IP地址。
+<ul>
+<li><b>這是不推薦的。</b>除非你有一個性能良好，內存大於4GB的電腦。(50%給服務器，10%給客戶端，其餘的給系統)</li>
+</ul>
+</li>
+<li>在你的局域網內的玩家可以通過內網ip來連接到你的服務器. (因為玩家在局域網內，所以你不需要接口轉發)</li>
+<li>從Internet鏈接的玩家 (也就是，不在你的局域網中的玩家) 必須使用你的外部ip來鏈接. 你必須為這些從外部鏈接的玩家使用端口轉發。</li>
+</ul>
+
+<h3>IP 地址注釋</h3>
+<ul>
+<li>除非你為正在做服務器的電腦設定一個靜態ip, 否則的話，內部ip地址是有可能改變的. 這會影響到接口轉發規則並使得它們失效。 不同的路由器有不同的設置靜態ip的方法。你可以從你的設備的說明書或者在線文檔中獲得更多的幫助。</li>
+<li>如果你有連接到你外部IP的玩家, 你應該明白如果你沒有從你的Internet服務商處獲得一個靜態IP，那麼你的外部IP是會變化的. 你可以使用類似 MyWANIP 的工具來定時的檢查你的外部IP。 你也可以在谷歌中搜索「my ip address」來顯示你的外部IP(譯者注：百度搜索「IP地址」更加方便，或者只是簡單的搜索「ip」更好)。此外，你可以嘗試使用DNS服務，這會允許你使用一個固定的域名，而不是動態的IP地址。不管你的外部IP地址是否改變，這個域名會指向你當前的外部IP地址(即，當你的外部IP改變時，DNS會自動更新) 。</li>
+</ul>
+
+<h3>服務端網絡設置</h3>
+<ul>
+<li>服務器需要開啓防火牆相應端口(默認為25565)才能使服務端正常工作。</li>
+<li>確認網絡設置正確並使用 IP地址查詢網站 查詢, 或在線工具如 You Get Signal 確定服務端在國際互聯網的IP。測試端口應與服務端設置的端口一致(默認為25565)， <b>測試時請啓動服務端</b>。</li>
+</ul>
+<p><b>服務器有可能會遭到惡意攻擊，在服務器投入使用以前，請務必做好物理保護及數據備份工作，否則有可能會帶來經濟及精神上的損失。</b></p>
+
+<h3>針對使用家庭路由器的服務器</h3>
+<ul>
+<li>如果服務器位於一個家庭路由器的局域網內，則需要在路由器設置相應的 端口映射 法則。</li>
+<li>關於端口映射的具體設置，可以百度. 或者訪問 <a target="_self" rel="nofollow" class="external text" href="http://portforward.com/english/applications/port_forwarding/Minecraft_Server/Minecraft_Serverindex.htm">portforward.com</a>。從網站給出的列表中選擇你使用的路由器型號，網站將給出設置端口映射的相應步驟(有廣告，可跳過)。調制解調器、路由器等網絡器材附帶的說明文件也可能包括了設置端口映射的相關信息。
+<ul>
+<li>部分路由器提供了 DMZ 選項，與端口映射有同樣效果，但遭到攻擊的可能性相比使用端口映射更大(DMZ主機暴露在外網，不受路由器安全設置保護)。<b>新手使用請咨詢熟悉的業內人士</b>。</li>
+<li>一般來說可以首先嘗試使用 UPnP 進行端口映射，大部分路由器都支持並默認開啓該功能。可以使用諸如 miniupnpc 軟件包的 upnpc 命令一類的程序進行映射。</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>針對使用動態IP的服務器</h3>
+<ul>
+<li>由於中國大陸大部分家庭用戶(部分服務器代理的服務器也沒有固定IP)使用ADSL或PPPoE等方式接入互聯網，此種情況下的服務器無論通過路由器與否，IP地址是不定的。解決此問題可以使用<a target="_self" rel="nofollow" class="external text" href="http://zh.wikipedia.org/wiki/%E5%8B%95%E6%85%8BDNS/">動態DNS</a>服務，屆時玩家只需要知道服務器使用的域名即可連接到服務器。</li>
+<li>請聯繫網絡供應商(家庭用戶)或服務器代理商確定正在使用的網絡接入方式。</li>
+<li>使用動態DNS需要進行以下準備工作：
+<ul>
+<li>獲得一個域名，可以從 dot.tk 或 Oray 等網站獲得免費域名，也可以支付一定費用註冊；</li>
+<li>選擇一個動態DNS服務商，註冊賬號並按服務商提供的操作方法設置服務器及域名，維基百科有部分 動態DNS 的服務商列表。</li>
+</ul>
+</li>
+</ul>
+<p><b>使用動態DNS需要一定網絡理論及實踐的基礎，新手在做出決定前，請先咨詢熟悉的業內人士。</b></p>
+<ul>
+<li>設置動態DNS請按照服務商的指示對服務器、路由器(僅限使用路由器的用戶)進行設置。
+
+<li>路由器設置需要進入管理頁面進行操作，新手請參照說明文檔或在業內人士的指導下進行。</li>
+
+</li>
+</ul>
+
+<h2>常見問題</h2>
+<p>1) 我連接時服務器返回這樣的信息：</p>
+<pre>                       Connection lost 
+        The server responded with an invalid server key
+</pre>
+<p>解決方法： 稍後再重新連接，如果重試多遍問題依舊，將服務器升級到至少1.0.1(1.0.1也稱1.1)以上。</p>
+<hr />
+<p>2) 我在Windows系統下雙擊了服務器啓動的批處理文件，命令提示符窗口只閃現一下而服務器沒有啓動，應該怎麼辦？</p>
+<p>解決方法：可能是javaw.exe的路徑沒有設置對。把批處理文件路徑里的/jre7/換成/jre6/，確定運行環境在/Program Files/里還是在/Program Files (x86)/里，或者根據自己電腦的情況對路徑進行相應調整。多說一句，運行服務端需要JRE運行環境，而不是瀏覽器里的java插件。</p>
+<hr />
+<p>3) 提示「Failed to Bind to Port」錯誤。</p>
+<p>解決方法： 可能是路由器端口映射設置有誤，確認路由器為Minecraft開放的端口(默認為25565)正確地映射到你的服務器上。如果你的服務器是直接接入網絡的且網絡服務商不開放你所設置的端口，將 <code>server.properties</code>文件中的<code>server-port=25565</code>中的「25565」改為其他可用端口號。</p>
+<p>最好避免使用1024以下的端口，這些是在IANA(互聯網號碼分配局)註冊的，為重要服務預留的端口；另外因為安全原因，一些網絡服務商還會屏蔽3306(MySQL服務器默認使用)端口等。除此之外，49152-65535段端口屬於「動態端口」範圍，沒有被註冊佔用。</a>。</p>
+<hr />
+<p>4)我在Solaris/OpenSolaris下運行服務端時遇到了以下錯誤信息：</p>
+<pre>java.io.InterruptedIOException: Operation interrupted 
+at java.net.SocketInputStream.socketRead0(Native Method) 
+at java.net.SocketInputStream.read(SocketInputStream.jav解決方法：129) 
+at java.net.SocketInputStream.read(SocketInputStream.jav解決方法：182) 
+at java.io.FilterInputStream.read(FilterInputStream.jav解決方法：66) 
+at gq.a(SourceFile:131) 
+at ji.g(SourceFile:197) 
+at ji.c(SourceFile:17) 
+at oq.run(SourceFile:84) 
+2011-05-31 16:57:26 [INFO] /:44673 lost connection
+</pre>
+<p>解決方法：只有Solaris系統在線程中斷連接時會發生這種異常，這種異常可以通過改變啓動命令來避免：</p>
+<pre>java -Xmx1024M -Xms32M -XX:-UseVMInterruptibleIO -XX:+UseConcMarkSweepGC \
+ -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=$CPU_COUNT -XX:+AggressiveOpts\
+ -jar minecraft.jar nogui
+</pre>
+<p>這樣的命令讓Java使用一種可中斷的IO棧來防止異常發生。</p>
+<hr />
+<p>5)我沒法放置/破壞方塊！！</p>
+<p>解決方法： 離出生點遠一些，除非你是服務器的Op，否則你不能在出生點附近放置或破壞方塊。</p>
+
+<h2>性能優化</h2>
+<p>對於各類JDK(Oracle或Open)用戶，使用JDK的一些參數進行優化是可行的。以下參數在一定程度上優化了GC內存操作且利用了一些CPU命令集。</p>
+<p><code>java -server -XX:-UseVMInterruptibleIO -XX:NewRatio=3 -XX:+UseStringCache -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=(CPU數量，UNIX-LIKE/Linux/*nix可使用$CPU_COUNT) -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -XX:+UseBiasedLocking -XX:PermSize=128m -XX:MaxPermSize=256m -XX:+CMSParallelRemarkEnabled -XX:MaxGCPauseMillis=50 -XX:+UseAdaptiveGCBoundary -XX:-UseGCOverheadLimit -XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=90 -XX:MaxTenuringThreshold=15 -XX:+UseAdaptiveSizePolicy -XX:+DisableExplicitGC -Xnoclassgc -oss4M -ss4M -XX:CMSInitiatingOccupancyFraction=60 -XX:+UseCMSCompactAtFullCollection -XX:CMSFullGCsBeforeCompaction=1 -XX:SoftRefLRUPolicyMSPerMB=2048 -XX:UseSSE=(0/1/2/3/4，視CPU定)-XX:UseAVX=(0/1/2，視CPU定) -Xms1G -Xm視情況 -jar &lt;jar文件&gt;</code></p>
+<p>以上參數的部分設置可以自行修改。</p>
+ 
+        
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

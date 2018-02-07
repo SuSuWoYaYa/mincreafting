@@ -66,7 +66,9 @@ public class SettingUtils {
 //        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
-    public static String filterString(String str) {
+    public static String filterString(Context context, String str) {
+        String language = LanguageUtil.getLocaleLanguage(context);
+
         String[] des = {","
                 , "+"
 //                ,"("
@@ -83,8 +85,31 @@ public class SettingUtils {
 //                ,"白色"
         };
 
-        for (String item : des) {
-            str = str.replace(item, " ");
+        String[] des_zw = {","
+                , "+"
+//                ,"("
+//                ,")"
+//                ,"(基礎"
+//                ,"還原)"
+                , "或"
+                , "和"
+                , "任何"
+                , "對應的"
+                , "損壞的"
+
+//                ,"紅色"
+//                ,"白色"
+        };
+
+
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            for (String item : des_zw) {
+                str = str.replace(item, " ");
+            }
+        }else {
+            for (String item : des) {
+                str = str.replace(item, " ");
+            }
         }
 
 //        Toast.makeText(ActivityListViewShowBlocks.this, str,Toast.LENGTH_LONG).show();
@@ -157,7 +182,7 @@ public class SettingUtils {
 
         public static String getUserName(Context context) {
             SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-            return sp.getString(USER_NAME, "请输入你的昵称");
+            return sp.getString(USER_NAME, context.getString(R.string.enter_name));
         }
 
 

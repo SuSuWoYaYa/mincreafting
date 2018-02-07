@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>进阶教程-红石比较器的用法</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >进阶教程-红石比较器的用法</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自网易论坛<br />作者-史蒂夫·冥王<p>
+	<p><img src="local/mcbbs_head_jinjie.jpg" /></p>
+
+<h2>红石比较器的用法</h2>
+
+
+ <p>那红石类的基本都介绍完了，今天介绍红石元件的最后一个，
+</p><p>那就是红石比较器
+
+
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_1.jpg" /></p><p>红石比较器，红石元件之一，
+</p><p>由三个红石火把、三个石头、一个下界石英合成，
+</p><p>主要用途，检测部分容器来提供信号，加减信号强度
+</p><p>是不是听不懂，下面来给大家介绍下
+
+
+</p><p>首先我们介绍下，检测容器
+</p><p>（为了让大家更直观的展示，我用了电脑版做示例）
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_2.jpg" /></p><p>先放一个箱子，在放一个比较器，连上红石
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_3.jpg" /></p><p>这个时候我们在箱子里放上一个物品，比较器发出信号了
+</p><p>这就说明，比较器能够检测箱子中有物品，从而发出信号
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_4.jpg" /></p><p>这个时候，我们在箱子里放2组物品时，比较器给予了强度为2的信号
+</p><p>这就说明，箱子东西越多，比较器就能给予更强的信号
+ 
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_5.jpg" /></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_6.jpg" /></p><p>其他容器一样，都能被比较器检测
+
+</p><p>接下来说到加法检测
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_7.jpg" /></p><p>我们先来确定下4个方向分别是输入端ABC，和输出端D
+</p><p>（用了特定材质包，方便查看）
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_8.jpg" /></p><p>给输入端A一个信号，然后通过比较器，输出端D也有信号，
+</p><p>但是大家发现了没，A端是强度11的信号进的比较器，D出来的最强信号也只有11,
+</p><p>说明进入比较器时的信号是多少，输出也是相同强度的信号
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_9.jpg" /></p><p>这个时候我们在输入端BC任意一个输入信号，这个时候发现，当B或C输入的信号大于A时，
+</p><p>输出端D就没有信号了
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_10.jpg" /></p><p>当输入端BC输入信号强度小于A时，输出端D依旧会输出信号
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_11.jpg" /></p><p>当输入端BC同时输入信号，并且强度相加大于A时，输出端D就没有信号了，
+</p><p>反之小于A，依旧会输出信号
+</p><p>（这就是加法模式）
+
+
+
+</p><p>接下来说到减法检测
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_12.jpg" /></p><p>我们点一下比较器，即可切换成减法模式（就是前方亮了一个）
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_13.jpg" /></p><p>与加法一样，输入端A输入信号，输出端D会输出信号，强度与输入一致
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_14.jpg" /></p><p>与加法相同，当输入端B或C输入信号强度大于A时，输出端D不会输出信号
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs50_15.jpg" /></p><p>当输入端B或者C输入信号小于A时，输出端D会输出A减去B（或者C，最大值）的强度
+</p><p>（BC同时输入时就是，A减去BC的强度之和，）
+
+
+</p><p>
+</p><p>是不是很多人一脸懵逼啊，那其实比较器加减法都是得于小学数学而已，给大家几个公式
+</p><p>加法状态：B+C大于A时，D不输出信号，
+</p><p>B+C小于A时，D输出A输入的信号强度。
+</p><p>减法状态：A-B-C=D输出信号（最小为输出强度0，即无信号）
+
+</p><p></p><p>
+那本章内容就结束了，如果还有不懂的小伙伴可以回复哈，
+</p><p>当然如果大家有好的红石机器、建筑、想法、想知道的内容都可以私聊或者回复我，
+</p><p>如果很好我会给大家展示，那下一章介绍如何使用各种铁轨和矿车
+</p><p>敬请期待
+
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

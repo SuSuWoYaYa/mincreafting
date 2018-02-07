@@ -1,15 +1,1 @@
-矿石 ore
-建筑 building
-装饰 decoration
-羊毛 wool
-日常 daily 
-照明 lighting
-食物 food
-运输 tannsport
-娱乐 entertainment
-工具 tools
-红石 redstone
-药水 syrup
-武器 weapon
-染料类 dye
-杂项类 others
+獲取中

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/changelanguage_messageTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/changelanguage_message"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:padding="15dp"/>
+
+    <RadioGroup
+        android:id="@+id/radiogroup_changelanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp">
+
+    <RadioButton
+        android:id="@+id/radio_btn_zh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/simplified_chinese"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:padding="10dp"/>
+    <RadioButton
+
+        android:id="@+id/radio_btn_zw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/traditional_chinese"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:padding="10dp"/>
+</RadioGroup>
+</LinearLayout>

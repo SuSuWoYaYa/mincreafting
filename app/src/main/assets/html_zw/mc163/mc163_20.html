@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[紅石技巧]更加真實的礦車：自動變軌裝置攻略</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">[紅石技巧]更加真實的礦車：自動變軌裝置攻略</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        <p> 我的世界中鐵路運輸是最常用的交通方式之一，除此之外，各種類型的礦車和鐵軌還經常充當運輸工具、收集工具等。在實際操作過程中，一條鐵路可能不夠用，比如當一個礦車同時擁有多種用途時，可能就需要兩條鐵路來滿足需求。下面就為大家介紹一個變軌裝置，能實現一輛礦車在兩條鐵路上運行。</p>
+<p> 下面這張圖是完工後的效果：</p>
+<p> 簡單來說，就是當礦車經過中間的探測鐵軌時，激活紅石電路，讓前方交叉處的鐵軌改變方向，以達到變軌的效果。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b09eedfc.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /></p>
+<p> 下面就為大家詳細介紹一下如何製作變軌裝置。</p>
+<p> 第一步：先做出基本框架，這裡用黑白羊毛表示一二層，比較直觀。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0a30902.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /></p>
+<p> 第二步：如圖所示鋪設紅石電路和紅石元件。注意，活塞總共有四個，所有的活塞都是粘性活塞。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0a53cce.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /></p>
+<p> 第三步：鋪設鐵軌，在下面連接紅石電路的地方鋪設探測鐵軌，在交叉處鋪設普通鐵軌，其他地方可以根據實際情況自行選擇鋪設充能鐵軌或者普通鐵軌。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0a711b5.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /></p>
+<p> 其實到這一步，一個變軌裝置差不多就完成了，當礦車經過探測鐵軌時，激活紅石電路</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0a89453.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0aa6b65.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /></p>
+<p ><strong>圖1↑         　圖2↑</strong></p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0ac752c.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0ae1e7c.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /></p>
+<p ><strong>圖3↑         　圖4↑</strong></p>
+<p> 圖1是礦車第一次經過探測鐵軌時的狀態，探測鐵軌發出信號傳輸到右邊的粘性活塞，活塞上方的羊毛充能，激活右上角的活塞推出紅石塊，左邊的活塞同理。由於右邊的粘性活塞將羊毛向上推出之後，羊毛取消充能狀態，這個過程的時間很短，因此兩個紅石塊只會被粘性活塞推出而不會被拉回。因此紅石塊會一直激活電路，完成變軌。</p>
+<p> 圖2是礦車第二次經過探測鐵軌時的狀態，右上角的粘性活塞迅速將紅石塊收回，但此時並不影響左半邊的電路，因此軌道不變。</p>
+<p> 圖3是礦車第三次經過探測鐵軌時的狀態，右上角的粘性活塞再次把紅石塊推出而不收回，同時激活左半部分電路，左上角的粘性活塞將紅石塊收回，完成變軌。</p>
+<p> 圖4是礦車第四次經過探測鐵軌時的狀態，右上角活塞收回紅石塊，這樣就又回到初始狀態。總的來說就是四次為一個循環，礦車每經過探測鐵軌兩次就會變軌一次。</p>
+<p> 那麼如果想要讓礦車每次經過探測鐵軌就變軌的話可不可以實現呢？</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0b0fa87.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /></p>
+<p> 如圖所示，將箭頭所指的紅石中繼器調成1tick，延遲調高之後，右上角的粘性活塞在推出紅石塊之後還會收回，這就將原來的4次一循環變成了2次一循環，也就是礦車每次經過探測鐵軌的時候，都會變軌。</p>
+<p> 最後一步：最後只需要將兩邊的鐵軌連接相應的軌道，軌道可以根據實際情況進行延展，這麼一來，這個變軌裝置就可以應用到實際的例子中了。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0b2c72d.jpg" alt="[紅石技巧]更加真實的礦車：自動變軌裝置攻略" /></p>
+<p> 這個裝置直接利用了探測鐵軌的特性配合紅石電路來完成變軌，相比於手動變軌，不僅更加方便，也更有規律性。結合具體情況，還能夠做出更多自動化的設施。以上就是自動變軌裝置的教程，希望大家能夠喜歡~</p>
+        
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

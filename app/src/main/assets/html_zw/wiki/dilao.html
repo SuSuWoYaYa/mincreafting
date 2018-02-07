@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>地牢</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">地牢</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+		<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao1.png" />
+<br />
+</p>
+		    <p>
+		地牢(Dungeon) 是在主世界自然生成的結構。
+		  </p>
+		
+		
+	<h2>生成</h2>
+   <p> 地牢自然生成在主世界的任何高度里。每一個區塊會進行8次嘗試以生成一個地牢。雖然幾率很小，但仍有可能有多於一次的嘗試成功，從而生成多個地牢。
+</p>     <p> 
+每次生成嘗試都會選擇一個位置和尺寸(5×5×4、5×7×4或7×7×4的開放區域)。如果下列生成條件均達成，那麼生成嘗試會成功：
+</p>  
+
+<ul><li>
+
+即將生成的地牢的地板區(包括牆下面的)必須完全是固體方塊。
+</li><li>即將生成的地牢的天花板區(包括牆上面的)必須完全是固體方塊。
+</li><li>即將生成的地牢的牆必須有1-5個2格高的缺口(所以通常地牢不會是完全封閉的，也不會是完全開放的)；缺口與地牢的地板不允許有落差(所以玩家可以走進去，怪物也可以走出來)。
+ </li></ul>    <p> 
+ 如果位置測試通過，會生成空氣和圓石，然後會為2個箱子進行3次生成嘗試。要生成一個箱子，被選中的位置必須是空氣並且在它的四個側面有且僅有一個固體方塊。刷怪箱會被放置在地牢的中央。
+ </p>     <p>  
+地牢在「生成結構」的選項關閉時仍然會生成。	
+	</p>	
+<h2>結構</h2>
+   <p> 地牢由圓石和苔石構成的小房間、一個刷怪箱以及最多2個箱子組成。地牢里可能沒有箱子，不過這樣的幾率很小。此外，也有很小的幾率在生成的地牢里沒有刷怪箱。偶爾的，生成的含有箱子的地牢會有一個大型箱子(兩個箱子挨在一起，於是合併成了大箱子)。地牢生成僵屍刷怪箱的幾率是50%，骷髏刷怪箱的幾率是25%，蜘蛛刷怪箱的幾率也是25%。刷怪箱總是位於地牢房間的中央，箱子位於牆腳(但是不會位於角落里，因為箱子旁邊只能有一個固體方塊)。地板的每個方塊都有25%的幾率是圓石，75%的幾率是苔石。
+</p>  
+ <p><b>戰利品  </b></p> 
+     <p> 
+每個地牢箱子包含3組1–3, 1–4, 以及3疊物品，並伴有以下的分布：		
+	 </p>	
+<table>
+<tr><th>物品	</th><th>平均數量	</th><th>出現幾率</th><tr>
+		
+<tr><td>骨頭</td><td>	3.375	</td><td>57.80%
+</td></tr><tr><td>火藥	</td><td>3.375</td><td>	57.80%
+</td></tr><tr><td>腐肉	</td><td>3.375</td><td>	57.80%
+</td></tr><tr><td>線	</td><td>3.375</td><td>	57.80%
+</td></tr><tr><td>小麥	</td><td>1	</td><td>35.30%
+</td></tr><tr><td>麵包	</td><td>0.4	</td><td>35.30%
+</td></tr><tr><td>命名牌</td><td>	0.315	</td><td>29.00%
+</td></tr><tr><td>鞍	</td><td>0.315	</td><td>29.00%
+</td></tr><tr><td>煤炭</td><td>	0.75	</td><td>27.40%
+</td></tr><tr><td>紅石粉	</td><td>0.75	</td><td>27.40%
+</td></tr><tr><td>音樂唱片(13)</td><td>	0.236</td><td>	22.20%
+</td></tr><tr><td>音樂唱片(Cat)</td><td>	0.236	</td><td>22.20%
+</td></tr><tr><td>鐵馬鎧</td><td>	0.236	</td><td>22.20%
+</td></tr><tr><td>普通金蘋果	</td><td>0.236</td><td>	22.20%
+</td></tr><tr><td>甜菜種子</td><td>	0.6	</td><td>18.80%
+</td></tr><tr><td>西瓜種子</td><td>	0.6	</td><td>18.80%
+</td></tr><tr><td>南瓜種子</td><td>0.6	</td><td>18.80%
+</td></tr><tr><td>鐵錠</td><td>	0.5</td><td>	18.80%
+</td></tr><tr><td>桶	</td><td>0.2</td><td>	18.80%
+</td></tr><tr><td>附魔書</td><td>	0.157	</td><td>15.10%
+</td></tr><tr><td>金馬鎧</td><td>	0.157	</td><td>15.10%
+</td></tr><tr><td>金錠	</td><td>0.25	</td><td>9.70%
+</td></tr><tr><td>鑽石馬鎧</td><td>	0.079	</td><td>7.70%
+</td></tr><tr><td>附魔金蘋果	</td><td>0.031</td><td>	3.10%
+</td></tr>
+</table>
+		
+		
+		
+	<h2>你知道嗎</h2>
+     <p> 地牢總是會與洞穴或其他地下結構聯通，不過有時候因為洞穴的體積很小，地牢會完全覆蓋掉它，使地牢看起來好像是孤立的。
+</p>     <p> 在很罕見的情況下，兩個或更多個地牢擠在一起生成可以組成一個有多個箱子和刷怪籠的大地牢。如果一個地牢剛好在另一個地牢上面生成，下面那個地牢的箱子和刷怪籠可能被覆蓋掉。
+</p>     <p> 在極其罕見的情況下，地牢會生成在基岩層，替換掉原有的基岩。於是當玩家挖穿腳下的苔石時，他們可能就此墜入虛空。	
+</p>		
+		
+		
+		<h2>畫廊</h2>
+		<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao2.png" />
+<br />三個地牢生成在一起，這個大地牢里就有了兩個僵屍刷怪箱，一個蜘蛛刷怪箱。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao3.png" />
+<br />地牢中生成的兩個箱子可能合併成一個大箱子。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao4.png" />
+<br />稀有的露天地牢。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao5.png" />
+<br />凍洋下的地牢。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao6.png" />
+<br />與廢棄礦井交叉的地牢。
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao7.png" />
+<br />被沙子覆蓋的一個地牢。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao8.png" />
+<br />地牢出現在廢棄礦井之中。
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/dilao9.png" />
+<br />廢棄礦井附近五個緊挨的地牢(已經發掘好了，方便看到刷怪箱，另有兩個洞穴蜘蛛刷怪箱)。
+</p>
+        
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

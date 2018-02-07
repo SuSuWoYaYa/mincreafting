@@ -6,10 +6,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.PaintDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -19,8 +23,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +36,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -81,11 +90,22 @@ public class FragmentMainActivity extends AppCompatActivity {
     private boolean changeMainBackgroup = true;
     private boolean changeTitleBackgroup = true;
 
+    private RadioGroup radioGroup;
+    private RadioButton radio_btn_zh;
+    private RadioButton radio_btn_zw;
+
+    private String language;
+    private boolean is_language_of_traditional_chinese = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
         setTheme(theme);
+
+        language = LanguageUtil.getLocaleLanguage(getApplicationContext());
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            is_language_of_traditional_chinese = true;
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main_layout);
@@ -113,6 +133,30 @@ public class FragmentMainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
 
+        Menu menuNav = mNavigationView.getMenu();
+        MenuItem menu_changeTheme = menuNav.findItem(R.id.menu_changeTheme);
+        MenuItem menu_feedback = menuNav.findItem(R.id.menu_feedback);
+        MenuItem menu_tip = menuNav.findItem(R.id.menu_tip);
+        MenuItem menu_about = menuNav.findItem(R.id.menu_about);
+        MenuItem menu_changelanguage = menuNav.findItem(R.id.menu_changelanguage);
+        MenuItem menu_downgame = menuNav.findItem(R.id.menu_downgame);
+
+        if (is_language_of_traditional_chinese) {
+            menu_changeTheme.setTitle("切換主題");
+            menu_feedback.setTitle("意見反饋");
+            menu_tip.setTitle("打賞作者");
+            menu_about.setTitle("關於");
+            menu_changelanguage.setTitle("切換語言");
+            menu_downgame.setTitle("遊戲下載");
+
+        }else {
+            menu_changeTheme.setTitle("切换主题");
+            menu_feedback.setTitle("意见反馈");
+            menu_tip.setTitle("打赏作者");
+            menu_about.setTitle("关于");
+            menu_changelanguage.setTitle("切换语言");
+            menu_downgame.setTitle("游戏下载");
+        }
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -134,12 +178,20 @@ public class FragmentMainActivity extends AppCompatActivity {
                     case R.id.menu_about:
                         showAboutDialog();
                         break;
+                    case R.id.menu_changelanguage:
+                        showChangeLanguageDialog();
+                        break;
+                    case R.id.menu_downgame:
+                        intent = new Intent(getApplicationContext(), DownGameActivity.class);
+                        startActivity(intent);
+                        break;
                 }
 
                 mDrawerLayout.closeDrawers();
 
                 return true;
             }
+
         });
         //显示他本身的颜色
         mNavigationView.setItemIconTintList(null);
@@ -278,6 +330,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         });
 
 
+
+
         TextView textViewGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToGreen);
         TextView textViewDeepDrakGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToDrakGreen);
         TextView textViewBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToBlue);
@@ -300,6 +354,61 @@ public class FragmentMainActivity extends AppCompatActivity {
         TextView textViewPurple = (TextView) layout.findViewById(R.id.layoutPopChangeToPurple);
         TextView textViewRed = (TextView) layout.findViewById(R.id.layoutPopChangeToRed);
 
+
+
+        if (is_language_of_traditional_chinese) {
+            checkBoxChangeMainColor.setText("改變主標題欄背景顏色");
+            checkBoxChangeTitleColor.setText("改變物品名稱背景顏色");
+            button_changeColor.setText("確定");
+
+            textViewGreen.setText("綠色");
+            textViewDeepDrakGreen.setText("深綠");
+            textViewBlue.setText("淺藍");
+            textViewSkyBlue.setText("深藍");
+            textViewDeepBlue.setText("藍色");
+            textViewBlown.setText("棕色");
+            textViewDeepSaddleBrown.setText("褐色");
+            textViewHotPink.setText("粉色");
+            textViewPink.setText("粉紅");
+
+            textViewDeepDark.setText("深黑");
+            textViewDeepGray.setText("深灰");
+            textViewGray.setText("灰色");
+            textViewLightGray.setText("亮灰");
+            textViewOrangeRed.setText("紅色");
+            textViewOrange.setText("橙色");
+//        textViewGold = (TextView) layout.findViewById(R.id.layoutPopChangeToGold);
+//        textViewYellow = (TextView) layout.findViewById(R.id.layoutPopChangeToBlueYellow);
+            textViewBluePurple.setText("紫藍");
+            textViewPurple.setText("紫色");
+            textViewRed.setText("深紅");
+        }else{
+            checkBoxChangeMainColor.setText("改变主标题栏背景颜色");
+            checkBoxChangeTitleColor.setText("改变物品名称背景颜色");
+            button_changeColor.setText("确定");
+
+            textViewGreen.setText("绿色");
+            textViewDeepDrakGreen.setText("深绿");
+            textViewBlue.setText("浅蓝");
+            textViewSkyBlue.setText("深蓝");
+            textViewDeepBlue.setText("蓝色");
+            textViewBlown.setText("棕色");
+            textViewDeepSaddleBrown.setText("褐色");
+            textViewHotPink.setText("粉色");
+            textViewPink.setText("粉红");
+
+            textViewDeepDark.setText("深黑");
+            textViewDeepGray.setText("深灰");
+            textViewGray.setText("灰色");
+            textViewLightGray.setText("亮灰");
+            textViewOrangeRed.setText("红色");
+            textViewOrange.setText("橙色");
+//        textViewGold = (TextView) layout.findViewById(R.id.layoutPopChangeToGold);
+//        textViewYellow = (TextView) layout.findViewById(R.id.layoutPopChangeToBlueYellow);
+            textViewBluePurple.setText("紫蓝");
+            textViewPurple.setText("紫色");
+            textViewRed.setText("深红");
+        }
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
@@ -444,10 +553,17 @@ public class FragmentMainActivity extends AppCompatActivity {
 
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
-        builder.setTitle("关于 Mincreafting");
-        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft中文WIKI, 网易,网络以及网友的贡献");
-        builder.setPositiveButton("确定", null);
-        builder.show();
+
+        if (is_language_of_traditional_chinese) {
+            builder.setTitle("關於 Mincreafting");
+            builder.setMessage("這是一個Minecraft合成表的APP\n所有內容來自於\nMinecraft中文WIKI\n網易\n網絡\n以及網友的貢獻");
+            builder.setPositiveButton("確定", null);
+        }else {
+            builder.setTitle("关于 Mincreafting");
+            builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于\nMinecraft中文WIKI\n网易\n网络\n以及网友的贡献");
+            builder.setPositiveButton("确定", null);
+        }
+            builder.show();
     }
 
 
@@ -458,18 +574,33 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
-        builder.setTitle("请输入你的昵称");
+
         builder.setView(settingNameView);
 //        builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于Minecraft 中文WIKI");
-        builder.setNegativeButton("取消", null);
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                userName = editText_settingName.getText().toString();
-                SettingUtils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
-                textUserName.setText(userName);
-            }
-        });
+        if (is_language_of_traditional_chinese) {
+            builder.setTitle("我的暱稱");
+            builder.setNegativeButton("取消", null);
+            builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    userName = editText_settingName.getText().toString();
+                    SettingUtils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
+                    textUserName.setText(userName);
+                }
+            });
+        }
+        else {
+            builder.setTitle("我的昵称");
+            builder.setNegativeButton("取消", null);
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    userName = editText_settingName.getText().toString();
+                    SettingUtils.ChangeTheme.setUserName(FragmentMainActivity.this, userName);
+                    textUserName.setText(userName);
+                }
+            });
+        }
         builder.show();
         return true;
     }
@@ -497,6 +628,8 @@ public class FragmentMainActivity extends AppCompatActivity {
                     mHandler.sendMessage(message);
                     dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
                             MyDatabaseHelper.jsons[i]);
+                    dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES_ZW[i],
+                            MyDatabaseHelper.jsons_zw[i]);
 //                    System.out.println("Start dbManage.insertDataToTable " + MyDatabaseHelper.TABLE_NAMES[i]);
 
                 }
@@ -524,13 +657,16 @@ public class FragmentMainActivity extends AppCompatActivity {
     }
 
     private void initProgressDialog() {
+
+        MyDatabaseHelper.initLanguageMessage(FragmentMainActivity.this);
+
         progressDialog = new ProgressDialog(FragmentMainActivity.this);
         progressDialog.setMax(MyDatabaseHelper.DATA_BASE_CATEGORYS.length);
         progressDialog.setProgress(0);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.setTitle("请稍等");
+        progressDialog.setTitle(getString(R.string.please_wait));
         progressDialog.setMessage("" +
-                "正在初始化数据库 ");
+                getString(R.string.init_datebase));
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -546,16 +682,85 @@ public class FragmentMainActivity extends AppCompatActivity {
 //                        progressDialog.getProgress();
 //                        progress +=1;
                     progressDialog.setProgress(progress);
-                    progressDialog.setMessage("正在初始化数据库\n" + MyDatabaseHelper.DATA_BASE_CATEGORYS[progress]);
+
+                    progressDialog.setMessage(getString(R.string.init_datebaseing) + MyDatabaseHelper.DATA_BASE_CATEGORYS[progress]);
                     break;
                 case 1:
                     progressDialog.dismiss();
                     break;
                 default:
-                    progressDialog.setMessage("出现未知错误");
+                    progressDialog.setMessage(getString(R.string.unknow_error));
                     break;
             }
             super.handleMessage(msg);
         }
+    }
+
+//    private  void setLanguage() {
+//        Resources resources = FragmentMainActivity.this.getResources();
+//        DisplayMetrics dm = resources.getDisplayMetrics();
+//        Configuration config = resources.getConfiguration();
+//        String locale = LanguageUtil.getLocaleLanguage(FragmentMainActivity.this);
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            config.setLocale(locale);
+//        } else {
+//            config.locale = locale;
+//        }
+//        resources.updateConfiguration(config, dm);
+//    }
+
+    private void showChangeLanguageDialog() {
+
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View changelanguageView = inflater.inflate(R.layout.changelanguage_layout, null);
+
+        TextView changelanguage_messageTextView = (TextView) changelanguageView.findViewById(R.id.changelanguage_messageTextView);
+
+
+        radioGroup = (RadioGroup) changelanguageView.findViewById(R.id.radiogroup_changelanguage);
+//        radio_btn_zh = (RadioButton) changelanguageView.findViewById(R.id.radio_btn_zh);
+//        radio_btn_zw = (RadioButton) changelanguageView.findViewById(R.id.radio_btn_zw);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId){
+                    case R.id.radio_btn_zh:
+                        LanguageUtil.setLocaleLanguage(FragmentMainActivity.this, LanguageUtil.SIMPLIFIED_CHINESE);
+                        break;
+                    case R.id.radio_btn_zw:
+                        LanguageUtil.setLocaleLanguage(FragmentMainActivity.this, LanguageUtil.TRADITIONAL_CHINESE);
+                        break;
+                    default:
+                        LanguageUtil.setLocaleLanguage(FragmentMainActivity.this, LanguageUtil.SIMPLIFIED_CHINESE);
+                        break;
+                }
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
+        builder.setView(changelanguageView);
+        if (is_language_of_traditional_chinese) {
+            builder.setTitle("切換語言");
+            builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ReStartActivity(FragmentMainActivity.this);
+                }
+            });
+            changelanguage_messageTextView.setText("改變語言設置會影響搜索結果");
+        }else {
+            builder.setTitle("切换语言");
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ReStartActivity(FragmentMainActivity.this);
+                }
+            });
+            changelanguage_messageTextView.setText("改变语言设置会影响搜索结果");
+        }
+        builder.show();
+        return ;
     }
 }

@@ -26,23 +26,40 @@ public class FragmentCreating extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
 
+    private String language;
+    private boolean is_language_of_traditional_chinese  = false;
 
-    public static String DATA_BASE_CATEGORYS[] = {
-            "建筑类",
-            "装饰类",
-            "染料类",
-            "食物类",
-            "照明类",
-            "矿石类",
-            "红石类",
-            "运输类",
-            "工具类",
-            "武器类",
-            "其他类",
-            "烧炼类",
-            "药水类",
-            "附魔类",
-    };
+    private TextView textViewItem1;
+    private TextView textViewItem2;
+    private TextView textViewItem3;
+    private TextView textViewItem4;
+    private TextView textViewItem5;
+    private TextView textViewItem6;
+    private TextView textViewItem7;
+    private TextView textViewItem8;
+    private TextView textViewItem9;
+    private TextView textViewItem10;
+    private TextView textViewItem11;
+    private TextView textViewItem12;
+    private TextView textViewItem13;
+    private TextView textViewItem14;
+
+//    public static String DATA_BASE_CATEGORYS[] = {
+//            "建筑类",
+//            "装饰类",
+//            "染料类",
+//            "食物类",
+//            "照明类",
+//            "矿石类",
+//            "红石类",
+//            "运输类",
+//            "工具类",
+//            "武器类",
+//            "其他类",
+//            "烧炼类",
+//            "药水类",
+//            "附魔类",
+//    };
 
     public static FragmentCreating newInstance(int page) {
         Bundle args = new Bundle();
@@ -62,6 +79,10 @@ public class FragmentCreating extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        language = LanguageUtil.getLocaleLanguage(getContext());
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            is_language_of_traditional_chinese = true;
+        }
         View view = inflater.inflate(R.layout.fragment_creating_layout, container, false);
 
         LinearLayout mian_layout = (LinearLayout)  view.findViewById(R.id.mian_layout);
@@ -82,6 +103,9 @@ public class FragmentCreating extends Fragment {
         LinearLayout layout_btn_enchant = (LinearLayout) view.findViewById(R.id.layout_btn_enchant);
 
 
+        setTextForLanguageToAllTextView(view);
+
+
 //        mian_layout.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.main_background_block));
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -94,74 +118,153 @@ public class FragmentCreating extends Fragment {
 //                int layout = R.layout.layout_listview_item_block;
                 int loding = R.drawable.loading_of_blocks;
 
+
+
+
                 switch (v.getId()) {
                     case R.id.layout_btn_building:
-                        tableName = MyDatabaseHelper.TABLE_BUILDING;
-                        category = "建筑类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
+                            category = "建築類合成";
+
+                        }else{
+                            tableName = MyDatabaseHelper.TABLE_BUILDING;
+                            category = "建筑类合成";
+                        }
                         break;
                     case R.id.layout_btn_decoration:
-                        tableName = MyDatabaseHelper.TABLE_DECORATION;
-                        category = "装饰类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_DECORATION;
+                            category = "裝飾類合成";
+                        }else{
+                            tableName = MyDatabaseHelper.TABLE_DECORATION;
+                            category = "装饰类合成";
+                        }
                         break;
                     case R.id.layout_btn_dye:
-                        tableName =  MyDatabaseHelper.TABLE_DYE;
-                        category = "染料类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_DYE;
+                            category = "染料類合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_DYE;
+                            category = "染料类合成";
+                        }
                         break;
                     case R.id.layout_btn_food:
-                        tableName =  MyDatabaseHelper.TABLE_FOOD;
-                        category = "食物类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_FOOD;
+                            category = "食物類合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_FOOD;
+                            category = "食物类合成";
+                        }
                         break;
                     case R.id.layout_btn_lighting:
-                        tableName =  MyDatabaseHelper.TABLE_LIGHTING;
-                        category = "照明类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_LIGHTING;
+                            category = "照明類合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_LIGHTING;
+                            category = "照明类合成";
+                        }
                         break;
                     case R.id.layout_btn_ore:
-                        tableName =  MyDatabaseHelper.TABLE_ORE;
-                        category = "矿石类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_ORE;
+                            category = "礦石類合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_ORE;
+                            category = "矿石类合成";
+                        }
                         break;
                     case R.id.layout_btn_redstone:
-                        tableName =  MyDatabaseHelper.TABLE_REDSTONE;
-                        category = "红石和装置类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_REDSTONE;
+                            category = "紅石和裝置類合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_REDSTONE;
+                            category = "红石和装置类合成";
+                        }
                         break;
                     case R.id.layout_btn_tannsport:
-                        tableName =  MyDatabaseHelper.TABLE_TANNSPORT;
-                        category = "运输类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_TANNSPORT;
+                            category = "運輸類合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_TANNSPORT;
+                            category = "运输类合成";
+                        }
                         break;
                     case R.id.layout_btn_tools:
-                        tableName =  MyDatabaseHelper.TABLE_TOOLS;
-                        category = "工具类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_TOOLS;
+                            category = "工具類合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_TOOLS;
+                            category = "工具类合成";
+                        }
                         break;
                     case R.id.layout_btn_weapon:
-                        tableName =  MyDatabaseHelper.TABLE_WEAPON;
-                        category = "武器类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_WEAPON;
+                            category = "武器类合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_WEAPON;
+                            category = "武器類合成";
+                        }
                         break;
                     case R.id.layout_btn_others:
-                        tableName =  MyDatabaseHelper.TABLE_OTHERS;
-                        category = "其他类合成";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_OTHERS;
+                            category = "其他類合成";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_OTHERS;
+                            category = "其他类合成";
+                        }
                         break;
                     case R.id.layout_btn_semlting:
-                        tableName =  MyDatabaseHelper.TABLE_SMELTING;
-                        category = "烧炼类";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_SMELTING;
+                            category = "烧炼类";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_SMELTING;
+                            category = "燒煉類";
+                        }
                         loding =R.drawable.loading_of_smelting;
 //                        isCreating = false;
 //                        layout= R.layout.layout_listview_item_smelting;
                         break;
                     case R.id.layout_btn_brewing:
-                        tableName =  MyDatabaseHelper.TABLE_BREWING;
-                        category = "药水类";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_BREWING;
+                            category = "药水类";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_BREWING;
+                            category = "藥水類";
+                        }
                         loding = R.drawable.loading_of_brewing;
 //                        isCreating = false;
 //                        layout= R.layout.layout_listview_item_brewing;
                         break;
                     case R.id.layout_btn_enchant:
-                        tableName =  MyDatabaseHelper.TABLE_ENCHANT;
-                        category = "附魔类";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
+                            category = "附魔类";
+                        }else{
+                            tableName =  MyDatabaseHelper.TABLE_ENCHANT;
+                            category = "附魔類";
+                        }
                         loding = R.drawable.loading_of_enchant;
                         isCreating = false;
                         break;
                     default:
-                        tableName = MyDatabaseHelper.TABLE_BUILDING;
-                        category = "建筑类";
+                        if (is_language_of_traditional_chinese) {
+                            tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
+                            category = "建築類合成";
+                        }else {
+                            tableName = MyDatabaseHelper.TABLE_BUILDING;
+                            category = "建筑类合成";
+                        }
                         break;
                 }
 
@@ -194,5 +297,56 @@ public class FragmentCreating extends Fragment {
         layout_btn_enchant.setOnClickListener(onClickListener);
 
         return  view;
+    }
+
+    public void setTextForLanguageToAllTextView(View mainView) {
+
+        textViewItem1 = (TextView) mainView.findViewById(R.id.textViewItem1);
+        textViewItem2 = (TextView) mainView.findViewById(R.id.textViewItem2);
+        textViewItem3 = (TextView) mainView.findViewById(R.id.textViewItem3);
+        textViewItem4 = (TextView) mainView.findViewById(R.id.textViewItem4);
+        textViewItem5 = (TextView) mainView.findViewById(R.id.textViewItem5);
+        textViewItem6 = (TextView) mainView.findViewById(R.id.textViewItem6);
+        textViewItem7 = (TextView) mainView.findViewById(R.id.textViewItem7);
+        textViewItem8 = (TextView) mainView.findViewById(R.id.textViewItem8);
+        textViewItem9 = (TextView) mainView.findViewById(R.id.textViewItem9);
+        textViewItem10 = (TextView) mainView.findViewById(R.id.textViewItem10);
+        textViewItem11 = (TextView) mainView.findViewById(R.id.textViewItem11);
+        textViewItem12 = (TextView) mainView.findViewById(R.id.textViewItem12);
+        textViewItem13 = (TextView) mainView.findViewById(R.id.textViewItem13);
+        textViewItem14 = (TextView) mainView.findViewById(R.id.textViewItem14);
+
+        if (is_language_of_traditional_chinese){
+            textViewItem1.setText("建築");
+            textViewItem2.setText("裝飾");
+            textViewItem3.setText("染料");
+            textViewItem4.setText("食物");
+            textViewItem5.setText("照明");
+            textViewItem6.setText("礦石");
+            textViewItem7.setText("紅石");
+            textViewItem8.setText("運輸");
+            textViewItem9.setText("工具");
+            textViewItem10.setText("武器");
+            textViewItem11.setText("其他");
+            textViewItem12.setText("燒煉");
+            textViewItem13.setText("藥水");
+            textViewItem14.setText("附魔");
+        }else {
+            textViewItem1.setText("建筑");
+            textViewItem2.setText("装饰");
+            textViewItem3.setText("染料");
+            textViewItem4.setText("食物");
+            textViewItem5.setText("照明");
+            textViewItem6.setText("矿石");
+            textViewItem7.setText("红石");
+            textViewItem8.setText("运输");
+            textViewItem9.setText("工具");
+            textViewItem10.setText("武器");
+            textViewItem11.setText("其他");
+            textViewItem12.setText("烧炼");
+            textViewItem13.setText("药水");
+            textViewItem14.setText("附魔");
+        }
+
     }
 }

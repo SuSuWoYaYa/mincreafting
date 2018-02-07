@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>自动西瓜南瓜机</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >自动西瓜南瓜机</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自网易论坛<br />作者-史蒂夫·冥王<p>
+	<p><img src="local/mcbbs_head_gaoji.jpg" /></p>
+
+<h2>简单的自动西瓜南瓜机</h2>
+
+ <p>（参照明月庄主的手游红石）
+
+</p><p>
+上一章我们介绍了观察者如何使用
+</p><p>这一章我们就来做一个便捷的全自动西瓜南瓜机
+
+
+  
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_1.jpg" /></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_2.jpg" /></p>
+<p>效果图（大小根据实际情况可变）
+
+</p><p>需要用到物品：观察者X2，活塞X1，粘性活塞X1，南瓜种子X1，红石中继器X1，水源若干，漏斗若干
+</p><p>（如若做多个则是这个倍数）
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_3.jpg" /></p><p>首先在地上放一个活塞，在活塞的左前方或者右前方放一个南瓜田
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_4.jpg" /></p><p>然后在活塞前上方放一个观察者
+</p><p>（正面朝下，背面朝上）
+</p><p>活塞正上方放可充能方块，还有不能放TNT，别问为什么
+</p><p>（可充能方块就是实体的非透明方块，后期会介绍）
+</p><p>一般都用普通的方块
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_5.jpg" /></p><p>接着在观察者上方放一个红石，充能方块上房放一个中继器，要打到最大挡
+</p><p>（不懂的看图，跟图一模一样即可）
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_6.jpg" /></p><p>接着在充能方块后面放上一个观察者，正面朝外，反面朝内
+</p><p>（图中已经标出，看不清点击大图看）
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_7.jpg" /></p><p>接着在第二个观察者上放一个粘性活塞，正面朝下
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_8.jpg" /></p><p>把南瓜田周围围起来，保证南瓜填在活塞正前方刷新
+</p><p>（南瓜会随机生成在田四周有方块的地方）
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_9.jpg" /></p><p>在南瓜正前方放一个流动的水
+</p><p>（一定要流动的，这样才能让物品往前流）
+
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs60_10.jpg" /></p><p>最后在水流流向处放置一个箱子和漏斗
+</p><p>（漏斗不太清楚，在上图方框内，记住漏斗出口一定要对着箱子）
+</p><p>这样自动南瓜机就完成了，下面介绍下原理
+
+
+</p><p>
+ 
+</p><p>
+1：南瓜出现在此处
+</p><p>2：检测到南瓜出现，给3一个红石信号
+</p><p>3：传输信号到4
+</p><p>4：延迟信号，并传输到5
+</p><p>5：接收信号，往下推一格
+</p><p>6：被5往下推了一下，推到7空白处，检测到有更新，给7一个信号
+</p><p>7：有信号往1处推了一格
+</p><p>最终1被推出，掉落收集
+</p><p>（其中最后1推出后，2又有次信号，但是4因为延迟，导致速度更不上，就自动结束了，这样就保证不会出现循环无限的推动7）
+
+</p><p></p><p>
+西瓜同理，把南瓜田换成西瓜田即可
+</p><p></p><p>
+
+
+大家都看懂了吗，如果还没懂可以给我留言哦
+</p><p>下一章受大家委托，将说明如何使用获得萝卜钓竿
+
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

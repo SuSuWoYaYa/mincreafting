@@ -18,7 +18,10 @@ public class ActivityTip extends AppCompatActivity {
     //http://owpvbuvtf.bkt.clouddn.com/vip.txt
     static String URL = "http://cuisanzhang.u.qiniudn.com/vip.txt";
 
+    ImageView TipimageView;
     Button btnCheckVip ;
+    Button btn_weixin;
+    Button btn_zhifubao;
     private Handler mHandler;
     String result = "";
     String userName;
@@ -26,6 +29,13 @@ public class ActivityTip extends AppCompatActivity {
     boolean isVip ;
 
     boolean isNetworkConnected = false;
+
+    private String language;
+    private boolean is_language_of_traditional_chinese  = false;
+
+    private String noAd;
+
+    private String notVip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,31 +47,63 @@ public class ActivityTip extends AppCompatActivity {
         setContentView(R.layout.activity_tip);
         initActionBar();
 
+        language = LanguageUtil.getLocaleLanguage(ActivityTip.this);
+        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
+            is_language_of_traditional_chinese = true;
+        }
+
+
+
+        TipimageView = (ImageView) findViewById(R.id.ImageViewTip);
+
+        btn_weixin = (Button) findViewById(R.id.btn_weixin);
+        btn_weixin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TipimageView.setImageResource(R.drawable.weixin);
+            }
+        });
+        btn_zhifubao =(Button)  findViewById(R.id.btn_zhifubao);
+        btn_zhifubao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TipimageView.setImageResource(R.drawable.zhifubao);
+            }
+        });
+
+
         userName = SettingUtils.ChangeTheme.getUserName(ActivityTip.this);
         isVip = SettingUtils.ChangeTheme.getVipState(ActivityTip.this);
 
-
         btnCheckVip = (Button) findViewById(R.id.btnCheckVip);
+
+        if (is_language_of_traditional_chinese)
+        {
+            noAd = "廣告已經沒有啦";
+            notVip = "嗯! 一定是你點錯了";
+            btn_zhifubao.setText("支付寶");
+            btnCheckVip.setText("去廣告");
+        }else {
+            noAd = "广告已经没有了";
+            notVip = "嗯! 一定是你点错了";
+            btn_zhifubao.setText("支付宝");
+            btnCheckVip.setText("去广告");
+        }
+
 
         btnCheckVip.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                if (isVip){
-                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-
-                else if (userName.equals(getString(R.string.tip_back_door))){
-                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
+                if (isVip || userName.equals(getString(R.string.tip_back_door))){
+                    Toast.makeText(ActivityTip.this, noAd, Toast.LENGTH_SHORT).show();
                     SettingUtils.ChangeTheme.setVipState(ActivityTip.this, true);
                     return;
                 }
 
                 else  {
-                    Toast.makeText(ActivityTip.this, "嗯! 一定是你点错了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityTip.this, notVip, Toast.LENGTH_SHORT).show();
                     return;
                 }
 //                isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTip.this);

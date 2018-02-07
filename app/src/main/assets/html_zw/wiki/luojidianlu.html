@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>邏輯電路</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">邏輯電路</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+          <p>
+		邏輯電路(Logic Circuit)可認為是一個會返回輸出結果的裝置，輸出結果由輸入信號以及邏輯門的規則決定。舉個例子，當且僅當兩個輸入到與門的信號都為 '真'/'開'/'激活的'/'高電平'/'1'時，與門才將'真'/'開'/'激活的'/'高電平'/'1'作為輸出結果。
+</p>     <p>
+有許多不同種類的邏輯門，每種邏輯門都有很多不同的設計方案。不同的方案也各自有優缺點，如電路規模、複雜度、運行速度、維護難度以及花費等。下面的章節會對每一種邏輯門列出很多不同的設計方案供讀者參考。
+   </p>
+   
+   
+   <h2>   概念</h2>
+   
+   
+<table style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 邏輯門輸出<br>
+<span style="font-weight: normal;">每種輸入A和B(綠色)的組合產生的輸出(紅色)結果</span>
+</caption>
+<tr>
+<th> A
+</th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th>
+<th rowspan="2"> (輸出為真時)等效文字邏輯表達
+</th></tr>
+<tr>
+<th> B
+</th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td>A非
+</td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td>
+<td style="text-align: left;"> A為假嗎？
+</td></tr>
+<tr>
+<td> A或B
+</td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關
+</td>
+<td style="text-align: left;"> 有一個輸入為真嗎？
+</td></tr>
+<tr>
+<td> A或非B
+</td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td>
+<td style="text-align: left;"> 兩個輸入都為假嗎？
+</td></tr>
+<tr>
+<td> A與B
+</td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關
+</td>
+<td style="text-align: left;"> 兩個輸入都為真嗎？
+</td></tr>
+<tr>
+<td> A與非B
+</td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td>
+<td style="text-align: left;"> 有一個輸入為假嗎？
+</td></tr>
+<tr>
+<td> A異或B
+</td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關
+</td>
+<td style="text-align: left;"> 兩個輸入不同嗎？
+</td></tr>
+<tr>
+<td>A同或B
+</td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td>
+<td style="text-align: left;"> 兩個輸入相同嗎？
+</td></tr>
+<tr>
+<td>A蘊含B
+</td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td>
+<td style="text-align: left;"> A是真、B是假不滿足嗎？
+</td></tr></table>
+<p>如果忽略邏輯門本身的少量延遲，我們可以認為邏輯門的輸出可以立即對輸入的狀態產生反應。
+</p>
+<dl><dt>交換輸入</dt></dl>
+<dl><dd>大多數2輸入邏輯門中，交換A端與B端並不影響輸出結果。</dd></dl>
+<dl><dd>交換蘊含門的輸入端會對輸出造成影響，除此之外，非門只有一個輸入端。</dd></dl>
+<dl><dt>層疊輸入</dt></dl>
+<dl><dd>與門，或門與異或門可以通過輸入端兩兩樹狀層疊完成多輸入改造。這樣改造後的輸入端彼此依然可以交換。</dd></dl>
+<dl><dd>異或門這樣改造後，只有輸入端為真的個數為奇數，輸出才為真。</dd></dl>
+<dl><dt>邏輯門的選擇</dt></dl>
+<dl><dd>如果不清楚應該用哪種邏輯門，您可以像右邊一樣列一張表(只留一行輸出就夠了)。列出所有輸入信號的可能組合以及期望對應的輸出，然後可以將你列出的表與下面的表進行對比，看看哪一種符合即可選用。列表也給出了每種運算的對應數學符號。</dd>
+  <dd>如果你期望在輸入穩定時輸出發生改變，請參見脈衝電路；如果你期望輸入的某個狀態可以被保存(邏輯門無法完成此功能)，請參見記憶電路。</dl>
+   
+   
+   <h2>邏輯門</h2>
+<p><b>邏輯門(Logic Gate)</b>為最基本的邏輯電路。
+</p>
+<h2>非門</h2>
+<table style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 非門輸出
+</caption>
+<tr>
+<th> A </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td> A非 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td></tr></table>
+<p><b>非門(NOT Gate)</b>即為"反相器"，會將所輸入的真值反相，也就是當輸入為假時輸出為真，反之亦然。
+</p>
+<dl><dt>火把反相器</dt></dl>
+<dl><dd><dl><dd> <i>1格寬，平面，靜音，可並列</i></dd>
+<dd> <i>電路延遲：1刻</i></dd></dl></dd></dl>
+<dl><dd> 火把反相器是最古老、最常見的非門，其具有低原材料消耗、小體積、高靈活性與極容易建造等特點。</dd></dl>
+<dl><dd> 火把反相器的最大缺點就是當其傳輸時鐘寬度小於3刻(即3刻高電平3刻低電平循環)的時鐘信號(稱為3刻時鐘)時，火把會產生「燃盡」效果而暫時無法正常工作。一定隨機時間間隔之後才會恢復正常，這樣會造成難以預測的電路響應。</dd></dl>
+<dl><dt>減法反相器</dt></dl>
+<dl><dd><dl><dd> <i>平面，靜音 </i></dd>
+<dd> <i>電路延遲：1刻</i></dd></dl></dd></dl>
+<dl><dd> 減法反相器能夠響應2刻時鐘，但無法響應更快的時鐘——因為比較器本身的限制。</dd></dl>
+<dl><dd> <i>替代方案：</i> 拉下的拉桿可以替換為任何永遠激活的電源元件(例如紅石火把、紅石塊)；如果放置電源元件不方便，用裝滿的容器替代也是可以的。.</dd></dl>
+<dl><dd> 中繼器的作用是確保輸入信號比比較器的末端輸入更強。如果輸入信號強度已知，那麼中繼器可以在拉下的拉桿被能夠產生相同信號強度的容器替換的前提下移除。你也可以在確保輸出端連接的紅石線長到足以將信號反相的前提下移除中繼器。</dd></dl>
+<dl><dt>瞬時反相器</dt></dl>
+<dl><dd><dl><dd> <i>瞬時</i></dd>
+<dd> <i>電路延遲：0</i></dd></dl></dd></dl>
+<dl><dd> 瞬時反相器是大型瞬時電路的基礎部分。</dd></dl>
+<dl><dd> 「地面版」具有最大的佔地面積，但較矮小，而且能與其它平面電路相適應。「高版」佔地面積與用料均最小，但輸入和輸出端的位置不甚理想。「長版」較大，但輸入和輸出端的位置方便與其他電路相接。</dd></dl>
+<dl><dd> 「高版」的輸出端也可以從台階下面的方塊引出，但這樣的話只有輸入的上邊沿信號才能做到無延遲。</dd></dl>
+<dl><dd> <i>表現：</i> 瞬時反相器有兩個粘性活塞——一個用於切斷輸出，另一個用於移動紅石塊電源。</dd></dl>
+<dl><dd> 輸入為假時，紅石塊激活輸出端。輸入為真時，紅石塊馬上被移走，切斷輸出端信號(即立即對輸入進行反相)。同時，紅石中繼器激活，但在其能激活輸出端之前，另一個方塊就會及時移動切斷輸出。</dd></dl>
+<dl><dd> 輸入為真時，紅石比較器嘗試激活輸出，但輸出會被移來的方塊切斷。輸出一被切斷，方塊縮回，馬上使得信號通過(即立即對輸入進行反相)。中繼器只會在其熄滅之前激活輸出端2刻，但這點時間已經足夠讓紅石塊回到原先位置接替中繼器繼續激活輸出端。</dd></dl>
+<dl><dd> <i>替代方案：</i> 將瞬時反相器作為大型電路的一部分時，可能需要移動輸入輸出端，此時，兩個粘性活塞和紅石中繼器必須同時激活。「長版」讓這三個部件可以通過充能一個方塊同時激活，但其餘瞬時反相器方案就需要玩家自己布線連接三個部件了。</dd></dl>
+<dl><dd> 除此之外，只要紅石塊以及其粘附的活塞能夠被輸入端無延遲激活，且能夠在中繼器之後2刻之內伸出激活輸出端，紅石塊以及其粘附的活塞可以挪到任何合適的地方。</dd></dl>
+ 
+   <p><b>  非門圖示</b></p> 
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu1.png" />
+<br />水平火把反相器
+<br />   <i> 
+1×2×1(2方塊)   <br />
+1格寬，平面，靜音，可並列<br />
+電路延遲：1刻</i>
+ </p>
+
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu2.png" />
+<br />
+竪直火把反相器
+<br />   <i> 
+1×1×3(3方塊)<br />
+1格寬，靜音，可並列<br />
+電路延遲：1刻</i>
+ </p>
+
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu3.png" />
+<br />
+順序減法反相器
+<br />   <i> 
+2×2×2(8方塊)<br />
+平面，靜音<br />
+電路延遲：2刻</i>
+ 
+</p>
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu4.png" />
+<br />
+拐角減法反相器
+<br />   <i> 
+2×2×2(8方塊)<br />
+平面，靜音<br />
+電路延遲：2刻</i>
+ </p>
+ <p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu5.png" />
+<br />
+地面版瞬時反相器
+<br />   <i> 
+2×5×3(30方塊)<br />
+瞬時<br />
+電路延遲：0</i>
+</p>
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu6.png" />
+<br />
+高版1格寬瞬時反相器
+<br />   <i> 
+1×4×5(20方塊)<br />
+1格寬，瞬時<br />
+電路延遲：0</i>
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu7.png" />
+<br />
+長版1格寬瞬時反相器
+<br />   <i> 
+1×7×5(35方塊)<br />
+1格寬，瞬時<br />
+電路延遲：0  </i>
+   </p>
+   
+   
+   
+<h2>或門</h2>
+<table style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 或門輸出
+</caption>
+<tr>
+<th> A </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<th> B </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td> A或B </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關
+</td></tr></table>
+<p><b>或門</a>(OR Gate)</b>在邏輯學里又稱為 "選言"，運算方法是只要有一個輸入信號為真，輸出即為真；所有輸入都為假時，輸出才會為假。
+</p><p>或運算可以層疊，或門可以樹狀首尾自由組合，之間的順序與層級不會影響最終的運算結果。.
+</p><p>方案<b>A</b>是最簡單的或門：僅僅是一個直接連接輸出端和輸入端的紅石線。不過這也導致這個或門的輸入變得很「暴露」，因此同一輸入端只能被接在這一個或門上面。圖示中的例子用了一個固體方塊替代了紅石線，這樣就不會有這個問題了。
+</p><p>如果你想把輸入用在其他地方，輸入端必須隔離，或是像上面一樣穿過一個方塊，或是利用紅石火把/中繼器，這樣就產生了方案<b>B</b>。其實這個方案就是一個輸出被反相的或非門。
+</p><p>方案<b>C</b>用中繼器隔離了輸入端。可以在水平方向將輸入端數量擴展到至多15個，比方案<b>B</b>快一刻。如果想擴展更多輸入信號，就需要用額外的中繼器加強了。然而，由於一個紅石中繼器需要三個紅石粉來製作，故版本<b>C</b>需要較多的紅石粉(還有石頭)。
+</p><p>方案<b>D</b>1格寬的縱向設計，中繼器用於隔離輸入輸出。本版本只能有兩個輸入，當然你可以通過層疊或門達到變相擴展輸入端數量。
+</p><p>方案<b>E</b>利用了諸如倒置台階與熒石塊等透明方塊的特性：他們鋪設紅石線時只能向上傳導，而無法向下傳導。本設計與C方案都具有相當強的可擴展性。
+</p>   
+
+  <p><b> 或門圖示 </b></p> 
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu8.png" />
+<br />
+最簡單或門(A)
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu9.png" />
+<br />
+基於火把的或門(B)
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu10.png" />
+<br />
+基於中繼器的或門(C)
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu11.png" />
+<br />
+竪直或門(D)
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu12.png" />
+<br />
+基於透明方塊的或門(E)
+
+</p>
+
+<table>
+<caption>方案比較</caption>
+ <tr><th >方案</th><th>	A</th><th>	B</th><th>	C	</th><th>D</th><th>	  E</th></tr> 
+ <tr><td>尺寸 (寬 (x) x 長 (y) x 高 (z))</td><td>	1x1x1	</td><td>3x2x1	</td><td>(2n-1)x1x2	</td><td>3x3x1	</td><td>1x2x(n-1 when > 2)</td></tr>
+ <tr><td>火把	</td><td>0</td><td>	2	</td><td>0</td><td>	2</td><td>	0</td></tr>
+ <tr><td>紅石	</td><td>1</td><td>	1	</td><td>(2n-1)	</td><td>4	</td><td>(n - 1)</td></tr>
+ <tr><td>輸入隔離？	</td><td>否	</td><td>是</td><td>	是</td><td>	是	</td><td>是</td></tr>
+ <tr><td>輸出隔離？	</td><td>否	</td><td>是</td><td>	是	</td><td>是</td><td>	是</td></tr>
+ <tr><td>最多輸入端</td><td>	3</td><td>	3	</td><td>n</td><td>	2</td><td>	n</td></tr>
+</table>
+
+
+<h2>或非門</h2>
+
+ 
+<table style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 或非門輸出
+</caption>
+<tr>
+<th> A </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<th> B </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td> A或非B </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td></tr></table>
+<p><b>或非門(NOR gate)</b>即為或的反面，也就是只要有一個輸入為真，輸出即為假。當所有輸入都為假時，才會輸出真。
+</p><p>或非門可以由一個紅石火把來實現，所以在Minecraft中算是非常基礎的邏輯門。(單輸入時為非門，無輸入時為「真門」即電源)
+</p><p>一個火把很容易透過方案<b>A</b>那樣實現三輸入，而方案<b>B</b>通過長度加長實現了四輸入。如果想實現更多輸入端，可以像或門那樣層疊，最後再經過一個非門。
+</p>
+
+  <p><b>或非門圖示  </b></p> 
+  
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu13.png" />
+<br />
+基本或非門(A)
+</p>
+
+
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu14.png" />
+<br />
+四輸入或非門，層1-2 (B-1)
+</p>
+
+
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu15.png" />
+<br />
+四輸入或非門，層2-3 (B-2)</p>
+<table>
+<tr>
+ <th>方案</th><th>	A</th><th>	  B</th><tr>
+<tr><td>尺寸	</td><td>2x1x1</td><td>	2x3x3</td></tr>
+<tr><td>火把</td><td>	1	</td><td>1</td></tr>
+<tr><td>紅石	</td><td>0	</td><td>5</td></tr>
+<tr><td>輸入端	</td><td>3	</td><td>4</td></tr>
+<tr><td>輸入隔離？	</td><td>是	</td><td>是</td></tr>
+</table>
+
+<h2>與門</h2>
+<table   style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 與門門輸出
+</caption>
+<tr>
+<th> A </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<th> B </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td> A與B </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關
+</td></tr></table>
+<p><b>與門(AND gate)</b>在邏輯學里又稱為"且"，只有在所有輸入都為真時，才會輸出真。和或門類似，三輸入與門可以自由層疊。
+</p><p>與門的典型應用是建造一個可以鎖住的門，如果要開門，就需要同時按鈕按下以及鎖(通常是拉桿)打開的情況下激活按鈕。
+</p><p>很多與門類似於「三態緩衝器」，輸入端B就像一個開關，但它關閉後，輸入端A就與電路其他部分斷路了。不過與現實生活中的三態緩衝器不同的是，Minecraft里不可以驅動低電流。(請參考 維基百科：三態邏輯 獲知更多信息)
+</p>
+
+  <p><b> 與門圖示 </b></p> 
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu16.png" />
+<br />
+  基本與門(A)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu17.png" />
+<br />
+鄰輸入與門(B)
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu18.png" />
+<br />
+含有中繼器活塞的與門(C)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu19.png" />
+<br />
+竪直與門(D)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu20.png" />
+<br />
+含有中繼器的竪直與門 (E)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu21.png" />
+<br />
+移動的方塊下有一個鋪設紅石線的洞 (F)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu22.png" />
+<br />
+含有中繼器活塞的竪直與門(G)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu23.png" />
+<br />
+三輸入與門 (H)
+
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu24.png" />
+<br />
+使用紅石比較器的壓縮與門 (I)
+</p>
+ 
+<table>
+<tr><th>方案	</th><th>A	</th><th>B	</th><th>C	</th><th>D	</th><th>E	</th><th>F</th><tr>
+<tr><td>尺寸	</td><td>2x2x3	</td><td>3x2x2	</td><td>2x1x3	</td><td>4x5x1	</td><td>5x3x1	</td><td>1x2x3</td></tr>
+<tr><td>火把	</td><td>3	</td><td>3	</td><td>0</td><td>	3</td><td>	3</td><td>	0</td></tr>
+<tr><td>紅石	</td><td>1	</td><td>2	</td><td>0	</td><td>1</td><td>	2	</td><td>0</td></tr>
+<tr><td>中繼器	</td><td>0	</td><td>0	</td><td>1	</td><td>0</td><td>	1</td><td>	0</td></tr>
+<tr><td>粘性活塞	</td><td>0	</td><td>0	</td><td>1</td><td>	0</td><td>	0</td><td>	1</td></tr>
+</table>
+
+
+<h2>與非門</h3>
+<table  style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 與非門輸出
+</caption>
+<tr>
+<th> A </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<th> B </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td> A與非B </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td></tr></table>
+<p><b>與非門(NAND gate)</b>簡單來說就是「不全是即真」，也就是與門的反面。在所有的輸入都為真時，輸出假。
+</p><p>「與非門」跟「或非門」類似，任選一個就可以構建出所有的邏輯門。
+</p><p>與非門也可以通過層疊與門，最後再取反相，來實現輸入端擴展。
+</p>
+
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu25.png" />
+<br />
+基本與非門 (A)
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu26.png" />
+<br />
+鄰輸入與非門 (B)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu27.png" />
+<br />
+竪直與非門 (C)</p>
+<p>
+ 
+<table>
+<tr><th>方案	</th><th>A	</th><th>B	  </th><th>C</th><tr>
+<tr><td>尺寸</td><td>	1x2x3</td><td>	2x1x2</td><td>	3x3x1</td></tr>
+<tr><td>火把	</td><td>2	</td><td>2	</td><td>2</td></tr>
+<tr><td>紅石</td><td>	1	</td><td>3	</td><td>3</td></tr>
+<tr><td>輸入隔離？	</td><td>是</td><td>	是</td><td>	是</td></tr>
+</table>
+
+<h3>異或門</h3>
+<table  style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 異或門輸出
+</caption>
+<tr>
+<th> A </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<th> B </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td> A異或B </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關
+</td></tr></table>
+<p><b>異或門(XOR gate)</b>為只要輸入信號有不同時，就輸出真，所有輸入信號都相同時，才輸出假。
+</p><p>異或門一般能滿足在多地控制同一機械的需要。控制端(通常為拉桿)用異或門組合，切換任意一個控制端都會改變異或門的輸出(類似於現實生活中控制同一個燈泡的兩個開關——你可以用任意一個開關控制燈泡的亮暗)。
+</p><p>類似與門、或門，異或門也可以自由層疊。只不過輸入端為1的數量為奇數時，最終輸出才為1.
+</p><p>方案<b>D</b>很簡潔，但只能用拉桿作為輸入。加深的方塊在另一個固體方塊的頂層，同時被兩個拉桿和一個紅石火把附著。
+</p><p>方案<b>F</b>為純紅石火把方案中最常用的，但一些包括新元件的方案的性能比這個方案更好。方案<b>H</b>採用了活塞，響應速度更快，更節省空間。
+</p><p>除了火把和活塞之外，不同的中繼器可以實現相對壓縮與便宜的異或門方案。方案<b>I</b>依照可用空間任意選擇輸入端中繼器的來向，下方也可以。方案<b>J</b>使用了便宜的透明方塊。
+</p>
+
+    
+  <p><b> 異或門圖示 </b></p> 
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu28.png" />
+<br />含有雙拉桿的異或門 (D)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu29.png" />
+<br />
+常見異或門 (F)
+加暗的火把上方有固體方塊放置。
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu30.png" />
+<br />
+含有中繼器活塞的異或門 (H)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu31.png" />
+<br />
+含有輸入端中繼器的異或門 (I)
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu32.png" />
+<br />
+基於透明方塊的異或門，層1/2 (J-1)。被三個台階環繞的方塊存在與否不重要。
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu33.png" />
+<br />
+基於透明方塊的異或門，層2/3 (J-2).
+</p>
+ 
+<table>
+<tr><th>方案	</th><th>D	</th><th>F	</th><th>H	</th><th>I	 </th><th> J</th><tr>
+<tr><td>尺寸 (X×Z×Y)</td><td>	3×3×3	</td><td>3×3×4	</td><td>3×4×2	</td><td>3×4×3	</td><td>3×4×4</td></tr>
+<tr><td>火把	</td><td>3</td><td>	5	</td><td>1	</td><td>3	</td><td>3</td></tr>
+<tr><td>紅石	</td><td>3	</td><td>4	</td><td>2</td><td>	6	</td><td>9</td></tr>
+<tr><td>中繼器</td><td>	0	</td><td>0	</td><td>2	</td><td>2	</td><td>0</td></tr>
+<tr><td>粘性活塞</td><td>	0</td><td>	0	</td><td>1	</td><td>0</td><td>	0</td></tr>
+<tr><td>透明方塊	</td><td>0	</td><td>0	</td><td>0</td><td>	0</td><td>	3</td></tr>
+<tr><td>速度(刻)</td><td>	2	</td><td>3	</td><td>0-2</td><td>	2-3</td><td>	2-1</td></tr>
+<tr><td>需要拉桿？	</td><td>是	</td><td>否	</td><td>否	</td><td>否	</td><td>否</td></tr>
+</table>
+<p>Minecraft 1.5 紅石比較器的引入使得異或門擁有了新的設計思路：「減法異或門」，平面，響應速度快，靜音，建造容易。唯一局限是在生存模式里你需要花時間開採下界石英。
+</p><p>每個輸入端與和其距離最近的比較器的側面與尾部距離均相同，這樣可以單個輸入端無法使得和其距離最近的比較器輸出信號，但能夠使距離較遠的那個比較器輸出信號。因此，整個減法異或門當且僅當只有一個輸入端激活時，輸出端才有信號。
+</p><p>然而，這種情況必須保證原始輸入信號強度完全相同(相差不超過1也可以)，否則會出現一側信號過強將另一側壓制的情況。在保證原始輸入信號強度相同的前提下，您才可以使用「基礎版」。否則就必須採取方法平衡兩邊的強度。常用的方法包括「中繼版」與「反相版」。
+</p>
+
+  <p><b>  減法異或門圖示</b></p>
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu34.png" />
+<br />基本減法異或門
+<br /><i> 
+3×4×2(24方塊)<br />
+平面，靜音<br />
+電路延遲：1刻<br /></i>
+方塊可以被紅石線代替。<br />
+ 
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu35.png" />
+<br />
+中繼減法異或門
+<br /><i> 
+4×4×2(32方塊)<br />
+平面，靜音<br />
+電路延遲：2刻<br /></i>
+
+方塊可以被紅石線代替。<br />
+ 
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu36.png" />
+<br />
+反相減法異或門
+<br /><i> 
+4×4×2(32方塊)<br />
+平面，靜音<br />
+電路延遲：2刻<br /></i>
+位於輸出端的那個方塊可以用紅石線代替。<br />
+</p>
+ 
+ 
+ 
+ <h2>同或門</h2>
+<table style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 同或門輸出
+</caption>
+<tr>
+<th> A </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<th> B </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td> A同或B </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td></tr></table>
+<p><b>同或門(XNOR gate)</b>在邏輯學里又稱為「雙條件」，或稱為「當且僅當」(if and only if)。所有輸入信號都相同時才輸出真，只要有一個以上不相同時就輸出假，也就是異或門的反面。
+</p><p>跟異或門類似，兩個輸入信號中的任何一個發生改變，輸出信號都會發生改變。
+</p><p>在異或門的輸出端或者其中一個輸入端加非門，可以很方便的等效實現同或門。
+</p><p>方案<b>A</b>為純火把設計。如果不需要外部輸入端，朝後的兩個火把可以用拉桿代替，即方案<b>B</b>。方案<b>F</b>較大，但邏輯思路清晰，方案<b>I</b>實際就是異或門方案<b>H</b>的非門改造產物。
+</p>
+
+   <p><b> 同或門圖示 </b></p>
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu37.png" />
+<br />
+基本同或門 (A)
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu38.png" />
+<br />
+拉桿同或門 (B)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu39.png" />
+<br />
+同或門F (F)
+
+
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu40.png" />
+<br />
+壓縮活塞同或門 (I)
+</p>
+ 
+<table>
+<tr><th>方案	</th><th>A	</th><th>B	</th><th>F	</th><th>I</th><tr>
+<tr><td>尺寸	</td><td>3×4×3	</td><td>3×4×3	</td><td>4×5×3	</td><td>3×5×2</td></tr>
+<tr><td>火把	</td><td>6	</td><td>4	</td><td>4	</td><td>3</td></tr>
+<tr><td>紅石	</td><td>5</td><td>	5	</td><td>9	</td><td>2</td></tr>
+<tr><td>中繼器	</td><td>0	</td><td>0</td><td>	0</td><td>	2</td></tr>
+<tr><td>速度(刻)	</td><td>3	</td><td>2	</td><td>2</td><td>	1-2</td></tr>
+<tr><td>輸出端朝向	</td><td>朝前	</td><td>朝前	</td><td>朝後</td><td>	朝前</td></tr>
+<tr><td>還需要</td><td>	—	</td><td>拉桿	</td><td>—	</td><td>粘性活塞</td></tr>
+</table>
+
+
+<h2>蘊含門</h2>
+<table   style="float: right; margin: 0 0 0.5em 0.5em; text-align: center;">
+<caption> 蘊含門輸出
+</caption>
+<tr>
+<th> A </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<th> B </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關 </th>
+<th style="background-color: #00CC00; color: #FFFFFF;"> 開 </th>
+<th style="background-color: #006600; color: #FFFFFF;"> 關
+</th></tr>
+<tr>
+<td> A蘊含B </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #990000; color: #FFFFFF;"> 關 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開 </td>
+<td style="background-color: #FF0000; color: #FFFFFF;"> 開
+</td></tr></table>
+<p><b>蘊含門(IMPLIES Gate)</b>在邏輯學里又稱為「實質條件」，簡單來說就是「如果A那麼B」。
+</p><p>在<i>A → B</i>的所有四種結果中，只有在A為真，但B為假的狀況下，蘊含門才會輸出信號為假。其他狀況蘊含門都輸出為真。
+</p><p>如果1代表真，0代表假，蘊含門也可以理解為「A小於等於B」(A&lt;=B)。
+</p><p>方案C在輸出為真時需要2刻，輸出為假時只需要1刻。類似地，另一個方案在輸出為假時需要1刻，輸出為1時瞬時反應。如果你必須同步輸出週期，一般會用紅石中繼器來對「較快的」輸入端延遲1個紅石週期從而使輸出同步(對於<b>C</b>而言就是輸入端A，對於其他方案而言就是輸入端B)。
+</p>
+
+   <p><b> 蘊含門圖示 </b></p>
+
+ 
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu41.png" />
+<br />
+基本蘊含門 (A)
+ 
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu42.png" />
+<br />
+蘊含門 (B)
+
+
+ 
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu43.png" />
+<br />
+蘊含門(C)
+ 
+</p>
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wiki/img/luojidianlu44.png" />
+<br />
+蘊含門(D)
+</p>
+ 
+<table>
+<tr><th>方案	</th><th>A</th><th>	B	</th><th>C  </th><th>D</th><tr>
+<tr><td>尺寸</td><td>	2×2×2</td><td>	2×3×3	</td><td>2×3×3	</td><td>1×3×3</td></tr>
+<tr><td>火把	</td><td>1	</td><td>1	</td><td>3</td><td>	1</td></tr>
+<tr><td>紅石	</td><td>1	</td><td>2</td><td>	2	</td><td>2</td></tr>
+<tr><td>速度(刻)	</td><td>1	</td><td>1	</td><td>2	</td><td>1</td></tr>
+<tr><td>輸入隔離？</td><td>	僅A	</td><td>僅A	</td><td>是	</td><td>僅A</td></tr>
+<tr><td>輸出隔離？	</td><td>否	</td><td>否</td><td>	是	</td><td>否</td></tr>
+</table>
+
+        
+
+        <!-- End Article -->
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

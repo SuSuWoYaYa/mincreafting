@@ -37,7 +37,7 @@
                 android:src="@drawable/icon_dragon" />
 
             <TextView
-                android:id="@+id/textViewBuilding"
+                android:id="@+id/textViewItem1"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -71,6 +71,7 @@
                 android:src="@drawable/icon_food" />
 
             <TextView
+                android:id="@+id/textViewItem2"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -112,6 +113,7 @@
                 android:src="@drawable/icon_skeleton2" />
 
             <TextView
+                android:id="@+id/textViewItem3"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -144,6 +146,7 @@
                 android:src="@drawable/icon_plants" />
 
             <TextView
+                android:id="@+id/textViewItem4"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -185,6 +188,7 @@
                 android:src="@drawable/icon_enderman" />
 
             <TextView
+                android:id="@+id/textViewItem5"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -217,6 +221,7 @@
                 android:src="@drawable/icon_rabbit" />
 
             <TextView
+                android:id="@+id/textViewItem6"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -256,6 +261,7 @@
                 android:src="@drawable/icon_pig2" />
 
             <TextView
+                android:id="@+id/textViewItem7"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -287,6 +293,7 @@
                 android:src="@drawable/icon_diamond_ore" />
 
             <TextView
+                android:id="@+id/textViewItem8"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -327,6 +334,7 @@
                 android:src="@drawable/icon_horse" />
 
             <TextView
+                android:id="@+id/textViewItem9"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -362,6 +370,7 @@
                 android:src="@drawable/icon_structures1" />
 
             <TextView
+                android:id="@+id/textViewItem10"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -408,6 +417,7 @@
                 android:src="@drawable/icon_village_golem" />
 
             <TextView
+                android:id="@+id/textViewItem11"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -440,6 +450,7 @@
                 android:src="@drawable/icon_command" />
 
             <TextView
+                android:id="@+id/textViewItem12"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -481,6 +492,7 @@
                 android:src="@drawable/icon_npc" />
 
             <TextView
+                android:id="@+id/textViewItem13"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -513,6 +525,7 @@
                 android:src="@drawable/icon_others2" />
 
             <TextView
+                android:id="@+id/textViewItem14"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"

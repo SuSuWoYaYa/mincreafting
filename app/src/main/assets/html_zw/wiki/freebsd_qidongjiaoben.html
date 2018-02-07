@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>FreeBSD 啓動腳本</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">FreeBSD 啓動腳本</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        
+        <!--<p class="yellow"><b>此頁面的部分內容由於太久沒更新而已過期</b>
+<br />
+你可以幫助我們來更新此頁面
+</p>
+<p class="yellow">
+<b>此頁面的(部分)內容需要被翻譯</b>
+<br />
+你可以幫助我們來翻譯此頁面
+       </p> -->
+<p class="red"><b>警告</b>
+<br />
+因為這是 Wiki 的一個條目，可以在任何時間內被任何人編輯，因此建議你不要完全使用這個腳本，而是將其當作編寫腳本的指導手冊看待。      </p> 
+
+
+<p>
+這是一個 Minecraft 服務器 rc.d 的 FreeBSD 腳本示例。</p>
+<h2>安裝</h2>
+<ul>
+<li>使用 <i>adduser</i> 來創建一個名為 <i>minecraft</i> 的新用戶，新用戶根目錄指定為 <i>/srv/minecraft</i>。</li>
+<li>保證你的 <i>/srv</i> 文件系統擁有足夠的空間(約 100-200MB ，取決於你的需要) - <i>df -h</i> 將會顯示有多少可用空間。</li>
+<li>如果必要，安裝 Java。端口在 <i>/usr/ports/java/jdk16</i>。</li>
+<li>在 root 運行：</li>
+</ul>
+<pre># cd /usr/ports/sysutils/screen &amp;&amp; make install clean
+# cd /srv/minecraft
+# fetch https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar
+# chown minecraft:minecraft *
+# fetch -o /usr/local/etc/rc.d/minecraft http://vidya.dyndns.org/stuff/minecraft
+# chmod 0555 /usr/local/etc/rc.d/minecraft
+</pre>
+<ul>
+<li>如果你以及擁有了服務器配置文件、世界文件等，將它們複製到 <i>/srv/minecraft</i> ，並且將它們的所有權給予你的 minecraft 用戶。</li>
+<li>編輯 <i>/etc/rc.conf.local</i> (如果不存在就新建)，並添加下列行：</li>
+</ul>
+<pre>minecraft_enable="yes"
+</pre>
+<ul>
+<li>服務器現在會開始啓動了。為了啓動服務器，檢查狀態，然後關閉，使用下列命令：</li>
+</ul>
+<pre># /usr/local/etc/rc.d/minecraft start
+# /usr/local/etc/rc.d/minecraft status
+# /usr/local/etc/rc.d/minecraft stop
+</pre>
+<p>或：</p>
+<pre># service minecraft start
+# service minecraft status
+# service minecraft stop
+</pre>
+
+<h2>腳本</h2> 
+<pre>#!/bin/sh
+#
+# PROVIDE: minecraft
+# REQUIRE: LOGIN DAEMON NETWORKING mountcritlocal
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local to enable the minecraft server:
+#
+# minecraft_enable="YES"
+# minecraft_user="&lt;run server as this user&gt;"
+# minecraft_chdir="&lt;run server in this directory&gt;"
+# minecraft_path="&lt;path to minecraft_server.jar&gt;"
+# minecraft_flags="&lt;set as needed&gt;"
+#
+# For default setup, create a user named 'minecraft', set its home directory
+# to /srv/minecraft, and place minecraft_server.jar into /srv/minecraft
+#
+# See minecraft_server.jar for flags
+
+. /etc/rc.subr
+
+name=minecraft
+rcvar=minecraft_enable
+
+load_rc_config ${name}
+
+command=/usr/local/bin/screen
+pidfile=/var/run/minecraft.pid
+
+start_cmd="${name}_start"
+stop_cmd="${name}_stop"
+status_cmd="${name}_status"
+
+: ${minecraft_enable="NO"}
+: ${minecraft_session="minecraft-session"}
+: ${minecraft_user="minecraft"}
+: ${minecraft_chdir="/srv/minecraft"}
+: ${minecraft_path="/srv/minecraft/minecraft_server.jar"}
+: ${minecraft_flags=""}
+: ${minecraft_args="/usr/local/bin/java -Xmx1024M -Xms1024M \
+                    -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalPacing \
+                    -XX:ParallelGCThreads=4 -XX:+AggressiveOpts \
+                    -jar ${minecraft_path} ${minecraft_flags} nogui"}
+
+minecraft_start() {
+    unset "${rc_arg}_cmd"
+    minecraft_flags="-d -m -S ${minecraft_session} ${minecraft_args}"
+    if minecraft_running; then
+        echo "minecraft already running?"
+    else
+        run_rc_command "start"
+    fi
+}
+
+minecraft_stop() {
+    local cmd
+    cmd="${command} -p 0 -S ${minecraft_session} -X eval 'stuff stop\015'"
+    if minecraft_running; then
+        echo "Stopping minecraft."
+        su -m ${minecraft_user} -c "${cmd}"
+    fi
+}
+
+minecraft_status() {
+    if minecraft_running; then
+        echo "minecraft is running."
+    else
+        echo "minecraft is not running."
+    fi
+}
+
+minecraft_running() {
+    local check ses
+    ses="${minecraft_session}"
+    check=`su -m ${minecraft_user} -c "${command} -list" | grep ${ses}`
+    if [ "$check" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+run_rc_command "$1"
+</pre>
+
+        
+
+
+<p><br/></p></div>
+</body>
+
+</html>

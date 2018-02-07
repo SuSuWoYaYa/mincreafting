@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[命令方塊]一鍵命令方塊基礎：濃縮與拼接的宏</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+
+
+</head>
+
+<body class="single single-post postid-14455 single-format-standard">
+  
+
+            <!-- Start Title -->
+            <h1 class="title single-title">[命令方塊]一鍵命令方塊基礎：濃縮與拼接的宏</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+        <p> 一鍵命令方塊是指只用一串命令就能生成命令方塊組(一串的命令方塊連在一起) ，通常這些命令方塊開啓後都會有一系列神奇的效果，比如說平地建起一座城堡。那麼想要學習一鍵命令方塊，首先需要有命令方塊基礎，下面就為大家介紹一下製作一鍵命令方塊需要用到的一些指令。</p>
+<p> 正式教程(需1.11版本以上)</p>
+<p> 一、首先，我們介紹一下 」summon 」指令。運用這個指令將可以生成Minecraft中任何的 實體。在這些實體中，有一種叫做 」falling_block 」的萬能實體。它可以變成任何方塊的材質，當它接觸到地上時，它將變成顯示材質的方塊。</p>
+<p> 下面這就是」summon 」指令的格式：</p>
+<p>　<strong>　/summon falling_block ~ ~1 ~ {Time:1,Block:sand,Data:2}</strong></p>
+<p> 這條命令將會生成一個掉落的沙子方塊在執行這條命令的生物(命令方塊)的上面一格(因為在填坐標的位置放了 」 ~ 」,浪號的意思是玩家的x,y,z,的坐標，放在哪，便是哪的坐標，浪號後方加任何數字就是玩家x,y,z,加n，若是加上減號和數字便相反)</p>
+<p> 關於NBT(NBT主要指實體、方塊、物品的屬性)：Time，並沒有特指什麼，但是如果不填Time，掉落的沙子就不會生成，所以默認填1。Block就是字面上的意思：方塊。當你在後邊填上任何的方塊id，就會變成任何方塊。如果不填，就默認是普通沙子。Data就是方塊的種類，如樹苗的Data為0表示橡樹樹苗，2就表示白樺樹樹苗。</p>
+<p> 下面就為大家展示一下這條指令的效果。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b02e1449.jpg" alt="[命令方塊]一鍵命令方塊基礎：濃縮與拼接的宏" /></p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0307a5c.jpg" alt="[命令方塊]一鍵命令方塊基礎：濃縮與拼接的宏" /></p>
+<p> 可以看到，成功地生成了一個掉落中的沙子！</p>
+<p> 二、命令方塊不同類型的id：command_block,repeating_command_block,</p>
+<p> chain_command_block。從左到右依次是：脈衝型命令方塊(紅石控制)，循環型命令方塊(紅石控制)，連鎖型命令方塊(保持開啓)。</p>
+<p> 三、接著我們需要再瞭解一個NBT：TileEntityData。這個NBT後面要輸入{<strong>Command：你的指令</strong>},據我所知，它唯一的作用就是設置生成的掉落沙屬性命令方塊內的指令。如：</p>
+<p> <strong>/summon falling_block ~ ~1 ~ {Time:1,Block:command_block,Data:2,TileEntityData:{Command:/say 233}}</strong></p>
+<p> 這一指令將會生成一個命令方塊，裡面的命令將是/say 233的。</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0325b3c.jpg" alt="[命令方塊]一鍵命令方塊基礎：濃縮與拼接的宏" /></p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0342eab.jpg" alt="[命令方塊]一鍵命令方塊基礎：濃縮與拼接的宏" /></p>
+<p> 如此一來，就為後面打下了很好的基礎啦~</p>
+<p> 四、接著我們再來介紹一個NBT：Passengers。它的格式是:<strong>Passengers:[{id:」生物id」},NBT]</strong>。那麼大家可能猜到了，它就是騎乘NBT。比如說想要生成很多的蝙蝠疊羅漢，可以用這個指令：</p>
+<p> <strong>/summon bat ~ ~ ~ {Passengers:[{id:&#8221;bat&#8221;,Passengers:[{id:&#8221;bat&#8221;,Passengers:[{id:&#8221;bat&#8221;}]}]}]}</strong></p>
+<p> 這個可以生成四個疊在一起的蝙蝠。它們的控制主要是看最底下的蝙蝠。當然這個NBT是可以運用於幾乎所有生物。我們先來看一下效果：</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0360445.jpg" alt="[命令方塊]一鍵命令方塊基礎：濃縮與拼接的宏" /></p>
+<p> 以上這些指令是一鍵命令方塊的基礎，也是常常用到的，我們可以結合這些指令來做一個簡單的一鍵命令方塊：</p>
+<p> <strong>/summon falling_block ~ ~1 ~ {Time:1,Block:command_block,Data:2,TileEntityData:{Command:/summon sheep ~ ~ ~ {Passengers:[{id:&#8221;creeper&#8221;}]}}}</strong></p>
+<p> 比如說這個指令的效果就是召喚一個命令方塊，這個命令方塊激活後能生成一個騎著羊的爬行者，下面看一下效果：</p>
+<p ><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mc163/20171025_59f06b0378cd6.jpg" alt="[命令方塊]一鍵命令方塊基礎：濃縮與拼接的宏" /></p>
+<p> 當然這只是一個比較簡單的例子，一鍵命令方塊的神奇之處遠不止這些，只要運用得好，就能夠發揮無限的潛力~</p>
+        
+
+        
+<p><br/></p></div>
+</body>
+
+</html>

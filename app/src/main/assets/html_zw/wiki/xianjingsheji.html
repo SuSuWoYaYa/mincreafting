@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>陷阱設計</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+</head>
+
+<body class="single single-post  single-format-standard">
+  
+
+
+    
+
+      
+
+        <!-- Start Article -->
+        
+
+          
+
+            <h1 class="title single-title">陷阱設計</h1>
+            <!-- End Title -->
+        
+          <div id="content" class="post-single-content box mark-links">
+            <!-- <p class="yellow">
+              <b>此頁面的(部分)內容需要被翻譯</b><br/>
+              你可以幫助我們來翻譯此頁面
+            </p> -->
+<p class="yellow">
+  <b></b>此頁面的(部分)內容需要被翻譯</b> <br/>
+  你可以幫助我們來翻譯此頁面
+</p>
+
+<p>陷阱可以在玩家不在時對目標造成傷害。但不是所有的陷阱都是隱藏的，可視陷阱能使玩家觸發它之前引起一種很安全的感受。在下文中, 陷阱的目標可能是一個人或一群人, 並且並不是所有的陷阱都同樣奏效。
+</p>
+
+<h2>陷阱部分</h2>
+<p>為了描述一個陷阱, 我們必須將其分成幾個部分。大多數陷阱有三個部分。我們將會在下面詳細介紹。
+</p>
+<ul><li> 觸發器。觸發器就是使陷阱開始運作的部分，它往往被目標觸發。</li>
+<li> 連環陷阱。它們能使陷阱更有效率，但不是必需的。</li>
+<li> 方法。方法是目標被處置的方式，方法也是對目標造成傷害的方式。</li></ul>
+
+ <p>  <b>觸發</b></p> 
+<p>觸發器激活陷阱，大多使用紅石製作而成，但類似的觸發器也是可以的(比如水衝掉火把)。觸發器往往安裝在不引人注目的地方最為有效，它可以是門旁邊的一個按鈕或者壓力板，這樣的陷阱往往超出預期。
+</p>
+
+<ul><li> 壓力板當有人站在上面時就發出信號，離開時就不發送，永遠不變。 A pressure plate can be attached to an RS NOR latch to stabilize the signal. 通過把壓力板放在一個亮度很低的區域，可以很好地隱藏壓力板，並且需要把壓力板放置在一個任何玩家都會通過的小道內。
+</li><li> 按鈕 creates a short pulse and can be attached to an RS NOR latch or T flip-flop to stabilize the signal. 如果按鈕被用作觸發器的話，目標一定會被欺騙，相信這個按鈕是用於其它功能的(比如用來開門或調整燈光)。
+</li><li> 如果一個方塊被插上了紅石火把(火把不能被看到)，那麼破壞火把所在的方塊也可作為觸發器。這個騙局是目標憑他們自己的意願挖掉方塊而造成的，可用一些珍貴方塊來作為誘餌，如鑽石塊或金塊等。。
+</li><li> 水 currents can be updated by an adjacent block update. This can be seen when redstone redirects water but also works with doors activated by hand and furnaces. The updated water flow would then knock out a redstone torch, creating the signal.
+</li><li> BUD Switch A BUD switch can be used to trigger a trap if a door, or chest is opened. They can also detect other block state changes
+</li><li> Some players have experimented with the ability to pick up an item through a corner. The item is placed on a wooden pressure plate, the deactivation of which creates a signal. The item will disappear after 5 minutes, so the trap is unstable without a pre-trigger complications. This trigger also assumes the target has room in their inventory for the item being used. Arrows tend to be used because many players carry arrows and probably wouldn't notice an extra. This trigger is much more hidden than others, almost any corner can be a trigger. A tutorial video explaining this type of trigger is shown below.
+</li> </ul>
+
+   <p>  <b>連環陷阱</b></p> 
+  <p>A complication is any part between the trap triggering and the method being employed. Many more complications exist than just those below. Complications tend to add a delay to the trap, which is usually not desirable.
+</p>
+<ul><li> 紅石鐘可以用來產生週期性的脈衝。This is almost always used with arrow dispensers or a trap that is triggered periodically such as a piston grinder.</li></ul>
+<ul><li>  RS NOR latch / T flip-flop  These circuits take a short pulse and stabilize it. An RS NOR latch uses two inputs, one to set the signal, and another to reset it. The reset switch would be away from the target. A T flip-flop uses only one input which toggles the signal. This is less common in traps than an RS NOR latch because the target could have a chance to reset the trap before he is killed.</li></ul>
+<ul><li> False walls (pistons/gravity). False walls hide important parts. This is a complication in that it does not deal damage, but hides the method, thus giving the target a false sense of security. Pistons can easily place and replace false walls, but redstone wiring can be difficult to hide in an open area. Sand and gravel can be used as an airlock to reveal important parts by using water to knock down the supporting torch, but this requires manual reseting every time the trap is triggered.</li></ul>
+<ul><li> 洞可以被認為是一個難題，因為它迫使目標處在一個較小的區域，而不是對它們造成傷害。 For the sake of this tutorial, a hole is a non-fatal fall, and a pit is a fatal fall. Like a pit, the target is often pushed into it.</li></ul>
+<ul><li> 水的推動能力有限，但對於如僵屍這一類沒有多大抵抗力的生物而言，水的推動很有效率。水流在僵屍農場里是常常被用來運輸僵屍的，但當用於運輸玩家時效率極低。</li></ul>
+
+
+ <p>  <b>方法</b></p> 
+<p>該方法是玩目標造成傷害的可靠方法。這種陷阱通是隱藏起來的，所以目標不會察覺即將到來的危險。關於計算傷害的更多細節，請閱讀<a href="/%E4%BC%A4%E5%AE%B3" title="傷害">傷害</a>。
+</p>
+<ul><li> 使用一個坑，當目標墜落了超過3格方塊高時，它受到傷害的影響。墜落得越深，傷害越高。通常是運用活塞把目標推進了坑里而導致的墜落。這些陷阱很容易構建，而且僵屍可以被吸引，並被推倒陷阱中，但這些陷阱龐大，且較難收集掉落物。雞不受摔落傷害。如果陷阱使用偽裝的地板，通常會要求目標是玩家。</li></ul>
+<ul><li> Lava is a dangerous fluid to use. Any mob caught in lava will take periodic damage from it as well as periodic fire damage. Since lava spreads slowly the lava source should be close to the target, so he doesn't have much time to attempt an escape. Lava will destroy any item that falls in it. It can be used effectively in an enclosed space and triggered by a ceiling floodgate. Alternatively, a hole filled with lava which the target is pushed into doesn't require time for the lava to spread. It is also advisable to line such a hole with a block such as a furnace, so that the victim cannot place blocks to escape.</li></ul>
+<ul><li> Water is difficult to use because there can be air pockets if the source blocks are too spread out. All players and mobs have an air meter than must run out before they begin taking damage, players may have enough time to mine an air pocket and escape unharmed. Drowning is uncommon in traps for players but is often found in mob traps or mob grinders.</li></ul>
+<ul><li> Suffocation. A player or mob whose upper body is in a solid block will take suffocation damage. This can be accomplished by dropping sand or gravel in the target. However, players are pushed into an open space if possible to avoid suffocation damage. If a player can quickly mine out the block causing the damage, that player will stop taking damage and may be able to escape. Using pistons to push the block into the player is an effective method if you know exactly where the player will be.</li></ul>
+<ul><li> 箭 can deal damage to players either by being propelled by TNT, dropped from a trapdoor, or most commonly, from a dispenser. Arrows from TNT can not be reliably directed. Arrows dropped from a trapdoor can only cause minimal damage to the target. Dispensers can fire very rapidly, and far which makes them ideal for an enclosed space like a tunnel. The dispenser must be reloaded from time to time.</li></ul>
+<ul><li> Hostile mobs can be used to deal damage to the target, assuming the target is a player. The trapper collects mobs either by a [mob farm] or manually lures them into a hole. The target is either dropped into the hole with the mobs or the mobs are released into the same room as the target. The mob sounds could make the target more cautious.</li></ul>
+<ul><li> TNT is a common way to dispatch the target. It deals major damage to the target and has a fairly short fuse, which means less time for the target to react. It doesn't destroy the items dropped by the target. TNT does, however, destroy surrounding blocks unless it detonates in a fluid (water or lava). Many players use this property to create traps that can be reused. Players also may make traps that purposefully destroy massive areas by chaining TNT together. When TNT is ignited, it becomes an entity which means it no longer supports other blocks. This can be used as the trigger for an airlock which can trap the player in the area until the TNT explodes.</li></ul>
+<ul><li> Cactus deal damage whenever the target is in contact. Like lava, cactus destroy any items that comes into contact with it. Cacti must have all four cardinal blocks empty to be legally placed. Having the cactus grow into an illegal block is howcactus farms are built, and sending mobs through a cactus farm may be an effective grinder.</li></ul>
+<ul><li> Not all traps have a method. Traps can be used to live capture players or mobs. Since players can mine and place blocks, they are much more difficult to live capture.</li></ul>
+
+<h2>使用的術語</h2>
+<p>Let's create some simple traps to describe the parts we just discussed:
+</p><p><b>Example 1</b>
+</p><p>A miner is digging away a 2x1 tunnel. He finds gold ore, but once he mines it arrows are relentlessly shot at him.
+</p><p>On the back of the ore is a redstone torch that acts as the <b>trigger</b> by sending a signal once broken. This signal allows a rapid pulsar (<b>complication</b>) to repeatedly send power to a dispenser, the <b>method</b>.
+</p><p><b>Example 2</b>
+</p><p>An explorer comes across a cave. He drops down a few blocks when he notices it's getting lighter instead of darker. He jumps to his next ledge just before a flow of lava engulfs his previous position.
+</p><p>Since our trapper can't maintain the trap consistently without drawing suspicion, let's assume he sets up a redstone clock to a dispenser. Every four and a half minutes a new item will be dispensed, maintaining the trap. Clocks are generally a complication, but since it is used to stabilize the trigger we'll call it part of the trigger.
+This trap is hidden in a natural location and uses an invisible <b>trigger</b> (an item through the wall). This opens a flood gate of lava (<b>method</b>) in the entrance, it will spread and trap the explorer in the cave.
+</p><p><b>Example 3</b>
+</p><p>The owner of a large underground mansion is being chased by another player. The owner escapes through an iron door controlled by a pressure plate. On the other side he hits a button.
+The pursuer sees him open the door by the pressure plate and follows him. But the door doesn't open. Instead a series of pistons opens a hole and pushes the assailant into it. Once the pistons extinguish the light from the opening, it is pitch black.
+</p><p>The button on the far side of the door is a safety attached to a T-flip flop. It engages the <b>trigger</b> (the pressure plate), which, until a moment ago, was pretty uninteresting. Both sets of pistons (The ones that opened the hole and the ones that pushed the assailant) are <b>complications</b>. The obsidian jail is a live-capture <b>method</b>.
+</p><p><b>Example 4</b>
+</p><p>A robber has snuck into a large obsidian-reinforced storage facility and walks into a room with a red wool floor. He hears an audible click before the opposite wall is pulled away revealing dispensers that start to pelt him with splash potions of poison and slowness. Before he can get away a 9 block TNT charge goes off but since the room is reinforced the facility as a whole escapes unscathed.
+</p><p>The pressure plate in the door is the trigger. The piston-removed false wall is a complication. The dispensers are a method. However there is a 6 second repeater delay (complication) connected to a secondary method (bomb).
+</p>
+
+
+<h2>保險裝置</h2>
+<p>使用紅石的任何陷阱可以放置一個拉桿來創建一個安全開關。這個開關可以被激活，讓陷阱製造者執行維護或安全通過。The simplest way to do this is to construct an AND gate, using a lever as one of the power sources. When active, the AND gate functions as a double NOT gate.
+</p><p>Generally, the AND gate is placed between the trigger and the rest of the wiring, but this may not be the case for all traps.
+</p>
+
+
+<h2>解除陷阱</h2>
+<p>Traps are not designed to be found and immediately lose effectiveness once discovered. That being said, disarming a trap will require an understanding of the trap and there is no guarantee you'll survive the disarming process.
+The more traps you disarm, the more proficient you'll be at it.
+But if you come across a something suspicious that you don't recognize, here are a few tricks:
+</p>
+<ul><li> Don't alter any redstone (either active or inactive) unless you can see the entire circuit. Even inactive redstone can be part of a really long clock.</li>
+<li> If you find the method, disable that (take arrows out of a dispenser, take TNT, knock down cacti, take/fill in lava). It may be a two method trap, so you're not necessarily safe yet.</li>
+<li> If all else fails, try to safely trigger the trap. Either step on the trigger and run, or use redstone to trigger it from a distance. It is best to have a good understanding of the nature of the trap before attempting to trigger it, as one can easily underestimate its size.</li>
+<li> Another way to disarm a trap is to explode it with TNT. This doesn't work with bedrock and obsidian.</li></ul>
+<p>Anti-tampering complications are rare. So when a player incorporates one into their trap, it will often be something of their own design. Synchronized clocks are probably the most common and will trigger a defense mechanism if one is desynchronized.
+</p>
+
+
+<h2>僵屍磨床</h2>
+<p>Mob grinders are an integral part of a mob farm. One way to think of a mob farm is as one entirely self-sufficient trap. The spawning of mobs is the trigger, canals are a complication and the grinder is the method. We'll only be looking at mob grinders here.</a>.
+</p><p>Water streams push the target into the grinder. Grinders don't work well with players because they can fight the current or disrupt it by placing blocks.
+</p>
+<ul><li> A piston smasher trap uses a piston to periodically suffocate trapped mobs. Mobs can be packed together by dropping them into the smasher. The design to the right can not process a massive amount of mobs at once, since mobs will push against each other and clog the machine. The smasher to the right will eventually work through a build up of mobs though. Also, this design doesn't work for spiders.</li></ul>
+<ul><li> Lava grinders push the mob into a suspended stream of lava. Most items will be preserved and can be collected using additional water streams. Since lava grinders are a light source, it must be put away from the spawning pads as to not interfere with mob spawning.</li></ul>
+<ul><li> Drowning grinders use water to deal damage to mobs. Mobs will float when in solid water source blocks and eventually drown if they don't find an air pocket.</li></ul>
+<ul><li> Sunlight chamber deal damage to zombies and skeletons. A benefit of this is the ability to sort out creepers, spiders and endermen. The obvious disadvantage to this is it only functions half the time.</li></ul>
+
+
+
+        
+
+<p><br/></p></div></body>
+
+</html>
