@@ -51,7 +51,7 @@
             android:name=".FragmentMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityTutorial"
+            android:name=".ActivityTutorialWebView"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityTutorialList"

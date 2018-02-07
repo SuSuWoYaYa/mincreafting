@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,9 +58,9 @@ public class ActivityTutorialList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ActivityTutorial.class);
-                intent.putExtra(ActivityTutorial.EXTRA_URI, tutorialFiles[position]);
-                intent.putExtra(ActivityTutorial.EXTRA_TUTORIAL_NAME, tutorialNames[position]);
+                Intent intent = new Intent(getApplicationContext(), ActivityTutorialWebView.class);
+                intent.putExtra(ActivityTutorialWebView.EXTRA_URI, tutorialFiles[position]);
+                intent.putExtra(ActivityTutorialWebView.EXTRA_TUTORIAL_NAME, tutorialNames[position]);
                 startActivity(intent);
             }
         });
@@ -149,11 +148,11 @@ public class ActivityTutorialList extends AppCompatActivity {
 
        if(LanguageUtil.getLocaleLanguage(ActivityTutorialList.this).equals(LanguageUtil.TRADITIONAL_CHINESE)){
            builder.setTitle("關於教程圖片");
-           builder.setMessage("教程是離線的\n但是圖片是在線的\n請注意流量\n所有的教程圖片超過了500M");
+           builder.setMessage("教程是離線的\n但是圖片是在線的\n請注意流量\n所有的教程圖片超過了1000M");
            builder.setPositiveButton("確定", null);
        }else {
            builder.setTitle("关于教程图片");
-           builder.setMessage("教程是离线的\n但是图片是在线的\n请注意流量\n所有的教程图片超过了500M");
+           builder.setMessage("教程是离线的\n但是图片是在线的\n请注意流量\n所有的教程图片超过了1000M");
            builder.setPositiveButton("确定", null);
        }
 
