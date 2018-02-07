@@ -170,5 +170,7 @@
     <string name="changelanguage">切换语言</string>
     <string name="changelanguage_message">该设置仅应用于数据库\n请同时切换系统语言设置</string>
     <string name="areyousure">嗯! 一定是你点错了,请先去广告</string>
+    <string name="color_deep_gray">深灰</string>
+    <string name="color_light_gray">亮灰</string>
 
 </resources>
