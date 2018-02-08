@@ -109,6 +109,7 @@ public class FragmentTutorial extends Fragment {
             @Override
             public void onClick(View v) {
 
+                boolean isOnline = false;
                 String[] tutorialNames;
                 String[] tutorialFiles;
                 
@@ -141,15 +142,20 @@ public class FragmentTutorial extends Fragment {
 
                         break;
                     case R.id.layout_btn_jinjiezhinan:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files_zw;
-                            tutorialCategary = "進階指南";
-                        } else {
-                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names;
-                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files;
-                            tutorialCategary = "进阶指南";
-                        }
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files_zw;
+//                            tutorialCategary = "進階指南";
+//                        } else {
+//                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names;
+//                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files;
+//                            tutorialCategary = "进阶指南";
+//                        }
+                        tutorialNames =null;
+                            tutorialFiles = null;
+                            tutorialCategary = "在线教程";
+                        isOnline = true;
+
                         break;
                     case R.id.layout_btn_building:
                         if (is_language_of_traditional_chinese) {
@@ -283,6 +289,7 @@ public class FragmentTutorial extends Fragment {
 
 
                 Intent intent = new Intent(getActivity(), ActivityTutorialList.class);
+                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_IS_ONLINE, isOnline);
                 intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_NAMES, tutorialNames);
                 intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_FILES, tutorialFiles);
                 intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_CATEGARY, tutorialCategary);

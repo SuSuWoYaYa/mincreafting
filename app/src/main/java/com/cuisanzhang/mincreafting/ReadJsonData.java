@@ -4,20 +4,13 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.array;
-import android.R.color;
 import android.content.Context;
 import android.util.Log;
-
-import com.cuisanzhang.mincreafting.Block;
 
 public class ReadJsonData {
 
@@ -72,11 +65,41 @@ public class ReadJsonData {
 			Log.e("ReadJsonData", "read json file "+  fileName + " error");
 		}
 
-		System.out.println(blocks.size());
+//		System.out.println(blocks.size());
 
 		return blocks;
 	}
 
+
+	public static List<Tutorial> ReadTutorialsformJsonString(Context c, String jsonString) {
+
+        context = c;
+        List<Tutorial> tutorials = new ArrayList<Tutorial>() {
+        };
+        try {
+
+            JSONObject root = new JSONObject(jsonString);
+            String category = root.getString("category");
+            JSONArray arrays = root.getJSONArray("tutorials");
+            for (int i = 0; i < arrays.length(); i++) {
+
+                JSONObject item = arrays.getJSONObject(i);
+                String tutorial_name = item.getString(Tutorial.TUTORIAL_NAME);
+                String tutorial_url = item.getString(Tutorial.TUTORIAL_URL);
+                Tutorial tutorial = new Tutorial( tutorial_name, tutorial_url);
+                tutorials.add(tutorial);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("ReadJsonData", "read online json string error");
+        }
+
+        System.out.println(tutorials.size());
+
+        return tutorials;
+
+	}
 //	public static List<Enchant> ReadEnchantformJsonFile(Context c, String fileName) {
 //
 //		context = c;
