@@ -27,7 +27,7 @@ public class ActivityTutorialList extends AppCompatActivity {
     public static String EXTRA_TUTORIAL_FILES = "tutorialFiles";
     public static String EXTRA_TUTORIAL_CATEGARY = "tutorialCategary";
 
-    boolean isOnline = false;
+//    boolean isOnline = false;
     String[] tutorialNames;
     String[] tutorialFiles;
     String tutorialCategary;
@@ -45,16 +45,16 @@ public class ActivityTutorialList extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        isOnline =  intent.getBooleanExtra(EXTRA_TUTORIAL_IS_ONLINE,false);
+//        isOnline =  intent.getBooleanExtra(EXTRA_TUTORIAL_IS_ONLINE,false);
 
-        if(!isOnline) {
-            tutorialNames = intent.getStringArrayExtra(EXTRA_TUTORIAL_NAMES);
-            tutorialFiles = intent.getStringArrayExtra(EXTRA_TUTORIAL_FILES);
-            tutorialCategary = intent.getStringExtra(EXTRA_TUTORIAL_CATEGARY);
-        }else {
+//        if(!isOnline) {
+//            tutorialNames = intent.getStringArrayExtra(EXTRA_TUTORIAL_NAMES);
+//            tutorialFiles = intent.getStringArrayExtra(EXTRA_TUTORIAL_FILES);
+//            tutorialCategary = intent.getStringExtra(EXTRA_TUTORIAL_CATEGARY);
+//        }else {
             String TutorialString  = DownTutorialJson.DownTutorialJson(ActivityTutorialList.this);
             tutorials = ReadJsonData.ReadTutorialsformJsonString(ActivityTutorialList.this, TutorialString);
-        }
+//        }
 
         TextView textTitle = (TextView) findViewById(R.id.textTitle);
         textTitle.setText(tutorialCategary);
@@ -72,14 +72,14 @@ public class ActivityTutorialList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ActivityTutorialWebView.class);
 
-                if (!isOnline) {
-                    intent.putExtra(ActivityTutorialWebView.EXTRA_URI, tutorialFiles[position]);
-                    intent.putExtra(ActivityTutorialWebView.EXTRA_TUTORIAL_NAME, tutorialNames[position]);
-                }else {
+//                if (!isOnline) {
+//                    intent.putExtra(ActivityTutorialWebView.EXTRA_URI, tutorialFiles[position]);
+//                    intent.putExtra(ActivityTutorialWebView.EXTRA_TUTORIAL_NAME, tutorialNames[position]);
+//                }else {
                     intent.putExtra(ActivityTutorialWebView.EXTRA_URI, tutorials.get(position).getTutorial_url());
                     intent.putExtra(ActivityTutorialWebView.EXTRA_TUTORIAL_NAME, tutorials.get(position).getTutorial_name());
 
-                }
+//                }
                 startActivity(intent);
             }
         });
@@ -107,11 +107,11 @@ public class ActivityTutorialList extends AppCompatActivity {
         @Override
         public int getCount() {
 
-            if (isOnline) {
-                return tutorials.size();
-            }else {
+//            if (isOnline) {
+//                return tutorials.size();
+//            }else {
                 return tutorialNames.length;
-            }
+//            }
         }
 
         @Override
@@ -141,12 +141,12 @@ public class ActivityTutorialList extends AppCompatActivity {
             }
 
 
-            if (isOnline) {
+//            if (isOnline) {
                 holder.textView.setText(position + 1 + " " + tutorials.get(position).getTutorial_name());
-            }
-            else {
+//            }
+//            else {
                 holder.textView.setText(position + 1 + " " + tutorialNames[position]);
-            }
+//            }
             return convertView;
         }
     }
