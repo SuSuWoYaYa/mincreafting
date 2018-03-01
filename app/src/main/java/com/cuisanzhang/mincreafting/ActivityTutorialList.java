@@ -48,12 +48,12 @@ public class ActivityTutorialList extends AppCompatActivity {
 //        isOnline =  intent.getBooleanExtra(EXTRA_TUTORIAL_IS_ONLINE,false);
 
 //        if(!isOnline) {
-//            tutorialNames = intent.getStringArrayExtra(EXTRA_TUTORIAL_NAMES);
-//            tutorialFiles = intent.getStringArrayExtra(EXTRA_TUTORIAL_FILES);
-//            tutorialCategary = intent.getStringExtra(EXTRA_TUTORIAL_CATEGARY);
+            tutorialNames = intent.getStringArrayExtra(EXTRA_TUTORIAL_NAMES);
+            tutorialFiles = intent.getStringArrayExtra(EXTRA_TUTORIAL_FILES);
+            tutorialCategary = intent.getStringExtra(EXTRA_TUTORIAL_CATEGARY);
 //        }else {
-            String TutorialString  = DownTutorialJson.DownTutorialJson(ActivityTutorialList.this);
-            tutorials = ReadJsonData.ReadTutorialsformJsonString(ActivityTutorialList.this, TutorialString);
+//            String TutorialString  = DownTutorialJson.DownTutorialJson(ActivityTutorialList.this);
+//            tutorials = ReadJsonData.ReadTutorialsformJsonString(ActivityTutorialList.this, TutorialString);
 //        }
 
         TextView textTitle = (TextView) findViewById(R.id.textTitle);
@@ -73,12 +73,12 @@ public class ActivityTutorialList extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ActivityTutorialWebView.class);
 
 //                if (!isOnline) {
-//                    intent.putExtra(ActivityTutorialWebView.EXTRA_URI, tutorialFiles[position]);
-//                    intent.putExtra(ActivityTutorialWebView.EXTRA_TUTORIAL_NAME, tutorialNames[position]);
+                    intent.putExtra(ActivityTutorialWebView.EXTRA_URI, tutorialFiles[position]);
+                    intent.putExtra(ActivityTutorialWebView.EXTRA_TUTORIAL_NAME, tutorialNames[position]);
 //                }else {
-                    intent.putExtra(ActivityTutorialWebView.EXTRA_URI, tutorials.get(position).getTutorial_url());
-                    intent.putExtra(ActivityTutorialWebView.EXTRA_TUTORIAL_NAME, tutorials.get(position).getTutorial_name());
-
+//                    intent.putExtra(ActivityTutorialWebView.EXTRA_URI, tutorials.get(position).getTutorial_url());
+//                    intent.putExtra(ActivityTutorialWebView.EXTRA_TUTORIAL_NAME, tutorials.get(position).getTutorial_name());
+//
 //                }
                 startActivity(intent);
             }
@@ -142,7 +142,7 @@ public class ActivityTutorialList extends AppCompatActivity {
 
 
 //            if (isOnline) {
-                holder.textView.setText(position + 1 + " " + tutorials.get(position).getTutorial_name());
+//                holder.textView.setText(position + 1 + " " + tutorials.get(position).getTutorial_name());
 //            }
 //            else {
                 holder.textView.setText(position + 1 + " " + tutorialNames[position]);

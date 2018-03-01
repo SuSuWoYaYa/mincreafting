@@ -975,7 +975,7 @@ public class TutorialListData {
 
 
     public static String[] tutorial_gaojijishu_names = {
-            "1.13 水域更新",
+            "水域更新 1.13",
             "安装快照",
             "mods",
             "Mods安装",
@@ -1035,7 +1035,7 @@ public class TutorialListData {
 
 
     public static String[] tutorial_gaojijishu_names_zw = {
-            "1.13 水域更新",
+            "水域更新 1.13",
             "安裝快照",
             "mods",
             "Mods安裝",

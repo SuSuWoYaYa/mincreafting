@@ -177,10 +177,10 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                     case R.id.layout_btn_food:
                         if (is_language_of_traditional_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_FOOD;
-                            category =  "食物类物品";
+                            category =  "食物類物品";
                         }else {
                             tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_FOOD;
-                            category =  "食物類物品";
+                            category =  "食物类物品";
                         }
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
