@@ -311,7 +311,27 @@
       "material": "紫珀块",
       "use": "紫珀块楼梯自然生成在末地城里\n所有楼梯类的属性基本相同.",
       "detail": "详情请参考任何木楼梯\n\n名称:ID名称:方块ID\n紫珀块楼梯:purpur_stairs:203"
-    },{
+    }{
+      "file_name": "haijingshilouti",
+      "name": "海晶石楼梯",
+      "material": "海晶石",
+      "use": "",
+      "detail": "版本1.13加入\n\nID名称\nprismarine_stairs"
+    },
+    {
+      "file_name": "haijingshizhuanglouti",
+      "name": "海晶石砖楼梯",
+      "material": "海晶石砖 + 海晶石",
+      "use": "",
+      "detail": "版本1.13加入\n\nID名称\nprismarine_bricks_stairs"
+    },
+    {
+      "file_name": "anhaijingshilouti",
+      "name": "暗海晶石楼梯",
+      "material": "暗海晶石",
+      "use": "",
+      "detail": "版本1.13加入\n\nID名称\ndark_prismarine_stairs"
+    },,{
       "file_name": "shitaijie",
       "name": "石台阶",
       "material": "石头",
@@ -380,6 +400,26 @@
       "material": "紫珀块",
       "use": "放置, 合成材料, \n台阶类的属性基本相同",
       "detail": "台阶类的介绍非常非常长\n详情请参考石台阶\n\n台阶使用ID和方块数据来区分不同类型.它们也具有方块形态,这有望在未来代替数据值.\n方块名称:	ID名称:数字ID\n双石台阶:	double_stone_slab:43\n石台阶:		stone_slab:44\n双木台阶:	double_wooden_slab:125\n木台阶:		wooden_slab:126\n双红砂岩台阶:double_stone_slab2:181\n红砂岩台阶:	stone_slab2:182\n双紫珀块台阶:purpur_double_slab:204\n紫珀块台阶:	purpur_slab:205\n\n携带版\n方块名称:	数字ID\n双木台阶:	157\n木台阶:		158\n\n方块数据\n双石台阶\n43号方块\nDV	描述\n0	双石台阶\n1	双砂岩台阶\n2	石质双木台阶\n3	双圆石台阶\n4	双砖块台阶\n5	双石砖台阶\n6	双地狱砖台阶\n7	双石英台阶\n8	平滑双石台阶\n9	平滑双砂岩台阶\n15	双石英台阶 (底部)\n\n181号方块\nDV	描述\n0	双红砂岩台阶\n8	平滑双红砂岩台阶\n\n石头,砂岩,石英和红砂岩台阶在它们的顶部上都有一个材质.\n石台阶\n44号方块\nDV	描述\n0	石台阶\n1	砂岩台阶\n2	石质木台阶\n3	圆石台阶\n4	砖块台阶\n5	石砖台阶\n6	地狱砖台阶\n7	石英台阶\n8	上半石台阶\n9	上半砂岩台阶\n10	上半石质木台阶\n11	上半圆石台阶\n12	上半砖块台阶\n13	上半石砖台阶\n14	上半地狱砖台阶\n15	上半石英台阶\n\n182号方块\nDV	描述\n0	红砂岩台阶\n8	上半红砂岩台阶\n\n双木台阶\n125号方块\nDV	描述\n0	双橡木台阶\n1	双云杉台阶\n2	双桦木台阶\n3	双丛林台阶\n4	双金合欢台阶\n5	双深色橡木台阶\n\n木台阶\n126号方块\nDV	描述\n0	橡木台阶\n1	云杉台阶\n2	桦木台阶\n3	丛林台阶\n4	金合欢台阶\n5	深色橡木台阶\n8	上半橡木台阶\n9	上半云杉台阶\n10	上半桦木台阶\n11	上半丛林台阶\n12	上半金合欢台阶\n13	上半深色橡木台阶"
+    },{
+      "file_name": "haijingshitaijie",
+      "name": "海晶石台阶",
+      "material": "海晶石",
+      "use": "",
+      "detail": "版本1.13加入"
+    },
+    {
+      "file_name": "haijingshizhuangtaijie",
+      "name": "海晶石砖台阶",
+      "material": "海晶石砖",
+      "use": "",
+      "detail": "版本1.13加入"
+    },
+    {
+      "file_name": "anhaijingshitaijie",
+      "name": "暗海晶石台阶",
+      "material": "暗海晶石",
+      "use": "",
+      "detail": "版本1.13加入"
     }
   ]
 }

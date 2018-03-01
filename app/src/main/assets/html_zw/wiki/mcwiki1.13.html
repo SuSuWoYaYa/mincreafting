@@ -1,0 +1,944 @@
+a<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>1.13 水域更新</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >1.13 水域更新</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="yellow">此頁麵包含了尚未確定官方中文譯名的遊戲內名稱<br />在中文譯名決定前，請不要擅自更改</p>
+ <p>
+1.13，即水域更新，是計劃於2018年第二季度發佈的Minecraft Java版重大更新。此次更新注重海洋內容、漏洞修復、技術性特性與優化。此更新原來打算分為兩個不同的更新發佈：原名為技術性更新的1.13包含技術性更改；原名為水域更新的1.14包含海洋的特性。
+</p>
+<h2>新內容</h2>
+<h3>常規</h3>
+<h4>數據包</h4> 
+<ul><li>類似於資源包，但是用於放置戰利品表、進度、函數、結構、配方以及標籤。
+</li><li>使用方法：將其放置在世界的datapacks文件夾中。
+</li><li>數據包為.zip文件，或者是一個根目錄有pack.mcmeta文件的文件夾。詳見：教程/製作資源包。這些數據包位於(世界名)/datapacks/。
+</li><li>在檢查數據包前，結構會從(世界名)/generated/structures/(命名空間)/(文件名).nbt處加載。
+</li><li>然而，此目錄不應用於結構的發佈，而應把這些文件移入數據包。
+</li><li>可通過<code>/reload</code>重新加載。
+</li><li>結構：pack.mcmeta、data文件夾，data文件夾包含命名空間文件夾，這些文件夾會決定其內容的命名空間。
+</li><li>一個命名空間只能包含以下字符：<code>01​​234​5​6​78​9abcdefghijklmnopqrstuvwxyz-_</code>，即<code>0～9、a～z 、_和-</code>。
+</li><li>在命名空間文件夾內，可以包含如下子文件夾：functions、loot_tables、advancements、structures、recipes和tags。這些文件夾內部還可放置更多的子文件夾。
+</li></ul> 
+
+<h4>死亡信息</h4>
+<ul><li>加入了一條死亡信息，當玩家在下界或末地睡覺而被床炸死時顯示。
+</li><li>「玩家被[刻意的遊戲設計]殺死了」
+</li><li>點擊「[刻意的遊戲設計]」會打開前往MCPE-28723的鏈接。
+</li><li>加入了某玩家或實體使玩家落入虛空而死的死亡信息。
+</li><li>「玩家不想和玩家/實體住在同一個世界」
+
+</li></ul>
+<h4>戰利品表</h4>
+<ul><li>為戰利品表添加了<code>set_name</code>函數。
+
+</li></ul>
+<h4>NBT標籤</h4>
+<ul><li>為海龜加入了NBT標籤HomePosX、HomePosY、HomePosZ、TravelPosX、TravelPosY、TravelPosZ和HasEgg。
+</li><li>為幻影鰩加入了NBT標籤AX、AY、AZ和Size。
+
+</li></ul>
+<h4>選項</h4>
+<ul><li>FS（全屏）分辨率
+</li><li>用於更改分辨率。
+</li><li>一個控制是否自動顯示命令提示的選項，位置在聊天頁面。（默認為開，否則按tab顯示命令提示）
+</li><li>編輯世界時的「創建備份」和「打開備份文件夾」兩個選項。
+
+</li></ul>
+<h4>顆粒</h4>
+<ul><li>加入了bubble_column_up、bubble_pop、current_down和squid_ink顆粒。
+</li><li>聲音
+</li><li>為魷魚噴射墨汁加入了新的聲音效果。
+
+</li></ul>
+<h4>統計</h4>
+<ul><li>加入了<code>time_since_sleep</code>的統計數據。
+</li><li>由幻影鰩所使用。
+</li><li>當玩家離開床時會重置。
+</li></ul>
+<h4>標籤</h4>
+<ul><li>物品、方塊和函數現在可以ID的形式「貼上」標籤了。
+</li><li>方塊標籤可用於檢測世界中的方塊。
+</li><li>物品標籤可用於檢測物品欄中的物品。
+</li><li>函數標籤可用於在命令或進度中調用函數。
+</li><li>貼上minecraft:tick標籤的函數會在每一刻的開始執行。
+</li><li>貼上minecraft:load標籤的函數會在每一次（重新）加載時執行一次。
+</li><li>標籤的創建需要使用數據包，位置在data/(命名空間)/tags/blocks, data/(命名空間)/tags/items和data/(命名空間)/tags/functions。
+</li><li>從不同的數據包重寫標籤時，內容可以選擇追加或替換。
+</li><li>默認狀態下使用追加模式。
+</li><li>在標籤定義中加入"replace": true會讓標籤實行覆蓋操作。
+</li><li>例子：data/(namespace)/tags/blocks/foo.json
+</li><li>這會創建一個名為(命名空間):foo的方塊標籤。
+</li><li>json文件中包含所有應「貼上」標籤的方塊列表。
+</li><li>此列表也可以包含同類型的其他標籤。
+</li><li>例如，你可以在標籤值列表中加入#foo:bar來引用另一個名為foo:bar的標籤。
+</li><li>不可引用自身。
+</li><li>方塊和物品有22種原版標籤：minecraft:banners、minecraft:buttons、minecraft:carpets、minecraft:doors、minecraft:logs、minecraft:planks、minecraft:saplings、minecraft:stone_bricks、minecraft:wooden_buttons、minecraft:wooden_doors、minecraft:wooden_pressure_plates、minecraft:wooden_slabs、minecraft:wooden_stairs、minecraft:wool、minecraft:rails、minecraft:sand、minecraft:acacia_logs、minecraft:birch_logs、minecraft:dark_oak_logs、minecraft:jungle_logs、minecraft:oak_logs和minecraft:spruce_logs。
+</li><li>7種物品有額外的原版標籤：minecraft:anvil、minecraft:flower_pots、minecraft:enderman_holdable、minecraft:water_hacked、minecraft:waterlogged、minecraft:slabs和minecraft:stairs。
+</li><li>標籤minecraft:water_hacked中的方塊在水中會渲染成模型空白部分為水的樣子。
+</li><li>1種物品有額外的原版標籤：minecraft:boats。
+</li><li>進度的物品判據現在支持物品標籤（tag）了。
+  </li></ul>
+
+  
+  <h3>遊戲內容</h3>
+<h4>附魔</h4>
+<p><b>引雷。</b><br />
+僅有1級。<br />
+用於三叉戟上，在雷暴天氣中召喚一道閃電擊中生物。
+<br />需要目標生物直接在開闊地帶，且所處的生物群系正在下雨。
+</p>
+<p><b>穿刺。</b><br />
+最高等級為V。<br />
+用於三叉戟上，增加對海洋生物的傷害。
+</p>
+<p><b>忠誠。</b><br />
+最高等級為III。<br />
+用於三叉戟上，使三叉戟在投擲後返回。
+</p>
+<p><b>激流。</b><br />
+最高等級為III。<br />
+用於三叉戟上，在水中或下雨時投擲後會加速玩家移動。
+</p>
+<h4>移動</h4>
+<p>在游泳衝刺時，玩家現在會比普通游泳移動得更快，還會很快地俯衝到水底。
+<br />玩家的碰撞箱只有0.6×0.6個方塊大（和玩家使用鞘翅飛行時相同）
+<br />這樣的話玩家可以穿過竪直一格的空隙
+<br />如果頂部的方塊是固體方塊，在小空間內行動就會非常緩慢，但頂部是下半台階時速度就會正常
+</p>
+
+
+<h3>命令格式</h3>
+<h4>常規</h4>
+<ul><li> 聊天欄中的新命令界面，輸入命令時出現。
+<ul><li> 命令的各種部分以不同顏色呈現。</li>
+<li> 無需運行命令就會以紅色呈現錯誤。</li>
+<li> 輸入參數時可以通過上、下方向鍵選擇不同選項，按回車或空格鍵選定並補全。用空格鍵補全會在參數後添加一個空格。</li></ul></li>
+<li> 為實體選擇器添加命令建議。</li>
+<li> 目標選擇器中的新<code>nbt</code>參數。</li>
+<li> 新的命令解析庫，名為Brigadier（旅長）。</li></ul>
+<h4>坐標</h4>
+<ul><li> 新增本地坐標類型，使用<code>^</code>來實現。
+<ul><li> 在命令中指定坐標時，你可以使用<code>^</code>來指定本地坐標，以取代世界坐標。</li>
+<li> 本地坐標軸取決於執行實體的旋轉角度，默認為<code>0,0</code>（南）。</li>
+<li> 與世界坐標一樣，測量時默認選取實體底部。</li>
+<li> 語法是：<code>^left ^up ^forwards</code>。</li>
+<li> <code>left/up/forwards</code>是指定方向的偏移方塊數。</li></ul></li></ul>
+
+<h2>具體命令</h2>
+<h3>data</h3>
+<ul><li> 一條允許玩家獲取、合併（修改）和移除實體及方塊NBT數據的命令。</li>
+<li> <code>data get block &lt;目標位置&gt; [&lt;標籤路徑&gt;] [&lt;倍數&gt;]</code>。
+<ul><li> 將會返回<code>&lt;目標位置&gt;</code>方塊的NBT數據作為其<code>result</code>（如果<code>標籤路徑</code>被指定）。<code>標籤路徑</code>能用於輸出某個特定的NBT數據，但此功能被限定於數字形式的標籤。可選的<code>倍數</code>可以用於把輸出值乘以一個倍數方便儲存（如整數與小數的轉換）。</li>
+<li> 不輸入任何<code>標籤路徑</code>即可返回目標目前的整個NBT數據。</li></ul></li>
+<li> <code>data get entity &lt;目標實體&gt; [&lt;標籤路徑&gt;] [&lt;倍數&gt;]</code>。
+<ul><li> 將會從<code>目標實體</code>返回NBT數據作為其<code>result</code>（如果<code>標籤路徑</code>被制定）。<code>標籤路徑</code>能用於輸出某個特定的NBT數據，但此功能被限定於數字形式的標籤。可選的<code>倍數</code>可以用於把輸出值乘以一個倍數方便儲存（如整數與小數的轉換）。</li>
+<li> 不輸入任何<code>標籤路徑</code>即可返回目標目前的整個NBT數據。</li></ul></li>
+<li> <code>data merge block &lt;目標位置&gt; &lt;NBT&gt;</code>
+<ul><li> 將你所設定的<code>NBT</code>標籤合併到<code>目標位置</code>。作用與之前<code>/blockdata</code>相同。</li></ul></li>
+<li> <code>data merge entity &lt;目標實體&gt; &lt;NBT&gt;</code>
+<ul><li> 將你所設定的<code>NBT</code>標籤合併到<code>目標實體</code>。作用與之前<code>/entitydata</code>相同。不允許向玩家合併NBT標籤。</li></ul></li>
+<li> <code>data remove block &lt;目標位置&gt; &lt;標籤路徑&gt;</code>。
+<ul><li> 將會移除<code>目標位置</code>在<code>標籤路徑</code>的NBT數據。</li>
+<li> 如果移除數組/列表的指定元素，則會讓之後的元素的索引值-1以填補空缺。</li></ul></li>
+<li> <code>data remove entity &lt;target&gt; &lt;path&gt;</code>
+<ul><li> 將會移除<code>目標實體</code>在<code>標籤路徑</code>的NBT數據。移除玩家NBT數據是不允許的。</li>
+<li> 如果移除數組/列表的指定元素，則會讓之後的元素的索引值-1以填補空缺。</li></ul></li>
+<li> 標籤路徑的形式類似於：<code>foo.bar[0]."一個[隨便寫個好聽的]".baz</code>
+<ul><li> <code>foo.bar</code>是foo的子標籤bar。</li>
+<li> <code>bar[0]</code>表示bar的元素0（索引值）。</li>
+<li> "用引號括起來的字符串"在串內字符需要被轉義(escape)時可以使用。即字串不是只由<code>0-9</code>、<code>a-z</code> 、<code>_</code>和<code>-</code>的字符組成時需要使用引號括起來。例如，引號<code>"</code>及反斜槓<code>\</code>是需要被轉義的。</li></ul></li>
+<li> 舊命令轉換示例：
+<ul><li> <code>/entitydata &lt;目標實體&gt; {}</code>變成<code>data get entity &lt;目標實體&gt;</code></li>
+<li> <code>/blockdata &lt;目標位置&gt; &lt;NBT&gt;</code>變成<code>data merge block &lt;目標位置&gt; &lt;NBT&gt;</code></li></ul></li>
+<li> 新功能使用示例：
+<ul><li> <code>data get entity @e[type=pig,limit=1] Saddle 2</code></li>
+<li> <code>data remove block 17 45 34 Items</code></li></ul></li></ul>
+
+<h3>/datapack</h3>
+<ul><li> 用來控制數據包的加載。</li>
+<li> 以下是子命令：
+<ul><li> <code>enable &lt;name&gt;</code> - 啓用特定數據包</li>
+<li> <code>disable &lt;name&gt;</code> - 禁用特定數據包</li>
+<li> <code>list [available|enabled]</code> - 列出所有數據包，或可用/啓用的數據包</li></ul></li>
+<li> 數據包默認啓用，但如果你禁用後可以用以下命令啓用：
+<ul><li> <code>enable &lt;name&gt;</code> - 啓用特定數據包，並將其放到默認位置</li>
+<li> <code>enable &lt;name&gt; first</code> -啓用特定數據包，並將其放到其他包之前（優先級最低）</li>
+<li> <code>enable &lt;name&gt; last</code> - 啓用特定數據包，並將其放到其他包之後（優先級最高）</li>
+<li> <code>enable &lt;name&gt; before &lt;存在的包&gt;</code> - 啓用特定數據包，並將其放到（優先級更低的）&lt;存在的包&gt;之前</li>
+<li> <code>enable &lt;name&gt; after &lt;存在的包&gt;</code> - 啓用特定數據包，並將其放到（優先級更高的）&lt;存在的包&gt;之後</li></ul></li></ul>
+
+
+<h3>/bossbar</h3>
+<ul><li> <code>/bossbar create &lt;boss欄&gt; &lt;顯示名稱&gt;</code>可建立一個Boss欄。
+<ul><li> <code>boss欄</code>用來指定Boss欄<code>namespace:name</code>，例：<code>foo:bar</code>。如果沒有<code>namespace</code>則默認為<code>minecraft</code>。</li>
+<li> <code>顯示名稱</code>是Boss欄的顯示名稱，只接受JSON語法。</li></ul></li>
+<li> <code>/bossbar set &lt;目標boss欄&gt; name &lt;顯示名稱&gt;</code>可以更改Boss欄的名字。</li>
+<li> <code>/bossbar set &lt;目標boss欄&gt; color （blue|green|pink|purple|red|white|yellow）</code>可用來更改Boss欄與該名稱的顏色（修改文字顏色只限於當你沒有在文字格式中指定它的顏色時），預設為<code>white</code>。</li>
+<li> <code>/bossbar set &lt;目標boss欄&gt; style （notched_10|notched_12|notched_20|notched_6|progress）</code>能改變boss欄的樣式，預設為<code>progress</code>。
+<ul><li> 你可以設為以下的樣式：<code>notched_6</code>、<code>notched_10</code>、<code>notched_12</code>、<code>notched_20</code>或<code>progress</code>。</li>
+<li> <code>notched</code>會設定boss欄在視覺上的的分段數。</li>
+<li> <code>progress</code>會設置為1段，也就是直長條。</li></ul></li>
+<li> <code>/bossbar set &lt;目標boss欄&gt; value &lt;當前值&gt;</code>會改變boos欄的當前值, 預設為<code>0</code>。</li>
+<li> <code>/bossbar set &lt;目標boss欄&gt; max &lt;最大值&gt;</code>會設置boss欄的最大值，預設為<code>100</code>。</li>
+<li> <code>/bossbar set &lt;目標boss欄&gt; visible &lt;visible&gt;</code>會設定boss欄是否可見, 預設為<code>true</code>。</li>
+<li> <code>/bossbar set &lt;目標boss欄&gt; players &lt;目標玩家&gt;</code>會設定那些玩家可以看見boss欄, 預設為無人可看見。</li>
+<li> <code>/bossbar remove &lt;目標boss欄&gt;</code>會把整個目標boss欄給移除。</li>
+<li> <code>/bossbar list</code>會顯示所有存在的boss欄。</li>
+<li> <code>/bossbar get &lt;指定boss欄&gt; (max|players|value|visible)</code>會回傳值作為指令的 <code>result</code></li></ul></li>
+
+<h3>其他</h3>
+<li> 新的子命令<code>/execute store</code>：<code>/execute store (result|success) bossbar &lt;目標boss欄&gt; (value|max) &lt;連鎖子命令&gt;</code>。
+<ul><li> 將會儲存指定運行指令的<code>result</code>或<code>success</code>為boss欄的<code>value</code>當前值或<code>max</code>最大值設定。</li></ul></li>
+<li> 為命令UI增加了基本的目標選擇器。</li></ul>
+<dl><dd><code>/locate</code></dd></dl>
+<ul><li> 為命令輸出添加了可點擊的傳送鏈接。</li></ul>
+<dl><dt><code>/teleport</code></dt></dl>
+<ul><li> 添加<code>facing</code>參數。
+<ul><li> <code>/teleport [&lt;目標&gt;] (&lt;位置&gt;|&lt;實體&gt;) facing (&lt;朝向實體&gt;|&lt;朝向方向&gt;)</code></li>
+<li> 會旋轉實體來朝向另一個實體或方向。</li></ul></li></ul>
+<dl><dt><code>/time</code></dt></dl>
+<ul><li> 為<code>/time set</code>添加<code>noon</code>和<code>midnight</code>參數。</li></ul>
+
+
+
+
+
+
+
+
+<h3>方塊</h3>
+<ul><li> 所有六種木材的活板門，按鈕以及壓力板。</li>
+<li> 沒有鬼臉的南瓜。之前的南瓜重命名為「刻過的南瓜」。
+<ul><li> 使用剪刀右擊南瓜可以將其變為刻過的南瓜，並掉出4個南瓜種子。</li></ul></li>
+<li> 加入了<code>cave_air</code>和<code>void_air</code>。
+<ul><li> 均與<code>air</code>擁有完全相同的特性。</li>
+<li> <code>cave_air</code>在洞穴中生成。</li>
+<li> <code>void_air</code>在內部用於世界上方（≥256）和下方（&lt;0）的方塊，以及未加載的區塊。</li></ul></li>
+<li> 加入了去皮原木，一種更平滑的原木變種。
+<ul><li> 可用斧對著木頭右擊來製造。</li>
+<li> 表現與普通的木頭一樣，也可以用來合成木板。</li></ul></li>
+<li> 加入了水下氣泡柱。
+<ul><li> 由水下至少兩格深的岩漿塊或靈魂沙創造。</li>
+<li> 岩漿塊氣泡柱會將實體向下推送，也會阻止物品浮起並使船下沈。</li>
+<li> 靈魂沙氣泡柱會將實體向上推送。</li></ul></li>
+<li> 加入了海帶和海草方塊。
+<ul><li> 只能在水下放置，且上方至少需要一格水。
+<ul><li> 也可以通過<code>/setblock</code>命令放置在乾燥的陸地上。</li></ul></li>
+<li> 生成於海洋中。</li>
+<li> 可長至數個方塊高。</li>
+<li> 擁有動畫材質。</li>
+<li> 海草同樣有高草變種。</li>
+<li> 海草可通過用骨粉右鍵點擊任何水下方塊生成。</li>
+<li> 海帶可以被燒制為乾海帶。</li></ul></li>
+<li> 加入了乾海帶塊。
+<ul><li> 在熔爐中作為燃料使用時，可燒煉20個物品。</li>
+<li> 由乾海帶合成，也能分解為乾海帶。</li></ul></li>
+<li> 加入了海晶石樓梯與台階。</li>
+<li> 加入了海龜蛋。
+<ul><li> 踩在海龜蛋上方會將其破壞。
+<ul><li> 僵屍和僵屍豬人會刻意地踩在海龜蛋上。</li></ul></li></ul></li></ul>
+
+<h3>物品</h3>
+<ul><li> 六種樹皮的物品形式。</li>
+<li> 光滑石英、光滑砂岩、光滑紅砂岩的物品形式。</li>
+<li> 紅色與褐色蘑菇方塊，以及菌柄的物品形式。</li>
+<li> 調試棒，能以循環的方式調整方塊狀態。
+<ul><li> 左擊切換狀態，右擊切換值。潛行再點擊會反轉切換的循環方向。</li></ul></li>
+<li> 石化橡木台階的物品形式。這是一種舊的橡木台階，特性與石質台階相同。</li>
+<li> 加入了新的武器三叉戟
+<ul><li> 可通過使用將其擲出，也可以通過攻擊作為近戰武器使用，傷害為9（<img src="local\Heart.png" /><img src="local\Heart.png" /><img src="local\Heart.png" /><img src="local\Heart.png" /><img src="local\Half_Heart.png" />）。</li>
+<li> 當前在生存模式無法獲得。</li></ul></li>
+<li> 加入了海帶和乾海帶。
+<ul><li> 海帶可用於在水下放置海帶植株。</li>
+<li> 海帶可在熔爐中烘乾，成為乾海帶。</li>
+<li> 乾海帶可以食用，回復1(<img src="local\Half_Hunger.png" />)飢餓值。</li>
+<li> 乾海帶也能合成為乾海帶塊</li></ul></li>
+<li> 加入了海龜殼片。
+<ul><li> 當幼年海龜長大時掉落。</li>
+<li> 可用於合成海龜殼。</li></ul></li>
+<li> 加入了海龜殼。
+<ul><li> 可作為頭盔使用，增加2點護甲值。
+<ul><li> 裝備和出水時會給予玩家10秒的水下呼吸狀態效果，本質上是給予玩家額外的10秒水下呼吸時間。</li></ul></li>
+<li> 可將粗制的藥水釀造為神龜藥水。</li></ul></li>
+<li> 加入了神龜藥水。
+<ul><li> 會給予1分鐘的緩慢IV和抗性提升IV效果。</li>
+<li> 用紅石粉釀造可將效果持續時間延長至3分鐘。</li>
+<li> 用熒石粉釀造可將效果等級從IV升至VI。</li>
+<li> 用火藥或龍息釀造會分別得到噴濺藥水和滯留藥水。</li></ul></li>
+<li> 加入了神龜之箭。</li>
+<li> 加入了海龜刷怪蛋。
+<ul><li> 白色的蛋帶青色斑點。</li></ul></li>
+<li> 加入了幻影鰩刷怪蛋。
+<ul><li> 黑色的蛋帶綠色斑點。</li></ul></li>
+<li> 加入了鱈魚刷怪蛋。</li>
+<li> 加入了鮭魚刷怪蛋。</li>
+<li> 加入了河豚刷怪蛋。</li>
+<li> 加入了魚桶。
+<ul><li> 有3個變種：鱈魚桶、鮭魚桶及河豚桶。</li>
+<li> 對魚（生物）使用水桶來獲得。</li></ul></li></ul>
+
+
+
+
+
+
+
+<h3>生物</h3>
+<dl><dt>幻影鰩 （生物B ）</dt></dl>
+<ul><li> 由MineCon Earth 的觀眾投票選出<sup id="cite_ref-Aquatic_2-1" class="reference">&#91;2&#93; </sup></li>
+<li> 在高海拔生成，會以3或4只為一群俯衝下來攻擊長時間未睡覺的玩家<sup id="cite_ref-Aquatic_2-2" class="reference">&#91;2&#93; </sup>
+<ul><li> 該玩家必須位於高於海平面的位置</li>
+<li> 生成於主世界和末路之地 ，有時4個為一群。</li>
+<li> 會攻擊一段時間沒有睡覺的玩家 。</li>
+<li> 掉落1-4個皮革 。
+<ul><li> 可能會更改。</li></ul></li></ul></li>
+<li>海龜 
+<ul><li> 會在各種生物群系的海岸線築巢的水中生物。</li>
+<li> 可用海草來繁殖。</li>
+<li> 以1-5個為一群生成於溫暖生物群系（草原、叢林、沼澤、沙漠、平頂山和熱帶草原）的海灘 ，但這是暫時的。</li>
+<li> 會在出生地海灘上下蛋 。</li>
+<li> 死亡時掉落0-2條海草 。
+<ul><li> 被附魔了引雷 的三叉戟 殺死時掉落0-1個碗 。</li></ul></li>
+<li> 可以用它們舊殼的碎片 來合成海龜殼 。</li></ul></li>
+<li> 魚（生物） 
+<ul><li> 有三種類型：鱈魚、鮭魚和河豚
+<ul><li> 被殺死時掉落自身。</li></ul></li>
+<li> 鱈魚生成於寒冷、普通和溫和的海洋生物群系中。</li>
+<li> 鮭魚生成於冰冷、寒冷的海洋和河流生物群系中。</li>
+<li> 河豚生成於溫和和溫暖的海洋生物群系中。</li>
+<li> 需要在水中存活。若離開水，窒息前會四處亂跳。</li>
+<li> 鱈魚（最多9條）和鮭魚（最多6條）會集群游動。</li>
+<li> 可用水桶來捕捉。</li></ul></li></ul>
+
+<h3>世界生成</h3>
+<dl><dt>生物群系</dt></dl>
+<ul><li> 加入了<code>sky_island_low</code>（末地 - 浮島）、<code>sky_island_medium</code>（末地 - 中型島嶼）、<code>sky_island_high</code>（末地 - 高島）和<code>sky_island_barren</code>（末地 - 荒島）。
+<ul><li> 以前僅被用於「The End」生物群系的所有的4種生成於末路之地 外島的不同部分。</li></ul></li>
+<li> 加入了<code>minecraft:warm_ocean</code>（溫暖海洋）、<code>minecraft:lukewarm_ocean</code>（較溫暖的海洋）、<code>minecraft:cold_ocean</code>（寒冷海洋）、<code>minecraft:warm_deep_ocean</code>（溫暖深海）、<code>minecraft:lukewarm_deep_ocean</code>（較溫暖的深海）、<code>minecraft:cold_deep_ocean</code>（寒冷深海）和<code>minecraft:frozen_deep_ocean</code>（深凍洋），不過溫暖的生物群系不會自然生成。</li>
+<li> <code>minecraft:frozen_ocean</code>（凍洋）現在會自然生成了。</li></ul>
+<dl><dt> 結構 </dt></dl>
+<ul><li> 加入了水下洞穴和峽谷。</li></ul>
+
+<h2>更改</h2>
+<h3>常規</h3>
+<dl><dt> 「扁平化」 </dt></dl>
+<ul><li> 方塊的元數據（metadata）被新ID及方塊狀態取代。</li>
+<li> 拆分、合併、新增、刪除及重命名了大量方塊：
+<ul><li> 以往因不同數據值而有分別的方塊及物品有其獨立ID，如<code>white_wool</code>取代了<code>wool:0</code>。</li>
+<li> 物品損傷值（damage）現在移到物品的<code>tag</code>里，而且只有工具類物品才擁有這個標籤。</li>
+<li> 文件與命令不再使用數據值或<code>set_data</code>。</li></ul></li>
+<li> 玩家自定義結構不會被自動更新：
+<ul><li> 玩家可以在1.12把結構生成出，再升級到1.13，然後重新儲存該結構以進行升級。</li></ul></li></ul>
+<dl><dt>控制 </dt></dl>
+<ul><li> 鍵盤名稱現在描述了實際的鍵位。（例如「LBUTTON」 - &gt;「左按鈕」，「BACKSLASH」 - &gt;「\」）</li></ul>
+<dl><dt> 創造模式物品欄 </dt></dl>
+<ul><li> 出於「扁平化」 ，對一些方塊的位置進行了調整。例如，紫珀塊 現在移動到了黑曜石 之後。</li>
+<li> 蘑菇方塊 、耕地 和草徑 現在加入到了物品欄中，位置在「裝飾性方塊」組。另外，空白的煙花火箭 現在加入到了<i>雜項</i>組。</li></ul>
+<dl><dt>選項 </dt></dl>
+<ul><li> 徹底移除3D效果選項。</li></ul>
+<dl><dt> 配方 </dt></dl>
+<ul><li> 自定義配方現在會從數據包的<code>data/(命名空間)/recipes/(名字).json</code>處加載。</li>
+<li> 為熔爐加入了配方書。</li>
+<li> 熔爐的配方已被移至JSON文件。
+<ul><li> 它們使用<code>"type": "smelting"</code>。</li>
+<li> <code>cookingtime</code>用來判定在熔爐中燒煉物品所花費的時間。</li>
+<li> <code>experience</code>用來判定玩家從熔爐中手動取出輸出物品時應獲得的經驗值。</li>
+<li> 燃料不在其列，仍為硬編碼。</li></ul></li>
+<li> 「解鎖配方」的推送通知現在在左上角顯示一個圖標，來指明解鎖的是合成配方還是燒煉配方。</li></ul>
+<dl><dt>資源包 </dt></dl>
+<ul><li> 將格式數字升級至<code>4</code>。</li>
+<li> 默認資源包現在能在資源包選擇屏幕里上下移動。</li></ul>
+<dl><dt> 統計 </dt></dl>
+<ul><li> 對統計進行了升級。
+<ul><li> <code>stat.(統計)</code>現在是<code>minecraft.custom:minecraft.(統計)</code>.</li>
+<li> <code>stat.(統計).minecraft.(方塊/物品/實體ID)</code>現在是<code>minecraft.(統計):minecraft.(方塊/物品/實體ID)</code>.</li></ul></li></ul>
+<dl><dt> 其他</dt></dl>
+<ul><li> 遊戲庫更新
+<ul><li> 更新至LWJGL 3</li></ul></li>
+<li> 現在加載或創建世界時顯示加載階段的百分比。
+<ul><li> 處於加載階段時會顯示<code>正在準備生成區域</code>。</li></ul></li>
+<li> 崩潰報告現在會顯示啓用的數據包</li>
+<li> 數據生成器已經開放，你可以在不打開遊戲的情況下獲得所有方塊/物品/命令/等等的轉儲。</li>
+<li> 將翻譯文件從<code>.lang (key=value)</code> 改為<code>.json ("key": "value")</code>。
+<ul><li> 現在支持新行了。</li></ul></li></ul>
+
+<h3>遊戲內容</h3>
+<dl><dt> 氧氣條</dt></dl>
+<ul><li> 玩家浮出水面 時氧氣條不再瞬間恢復。</li></ul>
+<dl><dt> 能見度</dt></dl>
+<ul><li> 更改水下能見度
+<ul><li> 玩家在水下待得越久，在水下的能見度會越好。</li>
+<li> 水肺藥水和水下呼吸附魔不再會增強水下視力。</li></ul></li></ul>
+
+<h3>命令</h3>
+<dl><dt> 常規</dt></dl>
+<ul><li> 命令和函數變得更快、效率更高了。</li>
+<li> 大多數命令現在對大小寫更敏感了。小寫是一直可用的。
+<ul><li> 比如不再允許此命令：<code>/scoreboard  ObJeCtIvEs ...</code></li></ul></li>
+<li> 命令方塊的輸出信號原本是「成功次數（Sucess count）」，現在是其「結果（result）」。</li>
+<li> 服務器命令（函數 、後台命令、遠程控制）將會執行於世界重生點而非固定為坐標<code>0,0,0</code>。</li>
+<li> 命令中的錯誤現在有了更好的錯誤信息（提示中有更多的信息）。</li>
+<li> 為分析器添加了命令（/debug）。</li>
+<li> 實體選擇器和方塊狀態參數現在允許使用空格了。</li></ul>
+<dl><dt> 命令 UI</dt></dl>
+<ul><li> 新的UI原型。</li></ul>
+<dl><dt> 函數 </dt></dl>
+<ul><li> 函數現在在加載時會被完全地分析和緩存。
+<ul><li> 這意味著如果一條命令不管出於什麼原因錯了，玩家都能在加載時知悉。</li></ul></li></ul>
+<dl><dt> NBT</dt></dl>
+<ul><li> 物品實體 的NBT鍵<code>Thrower</code>和<code>Owner</code>不再是字符串，而以兩個長整型組件<code>L</code>和<code>M</code>。</li>
+<li> 雪球 、雞蛋 和末影珍珠 的NBT鍵<code>owner</code>不再是字符串，而以兩個長整型組件<code>L</code>和<code>M</code>。</li>
+<li> 所有自定義名稱（涉及方塊、物品、實體、方塊實體）由純文本變更為可翻譯的JSON組件格式。
+<ul><li> 比如，<code>/summon  pig ~ ~ ~ {CustomName:"魯賓"}</code>變為<code>/summon  pig ~ ~ ~ {CustomName:"\"魯賓\""}</code>或<code>/summon  pig ~ ~ ~ {CustomName:"{\"text\":\"魯賓\"}"}</code>。</li></ul></li></ul>
+<dl><dt> 具體命令</dt></dl>
+<dl><dt> <code>/advancement </code></dt></dl>
+<ul><li> 移除<code>/advancement  test</code>，以目標選擇器替代。</li></ul>
+<dl><dt> <code>/blockdata </code></dt></dl>
+<ul><li> 移除，並被<code>/data </code>取代。</li></ul>
+<dl><dt> <code>/clear </code></dt></dl>
+<ul><li> <code>/clear </code>語法被修改了。
+<ul><li> <code>/clear  &lt;目標玩家&gt; [物品名稱] [數據值] [數量] [數據標籤]</code>變為<code>/clear  &lt;目標玩家&gt; [目標物品] [數量]</code></li>
+<li> 參閱下方的物品參數類型以獲取更多細節。</li></ul></li></ul>
+<dl><dt> <code>/clone </code></dt></dl>
+<ul><li> <code>/clone </code>的語法被修改了。
+<ul><li> <code>/clone  &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;目標區域&gt; filtered [force|move|normal] [方塊] [數據]</code>修改為<code>/clone  &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;目標區域&gt; filtered [方塊] [force|move|normal]</code></li>
+<li> <code>/clone  &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;目標區域&gt; [replace|masked] [force|move|normal] [方塊] [數據]</code>修改為<code>/clone  &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;目標區域&gt; [replace|masked] [force|move|normal]</code></li></ul></li></ul>
+<dl><dt> <code>/defaultgamemode </code>與<code>/gamemode </code></dt></dl>
+<ul><li> 現在只接受字符串ID，不再接受縮寫或數字
+<ul><li> <code>/gamemode  2</code>修改為<code>/gamemode  adventure</code></li>
+<li> <code>/defaultgamemode  sp</code>修改為<code>/defaultgamemode  spectator</code></li></ul></li></ul>
+<dl><dt> <code>/difficulty </code></dt></dl>
+<ul><li> <code>/difficulty  [&lt;值&gt;]</code>現在只接受字符串ID，不再接受縮寫或數字
+<ul><li> <code>/difficulty  2</code>修改為<code>/difficulty  normal</code></li>
+<li> <code>/difficulty  p</code>修改為<code>/difficulty  peaceful</code></li></ul></li>
+<li> 現在可以不帶任何參數使用<code>/difficulty </code>來查詢難度。</li></ul>
+<dl><dt> <code>/effect </code></dt></dl>
+<ul><li> <code>/effect </code>的語法被拆分，以避免歧義
+<ul><li> <code>/effect  &lt;目標實體&gt; &lt;狀態效果&gt;</code>修改為<code>/effect  give &lt;目標實體&gt; &lt;狀態效果&gt;</code></li>
+<li> <code>/effect  &lt;目標實體&gt; clear</code>修改為<code>/effect  clear &lt;目標實體&gt; [狀態效果]</code></li></ul></li>
+<li> 如果命令沒有任何作用就會導致命令失敗。
+<ul><li> 比如一些怪物（像末影龍 ）對效果免疫。</li>
+<li> 生物身上更高等級的效果會使新的低等級效果無效。</li></ul></li></ul>
+<dl><dt> <code>/entitydata </code></dt></dl>
+<ul><li> 移除，被<code>/data </code>取代。</li></ul>
+<dl><dt> <code>/execute </code></dt></dl>
+<ul><li> <code>/execute </code>的語法被拆分。
+<ul><li> 修飾子命令將可以改變指令的執行方式：
+<ul><li> <code>as &lt;指定實體&gt; &lt;連鎖子命令&gt;</code>以<code>&lt;指定實體&gt;</code>執行命令（只改變執行者，不改變執行位置）。</li>
+<li> <code>at &lt;指定實體&gt; &lt;連鎖子命令&gt;</code>以<code>&lt;指定實體&gt;</code>的坐標，旋轉角度和維度來執行命令（只改變執行位置，不改變執行者）。</li>
+<li> <code>positioned &lt;指定位置&gt; &lt;連鎖子命令&gt;</code>從<code>&lt;指定位置&gt;</code>的坐標來執行命令。</li>
+<li> <code>positioned as &lt;指定實體&gt; &lt;連鎖子命令&gt;</code>僅用<code>指定實體</code>的坐標（x y z）執行命令</li>
+<li> <code>align &lt;坐標軸&gt; &lt;連鎖子命令&gt;</code>執行命令時會先把執行位置轉換為方塊位置（向下取整，只針對指定坐標軸的坐標），<code>&lt;坐標軸&gt;</code>的寫法就是<code>x</code>、<code>y</code>、<code>z</code>的任意組合（例子：<code>x</code>,<code>xz</code>、code&gt;zyx</code>和<code>yz</code>）。
+<ul><li> 使用示例：
+<ul><li> 當<code>x=-1.8,y=2.3,z=5.9</code>使用<code>x</code>將變為<code>x=-2,y=2.3,z=5.9</code></li>
+<li> 當<code>x=2.4,y=-1.1,z=3.8</code>使用<code>yxz</code>將變為<code>x=2,y=-2,z=3</code></li></ul></li></ul></li>
+<li> <code>facing &lt;x y z&gt; &lt;連鎖子命令&gt;</code>會使命令執行得如同朝向指定位置<code>&lt;x y z&gt;</code>。</li>
+<li> <code>facing entity &lt;指定朝向實體&gt; (eyes|feet) &lt;連鎖子命令&gt;</code> 會使命令執行得如同朝向指定朝向實體的腳或眼睛。</li>
+<li> <code>rotated as &lt;指定實體&gt;</code> or <code>rotated [垂直旋轉度數 水平旋轉度數]</code> 會使命令執行得如同執行者轉向到指定方向。</li>
+<li> <code>/execute  rotated as &lt;指定實體&gt; &lt;連鎖子命令&gt;</code>會使命令執行得如同執行者轉向到實體的方向。</li>
+<li> <code>/execute  rotated &lt;y x&gt; &lt;連鎖子命令&gt;</code>會使命令執行得如同執行者轉向到指定方向。</li>
+<li> <code>in (overworld|the_end|the_nether) &lt;連鎖子命令&gt;</code> 會使命令執行得如同位於指定維度。</li>
+<li> <code>anchored (feet|eyes) &lt;連鎖子命令&gt;</code> 會在使用朝向坐標或朝向指令時調整此命令的判斷位置為腳或眼睛。</li></ul></li>
+<li> 條件子命令可以讓你避免在特定情況運行命令：
+<ul><li> <code>(if|unless) block &lt;指定位置&gt; &lt;指定方塊&gt; &lt;連鎖子命令&gt;</code> 如果（<code>unless</code>則為除非，即條件不成功）<code>&lt;指定位置&gt;</code>（的方塊）與<code>&lt;指定方塊&gt;</code>，才執行後續的命令。</li>
+<li> <code>(if|unless) blocks &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;對照區域&gt; (all|masked) &lt;連鎖子命令&gt;</code>如果（除非）<code>&lt;起始框選點&gt;</code>和<code>&lt;終止框選點&gt;</code>之間的區域與<code>&lt;對照區域&gt;</code>相符，才執行後續的命令。</li>
+<li> <code>(if|unless) entity &lt;指定實體&gt; &lt;連鎖子命令&gt;</code>如果（除非）<code>&lt;指定實體&gt;</code>存在（1個或以上）時執行命令。可能包括死亡的玩家，這取決於目標選擇器的類型。</li>
+<li> <code>(if|unless) score &lt;指定實體/玩家名&gt; &lt;指定記分板目標&gt; (&lt;|&lt;=|=|&gt;=|&gt;) &lt;對照實體/玩家名&gt; &lt;對照記分板目標&gt; &lt;連鎖子命令&gt;</code>如果（除非）)<code>&lt;指定實體/玩家名&gt;</code>的<code>&lt;指定記分板目標&gt;</code>分數與<code>&lt;對照實體/玩家名&gt;</code>的<code>&lt;對照記分板目標&gt;</code>分數符合指定的比較符時執行命令。</li>
+<li> <code>(if|unless) score &lt;指定實體/玩家名&gt; &lt;指定記分板目標&gt; matches &lt;指定範圍&gt; &lt;連鎖子命令&gt;</code> 指定目標對象的指定記分板目標是否在指定範圍內(如<code>1</code>, <code>1..5</code>）。</li></ul></li>
+<li> 作為<code>/stats </code>的替代，新的<code>store</code>子命令將允許你將命令結果儲存於某處：
+<ul><li> <code>result</code>將會選擇命令的結果來輸出，用於取代過去的這些統計：<code>AffectedBlocks</code>、<code>AffectedEntities</code>、<code>AffectedItems</code>、<code>QueryResult</code>。</li>
+<li> <code>success</code>將會記錄這個命令到底執行的成功次數是多少。雖然此數值通常會是<code>0</code>或<code>1</code>, 但是如果此命令被分開每個實體執行（像是<code>as @a</code>）那麼其成功數也就大於<code>1</code>了。這取代了<code>SuccessCount</code>。</li>
+<li> 命令統計會被儲存，並在整個命令被完整執行後返回（返回值）。</li>
+<li> 如果指命令沒有成功（像<code>success</code>是<code>0</code>時），<code>result</code>也會被設為<code>0</code>。</li>
+<li> 之後會明確每個命令的預期結果。</li>
+<li> <code>store (result|success) score &lt;目標實體/玩家名&gt; &lt;指定記分板目標&gt; &lt;連鎖子命令&gt;</code>
+<ul><li> 返回值會被儲存在<code>&lt;目標實體/玩家名&gt;</code>的<code>&lt;指定記分板目標&gt;</code>分數里。</li>
+<li> <code>目標</code>必須存在，但相對於<code>/stats </code>你不需要為<code>&lt;目標實體/玩家名&gt;</code>的分數設定初始值</li></ul></li>
+<li> <code>store (result|success) block &lt;目標位置&gt; &lt;標籤路徑&gt; (byte|double|float|int|long|short) [倍率] &lt;連鎖子命令&gt;</code>
+<ul><li> 將返回值儲存在<code>目標位置</code>方塊在<code>標籤路徑</code>的NBT標籤上，並儲存為byte、double、float、int、long或short。可選的<code>倍率</code>可以用於把輸出值乘以一個倍數方便儲存（如整數與小數的轉換）。</li>
+<li> 注意不能通過此命令為數組/列表標籤加入新元素，只能取代現有元素。</li></ul></li>
+<li> <code>store (result|success) entity &lt;目標實體&gt; &lt;標籤路徑&gt; (byte|double|float|int|long|short) [倍率] &lt;連鎖子命令&gt;</code>
+<ul><li> 將返回值儲存在<code>目標實體</code><code>標籤路徑</code>的NBT標籤上，並儲存為byte、double、float、int、long、或short。</li>
+<li> 和<code>/data </code>類似，<code>/execute  store</code>不能修改玩家的NBT。在玩家<code>Inventory</code>或<code>EnderItems</code>中的物品<code>tag</code>鍵的NBT是例外，並可以用<code>/execute  store</code>修改。</li>
+<li> 可選的<code>倍率</code>可以用於把輸出值乘以一個倍數方便儲存（如整數與小數的轉換）。</li>
+<li> 注意不能通過此命令為數組/列表標籤加入新元素，只能取代現有元素。</li></ul></li>
+<li> <code>/execute  store (result|success) bossbar &lt;id&gt; (value|max) &lt;連鎖子命令&gt;</code>
+<ul><li> 值的ID以<code>id</code>的形式儲存在<code>value</code>或<code>max</code>的bossbar設置里。</li></ul></li>
+<li> 標籤路徑的形式類似於：<code>foo.bar[0]."一個[隨便寫個好聽的]".baz</code>
+<ul><li> <code>foo.bar</code>是foo的子標籤bar。</li>
+<li> <code>bar[0]</code>表示bar的元素0（索引值）。</li>
+<li> "用引號括起來的字符串"在串內字符需要被轉義(escape)時可以使用。即字串不是只由<code>0-9</code>、<code>a-z</code> 、<code>_</code>和<code>-</code>的字符組成時需要使用引號括起來。例如，引號<code>"</code>及反斜槓<code>\</code>是需要被轉義的。</li></ul></li>
+<li> 例子：
+<ul><li> <code>/execute  store success score @a foo run say hi</code></li>
+<li> <code>/execute  as @e[type=pig] at @s store success entity @s Saddle byte 1 if entity @p[distance=..5]</code></li></ul></li></ul></li>
+<li> 你可以將所有需要的子命令串連在一起。同一個子命令可以多次出現。
+<ul><li> 要這麼做時，你必須將一個子命令直接連接到下一個子命令。</li>
+<li> 最後當你完成整條子命令連鎖，寫上<code>run</code>來讓你繼續寫下你實際想要執行的命令。
+<ul><li> 不可將<code>/</code>寫在命令之前。</li></ul></li>
+<li> <code>/execute  as somebody at somebody run say 嘿</code></li></ul></li>
+<li> 舊命令轉換式示例：
+<ul><li> <code>/execute  @e ~ ~ ~ detect ~ ~ ~ stone 0 say 石頭！</code>變成<code>/execute  as @e at @s if block ~ ~ ~ stone run say 石頭！</code></li>
+<li> <code>/execute  @e ~ ~ ~ detect ~ ~ ~ grass 0 summon pig</code>變成<code>/execute  at @e if block ~ ~ ~ grass run summon pig</code></li>
+<li> <code>/execute  @e ~ ~ ~ say 嗨！</code>變成<code>/execute  as @e run say 嗨！</code></li></ul></li></ul></li></ul>
+<dl><dt> <code>/experience </code></dt></dl>
+<ul><li> <code>/xp </code>現在屬於<code>/experience </code>的別名。</li>
+<li> 拆分為以下3個子命令：
+<ul><li> <code>/experience  add &lt;目標玩家&gt; &lt;數量&gt; [points|levels]</code>
+<ul><li> 為<code>&lt;目標玩家&gt;</code>增加<code>&lt;數量&gt;</code>點數或等級（默認值為點數）。</li>
+<li> 增加經驗點數一樣可以使你提升等級，和原來一樣。</li>
+<li> 現在<code>&lt;數量&gt;</code>支持負數，使你減去一定數量的點數。</li>
+<li> 減去點數可以使你等級下降。</li></ul></li>
+<li> <code>/experience  set &lt;目標玩家&gt; &lt;數量&gt; [points|levels]</code>。
+<ul><li> 為<code>&lt;目標玩家&gt;</code>設定<code>&lt;數量&gt;</code>點數或等級（默認值為點數）。</li>
+<li> 你不能夠設置超過該等級限制的點數上限。</li>
+<li> 當等級變動時，點數會維持同樣的比例。</li></ul></li>
+<li> <code>/experience  query &lt;目標玩家&gt; (points|levels)</code>
+<ul><li> 返回<code>&lt;目標玩家&gt;</code>的點數或等級。</li></ul></li></ul></li></ul>
+<dl><dt> <code>/fill </code></dt></dl>
+<ul><li> <code>/fill </code>語法被修改了
+<ul><li> <code>/fill  &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;方塊&gt; &lt;數據&gt; replace [替代方塊] [替代方塊數據]</code>變成<code>/fill  &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;目標方塊&gt; replace [方塊]</code></li>
+<li> <code>/fill  &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;方塊&gt; [數據] [destroy|hollow|keep|outline|replace] [數據標籤]</code>變成<code>/fill  &lt;起始框選點&gt; &lt;終止框選點&gt; &lt;方塊&gt; [destroy|hollow|keep|outline|replace]</code></li></ul></li></ul>
+<dl><dt> <code>/function </code></dt></dl>
+<ul><li> <code>/function </code>不再包含<code>&lt;if|unless&gt; &lt;指定實體&gt;</code>參數
+<ul><li> 這項功能已經被遷移至<code>/execute </code></li>
+<li> <code>/function  foo:bla if @e</code>將變為<code>/execute  if entity @e run function foo:bla</code></li></ul></li></ul>
+<dl><dt> <code>/gamerule </code></dt></dl>
+<ul><li> <code>/gamerule </code>不再允許未知的遊戲規則（「自定義遊戲規則」）
+<ul><li> 你可以使用函數 或記分板 作為替代，而不會失去原有效果。</li>
+<li> 先前存在的自定義規則也無法使用，只能使用原始的遊戲規則。</li></ul></li>
+<li> <code>/gamerule </code>現在將會檢查對應的數據類型 （將string給予int顯然是錯的）。</li>
+<li> 移除了遊戲規則<code>gameLoopFunction</code>，用函數標籤<code>minecraft:tick</code>代替。</li></ul>
+<dl><dt> <code>/give </code></dt></dl>
+<ul><li> <code>/give </code>語法被修改了
+<ul><li> <code>/give  &lt;目標玩家&gt; &lt;目標物品名稱&gt; [數量] [數據值] [數據標籤]</code>將變為<code>/give  &lt;目標玩家&gt; &lt;目標物品&gt; [數量]</code></li>
+<li> 參閱下方的物品參數類型以獲取更多細節</li></ul></li></ul>
+<dl><dt> <code>/kill </code></dt></dl>
+<ul><li> <code>目標實體</code>現在是必選的。</li></ul>
+<dl><dt> <code>/locate </code></dt></dl>
+<ul><li> y坐標位置現在返回<code>64</code>而非<code>?</code>。</li>
+<li> 配合<code>/execute  store</code>時，命令的<code>result</code>將會改成返回與目標結構的距離。</li>
+<li> 現在允許原來分類在<code>Temple</code>、<code>Desert_Pyramid</code>、<code>Igloo</code>、<code>Jungle_Pyramid</code>和<code>Swamp_Hut</code>下所有結構的不同結構名稱。</li></ul>
+<dl><dt> <code>/particle </code></dt></dl>
+<ul><li> <code>&lt;額外參數&gt;</code>現在被移除，取而代之的<code>blockcrack</code>粒子效果可以在其<code>&lt;粒子名稱&gt;</code>後使用方塊參數。
+<ul><li> <code>/particle  block polished_granite ~ ~ ~ 0 0 0 0 1</code></li></ul></li></ul>
+<div class="collapsible collapsed" data-expandtext="show" data-collapsetext="hide" style="width:400px;">
+<ul><li> 更改了粒子名稱。</li></ul>
+<div class="collapsible-content">
+<ul><li> <code>舊名稱</code> -&gt; <code>新名稱</code>
+<ul><li> <code>mobSpellAmbient</code> -&gt; <code>ambient_entity_effect</code></li>
+<li> <code>angryVillager</code> -&gt; <code>angry_villager</code></li>
+<li> <code>blockdust, blockcrack</code> -&gt; <code>block</code></li>
+<li> <code>damageIndicator</code> -&gt; <code>damage_indicator</code></li>
+<li> <code>dragonbreath</code> -&gt; <code>dragon_breath</code></li>
+<li> <code>dripLava</code> -&gt; <code>dripping_lava</code></li>
+<li> <code>dripWater</code> -&gt; <code>dripping_water</code></li>
+<li> <code>reddust</code> -&gt; <code>dust</code></li>
+<li> <code>spell</code> -&gt; <code>effect</code></li>
+<li> <code>mobappearance</code> -&gt; <code>elder_guardian</code></li>
+<li> <code>enchantmenttable</code> -&gt; <code>enchant</code></li>
+<li> <code>magicCrit</code> -&gt; <code>enchanted_hit</code></li>
+<li> <code>endRod</code> -&gt; <code>end_rod</code></li>
+<li> <code>mobSpell</code> -&gt; <code>entity_effect</code></li>
+<li> <code>largeexplosion</code> -&gt; <code>explosion</code></li>
+<li> <code>hugeexplosion</code> -&gt; <code>explosion_emitter</code></li>
+<li> <code>fallingdust</code> -&gt; <code>falling_dust</code></li>
+<li> <code>fireworksSpark</code> -&gt; <code>firework</code></li>
+<li> <code>wake</code> -&gt; <code>fishing</code></li>
+<li> <code>happyVillager</code> -&gt; <code>happy_villager</code></li>
+<li> <code>instantSpell</code> -&gt; <code>instant_effect</code></li>
+<li> <code>iconcrack</code> -&gt; <code>item</code></li>
+<li> <code>slime</code> -&gt; <code>item_slime</code></li>
+<li> <code>snowballpoof</code> -&gt; <code>item_snowball</code></li>
+<li> <code>largesmoke</code> -&gt; <code>large_smoke</code></li>
+<li> <code>townaura</code> -&gt; <code>mycelium</code></li>
+<li> <code>explode, snowshovel</code> -&gt; <code>poof</code></li>
+<li> <code>droplet</code> -&gt; <code>rain</code></li>
+<li> <code>sweepAttack</code> -&gt; <code>sweep_attack</code></li>
+<li> <code>totem</code> -&gt; <code>totem_of_undying</code></li>
+<li> <code>suspended</code> -&gt; <code>underwater</code></li>
+<li> <code>witchMagic</code> -&gt; <code>witch</code></li>
+<li> <code>take</code> -&gt; 被移除</li>
+<li> <code>footstep</code> -&gt; 被移除</li>
+<li> <code>depthsuspend</code> -&gt; 被移除</li></ul></li></ul>
+</div></div>
+<dl><dt> <code>/playsound </code></dt></dl>
+<ul><li> <kbd class="key nowrap" style="border: 1px solid #AAA;background-color: #F9F9F9;background-image: -webkit-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: -o-linear-gradient(#EEE, #F9F9F9, #EEE);background-image: linear-gradient(#EEE, #F9F9F9, #EEE);padding: 0.1em 0.3em;font-family: inherit;font-size: 85%">Tab ↹</kbd>可以用來補全自定義聲音事件了。</li></ul>
+<dl><dt> <code>/replaceitem </code></dt></dl>
+<ul><li> <code>/replaceitem </code>語法被修改了
+<ul><li> <code>/replaceitem  block &lt;目標位置&gt; &lt;目標槽位&gt; &lt;目標物品名稱&gt; [數量] [數據值] [數據標籤]</code>將變為<code>/replaceitem  block &lt;目標位置&gt; &lt;目標槽位&gt; &lt;目標物品&gt; [數量]</code></li>
+<li> <code>/replaceitem  entity &lt;目標實體&gt; &lt;目標槽位&gt; &lt;目標物品名稱&gt; [數量] [數據值] [數據標籤]</code>將變為<code>/replaceitem  entity &lt;目標實體&gt; &lt;目標槽位&gt; &lt;目標物品&gt; [數量]</code></li>
+<li> 參閱下方的物品參數類型以獲取更多細節。</li></ul></li>
+<li> <code>slot</code>參數不在需要<code>slot.</code>。
+<ul><li> 比如，<code>slot.hotbar.1</code>變為<code>hotbar.1</code>。</li></ul></li></ul>
+<dl><dt> <code>/scoreboard </code></dt></dl>
+<ul><li> <code>/scoreboard </code>移除了<code>[&lt;數據標籤&gt;]</code>，因為<code>NBT</code>參數在實體選擇器中的取代。</li>
+<li> 移除了<code>/scoreboard  players tag</code>與<code>/scoreboard  teams</code>，並且由<code>/tag </code>與<code>/team </code>分別取代。</li>
+<li> <code>/scoreboard  players test</code>被移除，被<code>/execute  (if|unless) score</code>、實體選擇器和<code>/scoreboard  players get &lt;target&gt; &lt;objective&gt;</code>替代。</li></ul>
+<dl><dt> <code>/setblock </code></dt></dl>
+<ul><li> <code>/setblock </code>語法被修改了
+<ul><li> <code>/setblock  &lt;目標位置&gt; &lt;目標方塊名稱&gt; [數據值] [模式] [數據標籤]</code>將變為<code>/setblock  &lt;目標位置&gt; &lt;目標方塊&gt; [模式]</code></li>
+<li> 參閱下方的方塊參數類型以獲取更多細節。</li></ul></li></ul>
+<dl><dt> <code>/stats </code></dt></dl>
+<ul><li> 被移除，現在是<code>/execute </code>的一部分</li>
+<li> 並非用<code>/execute </code>直接替換，運行方式也有改變：
+<ul><li> 現在只儲存指定命令的統計，而不是實體或方塊所有命令執行統計。</li>
+<li> 只有兩種統計信息：<code>result</code>和<code>success</code>，包含了所有舊的統計類型。</li></ul></li></ul>
+<dl><dt> <code>/stopsound </code></dt></dl>
+<ul><li> 現在可以使用<code>*</code>取代<code>source</code>來停止特定名字的所有音效。</li></ul>
+<dl><dt> <code>/tag </code></dt></dl>
+<ul><li> 取代了 <code>/scoreboard  players tag</code></li>
+<li> 維持原有的語法
+<ul><li> <code>/tag  &lt;目標實體&gt; add &lt;目標標籤&gt;</code> 用以附加<code>&lt;目標標籤&gt;</code>於<code>&lt;目標實體&gt;</code>。</li>
+<li> <code>/tag  &lt;目標實體&gt; remove &lt;目標標籤&gt;</code> 用以移除<code>&lt;目標標籤&gt;</code>從<code>&lt;目標實體&gt;</code>。</li>
+<li> <code>/tag  &lt;目標實體&gt; list</code> 用以列出<code>&lt;目標實體&gt;</code>的所有標籤。</li></ul></li></ul>
+<dl><dt> <code>/team </code></dt></dl>
+<ul><li> 取代了 <code>/scoreboard  teams</code></li>
+<li> 維持原有的語法
+<ul><li> <code>/team  add &lt;目標隊伍&gt; [&lt;顯示名稱&gt;]</code></li>
+<li> <code>/team  empty &lt;目標隊伍&gt;</code></li>
+<li> <code>/team  join &lt;目標隊伍&gt; [&lt;成員&gt;]</code></li>
+<li> <code>/team  leave [&lt;成員&gt;]</code></li>
+<li> <code>/team  list [&lt;目標隊伍&gt;]</code></li>
+<li> <code>/team  option &lt;目標隊伍&gt; &lt;設定選項&gt; &lt;值&gt;</code></li></ul></li></ul>
+<dl><dt> <code>/testfor </code>、<code>/testforblock </code>與<code>/testforblocks </code></dt></dl>
+<ul><li> 移除，被整合至<code>/execute </code>。</li></ul>
+<dl><dt> <code>/toggledownfall </code></dt></dl>
+<ul><li> 移除，該命令曾經總是用於終止下雨，然後讓你失望的是一會兒後又下起了雨。</li>
+<li> 應使用<code>/weather </code>。</li></ul>
+<dl><dt> <code>/tp </code>與<code>/teleport </code></dt></dl>
+<ul><li> <code>/tp </code>現在是<code>/teleport </code>的別名（與<code>/w </code>、<code>/msg </code>與<code>/tell </code>一樣）。</li>
+<li> 對<code>/teleport </code>進行了簡化，以避免表意模糊。
+<ul><li> <code>/teleport  &lt;指定實體&gt;</code> 不支持旋轉或朝向，能將你傳送到指定實體的位置。</li>
+<li> <code>/teleport  &lt;x y z&gt;</code> 不支持旋轉或朝向，能使執行者傳送到指定位置。</li>
+<li> <code>/teleport  &lt;指定實體&gt; &lt;指定實體&gt;</code> 不支持旋轉或朝向，能使目標對象傳送到指定實體位置。</li>
+<li> <code>/teleport  &lt;目標對象&gt; &lt;x y z&gt; [垂直旋轉度數 水平旋轉度數]</code> 能使目標對象傳送到指定位置並選擇性改變轉向。</li>
+<li> <code>/teleport  &lt;目標對象&gt; &lt;x y z&gt; facing [指定朝向坐標]</code> 能使目標對象傳送到指定位置並朝向指定的座標。</li>
+<li> <code>/teleport  &lt;目標對象&gt; &lt;x y z&gt; facing entity &lt;指定朝向實體&gt; [feet|eyes]</code>能使目標對象傳送到指定位置並指定朝向實體的腳或眼睛位置（預設為feet）。</li>
+<li> 現在允許跨維度的傳送。</li></ul></li></ul>
+<dl><dt> <code>/trigger </code></dt></dl>
+<ul><li> 新語法<code>/trigger  &lt;目標&gt;</code>現在視為<code>/trigger  &lt;目標&gt; add 1</code>的快捷寫法。</li></ul>
+<dl><dt> <code>/weather </code></dt></dl>
+<ul><li> 如果沒有設定持續時間，那麼將固定持續5分鐘（原本是隨機設定時間的）。</li></ul>
+<h4>參數類型</h4>
+<dl><dt><b>目標選擇器</b> </dt></dl>
+<ul><li> 引入了更多對錯誤的處理。</li>
+<li> 參數可以被引號括住（如果參數包含一些特殊字符，如<code>@e[name="bla bla"]</code>中的空格）
+<ul><li> 不允許<code>limit=0</code>、<code>level=-10</code>和<code>gamemode=purple</code>之類的錯誤輸入。</li></ul></li>
+<li> 不再存在最小值與最大值的分別設定，取而代之地是可以設定範圍。
+<ul><li> <code>level=10</code>要求等級為10</li>
+<li> <code>level=10..12</code>要求等級為10、11或12</li>
+<li> <code>level=5..</code>要求等級大於等於5</li>
+<li> <code>level=..15</code>要求等級小於等於15</li></ul></li>
+<li> 將難懂的簡寫進行了重命名。
+<ul><li> <code>m</code> -&gt; <code>gamemode</code></li>
+<li> <code>l</code>與<code>lm</code> -&gt; <code>level</code></li>
+<li> <code>r</code>與<code>rm</code> -&gt; <code>distance</code></li>
+<li> <code>rx</code>與<code>rxm</code> -&gt; <code>x_rotation</code></li>
+<li> <code>ry</code>與<code>rym</code> -&gt; <code>y_rotation</code></li>
+<li> <code>c</code> -&gt; <code>limit</code></li></ul></li>
+<li> <code>x</code>、<code>y</code>、<code>z</code>、<code>r</code>、<code>rm</code>、<code>dx</code>、<code>dy</code>、<code>dz</code>現在是雙精度浮點數了，支持<code>12.34</code>這樣的數值。
+<ul><li> <code>x</code>和<code>z</code>不再有中心修正了，取而代之是可以使用小數形式的實體坐標。
+<ul><li> 這意味著<code>x=0</code>不再等同於<code>x=0.5</code>。</li></ul></li></ul></li>
+<li> <code>gamemode</code>（原本的<code>m</code>）不再支持數字ID或縮寫了。</li>
+<li> <code>limit</code> (以前是<code>c</code>）不再支持負數。
+<ul><li> 請使用<code>sort=furthest</code>作為替代。</li></ul></li>
+<li> <code>name</code>參數現在支持空格了（需要使用引號括起來）。</li>
+<li> 現在在目標選擇器中可以重復使用參數了。
+<ul><li> <code>tag=foo,tag=bar,tag=!baz</code>將選擇有<code>foo</code>、<code>bar</code>標籤而沒有<code>baz</code>的目標。</li>
+<li> <code>type=!cow,type=!chicken</code>將選擇不是牛也不是雞的目標。</li>
+<li> <code>type=cow,type=chicken</code>是不允許的，因為沒有目標會同時是雞與牛。</li></ul></li>
+<li> 你可以指定排序方式。
+<ul><li> <code>sort=nearest</code>是原來的默認值，按距離排序（<code>@p</code>的默認值）</li>
+<li> <code>sort=furthest</code>則與預設相反（之前你會使用<code>c=-5</code>來達到這點）</li>
+<li> <code>sort=random</code>為隨機排序（當前<code>@r</code>的默認值）</li>
+<li> <code>sort=arbitrary</code>為不進行排序（當前<code>@e</code>和<code>@a</code>的默認值，可以提高選擇器效率）</li></ul></li>
+<li> 指定分數現在是<code>scores={foo=1,bar=1..5}</code>。不同的目標都寫在<code>{}</code>里，以逗號分隔。</li>
+<li> 你可以用<code>advancements={foo=true,bar=false,custom:something={criterion=true}}</code>來測試進度
+<ul><li> <code>true</code>代表「已完成進度/判據」，<code>false</code>代表「未完成進度/判據」</li>
+<li> 不同的進度都寫在<code>{}</code>里，以逗號分隔。</li>
+<li> 也可以使用一組進度的判據(criteria)來測試，只需要把其進度的數值寫作<code>{criteria1=true/false,criteria2=true/false...}</code>即可。</li></ul></li></ul>
+<dl><dt> <b>方塊</b> </dt></dl>
+<ul><li> 之前的<code>&lt;方塊&gt;</code>參數（可能帶有可選參數[&lt;數據值&gt;]、[&lt;數據標籤&gt;]），現在被整合為一個單獨的<code>&lt;方塊&gt;</code>參數，例子：
+<ul><li> <code>stone</code></li>
+<li> <code>minecraft:redstone_wire[power=15,north=up,south=side]</code></li>
+<li> <code>minecraft:jukebox{RecordItem:{...}}</code></li>
+<li> <code>minecraft:furnace[facing=north]{BurnTime:200}</code></li></ul></li>
+<li> 方塊ID是必需的（就如同過去一樣，如果沒有設定命名空間則將設為預設值：<code>minecraft:</code>）。</li>
+<li> 方塊狀態位於<code>[]</code>內，名稱與數值用等號分隔，名稱數值組用逗號分隔，且必須是該方塊支持的狀態。這是可選的。
+<ul><li> <code>minecraft:stone[doesntexist=purpleberry]</code>有語法錯誤，因為<code>stone</code>（石頭）沒有<code>doesntexist</code></li>
+<li> <code>minecraft:redstone_wire[power=tuesday]</code>有語法錯誤，因為<code>redstone_wire</code>（紅石線）的<code>power</code>是一個在0和15之間的數字</li></ul></li>
+<li> 數據標籤位於<code>{}</code>內，就與以前一樣，這是可選的</li>
+<li> 如果方塊參數被用於檢查方塊，則只會檢查參數內指定的方塊狀態與數據標籤，其餘全部當作符合。
+<ul><li> 如果檢查<code>redstone_wire[power=15]</code>，那它將會檢查power而忽略其他狀態，如<code>north</code></li></ul></li>
+<li> 如果方塊參數用於設置方塊，你所提供的任何狀態與標籤都會被設置，而其他未設置的狀態與標籤會被設為預設值
+<ul><li> 如果你設置<code>redstone_wire[power=15]</code>，那它將設置<code>power</code>到15卻使<code>north</code>設為預設值（在這個狀態下被設置為<code>none</code>）</li></ul></li>
+<li> 1.13將不會有數據值，而變為不同的方塊或狀態</li></ul>
+<dl><dt> <b>物品</b> </dt></dl>
+<ul><li> 之前的<code>&lt;物品&gt;</code>參數（可能帶有可選參數[&lt;數據值&gt;]、[&lt;數據標籤&gt;]），現在被整合為一個單獨的<code>&lt;物品&gt;</code>參數，例子：
+<ul><li> <code>stone</code></li>
+<li> <code>minecraft:stick{display:{Name:"\"謊言之杖\""}}</code></li></ul></li>
+<li> 物品ID是必需的（就如同過去一般，如果沒有設定命名空間則將設為預設值<code>minecraft:</code>）。</li>
+<li> 數據標籤位於<code>{}</code>，就與以前一樣，這是可選的。</li>
+<li> 1.13不再有物品數據值、物品損傷值。
+<ul><li> 在可行的情況中，損傷值會移入到NBT中。</li>
+<li> 其他信息的處理方法是分出獨立的物品或移入到NBT中。</li></ul></li></ul>
+
+<h3>方塊</h3>
+<ul><li> 方塊的ID限制已經完全消失，因為使用了字符串ID。</li>
+<li> 以往沒有底部材質的方塊現在有底部材質了（比如中繼器、比較器和火把，等等），但不包括紅石線。</li>
+<li> 撥動拉桿會產生紅石粒子。</li>
+<li> 含碰撞箱的方塊現在擁有匹配的外形邊界了。
+<ul><li> 受影響的方塊：鐵砧、煉藥鍋、漏斗、柵欄、鐵柵欄、玻璃板、已填充的末地傳送門框架、藤蔓、睡蓮、樓梯、釀造台和活塞</li>
+<li> 更新了鐵砧和漏斗的碰撞箱</li>
+<li> 不影響碰撞箱比方塊模型小的方塊，例如靈魂沙和雪堆。</li></ul></li>
+<li> 床現在需要下方方塊支撐，以往只需要在放置的時候有方塊支撐即可，之後可以移除支撐。</li>
+<li>箱子 與陷阱箱 可以直接放在相應的大型箱子的旁邊，不再需要一個方塊作為間隔。
+<ul><li> 箱子/陷阱箱僅會與左側或右側相鄰的朝向相同的箱子/陷阱箱合併。並且潛行放置時總是不會合併。</li></ul></li>
+<li> 南瓜 與柵欄門 不再需要下方支撐方塊就能放置。</li>
+<li> 怪物蛋 可被立刻破壞，無視工具。
+<ul><li> 當使用精准採集 附魔破壞時，其本體會掉落。</li></ul></li>
+<li> 樹皮 可被合成了。四個原木 擺成方形可以得到三個樹皮。</li>
+<li> 數個面向不同方向的藤蔓 （包括底部）能放在同一方塊的空間中了。</li></ul>
+<dl><dt><b>發射器</b> </dt></dl>
+<ul><li> 合成發射器不再需要無耐久損耗的弓 了。</li></ul>
+<dl><dt><b>岩漿塊</b> </dt></dl>
+<ul><li> 會在海底峽谷底部生成，製造出向下的氣泡柱。</li></ul>
+
+<h3>>物品</h3>
+<dl><dt> <b>胡蘿蔔釣竿</b></dt></dl>
+<ul><li> 合成胡蘿蔔釣竿不再需要無耐久損耗的釣魚竿 了。</li></ul>
+
+<h3>生物</h3>
+<dl><dt> <b>常規</b></dt></dl>
+<ul><li> 僵屍 、骷髏 、豹貓 和狼 現在會自然攻擊幼年海龜了，僵屍和僵屍豬人還會尋找和踩碎海龜蛋。</li></ul>
+<dl><dt> <b>馬</b> </dt></dl>
+<ul><li> 模型被修改得與其他生物一致。</li>
+<li> 吃草時張嘴等動畫從模型中移除。</li></ul>
+<dl><dt> <b>魷魚</b> </dt></dl>
+<ul><li> 被攻擊時會噴射墨汁以自衛。</li></ul>
+
+<h3>非生物實體</h3>
+<dl><dt><b>常規</b></dt></dl>
+<ul><li> 落入水中的物品實體現在會浮至水面。</li></ul>
+<dl><dt><b>浮標</b> </dt></dl>
+<ul><li> 釣魚竿的浮標現在有了實體ID<code>fishing_bobber</code>。
+<ul><li> 此ID僅用作測試，無法召喚。</li></ul></li></ul>
+<dl><dt> <b>物品展示框</b> </dt></dl>
+<ul><li> 物品展示框現在可以放在地面和天花板上。</li></ul>
+<dl><dt><b>實體</b> </dt></dl>
+<ul><li> 畫 現在用含命名空間的ID區分圖案。</li></ul>
+<dl><dt> <b>畫</b> </dt></dl>
+<ul><li> 現在用命名空間ID區分圖案。</li></ul>
+
+<h3>世界生成</span></h3>
+<dl><dt> <b>常規</b></dt></dl>
+<ul><li> 重寫了世界生成系統。</li>
+<li> 在下界 現在會生成垂直的空洞——從基岩層延伸至y=35，y=10以下填滿熔岩 。在下界底部呈鏈狀生成，常形成寬闊的峽谷。</li></ul>
+<dl><dt><b>樹 </b></dt></dl>
+<ul><li> 大型雲杉樹現在會將附近的草方塊 轉變成灰化土 。</li></ul>
+<dl><dt> <b>女巫小屋</b> </dt></dl>
+<ul><li> 裡面的花盆現在會帶著一個蘑菇生成。
+<ul><li> 在此之前，完全是空著的。</li></ul></li></ul>
+<dl><dt> <b>自定義超平坦 </b></dt></dl>
+<ul><li> 預設按鈕不再使用版本號。</li></ul>
+<dl><dt><b>自定義世界類型</b></dt></dl>
+<ul><li> 被移除。</li></ul>
+<h2>計劃新內容</h2>
+<h3>方塊</h3>
+
+<dl><dt><b>珊瑚</b></dt></dl>
+<ul><li> 以方塊的形式存在（之前宣佈過還有樓梯和半磚，但被放棄）</li>
+<li> 離開水放置會死亡
+<ul><li> 變灰/白</li>
+<li> 不可復活</li></ul></li>
+<li> 已經展示了5種顏色</li>
+<li> 材質可能會被替換</li></ul>
+
+<h3>生物</h3>
+<dl><dt><b>海豚</b></dt></dl>
+<ul><li> 會常常躍出水面和鑽入水面</li>
+<li> 會帶領玩家前往沈沒的寶藏</li>
+<li> 死亡後無掉落物</li></ul>
+<h3>世界生成</h3>
+<dl><dt><b>沈船</b></dt></dl>
+<ul><li> 內含箱子 ，箱子里有戰利品。</li>
+<li> 被展示時主要由深色橡木木板 和深色橡木柵欄 組成</li>
+<li> 會有多種變種。</li></ul>
+<dl><dt><b>冰山</b></dt></dl>
+<ul><li> 由浮冰 、雪層 和雪塊 組成。</li>
+<li> 在凍洋生物群系 表面生成。</li>
+<li> 會以高柱和地道形式生成。</li></ul>
+<dl><dt><b>水下廢墟</b></dt></dl>
+<ul><li> 在海洋的水下生成；</li>
+<li> 由石磚、磨制花崗岩、海晶燈和岩漿塊構成。</li></ul>
+
+<h2>計劃新更改</h2>
+<h3>常規</h3>
+<ul><li> 世界生成會用數據驅動、用json文件、允許自定義結構。</li>
+<li> 水 能被放置在和半透明方塊（比如柵欄 ，在方塊上使用水桶）相同的空間里
+<ul><li> 已經水下放置的樓梯和台階能工作，但其他透明方塊不行。</li>
+<li> 如果在一個半透明方塊旁放置水源方塊，其創造的水流不會流過此方塊。</li>
+<li> 在水流中放置的物品會穿過流經的半透明方塊，而不是像沒有水一樣撞上去。</li></ul></li></ul>
+<h2>未確定的特性</h2>
+<p>這些是關於1.13未確定的特性，但在1.13開發期間它們被開發者提及或者展示過。主條目：提及特性 </p>
+<ul><li> 不使用mod來更改因生物群系而不同的顏色 （比如樹葉、水、天空）。</li>
+<li> 配方書的設計或許會更改。</li>
+<li> <code>/save-all </code>、<code>/save-on </code>和<code>/save-off </code>將被<code>/save </code>、<code>/save  enable</code>和<code>/save  disable</code>取代。</li>
+<li> <code>/ban </code>、<code>/ban-ip </code>、<code>/pardon </code>和<code>/pardon-ip </code>將被其他命令取代。</li></ul>
+
+
+
+
+<h2>圖片</h2>
+
+ <p>
+<img src="img\mcwiki1_13_1.png" />
+<br />「數據包」的結構的例子。圖片來自Dinnerbone的推特。
+</p>
+
+ <p>
+<img src="img\mcwiki1_13_2.jpg" />
+<br />配方書中燒煉配方的截圖。
+</p>
+ <p>
+<img src="img\mcwiki1_13_3.jpeg" />
+<br />可能的配方書新設計的首張圖片
+</p>
+ <p>
+<img src="img\mcwiki1_13_4.jpeg" />
+<br />水域更新的預告截圖，展示了新的計劃生物：海豚
+</p>
+ <p>
+<img src="img\mcwiki1_13_5.jpg" />
+<br />第一張有關海龜的圖片，由Mojang發佈
+</p>
+ <p>
+<img src="img\mcwiki1_13_6.jpg" />
+<br />第一張有關海龜蛋的圖片
+</p>
+ <p>
+<img src="img\mcwiki1_13_7.jpg" />
+<br />第二張有關海龜蛋的照片，展示了小海龜從蛋中孵化出來
+</p>
+ <p>
+<img src="img\mcwiki1_13_8.png" />
+<br />沈船的預告截圖
+</p>
+ <p>
+<img src="img\mcwiki1_13_9.jpg" />
+<br />一個由冰山組成的生物群系
+</p>
+ <p>
+<img src="img\mcwiki1_13_10.png" />
+<br />一個海底峽谷
+</p>
+ <p>
+<img src="img\mcwiki1_13_11.jpg" />
+<br />海洋生物群系中自然生成的海帶
+</p>
+ <p>
+<img src="img\mcwiki1_13_12.png" />
+<br />自然生成的海草
+</p>
+ <p>
+<img src="img\mcwiki1_13_13.jpg" />
+<br />一大片自然生成的海草
+</p>
+ <p>
+<img src="img\mcwiki1_13_14.jpg" />
+<br />一隻僵屍正踩在海龜蛋上
+</p>
+ <p>
+<img src="img\mcwiki1_13_15.png" />
+<br />海龜蛋孵化前的三個階段：未開裂、微裂、破裂
+</p>
+ <p>
+<img src="img\mcwiki1_13_16.jpg" />
+<br />一個帶有忠誠附魔的三叉戟正朝玩家飛回來。
+
+</p>
+ <p>
+<img src="img\mcwiki1_13_17.png" />
+<br />一名玩家在擲出附有激流III魔咒的三叉戟後高高「飛起」。
+</p>
+ <p>
+<img src="img\mcwiki1_13_18.png" />
+<br />一名頭戴海龜殼的玩家，散髮著水肺藥水的顆粒
+</p>
+ <p>
+<img src="img\mcwiki1_13_19.png" />
+<br />一群鱈魚在海洋中游泳。
+</p> <p>
+<img src="img\mcwiki1_13_20.png" />
+<br />一群有3條的鮭魚。
+</p> <p>
+<img src="img\mcwiki1_13_21.png" />
+<br />一條完全膨脹的河豚，後方有幾條未膨脹的河豚和一群鱈魚。
+</p> <p>
+<img src="img\mcwiki1_13_22.png" />
+<br />一條完全未膨脹的河豚的近距離截圖
+</p> <p>
+<img src="img\mcwiki1_13_23.png" />
+<br />Jeb發佈的PC版中的草徑的截圖。
+</p> <p>
+<img src="img\mcwiki1_13_24.jpg" />
+<br />發佈的第二張關於草徑的圖片。
+</p> <p>
+<img src="img\mcwiki1_13_25.jpg" />
+<br />第一張草徑在村莊里生成的圖片，由Tommaso Checchi發推。
+</p> <p>
+<img src="img\mcwiki1_13_26.png" />
+<br />草方塊和草徑之間的1⁄16個方塊高度差距。
+</p> <p>
+<img src="img\mcwiki1_13_27.jpg" />
+<br />海龜的第一張圖片。
+</p> <p>
+<img src="img\mcwiki1_13_28.png" />
+<br />海龜在草方塊上移動。
+</p> <p>
+<img src="img\mcwiki1_13_29.png" />
+<br />一隻海龜正在水池上游泳。
+</p> <p>
+<img src="img\mcwiki1_13_30.jpg" />
+<br />一隻骷髏正在攻擊小海龜。
+</p> <p>
+<img src="img\mcwiki1_13_31.jpg" />
+<br />一隻狼正在攻擊一群小海龜。
+</p> <p>
+<img src="img\mcwiki1_13_32.jpg" />
+<br />兩只海龜正在交配。
+</p> <p>
+<img src="img\mcwiki1_13_33.jpg" />
+<br />一個玩家正在用海草吸引一群海龜。
+</p> <p>
+<img src="img\mcwiki1_13_34.png" />
+<br />
+</p> <p>
+<img src="img\mcwiki1_13_.png" />
+<br />
+</p>
+
+
+<p><br/></p></div>
+</body>
+
+</html>

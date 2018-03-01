@@ -1,7 +1,14 @@
 {
     "category": "原材料物品",
     "blocks": [
-		{
+        {
+            "file_name": "wuping_keguodenangua",
+            "name": "雕刻过的南瓜",
+            "material": "南瓜",
+            "use": "手持剪刀对南瓜右键会将其变为雕刻过的南瓜",
+            "detail": "版本1.13加入\n\n版本1.13   17w47a   加入没有脸图案的南瓜,此前的南瓜已改名为'雕刻过的南瓜'.\n\n手持剪刀对南瓜右键会将其变为雕刻过的南瓜,并掉落4份南瓜种子.\n\n放置南瓜不再需要下方有支撑方块.\n\n名称\ncarved_pumpkin"
+
+        },{
             "file_name": "wuping_lieyangbang",
             "name": "烈焰棒",
             "material": "烈焰人 死后掉落",

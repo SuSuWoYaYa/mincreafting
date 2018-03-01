@@ -759,7 +759,7 @@ public class TutorialListData {
     public static String[] tutorial_chujihongshi_names = {
             "红石图例",
             "飞行技术",
-            "命令详解",
+            "命令详解(命令大全)",
             "命令方块",
             "漏斗",
             "机械装置",
@@ -826,7 +826,7 @@ public class TutorialListData {
     public static String[] tutorial_chujihongshi_names_zw = {
             "紅石圖例",
             "飛行技術",
-            "命令詳解",
+            "命令詳解(命令大全)",
             "命令方塊",
             "漏斗",
             "機械裝置",
@@ -953,6 +953,7 @@ public class TutorialListData {
     };
 
     public static String[] tutorial_hongshijingjie_files_zw = {
+            "file:///android_asset/html_zw/wiki/mcwiki1.13.html",
             "file:///android_asset/html_zw/wiki/huochezhang.html",
             "file:///android_asset/html_zw/wiki/kuangche.html",
             "file:///android_asset/html_zw/wiki/kuangcheqidongqi.html",
@@ -974,6 +975,7 @@ public class TutorialListData {
 
 
     public static String[] tutorial_gaojijishu_names = {
+            "1.13 水域更新",
             "安装快照",
             "mods",
             "Mods安装",
@@ -1002,6 +1004,7 @@ public class TutorialListData {
             "使用ngrok搭建服务器",
     };
     public static String[] tutorial_gaojijishu_files = {
+            "file:///android_asset/html/wiki/mcwiki1.13.html",
             "file:///android_asset/html/wiki/anzhuankuaizhao.html",
             "file:///android_asset/html/wiki/mods.html",
             "file:///android_asset/html/wiki/modsanzhuang.html",
@@ -1032,6 +1035,7 @@ public class TutorialListData {
 
 
     public static String[] tutorial_gaojijishu_names_zw = {
+            "1.13 水域更新",
             "安裝快照",
             "mods",
             "Mods安裝",

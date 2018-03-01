@@ -2,6 +2,12 @@
     "category": "仅限命令",
     "blocks": [
         {
+            "file_name": "wuping_tiaoshibang",
+            "name": "调试棒",
+            "material": "",
+            "use": "只能使用指令获得",
+            "detail": "调试棒(Debug Stick)是一个用于修改方块的方块状态的物品.\n\n版本1.13加入\n\n获取\n调试棒只能使用指令,例如/give @p minecraft:debug_stick获得.虽然它的材质只是附魔了的木棒,但不能用于合成或利用附魔木棒来取得.\n\n用法\n调试棒能被用于调整方块状态.对方块点击使用 (预设为左键)将可以使你指定你所想要更改的方块状态.比如,你可以为指令方块修改conditional与facing这两个方块状态.对方块点击选取(预设为右键)将使你循环改变指定的方块状态.例如,你可以让指令方块让它朝向north、south、east或west,只要你指定了facing这个方块状态.潜行点击将会使它以反向循环.\n\n版本1.13  17w47a  加入了调试棒."
+        },{
             "file_name": "block_pingzhang",
             "name": "屏障",
             "material": " ",

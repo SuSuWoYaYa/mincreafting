@@ -311,7 +311,27 @@
       "material": "紫珀塊",
       "use": "紫珀塊樓梯自然生成在末地城裡\n所有樓梯類的屬性基本相同.",
       "detail": "詳情請參考任何木樓梯\n\n名稱:ID名稱:方塊ID\n紫珀塊樓梯:purpur_stairs:203"
-    },{
+    }{
+      "file_name": "haijingshilouti",
+      "name": "海晶石樓梯",
+      "material": "海晶石",
+      "use": "",
+      "detail": "版本1.13加入\n\nID名稱\nprismarine_stairs"
+    },
+    {
+      "file_name": "haijingshizhuanglouti",
+      "name": "海晶石磚樓梯",
+      "material": "海晶石磚 + 海晶石",
+      "use": "",
+      "detail": "版本1.13加入\n\nID名稱\nprismarine_bricks_stairs"
+    },
+    {
+      "file_name": "anhaijingshilouti",
+      "name": "暗海晶石樓梯",
+      "material": "暗海晶石",
+      "use": "",
+      "detail": "版本1.13加入\n\nID名稱\ndark_prismarine_stairs"
+    },,{
       "file_name": "shitaijie",
       "name": "石台階",
       "material": "石頭",
@@ -380,6 +400,26 @@
       "material": "紫珀塊",
       "use": "放置, 合成材料, \n台階類的屬性基本相同",
       "detail": "台階類的介紹非常非常長\n詳情請參考石台階\n\n台階使用ID和方塊數據來區分不同類型.它們也具有方塊形態,這有望在未來代替數據值.\n方塊名稱:	ID名稱:數字ID\n雙石台階:	double_stone_slab:43\n石台階:		stone_slab:44\n雙木台階:	double_wooden_slab:125\n木台階:		wooden_slab:126\n雙紅砂岩台階:double_stone_slab2:181\n紅砂岩台階:	stone_slab2:182\n雙紫珀塊台階:purpur_double_slab:204\n紫珀塊台階:	purpur_slab:205\n\n攜帶版\n方塊名稱:	數字ID\n雙木台階:	157\n木台階:		158\n\n方塊數據\n雙石台階\n43號方塊\nDV	描述\n0	雙石台階\n1	雙砂岩台階\n2	石質雙木台階\n3	雙圓石台階\n4	雙磚塊台階\n5	雙石磚台階\n6	雙地獄磚台階\n7	雙石英台階\n8	平滑雙石台階\n9	平滑雙砂岩台階\n15	雙石英台階 (底部)\n\n181號方塊\nDV	描述\n0	雙紅砂岩台階\n8	平滑雙紅砂岩台階\n\n石頭,砂岩,石英和紅砂岩台階在它們的頂部上都有一個材質.\n石台階\n44號方塊\nDV	描述\n0	石台階\n1	砂岩台階\n2	石質木台階\n3	圓石台階\n4	磚塊台階\n5	石磚台階\n6	地獄磚台階\n7	石英台階\n8	上半石台階\n9	上半砂岩台階\n10	上半石質木台階\n11	上半圓石台階\n12	上半磚塊台階\n13	上半石磚台階\n14	上半地獄磚台階\n15	上半石英台階\n\n182號方塊\nDV	描述\n0	紅砂岩台階\n8	上半紅砂岩台階\n\n雙木台階\n125號方塊\nDV	描述\n0	雙橡木台階\n1	雙雲杉台階\n2	雙樺木台階\n3	雙叢林台階\n4	雙金合歡台階\n5	雙深色橡木台階\n\n木台階\n126號方塊\nDV	描述\n0	橡木台階\n1	雲杉台階\n2	樺木台階\n3	叢林台階\n4	金合歡台階\n5	深色橡木台階\n8	上半橡木台階\n9	上半雲杉台階\n10	上半樺木台階\n11	上半叢林台階\n12	上半金合歡台階\n13	上半深色橡木台階"
+    },{
+      "file_name": "haijingshitaijie",
+      "name": "海晶石台階",
+      "material": "海晶石",
+      "use": "",
+      "detail": "版本1.13加入"
+    },
+    {
+      "file_name": "haijingshizhuangtaijie",
+      "name": "海晶石磚台階",
+      "material": "海晶石磚",
+      "use": "",
+      "detail": "版本1.13加入"
+    },
+    {
+      "file_name": "anhaijingshitaijie",
+      "name": "暗海晶石台階",
+      "material": "暗海晶石",
+      "use": "",
+      "detail": "版本1.13加入"
     }
   ]
 }

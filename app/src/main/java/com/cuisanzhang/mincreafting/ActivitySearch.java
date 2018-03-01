@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -133,7 +134,7 @@ public class ActivitySearch extends AppCompatActivity {
 
         LinearLayout emptyView;
         emptyView = (LinearLayout) findViewById(R.id.emptyView);
-        TextView textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);
+        textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);
 
         if(is_language_of_traditional_chinese){
             autoCompleteTextView.setHint("輸入文字進行搜索");
@@ -150,7 +151,7 @@ public class ActivitySearch extends AppCompatActivity {
 
 
 
-        textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);
+
 
 
         mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -275,6 +276,12 @@ public class ActivitySearch extends AppCompatActivity {
                 switch (actionId) {
                     case EditorInfo.IME_ACTION_DONE:
 //                        Toast.makeText(ActivitySearch.this, "点击-->IME_ACTION_DONE", Toast.LENGTH_SHORT).show();
+                        //防止崩溃
+                        if(imageViewSaerch == null
+                                || ActivitySearch.this == null
+                                || ActivitySearch.this.isFinishing()){
+                            break;
+                        }
                         imageViewSaerch.performClick();
                         break;
 
@@ -344,8 +351,11 @@ public class ActivitySearch extends AppCompatActivity {
             text += "的搜索结果";
 
         }
-
+        if (autoCompleteTextView == null) {
+            Log.e(TAG," autoCompleteTextView = null");
+        }
         autoCompleteTextView.setText(text);
+
 
         DbManage dbManage = new DbManage(ActivitySearch.this);
         searchResults = dbManage.seachString(search);
@@ -356,13 +366,34 @@ public class ActivitySearch extends AppCompatActivity {
             checkBoxStateList = new ArrayList<Boolean>();
 
 //            Log.e(TAG, "listView.setAdapter(listviewAdapter);");
+
+
+
             listviewAdapter = new MyAdapter(ActivitySearch.this);
+
+            if (listviewAdapter == null) {
+                Log.e(TAG," listviewAdapter = null");
+            }
+            if (listView == null) {
+                Log.e(TAG," listView = null");
+            }
             listView.setAdapter(listviewAdapter);
         } else {
 
 //            Log.e(TAG, "listView.setAdapter(null); ");
             listView.setAdapter(null);
-            textViewEmpty.setText("没有搜索到结果, 请试试其他关键字");
+
+            if (textViewEmpty == null) {
+                Log.e(TAG," textViewEmpty = null");
+            }
+
+            if(is_language_of_traditional_chinese){
+                textViewEmpty.setText("沒有搜索到結果, 請試試其他關鍵字");
+            }else {
+                textViewEmpty.setText("没有搜索到结果, 请试试其他关键字");
+
+            }
+
         }
 
         dbManage.closeDatabase();
