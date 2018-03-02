@@ -68,7 +68,7 @@ public class ActivitySearch extends AppCompatActivity {
     //    for admob
 //    private AdRequest adRequest;
     boolean isNetworkConnected = false;
-    boolean isVip ;
+    boolean isVip;
 
     private String[] search;
 
@@ -78,14 +78,14 @@ public class ActivitySearch extends AppCompatActivity {
 
 
     private String language;
-    private boolean is_language_of_traditional_chinese  = false;
+    private boolean is_language_of_traditional_chinese = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int theme = SettingUtils.ChangeTheme.getTheme(getApplicationContext());
         int color = SettingUtils.ChangeTheme.getTitleColor(getApplicationContext());
         setTheme(theme);
-        selectColor = ContextCompat.getColor(ActivitySearch.this,color);
+        selectColor = ContextCompat.getColor(ActivitySearch.this, color);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
@@ -109,7 +109,6 @@ public class ActivitySearch extends AppCompatActivity {
         imageViewCleanText = (ImageView) findViewById(R.id.imageViewToolbar_cleanText);
         imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         listView = (ListView) findViewById(R.id.listView);
-
 
 
         isVip = SettingUtils.ChangeTheme.getVipState(ActivitySearch.this);
@@ -136,10 +135,10 @@ public class ActivitySearch extends AppCompatActivity {
         emptyView = (LinearLayout) findViewById(R.id.emptyView);
         textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);
 
-        if(is_language_of_traditional_chinese){
+        if (is_language_of_traditional_chinese) {
             autoCompleteTextView.setHint("輸入文字進行搜索");
             textViewEmpty.setText("暫無數據");
-        }else {
+        } else {
             autoCompleteTextView.setHint("输入文字进行搜索");
             textViewEmpty.setText("暂无数据");
 
@@ -148,10 +147,6 @@ public class ActivitySearch extends AppCompatActivity {
         listView.setEmptyView(emptyView);
 //        listView.setDivider();
 //        listView.setDividerHeight(2);
-
-
-
-
 
 
         mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -177,14 +172,14 @@ public class ActivitySearch extends AppCompatActivity {
             autoCompleteTextView.setInputType(InputType.TYPE_NULL);
 
             searchString(search);
-        }else {
+        } else {
             // 防止sdk8.0崩溃
             autoCompleteTextView.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if(autoCompleteTextView == null
+                    if (autoCompleteTextView == null
                             || ActivitySearch.this == null
-                            || ActivitySearch.this.isFinishing()){
+                            || ActivitySearch.this.isFinishing()) {
                         return;
                     }
                     autoCompleteTextView.showDropDown();
@@ -251,7 +246,6 @@ public class ActivitySearch extends AppCompatActivity {
         });
 
 
-
 //        autoCompleteTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 //            @Override
 //
@@ -277,9 +271,9 @@ public class ActivitySearch extends AppCompatActivity {
                     case EditorInfo.IME_ACTION_DONE:
 //                        Toast.makeText(ActivitySearch.this, "点击-->IME_ACTION_DONE", Toast.LENGTH_SHORT).show();
                         //防止崩溃
-                        if(imageViewSaerch == null
+                        if (imageViewSaerch == null
                                 || ActivitySearch.this == null
-                                || ActivitySearch.this.isFinishing()){
+                                || ActivitySearch.this.isFinishing()) {
                             break;
                         }
                         imageViewSaerch.performClick();
@@ -345,9 +339,9 @@ public class ActivitySearch extends AppCompatActivity {
         }
 //        Toast.makeText(ActivitySearch.this, "搜索 " + text, Toast.LENGTH_SHORT).show();
 
-        if(is_language_of_traditional_chinese){
+        if (is_language_of_traditional_chinese) {
             text += "的搜索結果";
-        }else {
+        } else {
             text += "的搜索结果";
 
         }
@@ -358,15 +352,15 @@ public class ActivitySearch extends AppCompatActivity {
 
 
         DbManage dbManage = new DbManage(ActivitySearch.this);
+        searchResults = null;
         searchResults = dbManage.seachString(search);
 //        Log.e(TAG, "searchString get result count for " + searchResults.size());
         if (searchResults != null && searchResults.size() > 0) {
 
-            //搜索后清空详情状态
+            //搜索后先清空详情状态和原料
             checkBoxStateList = new ArrayList<Boolean>();
-
+            Material = new ArrayList<String>();
 //            Log.e(TAG, "listView.setAdapter(listviewAdapter);");
-
 
 
             listviewAdapter = new MyAdapter(ActivitySearch.this);
@@ -377,7 +371,7 @@ public class ActivitySearch extends AppCompatActivity {
 //            if (listView == null) {
 //                Log.e(TAG," listView = null");
 //            }else {
-                listView.setAdapter(listviewAdapter);
+            listView.setAdapter(listviewAdapter);
 //            }
 
         } else {
@@ -389,9 +383,9 @@ public class ActivitySearch extends AppCompatActivity {
 //                Log.e(TAG," textViewEmpty = null");
 //            }
 //
-            if(is_language_of_traditional_chinese){
+            if (is_language_of_traditional_chinese) {
                 textViewEmpty.setText("沒有搜索到結果, 請試試其他關鍵字");
-            }else {
+            } else {
                 textViewEmpty.setText("没有搜索到结果, 请试试其他关键字");
 
             }
@@ -486,7 +480,7 @@ public class ActivitySearch extends AppCompatActivity {
             final int pos = position;
 
             //  防止内存回收后返回到这个界面崩溃
-            if ((searchResults ==null) || (searchResults.size() <=0)){
+            if ((searchResults == null) || (searchResults.size() <= 0)) {
                 finish();
             }
 
@@ -560,7 +554,7 @@ public class ActivitySearch extends AppCompatActivity {
 //                    searchString(searchNames);
 
                     //没有原料的时候分割出来的数组为0大小
-                    if(searchNames.length == 0 || searchNames[0].equals(""))
+                    if (searchNames.length == 0 || searchNames[0].equals(""))
                         return;
 
                     Intent intent = new Intent(ActivitySearch.this, ActivitySearch.class);
@@ -618,7 +612,7 @@ public class ActivitySearch extends AppCompatActivity {
                 holder.textViewShowBlockDetail.setVisibility(View.VISIBLE);
                 holder.imageViewHideMore.setVisibility(View.VISIBLE);
 //            }
-                if(!isVip && isNetworkConnected){
+                if (!isVip && isNetworkConnected) {
                     holder.mAdView.setVisibility(View.VISIBLE);
                     holder.mAdView.loadAd(new AdRequest.Builder().build());
                 }
