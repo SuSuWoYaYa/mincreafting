@@ -98,6 +98,15 @@ public class ActivityTutorialWebView extends AppCompatActivity {
         mWebSettings.setJavaScriptEnabled(true);
         mWebSettings.setDomStorageEnabled(true);
 
+        //缓存图片设置
+        if( SettingUtils.getSwitchCacheSetting(ActivityTutorialWebView.this) ) {
+            mWebSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            mWebSettings.setDomStorageEnabled(true);
+            mWebSettings.setAppCacheEnabled(true);
+        }else {
+            //设置不缓存的时候清除缓存
+            mWebview.clearCache(true);
+        }
 
         mWebview.loadUrl(uri);
 

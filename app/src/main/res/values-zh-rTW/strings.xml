@@ -173,6 +173,7 @@
     <string name="areyousure">嗯! 一定是你點錯了,請先去廣告</string>
     <string name="color_deep_gray">深灰</string>
     <string name="color_light_gray">亮灰</string>
+    <string name="settingcache">緩存設置</string>
 
 
 </resources>

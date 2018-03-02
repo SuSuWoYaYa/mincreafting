@@ -38,6 +38,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -91,8 +92,9 @@ public class FragmentMainActivity extends AppCompatActivity {
     private boolean changeTitleBackgroup = true;
 
     private RadioGroup radioGroup;
-    private RadioButton radio_btn_zh;
-    private RadioButton radio_btn_zw;
+    private Switch switchCache;
+//    private RadioButton radio_btn_zh;
+//    private RadioButton radio_btn_zw;
 
     private String language;
     private boolean is_language_of_traditional_chinese = false;
@@ -180,6 +182,9 @@ public class FragmentMainActivity extends AppCompatActivity {
                         break;
                     case R.id.menu_changelanguage:
                         showChangeLanguageDialog();
+                        break;
+                    case R.id.menu_settingcache:
+                        showSettingCacheDialog();
                         break;
                     case R.id.menu_downgame:
                         intent = new Intent(getApplicationContext(), DownGameActivity.class);
@@ -759,6 +764,46 @@ public class FragmentMainActivity extends AppCompatActivity {
                 }
             });
             changelanguage_messageTextView.setText("改变语言设置会影响搜索结果");
+        }
+        builder.show();
+        return ;
+    }
+
+
+
+    private void showSettingCacheDialog() {
+
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View settingCacheView = inflater.inflate(R.layout.layout_setting_cache, null);
+
+        TextView switchcache_messageTextView = (TextView) settingCacheView.findViewById(R.id.switchcache_messageTextView);
+
+
+        switchCache = (Switch) settingCacheView.findViewById(R.id.switchCache);
+
+        switchCache.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+
+                    SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, true);
+
+                }else {
+                    SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, false);
+                }
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
+        builder.setView(settingCacheView);
+        if (is_language_of_traditional_chinese) {
+            builder.setTitle("緩存設置");
+            builder.setPositiveButton("確定", null);
+            switchcache_messageTextView.setText("教程圖片離線緩存");
+        }else {
+            builder.setTitle("缓存设置");
+            builder.setPositiveButton("确定", null);
+            switchcache_messageTextView.setText("教程图片离线缓存");
         }
         builder.show();
         return ;

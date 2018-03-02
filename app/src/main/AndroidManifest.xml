@@ -58,7 +58,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".DownGameActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivitySettingCache"
+            android:screenOrientation="portrait"  />
     </application>
 
 </manifest>
