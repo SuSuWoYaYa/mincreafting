@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>我的世界summon指令用法教程 召唤生物附属NBT指令</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >我的世界summon指令用法教程 召唤生物附属NBT指令</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自网易论坛<br />作者-yongyong</p>
+ 
+
+<h2>我的世界summon指令用法教程 召唤生物附属NBT指令</h2> 
+
+<h3>怪物属性------Attributes</h3><p>
+ 装备只是在表面上使怪物变的更强，但是，你有没有想过，一个什么装甲都没穿的普通僵尸会不会秒杀你？当然可以！这就要用到Attributes。
+　　</p> <p>例子：<code>/summon Zombie ~ ~ ~ {Attributes:[{Name:generic.maxHealth,Base:10000},{Name:generic.knockbackResistance,Base:1},{Name:generic.movementSpeed,Base:10},{Name:generic.attackDamage,Base:10000},{Name:generic.followRange,Base:10000}]}</code>
+　　</p> <p>上面指令的含义是：在命令方块的位置上召唤一只血量10000，不被击退，速度极快，攻击力10000，索敌范围10000的僵尸。
+　　</p> <p>其中，核心指令是：
+　　</p> <p><code>{Attributes:[{Name:generic.maxHealth,Base: },{Name:generic.knockbackResistance,Base: },{Name:generic.movementSpeed,Base: },{Name:generic.attackDamage,Base: },{Name:generic.followRange,Base: }]}</code>
+　　</p> <p>五个括号内依次分别为：生命值上限，击退抗性，速度，攻击力，索敌范围，下面我们来分别讲讲这五个属性。
+　　</p> <p><b>maxHealth：</b>生命值上限，就是这个怪物有多少血。
+　　</p> <p><b>knockbackResistance：</b>击退抗性，就是这个怪物能否被击退（0为可以，1为不可以）。
+　　</p> <p><b>movementSpeed：</b>就是怪物的行走速度，调成5就很快了，如果调成10000……一下子就没影了。
+　　</p> <p><b>attackDamage：</b>就是怪物的攻击力是多少血。
+　　</p> <p><b>followRange：</b>索敌范围，就是这个怪物能从多远发现你，调高后远程怪物（例如骷髅弓箭手）就会从很远射你，而近战怪物则会从很远就追过来.
+　　</p> <p>怪物属性------特殊指令
+　　</p> <p>你觉得对怪物的加强只有这5个方面吗？不！你又一次大错特错了。下面我就来介绍一些特殊的属性指令：
+　　</p> <p><b>Fuse：</b>调节苦力怕的爆炸时间，填写数字越短，爆炸时间就越短，玩家逃脱就会越难（仅限于苦力怕）。
+　　</p> <p>例子：<code>/summon Creeper ~ ~ ~ {Fuse:12s}</code>
+　　</p> <p><b>Ignited：</b>用于召唤瞬间爆炸苦力怕。或者点燃的TNT都可以。（1为点燃的，0为普通的）（仅限于爆炸物）
+　　</p> <p>例子：<code>/summon Creeper ~ ~ ~ {Ignited:1}</code>
+　　</p> <p><b>spawnReinforcements：</b>用于调节僵尸的召唤率。大家都知道，打僵尸的时候僵尸有可能会“分身”，这就是僵尸的召唤率。（1为一定召唤，0为不召唤）
+　　</p> <p>例子：<code>/summon Zombie ~ ~ ~ {spawnReinforcements:1}</code>
+　　</p> <p><b>Invulnerable:</b>怪物是否无敌。无敌后怪物无法被伤害，无法被击退。（1为无敌，0为不无敌）
+　　</p> <p>例子：<code>/summon Zombie ~ ~ ~ {Invulnerable:1}</code>
+　　</p> <p>（本来还有一个调节苦力怕爆炸范围的指令，但突然想不起来了，希望有知道的吧友能够提醒我补上）
+　　</p>
+<h3>怪物属性------其他怪物</h3><p>
+ 在第一大项------怪物召唤里，楼主带给了大家怪物id表，但还有一些怪物是没有独立id的。下面就为大家带来这些生物的召唤方法。
+　　</p> <p>小僵尸：<code>/summon Zombie ~ ~ ~ {Tame:1,Type:2,IsBaby:1}</code>
+　　</p> <p>村民僵尸：<code>/summon Zombie ~ ~ ~ {IsVillager:1}</code>
+　　</p> <p>闪电苦力怕：<code>/summon Creeper ~ ~ ~ {powered:1}</code>
+　　</p> <p>凋灵骷髅：<code>/summon Skeleton ~ ~ ~ {Type:1}</code>
+　　</p> <p>远古守卫者：<code>/summon Guardian ~ ~ ~ {Elder:1}</code>
+　　</p> <p>僵尸马：<code>/summon EntityHorse ~ ~ ~ {Tame:1,Type:3,Suddle:1}</code>
+　　</p> <p>骷髅马：<code>/summon EntityHorse ~ ~ ~ {Tame:1,Type:4,Suddle:1}</code>
+　　</p> <p>史莱姆与岩浆怪的大小：<code>/summob Slime ~ ~ ~ {Size:}</code>
+　　</p> <p><code>/summon MagmaCube ~ ~ ~ {Size:}</code></p> 
+　　<h3>药水效果------ActiveEffects</h3><p>
+ 在第三大项中，我们已经讲了一些基本的怪物属性（可能会有缺漏，大家见谅！），那么你可能会问，如何让我的怪物再一次提升呢？那么我们又要用到另一种指令，就是ActiveEffects。
+　　</p> <p>例子：<code>/summon Zombie ~ ~ ~ {ActiveEffects：[{Id：10，Duration：100，Amplifier：5，Ambient：1}]}</code>
+　　</p> <p>上面指令的意义是：在命令方块的位置召唤一个生命回复Ⅴ，持续100秒，且隐藏药水效果的僵尸。
+　　</p> <p>上面指令中，核心指令是：
+　　</p> <p><code>{ActiveEffects：[{Id：，Duration：，Amplifier:：，Ambient：}]}</code>
+　　</p> <p>四个冒号后分别是：药水属性id，持续时间，效果等级，是否隐藏药水效果。下面我们来一一讲解一下：
+　　</p> <p><b>Id：</b>就是药水的属性id，后面会讲。
+　　</p> <p><b>Duration：</b>就是药水的持续时间。
+　　</p> <p><b>Amplifier：</b>就是药水效果的等级。
+　　</p> <p><b>Ambient：</b>就是是否隐藏药水效果（1为隐藏，0为不隐藏）。
+　　</p> <p>如果你想让一个怪物有多重效果，只需要在每个效果间加上逗号就可以啦！注意：因为在Attributes指令中，对怪物的攻击力和速度有所提升，所以在ActiveEffects指令中，速度，力量，最大生命值加强和附加生命这四个效果将不再对怪物有效果！
+　　</p> 
+
+ <h3>药水id表</h3><p>
+ 速度：1
+　　</p> <p>缓慢：2
+　　</p> <p>急迫：3
+　　</p> <p>挖掘疲劳：4
+　　</p> <p>力量：5
+　　</p> <p>瞬间治疗：6
+　　</p> <p>瞬间伤害：7
+　　</p> <p>跳跃提升：8
+　　</p> <p>反胃：9
+　　</p> <p>生命回复：10
+　　</p> <p>抗性提升：11
+　　</p> <p>放火：12
+　　</p> <p>水下呼吸：13
+　　</p> <p>隐形：14
+　　</p> <p>失明：15
+　　</p> <p>夜视：16
+　　</p> <p>饥饿：17
+　　</p> <p>虚弱：18
+　　</p> <p>中毒：19
+　　</p> <p>凋零：20
+　　</p> <p>最大生命值加强：21
+　　</p> <p>附加生命：22
+　　</p> <p>饱和：23
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

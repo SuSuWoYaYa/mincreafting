@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>我的世界summon指令標籤大全</title>
+
+<link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+
+
+<!-- Start Title -->
+<h1 >我的世界summon指令標籤大全</h1>
+<!-- End Title -->
+
+<div >
+<p class="red">本文章轉載自網易論壇</p>
+
+
+ <p class=yellow>
+
+注意！指令只在1.12起作用（或1.9+）(實在不行1.8勉強吧，也就改個大小寫什麼的)
+<br />
+
+作者:遛遛(Netro777)
+
+</p>  
+<h2>指令格式:</h2>
+
+ <p>
+<code>/summon <生物名稱> <坐標> <指令標籤></code>
+</p> <p>
+例如:
+</p> <p>
+<code>/summon zombie ~ ~ ~ {}</code>
+</p> <p>
+生成一隻僵屍
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_1.png" /></p> 
+ 
+
+<h2>指令標籤:</h2> 
+
+ <h3>IsBaby標籤（只對僵屍,僵屍村民）:</h3>
+
+  <p>
+<code>/summon zombie ~ ~ ~ {IsBaby:1b}</code>
+</p> <p>
+召喚一個小僵屍
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_2.png" /></p> 
+ <p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3.png" /></p> 
+
+  <p>
+這裡強調一下，大多數標籤的"1b"指的是真，反之，"0b"指的是假
+</p> <p>就像IsBaby標籤,1b代表真，也就是僵屍為小僵屍為真
+</p>  <h3>CustomName標籤（對所有生物）:</h3>
+
+  <p>
+<code>/summon villager ~ ~ ~ {CustomName:"我是傻逼"}</code>
+</p> <p>
+召喚名為「我是傻逼」的村民
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4.png" /></p><p>
+
+
+</p>  <h3>CustomNameVisible標籤:</h3>
+
+  <p>
+<code>/summon villager ~ ~1 ~ {CustomName:"沒顯示",CustomNameVisible:1b}</code>
+</p> <p>
+召喚一個不顯示名字，名字為"沒顯示"的村民
+</p> <p>此標籤對於某些生物可能不存在,有些生物一召喚出來就會顯示名字(當沒使用此標籤時，比如村民等),有些生物反之
+</p> <p>之前不小心忽略掉這個很簡單的標籤了。。。現在加上
+</p>
+<h3>Team/Tags標籤（對所有生物）:</h3><p>
+
+ <code>
+/summon villager ~ ~ ~ {Team:"TEAM",Tags:["TAG1","TAG2"]}</code>
+</p> <p>
+召喚一個隊伍屬於"TEAM"和帶有標籤標籤"TAG1"和"TAG2"的村民
+</p> <p>如果不知道Team和Tag是什麼，可以看我的記分板教程注意Tags標籤上有個s,因為一個實體可以添加多個標籤，但不能加入多個隊伍
+</p>  <h3>ArmorItems/tag標籤（對所有生物）:</h3>
+
+  <p><code>
+/summon zombie ~ ~ ~ {ArmorItems:[{},{},{},{id:"minecraft:diamond_helmet",Count:1,tag:{ench:[{id:0,lvl:10}]}}]}</code>
+</p> <p>
+召喚一個帶有屬性為保護10的鑽石頭盔的僵屍
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5.png" /></p><p>
+
+
+AmorItems標籤有四個大括號:[{},{},{},{}]
+</p> <p>第一個代表生物的腳
+</p> <p>第二個代表生物的腿
+</p> <p>第三個代表生物的胸
+</p> <p>第四個代表生物的頭tag指的是物品的標籤，就像在/give指令的物品標籤差不多
+</p>  <h3>HandItem/tag標籤（對所有生物）:</h3>
+
+ <p><code>
+/summon zombie ~ ~ ~ {HandItems:[{},{id:"minecraft:diamond_sword",Count:1,tag:{ench:[{id:16,lvl:10}]}}]}</code>
+</p> <p>
+召喚一個拿有鋒利10的鑽石劍的僵屍
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6.png" /></p><p>
+
+
+HandItems有兩個大括號:[{},{}]
+</p> <p>第一個代表生物的左手
+</p> <p>第二個代表生物的右手
+</p>  <h3>LeftHanded標籤（對所有生物）:</h3>
+
+ <p><code>
+/summon zombie ~ ~1 ~ {HandItems:[{id:"minecraft:diamond_sword",Count:1,tag:{ench:[{id:16,lvl:10}]}},{}],LeftHanded:1b}</code>
+</p> <p>
+召喚一個左撇子僵屍
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_7.png" /></p><p>
+(注:左撇子拿在左手的東西的攻擊力應該比右撇子拿在左手的攻擊力高一些)
+</p>  
+<h3>Passengers標籤（對所有生物）:</h3>
+  <p><code>
+/summon villager ~ ~ ~ {CustomName:"二樓",Passengers:[{id:villager,CustomName:"一樓"}]}</code>
+</p> <p>
+召喚兩個村民，名為"一樓"騎在"二樓"上面
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8.png" /></p><p>
+你可以這樣:
+
+</p> <p><code>
+/summon minecraft:villager ~ ~1 ~ {Passengers:[{id:villager,Profession:5},{id:villager,Profession:4}]}</code>
+</p> <p>
+這就相當於兩個村民同時騎在一個村民頭上，這種指令原先是用在船上的（1.9後船可以坐兩個實體，所以1.9以後可以用這條指令）
+</p> <p>整過容的村民...:
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_9.png" /></p><p>
+
+上面那條指令的意思是在一個村民頭上騎了兩個職業不同的村民
+</p>  
+<h3>ArmorDropChances/HandDropChances標籤（對所有生物）:</h3>
+  <p><code>
+/summon zombie ~ ~ ~ {ArmorItems:[{},{},{},{id:"minecraft:diamond_helmet",Count:1,tag:{ench:[{id:0,lvl:10}]}}],HandItems:[{},{id:"minecraft:diamond_sword",Count:1,tag:{ench:[{id:16,lvl:10}]}}],ArmorDropChances:[0.0F,0.0F,0.0F,0.0F],HandDropChances:[0.0F,0.0F]}
+</code></p> <p>
+召喚一個掉落率為0的僵屍
+</p> <p>
+AmorDropChances標籤有四個數字:[數字,數字,數字,數字]
+</p> <p>第一個代表生物的腳的掉落率
+</p> <p>第二個代表生物的腿的掉落率
+</p> <p>第三個代表生物的胸的掉落率
+</p> <p>第四個代表生物的頭的掉落率
+
+</p> <p>
+HandDropChances有兩個數字:[數字,數字]
+</p> <p>第一個代表生物的左手的掉落率
+</p> <p>第二個代表生物的右手的掉落率
+
+</p> <p>
+Attributes標籤（對所有生物）:
+</p> <p><code>
+/summon minecraft:zombie ~ ~1 ~ {Attributes:[{Name:generic.knockbackResistance,Base:1},{Name:generic.attackDamage,Base:20},{Name:generic.followRange,Base:100},{Name:generic.movementSpeed,Base:3},{Name:generic.maxHealth,Base:127}]}
+</code></p> <p>
+generic.knockbackResistance代表擊退防護
+</p> <p>generic.attackDamage代表攻擊力
+</p> <p>generic.followRange代表跟蹤力
+</p> <p>generic.movementSpeed代表移動速度
+</p> <p>generic.maxHealth代表生命值
+
+</p> <p>
+Base代表值
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_10.png" /></p><p>
+看到沒？兩招就秒
+</p>  
+<h3>ActiveEffects標籤（對所有生物）：</h3>
+  <p><code>
+/summon minecraft:zombie ~ ~ ~ {ActiveEffects:[{Id:24,Amplifier:10,Duration:1000,Ambient:1b}]}</code>
+</p> <p>
+召喚一個效果為發光10的僵屍，效果不顯示(Ambient,指的是粒子效果，不是發光效果)
+</p> <p>Id指的是效果ID,詳情見下面
+</p> <p>Amplifier指的是效果的強弱
+</p> <p>Duration指的是效果時間
+</p> <p>Ambient指的是效果是否顯示(1代表不顯示，0代表顯示)
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_11.png" /></p><p>
+這裡是效果ID:
+</p> <p>
+1    速度</p> <p>
+2    緩慢</p> <p>
+3    急迫</p> <p>
+4    挖掘疲勞</p> <p>
+5    力量</p> <p>
+6    瞬間治療</p> <p>
+7    瞬間傷害</p> <p>
+8    跳躍提升</p> <p>
+9    反胃</p> <p>
+10    生命恢復</p> <p>
+11    抗性提升</p> <p>
+12    防火</p> <p>
+13    水下呼吸</p> <p>
+14    隱身</p> <p>
+15    失明</p> <p>
+16    夜視</p> <p>
+17    飢餓</p> <p>
+18    虛弱</p> <p>
+19    中毒</p> <p>
+20    凋零</p> <p>
+21    生命提升</p> <p>
+22    傷害吸收</p> <p>
+23    飽和</p> <p>
+24    發光</p> <p>
+25    漂浮</p> <p>
+26    幸運</p> <p>
+27    霉運</p>  
+<h3>Motion標籤（對所有生物,除火焰彈）:</h3>
+
+  <p><code>
+/summon zombie ~ ~ ~ {Motion:[0.0,1.0,1.0]}</code>
+</p> <p>
+召喚一個向正y正z的方向飛的僵屍
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_12.png" /></p><p>
+Motion標籤有三個數字:Motion:[數字，數字，數字]</p> <p>
+分別代表X坐標，Y坐標,Z坐標
+</p> <p>
+Direction/ExplosionPower標籤（只對火焰彈）:
+</p> <p><code>
+/summon fireball ~ ~ ~ {direction:[1.0,1.0,1.0],ExplosionPower:1}</code>
+</p> <p>
+召喚一個正在向正x正y正z方向飛行的火球，爆炸力為1
+</p> <p>direction跟Motion是一樣的用法，只不過變了名稱而已
+</p> <p>ExplosionPower指的是爆炸力，這裡為1
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_13.png" /></p> 
+<h3>ExplosionPower標籤:</h3>
+  <p><code>
+/summon ghast ~ ~ ~ {ExplosionPower:10}</code>
+</p> <p>
+召喚一個發射火焰彈的威力為10的惡魂
+</p> <p>這裡的ExplosionPower的用法和火焰彈的ExplosionPower的用法一樣
+
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_14.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_15.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_16.png" /></p> 
+<h3>powered標籤（只對苦力怕）:</h3>
+ <p><code>
+/summon creeper ~ ~ ~ {powered:1b}</code>
+</p> <p>
+召喚一個閃電苦力怕
+</p> <p>powered指的是是否為閃電苦力怕，1為閃電苦力怕，0為普通苦力怕
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_17.png" /></p> 
+<h3>Fuse標籤（只對苦力怕,TNT）:</h3>
+ <p><code>
+/summon tnt ~ ~ ~ {Fuse:81}</code>
+</p> <p>
+召喚一個爆炸剩餘時間為81的tnt(正常tnt爆炸時間)
+</p> <p>Fuse代表的是TNT爆炸剩餘時間（多久爆炸），後面填遊戲刻
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_18.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_19.png" /></p>  
+<h3>ExplosionRadius標籤（只對苦力怕）:</h3>
+  <p><code>
+/summon creeper ~ ~ ~ {ExplosionRadius:10}</code>
+</p> <p>
+召喚一個爆炸半徑為10的苦力怕
+</p> <p>ExplosionRadius指的是爆炸半徑
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_20.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_21.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_22.png" /></p> 
+<h3>Profession標籤（只對村民,僵屍村民）:</h3>
+  <p><code>
+/summon villager ~ ~1 ~ {Profession:5}</code>
+</p> <p>
+召喚一個傻子村民
+</p> <p>Profession指的是村民的種類，5為傻子（5最高，最小0）
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_23.png" /></p><p><code>
+/summon zombie_villager ~ ~ ~ {Profession:1}</code>
+
+</p> <p>
+召喚一個治療後為圖書館員村民的僵屍村民
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24.png" /></p> 
+<h3>Invulnerable標籤（對所有生物）:</h3>
+ <p><code>
+/summon villager ~ ~ ~ {Invulnerable:1b}</code>
+</p> <p>
+生成一個無敵村民(創造模式下仍能打死)
+</p> <p>Invulnerable指的是是否無敵，1為無敵，0為不無敵
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26.png" /></p> 
+<h3>Invisible標籤（只對盔甲架）:</h3>
+ <p><code>
+/summon armor_stand ~ ~ ~ {Invisible:1b}</code>
+</p> <p>
+召喚一個隱形盔甲架
+</p> <p>Invisible指的是是否隱形,1為隱形，0為不隱形
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_27.png" /></p> 
+<h3>NoGravity標籤（對所有生物）:</h3>
+ <p><code>
+/summon zombie ~ ~ ~ {NoGravity:1b}</code>
+</p> <p>
+生成一個浮空的僵屍
+</p> <p>NoGravity指的是無重力，1為無重力，0為有重力
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28.png" /></p> 
+<h3>NoAI標籤（對所有生物）:</h3>
+  <p><code>
+/summon creeper ~ ~ ~ {NoAI:1b</code>
+</p> <p>
+生成一個沒有AI的苦力怕
+</p> <p>NOAI指的是是否有AI,0為有AI,1為沒AI
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_29.png" /></p> 
+<h3>Silent標籤（對所有生物）:</h3>
+  <p><code>
+/summon zombie ~ ~ ~ {Silent:1b}</code>
+</p> <p>
+生成一個不會發出聲音的僵屍(如果你聽到聲音，那就是你打他的聲音)
+</p> <p>Silent是安靜的意思，1為安靜，0為有聲音
+</p>  
+<h3>Saddle標籤（只對豬）:</h3>
+  <p><code>
+/summon pig ~ ~ ~ {Saddle:1b}</code>
+</p> <p>
+生成一個帶有鞍的豬
+</p> <p>Saddle指的是是否有鞍，1為有，0為沒有
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30.png" /></p> 
+<h3>FallDistance標籤（對所有生物）:</h3>
+  <p>
+這個本人也不清楚，貌似掉落傷害增加了
+</p> <p><code>
+/summon enderman ~ ~ ~ {FallDistance:20.0s}</code>
+</p> <p>
+Health標籤（對所有生物）:<h3></h3>
+</p> <p><code>
+/summon ender_dragon ~ ~ ~ {Health:0}</code>
+</p> <p>
+生成一個並立即死亡的末影龍（死亡是為了效果）
+</p> <p>Health指的是生命值，最多只能填此生物最高生命值,0為立即死亡
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_32.png" /></p> 
+<h3>Size標籤（只對史萊姆,岩漿怪）:</h3>
+ <p><code>
+/summon slime ~ ~ ~ {Size:20}</code>
+</p> <p>
+召喚一個體積很大的史萊姆
+</p> <p>Size指的是史萊母的體積
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_33.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_34.png" />
+</p> 
+<h3>Glowing標籤（對所有生物）:</h3>
+  <p><code>
+/summon villager ~ ~ ~ {Glowing:1b}</code>
+</p> <p>
+召喚一個帶有發光效果(永遠不會消失)的村民
+</p> <p>Glowing指的是是否發光，1為發光，0為不發光
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_35.png" /> 
+</p>  
+<h3>Time/Block/Data標籤（只對掉落沙）:</h3>
+  <p><code>
+/summon falling_block ~ ~ ~ {Time:1,Block:"minecraft:command_block",Data:1}</code>
+</p> <p>
+生成一個子id為1的掉落命令方塊
+</p> <p>falling_block是掉落方塊的意思，指的是方塊掉落
+</p> <p>Time指的是存在時間，0為立即消失，1為存在一會，-32768為永遠存在（除非用指令殺）
+</p> <p>Data指的是掉落方塊的子ID
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_36.png" /> 
+
+</p>  
+<h3>Command/TileEntityData/auto標籤（只對掉落沙）:</h3>
+  <p><code>
+/setblock ~ ~1 ~ minecraft:command_block 0 replace {Command:"/kill @a"}</code>
+</p> <p>
+放置一個指令為"/kill @a "的命令方塊
+</p> <p>Command指的是指令方塊里的命令
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_37.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_38.png" /> 
+</p> <p><code>
+/summon falling_block ~ ~ ~ {Time:1,Block:"minecraft:command_block",Data:1,TileEntityData:{Command:"/kill @e",auto:1b}}</code>
+</p> <p>
+生成一個子id為1命令為"/kill @e"的掉落CB(保持開啓)
+</p> <p>TileEntityData指的是掉落方塊的NBT,只能給掉落方塊所用
+</p> <p>auto指的是保持開啓，所以當掉落方塊落地時命令就會啓用
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_39.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40.png" /> 
+</p> <p>
+一掉下來就死了。。。
+</p>  
+<h3>FallFlying標籤（對所有生物）:</h3>
+  <p><code>
+/summon minecraft:villager ~ ~20 ~ {ArmorItems:[{},{},{id:"elytra",Count:1},{}],FallFlying:1b}</code>
+</p> <p>
+召喚一個可飛行的村民
+</p> <p>FallFlying指的是此生物是否可不可以飛行，1代表可以，0代表不可
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_41.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_42.png" /> 
+</p>  
+<h3>SkeletonTrap標籤（只對骷髏馬）:</h3>
+  <p><code>
+/summon skeleton_horse ~ ~ ~ {SkeletonTrap:1b}</code>
+</p> <p>
+召喚一個有骷髏陷阱的骷髏馬
+</p> <p>SkeletonTrap指的是骷髏馬的骷髏陷阱，1代表啓用骷髏陷阱，0代表不啓用
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_43.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_44.png" /> 
+</p>  
+<h3>Tame/Varient標籤（只對馬）:</h3>
+ <p><code>
+/summon horse ~ ~ ~ {Tame:1b}</code>
+</p> <p>
+召喚一個已馴服的馬
+</p> <p>Tame代表的是是否被順服，1代表已馴服，0代表未馴服
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_45.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_46.png" /> 
+</p> <p><code>
+/summon horse ~ ~ ~ {Variant:3}</code>
+</p> <p>Variant指的是馬的顏色，下面詳解:
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_47.png" /> 
+</p> <p>
+召喚一個褐色的馬</p>
+<h3>馬的顏色ID</h3>
+ <p>下面是馬的顏色ID(Variant):
+</p>  
+<table >
+      <tr><th> </th> <th>
+白色 </th> <th> 奶油色</th> <th>    栗色 </th> <th> 褐色</th> <th>黑色</th> <th>灰色</th> <th>深褐色</th> </tr>
+<tr> <td>無</td> <td>0</td> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td>  </tr>
+<tr> <td>白色</td> <td>256</td> <td>257</td> <td>258</td> <td>259</td> <td>260</td> <td>261</td> <td>262</td></tr>
+<tr> <td>白色條紋</td> <td>512</td> <td>513</td> <td>514</td> <td>515</td> <td>516</td> <td>517</td> <td>518</td></tr>
+<tr> <td>白色斑點</td> <td>768</td> <td>769</td> <td>770</td> <td>771</td> <td>772</td> <td>773</td> <td>774</td></tr>
+<tr> <td>黑色斑點</td> <td>1024</td> <td>1025</td> <td>1026</td> <td>1027</td> <td>1028</td> <td>1029</td> <td>1030</td></tr></table >
+<p>（注：表格內容抄自Minecraft Wiki）
+</p>
+<h3>ChestedHorse標籤（只對驢，騾(mule)）:</h3>
+ <p><code>
+/summon donkey ~ ~ ~ {ChestedHorse:1b,Tame:1b}</code>
+</p> <p>
+召喚一個帶有箱子的，已馴服的驢
+</p> <p>ChestedHorse指的是此生物身上是否帶有箱子，1為有，0反之
+</p> <p>如果ChestedHorse標籤沒有用在驢或騾上，遊戲可能會爆炸{:偷笑S:}
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_48.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_49.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_50.png" /> 
+<h3>Temper/EatingHaystack標籤（只對馬）:</h3>
+  <p><code>
+/summon horse ~ ~ ~ {Temper:50}</code>
+</p> <p>
+召喚一個已餵食50%的馬
+</p> <p>Temper指的是餵食，0代表未餵食，100代表已餵食100%(不能繼續餵食，除非受到傷害)
+</p> <p><code>
+/summon horse ~ ~ ~ {EatingHaystack:1b}</code>
+</p> <p>
+召喚一個正在吃草的馬
+</p> <p>EatingHaystack指的是馬是否在吃草，1為有，0反之
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_51.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_52.png" /> 
+ 
+<h3>Items/Slot/id/Count/Damge/tag/display/Name/Lore/ench標籤（只對可以儲存物品的礦車）:</h3>
+  <p><code>
+/summon chest_minecart ~ ~1 ~ {Items:[{Slot:0b,id:"minecraft:diamond_sword",Count:1,Damage:0,tag:{ench:[{id:16,lvl:10}],display:{Name:"UseLessSword",Lore:["UseLess","Sword"]}}}]}
+</code></p> <p>
+召喚一個運輸礦車，裡面的東西的第1一個槽位的東西裝著名為UseLessSword,注釋第一行為UseLess,第二行為Sword,鋒利10,子id為0的鑽石劍
+</p> <p>Items指的是裡面裝的東西</p> <p>
+Slot指的是東西所在的槽位</p> <p>
+id指的是物品的ID</p> <p>
+Count指的是物品的數量</p> <p>
+Damage指的是物品的子ID</p> <p>
+tag指的是物品標籤</p> <p>
+ench指的是物品的附魔，其中id代表附魔ID,lvl代表附魔等級</p> <p>
+display指的是玩家能看見物品的東西，比如名字，注釋什麼的</p> <p>
+Name代表鑽石劍的名字</p> <p>
+Lore代表鑽石劍的注釋，注釋第一行寫UseLess,第二行寫Sword</p> 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_53.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_54.png" /> 
+<h3>Item/id/Count/Damage/tag/display/Name/Lore/ench/PickupDelay/Age標籤（只對物品）:</h3>
+  <p><code>
+/summon item ~ ~1 ~ {Item:{id:"minecraft:diamond_sword",Count:1,Damage:0,tag:{ench:[{id:16,lvl:10}],display:{Name:"UseLessSword",Lore:["UseLess","Sword"]}}},PickupDelay:32767,Age:-32768}
+</code></p> <p>
+召喚一個物品為鑽石劍,一個,子id0,附魔鋒利10,名字UseLessSword,注釋第一行UseLess,第二行Sword,永遠不會消失，撿起的鑽石劍
+</p> <p>
+id指的是物品ID,這裡指鑽石劍</p> <p>
+Count指的是數量</p> <p>
+Damage指的是子ID</p> <p>
+tag指的是物品的NBT</p> <p>
+其實後面的都跟前面一樣，就講PickupDelay和Age吧</p> <p>
+PickupDelay指的是撿起物品的延遲，32767代表永遠不能撿起</p> <p>
+Age代表物品的存在時間，-32768代表永遠不會消失</p> <p>
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_55.png" /> 
+永遠不會消失和被撿起:
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_56.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_57.png" /> 
+</p>  
+<h3>CanPickUpLoot標籤（對所有生物）：</h3>
+  <p><code>
+/summon zombie ~ ~ ~ {CanPickUpLoot:1b}</code>
+</p> <p>
+召喚一個可以撿起戰利品的僵屍</p> <p>
+CanPickUpLoot指的是是否可以撿起物品，1為可以，0反之</p>  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_58.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_59.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_60.png" /> 
+
+<h3>Colors標籤（只對潛影貝）:</h3>
+  <p><code>
+/summon shulker ~ ~ ~ {Color:15}</code>
+</p> <p>
+召喚一個顏色為黑色的潛影貝(活的)
+</p> <p>Color指的是潛影貝的顏色，15代表黑色（最大），0代表白色（最小）
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_61.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_62.png" /> 
+</p> <p>
+顏色0~15的效果：
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_63.png" /> 
+</p>  
+<h3>Peek標籤(只對潛影貝):</h3>
+  <p><code>
+/summon shulker ~ ~ ~ {Peek:100}</code>
+</p> <p>
+召喚一個完全張開的潛影貝
+</p> <p>Peek指的是潛影貝張開高度的百分比,0為不張開
+</p> <p>
+Potion/id/Count/Damage/tag/Potion/ownerName標籤（只對藥水實體）:
+</p> <p><code>
+/summon minecraft:potion ~ ~ ~ {Potion:{id:"minecraft:splash_potion",Count:1b,Damage:0,tag:{Potion:"minecraft:invisibility"}},ownerName:"遛遛"}</code>
+</p> <p>
+召喚一個實體隱形藥水，扔出去的人為"遛遛"
+</p> <p>id指的是potion種類，但只能填"minecraft:splash_potion"
+</p> <p>Count指的是數量，只能填1
+</p> <p>Damage指的是子ID,只能填0
+</p> <p>tag必須填
+</p> <p>第二個Potion指的是藥水種類，這裡是隱身藥水
+</p> <p>ownerName指的是丟出去的人（好像沒啥用）
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_64.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_65.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_66.png" /> 
+</p> 
+<p>藥水:</p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_67.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_68.png" /> 
+ 
+<h3>Particle/Duration/Radius標籤（只對範圍效果）:</h3>
+ <p><code>
+/summon minecraft:area_effect_cloud ~ ~1 ~ {Radius:1.0f,Particle:"flame",Duration:0}</code>
+</p> <p>
+召喚一個半徑為1，粒子效果為火焰，持續時間為0的範圍效果
+</p> <p>Radius代表半徑Particle代表粒子效果的種類
+</p> <p>Duration代表持續時間
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_69.png" /> 
+</p> <p><code>
+/summon minecraft:area_effect_cloud ~ ~1 ~ {Radius:10.0f,Particle:"flame",Duration:100}</code>
+</p> <p>召喚一個半徑為10，粒子效果為火焰，持續時間為5秒的範圍效果
+</p> <p>效果:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_70.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_71.png" /> 
+
+</p>  
+<h3>Type標籤（只對船實體）:</h3>
+ <p><code>
+/summon boat ~ ~ ~ {Type:"acacia"}</code>
+</p> <p>
+召喚一個金合歡木船
+</p> <p>Type指的是船的種類，後面填的是木材
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_72.png" />
+
+</p>  
+<h3>Command/TraceOutPut標籤（只對命令方塊礦車）:</h3>
+ <p><code>
+/summon minecraft:commandblock_minecart ~ ~1 ~ {TraceOutPut:1b,Command:"/summon zombie ~ ~1 ~"}</code>
+</p> <p>
+召喚一個命令方塊礦車，指令為/summon zombie ~ ~1 ~,並輸出指令
+</p> <p>TraceOutPut指的是是否在命令方塊內輸出指令（沒啥用），1為輸出，0反之
+</p> <p>Command指的是命令礦車里的命令
+</p> <p>命令方塊礦車需要激活鐵軌來激活
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_73.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_74.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_75.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_76.png" />
+
+</p> 
+<h3>Offers/Recipes/maxUses/buy/buyB/sell/id/Count/Damage/tag/Inventory標籤（只對村民）:</h3>
+  <p><code>
+/summon villager ~ ~ ~ {Offers:{Recipes:[{maxUses:999999999,buy:{id:diamond,Count:1,Damage:0},sell:{id:diamond,Count:2,Damage:0}},{maxUses:999999999,buy:{id:emerald,Count:64,Damage:0},buyB:{id:emerald,Count:64,Damage:0},sell:{id:emerald,Count:1,Damage:0,tag:{ench:[{id:16,lvl:100}]}}}]},Inventory:[{Slot:0,id:stone,Count:1,Damage:0}]}
+</code></p> <p>
+什麼用的話大家自己試一試就知道了，最後的Inventory指的是村民的背包，裡面放著一個石頭
+</p> <p>Offers指的是村民提供的東西，必填</p> <p>
+Recipes指的是交易，必填</p> <p>
+maxUses指的是最多交易次數，這裡的數字可以說接近無限。。。</p> <p>
+buy指的是玩家要給村民的東西</p> <p>
+buyB指的是玩家要給村民的第二個東西</p> <p>
+sell指的是村民要給玩家的東西</p> <p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_77.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_78.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_79.png" />
+
+。。。
+</p>  
+<h3>NoBasePlate/ShowArms/Pose/RightArm/LeftArm/RightLeg/LeftLeg/Body標籤（只對盔甲架）：</h3>
+  <p><code>
+/summon armor_stand ~ ~ ~ {NoBasePlate:1b,ShowArms:1b,Pose:{RightArm:[0.0f,0.0f,0.0f],LeftArm:[0.0f,0.0f,0.0f],RightLeg:[0.0f,0.0f,0.0f],LeftLeg:[0.0f,0.0f,0.0f],Body:[0.0f,0.0f,0.0f]}}
+</code></p> <p>
+召喚一個沒有底座(NoBasePlate)，有手臂(ShowArms)，造型的都為默認（Pose,你們也可以自己調）的盔甲架
+</p> <p>我在這方沒天賦。。。
+</p> <p>這是我隨便亂調的數據:
+</p> <p><code>
+/summon armor_stand ~ ~1 ~ {NoBasePlate:1b,ShowArms:1b,NoGravity:1b,Pose:{Rightrm:[200.0f,200.0f,200.0f],LeftArm:[-200.0f,200.0f,-200.0f],RightLeg:[182.0f,282.0f,92.0f],LeftLeg:[29.0f,292.0f,188.0f],Body:[97.0f,-1.0f,76.0f]},ArmorItems:[{},{},{},{id:"minecraft:diamond_helmet",Count:1}]}
+</code></p> <p>
+結果:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_80.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_81.png" />
+</p>  
+<h3>Rotation標籤（對所有生物）:</h3>
+ <p><code>/summon villager ~ ~ ~ {Rotation:[270.0f,0.0f],NoAI:1b}</code>
+</p><p>召喚一個正在朝正X（270,0）方向,沒有AI的村民
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_82.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_83.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_84.png" />
+</p> 
+<h3>carried/carriedData標籤:</h3>
+ <p><code>/summon minecraft:enderman ~ ~0.5 ~ {NoAI:0b,CanPickUpLoot:1b,carried:137s,carriedData:1s}</code>
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_85.png" />
+</p> <p>
+召喚一個手拿子ID為1(朝上)命令方塊的末影人
+</p> <p>
+carried指的是小黑拿的東西，後面要填物品數字ID
+</p> <p>carriedData指的是方塊的子ID
+</p>  
+<h3>TNTFuse標籤:</h3>
+  <p><code>
+/summon tnt_minecart ~ ~ ~ {TNTFuse:0}</code>
+</p> <p>
+生成一個tnt礦車，並立即爆炸
+</p> <p>一般未點燃的TNT礦車的TNTFuse標籤默認為-1
+</p> 
+
+<h3>ShowBottom標籤:</h3>
+  <p><code>
+/summon ender_crystal ~ ~ ~ {ShowBottom:0b}</code>
+
+</p> <p>
+ShowBottom標籤指的是是否顯示末影水晶底座，0為不顯示，1為顯示
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_86.png" />
+
+
+</p> <p>
+標籤是個很神奇的東西，希望你有。。。
+
+
+</p>  <h3>未知標籤</h3><p>
+(我自己不知道是幹甚麼用的，大家可以探索一下):</p> <p>
+這些指令標籤有一部分不對所有生物供用</p> <p>
+ 
+</p> <p><code>Fire:<Number></code>
+</p> <p><code>Dimension:<Number></code>
+</p> <p><code>Air:<Number>HurtTime:<Number></code>
+</p> <p><code>Pos:[<Number>,<Number>,<Number>]</code>
+</p> <p><code>Attributes:{Name:generic.armor,Base:<Number>}</code>
+</p> <p><code>Attributes:{Name:generic.armorToughness,Base:<Number>}</code>
+</p> <p><code>Attributes:{Base:<Number>,Modifiers:[Operation:<Number>,Amount:<Number>,UUIDLeast:<Number>,UUIDMost:,Name:"<Name>"]}</code>
+</p> <p><code>PortalCoolDown:<Number></code>
+</p> <p><code>HurtByTimestamp:<Number></code>
+</p> <p><code>UUIDMost:<Number></code>
+</p> <p><code>UUIDLeast:<Number></code>
+</p> <p><code>AbsorptionAmount:<Number></code>
+</p> <p><code>DeathTime:<Number></code>
+</p> <p><code>Riches:<Number></code> （只對村民）
+</p> <p><code>ForcedAge:<Number></code> （只對村民）
+</p> <p><code>Leashed:<Number></code>
+</p> <p><code>CareerLevel:<Number> </code>（只對村民）
+</p> <p><code>Career:<Number></code> （只對村民）
+</p> <p><code>UpdateBlocked:<Number></code>
+</p> <p><code>PersistenceRequired:<Number> </code>（未知）
+</p> <p><code>Willing:<Number> </code>（只對村民）
+</p> <p><code>ProfessionName:"<Name>"</code> （只對村民）
+</p> <p><code>OnGround:<Number></code>
+</p> <p><code>APY:<Number></code> （只對潛影貝）
+</p> <p><code>APZ:<Number></code> （只對潛影貝）
+</p> <p><code>ParticleParam1:<Number></code> （只對範圍效果）
+</p> <p><code>ParticleParam2:<Number></code> （只對範圍效果）
+</p> <p><code>WaitTime:<Number></code> （只對範圍效果）
+</p> <p><code>ReapplicationDelay:<Number> </code>（只對範圍效果）
+</p> <p><code>RadiusPerTick:<Number> </code>（只對範圍效果）
+</p> <p><code>RadiusOnUse:<Number> </code>（只對範圍效果）
+</p> <p><code>xTile:<Number> </code>（未知）
+</p> <p><code>yTile:<Number> </code>（未知）
+</p> <p><code>zTile:<Number></code> （未知）
+</p> <p></p> <p>
+(注：本帖子不一定100%正確，還請大家見諒)
+</p> <p>
+大佬們看在我打了那麼辛苦的指令點個贊吧，送點東西也行
+</p> <p></p> <p>
+發佈時間:2017/8/23 12:02
+</p> <p>最後編輯時間:2017/10/3 21:13
+</p> <p>最新(當天)更新內容:分頁
+</p> <p>
+持續更新中。。。
+</p>
+
+
+
+<p><br/></p></div>
+</body>
+
+</html>

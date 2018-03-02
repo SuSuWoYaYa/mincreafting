@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>计算器相关 - 加法器 和 减法器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >计算器相关 - 加法器 和 减法器</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自网易论坛<br />作者-etro777</p>
+ 
+
+<h2>前言</h2> <p>
+现在几乎每家每户都有计算器，几乎都快脱离草稿纸了，但是你们知道计算机的原理吗？你们知道他是怎么运作的吗？
+</p> <p>
+今天我就讲一讲跟计算器相关的两样东西 - 加法器和减法器
+</p> <p>
+众所周知，加法是一个很常用的符号，加法是一个最基础的数学概念，有了加法，才有了跟加法相反的减法；有了加法，才有了乘法；有了乘法，才有了除法。。。归根到底一切都是由加法作为基础，才能有这么多的运算符号，数学理念。。。
+</p> <p>
+所以今天主要讲的是加法，减法是次要的
+</p> <p>
+但是谈到计算器，加法器，什么什么器，他都有一个简单的运算规则 --- 二进制，二进制是什么(小学生才会问的问题，以下为小学生解释)？比如在十进制（十进制就是1,2,3,4,5,6,7,8,9,0,满十进一）的1+1就等于2，但二进制只有两个数字 --- 1和0，它的运算规则是满二进一，也就是1+1=10,计算器所用的核心就是二进制
+</p> <p>
+那么为什么计算器都用二进制呢？原因是理念简单，运算方便，他只有两个数字，而且运算规则也很简单，但是十进制就不一样了，它有10个数字，运算较麻烦。所以现在普遍都用二进制，只有一两个用的是十进制吧
+</p> <p>
+那么二进制是如何在电脑实现的呢？其实都是由一种门电路实现的 --- 非门
+</p> <p>在我的世界抽象的来说，非门无疑就是红石，红石火把，还有方块
+</p> <p>非门可以完成很多东西，从小的活塞门，到大的计算器
+</p> <p>非门也完成了其他许多门电路，比如异或门，与门什么的
+</p> <p>所以你要准备的无疑就是：
+</p> <p>红石
+</p> <p>红石火把
+</p> <p>充能方块
+</p> <p>中继器
+</p> <p>半砖
+</p> <p>没了哈哈哈
+</p> <p>
+教程流程:
+</p> <p>
+二进制 --- 异或门 --- 半加器 --- 全加器 --- 加法器 --- 减法器
+</p> 
+
+<h2>第一部分 --- 对二进制的认识</h2>  <p>
+二进制刚刚在前言里略讲了一下，但如果说要一下子做出计算器而对二进制只是有一点了解肯定是不太可能的，所以有兴趣的可以到网上查查看，搜一搜什么的，至少要会在二进制里做4种运算
+</p> <p>
+首先二进制和十进制是有关联的，不要以为它们只是干巴巴的两种运算规则
+</p> <p>
+这里列一个表，让大家清楚的看到他们的关联:
+</p> 
+ <p><table ><tr><th>
+十进制数</th> <th>二进制数</th></tr>
+<tr><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>10</td></tr>
+<tr><td>3</td><td>11</td></tr>
+<tr><td>4</td><td>100</td></tr>
+<tr><td>5</td><td>101</td></tr>
+<tr><td>6</td><td>110</td></tr>
+<tr><td>7</td><td>111</td></tr>
+<tr><td>8</td><td>1000</td></tr>
+<tr><td>9</td><td>1001</td></tr>
+    </table >
+</p> <p>
+ 
+从上面的表可以看到十进制数和二进数的关系了吧
+</p> <p>
+至于互相的换算吗，在网上查吧。。。
+</p>  
+<h2>第二部分 --- 加法器的核心 - 异或门</h2><p>
+
+
+
+谈到加法器，它的核心就是异或门，下面是一张异或门的图片：
+
+</p> <p>
+ 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_1.png" />
+黄色为输入端，绿色为输出端
+</p> <p>
+输出端有两头，指的就是两个加数，这里使用的是二进制，所以输入端如果有信号就代表1，未输出代表0
+</p> <p>
+所以两端输入端都为0,0+0=0，所以输出端也为零
+</p> <p>
+下面是一张有一端输入端为1的图片：
+</p> <p>
+
+ 
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_2.png" />
+1+0=1，所以输出端是1
+</p> <p>
+下面是一张两端输入端都为1的图片:
+</p> <p>
+
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_3.png" />
+
+1+1=10,个位为0，十位为1，所以个位没亮，这就是异或门的用处
+</p> <p>
+但是如果把它用在加法器里，它只是一个不会进位的加法器
+</p> <p>
+所以我们要变通一下，把他变成一种新的东西 - 半加器
+</p>  
+
+<h2>第三部分 --- 半加器</h2><p>
+
+
+半加器其实是从异或门演变而来的，他可以进位，但他不能多位数运算，最多只能算1+1
+</p> <p>
+所以待会会有一个新的名称 --- 全加器
+</p> <p>
+其实半加器的原理很简单，它只要可以进位就行了
+</p> <p>
+教程如下:
+</p> <p>
+
+首先我们要把两头输入端造好:
+
+
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_4.png" />
+</p> <p>
+还是一样的，黄色为输入端
+</p> <p>
+玻璃是为了区分方块有几个，可以不管他
+</p> <p>
+然后：
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_5.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_6.png" />
+</p> <p>
+绕到后面，并放上两个红石火把:
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_7.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_8.png" />
+</p> <p>
+绕都前面，放一个红石火把
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_9.png" />
+ 
+
+</p> <p>
+再绕到后面：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_10.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_11.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_12.png" />
+
+ </p> <p>
+
+做完以上步骤一个半加器就完成了，你们可以试验一下
+
+</p>  
+
+<h2>第四部分 --- 全加器</h2><p>
+
+全加器 = 半加器 + 半加器
+ </p> <p>
+全加器可以做无数的二进制加法运算，无数的叠加。。。
+ </p> <p>
+全加器中的第二个半加器跟前面的很相似，有一点小小的变动而已
+ </p> <p>
+教程如下:
+ </p> <p>
+首先还是照之前那样摆：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_13.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_14.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_15.png" />  
+ </p> <p>
+
+进位这里开始变动:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_16.png" />  
+ </p> <p>
+最后在这里补上一个:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_17.png" />  
+ </p> <p>
+然后一个全加器就完成了！
+ </p> <p>
+你们现在试验一下，跟刚刚半加器的结果一样就行了
+ </p> <p>
+然后就可以无限叠加。。。
+ </p> <p>
+叠加的时候要注意这里要和进位器连起来:
+ </p> <p>
+
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_18.png" />  
+
+这里一定要放半砖，不然红石火把就会激活上面的红石：
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_19.png" />  </p> <p>
+
+  
+先叠加成4bit
+ </p> <p>
+叠加后还挺好看的:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_20.png" />  
+ </p> <p>
+叠加后一定要试验一下有没有错，有错别找我，自己解决
+ </p> <p>
+
+这个是我以前做的，带有译码器和显示器:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_21.png" />  </p>
+ 
+ 
+
+<h2>第五部分 --- 减法器</h2><p>
+
+在前言中讲到，减法器是从加法器演变而来的，所以减法器只需要在加法器做小小的变动就行了
+ </p> <p>
+教程如下:
+ </p> <p>
+首先把每个处在上方的输入端改成非门：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_22.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_23.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_24.png" />  
+ </p> <p>
+再把第一个全加器中的第二个半加器的处在下方的输入端改成非门:
+ </p> <p>
+其他的不用改，只改这一个
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_5_25.png" />  
+ </p> <p>
+做完以上步骤就大功告成了
+ </p> <p>注意，下方的输入端是被减数，上方为减数，这个减法器不支持负数，要负数的自己去研究吧
+ </p> <p> </p> <p>
+以后还会出乘法器，译码器什么的
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

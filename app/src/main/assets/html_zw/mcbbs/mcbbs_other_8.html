@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>正負數乘法器與除法器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >正負數乘法器與除法器</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章轉載自網易論壇<br />作者-Netro777</p>
+ 
+
+<h2>前言</h2><p>
+
+
+</p> <p>
+之前做了負數加減器，這次該發乘法器和除法器了
+</p> <p>
+存檔
+
+</p> <p>
+*在帖子的最下面
+
+</p>  
+<h2>原理</h2><p>
+
+ 
+大家都知道乘法和除法在十進制里怎麼做，但二進制呢，其實一樣的，只不過計數方式不同而已
+</p> <p>
+乘法器的核心為與門:
+
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_1.png" /> 
+
+</p> <p>
+除法器的核心為減法器:
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_2.png" /> 
+ 
+
+</p> <p>
+計算是否為負數的核心為異或門(同號得正,異號得負):
+
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_3.png" /> 
+
+</p>  
+
+
+<h2>乘法器</h2><p>
+首先乘法器的核心為與門,因為1x1=1,1x0=0,0x1=0,0x0=0
+</p> <p>
+所以說只有兩邊輸出端都為1時才得1，其他的都為0，這就是與門
+</p> <p>
+然後我們再想想乘法是怎麼做的,也就是把某一個乘數拆分成幾個一，幾個十，幾個百等跟另一個乘數相乘，
+</p> <p>
+最後再將所有積相加就是得數
+</p> <p>
+在乘的過程中，我們需要進行移位，所以才有了下面的移位器:
+
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_4.png" /> 
+
+</p> <p>
+與門:
+
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_5.png" /> 
+
+</p> <p>
+加法器:
+
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_6.png" /> 
+
+
+</p> <p>
+符號計算:
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_7.png" /> 
+ 
+
+</p> <p>
+最後將得數和符號匯集起來就是得數:
+
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_8.png" /> 
+
+</p> <p>
+得數為:-11100001(-225)
+
+</p>  
+
+
+
+<h2>除法器</h2><p>
+除法器的核心為減法器，為什麼呢？因為要減啊
+</p> <p>
+除法的步驟（十進制）:
+
+</p> <p>
+落<-移<-減<-乘(商)
+
+</p> <p>
+(二進制):
+
+</p> <p>
+移<-減（並商1）<-比較
+
+</p> <p>
+二進制就比十進制簡單了很多，因為二進制不需要乘，而十進制還得利用99乘法表...
+</p> <p>
+這裡是除數，因為它待會會變成減數，所以它在上面:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_9.png" /> 
+</p> <p>
+這裡是被除數，因為要每一位數地去比較，所以是分開著的:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_10.png" /> 
+</p> <p>
+這裡是得商的地方，它連著減法器，因為減法器只能大-小，如果小-大就會出bug，但那樣後這裡的紅石火把就會滅掉（就像現在）
+</p> <p>
+如果是大-小，也就是商1，那麼減法器就可以正常運作，火把會亮起來，燈也會跟著亮起來，也就商了1:
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_11.png" /> 
+</p> <p>
+商這裡連著活塞，如果商1，活塞推出，中繼器也會激活紅石
+</p> <p>
+如果商0(就像現在)，活塞收回，中繼器不會激活紅石，但紅石火把將會激活，也就是不夠減，保存到下次去除:
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_12.png" /> 
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_13.png" /> 
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_14.png" /> 
+</p> <p>
+這裡要移位(1->10):
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_15.png" /> 
+ </p> <p>
+這裡繼續連通，下一次還要作為除數：
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_16.png" /> 
+ </p> <p>
+ 
+經過4次這整套循環之後，得出商(紅石燈的亮與否,亮為1，不亮為0):
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_17.png" /> </p> <p>
+還有餘數:
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_18.png" /> </p> <p>
+還有符號:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_8_19.png" />  
+</p> <p>
+以上就是關於正負數乘除法器的內容，不要忘記下載存檔哦
+
+ 
+
+</p> <p>存檔下載</p> <p>
+https://pan.baidu.com/s/1eUk0RPC
+</p>  
+  
+<p><br/></p></div>
+</body>
+
+</html>
