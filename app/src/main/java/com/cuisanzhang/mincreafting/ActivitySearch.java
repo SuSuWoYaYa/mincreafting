@@ -351,9 +351,9 @@ public class ActivitySearch extends AppCompatActivity {
             text += "的搜索结果";
 
         }
-        if (autoCompleteTextView == null) {
-            Log.e(TAG," autoCompleteTextView = null");
-        }
+//        if (autoCompleteTextView == null) {
+//            Log.e(TAG," autoCompleteTextView = null");
+//        }
         autoCompleteTextView.setText(text);
 
 
@@ -371,22 +371,24 @@ public class ActivitySearch extends AppCompatActivity {
 
             listviewAdapter = new MyAdapter(ActivitySearch.this);
 
-            if (listviewAdapter == null) {
-                Log.e(TAG," listviewAdapter = null");
-            }
-            if (listView == null) {
-                Log.e(TAG," listView = null");
-            }
-            listView.setAdapter(listviewAdapter);
+//            if (listviewAdapter == null) {
+//                Log.e(TAG," listviewAdapter = null");
+//            }
+//            if (listView == null) {
+//                Log.e(TAG," listView = null");
+//            }else {
+                listView.setAdapter(listviewAdapter);
+//            }
+
         } else {
 
 //            Log.e(TAG, "listView.setAdapter(null); ");
             listView.setAdapter(null);
 
-            if (textViewEmpty == null) {
-                Log.e(TAG," textViewEmpty = null");
-            }
-
+//            if (textViewEmpty == null) {
+//                Log.e(TAG," textViewEmpty = null");
+//            }
+//
             if(is_language_of_traditional_chinese){
                 textViewEmpty.setText("沒有搜索到結果, 請試試其他關鍵字");
             }else {
