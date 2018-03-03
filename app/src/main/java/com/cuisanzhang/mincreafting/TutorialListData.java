@@ -2076,6 +2076,7 @@ public class TutorialListData {
             "我的世界手机端附魔教程",
             "我的世界命名符彩蛋",
             "我的世界药水代码教程",
+            "我的世界怎么打出彩色字体的教程",
             "史上最简单的半自动门",
             "基本操作与合成玩法",
             "挖矿教程",
@@ -2122,6 +2123,7 @@ public class TutorialListData {
             "file:///android_asset/html/wangluojiaocheng/costem2.html",
             "file:///android_asset/html/wangluojiaocheng/costem3.html",
             "file:///android_asset/html/wangluojiaocheng/costem4.html",
+            "file:///android_asset/html/wangluojiaocheng/costem6.html"
             "file:///android_asset/html/wangluojiaocheng/costem5.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen1.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen2.html",
@@ -2170,6 +2172,7 @@ public class TutorialListData {
             "我的世界手機端附魔教程",
             "我的世界命名符彩蛋",
             "我的世界藥水代碼教程",
+            "我的世界怎麼打出彩色字體的教程",
             "史上最簡單的半自動門",
             "基本操作與合成玩法",
             "挖礦教程",
@@ -2216,6 +2219,7 @@ public class TutorialListData {
             "file:///android_asset/html_zw/wangluojiaocheng/costem2.html",
             "file:///android_asset/html_zw/wangluojiaocheng/costem3.html",
             "file:///android_asset/html_zw/wangluojiaocheng/costem4.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/costem6.html"
             "file:///android_asset/html_zw/wangluojiaocheng/costem5.html",
             "file:///android_asset/html_zw/wangluojiaocheng/jiaochen1.html",
             "file:///android_asset/html_zw/wangluojiaocheng/jiaochen2.html",

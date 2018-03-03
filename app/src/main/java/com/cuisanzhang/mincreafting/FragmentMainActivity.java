@@ -133,6 +133,7 @@ public class FragmentMainActivity extends AppCompatActivity {
 
         Menu menuNav = mNavigationView.getMenu();
         MenuItem menu_changeTheme = menuNav.findItem(R.id.menu_changeTheme);
+        MenuItem menu_settingcache = menuNav.findItem(R.id.menu_settingcache);
         MenuItem menu_feedback = menuNav.findItem(R.id.menu_feedback);
         MenuItem menu_tip = menuNav.findItem(R.id.menu_tip);
         MenuItem menu_about = menuNav.findItem(R.id.menu_about);
@@ -142,6 +143,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         if (is_language_of_traditional_chinese) {
             menu_changeTheme.setTitle("切換主題");
             menu_feedback.setTitle("意見反饋");
+            menu_settingcache.setTitle("緩存設置");
             menu_tip.setTitle("打賞作者");
             menu_about.setTitle("關於");
             menu_changelanguage.setTitle("切換語言");
@@ -150,6 +152,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         }else {
             menu_changeTheme.setTitle("切换主题");
             menu_feedback.setTitle("意见反馈");
+            menu_settingcache.setTitle("缓存设置");
             menu_tip.setTitle("打赏作者");
             menu_about.setTitle("关于");
             menu_changelanguage.setTitle("切换语言");
