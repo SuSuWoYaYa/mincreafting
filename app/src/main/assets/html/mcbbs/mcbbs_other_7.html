@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>负数加减法器|支持负数</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >负数加减法器|支持负数</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自网易论坛<br />作者-Netro777</p>
+ 
+
+<h2>前言</h2><p>
+
+
+
+
+在之前做了加法器和负数减法器之后，就想着整合起来，就完成了一个负数加减器.
+
+
+</p> <p>
+它可以支持所有的情况:正+正,负+负,正+负,负+正;正-正,负-负,正-负,负-正.
+
+</p> <p>
+其实原理大家也是知道的:
+
+</p> <p><b>
+两数相加，同号相加，异号相减;
+</p> <p>
+同号时,取相同的符号，绝对值相加;
+</p> <p>
+异号时,取绝对值较大的数的符号，绝对值相减(用绝对值大的数减绝对值小的数).
+
+</p> <p>
+两数相减,一个数减去另一个数就等于减去这个数的相反数.
+
+</b></p> <p>
+基本的原理就出来了:
+
+</p> <p><b>
+             得出得数<-将符号和得数合并<-运算<-确定符号和确定加减<-比较符号<-加法
+
+
+</p> <p>
+切换至加法<-将减数的符号反过来<-减法
+
+
+</b></p> <p>
+做成之后是这个样子的(4bit,4位):
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_7_1.png" /> 
+
+
+ 
+
+</p> <p>
+只要根据上面的步骤基本上就能做出来
+</p> <p>
+如果不懂怎么做出来的，存档在最下面:
+</p> <p>存档里面也有乘法器和除法器的结构，拿出结构方块直接加载"乘法器"或"除法器"就可以了
+</p> <p>不想打那么多字，因为实在有点累，抱歉
+</p> <p>这次想法乘法器的，但想想之后还是先把加减法完结了再说
+</p> <p>这里说一下操作方法:
+</p> <p>操作方法
+</p> <p>输入端:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_7_2.png" /> 
+</p> <p>
+下面这幅图橙色的拉杆为两个加数，上面一个下面一个；
+</p> <p>左边的红色拉杆为是否为负数，拉下为负，在哪个方位就表示哪个数的正数或负数
+
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_7_3.png" /> 
+</p> <p>
+下面这幅图橙色的拉杆为两个减数，上面一个下面一个,下面的为被减数，上面的为减数；
+</p> <p>左边的红色拉杆为是否为负数，拉下为负，在哪个方位就表示哪个数的正数或负数
+
+
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_7_4.png" /> 
+</p> <p>
+这个拉杆代表加法还是减法，拉下为减法，没拉为加法（注意如果在做加法时，要把减法的拉杆全部不拉，做减法一样，还要把下面这个拉杆拉下）
+
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_7_5.png" /> 
+</p> <p>
+输出端:
+</p> <p>右边的四个灯代表得数，现在正代表0010
+</p> <p>左边的一个灯代表是否为负数，现在正代表负数
+</p> <p>所以现在代表的数为:-0010(十进制为-2)
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_7_6.png" /> 
+</p> <p>存档下载</p> <p>
+https://pan.baidu.com/s/1eUk0RPC
+</p> <p>
+完
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

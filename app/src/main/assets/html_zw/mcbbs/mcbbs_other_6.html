@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>計算器相關 - 負數減法器的實現</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >計算器相關 - 負數減法器的實現</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章轉載自網易論壇<br />作者-Netro777</p>
+ 
+
+<h2>前言</h2><p>
+
+
+
+首先，如果沒有看我之前的教程(計算器相關 - 加法器 和 減法器)的話，請點擊這裡來查看，不然的話這篇帖子你99%看不懂
+</p> <p>之前我們講完了加法器和減法器該如何實現在我的世界當中，但是，你有沒有想過一個問題？
+</p> <p>把減法器變成可支持負數的減法器？
+</p> <p>有些人可能回想，負數減法器應該很簡單啊，只要倒過來減不就行了？？？
+</p> <p>首先，在這裡告訴大家，並沒有如此簡單，因為在做減法之前，要判斷它們的差是否為負數，其次如果為負數，你又得把被減數和減數倒過來減。。。
+</p> <p>所以說看一下這個教程吧。。。</p>  
+<h2>第一部分 --- 判斷差</h2><p>
+
+在正數中做減法時最重要的就是判斷差是否為負數，如果不為負數，就直接進行運算
+</p> <p>如果是負數，接下來就會講到怎麼應對這種情況
+</p> <p>但是要如何判斷大小呢？
+</p> <p>我在這裡使用的方法大家可能認為比較笨拙，但這是我能想到的唯一的辦法了，大家諒解
+</p> <p>大家在使用減法器的時候可能已經看到了一點：
+</p> <p>舉個例子：
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_1.png" />  </p> <p>
+
+(注：等號是用來分割線的)
+</p> <p>
+從圖片中可以看到減法器中被減數等於10，減數等於1
+</p> <p>這裡的火把是亮著的:
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_2.png" />  
+</p> <p>
+但差如果為負數的話:
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_3.png" />  
+</p> <p>
+這裡的火把就滅了：
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_4.png" />  
+</p> <p>
+對！大家沒想錯！我就用這個方法判斷負數的。
+</p> <p>所以說開始教程吧:
+</p> <p>在高空中建一個減法器,我是直接用結構方塊來加載的:
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_5.png" />  
+</p> <p>
+然後找到這個位置(綠色混凝土這裡):
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_6.png" />  
+</p> <p>
+打掉這一條：
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_7.png" />  
+</p> <p>
+並把後面的殘留也打掉：
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_8.png" />  
+</p> <p>
+為什麼要打掉呢？因為我們只需要判斷是否是負數，不需要結果
+</p> <p>然後這樣擺:
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_9.png" />  
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_10.png" />  
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_11.png" />  
+</p> <p>
+飛到上面，在每一排都放上一個方塊和中繼器:
+</p> <p>===============================================
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_12.png" />  
+ 
+</p> <p>
+這樣擺：
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_13.png" />  
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_14.png" />  
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_15.png" />  
+</p> <p>
+解釋一下:
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_16.png" />  
+</p>  
+<h2>第二部分 --- 交換</h2><p>
+
+既然已經知道了如何判斷負數，接下來就要為負數的情況做出一些舉動了
+</p> <p>這個舉動指的就是交換，把被減數變成減數，把減數變成被減數
+</p> <p>教程如下:
+ </p> <p>===============================================
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_17.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_18.png" />   
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_19.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_20.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_21.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_22.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_23.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_24.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_25.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_26.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_27.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_28.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_29.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_30.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_31.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_32.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_33.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_34.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_35.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_36.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_37.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_38.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_39.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_40.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_41.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_42.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_43.png" /> 
+ </p> <p>
+當差不為負數時，BC號活塞一直為非門狀態，AD號活塞為未激活狀態
+</p> <p>當差為負數時，BC號活塞收回，AD號活塞推出
+</p> <p>移位器:
+</p> <p>===============================================
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_44.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_45.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_46.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_47.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_48.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_49.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_50.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_51.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_52.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_53.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_54.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_55.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_56.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_57.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_58.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_59.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_60.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_61.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_62.png" />
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_63.png" />
+
+
+</p> <p>
+飛到這個位置:
+</p> <p>===============================================
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_64.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_65.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_66.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_67.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_68.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_69.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_70.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_71.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_72.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_73.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_74.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_75.png" /> 
+</p> <p>===============================================
+</p> <p>
+結合剛剛ABCD號活塞的那片圖來看，當差不為負數時，淺紅色和深藍色的電路被BC活塞割斷,紅石
+</p> <p>電路只會通深紅色和淺藍色的電路，而不會通淺紅色和深藍色的電路，也就是不會交換
+</p> <p>當差為負數時，AD號活塞推出，將深紅色和淺藍色的電路割斷，BC活塞收回，將淺紅色和深藍色的
+</p> <p>電路重新接上，當紅石經過這兩條電路時，會互相交換互相的位置，也就是被減數變成了減數，減數變成了被減數
+</p> 
+<h2>第三部分 --- 減法器</h2><p>
+ 最後只要在末尾添加上減法器就行了，減法器的教程也就不細講了，只要把線路接一下就OK了:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_76.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_77.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_78.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_79.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_80.png" />
+ </p> <p>
+在這個地方把減法器造出來就行了：
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_81.png" /> 
+</p> <p>
+繞道這裡:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_82.png" /> 
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_83.png" /> 
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_84.png" /> 
+</p> <p>
+紅色處燈是用來告訴玩家是否為負數，如果是，燈亮：
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_85.png" /> 
+</p> <p>
+綠色處為結果：
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_86.png" /> 
+ 
+</p> <p>
+然後現在來試驗一下:
+</p> <p>
+這裡忘記方拉桿了，現在放上:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_87.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_88.png" /> 
+ 
+</p> <p>
+放上燈：
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_89.png" /> 
+</p> <p>
+然後開始試驗，先算10-1:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_90.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_91.png" /> 
+ </p> <p>
+正確！再算1-10:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_92.png" /> 
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_93.png" /> 
+</p> <p>
+額，出問題了，不過我已經找到了兩個問題:
+</p> <p>
+
+問題一：紅石長度不夠
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_94.png" /> 
+
+ 
+
+</p> <p>
+解決方案：加上中繼器
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_95.png" /> 
+ 
+</p> <p>
+
+問題二：活塞BUD
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_96.png" /> 
+ 
+
+</p> <p>
+解決方案：將活塞斜上方的方塊改為半磚
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_97.png" /> 
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_98.png" /> 
+ 
+
+</p> <p>
+最後更新一下活塞，就沒問題了，還請大家諒解
+
+</p> <p>
+現在就沒問題了：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_99.png" /> 
+
+ 
+</p> <p>
+此圖片為負數減法器原理圖：
+</p> <p>===============================================
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_6_100.png" /> 
+</p> <p></p> <p>
+好了，以上就是負數減法器的教程，下次教程：乘法器
+
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

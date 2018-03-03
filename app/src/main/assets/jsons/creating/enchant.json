@@ -222,6 +222,33 @@
       "material": "最高等级 I",
       "use": "物品会在玩家死亡时从死亡的玩家的背包里消失",
       "detail": "消失诅咒(Curse of Vanishing)\n\n当玩家死亡时,此物品会直接消失,而不是在死亡地点掉落\n此物品依然能扔出.不仅对工具,对所有物品也适用\n\n属于宝藏型附魔,只能通过宝箱、钓鱼或交易获得\n\n该物品可能仍然会正常掉落.\n此魔咒效果可以通过将游戏规则keepInventory设为true来避免.\n\nID:71(携带版：N/A)"
+    },{
+      "file_name": "fumo_sanchazha",
+      "name": "引雷",
+      "material": "最高等级 I",
+      "use": "在雷暴天气中召唤一道闪电击中生物",
+      "detail": "版本1.13加入\n\n仅有1级.\n\n用于三叉戟上,在雷暴天气中召唤一道闪电击中生物.\n\n需要目标生物直接在开阔地带,且所处的生物群系正在下雨."
+    },
+    {
+      "file_name": "fumo_sanchazha",
+      "name": "穿刺",
+      "material": "最高等级 V",
+      "use": "增加对海洋生物的伤害",
+      "detail": "版本1.13加入\n\n最高等级为V.\n\n用于三叉戟上,增加对海洋生物的伤害."
+    },
+    {
+      "file_name": "fumo_sanchazha",
+      "name": "忠诚",
+      "material": "最高等级 III",
+      "use": "使三叉戟在投掷后返回",
+      "detail": "版本1.13加入\n\n最高等级为III\n\n用于三叉戟上,使三叉戟在投掷后返回."
+    },
+    {
+      "file_name": "fumo_sanchazha",
+      "name": "激流",
+      "material": "最高等级 III",
+      "use": "在水中或下雨时投掷后会加速玩家移动",
+      "detail": "版本1.13加入\n\n最高等级为III.\n\n用于三叉戟上,在水中或下雨时投掷后会加速玩家移动."
     }
   ]
 }

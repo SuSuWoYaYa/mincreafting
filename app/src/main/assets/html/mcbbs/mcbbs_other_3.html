@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Setblock指令标签</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Setblock指令标签</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自网易论坛<br />作者-etro777</p>
+ 
+
+<h2>Setblock指令标签</h2><p>
+
+注意，1.12!!!
+</p> <p>Setblock指令标签
+</p> <p>【EGS】
+</p> <p>
+setblock在我的世界跟summon比起来，也是一个很重要的指令领域
+</p> <p>
+setblock的难点不是在格式上，而是在子ID和指令标签上
+</p> <p>
+另外，今天讲的指令标签在blockdata也同样适用
+</p>  
+<h3>1.容器类:</h3>
+  <p>
+容器可以代表很多东西，比如箱子，熔炉，甚至漏斗等
+</p> <p>这里给大家介绍如何直接用setblock指令来完成放置一个有东西的容器
+</p> <p>首先我们要用到Items标签，比如:
+</p> <p><code>/setblock ~ ~ ~ chest 0 replace {Items:[]}</code>
+</p> <p>
+这是一个标签格式，如果你用这条指令来放置有东西的箱子那是不可能的，但你只要
+</p> <p>改一些NBT就行:
+</p> <p><code>/setblock ~ ~ ~ chest 0 replace {Items:[{Slot:槽位,id:"minecraft:物品ID",Count:数量,Damage:子ID}]}</code>
+</p> <p>
+这是一个放置一个有东西的箱子指令，你只需要把中文替换成这个物品的信息就行，比如:
+</p> <p><code>/setblock ~ ~ ~ chest 0 replace {Items:[{Slot:0b,id:"minecraft:chest",Count:1,Damage:0}]}</code>
+</p> <p>
+这个指令运行后可以放置一个有箱子(物品)的箱子(方块)
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_1.png" /> 
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_2.png" /> 
+</p> <p>
+你可以在一个箱子放很多物品,比如:
+</p> <p><code>
+/setblock ~ ~1 ~ chest 0 replace {Items:[{Slot:0b,id:"minecraft:chest",Count:1,Damage:0},{Slot:1b,id:"minecraft:diamond_sword",Count:1,Damage:0}]}</code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_3.png" /> 
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_4.png" /> 
+</p> <p>
+当然如果你想放一把有锋利属性的钻石剑，就要用到tag标签,例如:
+</p> <p><code>
+/setblock ~ ~1 ~ chest 0 replace {Items:[{Slot:0b,id:"minecraft:diamond_sword",Count:1,Damage:0,tag:{}}]}</code>
+</p> <p>这里用到了tag标签，但里面没添加任何东西，只是一个格式
+</p> <p>tag标签内可以填物品的标签，比如:
+</p> <p><code>/setblock ~ ~1 ~ chest 0 replace {Items:[{Slot:0b,id:"minecraft:diamond_sword",Count:1,Damage:0,tag:{ench:[{id:16,lvl:100}]}}]}</code>
+</p> <p>这里就添加了ench标签，锋利100
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_5.png" /> 
+ <p>
+总之，物品标签有很多，这里再讲就跑题了
+</p> <p>这里还有一个CustomName标签:
+</p> <p><code>/setblock ~ ~1 ~ chest 0 replace {CustomName:"1"}</code>
+</p> <p>这样就可以放置一个有名字(1)的箱子(当你打开它时,左上角会显示)
+</p> 
+<h3>2.牌子类</h3>
+  <p>牌子在我的世界中，也是一个很重要的东西
+</p> <p>这里可以教大家如何改变牌子中字的颜色、字体、事件
+</p> <p>
+首先牌子有两种，一种是立着的（standing_sign）：
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_7_2.png" /> 
+</p> <p>
+还有一种是贴着墙的（wall_sign）:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_7.png" /> 
+</p> <p>
+当然，下面讲的牌子Json对这两种牌子都适用
+</p> <p>首先还是格式:
+</p> <p><code>/setblock ~ ~ ~ minecraft:standing_sign 0 replace {"Text1":"{标签}","Text2":"{标签}","Text3":"{标签}","Text4":"{标签}"}</code>
+</p> <p>
+Text1指的是第一行写的东西，Text2、3以此类推
+</p> <p>如果你只想写一行或其他行不用写，那么那个Text可以去掉
+</p> <p>接下来是标签:
+</p> <p><code>/setblock ~ ~1 ~ minecraft:standing_sign 0 replace {"Text2":"{\"text\":\"内容\",\"color\":\"颜色\",\"格式\":\"true/false\",\"clickEvent\":{}}"}</code>
+</p> <p>上面是格式，下面举个例子:
+</p> <p><code>/setblock ~ ~1 ~ minecraft:standing_sign 0 replace {"Text2":"{\"text\":\"点我召唤闪电苦力怕\",\"color\":\"green\",\"bold\":\"true\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/summon creeper ~ ~ ~ {powered:1b}\"}}"}
+</code></p> <p>然后就会这样:
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_8.png" /> 
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_9.png" /> 
+</p> <p>
+text指的是内容，后面要填写内容
+
+</p> <p>color指的是颜色，后面要填写颜色
+</p> <p>bold指的是粗体格式，后面填true代表真，如果填false代表假（不粗体）
+</p> <p>clickEvent指的是点击事件，后面的action和value必须有
+</p> <p>action指的是点击后的动作，这里是运行指令(run_command)
+</p> <p>value指的是动作对应的值，这里就是召唤一个闪电苦力怕
+</p> <p>如果你想要多种字体或颜色:
+</p> <p><code>/setblock ~ ~1 ~ minecraft:standing_sign 0 replace {"Text2":"[{\"text\":\"颜\",\"color\":\"red\",\"bold\":\"true\"},{\"text\":\"色\",\"color\":\"aqua\",\"italic\":\"true\"}]"}
+</code>
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_10.png" /> 
+ 
+italic指的是斜体
+</p>  
+<h3>3.末地折跃门</h3>
+  <p>
+末地折跃门是个很神奇的东西:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_11.png" /> 
+</p> <p><code>
+/setblock ~ ~1 ~ minecraft:end_gateway 0 replace</code>
+</p> <p>
+末地折跃门也就相当于末地传送门，但是用指令召出来的末地折跃门可以为我们所用
+</p> <p>比如进到末地折跃门里，就帮我们传送到某地
+</p> <p>指令很简单，格式如下:
+</p> <p><code>/setblock ~ ~1 ~ minecraft:end_gateway 0 replace {ExactTeleport:,ExitPortal:{X:,Y:,Z:},Age:}</code>
+</p> <p>ExactTeleport指的是准确的传送，后面填1b或0b
+</p> <p>1b为准确传送，0b反之
+</p> <p>不准确传送就是指随机的传送到坐标旁边的安全坐标
+</p> <p>ExitPortal指的是进到折跃门里出来的地方，后面填坐标
+</p> <p>Age指的是折跃门已存在的时间，当它小于200时，会发出紫色的光束
+</p> <p>下面是一个例子:
+</p> <p><code>/setblock ~ ~1 ~ minecraft:end_gateway 0 replace {ExactTeleport:1b,ExitPortal:{X:100,Y:100,Z:100},Age:0}</code>
+</p> <p>这样召出来的末地折跃门，进出之后会准确传送到坐标X为100，Y为100，Z为100(我乱填的)，还会在10秒之内发出紫色的光束
+</p> 
+<h3>4.命令方块本身</h3>
+
+ <p>命令方块本身也可以用来放置命令方块，但你可以放置一个有标签的命令方块:
+</p> <p><code>/setblock ~ ~ ~ command_block 0 replace {Command:"/summon creeper"}</code>
+</p> <p>这样就可以放置一个命令为/summon creeper的CB
+</p> <p>你也可以控制命令方块的其他东西，比如:
+</p> <p><code>/setblock ~ ~ ~ command_block 0 replace {Command:"/summon creeper",auto:1b}</code>
+</p> <p>这样就可以放置一个命令为/summon creeper、保持开启的CB
+</p> <p>也就是说你一运行这条命令，就会放置一个命令方块，还会立即召出一个苦力怕
+
+</p> 
+<h3>5.附录</h3>
+ <p>我这里还找到一些小的标签，不知道对你们有没有用:
+</p> <p><code>/setblock ~ ~1 ~ minecraft:jukebox 0 replace {RecordItem:{id:"record_strad",Count:1b,Damage:0s}}</code>
+</p> <p>放置一个音乐盒，里面插着一个名为strad的唱片(我不知道为什么放置后没有播放音乐。。。)
+</p> <p><code>/setblock ~ ~1 ~ minecraft:noteblock 0 replace {note:23b}</code>
+</p> <p>放置一个音符盒，里面的音调为23(最大)
+</p> <p>这里是一些奇特的方块的ID:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_3_12.png" /> 
+</p> <p>
+下面是从左到右依次的放置命令:</p> <p><code>
+/setblock ~ ~ ~ log 12</code></p> <p><code>
+/setblock ~ ~ ~ log 13</code></p> <p><code>
+/setblock ~ ~ ~ log 14</code></p> <p><code>
+/setblock ~ ~ ~ log 15</code></p> <p><code>
+/setblock ~ ~ ~ log2 12</code></p> <p><code>
+/setblock ~ ~ ~ log2 13</code></p> <p><code>
+/setblock ~ ~ ~ double_stone_slab 8</code></p> <p><code>
+/setblock ~ ~ ~ double_stone_slab 9</code></p> <p><code>
+/setblock ~ ~ ~ red_mushroom_block</code></p> <p><code>
+/setblock ~ ~ ~ brown_mushroom_block</code></p> <p><code>
+/setblock ~ ~ ~ red_mushroom_block 0 </code></p> <p>或 <code>/setblock ~ ~ ~ brown_mushroom_block 0</code>
+</p> <p>
+</p> <p>setblock的指令标签貌似就这些了，下次可能会做一个关于give的指令标签
+</p> <p>原本还想写刷怪笼的，但好像在1.12不能用。。。
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

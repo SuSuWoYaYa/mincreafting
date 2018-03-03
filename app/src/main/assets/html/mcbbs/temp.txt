@@ -1,0 +1,53 @@
+<h2></h2><p>
+</p>
+<h3></h3><p>
+<p>
+</p> <p>
+<br />
+<code>
+</code>
+
+</p>
+<h2>
+</h2>
+<p>
+<b>
+<h2></h2><p>
+<p><img src="mcbbs/mcbbs132_.jpg" /></p>
+
+</p><p><img src="mcbbs/mcbbs130_1.jpg" /> 
+</p><p><img src="mcbbs/mcbbs130_2.jpg" /> 
+</p><p><img src="mcbbs/mcbbs_apple4_.jpg" /> 
+</p><p><img src="mcbbs/mcbbs_apple4_1.jpg" /> 
+</p><p><img src="mcbbs/mcbbs_apple4_2.jpg" /> 
+</p><p><img src="mcbbs/mcbbs_apple4_3.jpg" /> 
+</p><p><img src="mcbbs/mcbbs_apple4_4.jpg" /> 
+       </p><p>
+
+<p><img src="local/mcbbs_head_jinjie.jpg" /></p>
+<p><img src="local/mcbbs_head_xinhongshi.jpg" /></p>
+<p><img src="local/mcbbs_head_jianzhu.jpg" /></p>
+
+
+    <table ><tr><th>
+    </th> <th>
+    </th></tr>
+    
+    <tr><td>
+    </td><td>
+    </td></tr>
+    </table >
+    
+    <table >
+      <tr>
+        <th>生物</th>
+        <th>普通掉落</th>
+        <th>玩家击杀掉落</th>
+        <th>备注</th>
+      </tr>
+      <tr>
+        <td>爬行者</td>
+        <td>火药</td>
+        <td>音乐唱片</td>
+        <td>只有爬行者被骷髅击杀时才会掉落音乐唱片。</td>
+      </tr>

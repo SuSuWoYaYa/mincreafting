@@ -111,7 +111,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         }else {
                             tableName = MyDatabaseHelper.TABLE_MOBS_BOSS;
                         }
-                        category = getString(R.string.boss);
+                        category = "BOSS";
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_hostile:
@@ -160,7 +160,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         }else {
                             tableName = MyDatabaseHelper.TABLE_MOBS_UTILITY;
                         }
-                        category = getString(R.string.xiaoyongxingshengwu);
+                        category = "效用型生物";
                         loading= R.drawable.loading_of_mobs;
                         break;
                     case R.id.layout_btn_other_mobs:
@@ -169,7 +169,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         }else {
                             tableName = MyDatabaseHelper.TABLE_MOBS_UNUSE;
                         }
-                        category = getString(R.string.qitashengwu);
+                        category = "其他的生物";
                         loading= R.drawable.loading_of_mobs;
                         break;
 
@@ -177,10 +177,10 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                     case R.id.layout_btn_food:
                         if (is_language_of_traditional_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_ITEM_BLOCK_FOOD;
-                            category =  "食物类物品";
+                            category =  "食物類物品";
                         }else {
                             tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_FOOD;
-                            category =  "食物類物品";
+                            category =  "食物类物品";
                         }
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
@@ -244,7 +244,7 @@ public class FragmentMobsAndItemAndBlocks extends Fragment {
                         }else {
                             tableName = MyDatabaseHelper.TABLE_ITEM_BLOCK_OTHERS;
                         }
-                        category = getString(R.string.qitawuping);
+                        category = "其他物品";
                         loading= R.drawable.loading_of_wuping;
                         isCreating = true;
                         break;

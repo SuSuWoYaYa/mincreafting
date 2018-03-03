@@ -207,10 +207,10 @@ public class FragmentCreating extends Fragment {
                     case R.id.layout_btn_weapon:
                         if (is_language_of_traditional_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_WEAPON;
-                            category = "武器类合成";
+                            category = "武器類合成";
                         }else{
                             tableName =  MyDatabaseHelper.TABLE_WEAPON;
-                            category = "武器類合成";
+                            category = "武器类合成";
                         }
                         break;
                     case R.id.layout_btn_others:
@@ -225,10 +225,10 @@ public class FragmentCreating extends Fragment {
                     case R.id.layout_btn_semlting:
                         if (is_language_of_traditional_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_SMELTING;
-                            category = "烧炼类";
+                            category = "燒煉類";
                         }else{
                             tableName =  MyDatabaseHelper.TABLE_SMELTING;
-                            category = "燒煉類";
+                            category = "烧炼类";
                         }
                         loding =R.drawable.loading_of_smelting;
 //                        isCreating = false;
@@ -237,10 +237,10 @@ public class FragmentCreating extends Fragment {
                     case R.id.layout_btn_brewing:
                         if (is_language_of_traditional_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_BREWING;
-                            category = "药水类";
+                            category = "藥水類";
                         }else{
                             tableName =  MyDatabaseHelper.TABLE_BREWING;
-                            category = "藥水類";
+                            category = "药水类";
                         }
                         loding = R.drawable.loading_of_brewing;
 //                        isCreating = false;
@@ -248,11 +248,12 @@ public class FragmentCreating extends Fragment {
                         break;
                     case R.id.layout_btn_enchant:
                         if (is_language_of_traditional_chinese) {
-                            tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
-                            category = "附魔类";
+                            //9.0的表错误修正
+                            tableName = MyDatabaseHelper.ZW_TABLE_ENCHANT;
+                            category = "附魔類";
                         }else{
                             tableName =  MyDatabaseHelper.TABLE_ENCHANT;
-                            category = "附魔類";
+                            category = "附魔类";
                         }
                         loding = R.drawable.loading_of_enchant;
                         isCreating = false;

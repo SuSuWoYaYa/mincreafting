@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>教你学会scoreboard指令（详解）</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >教你学会scoreboard指令（详解）</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自网易论坛<br />作者-etro777</p>
+ 
+
+<h2>Scoreboard指令</h2><p>
+
+ 
+  <p>
+scoreboard是一个很强大的指令(比execute还强大),不过我发现很多玩家都不懂...
+</p> <p>
+所以我才想要做一个关于scoreboard的指令教程
+</p> <p>
+要是你们还是不懂，那我就实在没办法了</p>
+<h2>1.objective/players</h2>
+
+<h3>1.1.objective/add</h3>
+  <p> 作用：添加一个新目标
+</p> <p>首先scoreboard的最基础的指令:
+</p> <p>
+</p> <p><code>/scoreboard objective add 目标名称 判据 显示名</code>
+</p> <p>
+</p> <p>这条指令会添加一个目标，名称任意。这是scoreboard里最基础的指令，没有它scoreboard指令也就没啥用了
+</p> <p>你可以添加无限个目标，但名称不能重复，判据可以重复
+</p> <p>
+<b>目标是什么?</b>
+</p> <p>简单来说，目标是一种计算分数的东西，所有目标都有这几样东西:
+</p> <p>1.名称,显示名
+</p> <p>2.玩家(或生物),分数
+</p> <p>3.判据
+</p> <p>
+<b>判据是什么?</b>
+</p>
+<p>每个目标都有它们所属的判据，所有目标的判据可以相同，但名称不能相同，如果出现了名称相同的情况，
+</p> <p>就会  .
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_1.jpg" /></p> <p>一般来说，如果出现这种情况就会在名称后面加几个数字.判据有很多，判据使电脑知道这是一个什么样的目标，可以按Tab来查看:
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_2.jpg" /> </p> <p> (在下划线那里按Tab键),然后弹出一个判据名称，再按一次Tab就会再出
+</p> <p>只要做了与判据相符的事,就会加一分
+</p> <p>下面是一个例子:
+</p> <p>
+</p> <p><code>/scoreboard objective add Test dummy</code>
+</p> <p>
+</p> <p>这个指令运行后会添加一个名为"Test"的变量 </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_3.png" />
+</p> <p>如果开启了commandBlockOutPut,左下角的显示是正常的，你就己经添加了Test目标
+</p> <p>当然判据可以变:
+</p> <p>
+</p> <p><code>/scoreboard objective add Test1 deathCount</code>
+</p> <p>
+</p> <p>这样就会添加一个判据为deathCount的新目标"Test1"
+</p> <p>
+</p> <p>有权限的玩家可以改变"Test"或"Test1"的分数(如果判据不是dummy也可以改,只不过判据也可以自动加分)
+ 
+</p> 
+
+<h3>1.2.players/add </h3>  <p>
+作用：给玩家的某目标加分
+</p> <p>如果只是单纯地添加一个目标，而不对它做任何有意义的事情，那这又有什么用呢???
+</p> <p>所以说目标还是很有用处的，比如说他可以给特指的玩家（或生物）加分
+</p> <p>加分:
+</p> <p><code>/scoreboard players add 选择器 目标名称 分数</code>
+</p> <p>
+</p> <p>这条指令可以让玩家修改玩家在某个目标的分数
+</p> <p>比如:
+</p> <p><code>/scoreboard players add @p Test 1</code>
+</p> <p>
+</p> <p>这条指令可以让最近玩家的目标分数(Test)加1分
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_4.jpg" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_5.jpg" /> 
+</p> <p>分数你可以改成任何数字
+</p> <p>当然你不止可以加分数，还可以设置分数(set),和减分数(remove):
+</p>  
+
+<h3>1.3.players/set/remove</h3>
+  <p>
+  作用：给玩家的某目标设置分数和减去分数
+</p> <p>
+设置分数和减去分数:
+</p> <p><code>
+/scoreboard players set 选择器 目标名称 分数</code>
+</p> <p><code>
+/scoreboard players remove 选择器 目标名称 分数</code>
+</p> <p>
+比如:
+<code>/scoreboard players set @p Test 0</code>
+</p> <p>
+</p> <p><code>/scoreboard players remove @p Test 1</code>
+</p> <p>
+</p> <p>这两条指令分表让最近玩家的目标分数(Test)设成0和减1
+</p> <p>既然我们已经会加分减分设分,那怎样才能让玩家知道自己的分数呢?(下面)
+</p>  
+<h3>1.4.objective/setdisplay</h3>
+  <p>作用：将某目标显示
+</p> <p>
+将玩家在某目标的分数显示：
+</p> <p><code>/scoreboard objective setdisplay 显示位置 目标名称</code>
+</p> <p>
+</p> <p>如果你想让分数显示在左边,显示位置就填sidebar
+
+ 
+</p> <p><code>
+/scoreboard objectives setdisplay sidebat Test</code>
+</p> <p>
+效果如图:</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_6.jpg" /> 
+</p> <p>当然，还有很多显示地方,按Tab来查看,这样就能让玩家知道自己是多少分
+</p> <p>如果你不想让分数显示在屏幕上:
+ 
+</p> <p><code>/scoreboard objective setdisplay 显示位置</code>
+</p> <p>
+</p> <p>假如显示位置为sidebar,sidebar就会被清空(不显示)
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_7.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_8.png" /> 
+</p> <p>不过,假如你想要造一个多人小游戏地图,你需要让玩家的分数到达20才算赢,你要怎么来检测呢？(下面)
+</p>  
+<h3>1.5.检测score</h3>
+ <p>作用：检测玩家的分数
+
+</p> <p>选择器[score_目标名称_min=检测分数]
+</p> <p>选择器[score_目标名称=检测分数]
+</p> <p></p> <p>
+</p> <p>问:这是什么鬼东西?
+</p> <p>这是用检测玩家分数并做出举动,比如:
+</p> <p></p> <p>
+</p> <p><code>/tellraw @a[score_Test_min=20] [{"text":"你赢了"}]</code>
+</p> <p>这条指令的意思是:
+</p> <p>告诉目标为Test的玩家的分数大于等于20时，就会打出"你赢了"
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_9.jpg" /> 
+</p> <p>如果是@a[score_Test=20]就是小于等于20当然你可以两个一起用，比如:@a[score_Test_min=20,score_Test=20],意思就是等于20时就会...
+</p> <p>这样就可以起到一个检测作用,不过要保持开启
+</p> <p>
+</p> <p>当然，如果这样的话就会一直显示"你赢了"
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_10.png" /> 
+</p> <p>所以后面一个命令方块还得用来重置:
+ 
+</p> <p><code>/scoreboard players set @a[score_Test_min=20] Test 0</code>
+</p> <p>
+</p> <p>这样既能显示一个你赢了,同时重置了分数
+</p> <p>如果你手滑想要删除一个目标时:（下面）
+</p>  
+<h3>1.6.objective/remove</h3>
+  <p>作用：移除一个目标
+</p> <p>
+移除一个目标：
+</p> <p><code>/scoreboard objective remove 目标名称</code>
+ 
+</p> <p>这样就能删除一个目标名称
+</p> <p>
+</p> <p>比如：
+
+ 
+</p> <p><code>/scoreboard objective remove Test1</code>
+ 
+ 
+</p> <p>将目标名为Test1的目标移除
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_11.png" /> 
+</p>  
+<h3>1.7.objective/list</h3>
+  <p>作用：显示所有目标
+</p> <p>如果你想查看你创建了多少个目标,可以用到:
+ 
+</p> <p><code>/scoreboard objective list</code>
+</p> <p>
+</p> <p>这样就可以列出有多少个目标
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_12.png" /> 
+</p> <p>但此指令只能用在指令框上，不能用在命令方块里
+</p>  
+<h3>1.8.players/operation</h3>
+  <p>作用：在目标里做运算
+</p> <p>在我的世界做运算，可以用到operation
+ 
+</p> <p><code>/scoreboard players operation </code>主要针对对象 主要针对对象目标名称 操作符 次要针对对象 次要针对对象目标名称
+</p> <p>
+</p> <p>这看起来有点难理解，解释一下:
+</p> <p>假如A玩家的目标名为score1的分数为2，B玩家的目标名为score2的分数为1,再用此指令:
+ 
+</p> <p><code>/scoreboard players operation A玩家 score1 += B玩家 score2</code>
+</p> <p>
+</p> <p>这样A玩家目标名为score1的分数就变成了3(2+1)
+</p> <p>主要针对对象和目标和次要针对对象和目标名称可以填同一个
+</p> <p>当然操作符不止一个,列一个表:
+</p> <p>
+</p> <table ><tr><th>
+操作符 </th> <th>意思</th></tr>
+<tr><td>+=</td><td>加法，只改变主要针对对象的目标分数，不改变次要针对对象分数</td></tr>
+<tr><td>-=</td><td>减法，只改变主要针对对象的目标分数，不改变次要针对对象分数</td></tr>
+<tr><td>*=</td><td>乘法，只改变主要针对对象的目标分数，不改变次要针对对象分数</td></tr>
+<tr><td>/=</td><td>除法，整除，只改变主要针对对象的目标分数，不改变次要针对对象分数</td></tr>
+<tr><td>%=</td><td>除法，余除，只改变主要针对对象的目标分数，不改变次要针对对象分数</td></tr>
+<tr><td><</td><td>当主要针对对象分数<次要针对对象分数，两个都不变<br />
+当主要针对对象分数>次要针对对象分数，次要针对对象的分数会赋值给主要针对对象的分数，次要针对对象的分数不变</td></tr>
+<tr><td>></td><td>当主要针对对象分数>次要针对对象分数，两个都不变<br />
+当主要针对对象分数<次要针对对象分数，次要针对对象的分数会赋值给主要针对对象的分数，次要针对对象的分数不变</td></tr>
+<tr><td>=</td><td>直接将次要针对对象的分数赋值给主要针对对象分数</td></tr>
+<tr><td>><</td><td>直接将两个分数赋值给对方</td></tr></table >
+
+</p> <p>
+例如:
+</p> <p>先再添加一个新目标"Help":
+
+</p> <p><code>
+/scoreboard objectives add Help dummy 帮助</code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_13.png" />  
+
+  </p> <p>
+"Help"目标是为了做运算的次要针对对象目标,所以我们先试一试两个目标相加:
+</p> <p>先把Help设置为1:   
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_14.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_15.png" />    
+</p> <p>再做加法:
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_16.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_17.png" />    
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_18.png" />   
+ </p> <p>
+可以看到操作以成功，Test+Help=20+1=21,所以Test变成了21
+
+</p> 
+<h3>1.9.players/reset</h3>
+  <p>作用：将玩家的目标重置
+</p> <p>将玩家的特显栏清除，并把玩家的分数重置为0：
+ 
+</p> <p><code>/scoreboard players reset 选择器 目标名称</code>
+</p> <p>
+</p> <p>比如:
+ 
+</p> <p><code>/scoreboard players reset @a Test</code>
+ 
+</p> <p>将所有玩家的目标名为Test的显示栏清除，并把分数重置为0
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_19.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_20.png" />  
+ </p>  
+<h3>1.10.1.players/tag/add</h3>
+ <p>作用：给玩家添加一个标签
+</p> <p>将特定玩家添加一个特定标签
+ 
+</p> <p><code>/scoreboard players tag 选择器 add 标签名称 数据标签</code>
+</p> <p>
+</p> <p>比如:
+ 
+</p> <p><code>/scoreboard players tag @a add Tag1 {OnGround:1b}</code>
+ 
+</p> <p>给所有在地面上玩家添加一个名为Tag1的标签
+</p> <p>在地面上的效果:   </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_21.png" />  
+</p> <p>不在地面上的效果:   </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_22.png" />  
+</p> <p>
+</p> <p>可以让带有某标签的玩家做某些事情
+</p> <p>
+选择器[tag=标签名称]
+</p> <p>选择器[tag=!标签名称]
+</p> <p>
+</p> <p>如果想让带有标签名为Tag1的玩家都死:
+ 
+</p> <p><code>/kill @a[tag=Tag1]</code>
+ 
+</p> <p>让没带有标签名为Tag1的人死:
+ 
+</p> <p><code>/kill @a[tag=!Tag1]</code>
+</p>  
+<h3>1.10.2.players/tag/list</h3>
+ <p>作用：将玩家的标签列举出来
+将玩家的标签都列举出来
+</p> <p><code>
+/scoreboard players tag 选择器 list</code>
+</p> <p>
+比如:</p> <p><code>
+/scoreboard players tag @p list</code>
+</p> <p>此指令貌似也只能用在指令框里
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_23.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_24.png" />  
+</p>  
+<h3>1.10.3.players/tag/remove</h3>
+ <p>作用：将玩家的标签移除</p><p>
+将玩家的标签移除
+</p> <p><code>
+/scoreboard players tag 选择器 remove 标签名称</code>
+</p> <p>
+</p> <p>
+比如:
+
+</p> <p><code>
+/scoreboard players tag @a remove Tag1</code>
+</p> <p>
+
+将所有人中带有名为Tag1的标签删除
+</p> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_25.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_26.png" /> </p> 
+<h3>1.11.players/enable</h3><p>
+
+如果你想用这条指令，首先得添加判据为trigger目标:
+</p><p>
+/scoreboard objectives add TRIGGER trigger
+</p><p>
+这样就添加了判据为trigger,目标名为TRIGGER的目标,如图:  
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_27.png" />    
+</p><p>给玩家在判据为trigger的目标给予权限，比如:
+</p><p>
+/scoreboard players enable 选择器 目标名称(trigger判据)
+</p><p>
+这样就给某些玩家修改自己分数的权限修改自己在trigger判据目标的指令如下:
+</p><p>
+/trigger 目标名称(trigger判据) <add|set> 分数
+</p><p>
+比如:
+
+</p><p>
+/scoreboard players enable @a TRIGGER
+</p><p>
+在TRIGGER目标给所有人权限,如图: 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_28.png" /> </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_29.png" /> 
+</p><p>
+/trigger TRIGGER set 100
+</p><p>
+将自己在TRIGGER的分数修改成100,如图:  
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_30.png" />  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_31.png" />  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_32.png" />    
+</p><p>
+/trigger TRIGGER add 100
+</p><p>
+将自己在TRIGGER的分数加100,如图:  
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_33.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_34.png" />  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_35.png" />     
+ </p><p>注意:没有权限不能修改: </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_36.png" />  
+</p> 
+<h3>1.12.脑补/计时器</h3>
+ <p>
+现在你们应该已经学会了一点scoreboard指令,现在就给大家介绍一个用scoreboard指令做的计时装置,给大家脑补脑补
+</p> <p>
+有三个指令方块:</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_37.png" />  
+</p> <p>
+  </p> <p>
+
+这里给大家介绍的是倒计时（remove）,当然大家也可以加分计时(add)
+</p> <p>首先得要加两个变量:
+</p> <p><code>
+/scoreboard objective add time1 dummy</code>
+</p> <p><code>
+/scoreboard objective add time2 dummy</code>
+</p> <p>
+图片中从下往上的指令分别是(循环):
+</p> <p><code>
+/scoreboard players add @a time2 1  </code>给目标名为time2的所有玩家加一分
+</p> <p><code>
+/scoreboard players remove @a[score_time2_min=20,score_time1_min=1] time1 1  </code></p> <p>如果目标time2大于等于20,time1也大于等于1，就给time1减一分(这里也可以设置成add)
+</p> <p><code>
+/scoreboard players set @a[score_time2_min=20] time2 0  </code></p> <p>如果目标名为time2的分数大于等于20,就把time2设成0
+</p> <p></p> <p>
+这可能对萌新看不懂，解释一下:
+</p> <p>
+首先time2是用来辅助time1计时的,time2一直在给自己加分，当加到了20分（也就过了一秒），就把time1减掉一分并把time2重新设置成0，这样就起到了一个循环作用
+</p> <p>time1一开始你要设置分数(时间)，当time1减到0时，就不会再减下去了，因为第二条指令中的score_time1_min=1],0小于1，所以就不减了
+</p> <p>当然你也可以用setdisplay来显示计时的时间,让玩家知道还有多少时间
+</p> <p></p> <p>
+你也可以正计时,把第二条指令改成这样:
+</p> <p><code>
+/scoreboard players add @a[score_time2_min=20,score_time1=分数] time1 1 </code>
+</p> <p>
+这样就形成了正计时
+</p> <p>分数要改成你要计时的分数,比如499(到了500就不加了,刚刚好),99,149
+</p>  
+<h2>2.teams</h2>
+<p>记分板是给每个人用的，但队伍是给个别人用的，不同的队伍可以设置不同的东西
+</p> <p>比如可以创建红队，绿队:
+</p>  
+<h3>2.1.teams/add</h3><p>作用：添加一个队伍
+</p> <p>
+<code>
+/scoreboard teams add 队伍名称 显示名 </code>
+</p> <p>
+这样你就可以创建两个不同的队伍,比如:
+</p> <p><code>
+/scoreboard teams add Red Red </code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_38.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_39.png" />
+</p> <p><code>
+/scoreboard teams add Green Green </code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_40.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_41.png" />
+</p> <p>
+这样就创建了两个队伍:Red,Green
+</p> <p>但是虽然创建了两个名字相同的队伍，但里面都没人，所以要加点人进去:
+</p>  
+<h3>2.2.teams/join</h3><p>作用：让玩家加入某队伍</p> <p>
+<code>
+/scoreboard teams join 队伍名称 选择器
+</p> <p>
+这样就可以添加点人进去，比如:
+</p> <p><code>
+/scoreboard teams join Red @p </code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_44.png" />
+</p> <p><code>
+/scoreboard teams join Green @p </code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_45.png" />
+</p> <p>如果一个人先前加入了队伍Red,后来又加入了队伍Green,那么这个人会自动退出队伍Red并自动加入队伍Green
+</p>  
+<h3>2.3.teams/option</h3><p>
+作用：给某队伍设置选项</p> <p>
+虽然加入了队伍红、绿，但还没设置它们的颜色
+</p> <p><code>
+/scoreboard teams option 队伍名称 设置 设置效果
+</p> <p>
+我们现在要改变颜色，所以:
+</p> <p><code>
+/scoreboard teams option Red color red </code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_46.png" />
+
+</p> <p><code>
+/scoreboard teams option Green color green </code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_47.png" />
+</p> <p>
+前面的Red指的是队伍名称，后面的red指的是颜色
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_48.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_49.png" />
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_50.png" />
+</p> <p>option后面可以跟很多东西，比如friendlyfire、collisionRule
+</p> <p><code>
+/scoreboard teams option Red friendlyfire false </code>
+</p> <p>
+这样就队伍Red中的人就打不到对方
+</p> <p>下面是把碰撞体积关掉
+</p> <p><code>
+/scoreboard teams option Red collisionRule never </code>
+</p> <p>
+option选项有很多，可以按Tab查看更多
+</p>  
+<h3>2.4.teams/empty</h3><p>
+作用：清空某队伍的玩家</p> <p>
+如果你想清空某个队伍里的玩家:
+</p> <p><code>
+/scoreboard teams empty 队伍名称 </code>
+</p> <p>
+比如:
+</p> <p><code>
+/scoreboard teams empty Red </code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_51.png" /> 
+</p>   <p>或者</p> <p><code>
+/scoreboard teams empty Green</code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_52.png" /> 
+<h3>2.5.teams/leave</h3><p>
+
+如果你想让某个玩家离开队伍:
+</p> <p><code>
+/scoreboard teams leave 选择器 </code>
+</p> <p>
+比如:
+</p> <p><code>
+/scoreboard teams leave @a </code>
+</p> <p>
+后面不用加上队伍名称，因为玩家只能加入一个队伍,如图:  
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_53.png" />  
+</p>
+<h3>2.6.teams/list</h3><p>
+
+作用:将队伍列举出来
+</p> <p>
+将队伍的详情列出来:
+</p> <p><code>
+/scoreboard teams list </code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_54.png" /> 
+ </p> <p> <code>
+/scoreboard teams list 队伍名称</code>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_55.png" /> 
+  </p>
+<h3>2.7.teams/remove</h3><p>
+
+作用:将某队伍移除
+</p> <p>
+将某队伍移除:
+</p> <p><code>
+/scoreboard teams remove 队伍名称</code>
+</p> <p>
+移除绿队:
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_56.png" /> 
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_4_57.png" /> 
+</p>
+<h3>2.8.检测队伍</h3><p>
+
+
+选择器[team=队伍名称]</p> <p>
+选择器[team=!队伍名称]</p> <p>
+ 
+比如:</p> <p>
+<code>
+/give @a[team=TEAM] stone</code></p> <p>
+
+给予在队伍TEAM里的玩家一块石头
+</p> <p><code>
+/give @a[team=!TEAM] stone</code>
+</p> <p>
+给予不在队伍TEAM的玩家一块石头
+</p> <p></p> <p>
+最后编辑时间:2017/10/13 21:45
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

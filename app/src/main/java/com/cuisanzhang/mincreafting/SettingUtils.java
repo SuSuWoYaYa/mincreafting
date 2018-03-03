@@ -19,6 +19,7 @@ public class SettingUtils {
     private static final String VIP_STATE = "vip_state";
     private static final String IsFirstTimeOpenTutorial = "isFirstTimeOpenTutorial";
     private static final String IsFirstTimeOpenCreating = "isFirstTimeOpenCreating";
+    private static final String IsOpenImageCache = "isOpenImageCache";
 
 
     static String  VIP_URL = "http://owpvbuvtf.bkt.clouddn.com/vip.txt";
@@ -58,6 +59,19 @@ public class SettingUtils {
         }
 
         return isFirstTimeOpenCreating;
+    }
+
+    //缓存图片设置
+    public static void setSwitchCacheSetting(Context context, boolean isOpenImageCache) {
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(IsOpenImageCache, isOpenImageCache);
+        editor.apply();
+    }
+
+    public static boolean getSwitchCacheSetting(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        return sp.getBoolean(IsOpenImageCache, true);
     }
 
 //        作者：AlicFeng

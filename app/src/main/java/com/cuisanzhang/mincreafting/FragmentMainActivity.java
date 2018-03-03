@@ -6,10 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.drawable.PaintDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,7 +20,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,11 +32,12 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import java.util.Locale;
+
+//import com.kyleduo.switchbutton.SwitchButton;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -91,8 +88,9 @@ public class FragmentMainActivity extends AppCompatActivity {
     private boolean changeTitleBackgroup = true;
 
     private RadioGroup radioGroup;
-    private RadioButton radio_btn_zh;
-    private RadioButton radio_btn_zw;
+    private CheckBox checkBoxSwitchCache;
+//    private RadioButton radio_btn_zh;
+//    private RadioButton radio_btn_zw;
 
     private String language;
     private boolean is_language_of_traditional_chinese = false;
@@ -135,6 +133,7 @@ public class FragmentMainActivity extends AppCompatActivity {
 
         Menu menuNav = mNavigationView.getMenu();
         MenuItem menu_changeTheme = menuNav.findItem(R.id.menu_changeTheme);
+        MenuItem menu_settingcache = menuNav.findItem(R.id.menu_settingcache);
         MenuItem menu_feedback = menuNav.findItem(R.id.menu_feedback);
         MenuItem menu_tip = menuNav.findItem(R.id.menu_tip);
         MenuItem menu_about = menuNav.findItem(R.id.menu_about);
@@ -144,6 +143,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         if (is_language_of_traditional_chinese) {
             menu_changeTheme.setTitle("切換主題");
             menu_feedback.setTitle("意見反饋");
+            menu_settingcache.setTitle("緩存設置");
             menu_tip.setTitle("打賞作者");
             menu_about.setTitle("關於");
             menu_changelanguage.setTitle("切換語言");
@@ -152,6 +152,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         }else {
             menu_changeTheme.setTitle("切换主题");
             menu_feedback.setTitle("意见反馈");
+            menu_settingcache.setTitle("缓存设置");
             menu_tip.setTitle("打赏作者");
             menu_about.setTitle("关于");
             menu_changelanguage.setTitle("切换语言");
@@ -180,6 +181,9 @@ public class FragmentMainActivity extends AppCompatActivity {
                         break;
                     case R.id.menu_changelanguage:
                         showChangeLanguageDialog();
+                        break;
+                    case R.id.menu_settingcache:
+                        showSettingCacheDialog();
                         break;
                     case R.id.menu_downgame:
                         intent = new Intent(getApplicationContext(), DownGameActivity.class);
@@ -759,6 +763,50 @@ public class FragmentMainActivity extends AppCompatActivity {
                 }
             });
             changelanguage_messageTextView.setText("改变语言设置会影响搜索结果");
+        }
+        builder.show();
+        return ;
+    }
+
+
+
+    private void showSettingCacheDialog() {
+
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View settingCacheView = inflater.inflate(R.layout.layout_setting_cache, null);
+
+        TextView switchcahe_messageTextView = (TextView) settingCacheView.findViewById(R.id.switchcahe_messageTextView);
+
+
+        boolean isSwitchCacheOpen = SettingUtils.getSwitchCacheSetting(FragmentMainActivity.this);
+
+        checkBoxSwitchCache = (CheckBox) settingCacheView.findViewById(R.id.checkBoxSwitchCache);
+        checkBoxSwitchCache.setChecked(isSwitchCacheOpen);
+        checkBoxSwitchCache.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+//
+                    SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, true);
+
+                }else {
+                    SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, false);
+                }
+            }
+        });
+
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
+        builder.setView(settingCacheView);
+        if (is_language_of_traditional_chinese) {
+            builder.setTitle("功能測試中");
+            builder.setPositiveButton("確定", null);
+            switchcahe_messageTextView.setText("開啓教程圖片離線緩存");
+        }else {
+            builder.setTitle("功能测试中");
+            builder.setPositiveButton("确定", null);
+            switchcahe_messageTextView.setText("开启教程图片离线缓存");
         }
         builder.show();
         return ;
