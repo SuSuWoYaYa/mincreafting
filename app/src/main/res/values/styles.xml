@@ -158,7 +158,7 @@
     </style>
 
 
-    <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- 这里设置背景为透明，为了隐藏边框 -->
         <!--<item name="android:windowBackground">@android:color/transparent</item>-->
         <item name="android:windowNoTitle">true</item>

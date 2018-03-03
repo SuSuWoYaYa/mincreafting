@@ -177,11 +177,11 @@ public class ActivityTutorialList extends AppCompatActivity {
 
        if(LanguageUtil.getLocaleLanguage(ActivityTutorialList.this).equals(LanguageUtil.TRADITIONAL_CHINESE)){
            builder.setTitle("關於教程圖片");
-           builder.setMessage("教程是離線的\n但是圖片是在線的\n請注意流量\n所有的教程圖片超過了1000M");
+           builder.setMessage("教程是離線的\n但是圖片是在線的\n請注意流量\n所有的教程圖片超過了1000M\n\n默認開啓圖片緩存");
            builder.setPositiveButton("確定", null);
        }else {
            builder.setTitle("关于教程图片");
-           builder.setMessage("教程是离线的\n但是图片是在线的\n请注意流量\n所有的教程图片超过了1000M");
+           builder.setMessage("教程是离线的\n但是图片是在线的\n请注意流量\n所有的教程图片超过了1000M\n\n默认开启图片缓存");
            builder.setPositiveButton("确定", null);
        }
 
