@@ -2123,7 +2123,7 @@ public class TutorialListData {
             "file:///android_asset/html/wangluojiaocheng/costem2.html",
             "file:///android_asset/html/wangluojiaocheng/costem3.html",
             "file:///android_asset/html/wangluojiaocheng/costem4.html",
-            "file:///android_asset/html/wangluojiaocheng/costem6.html"
+            "file:///android_asset/html/wangluojiaocheng/costem6.html",
             "file:///android_asset/html/wangluojiaocheng/costem5.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen1.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen2.html",
@@ -2219,7 +2219,7 @@ public class TutorialListData {
             "file:///android_asset/html_zw/wangluojiaocheng/costem2.html",
             "file:///android_asset/html_zw/wangluojiaocheng/costem3.html",
             "file:///android_asset/html_zw/wangluojiaocheng/costem4.html",
-            "file:///android_asset/html_zw/wangluojiaocheng/costem6.html"
+            "file:///android_asset/html_zw/wangluojiaocheng/costem6.html",
             "file:///android_asset/html_zw/wangluojiaocheng/costem5.html",
             "file:///android_asset/html_zw/wangluojiaocheng/jiaochen1.html",
             "file:///android_asset/html_zw/wangluojiaocheng/jiaochen2.html",

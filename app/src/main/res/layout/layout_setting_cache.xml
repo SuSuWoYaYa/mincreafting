@@ -40,57 +40,6 @@
             android:checked="true"
             />
 
-        <!--<Switch-->
-        <!--android:id="@+id/switchCache"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:padding="15dp"-->
-        <!--android:gravity="center"-->
-        <!--android:textOff="Off"-->
-        <!--android:textOn="On"-->
-        <!--&lt;!&ndash;android:text="" />&ndash;&gt;-->
-
-        <!--<com.kyleduo.switchbutton.SwitchButton-->
-            <!--android:id="@+id/switchCache"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:kswThumbColor="#6bd6d6"-->
-            <!--app:kswTintColor="#3dc39c"-->
-            <!--app:kswThumbHeight="5dp"-->
-            <!--/>-->
-
-        <!--<com.rey.material.widget.Switch-->
-        <!--android:id="@+id/switchCache"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:gravity="center"-->
-        <!--android:checked="true"-->
-        <!--android:layout_marginTop="16dp"-->
-            <!--app:sw_trackColor="#6bd6d6"-->
-            <!--app:sw_thumbColor="#3dc39c"-->
-
-            <!--/>-->
-
-    <!--<android.support.v7.widget.SwitchCompat-->
-        <!--android:id="@+id/switchCache"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_vertical"-->
-        <!--/>-->
-
-        <!--//主题原因无法显示-->
-        <!--<android.support.v7.widget.SwitchCompat-->
-            <!--android:id="@+id/switchCache"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center"-->
-            <!--app:showText="false"-->
-            <!--android:checked="true"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:layout_marginRight="20dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--/>-->
-
     </LinearLayout>
 
 
