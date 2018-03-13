@@ -35,11 +35,10 @@ import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-
-//import com.kyleduo.switchbutton.SwitchButton;
-
 import java.util.Timer;
 import java.util.TimerTask;
+
+//import com.kyleduo.switchbutton.SwitchButton;
 
 public class FragmentMainActivity extends AppCompatActivity {
 
