@@ -338,6 +338,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="确认"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary_green"/>
 
 </LinearLayout>

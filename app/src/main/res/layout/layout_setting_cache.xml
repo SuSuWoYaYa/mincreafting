@@ -19,25 +19,41 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/switchcahe_hintTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:text="教程图片加载后会被缓存\n再次浏览不耗流量\n默认缓存位置为外部缓存"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/switchcahe_messageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:padding="15dp"
             android:text="@string/switchcache_messageTextView"
             android:textColor="@android:color/black"
             android:textSize="15sp" />
 
-        <CheckBox
-            android:id="@+id/checkBoxSwitchCache"
+
+
+        <Button
+            android:id="@+id/btnCleanCache"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="15dp"
-            android:checked="true"
+            android:layout_margin="5dp"
+android:padding="10dp"
+            android:text="清除缓存"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary_green"
+
             />
 
     </LinearLayout>

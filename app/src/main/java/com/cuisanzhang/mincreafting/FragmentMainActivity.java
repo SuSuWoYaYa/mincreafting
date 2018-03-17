@@ -35,6 +35,9 @@ import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.jakewharton.disklrucache.DiskLruCache;
+
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -87,7 +90,9 @@ public class FragmentMainActivity extends AppCompatActivity {
     private boolean changeTitleBackgroup = true;
 
     private RadioGroup radioGroup;
-    private CheckBox checkBoxSwitchCache;
+    private Button btnCleanCache;
+    private DiskLruCache mDiskLruCache = null;
+
 //    private RadioButton radio_btn_zh;
 //    private RadioButton radio_btn_zw;
 
@@ -770,42 +775,47 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
     private void showSettingCacheDialog() {
-
+        mDiskLruCache = MyDiskLruCache.newInstance(getApplicationContext()).getDiskLruCache();
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         View settingCacheView = inflater.inflate(R.layout.layout_setting_cache, null);
 
         TextView switchcahe_messageTextView = (TextView) settingCacheView.findViewById(R.id.switchcahe_messageTextView);
+        TextView switchcahe_hintTextView = (TextView) settingCacheView.findViewById(R.id.switchcahe_hintTextView);
 
 
-        boolean isSwitchCacheOpen = SettingUtils.getSwitchCacheSetting(FragmentMainActivity.this);
+//        boolean isSwitchCacheOpen = SettingUtils.getSwitchCacheSetting(FragmentMainActivity.this);
 
-        checkBoxSwitchCache = (CheckBox) settingCacheView.findViewById(R.id.checkBoxSwitchCache);
-        checkBoxSwitchCache.setChecked(isSwitchCacheOpen);
-        checkBoxSwitchCache.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        btnCleanCache = (Button) settingCacheView.findViewById(R.id.btnCleanCache);
+//        checkBoxSwitchCache.setChecked(isSwitchCacheOpen);
+        btnCleanCache.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-//
-                    SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, true);
-
-                }else {
-                    SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, false);
+            public void onClick(View v) {
+                try {
+                    mDiskLruCache.delete();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
 
 
+        long cacheSize = mDiskLruCache.size();
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setView(settingCacheView);
         if (is_language_of_traditional_chinese) {
-            builder.setTitle("功能測試中");
+            builder.setTitle("緩存設置");
+            btnCleanCache.setText("清除緩存");
             builder.setPositiveButton("確定", null);
-            switchcahe_messageTextView.setText("開啓教程圖片離線緩存");
+            switchcahe_hintTextView.setText("教程圖片加載後會被緩存\n再次瀏覽不耗流量\n默認緩存位置為外部緩存");
+            switchcahe_messageTextView.setText("目前緩存大小 " + (int)(cacheSize/1024/1024) +" M");
         }else {
-            builder.setTitle("功能测试中");
+            builder.setTitle("缓存设置");
+            btnCleanCache.setText("清除缓存");
             builder.setPositiveButton("确定", null);
-            switchcahe_messageTextView.setText("开启教程图片离线缓存");
+            switchcahe_hintTextView.setText("教程图片加载后会被缓存\n再次浏览不耗流量\n默认缓存位置为外部缓存");
+            switchcahe_messageTextView.setText("目前缓存大小 " + (int)(cacheSize/1024/1024) +" M");
         }
         builder.show();
         return ;

@@ -173,7 +173,7 @@
     <string name="color_deep_gray">深灰</string>
     <string name="color_light_gray">亮灰</string>
     <string name="settingcache">缓存设置</string>
-    <string name="switchcache_messageTextView">教程图片离线缓存</string>
+    <string name="switchcache_messageTextView">目前缓存大小 XXX M</string>
     <string name="switchcache_messagetesting">功能测试中</string>
 
 </resources>
