@@ -92,14 +92,12 @@ public class FragmentMainActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private Button btnCleanCache;
     private DiskLruCache mDiskLruCache = null;
-    private TextView cache_messageTextView = null;
 
 //    private RadioButton radio_btn_zh;
 //    private RadioButton radio_btn_zw;
 
     private String language;
     private boolean is_language_of_traditional_chinese = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -155,7 +153,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             menu_changelanguage.setTitle("切換語言");
             menu_downgame.setTitle("遊戲下載");
 
-        } else {
+        }else {
             menu_changeTheme.setTitle("切换主题");
             menu_feedback.setTitle("意见反馈");
             menu_settingcache.setTitle("缓存设置");
@@ -340,6 +338,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         });
 
 
+
+
         TextView textViewGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToGreen);
         TextView textViewDeepDrakGreen = (TextView) layout.findViewById(R.id.layoutPopChangeToDrakGreen);
         TextView textViewBlue = (TextView) layout.findViewById(R.id.layoutPopChangeToBlue);
@@ -361,6 +361,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         TextView textViewBluePurple = (TextView) layout.findViewById(R.id.layoutPopChangeToBluePurple);
         TextView textViewPurple = (TextView) layout.findViewById(R.id.layoutPopChangeToPurple);
         TextView textViewRed = (TextView) layout.findViewById(R.id.layoutPopChangeToRed);
+
 
 
         if (is_language_of_traditional_chinese) {
@@ -389,7 +390,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             textViewBluePurple.setText("紫藍");
             textViewPurple.setText("紫色");
             textViewRed.setText("深紅");
-        } else {
+        }else{
             checkBoxChangeMainColor.setText("改变主标题栏背景颜色");
             checkBoxChangeTitleColor.setText("改变物品名称背景颜色");
             button_changeColor.setText("确定");
@@ -565,12 +566,12 @@ public class FragmentMainActivity extends AppCompatActivity {
             builder.setTitle("關於 Mincreafting");
             builder.setMessage("這是一個Minecraft合成表的APP\n所有內容來自於\nMinecraft中文WIKI\n網易\n網絡\n以及網友的貢獻");
             builder.setPositiveButton("確定", null);
-        } else {
+        }else {
             builder.setTitle("关于 Mincreafting");
             builder.setMessage("这是一个Minecraft合成表的APP\n所有内容来自于\nMinecraft中文WIKI\n网易\n网络\n以及网友的贡献");
             builder.setPositiveButton("确定", null);
         }
-        builder.show();
+            builder.show();
     }
 
 
@@ -595,7 +596,8 @@ public class FragmentMainActivity extends AppCompatActivity {
                     textUserName.setText(userName);
                 }
             });
-        } else {
+        }
+        else {
             builder.setTitle("我的昵称");
             builder.setNegativeButton("取消", null);
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -731,7 +733,7 @@ public class FragmentMainActivity extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                switch (checkedId) {
+                switch (checkedId){
                     case R.id.radio_btn_zh:
                         LanguageUtil.setLocaleLanguage(FragmentMainActivity.this, LanguageUtil.SIMPLIFIED_CHINESE);
                         break;
@@ -756,7 +758,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                 }
             });
             changelanguage_messageTextView.setText("改變語言設置會影響搜索結果");
-        } else {
+        }else {
             builder.setTitle("切换语言");
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                 @Override
@@ -767,8 +769,9 @@ public class FragmentMainActivity extends AppCompatActivity {
             changelanguage_messageTextView.setText("改变语言设置会影响搜索结果");
         }
         builder.show();
-        return;
+        return ;
     }
+
 
 
     private void showSettingCacheDialog() {
@@ -776,8 +779,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         View settingCacheView = inflater.inflate(R.layout.layout_setting_cache, null);
 
-        cache_messageTextView = (TextView) settingCacheView.findViewById(R.id.cache_messageTextView);
-        TextView cache_hintTextView = (TextView) settingCacheView.findViewById(R.id.cache_hintTextView);
+        TextView switchcahe_messageTextView = (TextView) settingCacheView.findViewById(R.id.switchcahe_messageTextView);
+        TextView switchcahe_hintTextView = (TextView) settingCacheView.findViewById(R.id.switchcahe_hintTextView);
 
 
 //        boolean isSwitchCacheOpen = SettingUtils.getSwitchCacheSetting(FragmentMainActivity.this);
@@ -789,20 +792,6 @@ public class FragmentMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     mDiskLruCache.delete();
-                    MyDiskLruCache.newInstance(getApplicationContext()).initDiskLruCache();
-
-                    if (cache_messageTextView == null) {
-                        return;
-                    }
-
-                    long cacheSize = mDiskLruCache.size();
-
-                    if (is_language_of_traditional_chinese) {
-                        cache_messageTextView.setText("緩存已清除");
-                    } else {
-                        cache_messageTextView.setText("缓存已清除");
-                    }
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -819,16 +808,16 @@ public class FragmentMainActivity extends AppCompatActivity {
             builder.setTitle("緩存設置");
             btnCleanCache.setText("清除緩存");
             builder.setPositiveButton("確定", null);
-            cache_hintTextView.setText("教程圖片加載後會被緩存\n再次瀏覽不耗流量");
-            cache_messageTextView.setText("目前緩存大小 " + (int) (cacheSize / 1024 / 1024) + " M");
-        } else {
+            switchcahe_hintTextView.setText("教程圖片加載後會被緩存\n再次瀏覽不耗流量\n默認緩存位置為外部緩存");
+            switchcahe_messageTextView.setText("目前緩存大小 " + (int)(cacheSize/1024/1024) +" M");
+        }else {
             builder.setTitle("缓存设置");
             btnCleanCache.setText("清除缓存");
             builder.setPositiveButton("确定", null);
-            cache_hintTextView.setText("教程图片加载后会被缓存\n再次浏览不耗流量");
-            cache_messageTextView.setText("目前缓存大小 " + (int) (cacheSize / 1024 / 1024) + " M");
+            switchcahe_hintTextView.setText("教程图片加载后会被缓存\n再次浏览不耗流量\n默认缓存位置为外部缓存");
+            switchcahe_messageTextView.setText("目前缓存大小 " + (int)(cacheSize/1024/1024) +" M");
         }
         builder.show();
-        return;
+        return ;
     }
 }
