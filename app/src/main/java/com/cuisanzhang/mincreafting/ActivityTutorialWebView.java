@@ -2,11 +2,13 @@ package com.cuisanzhang.mincreafting;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.ParcelFileDescriptor;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,11 +34,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class ActivityTutorialWebView extends AppCompatActivity {
@@ -48,7 +54,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
     private WebView mWebview;
     WebSettings mWebSettings;
-    private String url = "http://www.baidu.com/";
+    private String HtmlUrl = "http://www.baidu.com/";
     private String tutorial_name = "错误页面!";
 
 //打开本包内asset目录下的index.html文件
@@ -78,7 +84,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        url = intent.getStringExtra(EXTRA_URI);
+        HtmlUrl = intent.getStringExtra(EXTRA_URI);
         tutorial_name = intent.getStringExtra(EXTRA_TUTORIAL_NAME);
 
 
@@ -133,7 +139,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 //        mWebview.setBlockNetworkImage(true);
         mWebSettings = mWebview.getSettings();
         mWebSettings.setJavaScriptEnabled(true);
-        mWebSettings.setBlockNetworkImage(true);
+//        mWebSettings.setBlockNetworkImage(true);
 //        mWebSettings.setDomStorageEnabled(true);
 
 //        //缓存图片设置
@@ -153,7 +159,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 //            mWebview.clearCache(true);
 //        }
 
-        mWebview.loadUrl(url);
+        mWebview.loadUrl(HtmlUrl);
 
 
         mWebview.setWebViewClient(new WebViewClientCache(ActivityTutorialWebView.this));
@@ -163,7 +169,6 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
 //
     }
-
 
 
     private class WebViewClientCache extends WebViewClient {
@@ -177,118 +182,96 @@ public class ActivityTutorialWebView extends AppCompatActivity {
         }
 
 
-
-
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-//            mWebview.getSettings().setBlockNetworkImage(false);
-            view.getSettings().setBlockNetworkImage(false);
-
-        }
-
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            view.loadUrl(url);
+            view.loadUrl(HtmlUrl);
             return super.shouldOverrideUrlLoading(view, request);
         }
+
 
         //sdk21_api
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-
-//            Log.e("MainActivity", "shouldInterceptRequest(request)");
-
+            Log.e("getCache", "shouldInterceptRequest(request)");
             String url = request.getUrl().toString();
+
             if (isImageUrl(url)) {
+                Log.e("getCache", "isImageUrl " + url);
+
                 WebResourceResponse response = getCache(url);
+
                 if (response != null) {
                     return response;
                 }
-//                 WebResourceResponse response=  getCache(url, 1);
-//                InputStream in = getCache(url, 1);
-//                if (in != null);
-//                    return  new WebResourceResponse(getMinetype(url), "UTF-8", in);unrecoverably
             }
-
 
             return super.shouldInterceptRequest(view, request);
         }
 
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-            Log.e("MainActivity", "shouldInterceptRequest(url)");
-//            Toast.makeText(MainActivity.this, "shouldInterceptRequest(url)",Toast.LENGTH_SHORT).show();
-
+            Log.e("getCache", "shouldInterceptRequest(url)");
 
             if (isImageUrl(url)) {
+                Log.e("getCache", "isImageUrl " + url);
+
                 WebResourceResponse response = getCache(url);
+
                 if (response != null) {
                     return response;
                 }
-//                Log.e("isImageUrl", ""+isImageUrl(url));
-//                InputStream in = getCache(url);
-//                if (in != null);
-//                    return  new WebResourceResponse(getMinetype(url), "UTF-8", in);
             }
 
 
             return super.shouldInterceptRequest(view, url);
         }
 
-        private WebResourceResponse getCache(String url) {
-            String key = hashKeyFromUrl(url);
-//            try {
-//                InputStream is = getApplicationContext().getAssets().open("logo.png");
-//                return new WebResourceResponse(getMinetype(url), "UTF-8", is);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+
+        private WebResourceResponse getCache(String imageUrl) {
+            Log.e("getCache", "getCache() " + imageUrl);
+            String key = hashKeyFromUrl(imageUrl);
 
             try {
+                Log.e("getCache", "next line is ---- snapshot = mDiskLruCache.get(key) ");
                 DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key);
-                Log.e("mDiskLruCache", "snapshot");
 
                 //有缓存
                 if (snapshot != null) {
-                    Log.e("mDiskLruCache", "snapshot != null)");
+                    Log.e("getCache", "snapshot != null)");
                     InputStream in = snapshot.getInputStream(0);
-                    Log.e("mDiskLruCache", "return in");
-//                    return in;
-                    return new WebResourceResponse(getMinetype(url), "UTF-8", in);
+                    Log.e("getCache", "return cache");
+//                    return cache;
+                    return new WebResourceResponse(getMinetype(imageUrl), "UTF-8", in);
                 }
 
                 //无缓存
                 else {
-                    //没网络不下载
-                    if (!SettingUtils.isNetworkConnected(ActivityTutorialWebView.this)) {
+                    Log.e("getCache", "snapshot == null");
+
+                    boolean isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTutorialWebView.this);
+                    boolean isSetCacheImage = SettingUtils.getSwitchCacheSetting(ActivityTutorialWebView.this);
+
+                    //没网络,或者设置不缓存就不下载
+                    if (!isNetworkConnected || !isSetCacheImage) {
+                        Log.e("getCache", "NetworkConnected close!");
                         return null;
+
                     }
 
-//                    boolean isWifiConnected = SettingUtils.isWifiConnected(ActivityTutorialWebView.this);
-//                    boolean isMobileConnectCache = SettingUtils.getMobileConnectCacheSetting(ActivityTutorialWebView.this);
+                    boolean isWifiConnected = SettingUtils.isWifiConnected(ActivityTutorialWebView.this);
+                    boolean isMobileConnectCache = SettingUtils.getMobileConnectCacheSetting(ActivityTutorialWebView.this);
 
                     //有WIFI或者设置移动网络缓存, 下载
-//                    if (isWifiConnected || isMobileConnectCache) {
-
-                    //后台开线程下载保存
-                    DiskLruCache.Editor editor = mDiskLruCache.edit(key);
-                    if (editor != null) {
-                        OutputStream outputStream = editor.newOutputStream(DISK_CACHE_INDEX);
-                        //webview不在主线程,直接下载
-                        if (downLoadUrlToStream(url, outputStream)) {
-                            editor.commit();//提交
-                        } else {
-                            editor.abort();//重复操作
-                        }
-                        mDiskLruCache.flush();//刷新                    }
-
-                        //重新获取缓存
-                        return getCache(url);
+                    if (isWifiConnected || isMobileConnectCache) {
+                        Log.e("getCache", "start down cache");
+                        //后台开线程下载保存
+                        new MyCacheImageRunnable(imageUrl).run();
                     }
+
+                    //防止白屏,浏览器去加载
+                    return null;
                 }
-//                }
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -298,24 +281,61 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
         }
 
-
     }
 
 
-    private boolean downLoadUrlToStream(String urlString, OutputStream outputStream) {
+    private class MyCacheImageRunnable implements Runnable {
 
+        private String ImageUrl;
+
+        MyCacheImageRunnable(String url) {
+            ImageUrl = url;
+        }
+
+        @Override
+        public void run() {
+
+            try {
+                String key = hashKeyFromUrl(ImageUrl);
+                DiskLruCache.Editor editor = mDiskLruCache.edit(key);
+                Log.e("getCache", "MyCacheImageRunnable.run " + ImageUrl);
+                if (editor != null) {
+                    OutputStream out = editor.newOutputStream(DISK_CACHE_INDEX);
+
+                    if (downLoadUrlToStream(ImageUrl, out)) {
+                        editor.commit();//提交
+                    } else {
+                        editor.abort();//重复操作
+                    }
+                    mDiskLruCache.flush();//刷新                    }
+
+                }
+
+            } catch (IOException e) {
+                Log.e("getCache", "MyRunnable Cache image error in DiskLruCache");
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+
+    private boolean downLoadUrlToStream(String ImageUrl, OutputStream out) {
+
+        Log.e("getCache", "downLoadUrlToStream! " + ImageUrl);
         HttpURLConnection urlConnection = null;
         BufferedOutputStream bos = null;
         BufferedInputStream bis = null;
         try {
-            final URL url = new URL(urlString);
+            final URL url = new URL(ImageUrl);
             urlConnection = (HttpURLConnection) url.openConnection();
             bis = new BufferedInputStream(urlConnection.getInputStream());
-            bos = new BufferedOutputStream(outputStream);
+            bos = new BufferedOutputStream(out);
             int b;
             while ((b = bis.read()) != -1) {
                 bos.write(b);
             }
+
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -361,6 +381,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
 
     private boolean isImageUrl(String url) {
+
         if (url.endsWith(".jpg")
                 || url.endsWith(".JPG")
                 || url.endsWith(".jpeg")
@@ -417,6 +438,16 @@ public class ActivityTutorialWebView extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            mDiskLruCache.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void initActionBar() {
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);

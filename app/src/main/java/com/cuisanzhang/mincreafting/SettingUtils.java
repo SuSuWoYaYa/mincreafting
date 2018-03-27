@@ -38,18 +38,18 @@ public class SettingUtils {
     }
 
 
-//    //是否连接WIFI
-//    public static boolean isWifiConnected(Context context)
-//    {
-//        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-//        if (activeNetwork != null) { // connected to the internet
-//            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
-//                return true ;
-//            }
-//        }
-//        return false ;
-//    }
+    //是否连接WIFI
+    public static boolean isWifiConnected(Context context)
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                return true ;
+            }
+        }
+        return false ;
+    }
 
     public  static  boolean isFirstTimeOpenTutorial(Context context){
         SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
@@ -75,32 +75,32 @@ public class SettingUtils {
         return isFirstTimeOpenCreating;
     }
 
-//    //缓存图片设置
-//    public static void setSwitchCacheSetting(Context context, boolean isOpenImageCache) {
-//        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sp.edit();
-//        editor.putBoolean(IsOpenImageCache, isOpenImageCache);
-//        editor.apply();
-//    }
-//
-//    public static boolean getSwitchCacheSetting(Context context) {
-//        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-//        return sp.getBoolean(IsOpenImageCache, true);
-//    }
+    //缓存图片设置
+    public static void setSwitchCacheSetting(Context context, boolean isOpenImageCache) {
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(IsOpenImageCache, isOpenImageCache);
+        editor.apply();
+    }
+
+    public static boolean getSwitchCacheSetting(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        return sp.getBoolean(IsOpenImageCache, true);
+    }
 
 
-//    //移动网络缓存图片设置
-//    public static void setMobileConnectCacheSetting(Context context, boolean isMobileConnectCache) {
-//        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sp.edit();
-//        editor.putBoolean(IsMobileConnectCache, isMobileConnectCache);
-//        editor.apply();
-//    }
-//
-//    public static boolean getMobileConnectCacheSetting(Context context) {
-//        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
-//        return sp.getBoolean(IsMobileConnectCache, false);
-//    }
+    //移动网络缓存图片设置
+    public static void setMobileConnectCacheSetting(Context context, boolean isMobileConnectCache) {
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(IsMobileConnectCache, isMobileConnectCache);
+        editor.apply();
+    }
+
+    public static boolean getMobileConnectCacheSetting(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        return sp.getBoolean(IsMobileConnectCache, false);
+    }
 
 
 //        作者：AlicFeng

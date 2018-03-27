@@ -17,8 +17,8 @@ import java.io.IOException;
 
 public class MyDiskLruCache {
 
-    //缓存最大1G
-    public static final int MAX_SIZE_CACHE = 1000 * 1024 * 1024; //1000m
+    //缓存最大2G
+    public static final int MAX_SIZE_CACHE = 2000 * 1024 * 1024; //1000m
 
     private static MyDiskLruCache myDiskLruCache ;
     private DiskLruCache mDiskLruCache = null;
