@@ -22,17 +22,17 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/switchcahe_hintTextView"
+            android:id="@+id/cache_hintTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="5dp"
+            android:padding="10dp"
             android:text="教程图片加载后会被缓存\n再次浏览不耗流量\n默认缓存位置为外部缓存"
             android:textColor="@android:color/darker_gray"
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/switchcahe_messageTextView"
+            android:id="@+id/cache_messageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

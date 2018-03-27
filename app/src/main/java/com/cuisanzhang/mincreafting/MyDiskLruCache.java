@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.jakewharton.disklrucache.DiskLruCache;
 
@@ -58,7 +59,7 @@ public class MyDiskLruCache {
 
 
     //优先外部缓存
-    private   File getDiskCacheDir(Context context, String uniqueName) {
+    public    File getDiskCacheDir(Context context, String uniqueName) {
         String cachePath;
 //        Log.e("cachePath", cachePath);
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
@@ -74,6 +75,7 @@ public class MyDiskLruCache {
         if (!cacheDir.exists()) {
             cacheDir.mkdirs();
         }
+        Toast.makeText(context, cacheDir.getAbsolutePath(), Toast.LENGTH_LONG).show();
         Log.e("getCacheDir", cacheDir.getAbsolutePath());
         return cacheDir;
     }
