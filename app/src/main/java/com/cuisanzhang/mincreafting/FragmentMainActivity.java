@@ -870,7 +870,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             radio_btn_cacheOnlyWifi.setText("僅WIFI網絡下緩存");
             btnCleanCache.setText("清除所有緩存圖片");
             builder.setPositiveButton("確定", null);
-            cache_hintTextView.setText("教程圖片被緩存後再次瀏覽不耗流量\n優先使用外部存儲\n默認僅WIFI下緩存");
+            cache_hintTextView.setText("教程圖片被緩存後再次瀏覽不耗流量\n優先使用外部存儲");
             cache_messageTextView.setText("目前緩存大小 "
                     + cacheSize
 //                    + (float) (cacheSize / 1024.00 / 1024.00)
@@ -882,7 +882,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             radio_btn_cacheOnlyWifi.setText("仅WIFI网络下缓存");
             btnCleanCache.setText("清除所有缓存图片");
             builder.setPositiveButton("确定", null);
-            cache_hintTextView.setText("教程图片被缓存后再次浏览不耗流量\n优先使用外部存储\n默认仅WIFI下缓存");
+            cache_hintTextView.setText("教程图片被缓存后再次浏览不耗流量\n优先使用外部存储");
             cache_messageTextView.setText("目前缓存大小 "
                     + cacheSize
 //                    + (float) (cacheSize / 1024.00 / 1024.00)

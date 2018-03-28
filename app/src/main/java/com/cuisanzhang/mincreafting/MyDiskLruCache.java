@@ -75,8 +75,10 @@ public class MyDiskLruCache {
         if (!cacheDir.exists()) {
             cacheDir.mkdirs();
         }
-        Toast.makeText(context, cacheDir.getAbsolutePath(), Toast.LENGTH_LONG).show();
-        Log.e("getCacheDir", cacheDir.getAbsolutePath());
+
+
+//        Toast.makeText(context, cacheDir.getAbsolutePath(), Toast.LENGTH_LONG).show();
+//        Log.e("getCacheDir", cacheDir.getAbsolutePath());
         return cacheDir;
     }
 

@@ -229,32 +229,32 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
 
         private WebResourceResponse getCache(String imageUrl) {
-            Log.e("getCache", "getCache() " + imageUrl);
+//            Log.e("getCache", "getCache() " + imageUrl);
             String key = hashKeyFromUrl(imageUrl);
 
             try {
-                Log.e("getCache", "next line is ---- snapshot = mDiskLruCache.get(key) ");
+//                Log.e("getCache", "next line is ---- snapshot = mDiskLruCache.get(key) ");
                 DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key);
 
                 //有缓存
                 if (snapshot != null) {
-                    Log.e("getCache", "snapshot != null)");
+//                    Log.e("getCache", "snapshot != null)");
                     InputStream in = snapshot.getInputStream(0);
-                    Log.e("getCache", "return cache");
+//                    Log.e("getCache", "return cache");
 //                    return cache;
                     return new WebResourceResponse(getMinetype(imageUrl), "UTF-8", in);
                 }
 
                 //无缓存
                 else {
-                    Log.e("getCache", "snapshot == null");
+//                    Log.e("getCache", "snapshot == null");
 
                     boolean isNetworkConnected = SettingUtils.isNetworkConnected(ActivityTutorialWebView.this);
                     boolean isSetCacheImage = SettingUtils.getSwitchCacheSetting(ActivityTutorialWebView.this);
 
                     //没网络,或者设置不缓存就不下载
                     if (!isNetworkConnected || !isSetCacheImage) {
-                        Log.e("getCache", "NetworkConnected close or don't Cache image !");
+//                        Log.e("getCache", "NetworkConnected close or don't Cache image !");
                         return null;
 
                     }
@@ -264,7 +264,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
                     //有WIFI或者设置移动网络缓存, 下载
                     if (isWifiConnected || isMobileConnectCache) {
-                        Log.e("getCache", "start down cache");
+//                        Log.e("getCache", "start down cache");
                         //后台开线程下载保存
                         MyCacheImageRunnable runnable =  new MyCacheImageRunnable(imageUrl);
                         new Thread(runnable).start();
@@ -299,7 +299,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
             try {
                 String key = hashKeyFromUrl(ImageUrl);
                 DiskLruCache.Editor editor = mDiskLruCache.edit(key);
-                Log.e("getCache", "MyCacheImageRunnable.run " + ImageUrl);
+//                Log.e("getCache", "MyCacheImageRunnable.run " + ImageUrl);
                 if (editor != null) {
                     OutputStream out = editor.newOutputStream(DISK_CACHE_INDEX);
 
@@ -313,7 +313,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
                 }
 
             } catch (IOException e) {
-                Log.e("getCache", "MyRunnable Cache image error in DiskLruCache");
+//                Log.e("getCache", "MyRunnable Cache image error in DiskLruCache");
                 e.printStackTrace();
             }
 
@@ -323,7 +323,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
     private boolean downLoadUrlToStream(String ImageUrl, OutputStream out) {
 
-        Log.e("getCache", "downLoadUrlToStream! " + ImageUrl);
+//        Log.e("getCache", "downLoadUrlToStream! " + ImageUrl);
         HttpURLConnection urlConnection = null;
         BufferedOutputStream bos = null;
         BufferedInputStream bis = null;
@@ -364,7 +364,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
             cacheKey = String.valueOf(url.hashCode());
             e.printStackTrace();
         }
-        return cacheKey + "_cache";
+        return cacheKey ;
 
     }
 
