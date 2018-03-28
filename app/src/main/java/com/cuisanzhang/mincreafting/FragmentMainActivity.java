@@ -10,6 +10,7 @@ import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -32,6 +33,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -89,7 +91,8 @@ public class FragmentMainActivity extends AppCompatActivity {
     private boolean changeMainBackgroup = true;
     private boolean changeTitleBackgroup = true;
 
-    private RadioGroup radioGroup;
+    private RadioGroup radioGroupChangeLanguage;
+    private RadioGroup radioGroupChangeCacheSetting;
     private Button btnCleanCache;
     private DiskLruCache mDiskLruCache = null;
     private TextView cache_messageTextView = null;
@@ -724,11 +727,11 @@ public class FragmentMainActivity extends AppCompatActivity {
         TextView changelanguage_messageTextView = (TextView) changelanguageView.findViewById(R.id.changelanguage_messageTextView);
 
 
-        radioGroup = (RadioGroup) changelanguageView.findViewById(R.id.radiogroup_changelanguage);
+        radioGroupChangeLanguage = (RadioGroup) changelanguageView.findViewById(R.id.radiogroup_changelanguage);
 //        radio_btn_zh = (RadioButton) changelanguageView.findViewById(R.id.radio_btn_zh);
 //        radio_btn_zw = (RadioButton) changelanguageView.findViewById(R.id.radio_btn_zw);
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        radioGroupChangeLanguage.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 switch (checkedId) {
@@ -779,6 +782,31 @@ public class FragmentMainActivity extends AppCompatActivity {
         cache_messageTextView = (TextView) settingCacheView.findViewById(R.id.cache_messageTextView);
         TextView cache_hintTextView = (TextView) settingCacheView.findViewById(R.id.cache_hintTextView);
 
+        radioGroupChangeCacheSetting = (RadioGroup) settingCacheView.findViewById(R.id.radiogroupCacheSetting);
+
+        radioGroupChangeCacheSetting.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId) {
+                    case R.id.radio_btn_nocache:
+                        SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, false);
+                        SettingUtils.setMobileConnectCacheSetting(FragmentMainActivity.this, false);
+                        break;
+                    case R.id.radio_btn_cacheOnMobile:
+                        SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, true);
+                        SettingUtils.setMobileConnectCacheSetting(FragmentMainActivity.this, true);
+                        break;
+                    case R.id.radio_btn_cacheOnlyWifi:
+                        SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, true);
+                        SettingUtils.setMobileConnectCacheSetting(FragmentMainActivity.this, false);
+                        break;
+                    default:
+                        SettingUtils.setSwitchCacheSetting(FragmentMainActivity.this, true);
+                        SettingUtils.setMobileConnectCacheSetting(FragmentMainActivity.this, false);
+                        break;
+                }
+            }
+        });
 
 //        boolean isSwitchCacheOpen = SettingUtils.getSwitchCacheSetting(FragmentMainActivity.this);
 
@@ -810,23 +838,55 @@ public class FragmentMainActivity extends AppCompatActivity {
         });
 
 
-        long cacheSize = mDiskLruCache.size();
+        long LongCacheSize = mDiskLruCache.size();
+        int cacheSize = (int) LongCacheSize / 1024 / 1024;
+//        float num=(float)(Math.round(LongCacheSize * 100)/100);//如果要求精确4位就*10000然后/10000
+
+//        double DoubleCacheSize = (double ) LongCacheSize / 1024.00 / 1024.00;
+//        double cacheSize  =(double) (Math.round(DoubleCacheSize * 100)/100);//如果要求精确4位就*10000然后/10000
+
+//        DecimalFormat decimalFormat=new DecimalFormat(".00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
+//        String cacheSize =decimalFomat.format(FloatCacheSize);//format 返回的是字符串
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
+        RadioButton radio_btn_nocache = settingCacheView.findViewById(R.id.radio_btn_nocache);
+        RadioButton radio_btn_cacheOnMobile = settingCacheView.findViewById(R.id.radio_btn_cacheOnMobile);
+        RadioButton radio_btn_cacheOnlyWifi = settingCacheView.findViewById(R.id.radio_btn_cacheOnlyWifi);
+
+        if(!SettingUtils.getSwitchCacheSetting(FragmentMainActivity.this)){
+            radio_btn_nocache.setChecked(true);
+        }else  if(SettingUtils.getMobileConnectCacheSetting(FragmentMainActivity.this)){
+            radio_btn_cacheOnMobile.setChecked(true);
+        }else{
+            radio_btn_cacheOnlyWifi.setChecked(true);
+        }
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setView(settingCacheView);
         if (is_language_of_traditional_chinese) {
             builder.setTitle("緩存設置");
-            btnCleanCache.setText("清除緩存");
+            radio_btn_nocache.setText("停止緩存");
+            radio_btn_cacheOnMobile.setText("開啓2G/3G/4G網絡下緩存");
+            radio_btn_cacheOnlyWifi.setText("僅WIFI網絡下緩存");
+            btnCleanCache.setText("清除所有緩存圖片");
             builder.setPositiveButton("確定", null);
-            cache_hintTextView.setText("教程圖片加載後會被緩存\n再次瀏覽不耗流量");
-            cache_messageTextView.setText("目前緩存大小 " + (int) (cacheSize / 1024 / 1024) + " M");
+            cache_hintTextView.setText("教程圖片被緩存後再次瀏覽不耗流量\n優先使用外部存儲\n默認僅WIFI下緩存");
+            cache_messageTextView.setText("目前緩存大小 "
+                    + cacheSize
+//                    + (float) (cacheSize / 1024.00 / 1024.00)
+                    + " M");
         } else {
             builder.setTitle("缓存设置");
-            btnCleanCache.setText("清除缓存");
+            radio_btn_nocache.setText("停止缓存");
+            radio_btn_cacheOnMobile.setText("开启2G/3G/4G网络下缓存");
+            radio_btn_cacheOnlyWifi.setText("仅WIFI网络下缓存");
+            btnCleanCache.setText("清除所有缓存图片");
             builder.setPositiveButton("确定", null);
-            cache_hintTextView.setText("教程图片加载后会被缓存\n再次浏览不耗流量");
-            cache_messageTextView.setText("目前缓存大小 " + (int) (cacheSize / 1024 / 1024) + " M");
+            cache_hintTextView.setText("教程图片被缓存后再次浏览不耗流量\n优先使用外部存储\n默认仅WIFI下缓存");
+            cache_messageTextView.setText("目前缓存大小 "
+                    + cacheSize
+//                    + (float) (cacheSize / 1024.00 / 1024.00)
+                    + " M");
         }
         builder.show();
         return;

@@ -27,16 +27,49 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="10dp"
-            android:text="教程图片加载后会被缓存\n再次浏览不耗流量\n默认缓存位置为外部缓存"
-            android:textColor="@android:color/darker_gray"
+            android:text="教程图片被缓存后再次浏览不耗流量\n优先使用外部存储\n默认仅WIFI下缓存"
+            android:textColor="@android:color/holo_red_dark"
             android:textSize="15sp" />
+
+        <RadioGroup
+            android:id="@+id/radiogroupCacheSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <RadioButton
+                android:id="@+id/radio_btn_nocache"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="停止缓存"
+                android:layout_gravity="right"
+                android:textColor="@android:color/black"
+                android:padding="10dp"/>
+            <RadioButton
+                android:id="@+id/radio_btn_cacheOnMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开启2G/3G/4G网络下缓存"
+                android:layout_gravity="right"
+                android:textColor="@android:color/black"
+                android:padding="10dp"/>
+            <RadioButton
+                android:id="@+id/radio_btn_cacheOnlyWifi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="仅WIFI网络下缓存"
+                android:layout_gravity="right"
+                android:textColor="@android:color/black"
+                android:padding="10dp"/>
+        </RadioGroup>
 
         <TextView
             android:id="@+id/cache_messageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="15dp"
+            android:padding="10dp"
             android:text="@string/switchcache_messageTextView"
             android:textColor="@android:color/black"
             android:textSize="15sp" />
@@ -49,8 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-android:padding="10dp"
-            android:text="清除缓存"
+            android:padding="10dp"
+            android:text="清除所有缓存图片"
             android:textColor="@android:color/white"
             android:background="@color/colorPrimary_green"
 

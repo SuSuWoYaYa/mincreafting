@@ -17,7 +17,7 @@ public class SettingUtils {
     private static final String COLOR = "color";
     private static final String USER_NAME = "user_name";
     private static final String VIP_STATE = "vip_state";
-    private static final String IsFirstTimeOpenTutorial = "isFirstTimeOpenTutorial";
+    private static final String IsFirstTimeOpenTutorial = "isFirstTimeOpenCacheTutorial";
     private static final String IsFirstTimeOpenCreating = "isFirstTimeOpenCreating";
     private static final String IsOpenImageCache = "isOpenImageCache";
     private static final String IsMobileConnectCache = "isMobileConnectCache";

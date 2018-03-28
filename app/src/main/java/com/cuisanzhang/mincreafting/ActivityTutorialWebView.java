@@ -254,7 +254,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
                     //没网络,或者设置不缓存就不下载
                     if (!isNetworkConnected || !isSetCacheImage) {
-                        Log.e("getCache", "NetworkConnected close!");
+                        Log.e("getCache", "NetworkConnected close or don't Cache image !");
                         return null;
 
                     }
@@ -266,7 +266,8 @@ public class ActivityTutorialWebView extends AppCompatActivity {
                     if (isWifiConnected || isMobileConnectCache) {
                         Log.e("getCache", "start down cache");
                         //后台开线程下载保存
-                        new MyCacheImageRunnable(imageUrl).run();
+                        MyCacheImageRunnable runnable =  new MyCacheImageRunnable(imageUrl);
+                        new Thread(runnable).start();
                     }
 
                     //防止白屏,浏览器去加载
@@ -439,15 +440,15 @@ public class ActivityTutorialWebView extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        try {
-            mDiskLruCache.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        try {
+//            mDiskLruCache.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void initActionBar() {
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
