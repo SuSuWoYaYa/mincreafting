@@ -27,14 +27,14 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:focusable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/inco_newplay" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="5dp"
+                android:src="@drawable/inco_newplay" />
 
             <TextView
                 android:id="@+id/textViewItem1"
@@ -44,7 +44,7 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_new_play"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -62,13 +62,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_map2" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_map2" />
 
             <TextView
                 android:id="@+id/textViewItem2"
@@ -77,7 +77,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_huangjingjieshao"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -103,13 +103,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_more" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_more" />
 
             <TextView
                 android:id="@+id/textViewItem3"
@@ -118,7 +118,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_jinjiezhinan"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -136,13 +136,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_builging" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_builging" />
 
             <TextView
                 android:id="@+id/textViewItem4"
@@ -151,7 +151,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_building"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -176,13 +176,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_food" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_food" />
 
             <TextView
                 android:id="@+id/textViewItem5"
@@ -191,7 +191,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_zhongzhi"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -209,13 +209,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_skeleton2" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_skeleton2" />
 
             <TextView
                 android:id="@+id/textViewItem6"
@@ -224,7 +224,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_shuaguai"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -249,13 +249,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_gao" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_gao" />
 
             <TextView
                 android:id="@+id/textViewItem7"
@@ -264,7 +264,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_caikuaijishu"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -280,13 +280,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_jian" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_jian" />
 
             <TextView
                 android:id="@+id/textViewItem8"
@@ -295,7 +295,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_gengduotiaozhan"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -322,14 +322,14 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:id="@+id/imageViewTools"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_redstone" />-->
+            <ImageView
+                android:id="@+id/imageViewTools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_redstone" />
 
             <TextView
                 android:id="@+id/textViewItem9"
@@ -338,7 +338,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_chujihongshi"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -356,14 +356,14 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:id="@+id/imageViewWeapon"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_redstone_hight" />-->
+            <ImageView
+                android:id="@+id/imageViewWeapon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_redstone_hight" />
 
             <TextView
                 android:id="@+id/textViewItem10"
@@ -372,7 +372,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_hongshijinjie"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -398,13 +398,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_enchant" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_enchant" />
 
             <TextView
                 android:id="@+id/textViewItem11"
@@ -413,7 +413,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_fumoshaolian"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -430,13 +430,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_book2" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_book2" />
 
             <TextView
                 android:id="@+id/textViewItem12"
@@ -445,7 +445,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_gaojijishu"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -474,14 +474,14 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:id="@+id/imageViewBrewing"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_others" />-->
+            <ImageView
+                android:id="@+id/imageViewBrewing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_others" />
 
             <TextView
                 android:id="@+id/textViewItem13"
@@ -490,7 +490,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_mc163"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -508,13 +508,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:clickable="false"-->
-                <!--android:padding="5dp"-->
-                <!--android:src="@drawable/icon_others" />-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:padding="5dp"
+                android:src="@drawable/icon_others" />
 
             <TextView
                 android:id="@+id/textViewItem14"
@@ -523,7 +523,7 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:gravity="center"
-
+                android:paddingRight="10dp"
                 android:text="@string/btn_wangluojiaocheng"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />

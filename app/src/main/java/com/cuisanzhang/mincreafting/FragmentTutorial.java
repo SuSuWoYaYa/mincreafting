@@ -81,7 +81,7 @@ public class FragmentTutorial extends Fragment {
             is_language_of_traditional_chinese = true;
         }
 
-        View view = inflater.inflate(R.layout.fragment_tutorial_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_tutorial_layout_with_icon, container, false);
 
 //        LinearLayout mian_layout = (LinearLayout) view.findViewById(R.id.mian_layout);
         LinearLayout layout_btn_newplay = (LinearLayout) view.findViewById(R.id.layout_btn_newplay);
