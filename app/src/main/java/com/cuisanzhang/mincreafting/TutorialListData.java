@@ -1253,6 +1253,7 @@ public class TutorialListData {
             "生存课2—必学之刷铁机",
             "生存课3—刷石机、活塞式半自动农场和可可豆树！",
             "生存课4——改进过的高效全自动瓜田和甘蔗田！",
+            "生存课5—村民工程！",
 
             "summon指令用法教程 召唤生物附属NBT指令",
             "summon指令标签大全",
@@ -1508,6 +1509,7 @@ public class TutorialListData {
             "file:///android_asset/html/mcbbs/mcbbs_apple2.html",
             "file:///android_asset/html/mcbbs/mcbbs_apple3.html",
             "file:///android_asset/html/mcbbs/mcbbs_apple4.html",
+            "file:///android_asset/html/mcbbs/mcbbs_apple5.html",
 
             "file:///android_asset/html/mcbbs/mcbbs_other_1.html",
             "file:///android_asset/html/mcbbs/mcbbs_other_2.html",
@@ -1741,6 +1743,7 @@ public class TutorialListData {
             "生存課2—必學之刷鐵機",
             "生存課3—刷石機、活塞式半自動農場和可可豆樹！",
             "生存課4——改進過的高效全自動瓜田和甘蔗田！",
+            "生存課5—村民工程！",
 
             "summon指令用法教程 召喚生物附屬NBT指令",
             "summon指令標籤大全",
@@ -1998,6 +2001,7 @@ public class TutorialListData {
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple2.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple3.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple4.html",
+            "file:///android_asset/html_zw/mcbbs/mcbbs_apple5.html",
 
             "file:///android_asset/html_zw/mcbbs/mcbbs_other_1.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs_other_2.html",
