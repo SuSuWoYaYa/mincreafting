@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:text="教程图片被缓存后再次浏览不耗流量\n优先使用外部存储\n默认仅WIFI下缓存"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/colorAccent_deep_drak"
             android:textSize="15sp" />
 
         <RadioGroup

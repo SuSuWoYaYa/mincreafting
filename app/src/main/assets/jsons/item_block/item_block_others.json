@@ -19,7 +19,7 @@
             "name": "鱼桶",
             "material": "水桶 + 鱼",
             "use": "对一条鱼使用水桶来装鱼",
-            "detail": "鱼桶(Fish bucket)是装有鱼的水桶.\n\n可以对一条鱼使用水桶来装鱼.使用鱼桶会释放桶中的鱼和水.\n\n版本1.13加入\n\n三种鱼桶对应着三种鱼.例如带有鳕鱼的水桶就称为鳕鱼桶(cod bucket).\n\n除了上述三种出现在游戏中的鱼桶,在默认材质包中还出现了Clownfish bucket.png小丑鱼桶的材质.但它并没有应用于游戏中.\n\n1.13   18w08b   加入了生物形式的鱼.\n1.13   加入了鱼桶.\n\n实体ID\n鳕鱼\ncod_mob\n鲑鱼\nsalmon_mob\n河豚\npuffer_fish"
+            "detail": "鱼桶(Fish bucket)是装有鱼的水桶.\n\n可以对一条鱼使用水桶来装鱼.使用鱼桶会释放桶中的鱼和水.\n\n版本1.13加入\n\n4种鱼桶对应着4种鱼.例如带有鳕鱼的水桶就称为鳕鱼桶(cod bucket).\n\n除了上述4种出现在游戏中的鱼桶,在默认材质包中还出现了Clownfish bucket.png小丑鱼桶的材质.但它并没有应用于游戏中.\n\n1.13   18w08b   加入了生物形式的鱼.\n1.13   加入了鱼桶.\n\n实体ID\n鳕鱼\ncod_mob\n鲑鱼\nsalmon_mob\n河豚\npuffer_fish"
         },{
             "file_name": "block_yingxingdejiyang",
             "name": "隐形的基岩",
