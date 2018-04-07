@@ -1246,6 +1246,8 @@ public class TutorialListData {
             "红石教程-自动物品电梯(网易1.2.5版本)",
             "红石教程-全自动甘蔗机(网易1.2.5版本)",
             "红石教程-全自动西瓜南瓜机(网易1.2.5版本)",
+            "高级教程-全自动鸡肉机",
+
 
             "生存课1—刷怪笼改造",
             "生存课2—必学之刷铁机",
@@ -1500,6 +1502,7 @@ public class TutorialListData {
             "file:///android_asset/html/mcbbs/mcbbs144.html",
             "file:///android_asset/html/mcbbs/mcbbs145.html",
             "file:///android_asset/html/mcbbs/mcbbs146.html",
+            "file:///android_asset/html/mcbbs/mcbbs147.html",
 
             "file:///android_asset/html/mcbbs/mcbbs_apple1.html",
             "file:///android_asset/html/mcbbs/mcbbs_apple2.html",
@@ -1731,6 +1734,8 @@ public class TutorialListData {
             "紅石教程-自動物品電梯(網易1.2.5版本)",
             "紅石教程-全自動甘蔗機(網易1.2.5版本)",
             "紅石教程-全自動西瓜南瓜機(網易1.2.5版本)",
+
+            "高級教程-全自動雞肉機",
 
             "生存課1—刷怪籠改造",
             "生存課2—必學之刷鐵機",
@@ -1987,6 +1992,7 @@ public class TutorialListData {
             "file:///android_asset/html_zw/mcbbs/mcbbs144.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs145.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs146.html",
+            "file:///android_asset/html_zw/mcbbs/mcbbs147.html",
 
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple1.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple2.html",
