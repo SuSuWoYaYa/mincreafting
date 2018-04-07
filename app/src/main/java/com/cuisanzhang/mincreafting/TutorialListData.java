@@ -58,6 +58,10 @@ public class TutorialListData {
             "区块",
             "虚空",
             "树木",
+
+            "沉船",
+            "水下遗迹",
+
             "沙漠水井",
             "沼泽小屋",
             "林地府邸",
@@ -100,6 +104,11 @@ public class TutorialListData {
             "file:///android_asset/html/wiki/qukuai.html",
             "file:///android_asset/html/wiki/xukong.html",
             "file:///android_asset/html/wiki/shumu.html",
+
+            "file:///android_asset/html/wiki/chenchuan.html",
+            "file:///android_asset/html/wiki/shuixiayiji.html",
+
+
             "file:///android_asset/html/wiki/shamoshuijing.html",
             "file:///android_asset/html/wiki/zhaozhexiaowu.html",
             "file:///android_asset/html/wiki/lindifudi.html",
@@ -142,6 +151,10 @@ public class TutorialListData {
             "區塊",
             "虛空",
             "樹木",
+
+            "沉船",
+            "水下遗迹",
+
             "沙漠水井",
             "沼澤小屋",
             "林地府邸",
@@ -184,6 +197,10 @@ public class TutorialListData {
             "file:///android_asset/html_zw/wiki/qukuai.html",
             "file:///android_asset/html_zw/wiki/xukong.html",
             "file:///android_asset/html_zw/wiki/shumu.html",
+
+            "file:///android_asset/html_zw/wiki/chenchuan.html",
+            "file:///android_asset/html_zw/wiki/shuixiayiji.html",
+
             "file:///android_asset/html_zw/wiki/shamoshuijing.html",
             "file:///android_asset/html_zw/wiki/zhaozhexiaowu.html",
             "file:///android_asset/html_zw/wiki/lindifudi.html",
