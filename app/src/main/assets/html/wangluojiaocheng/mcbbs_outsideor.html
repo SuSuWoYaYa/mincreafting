@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Forge API制作MOD—设置工作环境(配置环境原来如此简单)</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Forge API制作MOD—设置工作环境(配置环境原来如此简单)</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自MCBBS论坛<br />作者-outsidero</p>
+  <p> 针对mcp和forge版本更新带来不同安装方法，和java环境变量配置问题，综合各个教程和自己的经验，写了本教程，希望对大家有帮助。
+</p> <p>
+本教程详细讲述MOD制作之前的准备工作，根据本教程成功配置工作环境之后，你就可以根据DJX的教程编写MOD了。
+</p> <p>Minecraft MOD制作：从入门到精通——第四章（by djxgame）
+</p>  
+<h2>一、基础知识：JRE和JDK</h2><p>
+<h3>1.JRE（Java Runtime Environment Java运行环境）</h3>
+ <p>包括Java虚拟机（JVM Java Virtual Machine）和Java程序所需的核心类库等，运行Java程序只需装JRE即可。</p>
+ 
+ <h3>2.JDK（Java Development Kit Java开发工具包）</h3><p>
+ Java开发工具，包括了JRE，其中的开发工具：编译工具（javac.exe）、打包工具（jar.exe）等。
+</p> <p> <b>
+ 总的来说就是使用JDK开发java程序，JRE负责运行。</b>
+</p>
+<h2>二、JDK下载与安装</h2><p>
+1.进入
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">
+http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>
+
+</p> <p>2.找到Java SE（建议使用最新版），右边点击JDK下面的DOWNLOAD按钮
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor1.jpg" /> 
+  </p><p>3.点击单选框Accept License Agreement
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor3.jpg" />  
+ </p><p>4.32位计算机选windows x86下载，64位计算机选x64下载
+   </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor2.jpg" />  
+ </p><p>5.双击下载下来的文件进行安装，其中安装目录可以更改，不建议安装到C盘，因为重装系统后就会没了。另外其实也可以放到U盘里，也就是说JDK是可以移动的。
+ </p><p>如果提示安装Java sdk，可以取消，提示jre也可以不装，因为jdk里面包含了jre。
+ </p>
+ <h2>三、Java环境变量配置</h2><p>
+ 我的电脑（计算机）-右键属性-高级系统设置-环境变量。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor4.jpg" /> 
+</p><p>1.在系统变量里点新建，变量名为<font color="DarkRed">JAVA_HOME</font>，变量值为JDK的安装目录，比如我的是<font color="DarkRed">D:\Program Files\Java\jdk1.7.0_09</font>
+</p><p>2.在系统变量里点新建，变量名为<font color="DarkRed">Classpath</font>，变量值为<font color="DarkRed">.;%JAVA_HOME%\lib;</font>（最前面有个点，最后面有分号，别漏了）
+</p><p>3.在系统变量里找到<font color="DarkRed">Path</font>，点编辑，在变量值的最前端加上<font color="DarkRed">%JAVA_HOME%\bin;</font>（注意有分号）
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor5.jpg" /> 
+</p><p>4.保存，开始菜单中“运行”，填“cmd”，确定。弹出黑框后输入“<font color="DarkRed">javac</font>”，如果有显示java相关信息则表示配置成功。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor6.jpg" /> 
+</p><p>5.如果有显示<font color="DarkRed">java不是内部命令或外部命令</font>则表示配置错误。请仔细检查安装路径和环境变量.
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor9.jpg" /> 
+</p>
+<h2>四、配置工作环境</h2><p>
+工具下载：MCP：<a href="http://mcp.ocean-labs.de/index.php/MCP_Releases" target="_blank">
+http://mcp.ocean-labs.de/index.php/MCP_Releases</a>
+</p><p>Minecraft Forge-scr： <a href="www.minecraftforge.net/forum/index.php/board,3.0.html" target="_blank">
+www.minecraftforge.net/forum/index.php/board,3.0.html</a>
+</p><p>Eclipse sdk：<a href="http://www.eclipse.org/downloads/" target="_blank">
+http://www.eclipse.org/downloads/</a>
+</p><p>本教程使用<font color="DarkRed">jdk1.7.0_09 、Eclipse sdk3.7.0汉化版 、minecraftforge-src-6.4.2.445 、mcp7.23 </font>
+</p><p>
+</p><p>1.解压mcp.zip到任意目录，比如mcp，建议新建一个mod制作相关的文件夹。
+</p><p>forge安装路径不可以有中文
+</p><p>2.解压forge-src.zip，将里面的forge文件夹放进mcp文件夹里。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor7.jpg" />
+</p><p>3.运行mcp\forge\install.cmd，直到运行完毕（按任意键结束）。
+
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_outsideor8.jpg" />
+</p><p><font color="DarkRed">其中第3步会自行下载一些文件，如果下载太慢。可以自行下载下面的文件放进对应目录，再运行install.cmd</font>
+</p><p>Lib.zip-解压并将里面的所有文件放进mcp\lib内
+</p><p>jars.zip-解压并将里面的bin文件夹放进mcp\jars内
+</p> 
+<h2>五、构建Eclipse SDK开发环境</h2><p>
+ 这个方法在论坛会员yuxuanchiadm的教程里面讲得很清楚了，大家参考下面的教程吧：
+</p><p> 利用Forge API开发联机MOD【1.6.4】
+ </p>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <p><br/></p></div>
+</body>
+
+</html>

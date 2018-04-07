@@ -59,7 +59,8 @@
             android:layout_height="wrap_content"
             android:text="下载"
             android:gravity="center"
-            android:background="@drawable/cling_button_normal"/>
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary_green"            />
     </LinearLayout>
 
 
@@ -88,7 +89,8 @@
             android:layout_height="wrap_content"
             android:text="下载"
             android:gravity="center"
-            android:background="@drawable/cling_button_normal"/>
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary_green"            />
     </LinearLayout>
 
     <LinearLayout
@@ -116,7 +118,8 @@
             android:layout_height="wrap_content"
             android:text="下载"
             android:gravity="center"
-            android:background="@drawable/cling_button_normal"/>
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary_green"            />
     </LinearLayout>
 
     <Button
@@ -125,5 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="其他"
-        android:background="@drawable/cling_button_normal"/>
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary_green"        />
 </LinearLayout>

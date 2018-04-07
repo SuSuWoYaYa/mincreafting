@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD製作 第四章1:您的第一個方塊</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD製作 第四章1:您的第一個方塊</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章轉載自我的世界中文論壇<br />作者-DJXGAME</p>
+ <p>我希望您能多加閱讀一些Minecraft的代碼，雖然對於一個java造詣不精人來說，代碼有可能顯得凌亂，但是不要灰心喪氣。
+ </p>
+<h2>第一節：您的第一個方塊</h2>
+<p>通過在<font color="Magenta">net.minecraft.src</font>包內右擊任意文件，點擊New -&gt;Class。</p>
+<p>將其命名為「mod_YOURMODNAME」，必須確保其<font color="Magenta">以「mod_」開頭</font>，因為只有這樣系統才會識別該文件為一個MOD並開始加載。無需在底部選擇任何的選項，點擊&quot;Finish&quot;完成創建。</p>
+<p>此時您會看見一段預先寫好的類代碼。您的第一件事就是要擴展這個MOD使之成為一個基本類（BaseMod）。
+</p> <p>您可以通過添加「extends BaseMod」這樣的代碼完成類的聲明，此時代碼如下：</p><p>
+<pre>
+ 
+package net.minecraft.src;
+
+public class mod_YourModName extends BaseMod {
+
+}
+
+</pre>
+</p>  <p>
+當然，此時會在「mod_YOURMODNAME」處顯示錯誤，此時將鼠標移至該錯誤處，在彈出的對話框中單擊「Add unimplemented methods」。
+</p> <p>此時會在當前的基本類里添加兩個類函數：「load」與「getVersion」。
+</p> <p>您可以刪除掉「//TODO」這種行，在「getVersion」類函數中，您需要將null替換為」1.0「或者其他您喜歡的版本號。
+</p> <p>您需要保留引用，就如同需要返回一個字符串一樣。此時的代碼如下所示：
+</p> <p><pre>
+
+package net.minecraft.src;
+
+public class mod_YourModName extends BaseMod {
+
+    @Override
+    public String getVersion() {
+        return "1.0";
+    }
+
+    @Override
+    public void load() {
+        
+    }
+
+}
+  </pre> </p>
+<p><font color="Blue">現在您終於可以開始創作您的第一份方塊代碼啦~ </font>
+</p> <p>
+在類的頂端添加下列代碼（在「{}」之內）：
+</p> <p><pre>
+public static Block yourFirstBlock = new BlockTutorial(blockID, 0).setHardness(2.5F).setStepSound(Block.soundWoodFootstep).setBlockName("blockName");
+</pre> </p><p>
+其中：
+</p> 
+<table><tr><td> 名稱<br />
+</td><td> 含義<br />
+</td></tr><tr><td> public</td><td> 表示所有類均可以訪問。</td></tr><tr><td> static<br />
+</td><td> 表示在類內不創建一個新的實例的條件下即可訪問（詳情請查閱java教程）</td></tr><tr><td> Block</td><td> 該變量引用「Block.java」</td></tr><tr><td> yourfirstBLock</td><td> 變量名，叫什麼都行</td></tr><tr><td> = new BlockTutorial</td><td> 此時在BlockTutorial類中創建了一個新的實例，由於我們之前沒有聲明，因此會出錯。您可以將其改為任何您喜歡的名字，只要之後的名字與其相同就可以了。</td></tr><tr><td> (blockID, 0)&nbsp;&nbsp;<br />
+</td><td> 您所傳遞給BlockTutorial類的信息，就是方塊ID。您可以在這裡將其替換成您所希望的任何數值。特別提醒您，在最新版本的Forge中，可以自動調整您的方塊ID，並將其設置到137到4096中的一個未使用過的數值。您可以在<a href="http://minecraftforge.net/forum/index.php?topic=638.0" target="_blank">這裡</a>查看您的MOD與MOD的兼容性。之後的0稍後會為您詳細闡述，現在暫且放過它。</td></tr><tr><td> .setHardness(2.5F)</td><td> 設置該方塊的硬度為2.5，您可以隨意調整。</td></tr><tr><td> .setStepSound(Block.soundWoodFootstep)&nbsp; &nbsp;<br />
+</td><td> 走在上面的聲音，如果您喜歡的話，也可以將「soundWoodFootstep」改成「soundClothFootstep」或者任何你喜歡的聲音。</td></tr><tr><td> .setBlockName(&quot;blockName&quot;);</td><td> 這個變量無關緊要，只是要保證每個的名字不同就可以了。<br />
+</td></tr></table>
+ <p></p>
+<p><font color="Blue">現在您已經掌握了如何新建一個BlockTutorial類了，</font>
+</p> <p>當然有可能在之前您就把這個名字改掉了……
+</p> <p>現在我們要擴展方塊，我們首先需要執行ITextureProvider，
+</p> <p>當您將如下代碼複製進其中時，可以使鼠標懸停在ITextureProvider處並單擊導入（import）。
+</p> <p><pre>
+
+public class BlockTutorial extends Block implements ITextureProvider {
+
+</pre> </p>
+  <p>現在我們需要為我們之前跳過的那部分創建一個構造函數（可以在java教程中獲得更為詳實的信息）。</p> 
+  <p><pre>
+  
+public BlockTutorial(int i, int j)
+{
+    super(i, j, Material.wood);
+}
+
+</pre> </p><p>
+<table ><tr><td> 名稱<br />
+</td><td> 含義<br />
+</td></tr><tr><td> BlockTutorial</td><td> 由於是構造函數，此處需與類的名字相同。<br />
+</td></tr><tr><td> (int i, int j)</td><td> 我們在之前使用(blockID, 0)的聲明。更為詳細的來說，表示該構造函數使用兩個整數變量並將其命名為i和j。<br />
+</td></tr><tr><td> super<br />
+</td><td> 表示需要使用超類來傳遞方塊信息，這也是問什麼我們擴展這個類的緣故。可能難以理解但是請參閱java教程o(∩_∩)o~~</td></tr><tr><td> (i, j, Material.wood);</td><td> 這是由我們的MOD類中繼承的將要傳給方塊的參數，我們同時也傳遞了Material.wood是因為我希望這個方塊在被鎬敲擊時可以更為容易地被破壞。</td></tr></table>
+</p> <p>
+
+好，現在您即將進行的步驟是<font color="Blue">添加一個Forge的類函數以便我們可以為這個方塊設置材質。</font>
+</p> <p><pre>
+public String getTextureFile()
+{
+    return "/Mic'sMods/CrossbowMod/gui/Crossbow.png";
+}
+</pre> </p> <p>
+
+切記：<font color="DarkRed"><font style="background-color:Yellow">不要更改類函數的第一行！亂修改可能覆蓋或者替換類函數。</font></font>
+</p> <p>這是一個用於十字弓MOD的例子，其中的材質存儲在minecraft.jar的相應位置中。您可以很輕鬆地修改您所使用的材質，但是如果指向一個空位置則無法進行加載。當然也要保證是雙引號~
+</p> <p>最後還需要一個Forge的類函數將該方塊添加至創造模式的物品欄中。
+</p> <p><pre>
+
+public void addCreativeItems(ArrayList itemList)
+{
+    if(blockID == mod_ YourModName. yourFirstBlock.blockID)
+    {
+        itemList.add(new ItemStack(this));
+    }
+}
+</pre> </p> <p>
+當鼠標懸停至ArrayList時可以導入。
+ </p> <p>最後一個類函數可能有些複雜……
+ </p> <p>
+ <table ><tr><td> 名稱<br />
+</td><td> 含義<br />
+</td></tr><tr><td> void</td><td> 表示該函數沒有返回值</td></tr><tr><td> addCreativeItems(ArrayList itemList)</td><td> 類函數和構造函數的名字。不要進行修改，否則會覆蓋Forge的類函數。</td></tr><tr><td> if(<br />
+</td><td> 根據真假不同返回值也不同，如果不懂請多看看教程</td></tr><tr><td> blockID == mod_ YourModName. yourFirstBlock.blockID</td><td> 邏輯表達式，如果該方塊的方塊ID與您創建的方塊的方塊ID則繼續</td></tr><tr><td> itemList.add(new ItemStack(this)); <br />
+</td><td> 在創造模式中可以創建和堆疊這一方塊，這條語句不懂亦無妨。</td></tr></table>
+ </p> <p>
+ 之後，<font color="Blue">我們在load()類函數中添加如下語句：</font>
+  </p> <p><pre>
+ModLoader.registerBlock(yourFirstBlock);
+ModLoader.addName(yourFirstBlock, "Woohoo! My first Block :D");
+</pre> </p> <p>
+其中：
+</p> <p>
+<table ><tr><td> 名稱<br />
+</td><td> 含義<br />
+</td></tr><tr><td> ModLoader.registerBlock</td><td> 您所調用的類函數</td></tr><tr><td> (yourFirstBlock)</td><td> 您所使用的方塊，確保之前聲明過。</td></tr><tr><td> ModLoader.addName</td><td> 調用另一個類函數，用於添加名字</td></tr><tr><td> (yourFirstBlock, &quot;Woohoo! My first Block :D&quot;);</td><td> 這裡是為您的方塊實例賦予名字的地方，您可以在這裡寫「紅石燈（Redstone Lamp）」,「樓主我要整合包~(LouzhuWoyaoZhengheBao)」等等。</td></tr></table>
+</p> <p><font color="DarkRed">
+現在要做一件最為重要的事請：</font>
+</p> <p>在Eclipse中單擊Run運行Minecraft，進入創造模式，去尋找您的方塊吧！
+</p> <p><b>
+您已經為Minecraft製作了一個屬於您的MOD，不再是MOD製作小白痴了！
+</p> <p>無論這個MOD多麼粗糙和簡陋，但都是您在MOD製作大師之路的一個見證！
+</p> <p>希望當您在成為大師之時驀然回首還能記得您的第一份作品，無論如何，
+</p> <p><font color="DarkRed">恭喜您！！！</font>
+</b></p> <p></p> <p>
+ <p><br/></p></div>
+</body>
+
+</html>

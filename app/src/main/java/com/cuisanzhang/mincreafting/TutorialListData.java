@@ -58,6 +58,10 @@ public class TutorialListData {
             "区块",
             "虚空",
             "树木",
+
+            "沉船",
+            "水下遗迹",
+
             "沙漠水井",
             "沼泽小屋",
             "林地府邸",
@@ -100,6 +104,11 @@ public class TutorialListData {
             "file:///android_asset/html/wiki/qukuai.html",
             "file:///android_asset/html/wiki/xukong.html",
             "file:///android_asset/html/wiki/shumu.html",
+
+            "file:///android_asset/html/wiki/chenchuan.html",
+            "file:///android_asset/html/wiki/shuixiayiji.html",
+
+
             "file:///android_asset/html/wiki/shamoshuijing.html",
             "file:///android_asset/html/wiki/zhaozhexiaowu.html",
             "file:///android_asset/html/wiki/lindifudi.html",
@@ -142,6 +151,10 @@ public class TutorialListData {
             "區塊",
             "虛空",
             "樹木",
+
+            "沈船",
+            "水下遺跡",
+
             "沙漠水井",
             "沼澤小屋",
             "林地府邸",
@@ -184,6 +197,10 @@ public class TutorialListData {
             "file:///android_asset/html_zw/wiki/qukuai.html",
             "file:///android_asset/html_zw/wiki/xukong.html",
             "file:///android_asset/html_zw/wiki/shumu.html",
+
+            "file:///android_asset/html_zw/wiki/chenchuan.html",
+            "file:///android_asset/html_zw/wiki/shuixiayiji.html",
+
             "file:///android_asset/html_zw/wiki/shamoshuijing.html",
             "file:///android_asset/html_zw/wiki/zhaozhexiaowu.html",
             "file:///android_asset/html_zw/wiki/lindifudi.html",
@@ -1246,11 +1263,14 @@ public class TutorialListData {
             "红石教程-自动物品电梯(网易1.2.5版本)",
             "红石教程-全自动甘蔗机(网易1.2.5版本)",
             "红石教程-全自动西瓜南瓜机(网易1.2.5版本)",
+            "高级教程-全自动鸡肉机",
+
 
             "生存课1—刷怪笼改造",
             "生存课2—必学之刷铁机",
             "生存课3—刷石机、活塞式半自动农场和可可豆树！",
             "生存课4——改进过的高效全自动瓜田和甘蔗田！",
+            "生存课5—村民工程！",
 
             "summon指令用法教程 召唤生物附属NBT指令",
             "summon指令标签大全",
@@ -1500,11 +1520,13 @@ public class TutorialListData {
             "file:///android_asset/html/mcbbs/mcbbs144.html",
             "file:///android_asset/html/mcbbs/mcbbs145.html",
             "file:///android_asset/html/mcbbs/mcbbs146.html",
+            "file:///android_asset/html/mcbbs/mcbbs147.html",
 
             "file:///android_asset/html/mcbbs/mcbbs_apple1.html",
             "file:///android_asset/html/mcbbs/mcbbs_apple2.html",
             "file:///android_asset/html/mcbbs/mcbbs_apple3.html",
             "file:///android_asset/html/mcbbs/mcbbs_apple4.html",
+            "file:///android_asset/html/mcbbs/mcbbs_apple5.html",
 
             "file:///android_asset/html/mcbbs/mcbbs_other_1.html",
             "file:///android_asset/html/mcbbs/mcbbs_other_2.html",
@@ -1732,10 +1754,13 @@ public class TutorialListData {
             "紅石教程-全自動甘蔗機(網易1.2.5版本)",
             "紅石教程-全自動西瓜南瓜機(網易1.2.5版本)",
 
+            "高級教程-全自動雞肉機",
+
             "生存課1—刷怪籠改造",
             "生存課2—必學之刷鐵機",
             "生存課3—刷石機、活塞式半自動農場和可可豆樹！",
             "生存課4——改進過的高效全自動瓜田和甘蔗田！",
+            "生存課5—村民工程！",
 
             "summon指令用法教程 召喚生物附屬NBT指令",
             "summon指令標籤大全",
@@ -1987,11 +2012,13 @@ public class TutorialListData {
             "file:///android_asset/html_zw/mcbbs/mcbbs144.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs145.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs146.html",
+            "file:///android_asset/html_zw/mcbbs/mcbbs147.html",
 
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple1.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple2.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple3.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs_apple4.html",
+            "file:///android_asset/html_zw/mcbbs/mcbbs_apple5.html",
 
             "file:///android_asset/html_zw/mcbbs/mcbbs_other_1.html",
             "file:///android_asset/html_zw/mcbbs/mcbbs_other_2.html",
@@ -2078,6 +2105,21 @@ public class TutorialListData {
             "我的世界药水代码教程",
             "我的世界怎么打出彩色字体的教程",
             "史上最简单的半自动门",
+
+            "Forge API制作MOD—设置工作环境(配置环境原来如此简单)",
+            "Minecraft MOD制作 从入门到精通",
+            "Minecraft MOD制作 第一章:学习Java",
+            "Minecraft MOD制作 第二章:计划与头脑风暴",
+            "Minecraft MOD制作 第三章:设置工作环境",
+            "Minecraft MOD制作 第四章1:您的第一个方块",
+            "Minecraft MOD制作 第四章2:为您的方块添加材质" ,
+            "Minecraft MOD制作 第四章3:创建一份合成表",
+            "Minecraft MOD制作 第四章4:生成矿藏",
+            "Minecraft MOD制作 第四章5:添加烧炼与创建物品" ,
+            "Minecraft MOD制作 第四章6:创建一组工具",
+            "Minecraft MOD制作 第四章7:创建一套盔甲",
+            "Minecraft MOD制作 第四章8:添加多材质方块",
+
             "基本操作与合成玩法",
             "挖矿教程",
             "食物与生命值",
@@ -2125,6 +2167,21 @@ public class TutorialListData {
             "file:///android_asset/html/wangluojiaocheng/costem4.html",
             "file:///android_asset/html/wangluojiaocheng/costem6.html",
             "file:///android_asset/html/wangluojiaocheng/costem5.html",
+
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_outsideor.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame1.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame2.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame3.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame4.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame5.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame6.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame7.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame8.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame9.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame10.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame11.html",
+            "file:///android_asset/html/wangluojiaocheng/mcbbs_djxgame12.html",
+
             "file:///android_asset/html/wangluojiaocheng/jiaochen1.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen2.html",
             "file:///android_asset/html/wangluojiaocheng/jiaochen3.html",
@@ -2174,6 +2231,21 @@ public class TutorialListData {
             "我的世界藥水代碼教程",
             "我的世界怎麼打出彩色字體的教程",
             "史上最簡單的半自動門",
+
+            "Forge API製作MOD—設置工作環境(配置環境原來如此簡單)",
+            "Minecraft MOD製作 從入門到精通",
+            "Minecraft MOD製作 第一章:學習Java",
+            "Minecraft MOD製作 第二章:計劃與頭腦風暴",
+            "Minecraft MOD製作 第三章:設置工作環境",
+            "Minecraft MOD製作 第四章1:您的第一個方塊",
+            "Minecraft MOD製作 第四章2:為您的方塊添加材質" ,
+            "Minecraft MOD製作 第四章3:創建一份合成表",
+            "Minecraft MOD製作 第四章4:生成礦藏",
+            "Minecraft MOD製作 第四章5:添加燒煉與創建物品" ,
+            "Minecraft MOD製作 第四章6:創建一組工具",
+            "Minecraft MOD製作 第四章7:創建一套盔甲",
+            "Minecraft MOD製作 第四章8:添加多材質方塊",
+
             "基本操作與合成玩法",
             "挖礦教程",
             "食物與生命值",
@@ -2221,6 +2293,21 @@ public class TutorialListData {
             "file:///android_asset/html_zw/wangluojiaocheng/costem4.html",
             "file:///android_asset/html_zw/wangluojiaocheng/costem6.html",
             "file:///android_asset/html_zw/wangluojiaocheng/costem5.html",
+
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_outsideor.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame1.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame2.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame3.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame4.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame5.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame6.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame7.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame8.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame9.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame10.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame11.html",
+            "file:///android_asset/html_zw/wangluojiaocheng/mcbbs_djxgame12.html",
+
             "file:///android_asset/html_zw/wangluojiaocheng/jiaochen1.html",
             "file:///android_asset/html_zw/wangluojiaocheng/jiaochen2.html",
             "file:///android_asset/html_zw/wangluojiaocheng/jiaochen3.html",

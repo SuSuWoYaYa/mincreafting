@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD制作 第四章8:添加多材质方块 </title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD制作 第四章8:添加多材质方块 </h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自我的世界中文论坛<br />作者-DJXGAME</p>
+ 
+ <p>
+ 我希望您能多加阅读一些Minecraft的代码，虽然对于一个java造诣不精人来说，代码有可能显得凌乱，但是不要灰心丧气。
+</p> 
+<h2>第四章第八节：添加多材质方块</h2><p>
+
+什么是多材质方块？就是类似草地这样子的方块：绿色的顶部，低端是棕色的，而四周却与上下均不相同。
+</p> <p>第一步需要为其创建材质。需要绘制至少两幅材质才可以实现多材质的功能，将其放在同一份子图文件下。
+</p> <p>确保使用渲染软件将不同的材质渲染在同一方块上使其看起来彼此拼接，毕竟您不希望一个带有紫色边的方块转过去一看编程绿色边了吧……
+</p> <p>在您制作成功材质后实际上代码非常简单，您只需要一个类函数即可：
+</p> <p>
+Magical Multi-texture Method<br/><pre> 
+@Override
+public int getBlockTextureFromSide(int side)
+{
+    if (side == 1)
+    {
+        return 5;
+    }
+    else if (side == 0)
+    {
+        return 6;
+    }
+    else
+    {
+        return 4;
+    }
+}
+
+</pre> </p> <p>在这一例程中展示了一份草方块的制作过程。通过使用getBlockTexture()类函数，我们可以调用不同位置的子图。
+</p> <p>当您看到这一方块时：
+</p> <p>顶部：0
+</p> <p>底部：1
+</p> <p>四周：2、3、4、5
+</p> <p>请确认您所看到的方块是否与其吻合~~（<font color="DarkRed">据反馈此处有问题……</font>）
+</p> <p>
+</p> <p><font color="Magenta">好啦，看到这里您已经是MOD制作方面的大师了~~（至少在理论层面是这样~~~）恭喜您O(∩_∩)O~</font>
+
+</p> <p>
+
+
+</p>
+<p><br/></p></div>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">我的世界合成表大全</string>
-    <string name="versionCode">v9.1</string>
+    <string name="versionCode">v9.2</string>
     <string name="action_settings">Settings</string>
     <string name="toolbar_search">搜索</string>
     <string name="menu_change_theme">切换主题</string>
@@ -173,7 +173,7 @@
     <string name="color_deep_gray">深灰</string>
     <string name="color_light_gray">亮灰</string>
     <string name="settingcache">缓存设置</string>
-    <string name="switchcache_messageTextView">教程图片离线缓存</string>
+    <string name="switchcache_messageTextView">目前缓存大小 XXX M</string>
     <string name="switchcache_messagetesting">功能测试中</string>
 
 </resources>

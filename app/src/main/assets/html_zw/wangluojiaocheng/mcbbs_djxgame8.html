@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD製作 第四章4:生成礦藏</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD製作 第四章4:生成礦藏 </h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章轉載自我的世界中文論壇<br />作者-DJXGAME</p>
+  <p>
+ 我希望您能多加閱讀一些Minecraft的代碼，雖然對於一個java造詣不精人來說，代碼有可能顯得凌亂，但是不要灰心喪氣。
+</p> 
+
+<h2>第四節：生成礦藏</h2><p>
+
+現在您可以能會想如何製作一份礦藏呢？
+</p> <p>如果您希望製作一份礦藏，請<font color="DarkRed">不要為其設置可以進行合成的要素，畢竟礦藏是不能合成出來的。</font>
+</p> <p>建議您重新為自己的礦物方塊設計一套材質，畢竟在許多灰色的石頭中間突然挖到一個藍色大方塊很是詭異。
+</p> <p>您可以根據自己使用photoshop或Gimp的水平進行創作，
+</p> <p>甚至直接拷貝原版材質並加以修改其中的色調和飽和度也是一個不錯的而選擇.
+</p> <p>還記得我們在教程之前提到的".setHardness(2.5F)"麼？
+</p> <p>在製作礦藏時這一參數也需要考慮在內：0.1F意味著幾乎可以瞬間摧毀該方塊，而1000.0F則意味著您可以挖到天荒地老。
+</p> <p>還有一點請注意，此處與您實際進行採礦無任何相關，我們稍後會進行講解。
+</p> <p>我們使用generateSurface()類函數對modloader類函數進行覆蓋，當生成世界時就會調用這個類函數，並生成您所添加進類函數的語句。
+</p> <p>
+</p> <p>以下代碼將用於您的mod_file：
+</p> <p>Overriding The ModLoader Method
+<br/><pre> 
+@Override
+public void generateSurface(World world, Random random, int chunkX, int chunkZ)
+{
+    
+}
+
+</pre> </p> <p>
+
+再次強調，不要做任何修改，因為您的任何改動都會帶來不可知的結果。
+</p> <p>現在需要再去中添加一個循環語句：
+</p>  <p>Generation For Loop<br/><pre> 
+for(int i = 0; i < 20; i++) {
+    int randPosX = chunkX + random.nextInt(16);
+    int randPosY = random.nextInt(20);
+    int randPosZ = chunkZ + random.nextInt(16);
+    new WorldGenMinable(this.yourFirstOre.blockID, 8).generate(world, random, randPosX, randPosY, randPosZ);
+}
+
+</pre> </p> <p>
+
+<table><tr><td>名稱</td><td>含義</td></tr><tr><td>for(..) </td><td>表示循環，詳情請參閱java教程</td></tr><tr><td>int i = 0; i &lt; 20; i++</td><td>默認的循環語句，您只需要關心其中的「20」就可以了，如果您將其設置為1就代表該礦物如同鑽石一樣珍惜，而將其設置為20則代表如同煤那樣廣泛分布，您可以將其最大設置為50左右。</td></tr><tr><td>int randPosX = chunkX + random.nextInt(16);</td><td>表示礦藏的確切位置其中變量<i>randPosX</i>用於存儲礦藏的X坐標，而礦脈的實際位置則由1到16的一個隨機數與區塊位置共同決定。<strong>不要更改其中的16！</strong></td></tr><tr><td>int randPosY = random.nextInt(20);</td><td>礦脈的y坐標由1到20的一個隨機數決定，您可以將20改為任何一個正值，比如礦石就將其設置為16而煤則為128。</td></tr><tr><td>int randPosZ = chunkZ + random.nextInt(16);</td><td>礦脈的Z坐標由變量<i>randPosZ</i>確定，礦脈的實際位置則由1到16的一個隨機數與區塊位置共同決定。<strong>不要更改其中的16！</strong></td></tr><tr><td>new WorldGenMinable</td><td>為<i>WorldGenMinable</i>類中添加一個新的實例，該實例主要用於控制生成</td></tr><tr><td>(this.yourFirstOre.blockID, 8)</td><td>控制您所生成礦脈的最大礦石數量，最小值為3亦即每個礦脈只生成1塊礦石</td></tr><tr><td>.generate</td><td>在<i>WorldGenMinable</i>中調用<i>generate</i>類函數。</td></tr><tr><td>(world, random, randPosX, randPosY, randPosZ)</td><td><i>''world''</i>為生成世界的名稱，可以由<i>delaration</i>類函數提供；<i>''Random''</i>為java的隨機場，也由<i>delaration</i>類函數提供；<i>&quot;Random'' X, Y, Z</i>為三個整值變量，用於控制礦脈的位置。</td></tr></table>
+</p>
+
+</p><p>我們接下來<font color="DarkRed">設置礦藏的硬度等級</font>，也就是說使用何種鎬開採這一種礦藏，以下為典型礦石的硬度等級：黑曜石為3。鑽石為2。鐵礦石為1。
+</p><p>在您的load()類函數中添加如下代碼：
+  </p>  <p> <pre> 
+MinecraftForge.setBlockHarvestLevel(yourFirstOre, "pickaxe", 3);
+
+</pre> </p> <p>
+</p><p>此時您的礦藏創建之旅就臨近尾聲，大家請欣賞我創造的超級惡劣材質的礦藏~
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_djxgame8_1.png" /> 
+</p><p>P.S：在您重新生成一個世界後（也就是您更改了控制世界生成的變量）如果出現錯誤，請先檢查區塊生成是否正確再行檢查代碼問題。~
+</p> <p><br/></p></div>
+</body>
+
+</html>

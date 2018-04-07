@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD制作 第一章:学习Java</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD制作 第一章:学习Java</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自我的世界中文论坛<br />作者-DJXGAME</p>
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_djxgame1_1.png" /> 
+ </p><p>我们假设您处于上图的最顶端。如果您已经知道了如何制作MOD，请翻阅至最接近您水平的一章。
+ </p><p>在您开始制作MOD之前有一件事需要去做——学习计算机编程语言，而这件事由于可以复制例程的缘故经常被遗忘。在这里我也会提供一些基本的java程序，但是强烈推荐您花一点点时间学习一下这门语言……这样子您会节省好多好多好多……时间。
+ </p> 
+<h2>第一章:学习Java</h2><p>
+
+java是什么？java是一门计算机语言，我相信很多人都知道这一事实，这很可能是由于您曾经玩过由这一语言编译而成的游戏。Java是一门面向对象的计算机语言，也就是说它由两主要部分组成：字段和方法。那什么是字段和方法呢？我们以人为例：
+ </p><p>我们可以把一个人比作一个工程（o(∩_∩)o好像有些类比不当~）。在这个工程中会有许多包，比如“human.body.head”。在每个包中会包含好多类（我们之后详细阐述），比如说"ear.java"就是一个类。现在我们已经知道了字段和方法，那么什么是类呢？我们以之前的ear.java为例，这个耳朵类可以诸如“耳垂高度”和“音量”等特征，所以一个解决方案是建立如“listenTo()”和"moveEars()"等函数。
+ </p><p>您可能会问这到底是什么呀，也可能会问这些和Minecraft到底有神马关系？好吧，以下就是一个例子：
+ </p> 
+ <p><b>方法/函数举例 </b></p>
+<p> 
+<pre>
+
+public int getMaxHealth()
+{
+	return 20;
+}
+
+</pre> </p>
+  
+<p>这是minecraft中EntityCreeper.java中的一段代码。这段代码非常基本，您只需关心的是如果把返回值20改为其它的什么东西会发生什么呢？当然您有可能会猜测：嗯，有可能会带来我砍苦力怕多少刀它会死呢？其中的&quot;<font color="DarkRed">public</font>&quot;表示其它的类也可以调用该函数，&quot;<font color="DarkRed">int</font>&quot;表示该函数为整型函数（在+/-2,147,483,647之间的所有十进制整数）。&quot;<font color="DarkRed">getMaxHealth()</font>&quot;为函数名，&quot;<font color="DarkRed">return 20</font>&quot;表示返回值，比如如果有人问这个类：“苦力怕的最大生命值是多少呀？”，它将回答：“是20~”。由于我们在函数头声明了&quot;int&quot;，所以我们的返回值必须为整数。<br />
+</p>
+ <p>
+<b>字段/变量举例</b></p> <p><pre>
+
+private double velocityY;
+
+</pre></p>
+ 
+<p>这是在EntityMinecart类中所生命的一个字段。其中&quot;<font color="DarkRed">private</font>&quot;表示只有这个类才可以访问这个字段，&quot;<font color="DarkRed">double</font>&quot;表示为一个十进制数，&quot;<font color="DarkRed">velocityY</font>&quot;为这个变量的变量名（字段和变量有时表示同一个东西）。</p><p>以上就是关于Java的一些最基本的知识。网络上还有许许多多更为优秀的Java教程，所以就不再花时间赘述了。</p><br />
+<p>相关教程：</font></font><br />
+</p>
+<ul><li><strong><a href="http://www.youtube.com/playlist?list=PLFE2CE09D83EE3E28&amp;feature=plcp" target="_blank">TheNewBoston's Java (Beginner) Programming Tutorials</a></strong>
+<li><strong><a href="http://docs.oracle.com/javase/tutorial/" target="_blank">The JavaTM Tutorials</a></strong>
+<br />
+</ul>
+<br />
+<p>——第一章到此结束——<br />
+
+</p>
+
+
+  
+<p>额, 我觉得Head First Java也不错.<br/></p></div>
+</body>
+
+</html>

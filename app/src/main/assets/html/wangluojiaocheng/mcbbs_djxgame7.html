@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD制作 第四章3:创建一份合成表  </title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD制作 第四章3:创建一份合成表</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自我的世界中文论坛<br />作者-DJXGAME</p>
+ <p>
+ 我希望您能多加阅读一些Minecraft的代码，虽然对于一个java造诣不精人来说，代码有可能显得凌乱，但是不要灰心丧气。
+</p> 
+<h2>第三节：创建一份合成表</h2><p>
+
+在这一节，我将为您讲述如何创建一份合成表，<font color="DarkRed">本章不会有任何下载内容O(∩_∩)O~</font>
+</p> <p>当您已经成功地掌握了前两节的内容，您就已经基本掌握了制作MOD的基本知识。
+</p> <p>现在需要为那些奋斗在生存模式的人们考虑了~
+</p> <p>本节内容十分简单，仅调用一个类函数。
+</p> <p>所以<font color="DarkRed">您可以尝试一下能否自己一个人搞清楚代码</font>，我会将释义附在后面。
+</p> <p>当然，这些代码完全可以一行写完，但是写成这样子更为直观，就好像您在用工作台进行合成一样。
+</p> <p><pre> 
+ModLoader.addRecipe(new ItemStack(yourFirstBlock), new Object[] {
+    "BBB",
+    "BAB",
+    "BBB",
+    Character.valueOf('A'), Item.diamond,
+    Character.valueOf('B'), Block.obsidian
+});
+
+</pre> </p> <p><font color="RoyalBlue">
+您看懂了么？</font>
+</p> <p>
+<table><tr><td> 名称</td><td> 含义</td></tr><tr><td> ModLoader.addRecipe</td><td> 这个是您所调用的类函数，用于为Minecraft添加合成表。</td></tr><tr><td> new ItemStack(yourFirstBlock)</td><td> 新建一个ItemStack类函数，该类函数的作用是允许工作台合成该物品或方块。您可以将 &quot;yourFirstBlock&quot; 改为您之前创建的物品或方块</td></tr><tr><td> new Object[]</td><td> 这个无需关心，在大括号内添加的信息将会以对象的形式传入Modloader类函数中</td></tr><tr><td> &quot;BBB&quot;, &quot;BAB&quot;, &quot;BBB&quot;,</td><td> 此处为工作台中将会显示的合成方式，请牢记为每一种不同的原料设置一个不同的字母。那么为什么我使用了两个字母呢？是因为我只需要两种不同的原材料……</td></tr><tr><td> Character.valueOf('A')</td><td> 在上文中的“A”代表了如下这种物品…… <br />
+</td></tr><tr><td> Item.diamond,</td><td> 咳咳，再合成公式中的每一个“A”均代表一块钻石</td></tr><tr><td> </td><td> 为您每一种原材料均设置 Character.valueOf('letterHere') 和Item.whatever <br />
+</td></tr><tr><td> });</td><td> 结束</td></tr></table></td></table>
+
+</p> <p>
+您当然也可以在合成中使用您自己创建的方块或物品，
+</p> <p>举例来说，"Character.valueOf('A'), yourFirstBlock"即代表之前所述的“A”为您所创建的方块。
+</p> <p>如下图所示：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_djxgame7_1.png" /> 
+
+</p> <p><b> <font color="DarkRed">
+以下为一些在编写合成公式时的小技巧：</font>
+</p></b> <p>
+您可以使用空格代表工作台中的空位。
+</p> <p><pre> 
+"DDD",    " I ",    " I ",
+	</pre> </p><p>
+	您可以简化合成公式，这样子无论原材料在工作台内如何放置，只要形状正确即能合成（木板合成工作台就是一例）
+    </p> 
+	<p><pre> 
+"BB",    "BB",
+	</pre> </p> <p>您可以只使用单一原材料进行合成，也就是说放入一个该方块或物品即可合成您所希望的物品。
+</p> <p><pre> 
+"Z",
+
+</pre>  
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

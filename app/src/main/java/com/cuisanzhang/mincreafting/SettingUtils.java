@@ -17,10 +17,10 @@ public class SettingUtils {
     private static final String COLOR = "color";
     private static final String USER_NAME = "user_name";
     private static final String VIP_STATE = "vip_state";
-    private static final String IsFirstTimeOpenTutorial = "isFirstTimeOpenTutorial";
+    private static final String IsFirstTimeOpenTutorial = "isFirstTimeOpenCacheTutorial";
     private static final String IsFirstTimeOpenCreating = "isFirstTimeOpenCreating";
     private static final String IsOpenImageCache = "isOpenImageCache";
-
+    private static final String IsMobileConnectCache = "isMobileConnectCache";
 
     static String  VIP_URL = "http://owpvbuvtf.bkt.clouddn.com/vip.txt";
 
@@ -35,6 +35,20 @@ public class SettingUtils {
                 return networkInfo.isAvailable();
         }
         return false;
+    }
+
+
+    //是否连接WIFI
+    public static boolean isWifiConnected(Context context)
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                return true ;
+            }
+        }
+        return false ;
     }
 
     public  static  boolean isFirstTimeOpenTutorial(Context context){
@@ -73,6 +87,21 @@ public class SettingUtils {
         SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
         return sp.getBoolean(IsOpenImageCache, true);
     }
+
+
+    //移动网络缓存图片设置
+    public static void setMobileConnectCacheSetting(Context context, boolean isMobileConnectCache) {
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(IsMobileConnectCache, isMobileConnectCache);
+        editor.apply();
+    }
+
+    public static boolean getMobileConnectCacheSetting(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(PREF_SETTING, Context.MODE_PRIVATE);
+        return sp.getBoolean(IsMobileConnectCache, false);
+    }
+
 
 //        作者：AlicFeng
 //        链接：http://www.jianshu.com/p/10ed9ae02775

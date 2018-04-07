@@ -2,6 +2,30 @@
     "category": "植物",
     "blocks": [
         {
+            "file_name": "wuping_shanghu",
+            "name": "珊瑚",
+            "material": " ",
+            "use": "建筑或装饰性方块",
+            "detail": "珊瑚(Coral)是一类拥有5种颜色变种的固体方块,有蓝、粉红、紫、红、黄5种颜色.\n\n死珊瑚(Dead coral)是5种颜色珊瑚对应的死亡变种固体方块,有蓝、粉红、紫、红、黄5种材质.\n\n珊瑚丛(Coral plants)是一类只能放在水下的方块.有5种颜色的变种,不存在死亡变种.\n\n珊瑚扇(Coral fans)是一类只能放在水下,且只能放在其它方块侧面的方块.有5种颜色的变种,不存在死亡变种.\n\n版本1.13加入\n\n获取\n珊瑚被任意的镐开采会以物品形式掉落,否则不掉落任何东西.\n \n珊瑚丛和珊瑚扇可以被立即破坏并掉落自身的物品形式.\n\n自然生成\n珊瑚和珊瑚丛会自然生成在大型珊瑚礁结构中,它可以在热带海洋中被找到.\n\n用途\n珊瑚、死珊瑚、珊瑚丛和珊瑚扇可被用作建筑或装饰性方块.\n\n死珊瑚\n若要珊瑚保持存活,至少要使其1面接触水.若被放置在水外,它会立即且不可逆地变为死珊瑚.\n\n名称 \n珊瑚:\nblue_coral\npink_coral\npurple_coral\nred_coral\nyellow_coral\n死珊瑚:\nblue_dead_coral\npink_dead_coral\npurple_dead_coral\nred_dead_coral\nyellow_dead_coral\n珊瑚丛:\nblue_coral_plant\npink_coral_plant\npurple_coral_plant\nred_coral_plant\nyellow_coral_plant\n珊瑚扇:\nblue_coral_fan\npink_coral_fan\npurple_coral_fan\nred_coral_fan\nyellow_coral_fan"
+        },{
+            "file_name": "wuping_shanghuchong",
+            "name": "珊瑚丛",
+            "material": " ",
+            "use": "建筑或装饰性方块",
+            "detail": "珊瑚(Coral)是一类拥有5种颜色变种的固体方块,有蓝、粉红、紫、红、黄5种颜色.\n\n死珊瑚(Dead coral)是5种颜色珊瑚对应的死亡变种固体方块,有蓝、粉红、紫、红、黄5种材质.\n\n珊瑚丛(Coral plants)是一类只能放在水下的方块.有5种颜色的变种,不存在死亡变种.\n\n珊瑚扇(Coral fans)是一类只能放在水下,且只能放在其它方块侧面的方块.有5种颜色的变种,不存在死亡变种.\n\n版本1.13加入\n\n获取\n珊瑚被任意的镐开采会以物品形式掉落,否则不掉落任何东西.\n \n珊瑚丛和珊瑚扇可以被立即破坏并掉落自身的物品形式.\n\n自然生成\n珊瑚和珊瑚丛会自然生成在大型珊瑚礁结构中,它可以在热带海洋中被找到.\n\n用途\n珊瑚、死珊瑚、珊瑚丛和珊瑚扇可被用作建筑或装饰性方块.\n\n死珊瑚\n若要珊瑚保持存活,至少要使其1面接触水.若被放置在水外,它会立即且不可逆地变为死珊瑚.\n\n名称 \n珊瑚:\nblue_coral\npink_coral\npurple_coral\nred_coral\nyellow_coral\n死珊瑚:\nblue_dead_coral\npink_dead_coral\npurple_dead_coral\nred_dead_coral\nyellow_dead_coral\n珊瑚丛:\nblue_coral_plant\npink_coral_plant\npurple_coral_plant\nred_coral_plant\nyellow_coral_plant\n珊瑚扇:\nblue_coral_fan\npink_coral_fan\npurple_coral_fan\nred_coral_fan\nyellow_coral_fan"
+        },{
+            "file_name": "wuping_shanghushang",
+            "name": "珊瑚扇",
+            "material": " ",
+            "use": "建筑或装饰性方块",
+            "detail": "珊瑚(Coral)是一类拥有5种颜色变种的固体方块,有蓝、粉红、紫、红、黄5种颜色.\n\n死珊瑚(Dead coral)是5种颜色珊瑚对应的死亡变种固体方块,有蓝、粉红、紫、红、黄5种材质.\n\n珊瑚丛(Coral plants)是一类只能放在水下的方块.有5种颜色的变种,不存在死亡变种.\n\n珊瑚扇(Coral fans)是一类只能放在水下,且只能放在其它方块侧面的方块.有5种颜色的变种,不存在死亡变种.\n\n版本1.13加入\n\n获取\n珊瑚被任意的镐开采会以物品形式掉落,否则不掉落任何东西.\n \n珊瑚丛和珊瑚扇可以被立即破坏并掉落自身的物品形式.\n\n自然生成\n珊瑚和珊瑚丛会自然生成在大型珊瑚礁结构中,它可以在热带海洋中被找到.\n\n用途\n珊瑚、死珊瑚、珊瑚丛和珊瑚扇可被用作建筑或装饰性方块.\n\n死珊瑚\n若要珊瑚保持存活,至少要使其1面接触水.若被放置在水外,它会立即且不可逆地变为死珊瑚.\n\n名称 \n珊瑚:\nblue_coral\npink_coral\npurple_coral\nred_coral\nyellow_coral\n死珊瑚:\nblue_dead_coral\npink_dead_coral\npurple_dead_coral\nred_dead_coral\nyellow_dead_coral\n珊瑚丛:\nblue_coral_plant\npink_coral_plant\npurple_coral_plant\nred_coral_plant\nyellow_coral_plant\n珊瑚扇:\nblue_coral_fan\npink_coral_fan\npurple_coral_fan\nred_coral_fan\nyellow_coral_fan"
+        },{
+            "file_name": "wuping_sishanghu",
+            "name": "死珊瑚",
+            "material": "珊瑚",
+            "use": "建筑或装饰性方块",
+            "detail": "珊瑚(Coral)是一类拥有5种颜色变种的固体方块,有蓝、粉红、紫、红、黄5种颜色.\n\n死珊瑚(Dead coral)是5种颜色珊瑚对应的死亡变种固体方块,有蓝、粉红、紫、红、黄5种材质.\n\n珊瑚丛(Coral plants)是一类只能放在水下的方块.有5种颜色的变种,不存在死亡变种.\n\n珊瑚扇(Coral fans)是一类只能放在水下,且只能放在其它方块侧面的方块.有5种颜色的变种,不存在死亡变种.\n\n版本1.13加入\n\n获取\n珊瑚被任意的镐开采会以物品形式掉落,否则不掉落任何东西.\n \n珊瑚丛和珊瑚扇可以被立即破坏并掉落自身的物品形式.\n\n自然生成\n珊瑚和珊瑚丛会自然生成在大型珊瑚礁结构中,它可以在热带海洋中被找到.\n\n用途\n珊瑚、死珊瑚、珊瑚丛和珊瑚扇可被用作建筑或装饰性方块.\n\n死珊瑚\n若要珊瑚保持存活,至少要使其1面接触水.若被放置在水外,它会立即且不可逆地变为死珊瑚.\n\n名称 \n珊瑚:\nblue_coral\npink_coral\npurple_coral\nred_coral\nyellow_coral\n死珊瑚:\nblue_dead_coral\npink_dead_coral\npurple_dead_coral\nred_dead_coral\nyellow_dead_coral\n珊瑚丛:\nblue_coral_plant\npink_coral_plant\npurple_coral_plant\nred_coral_plant\nyellow_coral_plant\n珊瑚扇:\nblue_coral_fan\npink_coral_fan\npurple_coral_fan\nred_coral_fan\nyellow_coral_fan"
+        },{
             "file_name": "block_tiancaizhongzhi",
             "name": "甜菜种子",
             "material": " ",

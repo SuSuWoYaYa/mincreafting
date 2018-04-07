@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD製作 第四章5:添加燒煉與創建物品</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD製作 第四章5:添加燒煉與創建物品</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章轉載自我的世界中文論壇<br />作者-DJXGAME</p>
+ <p>
+ 我希望您能多加閱讀一些Minecraft的代碼，雖然對於一個java造詣不精人來說，代碼有可能顯得凌亂，但是不要灰心喪氣。
+</p> 
+
+<h2>第五節:添加燒煉與創建物品</h2><p>
+在這一節，我們將要為您在上一節創建的礦藏添加燒煉物，以錠為例，因為其相對較為簡單。
+</p> <p>創建物品與創建方塊相比非常類似，事實上我們只需要在方塊/物品的代碼中修改一點點的地方即可。我們這次需要創建一個物品對象。
+</p> <p>New Item Object<br/><pre> 
+public static Item yourFirstItem = new ItemTutorial(280).setIconIndex(0).setItemName("itemName");
+
+</pre> </p> <p>與方塊相比，除去使用的對象和類不同外其餘完全相同。
+</p> <p>我們此時並沒有使用在結構體內添加子圖的方法，而是使用.setlconindex(int)類函數，.setitemName與其相同，
+</p> <p>即使這些並沒有在遊戲中出現，但也應該與您的方塊不同。
+</p> <p>現在我們創建ItemTutorial類，代碼與前文所述BlockTutorial類的代碼完全相同（您可以自行更改類的名稱）。
+</p> <p>此時只需要擴展item類，<font color="DarkRed">注意並不需要覆蓋addCreativeItems類函數。</font>
+</p> <p>使用Modloader.addName()類函數、預加載子圖（如果您方塊和物品使用不同子圖重新預加載的話需要）
+</p> <p>在load()函數中添加如下代碼：
+
+</p> <p>Into load()<br/><pre> 
+ModLoader.addSmelting(yourFirstOre.blockID, new ItemStack(yourFirstItem));
+
+</pre> </p> <p>其中的第一個參數是輸入端，亦即我們之前製作的那個方塊，第二個參數為itemStack亦即我們通過熔爐燒煉出的您創建的物品。
+</p> <p>好啦，您的第一份物品已經通過熔爐燒煉而成了（其實就是一個礦石錠~），
+</p> <p>這一章雖然簡單，但是卻對下一節的教程非常有用，
+</p> <p>下一節我們講述如何製作工具。
+</p> <p>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

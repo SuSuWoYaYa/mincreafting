@@ -7,8 +7,8 @@ android {
         applicationId "com.cuisanzhang.mincreafting"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 12
-        versionName "9.1"
+        versionCode 13
+        versionName "9.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -49,9 +49,10 @@ repositories {
     mavenCentral() // jcenter() works as well because it pulls from Maven Central
 }
 
-//StringUtils
+
 dependencies {
-    compile 'cn.trinea.android.common:trinea-android-common:4.2.15'
+//    compile 'ren.yale.android:cachewebviewlib:1.3.7'
+    compile 'com.jakewharton:disklrucache:2.0.2'
 }
 
 ////new glide

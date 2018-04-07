@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD制作 第四章6:创建一组工具 </title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD制作  第四章6:创建一组工具 </h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自我的世界中文论坛<br />作者-DJXGAME</p>
+  <p>
+ 我希望您能多加阅读一些Minecraft的代码，虽然对于一个java造诣不精人来说，代码有可能显得凌乱，但是不要灰心丧气。
+</p> 
+
+<h2>第四章第六节：创建一组工具</h2><p>
+</p> <p>在接下来的教程中，我们主要集中于讲述如何创建一组工具。
+</p> <p><font color="DarkRed">这一节要比其他各节都要复杂</font>，所以各位同学打起精神来~~
+</p> <p>首先，我们需要<font color="DarkRed">为新的工具创建一个EnumToolMaterial</font>。
+</p> <p>在您的类中添加如下代码，注意不是在任何的类函数中。
+</p> <p>New Tool Material<br/><pre> 
+static EnumToolMaterial BLUETOOLS = EnumHelper.addToolMaterial("BLUE", 2, 171, 5F, 1, 5);
+
+</pre> </p> <p>
+<table><tr><td>名称</td><td>含义</td></tr><tr><td><br />
+EnumHelper.addToolMaterial</td><td>我们所引用的Forge类函数。如果您在此处出现错误，请手动导入<i>net.minecraft.forge.EnumHelper</i>。</td></tr><tr><td>以下变量可以进行更改</td></tr><tr><td>''BLUE''</td><td>材料名称</td></tr><tr><td>2</td><td>您所设定的工具能够正常开采的硬度等级（如黑曜石矿为3、钻石矿为2、铁矿为1）</td></tr><tr><td>171</td><td>该工具的耐久度（木质工具为59、钻石工具为1561）</td></tr><tr><td>5F</td><td>使用该工具开采的速度，您可以根据如下数据进行大概地判断（木质工具：2.0F，钻石工具为8.0F）</td></tr><tr><td>1</td><td>该工具对实体所造成的伤害值，具体计算公式如下（该数值+4）÷2。（如此时每击伤害为2.5颗心。）</td></tr><tr><td>5</td><td>可附魔性，此处不确定（石头为5、钻石为10、金为22）</td></tr></table>
+
+</p> <p>
+第二步，我们需要<font color="DarkRed">创建一个新的物品对象</font>：
+</p> <p>New Items<br/><pre> 
+public static Item blueStoneShovel = new BlueStoneSpade(ItemID1, BLUETOOLS).setIconIndex(0).setItemName("customShovel");
+public static Item blueStonePickaxe = new BlueStonePickaxe(ItemID2, BLUETOOLS).setIconIndex(1).setItemName("customPickaxe");
+public static Item blueStoneAxe = new BlueStoneAxe(ItemID3, BLUETOOLS).setIconIndex(2).setItemName("customAxe");
+public static Item blueStoneHoe = new BlueStoneHoe(ItemID5, BLUETOOLS).setIconIndex(4).setItemName("customHoe");
+public static Item blueStoneSword = new BlueStoneSword(ItemID4, BLUETOOLS).setIconIndex(3).setItemName("customSword");
+
+</pre> </p> <p>此时会报错，这是由于还没有新建类。
+
+
+</p> <p>
+<table><tr><td>BlueStoneSpade</td><td>我们接下来所要创建的类的名字</td></tr><tr><td>(ItemID1, BLUETOOLS)</td><td>为您的铲子所设置的物品ID。<font color="darkred"><strong>请记得为您每一个工具都设置一个不同的物品ID！</strong></font><i>BLUETOOLS</i>是我们之前建立的<i>EnumToolMaterial</i>。</td></tr><tr><td>.setIconIndex(int)</td><td>与之前类似，用于设定物品的子图号</td></tr><tr><td>.setItemName(String)</td><td>与之前类似，设定物品的内部名称。<font color="darkred"><strong>每个物品都要不同！</strong></font></td></tr></table>
+</p> <p>
+现在创建一个新的类，此时您应该需要5个类了。现在我们执行下一步，扩展工具类（不是扩展item类）。
+</p> <p>举例来说，我的蓝石铲(BlueStoneSpade)会扩展为ItemSpade。那么蓝石斧(BlueStoneAxe)就应该扩展为 ItemAxe，以此类推。
+</p> <p>Into load()<br/><pre> 
+MinecraftForge.setToolClass(blueStonePickaxe, "pickaxe", 2);
+MinecraftForge.setToolClass(blueStoneShovel, "shovel", 2);
+MinecraftForge.setToolClass(blueStoneAxe, "axe", 2);
+
+</pre> </p> <p>
+<table><tr><td><br />
+MinecraftForge.setToolClass</td><td>调用该类函数可以为我们的物品设置一个恰当的类</td></tr><tr><td>blueStonePickaxe</td><td>我们传递的镐的参数，也要记得为您的铲子、斧头进行相应的设置。</td></tr><tr><td>&quot;pickaxe&quot;</td><td>小写，工具类型</td></tr><tr><td>2</td><td>之前提到的硬度等级，您之前应该通过<i>EnumToolMaterial</i>进行了硬度等级的设置</td></tr></table>
+</p> <p>
+<font color="DarkRed">您只需要为斧、镐、铲进行相应的设置！</font>
+</p> <p>现在使用Modloader.addName添加名字，以及参照之前的教程添加合成表~
+</p> <p>好啦，您的<font color="DarkRed">蓝石系列工具</font>就出炉啦~我认为MOD制作中最为复杂的部分就是绘制一份好看的材质。。。。
+</p> <p>少年们，用你们手中自己创建的工具挖出个大坑吧~~~
+</p> <p>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

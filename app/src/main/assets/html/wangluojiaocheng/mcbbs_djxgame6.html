@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD制作  第四章2：为您的方块添加材质</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD制作 第四章2：为您的方块添加材质 </h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自我的世界中文论坛<br />作者-DJXGAME</p>
+<p>
+我希望您能多加阅读一些Minecraft的代码，虽然对于一个java造诣不精人来说，代码有可能显得凌乱，但是不要灰心丧气。
+ </p>
+
+ <h2>第二节：为您的方块添加材质</h2><p>
+
+在这一部分教程中，将会为您讲述如何为您的方块添加材质。
+</p> <p>首先您需要一份默认的“<font color="DarkRed">子图</font>”。所谓“子图”就是一份可以由程序在需要时可以随时加载的图片。
+</p> <p>在Minecraft中，可以从terrain.png和items.png中加载材质。
+</p> <p>实际上，依托于Forge，您所做的工作即为编辑一张属于您的terrain.png以及items.png并将您的MOD与这些子图之间建立联系。
+</p> <p>再次特意为您精心准备了两张默认的子图（items.png、terrain.png）。
+</p> <p>我们可以打开编辑软件（Photoshop、Gimp、Paint.NET（译者强力推荐~）），
+</p> <p>此时您可以看见256个紫色方块，现在需要做的就是按照您的喜好绘制图案。
+</p> <p>请牢记您的材质是16×16的，并且按照如下方式排列。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_djxgame6_1.png" /> 
+</p> <p>您可能很好奇为什么是从0开始的呢？好吧，还记得我们之前的“(blockID, 0)”吗？其中的“0”就是调用这个文件。
+</p> <p>如果我们在之前的文档中保持“0”不变就会在加载子图之后您的方块将显示为蓝色的“0”方块，
+</p> <p>如果我们在代码中将“0”改为“1”，则在最后您的方块将变为红色“1”方块。
+</p> <p>当您绘制完您的方块材质后，您需要以png格式保存这份子图，否则Minecraft不会正确加载。
+</p> <p>还记得之前的“getTextureFile()”类函数么，Forge虽然会自动进行寻找，但还请将子图与代码放在一系列的文件夹内。
+</p> <p>打开“YourMCPFolder/jars/bin/minecraft.jar”并将文件夹拖入其中，此时getTextureFile()就应该在minecraft.jar内找到您子图所在的位置。
+</p> <p>这可能有些晦涩难懂，所以我们需要测试一下您是否真正搞懂了。在我们运行客户端之前还有一件事需要进行：
+</p> <p><font color="DarkRed">——需要Forge预加载材质。</font>
+</p> <p><pre>
+
+MinecraftForgeClient.preloadTexture("/New/Untitled-1.png");
+</p> </pre><p>
+请确保您在类函数中所输入的文件地址与getTexture()所引用地址相同。
+</p> <p>我使用Forge客户端而不是用普通的forge类的原因是材质只是在客户端加载，不需要服务器端提供支持。
+</p> <p>现在您就应该看到您的那个大大的0方块啦~
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/image/mcbbs_djxgame6_2.png" /> 
+</p><p><font color="DarkRed">P.S：</font>
+</p> <p>默认的子图文件下载地址在这里
+</p> <p><a href="http://pan.baidu.com/share/link?shareid=6554&amp;uk=2600648744" target="_blank">
+https://pan.baidu.com/share/link?shareid=6554&uk=2600648744</a>
+</p> <p>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>
