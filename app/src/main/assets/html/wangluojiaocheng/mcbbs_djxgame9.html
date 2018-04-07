@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD制作 第四章5:添加烧炼与创建物品</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD制作 第四章5:添加烧炼与创建物品</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自我的世界中文论坛<br />作者-DJXGAME</p>
+ <p>
+ 我希望您能多加阅读一些Minecraft的代码，虽然对于一个java造诣不精人来说，代码有可能显得凌乱，但是不要灰心丧气。
+</p> 
+
+<h2>第五节:添加烧炼与创建物品</h2><p>
+在这一节，我们将要为您在上一节创建的矿藏添加烧炼物，以锭为例，因为其相对较为简单。
+</p> <p>创建物品与创建方块相比非常类似，事实上我们只需要在方块/物品的代码中修改一点点的地方即可。我们这次需要创建一个物品对象。
+</p> <p>New Item Object<br/><pre> 
+public static Item yourFirstItem = new ItemTutorial(280).setIconIndex(0).setItemName("itemName");
+
+</pre> </p> <p>与方块相比，除去使用的对象和类不同外其余完全相同。
+</p> <p>我们此时并没有使用在结构体内添加子图的方法，而是使用.setlconindex(int)类函数，.setitemName与其相同，
+</p> <p>即使这些并没有在游戏中出现，但也应该与您的方块不同。
+</p> <p>现在我们创建ItemTutorial类，代码与前文所述BlockTutorial类的代码完全相同（您可以自行更改类的名称）。
+</p> <p>此时只需要扩展item类，<font color="DarkRed">注意并不需要覆盖addCreativeItems类函数。</font>
+</p> <p>使用Modloader.addName()类函数、预加载子图（如果您方块和物品使用不同子图重新预加载的话需要）
+</p> <p>在load()函数中添加如下代码：
+
+</p> <p>Into load()<br/><pre> 
+ModLoader.addSmelting(yourFirstOre.blockID, new ItemStack(yourFirstItem));
+
+</pre> </p> <p>其中的第一个参数是输入端，亦即我们之前制作的那个方块，第二个参数为itemStack亦即我们通过熔炉烧炼出的您创建的物品。
+</p> <p>好啦，您的第一份物品已经通过熔炉烧炼而成了（其实就是一个矿石锭~），
+</p> <p>这一章虽然简单，但是却对下一节的教程非常有用，
+</p> <p>下一节我们讲述如何制作工具。
+</p> <p>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

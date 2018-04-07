@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minecraft MOD制作 第四章7:创建一套盔甲</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >Minecraft MOD制作 第四章7:创建一套盔甲 </h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自我的世界中文论坛<br />作者-DJXGAME</p>
+ 
+ <p>
+ 我希望您能多加阅读一些Minecraft的代码，虽然对于一个java造诣不精人来说，代码有可能显得凌乱，但是不要灰心丧气。
+</p> 
+<h2>第四章第七节：创建一套盔甲</h2><p>
+在您创建工具成功后，我们下一步就是学习如何创建盔甲，创建盔甲与创建工具十分类似。
+</p> <p>首先需要新建一个<font color="DarkRed">EnumArmorMaterial</font>对象，这个对象与EnumToolMaterial十分类似但是却不尽相同：
+</p> <p>
+Create a New Armor Material<br/><pre> 
+static EnumArmorMaterial BLUEARMOR = EnumHelper.addArmorMaterial("BLUE", 25, new int[] { 2, 6, 5, 2 }, 9);
+
+</pre>
+</p> <p>
+<table><tr><td>名称</td><td>含义</td></tr><tr><td>EnumHelper.addArmorMaterial</td><td>我们所引用的Forge类函数。如果您在此处出现错误，请手动导入<i>net.minecraft.forge.EnumHelper</i></td></tr><tr><td>以下这些函数您应该都能看懂和修改……</td></tr><tr><td>&quot;BLUE&quot;</td><td>材料名称</td></tr><tr><td>25</td><td>在该盔甲损坏之前可以承受多少伤害。</td></tr><tr><td>new int[]</td><td>创建一个指向护甲值的整型指针变量。</td></tr><tr><td>2, 6, 5, 2</td><td>各部分的护甲值：从左至右依次为：头部、胸部、腿部、脚部。</td></tr><tr><td>9</td><td>可附魔性，我不确定……（羽毛为15，钻石为10，金块为25.）</td></tr></table>
+</p> <p>接下来需要<font color="DarkRed">创建一个新物品对象</font>，与前文所述类似：
+</p> <p>New Item Objects<br/><pre> 
+public static Item blueStoneHelmet = new BlueStoneArmor(ItemID5, BLUEARMOR).setIconIndex(4).setItemName("customHelmet");
+public static Item blueStoneChestplate = new BlueStoneArmor(ItemID6, BLUEARMOR).setIconIndex(5).setItemName("customChestplate");
+public static Item blueStoneLeggings = new BlueStoneArmor(ItemID7, BLUEARMOR).setIconIndex(6).setItemName("customLeggings");
+public static Item blueStoneBoots = new BlueStoneArmor(ItemID8, BLUEARMOR).setIconIndex(7).setItemName("customBoots");
+
+</pre></p> <p>此时会报错，这是由于还没有新建类。与工具不同的是，您只需要创建一个类即可。
+</p> <p>现在我们需要<font color="DarkRed">扩展ItemArmor以及完成ITextureProvider和IArmorProvider：</font>
+</p> <p><pre> 
+public class BlueStoneArmor extends ItemArmor implements ITextureProvider, IArmorTextureProvider {
+
+</pre> </p> <p>接下来<font color="DarkRed">需要添加getTextureFile和结构体</font>
+</p> <p><pre> 
+public ItemArmor(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+{
+    super(par1, par2EnumArmorMaterial, par3, par4);
+}
+
+@Override
+public String getTextureFile() {
+    return "/New/Untitled-1.png";
+}
+
+</pre></p> <p>此时程序会报错，这是由于需要添加一个类函数，覆盖如下函数:
+</p> <p><pre> 
+@Override
+public String getArmorTextureFile(ItemStack itemstack) {
+
+}
+
+</pre></p> <p>当然这个类函数仍未完成，需要在其中添加一些内容：
+</p> <p>getArmorTextureFile() method<br/><pre> 
+
+if (itemstack.itemID == mod_YourModName.blueStoneHelmet.shiftedIndex || itemstack.itemID == mod_YourModName.blueStoneChestplate.shiftedIndex || itemstack.itemID == mod_YourModName.blueStoneBoots.shiftedIndex)
+{
+    return "/New/armor/blue_1.png";
+}
+else if (itemstack.itemID == mod_YourModName.blueStoneLeggings.shiftedIndex)
+{
+    return "/New/armor/blue_2.png";
+}
+
+return null;
+
+</pre>
+</p> <p>该类函数的作用是在材质文件中检索您当前穿着的护甲，并返回相应的材质将其显示在您身上，从而完成您穿着护甲的判定。
+</p> <p><table  ><tr><td>||</td><td>Java语句中的“或”</td></tr><tr><td>itemstack.itemID == mod_YourModName.blueStoneHelmet.shiftedIndex</td><td>本逻辑表达式用于检索头盔</td></tr><tr><td>||</td><td>Java语句中的“或”</td></tr><tr><td>itemstack.itemID == mod_YourModName.blueStoneBoots.shiftedIndex</td><td>检索脚部</td></tr><tr><td>return &quot;/New/armor/blue_1.png&quot;</td><td>如果检索头盔成功则&quot;blue_1.png&quot;即为我们需要的材质文件。</td></tr><tr><td>else if (..)</td><td>如果逻辑表达式非真，则执行该语句……</td></tr><tr><td>(itemstack.itemID == mod_YourModName.blueStoneLeggings.shiftedIndex</td><td>检索腿部</td></tr><tr><td>return &quot;/New/armor/blue_2.png&quot;;</td><td>与上文类似</td></tr><tr><td>return null</td><td>返回空值。</td></tr></table>
+
+</p> <p>明白了吧？没有？⊙﹏⊙b……我们一步一步仔细讲解。
+</p> <p>首先需要<font color="DarkRed">为护甲创建材质</font>：打开minecraft.jar文件，打开armor文件夹，解压缩其中任意的两个文件（如：cloth_1和cloth_2）。
+</p> <p>按您的喜好为这两个文件<font color="DarkRed">上色，修改形状</font>，等等。
+</p> <p>并保存为您之前在getArmorTexture()使用过的文件名字……如blue_1.png和blue_2.png。
+</p> <p>创建与之前在getArmorTextureFile()类函数中指向的地址吻合的<font color="DarkRed">目录</font>。
+</p> <p>如我就必须新创建一个文件夹"New"、然后在创建一个"Armor"，然后把blue1和blue2放到其中，确保一定要吻合~
+</p> <p>打开您的MCP文件夹/jars/bin/minecraft.jar。将这堆东西扔到里面。
+</p> <p>想在返回eclipse并运行Minecraft，检查您的MOD是否正常运行。
+</p> <p>由于您不能在创造模式调用该护甲，所以建议您为其使用泥土制作一份合成表，这样可以在生存模式中方便地检测MOD。
+</p> <p>如果其工作正常，恭喜您！如果其工作不正常，请返回各处检查代码……
+ 
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>
