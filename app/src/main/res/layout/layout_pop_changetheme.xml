@@ -9,12 +9,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -28,7 +29,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_green"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_green"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -43,7 +44,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_darkgreen"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_drak_green"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -58,7 +59,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_blue"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_blue"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -73,7 +74,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_deep_blue"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_deep_blue"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -87,7 +88,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_sky_blue"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_sky_blue"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -101,7 +102,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_brown"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_brown"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -115,7 +116,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_saddlebrown"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_saddle_brown"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -130,7 +131,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_hotpink"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_pink"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -145,7 +146,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_pink"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_hotpink"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -153,7 +154,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -166,7 +167,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_deep_drak"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_deepdrak"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -181,7 +182,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_deep_gray"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_deep_gray"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -195,7 +196,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_gray"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_gray"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -209,7 +210,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_light_gray"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_light_gray"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -224,7 +225,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_orange"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_orange"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -238,7 +239,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_orange_red"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_orange_red"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -253,7 +254,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_red"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_red"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -268,7 +269,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_blue_purple"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_blue_purple"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -282,7 +283,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimary_purple"
                 android:gravity="center"
-                android:padding="14dp"
+                
                 android:text="@string/color_purple"
                 android:textColor="@color/textColorPrimary_white"
                 android:textSize="18sp" />
@@ -298,7 +299,7 @@
 
         <TextView
             android:id="@+id/textViewSelectColor"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:background="@color/textColorPrimary_white"
