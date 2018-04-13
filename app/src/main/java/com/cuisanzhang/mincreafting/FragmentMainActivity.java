@@ -116,6 +116,7 @@ public class FragmentMainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main_layout);
+
         pagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(), this);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(pagerAdapter);
