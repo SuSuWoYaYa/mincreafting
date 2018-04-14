@@ -396,6 +396,12 @@
       "material": "神龟药水 + 荧石粉",
       "use": "效果等级从IV升至VI",
       "detail": "持久时间  1:00\n\n版本1.13加入\n\n用荧石粉酿造可将效果等级从IV升至VI.\n\n将两种状态效果的等级都提升至VI.\n\n名称\nstrong_turtle_master"
+    },{
+      "file_name": "huanluoyaoshui",
+      "name": "缓落药水",
+      "material": "幻翼膜 + 粗制的药水",
+      "use": "",
+      "detail": "版本1.13加入\n\n暂无数据"
     }
   ]
 }

@@ -396,6 +396,12 @@
       "material": "神龜藥水 + 熒石粉",
       "use": "效果等級從IV升至VI",
       "detail": "持久時間  1:00\n\n版本1.13加入\n\n用熒石粉釀造可將效果等級從IV升至VI.\n\n將兩種狀態效果的等級都提升至VI.\n\n名稱\nstrong_turtle_master"
+    },{
+      "file_name": "huanluoyaoshui",
+      "name": "緩落藥水",
+      "material": "幻翼膜 + 粗制的藥水",
+      "use": "",
+      "detail": "版本1.13加入\n\n暫無數據"
     }
   ]
 }
