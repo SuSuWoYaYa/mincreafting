@@ -65,7 +65,15 @@ public class MyDiskLruCache {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || !Environment.isExternalStorageRemovable()) {
 //            Log.e("cachePath", cachePath);
-            cachePath = context.getExternalCacheDir().getAbsolutePath();
+            File path = context.getExternalCacheDir();
+
+            if(path != null){
+            cachePath= path.getAbsolutePath();
+            }else {
+                cachePath = context.getCacheDir().getAbsolutePath();
+
+            }
+
         }else {
             cachePath = context.getCacheDir().getAbsolutePath();
         }
