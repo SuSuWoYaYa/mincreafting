@@ -38,6 +38,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.jakewharton.disklrucache.DiskLruCache;
+import com.luhuiguo.chinese.ChineseUtils;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -368,8 +369,10 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
         if (is_language_of_traditional_chinese) {
-            checkBoxChangeMainColor.setText("改變主標題欄背景顏色");
-            checkBoxChangeTitleColor.setText("改變物品名稱背景顏色");
+//            checkBoxChangeMainColor.setText("改變主標題欄背景顏色");
+//            checkBoxChangeTitleColor.setText("改變物品名稱背景顏色");
+            checkBoxChangeMainColor.setText(ChineseUtils.toTraditional("改变主标题栏背景颜色"));
+            checkBoxChangeTitleColor.setText(ChineseUtils.toTraditional("改变物品名称背景颜色"));
             button_changeColor.setText("確定");
 
             textViewGreen.setText("綠色");
@@ -566,8 +569,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
 
         if (is_language_of_traditional_chinese) {
-            builder.setTitle("關於 Mincreafting");
-            builder.setMessage("這是一個Minecraft合成表的APP\n所有內容來自於\nMinecraft中文WIKI\n網易\n網絡\n以及網友的貢獻");
+            builder.setTitle(ChineseUtils.toTraditional("关于 Mincreafting"));
+            builder.setMessage(ChineseUtils.toTraditional("这是一个Minecraft合成表的APP\n所有内容来自于\nMinecraft中文WIKI\n网易\n网络\n以及网友的贡献"));
             builder.setPositiveButton("確定", null);
         } else {
             builder.setTitle("关于 Mincreafting");
@@ -759,7 +762,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                     ReStartActivity(FragmentMainActivity.this);
                 }
             });
-            changelanguage_messageTextView.setText("改變語言設置會影響搜索結果");
+            changelanguage_messageTextView.setText(ChineseUtils.toTraditional("改变语言设置会影响搜索结果"));
         } else {
             builder.setTitle("切换语言");
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -827,7 +830,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                     long cacheSize = mDiskLruCache.size();
 
                     if (is_language_of_traditional_chinese) {
-                        cache_messageTextView.setText("緩存已清除");
+                        cache_messageTextView.setText(ChineseUtils.toTraditional("缓存已清除"));
                     } else {
                         cache_messageTextView.setText("缓存已清除");
                     }
@@ -865,14 +868,25 @@ public class FragmentMainActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setView(settingCacheView);
         if (is_language_of_traditional_chinese) {
-            builder.setTitle("緩存設置");
-            radio_btn_nocache.setText("停止緩存");
-            radio_btn_cacheOnMobile.setText("開啓2G/3G/4G網絡下緩存");
-            radio_btn_cacheOnlyWifi.setText("僅WIFI網絡下緩存");
-            btnCleanCache.setText("清除所有緩存圖片");
-            builder.setPositiveButton("確定", null);
-            cache_hintTextView.setText("教程圖片被緩存後再次瀏覽不耗流量\n優先使用外部存儲");
-            cache_messageTextView.setText("目前緩存大小 "
+//            builder.setTitle("緩存設置");
+//            radio_btn_nocache.setText("停止緩存");
+//            radio_btn_cacheOnMobile.setText("開啓2G/3G/4G網絡下緩存");
+//            radio_btn_cacheOnlyWifi.setText("僅WIFI網絡下緩存");
+//            btnCleanCache.setText("清除所有緩存圖片");
+//            builder.setPositiveButton("確定", null);
+//            cache_hintTextView.setText("教程圖片被緩存後再次瀏覽不耗流量\n優先使用外部存儲");
+//            cache_messageTextView.setText("目前緩存大小 "
+//                    + cacheSize
+//                    + (float) (cacheSize / 1024.00 / 1024.00)
+//                    + " M");
+            builder.setTitle(ChineseUtils.toTraditional("缓存设置"));
+            radio_btn_nocache.setText(ChineseUtils.toTraditional("停止缓存"));
+            radio_btn_cacheOnMobile.setText(ChineseUtils.toTraditional("开启2G/3G/4G网络下缓存"));
+            radio_btn_cacheOnlyWifi.setText(ChineseUtils.toTraditional("仅WIFI网络下缓存"));
+            btnCleanCache.setText(ChineseUtils.toTraditional("清除所有缓存图片"));
+            builder.setPositiveButton(ChineseUtils.toTraditional("确定"), null);
+            cache_hintTextView.setText(ChineseUtils.toTraditional("教程图片被缓存后再次浏览不耗流量\n优先使用外部存储"));
+            cache_messageTextView.setText(ChineseUtils.toTraditional("目前缓存大小 ")
                     + cacheSize
 //                    + (float) (cacheSize / 1024.00 / 1024.00)
                     + " M");

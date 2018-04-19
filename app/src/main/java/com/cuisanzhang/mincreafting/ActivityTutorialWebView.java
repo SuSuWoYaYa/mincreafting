@@ -25,14 +25,17 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.jakewharton.disklrucache.DiskLruCache;
+import com.luhuiguo.chinese.ChineseUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -57,6 +60,8 @@ public class ActivityTutorialWebView extends AppCompatActivity {
     private String HtmlUrl = "http://www.baidu.com/";
     private String tutorial_name = "错误页面!";
 
+//    public static String EXTRA_IS_LANGUAGE_OF_SIMPLIFIED = "is_language_of_simplified";
+
 //打开本包内asset目录下的index.html文件
 //wView.loadUrl(" file:///android_asset/index.html ");
 //
@@ -68,7 +73,9 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
     private boolean isNetworkConnected = false;
     private boolean isVip;
+    private boolean is_simplified_chinese  = true;
     private AdView mAdView;
+
 
     private boolean showAd = false;
 
@@ -86,6 +93,14 @@ public class ActivityTutorialWebView extends AppCompatActivity {
         Intent intent = getIntent();
         HtmlUrl = intent.getStringExtra(EXTRA_URI);
         tutorial_name = intent.getStringExtra(EXTRA_TUTORIAL_NAME);
+//        boolean is_simplified = intent.getBooleanExtra(EXTRA_IS_LANGUAGE_OF_SIMPLIFIED, true);
+
+        String language = LanguageUtil.getLocaleLanguage(ActivityTutorialWebView.this);
+        if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
+            is_simplified_chinese = true;
+        }else {
+            is_simplified_chinese = false;
+        }
 
 
         initActionBar();
@@ -159,7 +174,47 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 //            mWebview.clearCache(true);
 //        }
 
-        mWebview.loadUrl(HtmlUrl);
+//        mWebview.loadUrl(HtmlUrl);
+
+        InputStream is;
+        StringBuilder builder = new StringBuilder();
+        try {
+            is = getAssets().open(HtmlUrl);
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader reader = new BufferedReader(isr);
+
+            String line = null;
+
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+            }
+
+            reader.close();
+            isr.close();
+            is.close();
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        String string = null;
+        string = builder.toString();
+
+        //webview.loadUrl(htmlurl);
+        mWebview.getSettings().setDefaultTextEncodingName("UTF-8");//设置默认为utf-8
+
+//		 webview.loadData( ChineseUtils.toTraditional(string),  "text/html; charset=UTF-8", null);
+
+//		  if(is_simplified){
+//			  webview.loadDataWithBaseURL("file:///android_asset/",string,  "text/html; charset=UTF-8", null,null);
+//		  }else{
+//			  webview.loadDataWithBaseURL("file:///android_asset/", ChineseUtils.toTraditional(string),  "text/html; charset=UTF-8", null,null);
+//		  }
+        if(is_simplified_chinese){
+            mWebview.loadDataWithBaseURL("file:///android_asset/html/",string,  "text/html", "UTF-8",null);
+        }else{
+            mWebview.loadDataWithBaseURL("file:///android_asset/html/", ChineseUtils.toTraditional(string),  "text/html", "UTF-8",null);
+        }
 
 
         mWebview.setWebViewClient(new WebViewClientCache(ActivityTutorialWebView.this));
