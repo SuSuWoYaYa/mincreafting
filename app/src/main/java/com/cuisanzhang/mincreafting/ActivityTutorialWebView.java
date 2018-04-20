@@ -21,11 +21,13 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.jakewharton.disklrucache.DiskLruCache;
 import com.luhuiguo.chinese.ChineseUtils;
+//import com.luhuiguo.chinese.ChineseUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -213,8 +215,13 @@ public class ActivityTutorialWebView extends AppCompatActivity {
         if(is_simplified_chinese){
             mWebview.loadDataWithBaseURL("file:///android_asset/html/",string,  "text/html", "UTF-8",null);
         }else{
-            mWebview.loadDataWithBaseURL("file:///android_asset/html/", ChineseUtils.toTraditional(string),  "text/html", "UTF-8",null);
+            mWebview.loadDataWithBaseURL("file:///android_asset/html/",
+                    ChineseUtils.toTraditional(string),
+//                    string,
+                    "text/html", "UTF-8",null);
         }
+
+//        ChineseUtils.getInstance(ActivityTutorialWebView.this,true);
 
 
         mWebview.setWebViewClient(new WebViewClientCache(ActivityTutorialWebView.this));
@@ -438,6 +445,12 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
     private boolean isImageUrl(String url) {
 
+        //本地图片
+        if(url.startsWith("file")){
+            return  false;
+        }
+
+        //网络图片
         if (url.endsWith(".jpg")
                 || url.endsWith(".JPG")
                 || url.endsWith(".jpeg")
@@ -446,6 +459,8 @@ public class ActivityTutorialWebView extends AppCompatActivity {
                 || url.endsWith(".png")) {
             return true;
         }
+
+//        不是图片
         return false;
     }
 
@@ -506,6 +521,15 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 //    }
 
     public void initActionBar() {
+        TextView title = findViewById(R.id.title);
+        if (is_simplified_chinese){
+            title.setText(tutorial_name);
+        }else {
+            title.setText(ChineseUtils.toTraditional(tutorial_name));
+        }
+//        if(!is_simplified_chinese){
+//            title.setText(ChineseUtils.toTraditional("我的世界合成表大全"));
+//        }
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -513,8 +537,9 @@ public class ActivityTutorialWebView extends AppCompatActivity {
                 finish();
             }
         });
-        TextView titleBar = (TextView) findViewById(R.id.titleBar);
-        titleBar.setText(tutorial_name);
+//        TextView titleBar = (TextView) findViewById(R.id.titleBar);
+
+
 //        setSupportActionBar(toolbar);
         ImageView imageViewRefresh_menu = (ImageView) findViewById(R.id.imageViewRefresh_menu);
         imageViewRefresh_menu.setOnClickListener(new View.OnClickListener() {

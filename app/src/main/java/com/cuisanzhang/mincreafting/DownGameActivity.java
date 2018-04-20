@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.luhuiguo.chinese.ChineseUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,8 +49,7 @@ public class DownGameActivity extends AppCompatActivity {
     boolean isVip;
 
 
-    private String language;
-    private boolean is_language_of_traditional_chinese  = false;
+    private boolean is_simplified_chinese = true;
 
     private String geting;
 
@@ -62,12 +63,17 @@ public class DownGameActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.down_game_layout);
+
+        String language = LanguageUtil.getLocaleLanguage(DownGameActivity.this);
+        if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
+            is_simplified_chinese = true;
+        }else {
+            is_simplified_chinese = false;
+        }
+
         initActionBar();
 
-        language = LanguageUtil.getLocaleLanguage(DownGameActivity.this);
-        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
-            is_language_of_traditional_chinese = true;
-        }
+
 
 
         btn_down_game_mc163 = (Button) findViewById(R.id.btn_down_game_mc163);
@@ -148,18 +154,8 @@ public class DownGameActivity extends AppCompatActivity {
         TextView textViewGoogleplay = (TextView) findViewById(R.id.textViewGoogleplay);
         TextView textViewOther = (TextView) findViewById(R.id.textViewOther);
 
-        if (is_language_of_traditional_chinese)
+        if (is_simplified_chinese)
         {
-            geting = "獲取中";
-            notVip = "打賞後可見";
-            btn_down_game_mc163.setText("下載");
-            btn_down_game_googleplay.setText("下載");
-            textViewMc163.setText("我的世界-網易版 (免費)");
-            textViewGoogleplay.setText("我的世界-GooglePlay (收費)");
-            textViewOther.setText("我的世界(國際版)");
-            btn_other_version.setText("我的世界(國際版)");
-
-        }else {
             geting = "获取中";
             notVip = "打赏后可见";
             btn_down_game_mc163.setText("下载");
@@ -168,6 +164,16 @@ public class DownGameActivity extends AppCompatActivity {
             textViewGoogleplay.setText("我的世界-GooglePlay (收费)");
             textViewOther.setText("我的世界(国际版)");
             btn_other_version.setText("我的世界(国际版)");
+
+        }else {
+            geting = "获取中";
+            notVip = ChineseUtils.toTraditional("打赏后可见");
+            btn_down_game_mc163.setText(ChineseUtils.toTraditional("下载"));
+            btn_down_game_googleplay.setText(ChineseUtils.toTraditional("下载"));
+            textViewMc163.setText("我的世界-网易版 (免费)");
+            textViewGoogleplay.setText(ChineseUtils.toTraditional("我的世界-GooglePlay (收费)"));
+            textViewOther.setText(ChineseUtils.toTraditional("我的世界(国际版)"));
+            btn_other_version.setText(ChineseUtils.toTraditional("我的世界(国际版)"));
         }
 
 
@@ -214,6 +220,11 @@ public class DownGameActivity extends AppCompatActivity {
     }
 
     public void initActionBar() {
+        TextView title = findViewById(R.id.title);
+        if(!is_simplified_chinese){
+            title.setText(ChineseUtils.toTraditional("我的世界合成表大全"));
+        }
+
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override

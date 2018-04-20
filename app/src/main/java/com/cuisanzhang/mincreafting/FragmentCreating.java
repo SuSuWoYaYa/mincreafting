@@ -27,7 +27,7 @@ public class FragmentCreating extends Fragment {
     private int mPage;
 
     private String language;
-    private boolean is_language_of_traditional_chinese  = false;
+    private boolean is_simplified_chinese = true;
 
     private TextView textViewItem1;
     private TextView textViewItem2;
@@ -80,9 +80,12 @@ public class FragmentCreating extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         language = LanguageUtil.getLocaleLanguage(getContext());
-        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
-            is_language_of_traditional_chinese = true;
+        if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
+            is_simplified_chinese = true;
+        }else {
+            is_simplified_chinese = false;
         }
+
         View view = inflater.inflate(R.layout.fragment_creating_layout, container, false);
 
         LinearLayout mian_layout = (LinearLayout)  view.findViewById(R.id.mian_layout);
@@ -123,7 +126,7 @@ public class FragmentCreating extends Fragment {
 
                 switch (v.getId()) {
                     case R.id.layout_btn_building:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
                             category = "建築類合成";
 
@@ -133,7 +136,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_decoration:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_DECORATION;
                             category = "裝飾類合成";
                         }else{
@@ -142,7 +145,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_dye:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_DYE;
                             category = "染料類合成";
                         }else{
@@ -151,7 +154,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_food:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_FOOD;
                             category = "食物類合成";
                         }else{
@@ -160,7 +163,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_lighting:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_LIGHTING;
                             category = "照明類合成";
                         }else{
@@ -169,7 +172,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_ore:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_ORE;
                             category = "礦石類合成";
                         }else{
@@ -178,7 +181,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_redstone:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_REDSTONE;
                             category = "紅石和裝置類合成";
                         }else{
@@ -187,7 +190,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_tannsport:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_TANNSPORT;
                             category = "運輸類合成";
                         }else{
@@ -196,7 +199,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_tools:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_TOOLS;
                             category = "工具類合成";
                         }else{
@@ -205,7 +208,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_weapon:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_WEAPON;
                             category = "武器類合成";
                         }else{
@@ -214,7 +217,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_others:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_OTHERS;
                             category = "其他類合成";
                         }else{
@@ -223,7 +226,7 @@ public class FragmentCreating extends Fragment {
                         }
                         break;
                     case R.id.layout_btn_semlting:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_SMELTING;
                             category = "燒煉類";
                         }else{
@@ -235,7 +238,7 @@ public class FragmentCreating extends Fragment {
 //                        layout= R.layout.layout_listview_item_smelting;
                         break;
                     case R.id.layout_btn_brewing:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_BREWING;
                             category = "藥水類";
                         }else{
@@ -247,7 +250,7 @@ public class FragmentCreating extends Fragment {
 //                        layout= R.layout.layout_listview_item_brewing;
                         break;
                     case R.id.layout_btn_enchant:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             //9.0的表错误修正
                             tableName = MyDatabaseHelper.ZW_TABLE_ENCHANT;
                             category = "附魔類";
@@ -259,7 +262,7 @@ public class FragmentCreating extends Fragment {
                         isCreating = false;
                         break;
                     default:
-                        if (is_language_of_traditional_chinese) {
+                        if (!is_simplified_chinese) {
                             tableName = MyDatabaseHelper.ZW_TABLE_BUILDING;
                             category = "建築類合成";
                         }else {
@@ -317,7 +320,7 @@ public class FragmentCreating extends Fragment {
         textViewItem13 = (TextView) mainView.findViewById(R.id.textViewItem13);
         textViewItem14 = (TextView) mainView.findViewById(R.id.textViewItem14);
 
-        if (is_language_of_traditional_chinese){
+        if (!is_simplified_chinese){
             textViewItem1.setText("建築");
             textViewItem2.setText("裝飾");
             textViewItem3.setText("染料");

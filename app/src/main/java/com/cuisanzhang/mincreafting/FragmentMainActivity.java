@@ -39,6 +39,7 @@ import android.widget.TextView;
 
 import com.jakewharton.disklrucache.DiskLruCache;
 import com.luhuiguo.chinese.ChineseUtils;
+//import com.luhuiguo.chinese.ChineseUtils;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -241,6 +242,11 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
     public void initActionBar() {
+        TextView title = findViewById(R.id.title);
+        if(is_language_of_traditional_chinese){
+            title.setText(ChineseUtils.toTraditional("我的世界合成表大全"));
+        }
+
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
@@ -640,9 +646,9 @@ public class FragmentMainActivity extends AppCompatActivity {
                     message.obj = i;
                     mHandler.sendMessage(message);
                     dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
-                            MyDatabaseHelper.jsons[i]);
+                            MyDatabaseHelper.jsons[i], true);
                     dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES_ZW[i],
-                            MyDatabaseHelper.jsons_zw[i]);
+                            MyDatabaseHelper.jsons[i], false);
 //                    System.out.println("Start dbManage.insertDataToTable " + MyDatabaseHelper.TABLE_NAMES[i]);
 
                 }
@@ -830,7 +836,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                     long cacheSize = mDiskLruCache.size();
 
                     if (is_language_of_traditional_chinese) {
-                        cache_messageTextView.setText(ChineseUtils.toTraditional("缓存已清除"));
+//                        cache_messageTextView.setText(ChineseUtils.toTraditional("缓存已清除"));
                     } else {
                         cache_messageTextView.setText("缓存已清除");
                     }

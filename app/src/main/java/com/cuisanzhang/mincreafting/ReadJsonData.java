@@ -12,13 +12,17 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.util.Log;
 
+import com.luhuiguo.chinese.ChineseUtils;
+
 public class ReadJsonData {
 
 	private static Context context;
 
-	public static List<Block> ReadBlockformJsonFile(Context c, String fileName) {
+	public static List<Block> ReadBlockformJsonFile(Context c, String fileName, boolean is_simplified_chinese) {
 
 		context = c;
+
+
 		List<Block> blocks = new ArrayList<Block>() {
 		};
 		try {
@@ -39,7 +43,11 @@ public class ReadJsonData {
 			is.close();
 			
 			String string = null;
-			string = builder.toString();
+            if (is_simplified_chinese){
+                string = builder.toString();
+            }else {
+                string = ChineseUtils.toTraditional(builder.toString());
+            }
 //			 System.out.println(builder.toString());
 
 			JSONObject root = new JSONObject(string);
