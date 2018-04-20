@@ -49,7 +49,7 @@ public class ActivityTip extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
-        
+
         language = LanguageUtil.getLocaleLanguage(ActivityTip.this);
         if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
             is_simplified_chinese = true;
