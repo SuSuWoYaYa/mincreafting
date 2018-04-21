@@ -7,8 +7,8 @@ android {
         applicationId "com.cuisanzhang.mincreafting"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 14
-        versionName "9.3"
+        versionCode 15
+        versionName "9.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -102,4 +102,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'
 }
 
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
 apply plugin: 'com.google.gms.google-services'
