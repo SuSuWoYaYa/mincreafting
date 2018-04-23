@@ -1,5 +1,6 @@
 package com.cuisanzhang.mincreafting;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,14 +18,23 @@ import com.cuisanzhang.mincreafting.util.IabBroadcastReceiver;
 import com.cuisanzhang.mincreafting.util.IabHelper;
 import com.cuisanzhang.mincreafting.util.IabResult;
 import com.cuisanzhang.mincreafting.util.Inventory;
+import com.cuisanzhang.mincreafting.util.Purchase;
 import com.luhuiguo.chinese.ChineseUtils;
 
-public class ActivityTipByGoogle extends AppCompatActivity implements IabBroadcastReceiver.IabBroadcastListener {
+import java.util.ArrayList;
+import java.util.List;
 
-    private String TAG = "ActivityTipByGoogle";
+public class ActivityTipByGoogle extends AppCompatActivity  {
+
+    private static String TAG = "ActivityTipByGoogle";
+
 
     private String language;
     private boolean is_simplified_chinese  = true;
+
+    private static String SKU_099 = "buy_099";
+    private static final int RC_REQUEST = 1207;
+    private  String buy99payload = "buy_pay_load";
 
 
     // The helper object
@@ -58,7 +69,7 @@ public class ActivityTipByGoogle extends AppCompatActivity implements IabBroadca
 
 
         // Create the helper, passing it our context and the public key to verify signatures with
-        Log.d(TAG, "Creating IAB helper.");
+        Log.e(TAG, "Creating IAB helper.");
         mHelper = new IabHelper(this, base64EncodedPublicKey);
 
         // enable debug logging (for a production application, you should set this to false).
@@ -66,11 +77,11 @@ public class ActivityTipByGoogle extends AppCompatActivity implements IabBroadca
 
         // Start setup. This is asynchronous and the specified listener
         // will be called once setup completes.
-        Log.d(TAG, "Starting setup.");
+        Log.e(TAG, "Starting setup.");
 
         mHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
-                Log.d(TAG, "Setup finished.");
+                Log.e(TAG, "Setup finished.");
 
                 if (!result.isSuccess()) {
                     // Oh noes, there was a problem.
@@ -88,17 +99,33 @@ public class ActivityTipByGoogle extends AppCompatActivity implements IabBroadca
                 // Note: registering this listener in an Activity is a bad idea, but is done here
                 // because this is a SAMPLE. Regardless, the receiver must be registered after
                 // IabHelper is setup, but before first call to getPurchases().
-                mBroadcastReceiver = new IabBroadcastReceiver(ActivityTipByGoogle.this);
-                IntentFilter broadcastFilter = new IntentFilter(IabBroadcastReceiver.ACTION);
-                registerReceiver(mBroadcastReceiver, broadcastFilter);
+//                mBroadcastReceiver = new IabBroadcastReceiver(ActivityTipByGoogle.this);
+//                IntentFilter broadcastFilter = new IntentFilter(IabBroadcastReceiver.ACTION);
+//                registerReceiver(mBroadcastReceiver, broadcastFilter);
 
                 // IAB is fully set up. Now, let's get an inventory of stuff we own.
-                Log.d(TAG, "Setup successful. Querying inventory.");
+                Log.e(TAG, "Setup successful. Querying inventory.");
+
+                //产品id列表
+                List<String> productList = new ArrayList<String>();
+                productList.add(SKU_099);
+
                 try {
-                    mHelper.queryInventoryAsync(mGotInventoryListener);
+                    //检索产品详细信息
+//                    mHelper.queryInventoryAsync(mGotInventoryListener);
+                    mHelper.queryInventoryAsync(true, productList, mGotInventoryListener);
+
                 } catch (Exception e) {
                     complain("Error querying inventory. Another async operation in progress.");
                 }
+            }
+        });
+
+        Button btnBuy = findViewById(R.id.btn_buy);
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mHelper.launchPurchaseFlow(ActivityTipByGoogle.this, SKU_099, RC_REQUEST, mPurchaseFinishedListener, buy99payload+1207+"_"+"n"+"o"+"w");
             }
         });
 
@@ -113,15 +140,15 @@ public class ActivityTipByGoogle extends AppCompatActivity implements IabBroadca
         AlertDialog.Builder bld = new AlertDialog.Builder(this);
         bld.setMessage(message);
         bld.setNeutralButton("OK", null);
-        Log.d(TAG, "Showing alert dialog: " + message);
+        Log.e(TAG, "Showing alert dialog: " + message);
         bld.create().show();
     }
 
     IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
         @Override
-        public void onQueryInventoryFinished(IabResult result, Inventory inv) {
+        public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
 
-            Log.d(TAG, "Query inventory finished.");
+            Log.e(TAG, "Query inventory finished.");
 
             // Have we been disposed of in the meantime? If so, quit.
             if (mHelper == null) return;
@@ -132,22 +159,166 @@ public class ActivityTipByGoogle extends AppCompatActivity implements IabBroadca
                 return;
             }
 
-            Log.d(TAG, "Query inventory was successful.");
+            Log.e(TAG, "Query inventory was successful.");
 
+            // Do we have the premium upgrade?
+            if(!inventory.hasPurchase(SKU_099)){
+                Log.e(TAG, "Query inventory was don't hasPurchase.");
+                return;
+            }
+            Purchase premiumPurchase = inventory.getPurchase(SKU_099);
+            if (premiumPurchase != null && verifyDeveloperPayload(premiumPurchase)){
+                Log.e(TAG, "Query inventory was verifyDeveloperPayload.");
+                SettingUtils.ChangeTheme.setVipState(ActivityTipByGoogle.this, true);
+            }
+//            mIsPremium = (premiumPurchase != null && verifyDeveloperPayload(premiumPurchase));
+//            Log.e(TAG, "User is " + (mIsPremium ? "PREMIUM" : "NOT PREMIUM"));
         }
     };
 
-    @Override
-    public void receivedBroadcast() {
-        // Received a broadcast notification that the inventory of items has changed
-        Log.d(TAG, "Received broadcast notification. Querying inventory.");
-        try {
-            mHelper.queryInventoryAsync(mGotInventoryListener);
-        } catch (Exception e) {
-            complain("Error querying inventory. Another async operation in progress.");
+    // Callback for when a purchase is finished
+    IabHelper.OnIabPurchaseFinishedListener mPurchaseFinishedListener = new IabHelper.OnIabPurchaseFinishedListener() {
+        public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
+            Log.e(TAG, "Purchase finished: " + result + ", purchase: " + purchase);
+
+            // if we were disposed of in the meantime, quit.
+            if (mHelper == null) return;
+
+            if (result.isFailure()) {
+                complain("Error purchasing: " + result);
+//                setWaitScreen(false);
+                return;
+            }
+            if (!verifyDeveloperPayload(purchase)) {
+                complain("Error purchasing. Authenticity verification failed.");
+//                setWaitScreen(false);
+                return;
+            }
+
+            Log.e(TAG, "Purchase successful.");
+
+            if (purchase.getSku().equals(SKU_099)) {
+                // bought 1/4 tank of gas. So consume it.
+                Log.e(TAG, "Purchase is gas. Starting gas consumption.");
+//                mHelper.consumeAsync(purchase, mConsumeFinishedListener);
+            }else {
+                return;
+            }
+
+            if(verifyDeveloperPayload(purchase)){
+                Log.e(TAG, "OnIabPurchaseFinishedListener was verifyDeveloperPayload.");
+                SettingUtils.ChangeTheme.setVipState(ActivityTipByGoogle.this, true);
+            }
+//            else if (purchase.getSku().equals(SKU_PREMIUM)) {
+//                // bought the premium upgrade!
+//                Log.e(TAG, "Purchase is premium upgrade. Congratulating user.");
+//                alert("Thank you for upgrading to premium!");
+//                mIsPremium = true;
+//                updateUi();
+//                setWaitScreen(false);
+//            }
+//            else if (purchase.getSku().equals(SKU_INFINITE_GAS)) {
+//                // bought the infinite gas subscription
+//                Log.e(TAG, "Infinite gas subscription purchased.");
+//                alert("Thank you for subscribing to infinite gas!");
+////                mSubscribedToInfiniteGas = true;
+////                mTank = TANK_MAX;
+////                updateUi();
+////                setWaitScreen(false);
+//            }
         }
+    };
+
+
+//    @Override
+//    public void receivedBroadcast() {
+//        // Received a broadcast notification that the inventory of items has changed
+//        Log.e(TAG, "Received broadcast notification. Querying inventory.");
+//        try {
+//            mHelper.queryInventoryAsync(mGotInventoryListener);
+//        } catch (Exception e) {
+//            complain("Error querying inventory. Another async operation in progress.");
+//        }
+//    }
+
+
+    boolean verifyDeveloperPayload(Purchase p) {
+        String payload = p.getDeveloperPayload();
+
+        if(payload.endsWith("load")){
+            Log.e(TAG, "payload IS " + payload);
+            return false;
+        }
+
+        if (!payload.equals(buy99payload+1207+"_"+"n"+"o"+"w")) {
+            Log.e(TAG, "payload IS " + payload);
+            return false;
+        }
+
+        if (p.getSku().equals(SKU_099)) {
+            // bought 1/4 tank of gas. So consume it.
+            Log.e(TAG, "Purchase is gas. Starting gas consumption.");
+//                mHelper.consumeAsync(purchase, mConsumeFinishedListener);
+        }else {
+            return false;
+        }
+
+        /*
+         * TODO: verify that the developer payload of the purchase is correct. It will be
+         * the same one that you sent when initiating the purchase.
+         *
+         * WARNING: Locally generating a random string when starting a purchase and
+         * verifying it here might seem like a good approach, but this will fail in the
+         * case where the user purchases an item on one device and then uses your app on
+         * a different device, because on the other device you will not have access to the
+         * random string you originally generated.
+         *
+         * So a good developer payload has these characteristics:
+         *
+         * 1. If two different users purchase an item, the payload is different between them,
+         *    so that one user's purchase can't be replayed to another user.
+         *
+         * 2. The payload must be such that you can verify it even when the app wasn't the
+         *    one who initiated the purchase flow (so that items purchased by the user on
+         *    one device work on other devices owned by the user).
+         *
+         * Using your own server to store and verify developer payloads across app
+         * installations is recommended.
+         */
+
+        Log.e(TAG, "PACKAGENAME IS " + getPackageName());
+
+        if(!getPackageName().equals("com.cuisanzhang.mincreafting"))
+        {
+            Log.e(TAG, "getPackageName not equals.");
+            return false;
+        }
+
+        Log.e(TAG, "verifyDeveloperPayload was true.");
+        return true;
     }
 
+    void  updateUi(){
+        Button btnbuy = findViewById(R.id.btn_buy);
+        btnbuy.setText("升级成功");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e(TAG, "onActivityResult(" + requestCode + "," + resultCode + "," + data);
+        if (mHelper == null) return;
+
+        // Pass on the activity result to the helper for handling
+        if (!mHelper.handleActivityResult(requestCode, resultCode, data)) {
+            // not handled, so handle it ourselves (here's where you'd
+            // perform any handling of activity results not related to in-app
+            // billing...
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+        else {
+            Log.e(TAG, "onActivityResult handled by IABUtil.");
+        }
+    }
 
     public void initActionBar() {
         TextView title = findViewById(R.id.title);
@@ -163,6 +334,15 @@ public class ActivityTipByGoogle extends AppCompatActivity implements IabBroadca
             }
         });
 
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+
+        // very important:
+        Log.e(TAG, "Destroying helper.");
+        if (mHelper != null) mHelper.dispose();
+        mHelper = null;
     }
 
 

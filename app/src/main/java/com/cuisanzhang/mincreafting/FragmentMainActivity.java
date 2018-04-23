@@ -21,6 +21,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,6 +38,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.jakewharton.disklrucache.DiskLruCache;
 import com.luhuiguo.chinese.ChineseUtils;
 //import com.luhuiguo.chinese.ChineseUtils;
@@ -62,6 +65,8 @@ public class FragmentMainActivity extends AppCompatActivity {
     private ViewPager viewPager;
 
     private TabLayout tabLayout;
+
+    private String TAG = "FragmentMainActivity";
 
     public static String EXTRA_TABLE_NAME = "table_name";
     public static String EXTRA_CATEGORY = "category";
@@ -156,7 +161,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             menu_changeTheme.setTitle("切換主題");
             menu_feedback.setTitle("意見反饋");
             menu_settingcache.setTitle("緩存設置");
-            menu_tip.setTitle("打賞作者");
+            menu_tip.setTitle("去除广告");
             menu_about.setTitle("關於");
             menu_changelanguage.setTitle("切換語言");
             menu_downgame.setTitle("遊戲下載");
@@ -185,7 +190,11 @@ public class FragmentMainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.menu_tip:
-                        intent = new Intent(getApplicationContext(), ActivityTip.class);
+                        if(hasInstallGoogleServer()){
+                            intent = new Intent(getApplicationContext(), ActivityTipByGoogle.class);
+                        }else {
+                            intent = new Intent(getApplicationContext(), ActivityTip.class);
+                        }
                         startActivity(intent);
                         break;
                     case R.id.menu_about:
@@ -911,5 +920,29 @@ public class FragmentMainActivity extends AppCompatActivity {
         }
         builder.show();
         return;
+    }
+
+
+    boolean hasInstallGoogleServer(){
+        //获取GoogleApiAvailability的单例
+        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
+
+        //利用接口判断device是否支持Google Play Service
+        int ret = googleApiAvailability.isGooglePlayServicesAvailable(this);
+
+        //支持的话， 结果将返回SUCCESS
+        if (ret == ConnectionResult.SUCCESS) {
+//            Log.d(TAG, "This phone has available google service inside");
+            return true;
+         } else {
+            Log.e(TAG, "This phone don't have available google service inside");
+
+            //不支持时，可以利用getErrorDialog得到一个提示框, 其中第2个参数传入错误信息
+            //提示框将根据错误信息，生成不同的样式
+            //例如，我自己测试时，第一次Google Play Service不是最新的，
+            //对话框就会显示这些信息，并提供下载更新的按键
+//            googleApiAvailability.getErrorDialog(this, ret, 0).show();
+            return false;
+        }
     }
 }
