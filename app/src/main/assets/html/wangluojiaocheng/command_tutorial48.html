@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6.3.2 毒苹果</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ 
+<h1 id="毒苹果">毒苹果</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<blockquote>
+<p>这个例子只是为了展示进度(Advancement)的其中一个用处：事件检测。</p>
+<p>阅读此例子前需要先学习<b> 7.3 进度(Advancement) </b>。</p>
+</blockquote>
+<p>假设我们要弄一个特殊的毒苹果，玩家吃了就会死，我们要怎样弄呢？</p>
+<p>其中一个思路就是，检测玩家手上的物品，然后当玩家吃掉苹果之前1gt还是拿着那毒苹果的话，就给予中毒效果。这的确可行，然而这太麻烦了，而且得依赖高频。我们可以通过进度更方便的做到。</p>
+<h2 id="进度文件">进度文件</h2>
+<p>假设那毒苹果的显示名称为<code>毒苹果</code>，我们要检测玩家吃掉这个苹果，我们可以使用进度中的<code>minecraft:consume_item</code>判据。</p>
+<p>由于我们不希望显示这个进度，所以我们不需要设定任何和显示、父进度有关的属性。（其实就是从例子里复制的）<br>获得了这个进度后我们就需要执行命令函数，因此我们需要<code>rewards</code>。</p>
+<p>进度<code>example:ate_apple</code></p>
+<pre><code>{
+    &quot;criteria&quot;: {
+        &quot;ate_poison_apple&quot;: {
+            &quot;trigger&quot;: &quot;minecraft:consume_item&quot;,
+            &quot;conditions&quot;: {
+                &quot;item&quot;: &quot;minecraft:apple&quot;,
+                &quot;nbt&quot;: &quot;{display:{Name:\&quot;毒苹果\&quot;}}&quot;
+            }
+        }
+    },
+    &quot;rewards&quot;: {
+        &quot;function&quot;: &quot;example:poison_apple&quot;
+    }
+}
+</code></pre><h2 id="命令函数文件">命令函数文件</h2>
+<p>由于进度只能获得一次，因此获得进度之后我们需要为玩家移除那进度，让他们能够再次获得（检测）那进度。<br>然后我们就需要给予玩家那个效果，我们会使用<code>effect</code>命令。</p>
+<pre><code># example:poison_apple
+advancement revoke @s only example:ate_apple
+effect @s minecraft:poison 10 0
+</code></pre><hr>
+<p>通过进度进行事件检测，可以减少高频需要的检测数量，减少需要的记分板数量，减少那些复杂的逻辑。十分方便。</p>
+<p>不过需要注意，由于<a href="https://bugs.mojang.com/browse/MC-118841" target="_blank">MC-118841</a>的缘故，如果判据和玩家背包的物品改变有关（无论是<code>inventory_changed</code>还是<code>consume_item</code>等等），就<strong>不能马上对其进行有关物品操作</strong>，比如<code>give</code>或者<code>clear</code>物品都会导致所谓的<strong>幽灵物品</strong>(Ghost item)出现。请使用一些方法延迟1gt，比如高频等。</p>
+
+                                
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

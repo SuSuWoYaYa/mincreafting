@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>1.5 命令执行统计</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+   <h1 id="执行统计">执行统计</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>命令执行的时候会统计影响到的东西数量、成功执行次数与执行结果。<br>所有统计都是整数，储存在NBT里，需要时可以直接用nbt查询或以<code>stats</code>命令绑定到 指定玩家名/实体 的记分板分数。</p>
+<p>注意: 之后的执行结果会覆盖之前的数值。这在进行<code>execute</code>命令嵌套的时候，往往会让人搞错每一层嵌套涉及到的实体的最终统计值究竟来自哪一层命令。</p>
+<p>执行统计包括:</p>
+<ul>
+<li>成功执行次数(SuccessCount)，如<code>testfor @a {SelectedItem:{id:&quot;minecraft:stone&quot;}}</code>的符合玩家数量。</li>
+<li>影响实体数(AffectedEntities)，如<code>testfor @a</code>选择到的玩家数量。</li>
+<li>影响方块数(AffectedBlocks)，或是探测到的方块数。如<code>testforblocks</code>或<code>clone</code>探测/复制到的方块数。</li>
+<li>影响物品数(AffectedItems)，或是探测到的物品数。如<code>clear</code>成功清除/检测到（如果最大清除数量设置为0）的物品数量。</li>
+<li>查询结果(QueryResult)，部分查询类的命令会把结果写进这统计里，如<code>time query gametime</code>、<code>worldborder get</code>等。</li>
+</ul>
+<h2 id="命令执行过程">命令执行过程</h2>
+<p>当游戏需要执行一条命令的时候，它会作出以下处理：</p>
+<ol>
+<li>把命令以空格为分隔符分成不同的命令参数，然后在命令列表里搜寻第一个参数所代表的命令。即，如果命令第一个空格前的部分为<code>scoreboard</code>，则将判断这是一条记分板命令。如果没有对应的命令，则报错“未知命令”。</li>
+<li>尝试判断这条命令是否对多个目标执行，实现方式是找出命令中<strong>第一个</strong>可选择多个目标的目标选择器。具体过程如下：<ol>
+<li>检测目标命令参数在命令的格式中是否是一个实体参数。（比如<code>give @a stone</code>的第二个参数<code>@a</code>）。</li>
+<li>如果是，则检查此命令参数是否是一个选择器。</li>
+<li>如果是，则检查此选择器最多能选择到实体的数目是否为非1（<code>@a</code>和<code>@e</code>以外的默认选择1个。如果存在<code>c</code>参数则看<code>c</code>参数的数量。）<br>例子: <code>@e ≠ 1</code> <code>@e[c=1] = 1</code> <code>@r = 1</code> <code>@r[c=5] ≠ 1</code> <code>@a[c=-5] ≠ 1</code></li>
+<li>如果是，则代表找到了第一个选择多目标的目标选择器，即该命令对多实体执行，搜寻终止；否则则以下一个命令参数为目标继续重复1-3步，直到找到满足条件的命令参数或遍历完全部命令参数。</li>
+</ol>
+</li>
+<li>如果经由第二步的判断得到这是一个多目标的命令，则根据找到的目标选择器搜寻所有满足条件的实体并排序，然后逐个替换具体实体至选择器位置。之后，尝试逐条执行替换后的命令。</li>
+</ol>
+<p>比如</p>
+<pre><code>give @a[tag=stone] stone
+</code></pre><p>游戏会先把命令分为不同的参数，就是 <code>give</code>、<code>@a[tag=stone]</code>、<code>stone</code>。<br>然后我们找到的第一个可选择多个目标的选择器参数就是<code>@a[tag=stone]</code>。</p>
+<p>假设当前世界有5个玩家，都有<code>stone</code>这tag，分别&#x#x4E3A;<code>a</code>、<code>b</code>、<code>c</code>、<code>d</code>、<code>e</code>。假设离执行坐标的距离是<code>a</code>最近，<code>b</code>次之，如此类推。</p>
+<p>那么那命令会依次被替换为：</p>
+<pre><code>
+give a stone
+give b stone
+give c stone
+give d stone
+give e stone
+</code></pre><p>并且依次被执行。</p>
+<blockquote>
+<p>由于此原则，一些命令如<code>scoreboard players operation</code>就有一个很大的限制：两个目标之间必须有一个只选择一个目标，并且必须写清楚是选择一个。<br>虽然替换的过程在<strong>一条一般命令</strong>中只会替换一次，但在一些<strong>复合命令</strong>（命令嵌套）中会替换多次。例如<code>execute</code>嵌套，就很容易出现需要多次选择不同实体的情况。根据这个替换逻辑可以看到，实际上执行的命令数增加的很快。</p>
+</blockquote>
+<h2 id="成功次数、实体数">成功次数、实体数</h2>
+<p>好了，就算我们知道这命令执行机制，那么又如何呢？<br>其实SuccessCount与AffectedEntities和<code>第一个可选择多个目标的目标选择器</code>有关。</p>
+<ul>
+<li>AffectedEntities: <code>第一个可选择多个目标的目标选择器</code>选择到的实体数。不论之后的命令是否成功执行。这个在命令<strong>执行前</strong>就会被设置。</li>
+<li>SuccessCount: 命令<strong>被替换后成功执行的次数</strong>。不多于AffectedEntities数值。这个在命令<strong>执行后</strong>才会被设置。</li>
+</ul>
+<p>故此我们如果要知道<strong>真正被影响</strong>的实体数，或许我们需要使用SuccessCount。</p>
+<h2 id="例外情况">例外情况</h2>
+<p><code>spreadplayers</code>及<code>scoreboard teams join</code>命令都是例外情况，其SuccessCount最大为1，其AffectedEntities才是受影响的实体数。<br>因为此命令不定义所谓的选择器参数，因此游戏不会对选择器进行替换。（因为此命令有特别处理选择器的方式）</p>
+<h2 id="参见">参见</h2>
+<p>会Java的朋友如果想看源码，请看mcp的</p>
+<ul>
+<li><code>net.minecraft.command.CommandBase</code>里，有一个<code>isUsernameIndex</code>的函数。这会告诉<code>CommandHandler</code>哪儿是实体目标。</li>
+<li><code>net.minecraft.command.CommandHandler</code>。这是上面说的命令执行逻辑部分。</li>
+<li><code>net.minecraft.command.EntitySelector</code>。这里的<code>matchesMultiplePlayers</code>定义了怎样的选择器才算是只选择一个目标。</li>
+</ul>
+<p>stats的例子在后面的教程:</p>
+<ul>
+<li>记分板例子——Stats基础运用</li>
+<li>execute例子——成功次数的高级运用</li>
+</ul>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

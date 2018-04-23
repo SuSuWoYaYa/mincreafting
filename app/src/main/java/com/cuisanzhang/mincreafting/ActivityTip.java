@@ -1,5 +1,6 @@
 package com.cuisanzhang.mincreafting;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.luhuiguo.chinese.ChineseUtils;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -31,7 +35,7 @@ public class ActivityTip extends AppCompatActivity {
     boolean isNetworkConnected = false;
 
     private String language;
-    private boolean is_language_of_traditional_chinese  = false;
+    private boolean is_simplified_chinese  = true;
 
     private String noAd;
 
@@ -45,12 +49,16 @@ public class ActivityTip extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
-        initActionBar();
 
         language = LanguageUtil.getLocaleLanguage(ActivityTip.this);
-        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
-            is_language_of_traditional_chinese = true;
+        if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
+            is_simplified_chinese = true;
+        }else {
+            is_simplified_chinese =false;
         }
+
+        initActionBar();
+
 
 
 
@@ -77,17 +85,18 @@ public class ActivityTip extends AppCompatActivity {
 
         btnCheckVip = (Button) findViewById(R.id.btnCheckVip);
 
-        if (is_language_of_traditional_chinese)
+        if (is_simplified_chinese)
         {
-            noAd = "廣告已經沒有啦";
-            notVip = "嗯! 一定是你點錯了";
-            btn_zhifubao.setText("支付寶");
-            btnCheckVip.setText("去廣告");
-        }else {
             noAd = "广告已经没有了";
             notVip = "嗯! 一定是你点错了";
             btn_zhifubao.setText("支付宝");
             btnCheckVip.setText("去广告");
+        }else {
+
+            noAd = "廣告已經沒有啦";
+            notVip = "嗯! 一定是你點錯了";
+            btn_zhifubao.setText("支付寶");
+            btnCheckVip.setText("去廣告");
         }
 
 
@@ -161,42 +170,19 @@ public class ActivityTip extends AppCompatActivity {
     }
 
     public void initActionBar() {
-        ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
+        TextView title = findViewById(R.id.title);
+        if(!is_simplified_chinese){
+            title.setText(ChineseUtils.toTraditional("我的世界合成表大全"));
+        }
+
+        ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.webView_toolbar);
-//        toolbar.setTitle("");
-//        setSupportActionBar(toolbar);
+
     }
 
-//
-//    private class MyHandler extends Handler {
-//
-//        @Override
-//        public void handleMessage(Message msg) {
-//
-//            switch (msg.what) {
-//                case 0:
-////                    result = (String) msg.obj;
-//                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_not_a_vip, Toast.LENGTH_SHORT).show();
-////                    Toast.makeText(ActivityTip.this, result, Toast.LENGTH_SHORT).show();
-//                    break;
-//                case 1:
-////                    result = (String) msg.obj;
-//                    Toast.makeText(ActivityTip.this, R.string.tip_you_are_vip_now, Toast.LENGTH_SHORT).show();
-//
-//                    SettingUtils.ChangeTheme.setVipState(ActivityTip.this, true);
-//                    break;
-//                default:
-//                    Toast.makeText(ActivityTip.this, R.string.tip_check_vip_error, Toast.LENGTH_SHORT).show();
-//                    break;
-//            }
-//            super.handleMessage(msg);
-//
-//        }
-//    }
 }

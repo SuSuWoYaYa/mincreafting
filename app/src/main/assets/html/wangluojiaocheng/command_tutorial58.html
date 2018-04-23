@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>7.1.2 模型</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="模型">模型</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+ 
+<p>自定义模型(Models)是1.8版本加入的特性，它的加入极大地提高了游戏的自由度。通过模型的修改，玩家可以随意变换方块的形状，不同部分的贴图，甚至能添加新的物品外观。巧用模型能打破游戏中有限物品的限制，为地图制作取得更宽阔的创作空间。</p>
+<ul>
+<li>状态文件储存在<code>(资源包名)/assets/minecraft/blockstates</code>下，</li>
+<li>模型储存在<code>(资源包名)/assets/minecraft/models</code>下。
+这两个文件是相互配合的，下文会讲到。</li>
+</ul>
+<p>本章节的大部分资料来自：</p>
+<blockquote>
+<p>中文教程 <a href="http://www.mcbbs.net/thread-491597-1-1.html" target="_blank">http://www.mcbbs.net/thread-491597-1-1.html</a>   详细介绍各种标签的作用并举例。<br>WIKI <a href="http://minecraft.gamepedia.com/Model" target="_blank">http://minecraft.gamepedia.com/Model</a></p>
+</blockquote>
+<h2 id="状态文件">状态文件</h2>
+<p>状态文件(Block States)是方块模型文件和游戏系统交互的“中介”。当一个方块再游戏中被“看见”时，游戏系统就通过 <strong>文件名</strong> 来查找方块所对应的状态文件，然后根据状态文件内的内容，确定方块在当前状态时使用的模型。因此 <strong>游戏自带</strong> 的状态文件的文件名不能更改，但可以添加新的状态文件。</p>
+<h3 id="方块状态">方块状态</h3>
+<p>相同的方块可能会有不同的状态，如：</p>
+<ul>
+<li>蛋糕的块数不同；</li>
+<li>草方块上是否有雪；</li>
+<li>火把的朝向不同，
+等等。
+可以在游戏中按 F3 ，在屏幕右侧中部查看所指向方块的方块状态。<br>通过方块的状态文件，不同的方块状态会使用不同的模型。</li>
+</ul>
+<p>可参考：</p>
+<blockquote>
+<p>WIKI <a href="http://minecraft.gamepedia.com/Block_states" target="_blank">http://minecraft.gamepedia.com/Block_states</a>   所有方块的状态一览。</p>
+</blockquote>
+<h3 id="状态文件-json标签">状态文件-JSON标签</h3>
+<p>限于篇幅，这里只简述状态文件中的核心部分：</p>
+<ul>
+<li><code>(The root tag)</code>(Compound)<ul>
+<li><code>variants</code>：包含多种方块状态。(Compound)<ul>
+<li><code>(A variant)</code>：储存一个方块状态（标签名为方块状态），及其对应的 <strong>单个</strong> 模型。(Compound)<ul>
+<li><code>model</code>：<code>assets/minecraft/models/blocks</code>下的模型文件路径（不包括扩展名）。(String)</li>
+<li>...其他标签</li>
+</ul>
+</li>
+<li><code>(A variant)</code>：储存一个方块状态（标签名为方块状态），及其对应的 <strong>多个</strong> 模型。和上方的(A variant)标签不同的是，这是一个list，会从中根据权重随机抽取一个模型。(List)<ul>
+<li><code>(A model)</code>：一种模型。(Compound)<ul>
+<li><code>model</code>：<code>assets/minecraft/models/blocks</code>下的模型文件路径（不包括扩展名）。(String)</li>
+<li><code>weight</code>：此模型被选中的权重。Int。</li>
+<li>...其他标签，和上方单个模型的内容相同。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>例子们：<br><code>blockstates/torch.json</code><br>    比较基础的状态文件，一种方块状态只对应一种模型。</p>
+<pre><code>{
+    "variants": {
+        "facing=up": { "model": "normal_torch" },
+        "facing=east": { "model": "normal_torch_wall" },
+        "facing=south": { "model": "normal_torch_wall", "y": 90 },
+        "facing=west": { "model": "normal_torch_wall", "y": 180 },
+        "facing=north": { "model": "normal_torch_wall", "y": 270 }
+    }
+}
+</code></pre><p>&##x4F2A;代码：</p>
+<pre><code>{  
+   "所有方块状态": {  
+        当facing状态的值为up时（直立），调用 models/normal_torch.json 模型，  
+        当facing状态的值为east时（贴在墙上面朝东方），调用 models/normal_torch_wall.json 模型，  
+        当facing状态的值为south时，调用 models/normal_torch_wall.json 模型，并在y轴（纵轴）上旋转90°.  
+        west, north 同理.
+    }  
+}
+</code></pre><hr>
+<p><code>blockstates/grass.json</code><br>    出现一种方块状态对应多种模型的情况。每种模型（上文的<code>(A model)</code>标签）并列储存在一个list中。</p>
+<pre><code>{
+    "variants": {
+        "snowy=false": [        //这种方块状态对应了四种模型。所以将这四种模型并列储存在list(方括号)中.
+            { "model": "grass_normal" },        //由于没有设置 weight 标签，每种模型都有25%的几率被选择。
+            { "model": "grass_normal", "y": 90 },
+            { "model": "grass_normal", "y": 180 },
+            { "model": "grass_normal", "y": 270 }
+        ],
+        "snowy=true":  { "model": "grass_snowed" }        //这种方块状态只对应一种模型，和上文torch.json类似.
+    }
+}
+</code></pre><hr>
+<p>注意：状态文件只调用模型文件，方块的 <strong>材质</strong> 在模型文件中确定。</p>
+<p>当一个方块没有任何方块状态时，<code>(A variant)</code>标签的名称为<code>"normal"</code>.<br>如灵魂沙，<code>blockstates/soul_sand.json</code>:</p>
+<pre><code>{
+    "variants": {
+        "normal": { "model": "soul_sand" }
+    }
+}
+</code></pre><p>推荐阅读：</p>
+<blockquote>
+<p>WIKI <a href="http://minecraft.gamepedia.com/Model#Block_states" target="_blank">http://minecraft.gamepedia.com/Model#Block_states</a>   状态文件<br>工具 <a href="http://www.bejson.com/" target="_blank">http://www.bejson.com/</a>    JSON检查。</p>
+</blockquote>
+<h2 id="方块模型">方块模型</h2>
+<p>方块模型(Block Models)确定一个方块的形状及各部分材质。方块模型文件的文件名可以更改，但要和状态文件中指定的模型吻合。<br>方块模型文件储存在<code>(资源包名)/assets/minecraft/models/block</code>中。</p>
+<h3 id="方块模型-json标签">方块模型-JSON标签</h3>
+<p>限于篇幅，这里只简述方块模型中的核心部分。详细的讲解请见下文或文章开头的教程贴：</p>
+<ul>
+<li><code>(The root tag)</code><ul>
+<li><code>parent</code>：<code>assets/minecraft/models</code>下父模型的路径（不包括扩展名），详细用途见下。(String)</li>
+<li><code>display</code>：确定方块在不同地方的旋转和缩放（拿在手上时，在背包时，成为掉落物时...）(Compound)<ul>
+<li>...</li>
+</ul>
+</li>
+<li><code>textures</code>：确定方块模型的一些材质，或使用材质变量。(Compound)<ul>
+<li><code>(A texture variable)</code>：定义一个材质变量，并为它赋值。标签名为材质变量名称（自定义），标签的值（材质变量的值）为<code>assets/minecraft/textures</code>下的材质文件（不包括扩展名）。(String)</li>
+</ul>
+</li>
+<li><code>elements</code>：(List)<ul>
+<li><code>(An element)</code>：单个元素。(Compound)<ul>
+<li><code>from</code>：设置元素起点的坐标，格式为<code>[x, y, z]</code>(List)</li>
+<li><code>to</code>：设置元素终点的坐标，格式为<code>[x, y, z]</code>(List)</li>
+<li><code>faces</code>：确定一个元素六个面的材质。(Compound)<ul>
+<li><code>down, up, north, south, west, east</code>：单个面。(Compound)<ul>
+<li><code>texture</code>：<code>assets/minecraft/textures</code>下材质的路径（不包括扩展名）。从中读取材质。(String)</li>
+<li><code>uv</code>：从<code>texture</code>标签读取的材质png文件中，截取一部分作为当前面的材质，格式为[x1,y1,x2,y2].(List)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="父模型">父模型</h4>
+<p>父模型的作用相当于“模板”，它将形状相同，但只有材质不同方块模型集中到一个模型文件中，并将材质(<code>texture</code>)部分作为一个材质变量留空，由子模型传递不同的材质。一个例子：</p>
+<ul>
+<li>torch.json （父模型）<ul>
+<li>normal_torch （子模型1）</li>
+<li>lit_redstone_torch.json （子模型2）</li>
+<li>unlit_redstone_torch.json （子模型3）</li>
+</ul>
+</li>
+</ul>
+<p>可以知道，三个子模型（火把，红石火把，熄灭的红石火把）的形状是一样的（棍子），且只有材质上的不同。所以规定它们 <strong>形状</strong> 的模型就只需要一个（<code>torch.json</code>，作为父模型）。而三个子模型需要定义一个名为<code>torch</code>的材质变量并为它赋不同的值，父模型则需引用这个名为<code>torch</code>的变量。因为所有火把的形状都集中在一个模型文件(<code>torch.json</code>)中，所以可以减少错误且便于维护。</p>
+<p>详细的例子和代码分析，见文章开头的教程。</p>
+<h4 id="材质变量">材质变量</h4>
+<p>材质变量在父模型中，通过<code>#</code>+<code>变量名</code>引用，在子模型中通过<code>(A texture variable)</code>标签<strong>定义</strong>材质变量，并由父模型<strong>引用</strong>，简单的例子：</p>
+<p><code>torch.json</code>局部（父模型）</p>
+<pre><code>...
+"down": { "uv": [ 7, 13, 9, 15 ], "texture": "#torch" },
+"up":   { "uv": [ 7,  6, 9,  8 ], "texture": "#torch" }
+...
+</code></pre><p><code>normal_torch.json</code>（子模型）：</p>
+<pre><code>{
+    "parent": "block/torch",
+    "textures": {
+        "torch": "blocks/torch_on"
+    }
+}
+</code></pre><p>在这里，父模型(<code>torch.json</code>)需要引用一个名为<code>torch</code>的变量，子模型(<code>normal_torch.json</code>)定义了一个叫<code>torch</code>的变量，并将它赋值为<code>"blocks/torch_on"</code>，然后指定父模型是<code>"block/torch.json"</code>。这样，父模型就引用了<code>torch</code>变量的值。此时，父模型就相当于：</p>
+<pre><code>...
+"down": { "uv": [ 7, 13, 9, 15 ], "texture": "blocks/torch_on" },
+"up":   { "uv": [ 7,  6, 9,  8 ], "texture": "blocks/torch_on"}
+...
+</code></pre><h4 id="from-to-uv">from, to, uv</h4>
+<p><code>from, to</code>通过两个三维坐标，确定一个长方体元素的大小和位置（一个方块由单个或多个元素组成）。类似于服务器的圈地插件和fill命令的方式，通过两个三维坐标确定一个长方体范围。<br><code>uv</code>标签是在<code>texture</code>标签取得的材质中，截取一部分作为元素某个面的材质。因为某些元素的某些面不会被单独准备材质，所以需要从其它材质中截取部分来使用（例如火把的顶部和底部是没有单独的png材质文件的）。<br>如，火把的顶部和底部，通过uv截取，使用的是以下部分的材质：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/torchuv.png" alt="uv"></p>
+<p>这三个标签的单位都是 <strong>像素</strong> 。from, to标签是在16*16*16像素（默认）的<strong>一个</strong>正方体方块中取得一部分空间。uv是在16*16像素（默认）的材质贴图中截取一部分贴图。</p>
+<p>推荐阅读：</p>
+<blockquote>
+<p>WIKI <a href="http://minecraft.gamepedia.com/Model#Block_models" target="_blank">http://minecraft.gamepedia.com/Model#Block_models</a>  方块模型<br>编辑器 <a href="https://pan.baidu.com/s/1dFKRV0X" target="_blank">https://pan.baidu.com/s/1dFKRV0X</a>    免费<br>编辑器 <a href="https://cubik.studio/get" target="_blank">https://cubik.studio/get</a>    付费<br>资源包 <a href="http://www.mcbbs.net/thread-464655-1-1.html" target="_blank">http://www.mcbbs.net/thread-464655-1-1.html</a>  3D原版资源包，可供参考</p>
+</blockquote>
+<h2 id="物品模型">物品模型</h2>
+<p>物品模型确定物品在不同位置时（拿在手上、在背包中、在地上时）的旋转和缩放。也能根据当前物品状态的不同，使用不同的模型或材质。游戏自带的物品模型文件的文件名不能更改，但可以添加自定义物品模型。</p>
+<p>物品模型文件储存在<code>(资源包名)/assets/minecraft/models/item</code>中。</p>
+<h3 id="物品模型-json标签">物品模型-JSON标签</h3>
+<p>物品模型的大部分标签和方块模型的相似，这里只介绍部分核心内容，详细的讲解请见文章开头的教程：</p>
+<ul>
+<li><code>(The root tag)</code><ul>
+<li><code>parent</code>：<code>assets/minecraft/models</code>下父模型的路径（不包括扩展名），详细用途见上。(String)</li>
+<li><code>textures</code>：确定物品模型的一些材质，其下的标签从<code>assets/minecraft/textures</code>开始加载材质（不包括扩展名）。(Compound)<ul>
+<li><code>layer<#></code>：<code>#</code>是一个从0开始的整数，如<code>layer0</code>，规定物品（狭义的物品，不能被放置的那一种，如木棍、玻璃瓶）的材质。有些物品不止有一个layer（刷怪蛋，药水瓶）。layer的数量是由硬编码规定的，不能修改。(String)</li>
+<li><code>(A texture variable)</code>：定义一个材质变量，并为它赋值。标签名为材质变量名称（自定义）。(String)</li>
+</ul>
+</li>
+<li><code>overrides</code>：使用物品标签(Item Tags)确定不同物品状态下物品的模型。(List)<ul>
+<li><code>(A case)</code>：一个标签。(Compound)<ul>
+<li><code>predicate</code>：储存多个物品标签。(Compound)<ul>
+<li><code>(A case)</code>：单个物品标签，此标签的名称为物品标签的名称。物品标签详细列表见下。(String)</li>
+</ul>
+</li>
+<li><code>model</code>：<code>assets/minecraft/models</code>下的模型路径（不包括扩展名）。从中调用模型。(String)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="物品标签item-tags">物品标签(Item Tags)</h3>
+<p>物品标签的作用类似于方块的状态文件，不是所有的物品都需要物品标签，所有的物品标签：</p>
+<ul>
+<li><code>angle</code>：用于指南针。当前指南针的角度，值在0和1之间。</li>
+<li><code>blocking</code>：用于盾。玩家用盾格挡时值为1，反之为0.</li>
+<li><code>broken</code>：用于鞘翅。当鞘翅损坏（耐久度只剩下1）后，值为1，反之为0.</li>
+<li><code>cast</code>：用于鱼竿。若鱼竿抛出钓线，值为1.</li>
+<li><code>cooldown</code>：末影珍珠或紫颂果的剩余冷却时间，值在0和1之间。</li>
+<li><code>damage</code>：用于有耐久度的物品。物品用掉的耐久，值为<code>1 - (当前耐久/总耐久)</code>，值在0和1之间。</li>
+<li><code>damaged</code>：用于有耐久度的物品。当物品的耐久度不是100%时，值为1。若该物品的<code>Unbreakable</code>标签值为<code>1</code>，damaged标签的值始终为0.</li>
+<li><code>lefthanded</code>：当主手设置为左手时，值为1.*</li>
+<li><code>pull</code>：用于弓，表示弓的蓄力程度，值在0和1之间。</li>
+<li><code>pulling</code>：用于弓。如果正在拉弓，值为1.</li>
+<li><code>time</code>：用于时钟。表示当前的时间，值在0和1之间。</li>
+</ul>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>lefthanded 标签：</li>
+</ul>
+<p>lefthanded标签判断的依据是<strong>主手的设置</strong>（默认是右手），而不是<strong>当前持有物品的手</strong>。<br>例如，游戏设置中将主手设置为左手，此时将一个物品放在副手（右手）上。那么这个物品在右手上使用的模型，仍然是<code>"lefthanded":1</code>设置的模型。<br>假定有以下物品模型<code>example.json</code>：</p>
+<pre><code>...
+ "overrides": [
+                 {"predicate":  {"lefthanded": 0 },"model":"item/right"},
+                 {"predicate":  {"lefthanded": 1 },"model":"item/left"}
+              ]
+...
+</code></pre><p>当主手设置为 右手（默认） 时：双手手持，掉落物，GUI中，展示框上使用的模型都是<code>right.json</code>，这是<strong>正常</strong>的现象。<br>当主手设置为 左手 时，双手手持，GUI中的模型使用<code>left.json</code>。掉落物，展示框上的模型使用<code>right.json</code>。这可能是一个BUG，将来也许会修复，测试版本1.12。</p>
+<hr>
+<ul>
+<li>相同的物品标签使用不同值时，值 <strong>从小到大</strong> 排列。
+例子，<code>example.json</code>：</li>
+</ul>
+<pre><code>...
+ "overrides": [
+                 {"predicate":  {"damage": 0.1 },"model":"item/sample1"},
+                 {"predicate":  {"damage": 0.15 },"model":"item/sample2"},
+                 {"predicate":  {"damage": 0.233 },"model":"item/sample3"}
+              ]
+...
+</code></pre><ul>
+<li>一些用途：<ul>
+<li>可以通过damage标签，配合游戏中的耐久度，用同一个物品显示多种模型/材质。</li>
+<li>根据拉弓的不同程度，改变弓的模型或材质。</li>
+<li>更精确地控制钟的时间显示。</li>
+<li>......</li>
+</ul>
+</li>
+</ul>
+<p>推荐阅读：</p>
+<blockquote>
+<p>WIKI <a href="http://minecraft.gamepedia.com/Model#Item_models" target="_blank">http://minecraft.gamepedia.com/Model#Item_models</a>   物品模型<br>WIKI <a href="http://minecraft.gamepedia.com/Model#Item_tags" target="_blank">http://minecraft.gamepedia.com/Model#Item_tags</a>   物品标签<br>编辑器 <a href="https://cubik.studio/get" target="_blank">https://cubik.studio/get</a>    英文，付费<br>编辑器 <a href="http://server.zofenia.de/blockbench/" target="_blank">http://server.zofenia.de/blockbench/</a>    英文，免费</p>
+</blockquote>
+  
+<p><br/></p></div>
+</body>
+
+</html>

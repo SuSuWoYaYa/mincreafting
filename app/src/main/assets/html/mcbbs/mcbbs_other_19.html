@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>基础指令详细教程 </title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >基础指令详细教程 </h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自网易论坛<br />作者-杰瑞</p>
+  <p> 因为有一些小伙伴经常会去问我关于指令方面的问题，所以写下这篇帖子。一方面方便了想要开服的小伙伴，另一方面是因为实在没空回答。
+</p> <p>注：以下指令格式里使用的“[]”所标识出来的区域为选填。
+</p> <p>注：以下指令格式里使用的“<>”所标识出来的区域为必填。</p>  
+<h2>命令方块</h2><p>
+大家好，我是萌新杰瑞。听说MC被网易代理了，作为一个忠诚的MC粉，这么大的事情当然要去凑热闹了。
+</p> <p>◆经过一番浏览，我决定开一个租赁服和更多小伙伴一起玩耍。
+</p> <p>◆不过目前的网易租赁服还不支持插件，像我们这些老玩家早已玩腻了原版生存。我应该怎样才能给我的服务器添加更多玩法以及
+</p> <p>更有趣的元素呢？
+</p> <p>◆没错，要做出这些效果，我需要学会使用命令方块！
+</p> <p>◆首先我需要拿到一个命令方块，及时是创造模式有些物品也是得不到的，我需要用指令来得到它。
+</p> <p>★<code>/give @p  minecraft:command_block 1 0</code>
+</p> <p>☆指令格式：
+</p> <p>/give <目标-选择器> <物品ID> [数量] [附加值] [标签]
+</p> <p>☆解释：
+</p> <p>附加值→比如：羊毛/wool，它只有一个ID，当我们想要橙色羊毛的时候就需要用到附加值"例子：<code>/give @p wool 1 1</code>"
+。</p> <p>除此之外，他还可以用来修改工具的损耗值"例子：<code>/give @p minecraft:diamond_sword 1 1</code>"，这样就可以得到一把
+</p> <p>耐久只有1的钻石剑。
+</p> <p>☆使用方法：
+</p> <p>方法一：我们可以用这个指令在服务器中制作一个新手礼包。
+</p> <p>方法二：我们可以用这个指令得到一些寻常方法得不到的物品。【需要添加标签，这个在以后的帖子里会讲到。】
+</p> <p>◆现在我们已经得到了命令方块，接下来我需要做一个漂亮的主城来容纳服务器里的玩家。
+</p> <p>◆这时候我需要fill指令来帮助我更快的完成工作。
+</p> <p>★【无】
+</p> <p>☆指令格式：
+</p> <p><code>/fill <x1> <y1> <z1> <x2> <y2> <z2> <方块ID> <附加值> [处理方式] [要替换成的方块ID] [要替换成的附加值]</code>
+</p> <p>☆解释：
+</p> <p>XYZ就是坐标的意思，坐标我们也可以用~来代替，~可以用来表示当前执行命令的坐标"例子：<code>/fill ~ ~ ~ ~ ~ ~ stone 0</code>"，这样
+</p> <p>就会在我们下半身的位置放置一个石头。
+</p> <p>处理方式→
+ <table ><tr><td>destroy</td><td>使用破坏方块的方法，会掉落正常掉落的方块</td></tr>
+<tr><td>hollow</td><td>仅替换掉外围一圈的方块，内部用空气代替</td></tr>
+<tr><td>keep</td><td>仅替换掉空气方块</td></tr>
+<tr><td>outline</td><td>仅替换掉外围一圈的方块，内部不处理</td></tr>
+<tr><td>replace</td><td>默认选项，替换掉全部方块包括空气，方块不掉落</td></tr>
+    </table >
+</p> <p>☆使用方法：
+</p> <p>方法一：可以用来清理出一片平坦的区域供我们建筑【清理方块可以使用空气，空气ID：air】
+</p> <p>方法二：可以使用在命令方块的最后方，在执行命令完毕后把区域内的命令方块替换掉，用来达成一次性使用的命令方块。
+</p> <p>◆主城差不多已经完成了，有些玩家提议要开物品不掉落和防爆，这个要怎么开呢？
+</p> <p>◆这个要用到gamerule指令。
+</p> <p>★<code>/gamerule keepInventory true</code>
+</p> <p>☆指令格式：
+</p> <p><code>/gamerule <规则名> [值]</code>
+</p> <p>☆解释：
+</p> <p><table >
+    </th> <th>规则名→名称</th> <th>解释</th> <th>默认值
+    </th></tr>
+<tr><td>commandBlockOutput</td><td>命令方块是否输出到聊天栏</td><td>true</td></tr>
+<tr><td>disableElytraMovementCheck</td><td>服务端测速是否不检测滑翔翼</td><td>false</td></tr>
+<tr><td>doDaylightCycle</td><td>时间是否流动</td><td>true</td></tr>
+<tr><td>doEntityDrops</td><td>实体是否掉落</td><td>true</td></tr>
+<tr><td>doFireTick</td><td>火焰是否蔓延</td><td>true</td></tr>
+<tr><td>doMobLoot</td><td>生物是否掉落</td><td>true</td></tr>
+<tr><td>doMobSpawning</td><td>生物是否自然生成</td><td>true</td></tr>
+<tr><td>doTileDrops</td><td>方块是否掉落</td><td>true</td></tr>
+<tr><td>keepInventory</td><td>玩家死亡是否保留背包</td><td>false</td></tr>
+<tr><td>logAdminCommands</td><td>是否把Admin指令记录进日志</td><td>true</td></tr>
+<tr><td>mobGriefing</td><td>生物*是否破坏方块</td><td>true</td></tr>
+<tr><td>naturalRegeneration</td><td>玩家是否在满饥饿下自然回血*</td><td>true</td></tr>
+<tr><td>randomTickSpeed</td><td>随机Tick影响*</td><td>3</td></tr>
+<tr><td>reducedDebugInfo</td><td>减少F3界面显示的内容</td><td>false</td></tr>
+<tr><td>sendCommandFeedback</td><td>显示命令反馈</td><td>true</td></tr>
+<tr><td>showDeathMessages</td><td>显示死亡信息</td><td>true</td></tr>
+<tr><td>spawnRadius</td><td>Spawn范围</td><td>10</td></tr>
+<tr><td>spectatorsGenerateChunks</td><td>观察者视角生成区块的范围</td><td>true</td></tr>
+<tr><td>doWeatherCycle</td><td>天气是否自动循环</td><td>true</td></tr>
+<tr><td>maxEntityCramming</td><td>在一格空间内有多少实体会让它们产生窒息效果</td><td>24</td></tr></table >
+</p> <p>☆使用方法：
+</p> <p>方法一：用来更改服务器规则。
+</p> <p>方法二：用来添加计分板项目。【关于计分板以后会出教程。】
+</p> <p>◆现在规则也设置好了，但是防爆也不能放置TNT破坏啊，要是熊孩子用TNT怎么办？
+</p> <p>◆这时候就要用到clear指令了。
+</p> <p>★<code>/clear @a tnt 64</code>
+</p> <p>☆指令格式：
+</p> <p><code>/clear [目标-选择器] [物品名] [最大清除数量] [附加值] [标签]</code>
+</p> <p>☆解释：
+</p> <p>最大清除数量→意思是一次性清除多少，并且不管你背包里的物品是否等于这个数量，都会进行清除。
+</p> <p>☆使用方法：
+</p> <p>方法一：用于BAN物品，比如为了防止破坏清除TNT，或者BAN红石来消除红石高频隐患。
+</p> <p>方法二：用于制作购买系统。【这个教程以后会在命令方块详细使用里提到。】
+</p> <p>◆TNT也给BAN掉了，我还需要一个随机传送来帮助玩家更快的离开主城。
+</p> <p>◆随机传送要用到spreadplayers指令。
+</p> <p>★<code>/spreadplayers ~ ~ 1000 2000 false @p</code>
+</p> <p>☆指令格式：
+</p> <p><code>/spreadplayers <中心点X坐标> <中心点Z坐标> 最小传送距离 最大传送距离 <精准传送开关> <目标-选择器></code>
+</p> <p>☆解释：
+</p> <p>中心点X/Y→以这个两个轴确定的点为中心向外传送。
+</p> <p>精准传送开关→这个我也没证实过，只是感觉应该是这个作用。【关闭 false丨开启 true】
+</p> <p>☆使用方法：
+</p> <p>方法一：用于随机传送。
+</p> <p>◆恩，已经有点服务器的样子了。
+</p> <p>◆时间也不早了，我要上床睡觉来保证明天有足够的精神来学习这些指令。
+</p> <p>——————————————————————————————————————————————————————————————————————————————————
+</p> <p>这是目前能用到的基础指令，有些指令我并没有添加进上面的教程中，例如：<code>/tp,/gamemode</code>。原因
+</p> <p>是这些指令太简单了，我觉得没必要写。【其实是为了偷懒省字数吧？】
+</p> <p>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

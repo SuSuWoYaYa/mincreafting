@@ -7,8 +7,8 @@ android {
         applicationId "com.cuisanzhang.mincreafting"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 14
-        versionName "9.3"
+        versionCode 15
+        versionName "9.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -36,7 +36,13 @@ dependencies {
     //    compile 'com.google.android.gms:play-services-ads:11.2.0'
     //    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.google.firebase:firebase-ads:11.4.0'
-//    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    //    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+
+    //繁体转换
+    compile files('libs/chineseUtils1.7.jar')
+
+    //google 检测
+    compile 'com.google.android.gms:play-services-auth:11.4.0'
 }
 
 //dependencies {
@@ -101,4 +107,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'
 }
 
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
 apply plugin: 'com.google.gms.google-services'

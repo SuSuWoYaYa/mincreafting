@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>1.3 命令执行</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+
+ 
+     
+                                <h1 id="命令">命令</h1>
+								<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<blockquote>
+<p>本文只讨论原版（无Mod无插件）、单人模式可以执行、权限等级为2的命令</p>
+</blockquote>
+<p>命令就是一条文字，通过让游戏运行这条文字来执行不同的功能、操作。命令有不同参数，也就是可以改变的地方，决定了命令执行的结果，如把东西传送到什么地方、在玩家聊天栏显示什么文字等等。</p>
+<p>根据命令的功能，我们可以大致分为几类:</p>
+<ul>
+<li>只影响玩家的</li>
+<li>影响实体的（无论能不能影响玩家）</li>
+<li>影响方块的</li>
+<li>显示的（只有玩家能看见、听见，不影响游戏内任何东西的）</li>
+<li>记分板及检测类</li>
+<li>其他（其他的几乎都自成一体系）</li>
+</ul>
+<blockquote>
+<p>部分命令同时属于几类，如<code>replaceitem</code>能影响实体及方块实体(block-entity)<br>本文将<strong>不会说明所有命令的用法</strong>，只会在例子中对使用的命令作出<strong>简单介绍</strong>，详细说明请见 <a href="https://minecraft.gamepedia.com/Commands" target="_blank">https://minecraft.gamepedia.com/Commands</a> （英文版，有能力者建议阅读英文版）或 <a href="https://minecraft-zh.gamepedia.com/%E5%91%BD%E4%BB%A4" target="_blank">https://minecraft-zh.gamepedia.com/%E5%91%BD%E4%BB%A4</a> （中文版，部分内容较过时）</p>
+</blockquote>
+<h2 id="执行者">执行者</h2>
+<p>执行者就是执行那段命令的物件，分别有几种情况：</p>
+<ul>
+<li>管理员执行命令（于聊天栏直接输入执行或聊天信息、书本的clickEvent），执行者为管理员自己（玩家）</li>
+<li>服主于后台执行命令，即服务器执行命令，执行者为服务器（非方块非实体，权限等级为4，坐标为(0, 0, 0)，即能执行所有命令）</li>
+<li>玩家点击牌子执行命令，执行者为玩家，权限为2（不论点击者权限为多少）</li>
+<li>命令方块执行命令，执行者为命令方块（方块）。</li>
+<li><code>execute</code>让实体执行后方的命令，后方的命令的执行者为被选择到的实体</li>
+<li><code>function</code>执行<code>xxx.mcfunction</code>文件内命令，<code>xxx.mcfunction</code>内所有命令的执行者为<code>function</code>的执行者。</li>
+<li>游戏规则(gamerule)中<code>gameLoopFunction</code>执行的<code>xxx.mcfunction</code>文件内命令的执行者为一个虚拟执行者，权限为2，坐标为(0, 0, 0)。</li>
+</ul>
+<blockquote>
+<p>这里需要的<code>execute</code>命令的<strong>不完全语法</strong>: <code>execute &lt;实体&gt; ~ ~ ~ &lt;命令&gt;</code>，即让实体执行指定命令<br>这里需要的目标选择器<strong>不完全语法</strong>: <code>@e[name=xxx]</code>，即选择名称为xxx的实体</p>
+</blockquote>
+<p>例子: 让管理员（名称为admin）执行以下命令</p>
+<pre><code>execute @e[name=a] ~ ~ ~ execute @e[name=b] ~ ~ ~ say hi
+</code></pre><p>整条命令的执行者为玩家admin<br><code>execute @e[name=b]... hi</code>这命令的执行者为实体a<br><code>say hi</code>这命令的执行者为实体b</p>
+<h2 id="执行点">执行点</h2>
+<p>默认情况下, 命令执行点就是执行者的坐标。<br>命令执行点对相对坐标有非常重要的影响（相对坐标大多是以执行坐标为原点计算的）, 以及目标选择器选择条件、顺序也和执行坐标有关系。</p>
+<p>有三种情况会导致执行点与执行者坐标不同:</p>
+<ul>
+<li><code>execute</code>命令，而且指&#x5B#x5B9A;了后方的执行坐标或偏移（不是(~, ~, ~)）。那时候后面的命令的执行坐标就和执行者坐标不同了。</li>
+<li>牌子clickEvent。该情况下执行者是点击的玩家，然而执行坐标是牌子的坐标。</li>
+<li>执行命令函数期间把执行者移位。执行点还是之前的点，然而执行者的位置已经不同了。</li>
+</ul>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{全版本通用}两种游荡式刷怪塔【服务器可用】</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >{全版本通用}两种游荡式刷怪塔【服务器可用】</h1>
+            <!-- End Title -->
+        
+<div >
+    <p class="red">本文章转载自我的世界中文论坛<br />作者-15860723645<br />
+	http://www.mcbbs.net/thread-713562-1-1.html</p>
+<p> 大家好久不见，猫叔叔又回来了
+</p><p>楼主最近玩起了空岛，而对于空岛这种资源稀缺的环境来说，刷怪塔几乎是人手必备的，今天来分享两种游荡式刷怪塔的设计
+</p><p>（对于服务器来说，最好是用游荡式刷怪塔，有红石或者是计时器的刷怪塔会让服务器严重卡顿，土豪服务器除外）
+</p><p>这两种刷怪塔都是自然刷怪的刷怪塔，不含刷怪笼</p>
+<h2>怪物的刷新机制</h2><p>
+建刷怪塔就要先了解了解怪物的刷新机制，我在这里引用wiki和BBS早期的一篇文章
+</p> <p><blockquote>
+怪物或生物生成机制：
+<br />1、刷怪现象存在于玩家周围144×144格的范围以内，24格以外，明确地说，刷怪发生于玩家周围的144×144×128（长×宽×高）空间以内。
+<br />2、攻击性怪物在亮度小于等于7级时生成。中立生物只会在亮度大于等于9级的草地上生成。
+<br />3、在任意时刻，攻击性怪物不超过200只，中立生物不超过15只。一旦上限达到，除非有怪物死亡,消失，或者怪物所在的那块地图被释放，否则不会生成新的怪物。
+<br />4、怪物可以在人造方块上生成，原石，双层台阶，羊毛这些方块同石头与泥土一样可以生出怪物。然而怪物不会在玻璃或半层台阶（透明方块）上生成。对可以生成怪物的方块来说，刷怪率也没有差别。
+<br />5、将其他地方点亮并不会加快塔内的刷怪速率，但是可以达到集中怪物的目的，也减少了没有被杀死，一直存在的怪物的数量，等于增加了产率。
+<br />
+<br />总结：刷怪塔分四部分：生怪、收集怪、杀怪、物品拾取。
+</blockquote></p><p>
+</p>
+<h2>设计原理</h2><p>
+
+
+综上所述，我们可以得出以下结论
+</p><p>我们的设计原理的：
+</p><p>1、造个黑暗的封闭空间生怪
+</p><p>2、用水流收集怪（生成区域的边缘围上告示牌或开启状态的活板门来欺骗怪物AI这是坚实的地面。告示牌需要大约0.542木头，比0.75木头的活板要更经济一些。）
+</p><p>3、杀怪
+</p><p>4、收取物品
+</p><p>
+</p><p>然后我们来了解一下怪物的掉落物（wiki）
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_1.jpg" /> 
+</p><p>所以在建造刷怪塔的时候要限制末影人的生成
+</p>
+
+<h2>两种设计</h2><p>
+<p>根据我们的分析，我们就造出了下面这两种设计
+</p><p>
+</p><h3>方案①：一种非常久远的设计
+</h3><p>
+优点：有着超大的刷怪面积，收集较方便
+</p><p>缺点：怪物的收集不够及时
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_2.jpg" /> 
+</p><p>结构模块下载：
+</p><p>链接: https://pan.baidu.com/s/1cLRN2NmlJiPfAz2RK7stHg
+ </p><p>密码: 96si
+</p>
+<h3>
+方案②：原创设计
+</h3><p>优点：收集较及时
+</p><p>缺点：流水面积广，可能会卡服
+</p><p>链接: https://pan.baidu.com/s/1cLRN2NmlJiPfAz2RK7stHg
+ </p><p>密码: 96si
+ </p><p class="darkRed">
+然后把它进行堆叠
+</p><p>全景：
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_3.jpg" /> 
+</p><p>内部：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_4.jpg" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_5.jpg" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_6.jpg" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_7.jpg" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_8.jpg" /> 
+
+
+</p><p>
+ </p><p class="darkBlue">如果你对于生物的分类要求比较大的话，以下有两种怪物的分类装置可供你参考
+</p><p>
+</p><p>蜘蛛过滤器：（仙人掌放置时四周不能挨着方块，只有左下角是水源）
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_9.jpg" /> 
+</p><p>小僵尸过滤器：（粉色羊毛对应的位置有个洞，可以防止堵塞水电梯）
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_40_10.jpg" /> 
+
+</p><p>
+ </p><p class="darkRed">部分设计较为古老，忘记出处了，希望这篇文章能够帮助玩空岛的新玩家。
+ </p><p class="darkRed">（如果你要在正常的世界里面建的话最好修在海上，或者把附近的矿洞全部点亮。这篇教程保证原版可用，加了插件或者是mod的不能保证。）
+
+</p><p>
+ </p><p class="darkRed">教程先写到这，求人气和金粒
+
+
+
+</p><p>
+</p><p>by：老猫
+  
+<p><br/></p></div>
+</body>
+
+</html>

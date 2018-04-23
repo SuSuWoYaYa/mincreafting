@@ -110,186 +110,205 @@ public class FragmentTutorial extends Fragment {
             public void onClick(View v) {
 
 //                boolean isOnline = false;
-                String[] tutorialNames;
-                String[] tutorialFiles;
+//                String[] tutorialNames;
+//                String[] tutorialFiles;
                 
                 String tutorialCategary;
-
-                String language = LanguageUtil.getLocaleLanguage(getContext());
+                int tutorialCode;
+//                String language = LanguageUtil.getLocaleLanguage(getContext());
 
                 switch (v.getId()) {
                     case R.id.layout_btn_newplay:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files_zw;
-                        } else {
-                            tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names;
-                            tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files;
-                        }
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files_zw;
+//                        } else {
+//                            tutorialNames = TutorialListData.tutorial_xinshoujiaochen_names;
+//                            tutorialFiles = TutorialListData.tutorial_xinshoujiaochen_files;
+//                        }
                         tutorialCategary = getString(R.string.xingshouzhinan);
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_XINSHOUJIAOCHEN;
                         break;
                     case R.id.layout_btn_huanjingjieshao:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_huangjingjieshao_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files_zw;
-                            tutorialCategary = "環境介紹";
-                        } else {
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_huangjingjieshao_names;
+//                            tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files;
+//                            tutorialNames = TutorialListData.tutorial_huangjingjieshao_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files_zw;
+//                            tutorialCategary = "環境介紹";
+//                        } else {
 
-                            tutorialNames = TutorialListData.tutorial_huangjingjieshao_names;
-                            tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files;
+//                            tutorialNames = TutorialListData.tutorial_huangjingjieshao_names;
+//                            tutorialFiles = TutorialListData.tutorial_huangjingjieshao_files;
                             tutorialCategary = "环境介绍";
-                        }
+                            tutorialCode = TutorialListData.TUTORIAL_CODE_HUANGJINGJIAOCHEN;
+//                        }
 
                         break;
                     case R.id.layout_btn_jinjiezhinan:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files_zw;
-                            tutorialCategary = "進階指南";
-                        } else {
-                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names;
-                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files;
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files_zw;
+//                            tutorialCategary = "進階指南";
+//                        } else {
+//                            tutorialNames = TutorialListData.tutorial_jingjiezhinan_names;
+//                            tutorialFiles = TutorialListData.tutorial_jingjiezhinan_files;
                             tutorialCategary = "进阶指南";
-                        }
+                            tutorialCode = TutorialListData.TUTORIAL_CODE_JINGJIEZHINAN;
+//                        }
 
 
                         break;
                     case R.id.layout_btn_building:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_build_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_build_files_zw;
-                            tutorialCategary = "建築教程";
-                        } else {
-                            tutorialNames = TutorialListData.tutorial_build_names;
-                            tutorialFiles = TutorialListData.tutorial_build_files;
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_build_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_build_files_zw;
+//                            tutorialCategary = "建築教程";
+//                        } else {
+//                            tutorialNames = TutorialListData.tutorial_build_names;
+//                            tutorialFiles = TutorialListData.tutorial_build_files;
                             tutorialCategary = "建筑教程";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_BUILD;
+//                        }
                         break;
                     case R.id.layout_btn_zhongzhi:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files_zw;
-                            tutorialCategary = "種植教程";
-                        } else {
-
-                            tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names;
-                            tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files;
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files_zw;
+//                            tutorialCategary = "種植教程";
+//                        } else {
+//
+//                            tutorialNames = TutorialListData.tutorial_zhongzhijiaocheng_names;
+//                            tutorialFiles = TutorialListData.tutorial_zhongzhijiaocheng_files;
                             tutorialCategary = "种植教程";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_ZHONGZHIJIAOCHENG;
+//                        }
                         break;
                     case R.id.layout_btn_shuaguai:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files_zw;
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files_zw;
+//                            tutorialCategary = "刷怪教程";
+//                        } else {
+//                            tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names;
+//                            tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files;
                             tutorialCategary = "刷怪教程";
-                        } else {
-                            tutorialNames = TutorialListData.tutorial_shuaguaijiaocheng_names;
-                            tutorialFiles = TutorialListData.tutorial_shuaguaijiaocheng_files;
-                            tutorialCategary = "刷怪教程";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_SHUAGUAIJIAOCHENG;
+//                        }
                         break;
                     case R.id.layout_btn_caikuaijishu:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_caikuangjishu_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_caikuangjishu_files_zw;
-                            tutorialCategary = "採礦技術";
-                        } else {
-                            tutorialNames = TutorialListData.tutorial_caikuangjishu_names;
-                            tutorialFiles = TutorialListData.tutorial_caikuangjishu_files;
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_caikuangjishu_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_caikuangjishu_files_zw;
+//                            tutorialCategary = "採礦技術";
+//                        } else {
+//                            tutorialNames = TutorialListData.tutorial_caikuangjishu_names;
+//                            tutorialFiles = TutorialListData.tutorial_caikuangjishu_files;
                             tutorialCategary = "采矿技术";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_CAIKUANGJISHU;
+//                        }
                         break;
                     case R.id.layout_btn_fumoshaolian:
-                        if (is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_fumoheshaolian_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files_zw;
-                            tutorialCategary = "附魔燒煉";
-                        }else {
-
-                            tutorialNames = TutorialListData.tutorial_fumoheshaolian_names;
-                            tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files;
+//                        if (is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_fumoheshaolian_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files_zw;
+//                            tutorialCategary = "附魔燒煉";
+//                        }else {
+//
+//                            tutorialNames = TutorialListData.tutorial_fumoheshaolian_names;
+//                            tutorialFiles = TutorialListData.tutorial_fumoheshaolian_files;
                             tutorialCategary = "附魔烧炼";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_FUMOSHAOLIAN;
+//                        }
                         break;
                     case R.id.layout_btn_chujihongshi:
-                        if(is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_chujihongshi_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_chujihongshi_files_zw;
-                            tutorialCategary = "初級紅石";
-                        }else {
-                            tutorialNames = TutorialListData.tutorial_chujihongshi_names;
-                            tutorialFiles = TutorialListData.tutorial_chujihongshi_files;
+//                        if(is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_chujihongshi_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_chujihongshi_files_zw;
+//                            tutorialCategary = "初級紅石";
+//                        }else {
+//                            tutorialNames = TutorialListData.tutorial_chujihongshi_names;
+//                            tutorialFiles = TutorialListData.tutorial_chujihongshi_files;
+
                             tutorialCategary = "初级红石";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_CHUJIHONGSHI;
+//                        }
                         break;
                     case R.id.layout_btn_hongshijinjie:
-                        if(is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_hongshijingjie_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_hongshijingjie_files_zw;
-                            tutorialCategary = "紅石高級";
-                        }else{
-                            tutorialNames = TutorialListData.tutorial_hongshijingjie_names;
-                            tutorialFiles = TutorialListData.tutorial_hongshijingjie_files;
+//                        if(is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_hongshijingjie_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_hongshijingjie_files_zw;
+//                            tutorialCategary = "紅石高級";
+//                        }else{
+//                            tutorialNames = TutorialListData.tutorial_hongshijingjie_names;
+//                            tutorialFiles = TutorialListData.tutorial_hongshijingjie_files;
                             tutorialCategary = "红石高级";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_HONGSHIJINGJIE;
+//                        }
                         break;
                     case R.id.layout_btn_gaojijishu:
-                        if(is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_gaojijishu_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_gaojijishu_files_zw;
-                            tutorialCategary = "高級技術";
-                        }else {
-                            tutorialNames = TutorialListData.tutorial_gaojijishu_names;
-                            tutorialFiles = TutorialListData.tutorial_gaojijishu_files;
+//                        if(is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_gaojijishu_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_gaojijishu_files_zw;
+//                            tutorialCategary = "高級技術";
+//                        }else {
+//                            tutorialNames = TutorialListData.tutorial_gaojijishu_names;
+//                            tutorialFiles = TutorialListData.tutorial_gaojijishu_files;
                             tutorialCategary = "高级技术";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_GAOJIJISHU;
+//                        }
                         break;
                     case R.id.layout_btn_gengduotiaozhan:
-                        if(is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_tiaozhan_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_tiaozhan_files_zw;
-                            tutorialCategary = "更多挑戰";
-                        }else {
-                            tutorialNames = TutorialListData.tutorial_tiaozhan_names;
-                            tutorialFiles = TutorialListData.tutorial_tiaozhan_files;
+//                        if(is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_tiaozhan_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_tiaozhan_files_zw;
+//                            tutorialCategary = "更多挑戰";
+//                        }else {
+//                            tutorialNames = TutorialListData.tutorial_tiaozhan_names;
+//                            tutorialFiles = TutorialListData.tutorial_tiaozhan_files;
                             tutorialCategary = "更多挑战";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_TIAOZHAN;
+//                        }
                         break;
                     case R.id.layout_btn_mc163:
-                        if(is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_mc163_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_mc163_files_zw;
-                            tutorialCategary = "網易教程";
-                        }else {
-                            tutorialNames = TutorialListData.tutorial_mc163_names;
-                            tutorialFiles = TutorialListData.tutorial_mc163_files;
+//                        if(is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_mc163_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_mc163_files_zw;
+//                            tutorialCategary = "網易教程";
+//                        }else {
+//                            tutorialNames = TutorialListData.tutorial_mc163_names;
+//                            tutorialFiles = TutorialListData.tutorial_mc163_files;
                             tutorialCategary = "网易教程";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_MC163;
+//                        }
                         break;
                     case R.id.layout_btn_wangluojiaocheng:
-                        if(is_language_of_traditional_chinese) {
-                            tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names_zw;
-                            tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files_zw;
-                            tutorialCategary = "網絡教程";
-                        }else {
-                            tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
-                            tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
+//                        if(is_language_of_traditional_chinese) {
+//                            tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names_zw;
+//                            tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files_zw;
+//                            tutorialCategary = "網絡教程";
+//                        }else {
+//                            tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
+//                            tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
                             tutorialCategary = "网络教程";
-                        }
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_INTERNET;
+//                        }
                         break;
                     default:
-                        tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
-                        tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
+//                        tutorialNames = TutorialListData.tutorial_wangluojiaocheng_names;
+//                        tutorialFiles = TutorialListData.tutorial_wangluojiaocheng_files;
                         tutorialCategary = getString(R.string.xingshouzhinan);
+                        tutorialCode = TutorialListData.TUTORIAL_CODE_XINSHOUJIAOCHEN;
                         break;
                 }
 
 
                 Intent intent = new Intent(getActivity(), ActivityTutorialList.class);
 //                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_IS_ONLINE, isOnline);
-                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_NAMES, tutorialNames);
-                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_FILES, tutorialFiles);
+//                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_NAMES, tutorialNames);
+//                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_FILES, tutorialFiles);
                 intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_CATEGARY, tutorialCategary);
+                intent.putExtra(ActivityTutorialList.EXTRA_TUTORIAL_CODE, tutorialCode);
 //                intent.putExtra(ActivityListViewShowBlocks.EXTRA_LAYLOUT, R.layout.layout_listview_item_block);
 
 

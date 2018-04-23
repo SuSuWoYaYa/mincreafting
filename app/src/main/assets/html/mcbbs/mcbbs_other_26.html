@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从MC开始的java入门 p4.HelloWorld</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >从MC开始的java入门 p4.HelloWorld</h1>
+            <!-- End Title -->
+        
+<div >
+   <p class="red">本文章转载自网易论坛<br />作者-Namefind</p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_Namefind_mc.png" /> 
+</p><p>说下更新频率大概一星期1~2篇左右,
+</p><p>上周懒癌了所以没发QVQ
+</p><p>希望不会被打...
+</p><p>我也不是dalao啦，
+</p><p>帖子里面有问题欢迎指出！
+</p><p>嗯开始本章内容吧~
+</p><p>
+
+</p><p><b>本章目标：</b>
+</p><p>理解单行注释、多行注释、doc注释。
+</p><p>使用System.out.print()和
+</p><p>System.out.println();
+</p><p>理解String、int数据类型，
+</p><p>会使用CMD打开MC。
+<p>
+
+<h2>Java命名规范</h2><p>
+<b><font color="DarkRed">
+
+每行只能写一条语句。
+</p><p>每条语句用；隔开。</font></b></p> 
+<h3>Main</h3><p>
+
+
+我们先来复习一下上次我们讲的主方法里面有什么。
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_1.png" /> 
+ </p><p><b>public static void main(String[] args)</b>
+ </p><p>公共的 静态的 空的 主要的（字符串[] 参数）
+ </p><p>
+ </p><p>我们还可以看到这个main方法里面有一个<font color="#006400"><i>
+// TODO Auto-generated method stub</i></font>，翻译过来是“<b>// TODO自动生成的方法存根</b>”，
+ </p><p>也就是我们可以使用<font color="#006400"><i>
+//你想要注释的内容</i></font>   给类写备注。
+ </p><p>一般我们会在备注里面<b>说明某段代码的具体作用</b>，或者<b>使用//将可能错误的代码暂时注释掉</b>，方便debug（调试）。
+ </p><p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_2_1.png" /> 
+ </p><p>//<font color="DarkRed">为单行注释</font>，也就是说当前行的内容不会被当成执行语句执行。
+ </p><p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_2_2.png" /> 
+ </p><p>/**/<font color="DarkRed">为多行注释</font>，在此范围内的多行备注不会被执行。
+ </p><p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_2_3.png" /> 
+ </p><p>/***/<font color="DarkRed">为doc注释</font>，在此范围内的多行备注不会被执行、给其他使用你代码的人提供了一个可以参阅的doc文档。
+
+
+</p>
+<h2>控制台打印输出</h2><p>
+ 
+接下来我们在main方法里面输入：
+ </p><p><font color="DarkBlue">System.out.print("");</font>
+ </p><p>然后在""内输入任意字符。（记得双引号一定是半角）
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_2.png" /> 
+ </p><p>
+
+ </p><p>点击 
+ 左上角<font color="#006400">绿三角图标</font>运行。（如果你没保存会提示保存）
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_3.png" /> </p><p> 
+ </p><p>我们就会在控制台看到输出的语句：
+  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_4.png" /> 
+ </p><p>刚刚输入的代码是什么意思呢？
+ </p><p>翻译过来就是“<n>系统.输出.打印</b>”。
+ </p><p><font color="DarkRed">这是一条在控制台打印语句的代码，方便我们进行调试</font>。
+
+ </p><p>
+ </p><p>那么如果我想输出第二行换行的语句呢？
+
+ </p><p></p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_5.png" /> 
+ </p><p>将这段话复制并不会自动换行，那么我们需要在第一条语句后面加上<font color="DarkRed">ln</font>。
+ </p><p><font color="DarkRed">System.out.println("");</font>是一个输出完后换行的语句，同样的我们在""内输入任意字符即可。
+  </p><p> </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_6.png" /> 
+ </p><p>看，是不是换行了~
+ </p><p><b>加上ln代表在这条语句结束后换行。</b>
+ </p><p>当然你也可以将""删除，在()内填入<b>数字、数学运算式</b>，同样可以运行~
+ </p><p>  </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_9.png" /> 
+ </p><p>尝试运行后我们发现控制台显示了数字，数学运算式结果。
+ </p><p>那么为什么数字是直接显示数字，而数学运算式显示的是结果呢？
+ </p><p>因为之前带有""的显示为文本，不进行计算。
+ </p><p>而去掉""后，如果()里面的是运算式，将进行计算。
+ </p><p>
+ </p><p>在这里我们将<font color="DarkRed"> ""</font>这种<font color="DarkRed"> 文本形式</font>称为<b>String字符串类型</b>。
+ </p><p> <font color="DarkRed"> 1、2、3</font>...这种<font color="DarkRed"> 整数的数字类型</font>称为<b>int整型</b>。
+
+ </p><p>
+ </p><p>那小数怎么办呢？当然也有小数的类型，不过暂时不用，所以先不讲解。
+ </p><p>
+ </p><p>那么MC里有没有一个显示文字的方式呢？
+ </p><p>当然有啦！
+ </p><p>在mod中，在左下角聊天框中输出语句的代码是：
+ </p><p><b>entityPlayer.addChatMessage(new ChatComponentText(""));</b>
+ </p><p>众：哇超长（慌张）
+ </p><p>别慌别慌，我们慢慢来~只要翻译一下我们大概就能看懂了！
+ </p><p><b>实体玩家.增加信息（新的文本信息）</b>
+
+
+</p>
+<h2>RunClient（HelloMinecraft！）</h2><p>
+
+小伙伴们可能有个疑问，如果每次构建模组的时候都要把模组丢到客户端里试，那不是很麻烦？
+ </p><p>其实下载的mdk可以<b>通过cmd来直接运行客户端</b>。也就是说这个mdk包含客户端启动需要的东西。
+ </p><p>
+ </p><p>在构建完毕后将cmd切换到mdk目录下，运行指令<code>gradlew.bat runClient </code>就可以运行客户端。
+
+ 
+ </p><p></p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_26_10.png" /> 
+ </p><p>之后如果运行过<code>gradlew.bat build</code>构建好mod，运行的客户端里面会包含已经构建好的mod。
+ </p><p>可以在build\lib找到构建好的mod~
+ </p><p>听说可以<b>直接点eclipse里面的运行来运行客户端...</b>渣渣的我不会。
+ </p><p>
+ </p><p>在制作mod前我们还需要配置一个东西，让客户端识别jar文件是mod。
+ </p><p>还会进行本地、服务端的部署。所以这个教程好像还很长，XD~慢慢来慢慢来。
+</p><p><br/></p></div>
+</body>
+
+</html>

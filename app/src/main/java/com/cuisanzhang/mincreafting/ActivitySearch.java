@@ -31,6 +31,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.NativeExpressAdView;
+import com.luhuiguo.chinese.ChineseUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +79,7 @@ public class ActivitySearch extends AppCompatActivity {
 
 
     private String language;
-    private boolean is_language_of_traditional_chinese = false;
+    private boolean is_simplified_chinese = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +92,10 @@ public class ActivitySearch extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         language = LanguageUtil.getLocaleLanguage(ActivitySearch.this);
-        if (language.equals(LanguageUtil.TRADITIONAL_CHINESE)) {
-            is_language_of_traditional_chinese = true;
+        if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
+            is_simplified_chinese = true;
+        }else {
+            is_simplified_chinese = false;
         }
 
 
@@ -135,12 +138,12 @@ public class ActivitySearch extends AppCompatActivity {
         emptyView = (LinearLayout) findViewById(R.id.emptyView);
         textViewEmpty = (TextView) findViewById(R.id.textViewEmpty);
 
-        if (is_language_of_traditional_chinese) {
-            autoCompleteTextView.setHint("輸入文字進行搜索");
-            textViewEmpty.setText("暫無數據");
-        } else {
+        if (is_simplified_chinese) {
             autoCompleteTextView.setHint("输入文字进行搜索");
             textViewEmpty.setText("暂无数据");
+        } else {
+            autoCompleteTextView.setHint(ChineseUtils.toTraditional("输入文字进行搜索"));
+            textViewEmpty.setText(ChineseUtils.toTraditional("暂无数据"));
 
         }
 
@@ -339,12 +342,7 @@ public class ActivitySearch extends AppCompatActivity {
         }
 //        Toast.makeText(ActivitySearch.this, "搜索 " + text, Toast.LENGTH_SHORT).show();
 
-        if (is_language_of_traditional_chinese) {
-            text += "的搜索結果";
-        } else {
-            text += "的搜索结果";
 
-        }
 //        if (autoCompleteTextView == null) {
 //            Log.e(TAG," autoCompleteTextView = null");
 //        }
@@ -383,10 +381,10 @@ public class ActivitySearch extends AppCompatActivity {
 //                Log.e(TAG," textViewEmpty = null");
 //            }
 //
-            if (is_language_of_traditional_chinese) {
-                textViewEmpty.setText("沒有搜索到結果, 請試試其他關鍵字");
-            } else {
+            if (is_simplified_chinese) {
                 textViewEmpty.setText("没有搜索到结果, 请试试其他关键字");
+            } else {
+                textViewEmpty.setText(ChineseUtils.toTraditional("没有搜索到结果, 请试试其他关键字"));
 
             }
 

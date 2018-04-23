@@ -52,6 +52,7 @@
 
 
     //深绿色
+
     <style name="Base.Theme.Design.darkgreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_darkgreen</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_darkgreen</item>
@@ -59,6 +60,7 @@
 
 
     //绿色
+
     <style name="Base.Theme.Design.green" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_green</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_green</item>
@@ -66,12 +68,14 @@
 
 
     //橙色
+
     <style name="Base.Theme.Design.gold" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_gold</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_gold</item>
     </style>
 
     //橙色
+
     <style name="Base.Theme.Design.yellow" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_yellow</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_yellow</item>
@@ -79,20 +83,22 @@
 
 
     //橙色
+
     <style name="Base.Theme.Design.orange" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_orange</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_orange</item>
     </style>
 
 
-
     //棕色
+
     <style name="Base.Theme.Design.saddlebrown" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_saddlebrown</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_saddlebrown</item>
     </style>
 
     //灰棕色
+
     <style name="Base.Theme.Design.brown" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_brown</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_brown</item>
@@ -100,6 +106,7 @@
 
 
     //灰白色
+
     <style name="Base.Theme.Design.light_gray" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_light_gray</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_light_gray</item>
@@ -107,6 +114,7 @@
 
 
     //灰色
+
     <style name="Base.Theme.Design.gray" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_gray</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_gray</item>
@@ -129,12 +137,14 @@
 
 
     //粉红
+
     <style name="Base.Theme.Design.hotpink" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_hotpink</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_hotpink</item>
     </style>
 
     //深粉红
+
     <style name="Base.Theme.Design.pink" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary_pink</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_pink</item>

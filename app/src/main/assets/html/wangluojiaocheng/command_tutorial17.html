@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.2 NBT及结构</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="nbt">NBT及结构</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+
+<h2 id="前言（？）">前言（？）</h2>
+<blockquote>
+<p>NBT（二进制命名标签）格式为Minecraft中用于向文件中存储数据的一种存储格式。<br>NBT格式以树形结构并配以许多标签的形式存储数据。所有的标签都有一个独立的ID和名称。<br>...</p>
+</blockquote>
+<p><strong>等等！</strong> 我们不是在说命令么？怎么跑了去编程了？<del>教练我不要学这个！</del></p>
+<p>其实NBT有两个意思：<strong>NBT文件格式</strong>以及<strong>命令中的NBT格式</strong>，两者<strong>表达方式</strong>是不同的，然而内里的数据是相同的。<br>本文只会介绍命令中的NBT的表达方式，对NBT文件格式（二进制的）有兴趣的朋友可以参考 <a href="http://wiki.vg/NBT" target="_blank">http://wiki.vg/NBT</a></p>
+<p>同时，部分标签的修改不能通过游戏内命令达成，需要使用外置修改器修改存档中的部分NBT文件，在此推荐 NBTExplorer 这个外置修改器</p>
+<p>下载地址:<br><a href="http://www.mcbbs.net/thread-306895-1-1.html" target="_blank">http://www.mcbbs.net/thread-306895-1-1.html</a></p>
+<blockquote>
+<p>NBT文件储存了很多重要资料，如存档资料、实体资料、方块资料等。<br>通过命令中的NBT，我们能够修改并检查实体（玩家除外）、物品、方块实体的属性，也能检查玩家的部分属性。<br>看完本章，你<strong>不会</strong>知道NBT的完整格式，然而你会知道<strong>最好的写法</strong>，最不容易出现错误的写法。</p>
+</blockquote>
+<h2 id="nbt简介">NBT简介</h2>
+<p>NBT和JSON类似，是由标签(Tag)组成的。而每个标签都有它们的数值。</p>
+<p>标签有不同的种类，我们可以大致分为四大类（前三类可以当作<strong>基本数值类</strong>(simple)）：</p>
+<ul>
+<li>数值类（详细分类会包括整数和浮点数，里面又可以根据不同的大小、精度再分类）</li>
+<li>字串类（没错，字串是自成一类的）</li>
+<li>数组类（虽然数组也能包括多个数值，然而其特性和List有明显不同，之后将会详细解释，但并不常用）</li>
+<li>集合类（包括compound及list，将会在下方详述）<br>  集合类的数值为一个集合，也就是说能够储存另外的一些标签在里面<br>  故此，NBT的结构是一个<strong>树</strong>结构</li>
+</ul>
+<blockquote>
+<p>Tag_End算不算一个Tag....我觉得那比较算是Tag_Compound的格式之一（二进制的时候）,<br>而且那只会在NBT文件里使用，因此就不需要理会了。</p>
+</blockquote>
+<p>接下来我们会看看NBT的大致结构，基本数值类的标签将会在之后的章节逐一说明。</p>
+<h2 id="集合">集合</h2>
+<blockquote>
+<p>NBT前三者只是简单的数值类，不能储存更多标签，因此对整体结构没啥影响。<br>这里就统一把它们的类型写作<em>simple</em>，方便阅读。</p>
+</blockquote>
+<p>集合类的NBT有两种，分别为Compound以及List，它们在资料储存方式和实际应用也有很大分别。<br>我们首先来看看Compound</p>
+<h3 id="compound">Compound</h3>
+<p>Compound，其实和JSON的物件非常类似。<br>Compound里的每个标签都有一个<strong>名字</strong>(key)，里面的标签类型不必一样。<br>Compound里的标签名&#x5#x5B57;非常重要，因为游戏依靠标签名字查找资料。<br>故此，一个Compound内的标签<strong>不能重名</strong>。</p>
+<p>技术说明到此为止，我们来看看一个例子。</p>
+<blockquote>
+<p>说例子前先说说这章例子的格式<br>标签: <code>种类 名称: 数值</code><br>种类有: simple, compound, list<br>格式为&quot;某&quot;的就是字串，和数值不同<br>compound和list的子标签会缩排（对齐缩进），以与其他标签分开</p>
+</blockquote>
+<pre><code>compound a:
+    simple aa: 123
+    simple ab: 456
+    simple ac: &quot;23333&quot;
+
+    compound ad:
+        simple aa: 123
+        simple ab: 456
+        simple ac: &quot;23333&quot;
+</code></pre><p>可以看到，a这个compound里同时有数字、字串及另一个compound。</p>
+<p>然而在ad里，出现了和compound a里重名的标签！这不是违反了我们上面说的“一个Compound内的标签<strong>不能重名</strong>”？<br>其实这不算重名，因为在<strong>a里叫aa的只有1个</strong>，另一个在a的ad里，<strong>分属于不同的compound</strong>。</p>
+<hr>
+<p>那么我们来看看下一个例子</p>
+<pre><code>compound a:
+    simple aa: 123456
+    simple aa: 1234
+</code></pre><p>这个例子就<strong>有错误</strong>了！<br>a里有两个aa，所以我们指定a的aa是要数值为123456的呢，还是1234那个？没人知道。</p>
+<p>所以重复名称是不允许的。</p>
+<blockquote>
+<p>此外，Compound是不注重次序的（同一Compound内的子标签是没有前后次序之分的）<br>对Compound来说最重要的是结构，也就是谁是谁的子标签<br>故此，在命令里不需要理会<strong>Compound的子标签次序</strong>，只需要理会结构就好。</p>
+</blockquote>
+<h4 id="格式">格式</h4>
+<p>现在来让我们看看命令里是怎么写Compound的。</p>
+<p>Compound的数值格式为：</p>
+<pre><code>{ 子标签 }
+</code></pre><p>子标签需要名字，并且以<code>,</code>分隔。</p>
+<p>而子标签需要名字，名字是这么写的：</p>
+<pre><code>名字:数值
+或
+&quot;名字&quot;:数值
+</code></pre><p>当名字包含不是<code>a-z A-Z 0-9 _ .</code>的字符时就需要用<code>&quot;&quot;</code>了（出现空格的话也需要），如果出现<code>\</code>或<code>&quot;</code>字符则需要转义，详见之后的字串章节（正常人也不会在名字里加入这奇奇怪怪的东西吧233333）。</p>
+<blockquote>
+<p>注：数值前后及名字前后（如果名字需要<code>&quot;&quot;</code>则<code>&quot;名字&quot;</code>）的空格都会被忽略</p>
+</blockquote>
+<hr>
+<p>例子（把例子1的格式转为命令里的NBT写法）:</p>
+<pre><code>a:{aa:123,ab:456,ac:&quot;23333&quot;,ad:{aa:123,ab:456,ac:&quot;23333&quot;}}
+</code></pre><p>假设把第一个<code>ab</code>的名称改为<code>a b</code>，我们就得这么写了:</p>
+<pre><code>a:{aa:123,&quot;a b&quot;:456,ac:&quot;23333&quot;,ad:{aa:123,ab:456,ac:&quot;23333&quot;}}
+</code></pre><blockquote>
+<p>记得开了<code>{</code>就得关掉<code>}</code>。<br>修改NBT时只会修改指定了的NBT，不会清空整个Compound。<br>检测亦如是，只会检测指定NBT。比如检查<code>{}</code>只能检查此compound是否存在，不能检查是否一个空的compound。<br>更多的例子将会在之后的NBT命令实战一章介绍。</p>
+</blockquote>
+<h3 id="list">List</h3>
+<p>List就是一个列表，和Compound类似，也能储存多个tag，然而也有很大的分别。</p>
+<ol>
+<li>一旦被<strong>命令</strong>修改，之前的List就会被清空。（特例会在实战部分讲解）</li>
+<li>子标签<strong>没有</strong>名字，并且<strong>重视次序</strong>。</li>
+<li>每个List只能储存<strong>一种</strong>标签。比如储存List，储存字串，储存Compound等等。（但里面的List可以储存不同种类的子标签，只要确保同一个List内的标签全部类型一致即可）</li>
+</ol>
+<p>一般提及List的时候，我们也会提及这List储存的类型，说法是<code>List of &lt;类型&gt;</code>（中文就是<code>&lt;类型&gt;的列表</code>）</p>
+<p>例子:</p>
+<pre><code>compound a:
+    &lt;List of simple&gt; b:
+        simple : 123
+        simple : 456
+        simple : 123
+</code></pre><hr>
+<p>错误例子:</p>
+<pre><code>compound a:
+    &lt;List of simple&gt; b:
+        simple a: 123
+        compound b:
+            simple a: 123
+</code></pre><p>错误的原因有两个:</p>
+<ul>
+<li>List里的子标签应该是<strong>没有名字</strong>的。</li>
+<li>List里的子标签应该是<strong>同一类型</strong>的。（甚至即使它们都是基本类型也不行，需要类型<strong>完全一样</strong>，之后将会介绍基本类型的分类）</li>
+</ul>
+<h4 id="格式">格式</h4>
+<p>现在来让我们看看命令里是怎么写List的。</p>
+<p>数值格式:</p>
+<pre><code>[ 子标签 ]
+</code></pre><p>子标签<strong>没有名字</strong>，之间以<code>,</code>分隔。</p>
+<p>例子1</p>
+<pre><code>a:{b:[123,456,123]}
+</code></pre><p>例子2</p>
+<pre><code>{a:[{a:123},{a:456},{a:789}]}
+</code></pre><blockquote>
+<p>例子2外面那个无名的Compound在实际命令非常常见。<br>检测的时候不会循序检测，只会看看目标列表里有没有这几个标签，不论次序。<br>简单来说就是你无法控制次序</p>
+<p>设置为<code>[]</code>会直接清空列表。<br>直接检查<code>[]</code>会检查该列表是否一个空的列表。</p>
+<p>之后的NBT命令实战一章将会有更多例子。</p>
+</blockquote>
+<hr>
+<p>下一个章节将会仔细将基本数值里面的数值类型。<br>数值类型在MC里大量使用，NBT里最多的也是数值类型。<br>数值类型有一些比较方便的写法，然而某些情况会失效，因此我们不会介绍那写法，而是介绍标准写法。如果需要学习便捷写法的话请自行寻找相关教程。</p>
+  
+<p><br/></p></div>
+</body>
+
+</html>

@@ -16,7 +16,7 @@ import java.util.TimerTask;
 
 public class ActivityLoding extends AppCompatActivity {
 
-    private static final int WAIT_SECOND = 500;
+    private static final int WAIT_SECOND = 800;
     private String TAG = "ActivityLoding";
 
 //    private SoundPool mSoundPool = null;

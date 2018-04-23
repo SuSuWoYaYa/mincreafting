@@ -27,6 +27,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.NativeExpressAdView;
+import com.luhuiguo.chinese.ChineseUtils;
 
 public class ActivityListViewShowBlocks extends AppCompatActivity {
 
@@ -37,6 +38,8 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     public static String EXTRA_LOADING = "loading";
     public static String EXTRA_IS_CREATING = "isCreating";
 //    public static String EXTRA_LAYLOUT = "layout";
+
+    private boolean is_simplified_chinese = true;
 
     List<Block> blocks = null;
     // checkbox状态
@@ -68,6 +71,15 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_listview_of_blocks);
+
+        String language = LanguageUtil.getLocaleLanguage(ActivityListViewShowBlocks.this);
+        if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
+            is_simplified_chinese = true;
+        }else {
+            is_simplified_chinese = false;
+        }
+
+
         initActionBar();
 
         checkBoxStateList = new ArrayList<Boolean>();
@@ -99,7 +111,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //            layout_of_giveView = R.layout.layout_listview_item_block;
 //            loading_of_background = R.drawable.loading_of_blocks;
 //        }
-        TextView listViewTitle = (TextView) findViewById(R.id.listViewTitle);
+        TextView listViewTitle = (TextView) findViewById(R.id.title);
         listViewTitle.setText(category);
 
         blocks = dbManage.getBlocksFormTable(table_name);
@@ -369,6 +381,11 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
     }
 
     public void initActionBar() {
+        TextView title = findViewById(R.id.title);
+        if(!is_simplified_chinese){
+            title.setText(ChineseUtils.toTraditional("我的世界合成表大全"));
+        }
+
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
@@ -399,8 +416,7 @@ public class ActivityListViewShowBlocks extends AppCompatActivity {
 //        Log.e("ActivityTutorialList", "getApplicationContext="+getApplicationContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityListViewShowBlocks.this, R.style.AlertDialog);
         builder.setTitle(R.string.xiaotishi);
-        if(LanguageUtil.getLocaleLanguage(ActivityListViewShowBlocks.this).equals(LanguageUtil.TRADITIONAL_CHINESE)) {
-
+        if(!is_simplified_chinese) {
             builder.setMessage("點擊圖片可以查看材料來源\n圖片都是離線的,不需要聯網");
             builder.setPositiveButton("確定", null);
         }else {

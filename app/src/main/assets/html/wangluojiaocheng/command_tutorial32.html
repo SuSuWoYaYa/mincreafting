@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.5.3 击杀率|operation与准则</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+
+ 
+  
+                                <h1 id="实例3：击杀率——operation与准则">实例3：击杀率——operation与准则</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+<p>在和朋友们比赛射击的时候，有什么办法决定谁才是神射手呢？用击杀数来决定吗？这的确是一个办法，但是你不知道这个击杀数最多的人是真正的神射手，还是仅仅靠着无数乱箭夺得第一。要解决这个问题，我们可以试试用operation计算玩家的击杀率。</p>
+<h2 id="单人模式的实现">单人模式的实现</h2>
+<p>击杀率怎么计算呢？那自然是用击杀数除以射箭数了。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt3.1.png" alt=""></p>
+<p>要得到射箭数，我们可以用的判据是stat.useItem.minecraft.bow（物品使用：弓），设这个变量为shootCount</p>
+<pre><code>scoreboard objectives add shootCount stat.useItem.minecraft.bow
+</code></pre><p>然后我们可以用playerKillCount（击杀玩家数）统计击杀数：</p>
+<pre><code>scoreboard objectives add killCount playerKillCount
+</code></pre><p>除此之外，如果不只是计算击杀玩家的数量，还可以使用其它判据：</p>
+<pre><code>scoreboard objectives add killCount totalKillCount #统计杀怪数量
+scoreboard objectives add killCount stat.killEntity.minecraft.pig #统计杀猪数量
+scoreboard objectives add killCount teamkill.red #统计击杀红队成员的数量
+</code></pre><p>接下来就是计算了！假设要计算的玩家叫P：</p>
+<pre><code>scoreboard players operation P killCount /= P shootCount
+</code></pre><p>大功告……等会！好像有什么问题。</p>
+<p>问题大大的有。还记得记分板的分数限制范围吗？那就是整数-2147483648到2147483647。这就意味着，不管你怎么除，结果都会是0。就算你再对分数乘上100，结果不会把“隐藏的小数位”显示出来，因为小数位已经被系统丢弃了。</p>
+<p>因此，在计算击杀率之前，先要将击杀数乘100：</p>
+<pre><code># 先设置一个常量，用以乘100：
+scoreboard objectives add constant dummy
+scoreboard players set oneHundred constant 100
+
+# 要保存击杀数，可以另起一个变量：
+scoreboard objectives add killRate dummy 击杀率
+
+# 把击杀数复制到killRate
+scoreboard players operation P killRate = P killCount
+
+# 然后将killRate乘100：
+scoreboard players operation P killRate *= oneHundred constant
+
+# 最后进行计算。
+scoreboard players operation P killRate /= P shootCount
+
+# 最后这三步可以写成命令函数，这样就可以立刻显示击杀率而不会产生分数闪烁了。
+</code></pre><p>别忘了把分数显示出来哦！</p>
+<h2 id="多人模式的实现">多人模式的实现</h2>
+<p>如果要在多人模式中实现击杀率的统计，就需要对命令进行一些微调——你总不可能穷举玩家名吧？</p>
+<p>在1.12中加入了新的选择器@s，它的作用是选择命令执行者。接下来就会用到这个选择器</p>
+<p>由于击杀数、射击数是自动统计的，所以最终要修改的就是最后三条命令：</p>
+<pre><code># 写成function，命令放入循环方块高频执行，即可实时统计击杀率！
+execute @a ~ ~ ~ scoreboard players operation @s killRate = @s killCount
+execute @a ~ ~ ~ scoreboard players operation @s killRate *= oneHundred constant
+execute @a ~ ~ ~ scoreboard players operation @s killRate /= @s shootCount
+</code></pre><p>当然，你可能会想统计<strong>命中率</strong>：根据射中的数量而不是击杀的数量决定玩家的射击能力强弱。但是这需要结合NBT标签、新的进度系统以及更多的命令，在多人模式下尤为复杂，不只是记分板知识能够解决的，这里就不作介绍了。</p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt3.2.png" alt=""></p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

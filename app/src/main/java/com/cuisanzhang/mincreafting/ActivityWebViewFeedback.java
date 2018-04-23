@@ -13,6 +13,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.luhuiguo.chinese.ChineseUtils;
+
 /**
  * Created by hesuxiang on 17/3/20.
  */
@@ -115,6 +117,18 @@ public class ActivityWebViewFeedback extends  AppCompatActivity {
     }
 
     public void initActionBar() {
+         boolean is_simplified_chinese = true;
+        String language = LanguageUtil.getLocaleLanguage(ActivityWebViewFeedback.this);
+        if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
+            is_simplified_chinese = true;
+        }else {
+            is_simplified_chinese = false;
+        }
+
+        TextView title = findViewById(R.id.title);
+        if(!is_simplified_chinese){
+            title.setText(ChineseUtils.toTraditional("我的世界合成表大全"));
+        }
         ImageView imageViewMenu = (ImageView)findViewById(R.id.imageViewToolbar_menu);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override

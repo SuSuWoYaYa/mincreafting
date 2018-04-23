@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 	public static final String DATABASE_NAME = "DataBase.sqlite";
-	public static final int DB_VERSION = 14;
+	public static final int DB_VERSION = 15;
 
 
     //每个分类数据库的表名,用来传递给分类详情页使用

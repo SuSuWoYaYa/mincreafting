@@ -21,6 +21,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,7 +38,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.jakewharton.disklrucache.DiskLruCache;
+import com.luhuiguo.chinese.ChineseUtils;
+//import com.luhuiguo.chinese.ChineseUtils;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -60,6 +65,8 @@ public class FragmentMainActivity extends AppCompatActivity {
     private ViewPager viewPager;
 
     private TabLayout tabLayout;
+
+    private String TAG = "FragmentMainActivity";
 
     public static String EXTRA_TABLE_NAME = "table_name";
     public static String EXTRA_CATEGORY = "category";
@@ -154,7 +161,7 @@ public class FragmentMainActivity extends AppCompatActivity {
             menu_changeTheme.setTitle("切換主題");
             menu_feedback.setTitle("意見反饋");
             menu_settingcache.setTitle("緩存設置");
-            menu_tip.setTitle("打賞作者");
+            menu_tip.setTitle("去除广告");
             menu_about.setTitle("關於");
             menu_changelanguage.setTitle("切換語言");
             menu_downgame.setTitle("遊戲下載");
@@ -183,7 +190,11 @@ public class FragmentMainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.menu_tip:
-                        intent = new Intent(getApplicationContext(), ActivityTip.class);
+                        if(hasInstallGoogleServer()){
+                            intent = new Intent(getApplicationContext(), ActivityTipByGoogle.class);
+                        }else {
+                            intent = new Intent(getApplicationContext(), ActivityTip.class);
+                        }
                         startActivity(intent);
                         break;
                     case R.id.menu_about:
@@ -240,6 +251,11 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
     public void initActionBar() {
+        TextView title = findViewById(R.id.title);
+        if(is_language_of_traditional_chinese){
+            title.setText(ChineseUtils.toTraditional("我的世界合成表大全"));
+        }
+
         ImageView imageViewMenu = (ImageView) findViewById(R.id.imageViewToolbar_menu);
         ImageView imageViewSaerch = (ImageView) findViewById(R.id.imageViewToolbar_search);
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
@@ -368,8 +384,10 @@ public class FragmentMainActivity extends AppCompatActivity {
 
 
         if (is_language_of_traditional_chinese) {
-            checkBoxChangeMainColor.setText("改變主標題欄背景顏色");
-            checkBoxChangeTitleColor.setText("改變物品名稱背景顏色");
+//            checkBoxChangeMainColor.setText("改變主標題欄背景顏色");
+//            checkBoxChangeTitleColor.setText("改變物品名稱背景顏色");
+            checkBoxChangeMainColor.setText(ChineseUtils.toTraditional("改变主标题栏背景颜色"));
+            checkBoxChangeTitleColor.setText(ChineseUtils.toTraditional("改变物品名称背景颜色"));
             button_changeColor.setText("確定");
 
             textViewGreen.setText("綠色");
@@ -566,8 +584,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
 
         if (is_language_of_traditional_chinese) {
-            builder.setTitle("關於 Mincreafting");
-            builder.setMessage("這是一個Minecraft合成表的APP\n所有內容來自於\nMinecraft中文WIKI\n網易\n網絡\n以及網友的貢獻");
+            builder.setTitle(ChineseUtils.toTraditional("关于 Mincreafting"));
+            builder.setMessage(ChineseUtils.toTraditional("这是一个Minecraft合成表的APP\n所有内容来自于\nMinecraft中文WIKI\n网易\n网络\n以及网友的贡献"));
             builder.setPositiveButton("確定", null);
         } else {
             builder.setTitle("关于 Mincreafting");
@@ -637,9 +655,9 @@ public class FragmentMainActivity extends AppCompatActivity {
                     message.obj = i;
                     mHandler.sendMessage(message);
                     dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES[i],
-                            MyDatabaseHelper.jsons[i]);
+                            MyDatabaseHelper.jsons[i], true);
                     dbManage.insertBlocksToTable(MyDatabaseHelper.TABLE_NAMES_ZW[i],
-                            MyDatabaseHelper.jsons_zw[i]);
+                            MyDatabaseHelper.jsons[i], false);
 //                    System.out.println("Start dbManage.insertDataToTable " + MyDatabaseHelper.TABLE_NAMES[i]);
 
                 }
@@ -759,7 +777,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                     ReStartActivity(FragmentMainActivity.this);
                 }
             });
-            changelanguage_messageTextView.setText("改變語言設置會影響搜索結果");
+            changelanguage_messageTextView.setText(ChineseUtils.toTraditional("改变语言设置会影响搜索结果"));
         } else {
             builder.setTitle("切换语言");
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -827,7 +845,7 @@ public class FragmentMainActivity extends AppCompatActivity {
                     long cacheSize = mDiskLruCache.size();
 
                     if (is_language_of_traditional_chinese) {
-                        cache_messageTextView.setText("緩存已清除");
+//                        cache_messageTextView.setText(ChineseUtils.toTraditional("缓存已清除"));
                     } else {
                         cache_messageTextView.setText("缓存已清除");
                     }
@@ -865,14 +883,25 @@ public class FragmentMainActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setView(settingCacheView);
         if (is_language_of_traditional_chinese) {
-            builder.setTitle("緩存設置");
-            radio_btn_nocache.setText("停止緩存");
-            radio_btn_cacheOnMobile.setText("開啓2G/3G/4G網絡下緩存");
-            radio_btn_cacheOnlyWifi.setText("僅WIFI網絡下緩存");
-            btnCleanCache.setText("清除所有緩存圖片");
-            builder.setPositiveButton("確定", null);
-            cache_hintTextView.setText("教程圖片被緩存後再次瀏覽不耗流量\n優先使用外部存儲");
-            cache_messageTextView.setText("目前緩存大小 "
+//            builder.setTitle("緩存設置");
+//            radio_btn_nocache.setText("停止緩存");
+//            radio_btn_cacheOnMobile.setText("開啓2G/3G/4G網絡下緩存");
+//            radio_btn_cacheOnlyWifi.setText("僅WIFI網絡下緩存");
+//            btnCleanCache.setText("清除所有緩存圖片");
+//            builder.setPositiveButton("確定", null);
+//            cache_hintTextView.setText("教程圖片被緩存後再次瀏覽不耗流量\n優先使用外部存儲");
+//            cache_messageTextView.setText("目前緩存大小 "
+//                    + cacheSize
+//                    + (float) (cacheSize / 1024.00 / 1024.00)
+//                    + " M");
+            builder.setTitle(ChineseUtils.toTraditional("缓存设置"));
+            radio_btn_nocache.setText(ChineseUtils.toTraditional("停止缓存"));
+            radio_btn_cacheOnMobile.setText(ChineseUtils.toTraditional("开启2G/3G/4G网络下缓存"));
+            radio_btn_cacheOnlyWifi.setText(ChineseUtils.toTraditional("仅WIFI网络下缓存"));
+            btnCleanCache.setText(ChineseUtils.toTraditional("清除所有缓存图片"));
+            builder.setPositiveButton(ChineseUtils.toTraditional("确定"), null);
+            cache_hintTextView.setText(ChineseUtils.toTraditional("教程图片被缓存后再次浏览不耗流量\n优先使用外部存储"));
+            cache_messageTextView.setText(ChineseUtils.toTraditional("目前缓存大小 ")
                     + cacheSize
 //                    + (float) (cacheSize / 1024.00 / 1024.00)
                     + " M");
@@ -891,5 +920,29 @@ public class FragmentMainActivity extends AppCompatActivity {
         }
         builder.show();
         return;
+    }
+
+
+    boolean hasInstallGoogleServer(){
+        //获取GoogleApiAvailability的单例
+        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
+
+        //利用接口判断device是否支持Google Play Service
+        int ret = googleApiAvailability.isGooglePlayServicesAvailable(this);
+
+        //支持的话， 结果将返回SUCCESS
+        if (ret == ConnectionResult.SUCCESS) {
+//            Log.d(TAG, "This phone has available google service inside");
+            return true;
+         } else {
+            Log.e(TAG, "This phone don't have available google service inside");
+
+            //不支持时，可以利用getErrorDialog得到一个提示框, 其中第2个参数传入错误信息
+            //提示框将根据错误信息，生成不同的样式
+            //例如，我自己测试时，第一次Google Play Service不是最新的，
+            //对话框就会显示这些信息，并提供下载更新的按键
+//            googleApiAvailability.getErrorDialog(this, ret, 0).show();
+            return false;
+        }
     }
 }

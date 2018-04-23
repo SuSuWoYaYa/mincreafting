@@ -1,0 +1,171 @@
+/*
+ hesuxiang
+ */
+
+html {
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+}
+
+
+body {
+margin:1px;
+background-color: #FBF6EC;
+
+}
+h1 {
+     /*background-color:#f08523 ;
+   */ color: #ffffff;
+    background-color: #464444;
+    text-align: center;
+    margin: 3px 8px 8px 2px;
+    padding: 12px;
+    box-shadow: 5px 5px 2px #888888;
+}
+
+div {
+    font-size: 10pt;
+}
+
+h2 {
+    margin: 1px;
+    padding: 12px;
+    background-color: #c3c3c3;
+}
+
+h3 {
+    margin: 1px;
+    padding: 8px;
+    background-color: #D3D3D3;
+    }
+
+h4 {
+    margin: 1px;
+    padding: 8px;
+    background-color: #D3D3D3;
+    }
+
+h5 {
+    margin: 1px;
+    padding: 8px;
+    }
+
+h6 {
+    margin: 1px;
+    padding: 8px;
+    }
+
+
+/*
+.yellow {
+    background-color; #FFFFCC;
+    }
+    */
+.say {
+    background-color: #eeeeee;
+    margin: 2px 4px 4px 2px;
+    padding: 4px 8px 5px 8px;
+}
+.yellow {
+    background-color: #faeda2;
+    text-align:center;
+    margin: 2px 4px 4px 2px;
+    padding: 4px 8px 5px 8px;
+}
+.red {
+    background-color: #FFCCCC;
+    text-align:center;
+    margin: 2px 4px 4px 2px;
+    padding: 4px 8px 5px 8px;
+
+}
+
+
+
+p ,dl{
+    margin: 1px;
+    padding: 4px 8px 4px 8px;
+}
+pre,code {
+	 /*background-color: #EADDE0;*/
+   background-color: #efefef;
+    margin: 1px 1px 1px 6px;
+    padding: 1px 8px 2px 8px;
+}
+
+/*
+ul, ol{
+    list-style-position: inside;
+    }
+    */
+
+ul, ol{
+    margin: 1px;
+    padding:2px 4px 2px 22px ;
+}
+
+li {
+    margin: 0px;
+    padding: 1px;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-left:1px solid #888;
+    border-top:1px solid #888;
+
+    margin: 1px;
+
+}
+
+th,td{
+    border-right:1px solid #888;
+    border-bottom:1px solid #888;
+}
+/*
+table {
+    border-collapse: collapse;
+    border-spacing: 1;
+    margin: 1px;
+    border: 1px solid #666666;
+}
+th {
+    border: 1px solid #666666;
+}*/
+
+img {
+
+    height: auto; /* Make sure images are scaled correctly. */
+    max-width: 100%; /* Adhere to container width. */
+}
+
+.darkBlue {
+	color: #00008B;
+}
+
+.darkRed {
+	color: #8B0000;
+}
+
+.number, .hljs-number{
+	color: #e78c45;
+}
+.keyword, .hljs-keyword{
+	  color: #859900;
+}
+
+.string, .hljs-string {
+	color: #718c00;
+}
+
+blockquote {
+	background-color: #FFE4CC;
+	/*background-color: #eeeeee;*/
+    margin: 2px 4px 4px 2px;
+    padding: 4px 8px 5px 8px;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>如何在我的世界中度过第一天</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+  <h1 id="告示牌">告示牌</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p><code>告示牌</code>支持使用JSON文本定义上面的文字，并且有三种指令可以自定义告示牌，分别为<code>give</code>命令（获得物品形式的<code>告示牌</code>）,<code>setblock</code>命令（直接放置）,和<code>blockdata</code>命令（修改已有<code>告示牌</code>）</p>
+<p>格式分别为：</p>
+<pre><code>give @p sign 1 0 {BlockEntityTag:{NBT}}
+</code></pre><pre><code>setblock [x] [y] [z] minecraft:standing_sign/minecraft:wall_sign [数据值] [旧方块处理方式] {NBT}
+</code></pre><pre><code>blockdata [x] [y] [z] {NBT}
+</code></pre><p>其中<code>告示牌</code>的<code>NBT</code>格式如下：</p>
+<pre><code>{Text1:&quot;{JSON文本}&quot;,Text2:&quot;{JSON文本}&quot;,Text3:&quot;{JSON文本}&quot;,Text4:&quot;{JSON文本}&quot;}
+</code></pre><p><code>Text1/2/3/4</code>分别代表牌子的每一行的内容（在使用<code>entitydata</code>命令时，如果相关行内容不需编辑，可以不写相关行数的NBT）。</p>
+<p>请注意，由于<code>Text1/2/3/4</code>本身不是文本对象，而是<code>NBT</code>，所以无需使用双引号包围，并且由于JSON文本被双引号包围，请注意里面引号需要转义。</p>
+<p>例子：</p>
+<pre><code>blockdata ~ ~1 ~ {Text1:&quot;{\&quot;text\&quot;:\&quot;Hello World\&quot;,\&quot;bold\&quot;:true,\&quot;color\&quot;:\&quot;dark_green\&quot;}&quot;,Text2:&quot;{\&quot;selector\&quot;:\&quot;@p\&quot;}&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsonsN6.png" alt="N6"></p>
+<p>如需在同一行内使用多于一个文本对象，请使用<code>JSON array</code>或<code>extra</code><br>例子：</p>
+<pre><code>blockdata ~ ~1 ~ {Text1:&quot;[\&quot;\&quot;,{\&quot;text\&quot;:\&quot;Hello\&quot;,\&quot;color\&quot;:\&quot;green\&quot;},{\&quot;text\&quot;:\&quot; World\&quot;,\&quot;color\&quot;:\&quot;red\&quot;}]&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons52.png" alt="52"></p>
+<hr>
+<p>最后是CE在牌子的应用<br>牌子的每一行都可以设置一个CE，即一个牌子最多可设置4个CE<br>但每一行的CE只能设置在主项，设置在分项的CE是无效的</p>
+<p>例如：</p>
+<pre><code>blockdata ~ ~1 ~ {Text1:&quot;{\&quot;text\&quot;:\&quot;say 1\&quot;,\&quot;clickEvent\&quot;:{\&quot;action\&quot;:\&quot;run_command\&quot;,\&quot;value\&quot;:\&quot;/say 1\&quot;}}&quot;,Text2:&quot;{\&quot;text\&quot;:\&quot;say 2\&quot;,\&quot;clickEvent\&quot;:{\&quot;action\&quot;:\&quot;run_command\&quot;,\&quot;value\&quot;:\&quot;/say 2\&quot;}}&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons53.png" alt="53"></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons54.png" alt="54"></p>
+<p>值得注意的事项是<br>玩家右键点击牌子时执行命令，命令的执行坐标以牌子所处位置为起始点 （情况类似与<code>/execute &lt;点击者&gt; &lt;告示牌坐标&gt; &lt;命令&gt;</code>）</p>
+<ul>
+<li><p>所以当涉及到选择符的命令，例如<strong>/say @e[c=2]</strong> ，这个命令将会以牌子为选择实体的起始点，这个情况下会选中距离牌子最近的两个实体</p>
+</li>
+<li><p>而同样的，使用了相对坐标，例如<strong>/setblock ~ ~ ~ minecraft:stone</strong>，则会以牌子作为相对坐标的起始点，这个情况下会将牌子替换为石头</p>
+</li>
+<li><p><strong>特别注意</strong>，<code>c=1</code>这个选择器参数有特别处理，该参数无论如何都会选中点击者，如<strong>/say @e[c=1]</strong> 必定会选中点击者，不管中间有多少实体距离<code>告示牌</code>比点击者更近</p>
+</li>
+</ul>
+<p><strong>亦请注意</strong>，于1.12以后的版本，由于NBT语法分析器的改动，若需要在牌子中使用<code>unicode-万国码</code>，即<code>\u</code>，需要对其反斜杠进行转义，即写成<code>\\u</code>的形式</p>
+<blockquote>
+<p>如果是Setblock的话，需要指明Text1-Text4的JSON。<br>不过，如果那行是空的话，可以写<code>null</code>。<br>例子: <code>Text4:null</code></p>
+</blockquote>
+<h1 id="成书">成书</h1>
+<p>成书亦支持使用JSON文本定义书本的内容，获得方式只有一个，使用<code>/give</code>命令</p>
+<p>格式为：</p>
+<pre><code>give @p written_book &lt;数量&gt; 0 {pages:[&quot;{JSON文&#x672#x672C;}&quot;,&quot;{JSON文本}&quot;,......],title:&quot;&lt;成书名称&gt;&quot;,author:&quot;&lt;作者&gt;&quot;}
+</code></pre><p><code>数量</code>，<code>成书名称</code>和<code>作者</code>不多作解释，而!(list)[list]<code>pages</code>这个NBT 里面的每一个JSON文本都代表一页的内容<br>例如：</p>
+<pre><code>give @p written_book 1 0 {pages:[&quot;{\&quot;text\&quot;:\&quot;page 1\&quot;}&quot;,&quot;{\&quot;text\&quot;:\&quot;page 2\&quot;}&quot;],title:&quot;Book&quot;,author:&quot;SYL&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons56.png" alt="56"></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons57.png" alt="57"></p>
+<hr>
+<p>如需在一页内使用多个文本对象，自然需要使用<code>JSON array</code><br>并且<code>成书</code>也支援CE和HE<br>例如：</p>
+<pre><code>give @p written_book 1 0 {pages:[&quot;[\&quot;\&quot;,{\&quot;text\&quot;:\&quot;say hi\&quot;,\&quot;underlined\&quot;:true,\&quot;clickEvent\&quot;:{\&quot;action\&quot;:\&quot;run_command\&quot;,\&quot;value\&quot;:\&quot;/say hi\&quot;}},{\&quot;text\&quot;:\&quot;\nhello\&quot;,\&quot;bold\&quot;:true,\&quot;hoverEvent\&quot;:{\&quot;action\&quot;:\&quot;show_text\&quot;,\&quot;value\&quot;:\&quot;world\&quot;}}]&quot;],title:&quot;Book&quot;,author:&quot;SYL&quot;}
+</code></pre><p>分解以上命令说明</p>
+<ul>
+<li><p>主项为<code>\&quot;\&quot;</code>，即空白的主项</p>
+</li>
+<li><p>第二项为&quot;say hi&quot;，点击后让玩家执行<code>/say hi</code></p>
+</li>
+<li><p>第三项为&quot;\nhello&quot;，悬浮在文字上显示<code>world</code></p>
+</li>
+<li><p>需要注意的是，第三项内容前有<code>\n</code>换行符，所以它将在第二行显示</p>
+</li>
+</ul>
+<p>最终效果为：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons58.png" alt="58"></p>
+<p>点击say hi<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons59.png" alt="59"></p>
+<p><strong>请注意</strong>，于1.12以后的版本，由于NBT语法分析器的改动，若需要在牌子中使用<code>unicode-万国码</code>或<code>换行符</code>，即<code>\u</code>和<code>\n</code>，需要对其反斜杠进行转义，即写成<code>\\u</code>以及<code>\\n</code>的形式</p>
+<p>以上命令若需在1.12后使用，请使用以下版本：</p>
+<pre><code>give @p written_book 1 0 {pages:[&quot;[\&quot;\&quot;,{\&quot;text\&quot;:\&quot;say hi\&quot;,\&quot;underlined\&quot;:true,\&quot;clickEvent\&quot;:{\&quot;action\&quot;:\&quot;run_command\&quot;,\&quot;value\&quot;:\&quot;/say hi\&quot;}},{\&quot;text\&quot;:\&quot;\\nhello\&quot;,\&quot;bold\&quot;:true,\&quot;hoverEvent\&quot;:{\&quot;action\&quot;:\&quot;show_text\&quot;,\&quot;value\&quot;:\&quot;world\&quot;}}]&quot;],title:&quot;Book&quot;,author:&quot;SYL&quot;}
+</code></pre>
+                                
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

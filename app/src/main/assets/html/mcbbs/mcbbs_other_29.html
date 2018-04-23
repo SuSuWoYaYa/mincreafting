@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从MC开始的java入门 p7.plusType</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >从MC开始的java入门 p7.plusType</h1>
+            <!-- End Title -->
+        
+<div >
+   <p class="red">本文章转载自网易论坛<br />作者-Namefind</p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_Namefind_mc.png" /> 
+</p><p>
+震惊！瓜瓜高产的背后究竟是....
+</p><p>
+</p><p><b>本章目标</b>
+</p><p>理解<b>变量</b>，初识<b>boolean</b>数据类型，初识<b>运算符</b>
+</p><p>Let's start!!!</p> 
+<h2>JAVA常识</h2><p>
+
+
+<font color="DarkRed">
+
+Java总共有多少种数据类型呢？</font>
+</p><p>基本数据类型：
+</p><p><b>byte</b> 字节型
+</p><p><b>short</b> 短整型
+</p><p><b>int</b> 整型
+</p><p><b>long</b> 长整型
+</p><p><b>char</b> 字符型
+</p><p><b>boolean</b> 布尔型
+</p><p><b>引用</b> 数据类型：
+</p><p><b>class</b> 类
+</p><p><b>interface</b> 接口
+</p><p><b>array</b> 数组
+</p><p><b>String</b> 字符串
+
+
+
+</p>
+ 
+
+<h2>变量</h2><p>
+ 
+变量是一个<font color="DarkRed">可更改的数值</font>，
+</p><p>可以定义一个变量之后<b>给它不同的数值（给了新数值后，旧数值会被覆盖）
+</b></p><p>
+</p><p>我们先来看一段代码：
+</p><p><code><font color="DarkRed">int num = 0;</font></code>
+</p><p><b>定义一个整数类型 变量名为num的变量。并且给它了数值，让num等于0。
+</b></p><p>
+</p><p>定义变量语法: <code>数据类型 变量名 = 数值;</code>
+</p><p>Q:可以定义一个整数类型，然后给它一个字符串吗？
+</p><p>A:当然不行！会报错的！
+</p><p>Q:我可以只定义变量，不给它数值吗？
+</p><p>A：可以，这样属性会为默认值。根据数据类型不同，默认值也不同。
+</p><p>
+</p><p><b>接下来我们开始操作吧！</b>
+</p><p>[请使用普通java项目]
+</p><p><b>在主方法里定义一个int类型的变量，并随心给它一个数值。
+</b></p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_29_1.png" /> 
+
+</p><p>这个过程我们叫做赋值。
+</p><p>接下来我们<b>复制一份之前的代码：</b>
+
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_29_2.png" /> 
+</p><p>发现报错了，提示变量名重复，需要更改。
+</p><p>
+</p><p>那么我们不想更改变量名，想<font color="DarkRed">使用之前的变量来赋值</font>该怎么办？
+</p><p><font color="DarkRed">只要把数据类型删掉就好了</font>：
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_29_3.png" /> 
+</p><p>
+</p><p>使用数据类型=定义，所以只要不定义，就可以重新对变量进行赋值了！
+</p><p>
+</p><p>我们<b>再次对int变量进行赋值</b>，并使用控制台打印输出语句查看赋值后的数值：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_29_4.png" /> 
+</p><p>看，num变成新的数值了，旧的被新的覆盖掉了。
+</p><p>
+</p><p>这说明<font color="DarkRed">代码的执行顺序是由上到下的</font>，后来的赋值会覆盖之前的内容。
+</p><p>Q：可以先赋值，再写定义吗？
+</p><p>A：不可以，会提示未定义变量。
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_29_5.png" /> 
+
+
+
+
+</p> 
+<h2>新的数据类型：boolean（布尔型）</h2><p>
+</p><p>这个数据类型只有两个值，<font color="DarkRed">true</font>或者<font color="DarkRed">false</font>。
+</p><p>当你定义了boolean却没有给数值的时候，默认是false。
+</p><p>你可能会问：“不给数值不是会报错吗？”问的很好，我们之后再来讨论这个问题。
+
+</p><p>
+</p><p>这个数据类型经常用来判断代码执行后的结果。
+</p><p>如果你要使用一个boolean类型的变量，你不一定需要定义。
+</p><p><font color="DarkRed">例如：System.out.println(1>2);
+</p><p>运行后会直接打印false。</font>
+</p><p>可以看到大于号>在代码中适用，那么还有什么运算符呢？
+</p><p><font color="DarkRed">+ - ++ --  * / % > < == ? : != => =< & ~ || ^</font>
+</p><p>很多是不是OVO 所以跟mod制作关系不太大，java关系比较大的，会作为拓展章发布。
+
+</p><p>
+</p><p>现在回来，
+</p><p><font color="DarkRed">我想判断两个数字是否相等呢？</font>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_29_6.png" /> 
+</p><p>系统却提示找不到左边的变量？
+</p><p>
+</p><p>因为在编程中，等于号=是赋值的操作，<font color="DarkRed">如果想判断相等，用==来判断</font>。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_29_7.png" /> 
+
+ 
+</p><p>现在就可以正常执行了！
+</p><p>那么这次就到这里吧！OWO
+</p><p>后面是面对对象哦，在想要不要讲多几个点，然后面对对象好理解一些。
+</p><p>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

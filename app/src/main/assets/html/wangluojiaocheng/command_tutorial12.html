@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.1.3 JSON事件</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="点击事件">点击事件</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+ 
+                               
+<p><code>clickEvent</code>是JSON最重要的功能之一。<br>其功能为：点击相关文字的时候执行某些操作。<br>提供了一个对输入（点击）产生反馈（action）的功能。</p>
+<p>基本格式为：</p>
+<pre><code>&quot;clickEvent&quot;:{&quot;action&quot;:&quot;&lt;动作&gt;&quot;,&quot;value&quot;:&quot;&lt;值&gt;&quot;}
+</code></pre><p>将其放置在对象内使用（和样式类似，都是文本对象的一个<strong>属性</strong>，只是这属性比较复杂而已）</p>
+<p>请注意，<code>clickEvent</code>不适用于标题及<code>advancement</code>的description。<br>在<strong>告示牌</strong>的话最多只能设置4个，之后<strong>告示牌</strong>部分会有讲解。</p>
+<p>而每个文本对象只能设置一个点击事件和悬浮事件，继承下来的事件会被覆盖。</p>
+<blockquote>
+<p><code>advancement</code>的title的clickEvent只能在聊天栏公告获得进度时点击，不能在进度面板点击</p>
+</blockquote>
+<h2 id="runcommand-运行命令">run_command-运行命令</h2>
+<p>run_command是一个十分常用的动作<br>其功能为让点击者执行设定的命令<br>基本格式为：</p>
+<pre><code>&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;&lt;需执行命令&gt;&quot;}
+</code></pre><p>需执行命令前必须有<code>/</code>，就像是直接在聊天栏执行一样。</p>
+<p>并且CE（clickevent的简称）可以和样式代码一起使用<br>例如：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;color&quot;:&quot;dark_red&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;/say hi&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons18.png" alt="18"></p>
+<p>由于run_command是使点击者执行命令，所以同一个命令由不同人点击，结果也不同<br>例如分别由SYL和Tester点击上面的命令：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons19.png" alt="19"></p>
+<p>在多人游戏时，需要注意一点，在<code>tellraw</code>命令、书本内使用CE时，如果点击者没有OP权限<br>那么是无法执行需要OP权限的命令的<br>例如<code>say</code>无法被普通玩家执行，那么如果在没有OP权限的情况点击文字：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons20.png" alt="20"></p>
+<blockquote>
+<p>如果是在<strong>告示牌</strong>内使用的话，则带有2级OP权限，所以普通玩家也可以右键<strong>告示牌</strong>执行命令</p>
+</blockquote>
+<hr>
+<p>另一点就是，<code>value</code>里面的命令长度不能太长<br>因为命令是视作在聊天栏输入之后按enter执行的<br>所以不能超越聊天栏的输入上限：256个字符</p>
+<p>例如我使用以下<code>/summon</code>命令：<br>（本例子为旧版本例子，当时输入上限为100个字符，所以此命令在新版本中可用，但若超出256个字符的话依旧会出现问题）</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;color&quot;:&quot;dark_red&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;/summon minecraft:creeper ~ ~ ~ {powered:1,ExplosionRadius:5,Attributes:[{Name:generic.movementSpeed,Base:0}],ActiveEffects:[{Ambient:1,Amplifier:0,Duration:999999999,Id:11}]}&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons21.png" alt="21"></p>
+<p>由于超过了长度上限，实际输入部分到逗号就终结了，命令并未完整，自然无法成功执行</p>
+<blockquote>
+<p>如果是在<strong>告示牌</strong>内使用的话，则没有这个长度限制</p>
+</blockquote>
+<h2 id="suggestcommand-建议命令">suggest_command-建议命令</h2>
+<p><code>suggest_command</code>，建议命令<br>其功能为点击时，将点击者输入栏中的内容<strong>替换</strong>为<code>value</code>中设定的内容</p>
+<p>格式</p>
+<pre><code>&quot;clickEvent&quot;:{&quot;action&quot;:&quot;suggest_command&quot;,&quot;value&quot;:&quot;&lt;值&gt;&quot;}
+</code></pre><p>例如：</p>
+<pre><code>tellraw @a {&quotquot;text&quot;:&quot;Hello World&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;suggest_command&quot;,&quot;value&quot;:&quot;hi&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons22.png" alt="22"></p>
+<h2 id="openurl-打开链接">open_url-打开链接</h2>
+<p>open_url，打开链接（一般是叫浏览器打开的，然而打开前会有一段警告询问玩家是否要打开未知链接）</p>
+<p>基本格式为：</p>
+<pre><code>&quot;clickEvent&quot;:{&quot;action&quot;:&quot;open_url&quot;,&quot;value&quot;:&quot;&lt;值&gt;&quot;}
+</code></pre><p>值的部分必须填一个以<code>http://</code>或<code>https://</code>开头的网址<br>按下去，系统就会询问是否打开网页，同意以后就会打开浏览器跳转至页面<br>例子:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;open_url&quot;,&quot;value&quot;:&quot;http://www.google.com&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons1.png" alt="1"></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons60.png" alt="60"></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons24.png" alt="24"></p>
+<h2 id="changepage-换页">change_page-换页</h2>
+<p>此CE为<strong>成书</strong>专用的CE<br><strong>成书</strong>的格式容后讲解</p>
+<p>基本格式为：</p>
+<pre><code>&quot;clickEvent&quot;:{&quot;action&quot;:&quot;change_page&quot;,&quot;value&quot;:&quot;&lt;值&gt;&quot;}
+</code></pre><p><code>值</code>就是要跳到的页数<br>例如：（<strong>成书</strong>的格式请参阅后面相关篇章）</p>
+<pre><code>give @a minecraft:written_book 1 0 {title:&quot;&quot;,author:&quot;&quot;,pages:[&quot;{\&quot;text\&quot;:\&quot;Page 2\&quot;,\&quot;clickEvent\&quot;:{\&quot;action\&quot;:\&quot;change_page\&quot;,\&quot;value\&quot;:\&quot;2\&quot;}}&quot;,&quot;{\&quot;text\&quot;:\&quot;The second page.\&quot;}&quot;]}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons30.png" alt="30"></p>
+<p>按下以后：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons31.png" alt="31"></p>
+<h1 id="悬浮事件">悬浮事件</h1>
+<p><code>hoverevent</code>是JSON的另一个实用功能<br>类似CE，HE也是一个反馈机制，不过这次是对鼠标移上文字时，这个动作进行反馈<br>简单来说就是鼠标移上去文字，会有个悬浮框显示一些信息</p>
+<p>基本格式为：</p>
+<pre><code>&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;&lt;动作&gt;&quot;,&quot;value&quot;:&quot;&lt;值&gt;&quot;}
+</code></pre><blockquote>
+<p><code>hoverevent</code>不适用于<strong>标题</strong>、<code>advancement</code>和<strong>告示牌</strong></p>
+</blockquote>
+<h2 id="showtext-显示文本">show_text-显示文本</h2>
+<p>show_text，显示文本<br>功能自然为显示文字</p>
+<p>基本格式为：</p>
+<pre><code>&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_text&quot;,&quot;value&quot;:&quot;&lt;值&gt;&quot;}
+</code></pre><p>或</p>
+<pre><code>&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_text&quot;,&quot;value&quot;:{JSON文本}}
+</code></pre><p>前者使用上比较方便简单，但不支持如样式等设定<br>使用例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_text&quot;,&quot;value&quot;:&quot;hello again&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons26.png" alt="26"></p>
+<p>后者需求完整的JSON文本，但支援如样式代码等功能<br>例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_text&quot;,&quot;value&quot;:{&quot;text&quot;:&quot;hello again&quot;,&quot;color&quot;:&quot;gold&quot;}}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons27.png" alt="27"></p>
+<p>甚至是其他的JSON结构，例如：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_text&quot;,&quot;value&quot;:{&quot;score&quot;:{&quot;name&quot;:&quot;SYL_qiuyifeng&quot;,&quot;objective&quot;:&quot;test&quot;},&quot;color&quot;:&quot;gold&quot;}}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons28.png" alt="28"></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons29.png" alt="29"></p>
+<h2 id="showitem-显示物品">show_item-显示物品</h2>
+<p>显示物品，可以显示一个物品的信息<br>其效果与在背包内查看物品信息一致</p>
+<p>格式为：</p>
+<pre><code>&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_item&quot;,&quot;value&quot;:&quot;&lt;物品NBT标签&gt;&quot;}
+</code></pre><p>物品标签请参考之后的NBT教程<br>例子：（关于\&quot;，即转义的内容，请参阅相应章节）</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_item&quot;,&quot;value&quot;:&quot;{id:\&quot;minecraft:iron_pickaxe\&quot;}&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsonsN8.png" alt="N8"></p>
+<p> 例子二：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_item&quot;,&quot;value&quot;:&quot;{id:\&quot;minecraft:iron_pickaxe\&quot;,tag:{display:{Lore:[\&quot;keep digging\&quot;]}}}&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsonsN7.png" alt="N7"></p>
+<h2 id="showentity-显示实体">show_entity-显示实体</h2>
+<p>show_entity，显示生物<br>此功能必须在玩家使用了F3+H打开了附加信息显示后才能运作</p>
+<p>这个功能提供的显示，和运行命令<code>/say @e</code>或其他类似命令后<br>将鼠标移上去实体名称后显示的实体信息一致<br>效果如下：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons34.png" alt="34"></p>
+<p>基本格式为：</p>
+<pre><code>&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_entity&quot;,&quot;value&quot;:&quot;{name:\&quot;&lt;名称&gt;\&quot;,type:\&quot;&lt;生物ID&gt;\&quot;,id:\&quot;&lt;UUID/文本&gt;\&quot;}&quot;}
+</code></pre><p>其中<code>name</code>就是最上面显示的名字<br><code>type</code>就是生物id<br><code>id</code>呢，原意是用于显示<code>UUID</code>的，但也可用作一般文本显示</p>
+<p>例如：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Pig&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_entity&quot;,&quot;value&quot;:{\&quot;type\&quot;:\&quot;Pig\&quot;,\&quot;name\&quot;:\&quot;Bacon\&quot;,\&quot;id\&quot;:\&quot;Walking Bacon\&quot;}}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons35.png" alt="35"></p>
+<h1 id="insertion-插入">insertion-插入</h1>
+<p>insertion是一个单独的属性<br>其格式为：</p>
+<pre><code>&quot;insertion&quot;:&quot;&lt;值&gt;&quot;
+</code></pre><p>其功能为，shift+点击该JSON文本后，在聊天栏输入插入<code>值</code>的内容<br>和<code>suggest_command</code>不同，此操作并<strong>不会覆盖</strong>已有输入<br>而是在输入的最后添加</p>
+<p>例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;insertion&quot;:&quot;|after click&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons25.png" alt="25"></p>
+<p><code>before click</code>是已经输入的内容，<code>|after click</code>是点击后插入的内容</p>
+<hr>
+<p>即使知道了那么多的功能，如果JSON文本只能做到单一颜色，单一功能，还是比较单调啊。<br>不用怕！我们可以进行分项处理，一次过显示多个文本对象，显示不同的样式、类型以及事件。<br>接下来将会讲解JSON分项处理。</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

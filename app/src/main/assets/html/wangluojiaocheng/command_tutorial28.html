@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.4 记分板命令</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="记分板命令">记分板命令</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>本章将简略地介绍记分板的相关命令以及使用实例。注意，除了operation相关的命令有特殊情况，其它命令中关于玩家的参数，都可以使用<code>*</code>代指记分板上的所有玩家。</p>
+<h2 id="变量相关命令">变量相关命令</h2>
+<pre><code>scoreboard objectives add &lt;name&gt; &lt;criteria&gt; [display name...]
+</code></pre><p>创建一个新的变量，name为变量名，criteria为判据，display name为显示名称。</p>
+<p>实例：加入一个名为a，判据为dummy，显示名称为scb的变量：</p>
+<pre><code>scoreboard objectives add a dummy scb
+</code></pre><hr>
+<pre><code>scoreboard objectives list
+</code></pre><p>列出当前的变量及其类型。</p>
+<p>实例：直接输入该命令即可。效果如下：</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbc1.png" alt=""></p>
+<hr>
+<pre><code>scoreboard objectives remove &lt;name&gt;
+</code></pre><p>移除一个变量。name为变量名。</p>
+<p>实例：移除一个名为a的变量：</p>
+<pre><code>scoreboard objectives remove a
+</code></pre><hr>
+<pre><code>scoreboard objectives setdisplay &lt;slot&gt; [objective]
+</code></pre><p>设置变量显示位置。slot为位置，objective为变量名。</p>
+<p>实例：设置变量a显示在侧边栏（sidebar）：</p>
+<pre><code>scoreboard objectives setdisplay sidebar a
+</code></pre><p>显示效果及可用位置见<b>4.1 记分板变量</b>部分。</p>
+<h2 id="变量对象相关命令">变量对象相关命令</h2>
+<pre><code>scoreboard players list [对象名称]
+</code></pre><p>列出记分板上的对象。对象名称填写则显示对象名称在具体变量上的分数。</p>
+<p>实例1：不填写参数，直接输入时：</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbc2.png" alt=""></p>
+<p>实例2：输入：</p>
+<pre><code>scoreboard players list KakagouLT
+</code></pre><p>显示：</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbc3.png" alt=""></p>
+<p>可以看到显示的格式为-显示名称:分数(名称)。</p>
+<hr>
+<pre><code>scoreboard players set &lt;对象&gt; &lt;变量&gt; &lt;分数&gt; [NBT]
+</code></pre><p>设置对象在变量上的分数。NBT用于指定符合条件的实体。（Base tag为entity）注意，在set分数之前，玩家是不存在分数的。</p>
+<p>实例：给玩家A在b上的分数设置为10：</p>
+<pre><code>scoreboard players set A b 10
+</code></pre><hr>
+<pre><code>scoreboard players add &lt;对象&gt; &lt;变量&gt; &lt;数值&gt; [NBT]
+scoreboard players remove &lt;对象&gt; &lt;变量&gt; &lt;数值&gt; [NBT]
+</code></pre><p>给对象的指定变量加/减分，<code>&lt;数值&gt;</code>为修改量。NBT用于指定符合条件的实体。（Base tag为entity）</p>
+<p>实例1：给玩家B在b上的分数加5（原来必须存在分数，否则功能与set相同）：</p>
+<pre><code>scoreboard players add B b 5
+</code></pre><p>实例2：给玩家B在b上的分数减5（原来必须存在分数，否则功能与set相同且设置的分数为负分）：</p>
+<pre><code>scoreboard players remove B b 5
+</code></pre><p>特例1：给玩家<strong>初始化在变量A上的分数</strong>。如果原先没有分数则设置为0，否则则不改变分数：</p>
+<pre><code>scoreboard players add @a A 0
+</code></pre><p>应当指出，加分减分以及分数设置命令<strong>不适用于</strong>判据为只读型的变量。</p>
+<hr>
+<pre><code>scoreboard players reset &lt;对象&gt; [变量]
+</code></pre><p>将对象从记分板上移除。这项操作不是把分数设为0，而是<strong>不再追踪</strong>对象。如果填写了变量，则只将对象从这个指定的变量中移除。这个命令也可以让只读型变量不再追踪真实玩家。</p>
+<p>实例：将玩家A从变量b中移除：</p>
+<pre><code>scoreboard players reset A b
+</code></pre><hr>
+<pre><code>scoreboard players enable &lt;对象&gt; &lt;trigger变量&gt;
+</code></pre><p>这是一个与触发器相关的命令，可以给予玩家修改某个判据为trigger的变量的权限。我们将在下文trigger部分详细介绍这个命令的用法。</p>
+<hr>
+<pre><code>scoreboard players test &lt;对象&gt; &lt;变量&gt; &lt;min&gt; [max]
+</code></pre><p>检测玩家在变量上的分数是否在min（最小值，大于等于）和max（最大值，小于等于）之间。如果不填max，则默认max为2,147,483,647。如果min为<code>*</code>，则视为min是-2,147,483,648。</p>
+<p>当检测成立，效果和testfor命令检测成立时相同。</p>
+<p>实例1：检测玩家A在b上的分数是否处于200到300之间：</p>
+<pre><code>scoreboard players test A b 200 300
+</code></pre><p>实例2：检测玩家E在b上的分数是否大于等于100，即在100到2147483647的范围内：</p>
+<pre><code>scoreboard players test E b 100
+</code></pre><hr>
+<pre><code>scoreboard players operation &lt;targetName&gt; &lt;targetObjective&gt; &lt;operation&gt; &lt;selector&gt; &lt;objective&gt;
+</code></pre><p>进行分数的数学运算。运算方式为operation。将被运算的分数分别是：targetName在targetObjective的分数，和selector在objective上的分数。以下简称这两个分数为<strong>tar</strong>和<strong>sel</strong>。</p>
+<p>对于<code>+=</code>，<code>-=</code>，<code>*=</code>，<code>/=</code>,<code>%=</code>五个运算符来说，相关的操作为在tar的基础上加/减/乘/除/求余sel。</p>
+<p>另外，除法结果若有小数则丢弃小数位的数据。除/求余0的操作不会改变分数。负数的处理方式与数学运算方式相同。</p>
+<p><code>=</code>的作用是将tar设为sel。</p>
+<p>对于<code>&lt;</code>，<code>&gt;</code>两个运算符来说，相关的操作为：如果<strong>不满足</strong>tar小于/大于sel，则将tar设为sel。</p>
+<p><code>&gt;&lt;</code>的作用是交换两个数的值。</p>
+<p>实例：下面的表格展示了各个操作的对应结果：</p>
+<table>
+<thead>
+<tr>
+<th>原分数tar（左）</th>
+<th>原分数sel（右）</th>
+<th>运算符</th>
+<th>结果分数tar（左）</th>
+<th>结果分数sel（右）</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>+=</td>
+<td>5</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>-=</td>
+<td>1</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>*=</td>
+<td>6</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>/=</td>
+<td>1</td>
+<td>2</td>
+<td>丢弃小数位的数据</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>/=</td>
+<td>2</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>/=</td>
+<td>3</td>
+<td>0</td>
+<td>除0不会报错而是<strong>不会运作</strong></td>
+</tr>
+<tr>
+<td>-3</td>
+<td>2</td>
+<td>/=</td>
+<td>-1</td>
+<td>2</td>
+<td>按照数学方法处理负号</td>
+</tr>
+<tr>
+<td>8</td>
+<td>3</td>
+<td>%=</td>
+<td>2</td>
+<td>3</td>
+<td>-</td>
+</tr>
+<tr>
+<td>8</td>
+<td>-3</td>
+<td>%=</td>
+<td>2</td>
+<td>-3</td>
+<td>tar符号不变</td>
+</tr>
+<tr>
+<td>-8</td>
+<td>3</td>
+<td>%=</td>
+<td>-2</td>
+<td>3</td>
+<td>tar符号不变</td>
+</tr>
+<tr>
+<td>-8</td>
+<td>-3</td>
+<td>%=</td>
+<td>-2</td>
+<td>3</td>
+<td>tar符号不变</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>%=</td>
+<td>3</td>
+<td>0</td>
+<td>除0不会报错而是<strong>不会运作</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>=</td>
+<td>2</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>&gt;</td>
+<td>3</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>&gt;</td>
+<td>3</td>
+<td>3</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>&lt;</td>
+<td>2</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>&lt;</td>
+<td>2</td>
+<td>3</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5</td>
+<td>6</td>
+<td>&gt;&lt;</td>
+<td>6</td>
+<td>5</td>
+<td>唯一一个会修改右边分数的运算</td>
+</tr>
+</tbody>
+</table>
+<h2 id="标签相关命令">标签相关命令</h2>
+<pre><code>scoreboard players tag &lt;实体&gt; add &lt;标签&gt; [NBT]
+scoreboard players tag &lt;实体&gt; remove &lt;标签&gt; [NBT]
+scoreboard players tag &lt;实体&gt; list
+</code></pre><p>第一条命令就是，当指定实体符合NBT要求（如无NBT则不用符合）则加上标签。（无法重复加上标签）</p>
+<p>第二条命令就是，当指定实体符合NBT要求（如无NBT则不用符合）则移除指定标签。</p>
+<p>第三条命令就是，列出指定实体的标签。</p>
+<p><strong>标签无法运用于假名。</strong></p>
+<p>实例：</p>
+<pre><code># 给所有玩家加上online标签
+scoreboard players tag @a add online
+
+# 从移除了AI的实体身上删掉标签smart
+scoreboard players tag @e remove smart {NoAI:1b}
+
+# 列出所有实体的标签
+scoreboard players tag @e list
+</code></pre><p>list命令效果如下：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbc6.png" alt=""></p>
+<h2 id="队伍相关命令">队伍相关命令</h2>
+<pre><code>scoreboard teams list [teamname]
+</code></pre><p>列出存在的队伍。指定teamname时显示队伍内的实体。</p>
+<p>实例1：不填写参数，直接输入：</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbc4.png" alt=""></p>
+<p>显示格式为-名称:&apos;显示名称&apos;有*个玩家</p>
+<p>实例2：填写参数，输入：</p>
+<pre><code>scoreboard teams list teamA
+</code></pre><p>显示：</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbc5.png" alt=""></p>
+<hr>
+<pre><code>scoreboard teams add &lt;name&gt; [display name...]
+</code></pre><p>创建一个新的队伍。队伍名称为name，显示名称为display name。</p>
+<p>实例：创建一个名称为teamB，显示名称为tB的队伍：</p>
+<pre><code>scoreboard teams add teamB tB
+</code></pre><hr>
+<pre><code>scoreboard teams remove &lt;name&gt;
+</code></pre><p>移除一个队伍。name为队伍名称。</p>
+<p>实例：移除队伍teamA：</p>
+<pre><code>scoreboard teams remove teamA
+</code></pre><hr>
+<pre><code>scoreboard teams empty &lt;name&gt;
+</code></pre><p>清空一个队伍里的成员。</p>
+<p>实例：清空队伍teamB的成员：</p>
+<pre><code>scoreboard teams empty teamB
+</code></pre><hr>
+<pre><code>scoreboard teams join &lt;team&gt; [实体...]
+</code></pre><p>让实体加入队伍team。</p>
+<p>实例：让玩家A、B、C加入队伍teamA：</p>
+<pre><code>scoreboard teams join teamA A B C
+</code></pre><hr>
+<pre><code>scoreboard teams leave [players...]
+</code></pre><p>将玩家players从队伍中移除。因为每个玩家只能加入一个队伍，所以不必指定队伍名称。</p>
+<p>实例：将A、B、C移出队伍：</p>
+<pre><code>scoreboard teams leave A B C
+</code></pre><hr>
+<pre><code>scoreboard teams option &lt;team&gt; color &lt;value&gt;
+scoreboard teams option &lt;team&gt; friendlyfire &lt;true|false&gt;
+scoreboard teams option &lt;team&gt; seeFriendlyInvisibles &lt;true|false&gt;
+scoreboard teams option &lt;team&gt; nametagVisibility &lt;never|hideForOtherTeams|hideForOwnTeam|always&gt;
+scoreboard teams option &lt;team&gt; deathMessageVisibility &lt;never|hideForOtherTeams|hideForOwnTeam|always&gt;
+scoreboard teams option &lt;team&gt; collisionRule &lt;always|never|pushOwnTeam|pushOtherTeams&gt;
+</code></pre><p>设置队伍相关的属性。team是队伍名称。</p>
+<ul>
+<li><code>color</code>指定队伍颜色，可用的颜色为<code>black</code>, <code>dark_blue</code>, <code>dark_green</code>, <code>dark_aqua</code>, <code>dark_red</code>, <code>dark_purple</code>, <code>gold</code>, <code>gray</code>, <code>dark_gray</code>, <code>blue</code>, <code>green</code>, <code>aqua</code>, <code>red</code>, <code>light_purple</code>, <code>yellow</code>和<code>white</code>。填写<code>reset</code>则清空颜色</li>
+<li><code>friendlyfire</code>决定是否开启友军伤害。true为开启，false为关闭。</li>
+<li><code>seeFriendlyInvisibles</code>决定是否开启队友隐身可见。参数相关意义同上。</li>
+<li><code>nametagVisibility</code>决定名称牌是否可见。never为所有人（包括队伍系统外的玩家）不可见，hideForOtherTeams为其他队伍玩家不可见，hideForOwnTeam为本队玩家不可见，always为所有人可见。</li>
+<li><code>deathMessageVisibility</code>决定死亡信息是否可见。参数相关意义同上。</li>
+<li><code>collisionRule</code>决定碰撞规则。always为队员对所有人（因为碰撞规则而无法推动的除外）都可相互推动，never为队员可以穿过任何实体而不发生推动，pushOwnTeam为只保留队员之间的推动，pushOtherTeams为取消队员之间的推动。</li>
+</ul>
+<p>有关详情请参见<b>队伍</b></p>
+<h2 id="trigger相关命令">trigger相关命令</h2>
+<p>在前面的介绍中我们提到了<code>scoreboard players enable &lt;player&gt; &lt;trigger&gt;</code>。这个章节将介绍触发器（trigger）相关的命令和使用方法。</p>
+<p>触发器，就是判据为trigger的变量。创建一个名称为trig的触发器：</p>
+<pre><code>scoreboard objectives add trig trigger
+</code></pre><p>如果要让玩家修改触发器的数值，需要先给玩家设置修改权限，即使用enable命令：</p>
+<pre><code>scoreboard players enable @p trig
+</code></pre><p>这里的@p也能修改成具体玩家的名称，或者能指定玩家的目标选择器。</p>
+<p>当玩家获得权限后，就可以使用以下的trigger命令：</p>
+<pre><code>trigger &lt;objective&gt; &lt;add|set&gt; &lt;value&gt;
+</code></pre><p>objective是触发器名称，add为增加分数，set为设置分数，value为一个分数值。</p>
+<p>例如：</p>
+<pre><code>trigger trig add 3
+</code></pre><p>可以使trig的分数+3（原先没有分数则设置为3）</p>
+<pre><code>trigger trig set 5
+</code></pre><p>直接将trig的分数设置为5。</p>
+<p>当玩家使用过trigger命令后，他就失去了继续对同一触发器使用<code>trigger</code>的权限。所以每次使用后都需要重新使用enable命令才能让玩家再次能使用trigger。</p>
+<h2 id="stats命令">stats命令</h2>
+<p>Stats其实就是把命令执行统计（参见 <b>命令执行统计</b> ）绑定到一个对象的变量分数，从而获得命令执行统计并进行计算。</p>
+<p>我们一般会用stats来：</p>
+<ul>
+<li>检查（指定）方块数量（使用AffectedBlocks）</li>
+<li>检查（指定）物品数量（使用AffectedItems）</li>
+<li>获得某些数据，如当前时间（使用QueryResult及某些特殊查询类命令）</li>
+<li>命令执行成功与否（使用SuccessCount）</li>
+</ul>
+<p>如果是影响实体数(AffectedEntities)，我们一般都能够直接使用<code>execute</code>命令逐个地为实体加分，故此我们大部分时间也不需要使用这项stats。而且这项统计对于大部分命令也是1（无论目标实体数量是多少），故此获得实体数量没太大意义。</p>
+<p>绑定stats的流程：</p>
+<ul>
+<li>初始化对象的变量分数：一般为0。如果一开始已经有分数则不必初始化。</li>
+<li>执行<code>stats</code>命令，其格式将会在下方仔细描述。</li>
+</ul>
+<p>其中初始化是十分重要的，没初始化导致错误是新手经常发生的错误。</p>
+<h3 id="命令格式">命令格式</h3>
+<p>Stats命令格式（实体）</p>
+<pre><code>stats entity &lt;目标实体&gt; clear &lt;命令执行统计&gt;
+
+stats entity &lt;目标实体&gt; set &lt;命令执行统计&gt; &lt;对象&gt; &lt;变量&gt;
+</code></pre><p>前一条命令是用作解除绑定，后者为绑定。</p>
+<p>目标实体为我们需要获得命令执行统计的实体。<br>命令执行统计就是我们需要绑定的统计，参见 <b>命令执行</b> 里的命令执行统计。<br>对象就是我们绑定到的对象，变量就是储存分数的变量。</p>
+<p>简单来说就是，把目标实体的命令执行统计储存在对象的变量分数里。</p>
+<p>至于方块（只是对命令方块有效），就是把<code>entity &lt;目标实体&gt;</code> 替换为<code>block &lt;x&gt; &lt;y&gt; &lt;z&gt;</code>，而xyz就是目标命令方块的坐标。</p>
+<blockquote>
+<p>注意<br>stats的对象可能会改变，因为是直接储存选择器（如果是使用选择器），所以可能会赋值给未知的实体（因为每次赋值前都会找实体），需要小心<br>我们可以使用<code>@s</code>来代表目标实体自身，这样就避免了可能选择到错误实体的情况了。（大部分情况下也是赋值给自身）</p>
+<p>其次，命令执行统计的结果<strong>会覆盖而不会累加</strong>，只取最后一次统计的结果。命令对所有实体执行完毕后才开始统计结果。（详细将会在之后<code>execute</code>命令部分详细说明）</p>
+<p>最后，如果需要同时对一堆实体设置相同的stats给他们自己的变量，并不需要使用execute，因为stats是直接把对象写进该实体的NBT里的。直接把对象设置为<code>@s</code>就好，详情看下方例子。</p>
+</blockquote>
+<h3 id="实例——检查物品栏物品数量">实例——检查物品栏物品数量</h3>
+<p>通过NBT的Inventory我们也能检测物品数量，然而有以下限制：</p>
+<ul>
+<li>不能检测超过1组物品（同一种物品被分别放在不同格子），因为NBT的list不能检测重复</li>
+<li>需要穷举，比如64个物品就得穷举64次...</li>
+</ul>
+<p>所以我们一般是使用<code>clear</code>命令的，格式：</p>
+<pre><code>clear [玩家] [物品id] [伤害值] [数量] [NBT]
+</code></pre><ul>
+<li>玩家为需要删除/检测物品的玩家，不选择玩家则默认自己。</li>
+<li>物品id为需要删除/检测的物品的id。</li>
+<li>伤害值为需要删除/检测的物品的伤害值，-1或不填写为不检测伤害值。</li>
+<li>数量为最多删除的物品数量，0则不删除。</li>
+<li>NBT为删除/检测的物品所需要符合的NBT，base tag 为 tag。</li>
+</ul>
+<p>这命令的AffectedItems为删除物品数量，然而如果数量为0（即不删除），则返回符合条件的物品数量。</p>
+<p>比如我们要检测玩家背包里的石头数量，我们可以如此检测：</p>
+<pre><code># 假设有一个记分板变量叫stats
+stats entity @a set AffectedItems @s stats
+
+# 让每个玩家自己分别检测自己的石头数
+# 这样每个玩家都是命令执行者，执行着 检测自己的石头数 的命令
+execute @a ~ ~ ~ clear @s minecraft:stone -1 0
+</code></pre>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

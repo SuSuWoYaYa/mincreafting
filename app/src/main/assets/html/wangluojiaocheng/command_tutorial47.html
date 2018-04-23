@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6.3.1 熔炉过热系统</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ 
+ <h1 id="熔炉过热">熔炉过热</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<p>为什么熔炉能够无限制燃烧？为什么熔炉不会过热（Overheat）？<br>好吧，我们想个办法让这玩意更真实一点  。</p>
+<blockquote>
+<p>// 明明是更扯淡一点！</p>
+</blockquote>
+<h2 id="目的">目的</h2>
+<h3 id="设定目的">设定目的</h3>
+<p>一个系统必定有他存在的目的，而<br>以下是我当初在<em>The FORTUNE</em>这个坑里面写的关于熔炉的过热的设定，仅用作参考：</p>
+<ul>
+<li>燃烧50秒后开始冒黑烟</li>
+<li>燃烧60秒后开始冒更多黑烟+迸出火星</li>
+<li>燃烧70秒后直接爆炸</li>
+<li>熔炉停止燃烧的时候渐渐冷却</li>
+</ul>
+<h3 id="实际目的">实际目的</h3>
+<p>上面列举的都是很简单的判定。我们再把这些目的细分，那么实际上需要实现的就是：</p>
+<ul>
+<li>检测熔炉开始燃烧</li>
+<li>检测熔炉停止燃烧</li>
+<li>让每一个熔炉都在自己燃烧的时间达到一定值的时候执行操作，即支持多个熔炉同时运行</li>
+</ul>
+<p>在设定的目的基础上明确了实际的目的之后，就开始着手编写核心部分了，至于特效（类似颗粒效果和提示等）可以在后期美化时再加上，测试时你甚至可以用一条<code>/say 阶段1</code>之类的简易输出来检测。</p>
+<p>以下高频执行的内容保存在<strong><em>furnace:loop</em></strong>下，创建记分板等只需初始执行一次的内容保存在 <strong><em>furnace:_init</em></strong> 下。</p>
+<p>另外，为了减少与主题不相关的命令数量，本文内的熔炉默认都处于一个特定的盔甲架（作为Marker）下，该盔甲架的名字为<em>furnaceMk</em>。因此下文在检测熔炉位置的时候都会直接通过execute选择此盔甲架来检测。</p>
+<h2 id="检测熔炉开始燃烧">检测熔炉开始燃烧</h2>
+<p>熔炉在燃烧的时候，其方块ID会发生变化，即从 <strong>&quot;minecraft:furnace&quot;</strong> 变为 <strong>&quot;minecraft:lit_furnace&quot;</strong> ，因此我们可以通过这个来检测熔炉是否开始燃烧。</p>
+<p>首先我们需要创建一个记分板变量来记录熔炉燃烧的时间:</p>
+<pre><code>scoreboard objectives add BurningTime dummy
+</code></pre><p>只要熔炉开始燃烧，即Marker处的方块变成lit_furnace，则开始加分：</p>
+<pre><code>execute @e[name=furnaceMk] ~ ~ ~ detect ~ ~ ~ lit_furnace -1 scoreboard players add @s BurningTime 1
+</code></pre><h3 id="熔炉停止燃烧时的处理">熔炉停止燃烧时的处理</h3>
+<p>当熔炉停止燃烧，即重新变回furnace的时候，就会停止加分；如果还需要做到冷却效果，可以像这样处理：</p>
+<p>在给燃烧着的熔炉加分之前，先高频给Marker减分，当然如果分数已经达到0的情况下是不会再减分：</p>
+<pre><code>scoreboard players remove @e[name=furnaceMk,score_BurningTime_min=0] BurningTime 1
+</code></pre><p>然后我们把上面的那条命令稍加修改，以一个更高的分数来增加：</p>
+<pre><code>execute @e[name=furnaceMk] ~ ~ ~ detect ~ ~ ~ lit_furnace -1 scoreboard players add @s BurningTime 2
+</code></pre><p>这样一来，当熔炉处于燃烧状态时分数因为相抵消便会同样以20分/秒的速度增加，反之则以20分/秒的速度减少。</p>
+<hr>
+<h2 id="熔炉在燃烧到一定时间后的处理">熔炉在燃烧到一定时间后的处理</h2>
+<p>这部分其实非常简单，对&##x8BB0;分板稍有些了解的玩家都能完成这部分的命令。实质非常简单，就是判定分数+execute Marker来执行。</p>
+<blockquote>
+<p>颗粒效果建议根据实际情况调整。</p>
+</blockquote>
+<h3 id="阶段1：燃烧50秒后冒黑烟">阶段1：燃烧50秒后冒黑烟</h3>
+<p>当Marker的分数处于1000-1199时，执行<code>/particle</code>命令：</p>
+<pre><code>execute @e[name=furnaceMk,score_BurningTime_min=1000,score_BurningTime=1199] ~ ~ ~ particle smoke ~ ~ ~ 0.5 0.5 0.5 0.1 10
+</code></pre><h3 id="阶段2：燃烧60秒后冒更多黑烟迸出火花">阶段2：燃烧60秒后冒更多黑烟+迸出火花</h3>
+<p>当分数处于1200-1399时，执行<code>/particle</code>命令：</p>
+<pre><code>execute @e[name=furnaceMk,score_BurningTime_min=1200,score_BurningTime=1399] ~ ~ ~ particle smoke ~ ~ ~ 0.6 0.6 0.6 0.1 2
+execute @e[name=furnaceMk,score_BurningTime_min=1200,score_BurningTime=1399] ~ ~ ~ particle lava ~ ~ ~ 0.5 0.7 0.5 0.1 3
+</code></pre><h3 id="阶段3：燃烧70秒后直接爆炸">阶段3：燃烧70秒后直接爆炸</h3>
+<p>当分数达到1400时，直接在Marker处生成一个即时引爆的TNT：</p>
+<pre><code>execute @e[name=furnaceMk,score_BurningTime_min=1400,score_BurningTime=1400] ~ ~ ~ summon PrimedTnt ~ ~ ~ {CustomName:&quot;Furnace&quot;,Fuse:0s}
+</code></pre><blockquote>
+<p>// 至于这个TNT的名字我特意写成了<em>Furnace</em>，就是为了当玩家被炸死的时候看上去像是被熔炉炸死的233</p>
+</blockquote>
+<p>最后是对Marker的重置处理：</p>
+<pre><code>kill @e[name=furnaceMk,score_BurningTime_min=1400,score_BurningTime=1400]
+</code></pre><h2 id="总结">总结</h2>
+<p>最后我们把命令全部放在一起看一下：</p>
+<pre><code># furnace:_init
+
+#创建记分板变量
+scoreboard objectives add BurningTime dummy
+</code></pre><hr>
+<pre><code># furnace:loop
+
+#给燃烧着的熔炉处的Marker加分
+scoreboard players remove @e[name=furnaceMk,score_BurningTime_min=0] BurningTime 1
+
+execute @e[name=furnaceMk] ~ ~ ~ detect ~ ~ ~ lit_furnace -1 scoreboard players add @s BurningTime 2
+
+#对燃烧到一定时间的熔炉处理
+execute @e[name=furnaceMk,score_BurningTime_min=1000,score_BurningTime=1199] ~ ~ ~ particle smoke ~ ~ ~ 0.5 0.5 0.5 0.1 20
+
+execute @e[name=furnaceMk,score_BurningTime_min=1200,score_BurningTime=1399] ~ ~ ~ particle smoke ~ ~ ~ 0.6 0.6 0.6 0.1 2
+
+execute @e[name=furnaceMk,score_BurningTime_min=1200,score_BurningTime=1399] ~ ~ ~ particle lava ~ ~ ~ 0.5 0.7 0.5 0.1 3
+
+execute @e[name=furnaceMk,score_BurningTime_min=1400,score_BurningTime=1400] ~ ~ ~ summon PrimedTnt ~ ~ ~ {CustomName:&quot;Furnace&quot;,Fuse:0s}
+
+kill @e[name=furnaceMk,score_BurningTime_min=1400,score_BurningTime=1400]
+</code></pre><h2 id="其他可添加内容">其他可添加内容</h2>
+<p>上面所述的只是这个熔炉的核心内容，当然你也可以在自己的基础上设计一些其他的附加内容，例如：</p>
+<ul>
+<li>添加可拆卸功能，当Marker处为空气的时候删除Marker</li>
+<li>把特定的熔炉转换为普遍的情况，即玩家放置的每一个熔炉都会被认为可以进行过热处理</li>
+<li>通过检测熔炉内燃烧的燃料种类来判定BurningTime分数增加的速度，例如烧岩浆比烧木棍过热得要快</li>
+</ul>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

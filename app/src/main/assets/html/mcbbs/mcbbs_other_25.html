@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从MC开始的java入门 p3.package</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >从MC开始的java入门 p3.package</h1>
+            <!-- End Title -->
+        
+<div >
+   <p class="red">本文章转载自网易论坛<br />作者-Namefind</p>
+	
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_Namefind_mc.png" /> 
+</p><p>5天前的第二章...哇
+</p><p>我这么久没更新了吗？
+</p><p>（装作什么都不知道的样子...）
+</p><p>
+</p><p><b>本章目标：</b>
+</p><p>理解并创建项目、包、类，使用Java命名规范命名</p> 
+
+
+<h2>什么是项目、包、类？</h2><p>
+<font color="DarkRed">
+项目：Project</font>，类似文件夹，存放包、文件夹、使用的系统库。
+</p><p><font color="DarkRed">包：Package</font>，类似文件夹。存放代码用。
+</p><p><font color="DarkRed">类：Class</font>，我们暂时当它是一个文件就好。
+</p><p>ps：一个包跟一个文件夹差不多，但包名有.的话，就像我包名是com.namefind.test，就是com文件夹包含namefind文件夹包含test文件夹。
+
+</p>
+
+<h2>Java命名规范</h2><p>
+<font color="DarkRed">大驼峰命名法：首字母大写、第二个词大写。</font>
+</p><p>例：NameFind
+</p><p><font color="DarkRed">小驼峰命名法：首字母小写、第二个词大写。</font>
+</p><p>例：nameFind
+</p><p><font color="DarkBlue">
+项目</font>：没硬性规定，强烈建议使用<font color="DarkRed">大驼峰命名法</font>命名
+</p><p><font color="DarkBlue">包</font>：以<font color="DarkRed">com.</font>开头，然后是自己名字，真·<font color="DarkRed">包名</font>
+</p><p>例：com.namefind.entity
+</p><p><font color="DarkRed">*包名必须全部小写</font>
+</p><p><font color="DarkBlue">类</font>：使用<font color="DarkRed">大驼峰命名法</font>命名
+</p><p>
+</p><p>
+<font color="DarkRed">*以上请全部使用英文命名...这是规范~
+</p><p>*请勿使用特殊符号进行命名！
+</p><p>*请勿使用Java关键字，例如使用单一“public”、“class”单词进行命名！
+</p><p>*Java严格区分大小写，请注意！</font>
+</p><p>不懂英文的可以打开翻译软件，顺便学英文233
+</p>
+
+<h2>新建一个普通项目</h2><p>
+</p><p>我们已经导入过一个模组的mdk项目，那么一个普通的java项目是怎样的呢？
+</p><p>右键<b>代码区</b>，<font color="DarkRed">New->Java Project</font>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_1.png" /> 
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_2.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_3.png" /> 
+</p><p><b>Project name</b>：项目名称
+</p><p><b>JRE</b>：你的运行环境（理解一下，不用改）
+</p><p>然后点<b><font color="DarkRed">Finish</b></font>就可以啦。
+</p><p>
+</p><p>
+</p><p>然后我们就可以得到这么一个普通Java项目，我们来看看它和mdk项目有什么共同的地方。
+</p><p>没错，它们都有一个<b>src</b>文件夹，还有一个<b>JRE System Library</b>（废话-.-）
+
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_4.png" /> 
+
+</p><p><b>src</b>：用于存放源代码，你可以理解为主文件夹
+</p><p><b>JRE System Library</b>：系统的核心类库（只要知道它是系统的东西，我们不去动它就行了...）
+</p>
+<h2>新建一个包</h2><p>
+
+我们需要把包放入src文件夹内，所以我们<b>右键src文件夹</b>
+</p><p><font color="DarkRed"><b>New->Package</font></b>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_5.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_6.png" /> 
+</p><p>*mdk项目新建包同理。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_7.png" /> 
+</p><p><b>Name</b>：你的包名，按照命名规范命名
+</p><p>然后点击Finish~
+
+
+
+<h2>新建一个类</h2><p>
+</p><p>类分为<b>普通类</b>和<b>主类</b>，区别在于<font color="DarkRed">主类里面有一个main方法，普通类里没有</font>。
+</p><p>在这里我们<b>新建两个类</b>、一个普通类、一个主类
+</p><p><b>右键test包</b>
+<font color="DarkRed">New->Class</font>
+</p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_8.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_9.png" /> 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_10.png" /> 
+</p><p>
+</p><p>勾选<font color="DarkRed">public static void main(String[] args)</font>  （main方法）创建为主类，不勾选为普通类。
+</p><p>点击Finish，类就建好了！
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_11.png" /> 
+</p><p>ps：它如果生成了一个<font color="DarkRed">public  类名( ){ }</font>，就把这段<font color="DarkRed">删掉</font>，暂时用不到。
+</p><p>
+</p><p>普通类的结构如图：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_12.png" /> 
+</p><p>所在<font color="DarkRed">package</font>路径+
+</p><p><pre>public  class 类名{
+        包含的代码块
+}</pre>
+</p><p>主类的结构如图：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_13.png" /> 
+</p><p><font color="DarkRed">主类的结构=普通类结构</font>，并包含一个<font color="DarkRed">main</font>方法。
+</p><p><b>最后完成图：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_25_14.png" /> 
+</p><p>下章我们将对main方法进行讲解~</b>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

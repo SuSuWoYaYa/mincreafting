@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>5.7 execute进阶</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="execute基础">execute基础</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+  
+<blockquote>
+<p>本章教程讲解<code>execute</code>命令的一些进阶用法，然而现在已经可以不使用这些用法了，使用命令函数就可以了。<br>不过使用这些办法有时候还是能减少命令数量的，对于了解选择器及<code>execute</code>命令的运作有实际作用，而且颇为有趣，故此就仍然放在命令进阶里。</p>
+</blockquote>
+<h2 id="execute-格式大要">execute 格式大要</h2>
+<pre><code>execute &lt;实体&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; &lt;命令&gt;
+</code></pre><p>让&lt;实体&gt;在指定位置（x、y、z坐标。如果是<strong>相对坐标</strong>则以<strong>实体位置</strong>为判定点）执行指定命令</p>
+<pre><code>execute &lt;实体&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; detect &lt;方块id&gt; &lt;方块数据值/方块状态&gt; &lt;x2&gt; &lt;y2&gt; &lt;z2&gt; &lt;命令&gt;
+</code></pre><p>当实体在指定位置检测到指定方块（x2、y2、z2坐标。如果是相对坐标则以<strong>执行位置</strong>为准。执行位置即x、y、z坐标的位置。id及数据值/方块状态必须吻合。如果数据值为<strong>-1</strong>或方块状态为<strong>*</strong>则代表不检测数据值/方块状态）时，则在执行位置执行命令（执行位置不是检测到方块的位置，而是先前x、y、z坐标的位置）</p>
+<p>由于本教程主要是指出execute有什么主要用法, 而detect比较少用（起码我比较少用）, 而且那用法一般也比较简单, 因此本教程不会探讨execute detect的特殊用法</p>
+<h3 id="注意">注意</h3>
+<ul>
+<li>execute选择到的实体不需要有op权限也可以执行命令（虽然这应该是常识, 然而不知道为什么总会有人问这个问题）</li>
+<li>execute里面可以嵌套execute（然而得注意, 这可能会让执行次数变得极高）。就好像叫别人去命令别人做事的样子。</li>
+</ul>
+<h3 id="例子">例子:</h3>
+<pre><code>execute pca ~ ~ ~ setblock ~ ~ ~ command_block
+</code></pre><p>如果pca的坐标是0 64 0, 则会在0 64 0的位置放置一个命令方块</p>
+<pre><code>execute pca ~ ~5 ~ detect ~ ~-5 ~ air 0 setblock ~ ~ ~ command_block
+</code></pre><p>如果pca的坐标是0 64 0, 如果0 64 0是空气，则会在0 69 0的位置放置一个命令方块</p>
+<pre><code>execute @e ~ ~ ~ execute @e ~ ~ ~ say hi
+</code></pre><p>如果有两个实体, 则会让该两个实体say hi（每个两次）</p>
+<h2 id="execute的运行方式">execute的运行方式</h2>
+<p>execute会让选择到的所有实体一个一个的<strong>逐个</strong>执行命令。<br>当那些实体全部执行完命令, 这execute命令才算是执行完成。<br>（所以大量execute嵌套很可能会导致game tick过长）</p>
+<p>实体执行命令的次序就是选择器选择实体的顺序<br>选择器会优先选择在执行的世界的实体/玩家<br>（先选择最近的实体，当那些实体的距离一样时，它就会优先选择存在最久的）</p>
+<p>execute命令的SuccessCount就是成功让多少实体执行命令。<br>至于AffectedEntities即使成功也只会是1（只是执行了很多次而已）</p>
+<h3 id="例子">例子</h3>
+<pre><code>execute @e ~ ~ ~ say hi
+</code></pre><p>假设实体的排列是<code>A  B  C  D</code>, 命令方块放在最左边。</p>
+<p>执行结果:</p>
+<blockquote>
+<p>[A]hi<br>[B]hi<br>[C]hi<br>[D]hi</p>
+</blockquote>
+<pre><code>execute @e ~ ~ ~ execute @e ~ ~ ~ say hi
+</code></pre><p>假设实体的排列是<code>A  B</code>, 命令方块放在最左边。</p>
+<p>执行结果:</p>
+<blockquote>
+<p>[A]hi<br>[B]hi<br>[B]hi<br>[A]hi</p>
+</blockquote>
+<p>（原因和选&#x6#x62E9;器的特性和执行坐标的改变有关, 你们猜猜为什么吧:D）</p>
+<h1 id="使用execute改变执行坐标">使用execute改变执行坐标</h1>
+<p>execute命令能够<strong>改变命令的执行坐标</strong>, 这对系统的<strong>可移植性</strong>作出了极大的贡献, 和选择器配合的好甚至能够做到一些原本需要多条命令才能做到的事情。</p>
+<h2 id="标记marker">标记(marker)</h2>
+<p>为了系统的可移植性, 我们会避免用绝对坐标去标记不同的位置, 甚至连相对坐标也会避免使用。<br>然而, 有时候我们的命令还是需要知道某些位置才能工作的（比如是要关闭某个命令方块）</p>
+<p>这个时候, 我们会把一个特定名字的实体（一般是AreaEffectCloud, 因为即使有大量的AreaEffectCloud对性能的影响是最微小的）放在指定的位置, 然后通过execute该实体去执行需要该坐标的命令（因为execute后执行坐标）</p>
+<h3 id="例子">例子</h3>
+<p>（mark:(名字) 就是在<strong>下一个命令方块的位置</strong>放置一个指定名字的AreaEffectCloud）</p>
+<pre><code>say hi
+execute @e[name=1] ~ ~ ~ blockdata ~ ~ ~ {auto:0b}
+mark:1
+say 这不会执行
+</code></pre><p>由于第二条命令（execute ... blockdata ...）先改变了执行坐标（改为第三条命令的命令方块位置）, 再把原地的命令方块关掉。因此就能够关闭第三条命令的命令方块, 从而阻止其执行</p>
+<h2 id="特殊用法">特殊用法</h2>
+<p>有一些execute的特殊用法, 通过巧妙地更改执行坐标和使用选择器, 就能够做到一些原本要几条命令才能做好的事情</p>
+<p>本部分由于本人难以说清如何想到此脑洞, 所以只能对用法进行解释, 希望能启发诸位想到更多新奇有趣的用法</p>
+<h3 id="生成一直线的实体">生成一直线的实体</h3>
+<p>（本用法和其他章节的增加执行数量的用法配搭可有更佳的结果）<br>（本用法有一个限制: 命令的执行坐标必须在开始的那端, 否则可能会造成重叠的现象）</p>
+<pre><code>execute @e[name=marker,c=-1] ~ ~ ~ summon armor_stand ~(间隔) ~ ~ {CustomName:&quot;marker&quot;}
+</code></pre><p>marker就是生成的那些实体的名字, 而间隔部分不一定是要x轴的, 放在任何地方也可以, 甚至三个轴上同时有间隔也并无不可</p>
+<p>相信大家也看明白了, 本命令就是通过选择<strong>最远</strong>的那个marker去生成别的marker, 不停执行则可以生成一串的实体</p>
+<h3 id="调换执行">调换执行</h3>
+<p>通过execute里<strong>让不同实体执行命令</strong>的特性, 我们可以做到在实体间调换执行, 以达到某些特殊用途。<br>相信这样写没人知道我在说啥, 所以接下来会给出两个例子</p>
+<h4 id="辗转相除法">辗转相除法</h4>
+<p>就是不停a %= b, b %= a...直至一方为0</p>
+<p>按照一般的思路，这个做法得两条命令, 毕竟a %= b, b %= a是两个不同的东西吧。<br>然而问题来了, 这样子还怎么放在execute里1gt内完成啊?</p>
+<p>所以, 就有了一个方法的诞生:</p>
+<pre><code>execute @e[tag=num] ~ ~ ~ scoreboard players operation @e[c=1] scb %= @e[c=-1,tag=num] scb
+</code></pre><p>这个方法其实就是这样的: 让a和b去分别把自己的分数%=最远的那个（就是另外一个）的分数</p>
+<p>至于怎么做到大量执行次数就留待之后的环节继续讲解了</p>
+<h4 id="1-game-tick分队">1 game tick分队</h4>
+<blockquote>
+<p>这方法和暴力增加执行次数有点关系</p>
+</blockquote>
+<p>1gt内把一堆实体平均分到n队里, 多出来的实体放在随机队伍里。</p>
+<p>这问题有几个难题, 首先怎么做到分配在一个队伍里呢? 这个我们可以使用分数（这是优化了的方法）<br>放置一堆代表队伍的marker, 它们的team分数代表那队伍, 然后让随机实体的分数=那个队伍的分数</p>
+<pre><code>/scoreboard players operation @r[score_team=0,type=!LightningBolt] team = @r[tag=teams,c=1,type=armor_stand] team
+</code></pre><p>然后, 我们会让所有队伍都有一个实体（由于多出来的实体要放在随机队伍里, 因此我们会使用<code>@r[c=n]</code>来随机排序那些队伍）</p>
+<pre><code>/execute @r[type=armor_stand,tag=teams,c=n(n就是队伍数)] ~ ~ ~ /scoreboard players operation @r[score_team=0,type=!LightningBolt] team = @e[tag=teams,c=1,type=armor_stand] team
+</code></pre><p>然后的部分就是: 让所有需要加入队伍的实体执行一遍上面的部分, 并且加上避免过长执行时间的限制execute（确定还有没有team=0的实体存在）</p>
+<pre><code>/execute @e[score_team=0] ~ ~ ~ execute @e[score_team=0,c=1] ~ ~ ~ execute @r[type=armor_stand,tag=teams,c=n(n就是队伍数)] ~ ~ ~ scoreboard players operation @r[score_team=0,type=!LightningBolt] team = @e[tag=teams,c=1,type=armor_stand] team
+</code></pre><h1 id="execute暴力增加执行次数">execute暴力增加执行次数</h1>
+<p>这是一些<code>execute</code>嵌套的特殊情况，主要是解释execute的运作原理。如果真的需要增加执行次数，请使用之前的<b> 5.4 循环</b>。</p>
+<h2 id="execute嵌套（指数增加执行次数）">execute嵌套（指数增加执行次数）</h2>
+<p>实体穷举的办法需要<strong>大量实体</strong>, 如果不愿意放置大量实体的话可以使用execute嵌套的办法去增加执行次数</p>
+<pre><code>execute 实体 ~ ~ ~
+</code></pre><p><em>n出来的执行次数会是<em>*实体数^n</em></em>那么多, 因此是增加执行次数的一个好办法</p>
+<p>注意: 这办法没法确保执行多少次, 请加入一个execute去检查条件是否已经满足（那条件检测建议放在第二个execute大量实体之前的位置, 否则用途可能会比较小, 见上方1gt分队）, 否则会让game tick时间大幅延长, 对服务器造成严重负担</p>
+<h2 id="暴力增加次数的特殊情况-cber的execute问题">暴力增加次数的特殊情况: CBer的execute问题</h2>
+<p>问题很简单:</p>
+<blockquote>
+<p>execute @e ~ ~ ~ execute @e ~ ~ ~ execute @e ~ ~ ~ summon armor_stand<br>初始实体为2个, 执行完了之后实体数会是多少? 并且为什么是那个数量</p>
+</blockquote>
+<p>这个问题有很多人认为是8(2^3), 然而之后证实了是2048, 而且也找到一个合理解释了, 以下就来为大家解释一下</p>
+<blockquote>
+<p>execute @e ~ ~ ~ execute @e ~ ~ ~ summon armor_stand<br>execute @e ~ ~ ~<br>  [当前实体数为2, 于是下面会执行两次]<br>    execute @e ~ ~ ~<br>      [当前实体数为2, 于是下面会执行两次]<br>          summon armor_stand<br>          summon armor_stand<br>    execute @e ~ ~ ~<br>      [当前实体数为4, 于是下面会执行四次]<br>          summon armor_stand<br>          summon armor_stand<br>          summon armor_stand<br>          summon armor_stand</p>
+</blockquote>
+<p>从此可以见到, execute的运作就是<strong>先选择实体</strong>，然后由选择了的实体去执行命令<br>选择器在选择好了实体之后就不会改变（比如<strong>execute @e ~ ~ ~ summon armor_stand</strong>，初始实体数为2，那就只会执行2次），所以第一个execute的数目是<strong>不会无限增加</strong>下去的<br>不过，<strong>后面嵌套</strong>的那些execute会<strong>根据执行时存在的实体</strong>去选择，所以那个执行次数会变大的很快（因此就不是2^嵌套数那么多个实体）</p>
+<p>所以如果要通过execute嵌套去生成实体, 请先小心计算之后会生成的实体量, 以免发生以外的情况</p>
+<h1 id="execute与stats">execute与stats</h1>
+<p>execute和stats配搭使用可以做到好像同时使用了一条命令和修改记分板分数的样子, 可以省却大量的穷举。</p>
+<p>然而这也是有限制的, 首先: SuccessCount是整个命令执行完毕才改变分数的而不是一边执行一边增加分数。<br>其次, execute做成的SuccessCount是会被覆盖而不是继续增加的, 以下会说明嵌套execute时SuccessCount的变化</p>
+<pre><code>实体: A, B, C
+命令: execute @e ~ ~ ~ execute @e ~ ~ ~ say hi
+
+第一个execute:
+[执行者SuccessCount=0]
+    A: execute:
+        A: say hi
+        [A SuccessCount=1]
+        B: say hi
+        [B SuccessCount=1]
+        C: say hi
+        [C SuccessCount=1]
+    [A SuccessCount = 3]
+    B: execute:
+        B: say hi
+        [B SuccessCount=1]
+        A: say hi
+        [A SuccessCount=1]
+        C: say hi
+        [C SuccessCount=1]
+    [B SuccessCount = 3]
+    C: execute:
+        C: say hi
+        [C SuccessCount=1]
+        B: say hi
+        [B SuccessCount=1]
+        A: say hi
+        [A SuccessCount=1]
+    [C SuccessCount = 3]
+[执行者SuccessCount=3]
+
+最后不同实体的分数:
+A = 1
+B = 1
+C = 3
+执行者 = 3
+</code></pre><h2 id="例子-1-game-tick内给实体增加索引值">例子: 1 game tick内给实体增加索引值</h2>
+<p>这道例子出自CBL新手群问答比赛</p>
+<p>索引值可以是1-n, 也可以是0 - (1-n)</p>
+<p>方法:</p>
+<pre><code>//绑定stats部分（略...）
+
+execute @e[tag=markers] ~ ~ ~ testfor @e[score_SC=0]
+</code></pre><p>解释: 当第一个实体执行testfor的时候, 自然所有实体的SC（SuccessCount分数）都是0了, 所以其索引值（也是SC记分板）为n。之后, 第二个实体执行的时候就有一个实体SC分数大于0, 于是其SC分数只有n-1了。如此类推, 到最后就只能选择到自己, 于是SC分数就是1了</p>
+
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

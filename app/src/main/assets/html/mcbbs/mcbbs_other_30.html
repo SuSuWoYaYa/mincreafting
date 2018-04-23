@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从MC开始的java入门 p8.oopSchema</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >从MC开始的java入门 p8.oopSchema</h1>
+            <!-- End Title -->
+        
+<div >
+   <p class="red">本文章转载自网易论坛<br />作者-Namefind</p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_Namefind_mc.png" /> 
+</p><p>对我来说，这个才是Java的入门章..
+</p><p></p><p><b>本章目标</b>
+</p><p>初识<b>面对对象</b>，理解、创建<b>实体类</b>。</p>
+
+<h2>面对对象的三大特征</h2> 
+ <h3>封装：</h3><p>
+ 将代码集合到了一起，<font color="DarkRed">限制了我们不可直接访问</font>，给了一个<font color="DarkRed">可以间接访问的方法</font>。
+</p><p><b>生活中的封装</b>：不需要理解车内结构就可开车，不需要理解电梯结构就可坐电梯。
+
+</p> <h3>继承：</h3><p>
+ 一个类继承另一个类，子类会<font color="DarkRed">拥有和父类一样的属性</font>。
+</p><p><b>生活中的继承</b>：父亲体质偏瘦，母亲生下的儿子体质偏瘦。
+
+</p><p class="yellow">感谢13L心尘如烟的补充修改：
+
+</p> <h3>多态：</h3><p>
+ 继承相同父类的子类使用和父类<font color="DarkRed">同名的方法</font>，根据子类代码的不同，执行同名的方法时，<font color="DarkRed">执行不一样的代码内容</font>。
+</p><p><b>活中的多态</b>：我吃辣很高兴，你吃辣很痛苦。
+
+</p> <h2>面对对象是什么？</h2><p>
+ <b>任何存在的东西都可以看成是对象</b>。譬如猫、狗。
+</p><p><b>MC中的任何生物、武器、物品、方块都可以当成一个对象</b>。
+</p><p>在java中的一个对象，我们暂且当它是一个类来理解（实体类）。
+</p><p>然后面对对象就是，<font color="DarkRed">把任何物体、抽象的东西当成一个对象来看。</font>
+</p><p>一个简单的面对对象逻辑：使用玩家背包内的物品进行攻击
+</p><p>玩家对象→打开对应背包对象→使用背包内指定位置的物品对象→使用物品对象的功能→攻击
+</p><p>
+</p>
+<h2>实体类</h2><p>
+ 把对象作为一个<b>实体</b>，封装到类里，类里有对象的属性和方法。
+</p><p>假设一个MC物品的实体类有如下代码<font color="DarkRed">（已省略、更改部分原物品类代码）：</font>
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30_1.png" /> 
+</p><p>
+</p><p>代码中包含了物品自身的属性和方法。
+
+</p> 
+<h3>对象的属性</h3><p>
+ MC中的物品有<b>最大堆叠、最大伤害、是否为3D、有名字</b>，这些都是<font color="DarkRed">物品对象的属性。</font>
+</p><p>我们可以将类似这样的属性写在实体类里。
+ </p>
+<h3>对象的方法</h3><p>
+ <b>物品打开</b>会有GUI，物品右键可以发出<b>技能</b>，这些都是<font color="DarkRed">物品对象的方法。</font>
+</p><p>
+</p><p>代码很多？不怕~我们一步一步来创建如图的实体类。
+</p><p>[请使用普通项目，不要使用forge项目]
+</p><p>我们先创建一个包，命名为<code><font color="DarkRed">com.你的名字.entity</font></code>，然后创建类，命名为<b>Item</b>。
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30_2.png" /> 
+
+
+
+</p> 
+<h3>属性的定义</h3><p>
+ 接下来我们要给这个物品对象一些属性，
+</p><p><font color="DarkRed">那么如何定义一个实体类的属性？</font>
+</p><p>
+</p><p>我们再来看一次上面实体类里面定义属性的代码，并且和上章定义属性的代码作比较：
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30_3.png" /> 
+</p><p>
+</p><p>然后发现跟定义变量一样，只是前面多了单词。综上可知，<font color="DarkRed">定义实体内属性≈定义变量</font>。
+</p><p>也就是我们可以在实体类中使用<code><font color="DarkRed">数据类型 实体属性名 = 数值;</font></code>来定义属性。
+</p><p>然后我们写上属性，<b>物品的名字（字符串）、物品的攻击（整型）、物品的种类（字符串）
+</b> </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30_4.png" /> 
+
+</p> 
+<h3>属性的getter和setter</h3><p>
+ 还记得前面的单词吗？
+</p><p><font color="DarkRed">在java中我们需要给属性设置访问级别，保证属性只能本类中访问到。</font>
+</p><p>使用关键字<font color="DarkRed">private</font>将属性保护起来，例如：
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30_5.png" /> 
+</p><p>不让其他类访问。
+
+ 
+</p><p>然后你可能会说，那不让别人访问到，我写这个属性干什么？
+</p><p>举个栗子，在餐厅点餐的时候，你不需要跑到厨房，只需要让服务员帮你点餐就好了。
+</p><p>你=其他类，在获取食物的时候只用通过一个东西（服务员）就可以获取到，不需要进入厨房（进入类）。
+</p><p>我们把这个东西叫做属性的getter和setter。
+</p><p>
+</p><p><font color="DarkRed">快速生成getter和setter：右键代码区→source→Generate Getters and Setters</font>
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30_6.png" /> 
+</p><p>
+</p><p>然后将<font color="DarkRed">属性前面打上勾，确认。</font>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30_7.png" /> 
+ 
+</p><p>
+</p><p>可以看到自动生成了属性的getter和setter。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_30_8.png" /> 
+ 
+</p><p>
+我们即可在创建此对象之后，改变、获取它的属性。
+</p><p>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

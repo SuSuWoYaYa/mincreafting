@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>7.1.1 材质</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+  
+                                <h1 id="材质贴图">材质贴图</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>材质(Texture)是一个资源包的主体，优秀的材质能深刻地表现地图的主题，并能够同模型配合，达到许多令人惊奇的效果。本篇教程主要讲解材质的格式和一些注意事项。</p>
+<p>材质文件保存在<code>(资源包名)/assets/minecraft/textures</code>中，其下包含这些文件夹：</p>
+<ul>
+<li>blocks  储存方块材质。</li>
+<li>colormap  储存绿色植物色谱。</li>
+<li>effect  用途不明，可删除，可能同已移除的 Super Secret Settings 有关。</li>
+<li>entity  储存实体材质。</li>
+<li>environment  储存太阳、月亮、云雨雪等材质。</li>
+<li>font  储存字体材质。</li>
+<li>gui   储存GUI材质</li>
+<li>items   储存物品材质。</li>
+<li>map   储存地图及有关内容的材质。</li>
+<li>misc   杂项。</li>
+<li>models    储存盔甲材质。</li>
+<li>painting  储存挂画材质。</li>
+<li>particle  储存粒子材质。</li>
+</ul>
+<p>推荐阅读:</p>
+<blockquote>
+<p>WIKI： <a href="http://minecraft.gamepedia.com/Resource_pack/Folders" target="_blank">http://minecraft.gamepedia.com/Resource_pack/Folders</a>  资源包文件格式。</p>
+</blockquote>
+<h2 id="方块和物品">方块和物品</h2>
+<p>方块和物品贴图是资源包中数量最多的部分，贴图可直接在原图用任意画图软件修改，保存为png格式。需要注意：</p>
+<h3 id="透明材质">透明材质</h3>
+<p>多数的固体方块会把透明/半透明的部分用纯色填充（如石头，泥土）。游戏默认就有透明/半透明部分的方块（彩色玻璃）、实体（史莱姆）和所有的物品，都支持透明/半透明。<br>推荐阅读：</p>
+<blockquote>
+<p>WIKI <a href="http://minecraft.gamepedia.com/Resource_pack#Textures" target="_blank">http://minecraft.gamepedia.com/Resource_pack#Textures</a></p>
+</blockquote>
+<h3 id="材质贴图的共用">材质贴图的共用</h3>
+<p>材质共用是游戏中的一种普遍现象，是指一个方块/物品的材质的<strong>一部分</strong>使用另一个方块/物品的材质。常见的情况有：</p>
+<ul>
+<li>拉杆底座使用圆石材质；</li>
+<li>书架侧面使用橡木木板材质；</li>
+<li>药水瓶的材质是共用的 等。</li>
+</ul>
+<p>修改这类方块/物品时应注意不同材质之间的衔接（eg：在红石比较器正确位置上开三个洞来放红石火把）<br>当然，材质贴图的共用不是游戏硬编码定死的，想要修改，请进一步阅读 方块模型 章节。</p>
+<h3 id="动态材质的绘制">动态材质的绘制</h3>
+<p>动态材质在游戏中是很常见的，如水和岩浆的流动，钟的刻度变化等。本段将简单地介绍动态材质及其绘制方法，详细的教程和技巧请参看链接教程。</p>
+<h4 id="材质贴图的格式和绘制">材质贴图的格式和绘制</h4>
+<p>观察<code>water_flow.png</code>, <code>lava_flow.png</code>贴图。</p>
+<p>能够发现，动态材质的材质贴图文件是一帧一帧的材质贴图纵向拼接而成的。游戏程序读取这个文件时，会将它拆分成多个正方形贴图，然后再按照一定的顺序显示它们，这样，材质就显得“动”起来了。动态材质的长度必须是宽度的倍数。</p>
+<p>推荐阅读：</p>
+<blockquote>
+<p>教程 <a href="http://www.mcbbs.net/thread-271536-1-1.html" target="_blank">http://www.mcbbs.net/thread-271536-1-1.html</a>   一些有用的技巧，能更快更好地完成动态材质贴图。<br>资源包 <a href="http://www.minecraftforum.net/forums/mapping-and-modding/resource-packs/1244476-hybrid-v17e-100-animations-blocksmith-hybrid" target="_blank">http://www.minecraftforum.net/forums/mapping-and-modding/resource-packs/1244476-hybrid-v17e-100-animations-blocksmith-hybrid</a>   以原版材质为基础增加了许多动态材质，可供学习参考。</p>
+</blockquote>
+<p>一个特例是，钟和指南针的材质不是简单的动态变化，它们每一帧的材质不需要拼接，详见 物品模型 章节。</p>
+<h4 id="mcmeta规则文件的编写">.mcmeta规则文件的编写</h4>
+<p>观察<code>lava_still.png.mcmeta</code>文件，可用记事本直接打开。</p>
+<pre><code>{
+  "animation": {
+    "frametime": 2,
+    "frames": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
+    18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1
+    ]
+  }
+}
+</code></pre><p><code>animation</code>下有两个标签：</p>
+<ul>
+<li><code>frametime</code>：确定每一动画帧之间的间隔（单位为gametick）。此动画每帧之间的间隔为2 gt.（默认值为1）</li>
+<li><code>frames</code>：确定动画帧的播放顺序（从0开始）。最大值为19表明这个动画有20帧（20个拼接的16*16贴图）。值<code>[0,1, ... ,18,19,18, ... ，2,1]</code>表明：动画从第一帧播放到最后一帧，再从最后一帧播放回第一帧，来回往复。（默认为：从头到尾顺序播放，到最后一帧后跳回第一帧继续播放）</li>
+</ul>
+<p>以上是两种常见的标签，若产生紫黑方块，则可能为mcmeta规则文件错误，需要进行检查。  </p>
+<p>推荐阅读：</p>
+<blockquote>
+<p>WIKI： <a href="http://minecraft.gamepedia.com/Resource_pack#Animation" target="_blank">http://minecraft.gamepedia.com/Resource_pack#Animation</a><br>以及上面的资源包</p>
+</blockquote>
+<h3 id="灰白的绿色植物贴图">灰白的绿色植物贴图</h3>
+<p>一些绿色植物，如草方块顶部，树叶，草，蕨类的材质在 blocks 文件夹中是灰色的。它们的真实颜色由 colormap 文件夹下的文件决定。</p>
+<p>详细的介绍，见 “色谱” 篇。</p>
+<h2 id="实体和盔甲">实体和盔甲</h2>
+<p>这两类物品分别储存在<code>entity</code>和<code>models/armor</code>文件夹中。<br>实体和盔甲的各个部分被平铺在材质贴图上，需要逐一辨认和修改。</p>
+<p>箱子和指示牌材质在 entity 文件夹中。</p>
+<p>推荐阅读：</p>
+<blockquote>
+<p>工具： <a href="https://www.planetminecraft.com/mod/mcskin3d/" target="_blank">https://www.planetminecraft.com/mod/mcskin3d/</a>   MCSkin3D，能够把扁平的实体材质立体化，支持 entity 文件夹中所有实体模型（在软件右上角切换）。</p>
+</blockquote>
+<h2 id="gui，字体，地图和画">GUI，字体，地图和画</h2>
+<ul>
+<li><p>GUI为游戏内的各种界面（背包界面，箱子界面，熔炉界面等），可直接在原图修改。注意材质修改仅会改变各种界面的<strong>外观</strong>，暂时无法在原版修改各种界面的<strong>行为</strong>。</p>
+</li>
+<li><p>字体文件直接以图片的形式保存（<code>ascii.png</code>和<code>ascii_sga.png</code>（附魔文字）等），游戏默认只提供这两个字体文件（主要是英文字体），若要添加其它语言的字体，请使用下方的生成器生成，注意保存扩展名为小写的png。</p>
+</li>
+<li><p>地图文件夹很显而易见，<code>map_icons.png</code>右下方的蓝色部分只是官方卖萌，对游戏没有影响，可忽略。</p>
+</li>
+<li><p>画也不必多说，材质文件中紫色的方块对游戏没有影响，可忽略。</p>
+</li>
+</ul>
+<p>推荐阅读</p>
+<blockquote>
+<p>生成器： <a href="http://www.mcbbs.net/thread-229426-1-1.html" target="_blank">http://www.mcbbs.net/thread-229426-1-1.html</a>   可生成中文字体。<br>资源包： <a href="https://pan.baidu.com/s/1mhtG2mc" target="_blank">https://pan.baidu.com/s/1mhtG2mc</a>    使用了方正喵呜字体的资源包，可供参考。</p>
+</blockquote>
+<p>因缺思厅：凭借汉语强大的字符数量，可以在字体文件里面将一些字改成图案，来丰富地图内容。</p>
+<h2 id="色谱">色谱</h2>
+<p>色谱储存在<code>colormap</code>文件夹中，由生物群系来为绿色植物着色。</p>
+<p>游戏系统会通过算法，根据当前生物群系在色谱中选取颜色，并在灰色的绿色植物材质上覆盖此颜色，类似于HSB颜色法。<br>其中<code>grass.png</code>给草类（草方块，草，蕨类等）植物着色，<code>foliage.png</code>给树叶着色（云杉树叶，桦木树叶除外）。</p>
+<p>生物群系沼泽(Swampland)，黑森林(Roofed forest)，平顶山(Mesa)及其变种的颜色由硬编码规定，不可通过色谱材质修改。</p>
+<p>色谱材质贴图像一个直角三角形，只有左下部分的那个三角有效（<code>foliage.png</code>右上半部分没有作用）。</p>
+<p>粗略的生物群系-色谱对应图：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/biomescolormap.png" alt="colormap"></p>
+<p>推荐阅读：</p>
+<blockquote>
+<p>WIKI： <a href="http://minecraft.gamepedia.com/Biome#Biome_colors" target="_blank">http://minecraft.gamepedia.com/Biome#Biome_colors</a>   详细介绍色谱颜色的作用。  </p>
+</blockquote>
+<h2 id="粒子及杂项">粒子及杂项</h2>
+<h3 id="粒子效果">粒子效果</h3>
+<p>粒子效果材质储存在<code>particle</code>文件夹中。其中的两个材质：</p>
+<ul>
+<li><code>footprint.png</code>：用途不明，可删除，从远古时代就存在。</li>
+<li><code>particles.png</code>：储存大量游戏中常见的粒子效果，
+粒子效果和材质文件的位置对应：<br />
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/particles.png" alt="particles"></li>
+</ul>
+<h3 id="杂项">杂项</h3>
+<p>杂项储存在<code>misc</code>文件夹中，主要是游戏中的一些小细节，如附魔光效，南瓜头盔的视线遮挡，水下的视觉效果等，有以下文件：</p>
+<ul>
+<li><code>enchanted_item_glint.png</code>：附魔物品的光效。</li>
+<li><code>forcefield.png</code>：地图边界墙的材质。</li>
+<li><code>pumpkinblur.png</code>：戴上南瓜头盔时，显示在眼前的材质。</li>
+<li><code>shadow.png</code>：生物下方的阴影。</li>
+<li><code>underwater.png</code>：在水下时，显示在眼前的材质。</li>
+<li><code>unknown_pack.png</code>：资源包没有<code>pack.png</code>文件时，资源包预览图显示这个贴图。</li>
+<li><code>unknown_server.png</code>：服务器没有设置预览图时显示这个贴图。</li>
+<li><code>vignette.png</code>：进入比较黑暗的地方（洞穴等）时，显示在眼前的材质。（游戏会对这个贴图做反色处理）</li>
+</ul>
+<p>同时，也有以下相对应的几个<code>*.mcmeta</code>文件：</p>
+<ul>
+<li><code>enchanted_item_glint.png.mcmeta</code></li>
+<li><code>pumpkinblur.png.mcmeta</code></li>
+<li><code>shadow.png.mcmeta</code></li>
+<li><code>vignette.png.mcmeta</code></li>
+</ul>
+<p>注意，如果一个资源包misc文件夹中的mcmeta文件缺失，那么游戏会加载 <strong>默认的</strong> mcmeta文件，而不是从下一个资源包中加载。<br>mcmeta文件详细的json格式，请见WIKI：<a href="http://minecraft.gamepedia.com/Resource_pack#Properties" target="_blank">http://minecraft.gamepedia.com/Resource_pack#Properties</a></p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

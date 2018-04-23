@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从MC开始的java入门 p6.clientServer</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >从MC开始的java入门 p6.clientServer</h1>
+            <!-- End Title -->
+        
+<div >
+   <p class="red">本文章转载自网易论坛<br />作者-Namefind</p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_Namefind_mc.png" /> 
+</p><p>
+
+
+</p> <p>@w@有没有人想我！！！
+</p> <p>就问一遍有没有~~
+</p> <p>
+</p> <p><b>本章目标</b>
+</p> <p>理解<b>方法、访问修饰符
+</p> <p>ClientProxy、CommonProxy
+</p> <p>@eventHandler</b>
+</p> <p>学会配置<b>mcmod.info</b>
+</p> <p>在MC中显示你的mod
+
+</p>
+
+<h3>什么是方法、访问修饰符？</h3><p>
+ <font color="DarkRed">
+方法</font>：提供了一些功能，来供他人使用。系统库里包含了很多方法来供我们使用，同样我们也可以自己创建方法来使用。
+</p> <p><font color="DarkRed">
+ 访问修饰符</font>：限制了哪些人能使用、访问到。默认情况下其他类无法使用本类的东西。
+
+
+</p>  <h3>服务端and客户端代理器</h3><p>
+ 简单来说就是，Mod分为服务端和客户端两个部分。
+</p> <p>代理将选Mod的服务端和客户端部分分开处理。
+</p> 
+
+<h2>那么如何使用代理器呢？</h2><p>
+ 为了便于代码的管理和可维护，我们先新建一个包，命名为<font color="DarkRed">
+com.你的名字.common</font>，用来存放代理器。
+ 
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_1.png" /> 
+</p> <p>然后我们要新建两个类，分别命名为<font color="DarkRed">
+ CommonProxy</font>和<font color="DarkRed">
+ClientProxy。</font>
+</p> <p>然后将以下代码粘贴到类里。
+</p> <p>
+</p> <p>CommonProxy服务端代理类的代码：
+<pre>
+public class CommonProxy{
+    @eventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+    }
+
+
+    @eventHandler
+    public void init(FMLInitializationEvent event)
+    {
+    }
+
+
+    @eventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {     
+        }
+        }
+ </pre>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_2.png" /> 
+</p> <p>可以看到<font color="DarkRed">
+@eventHandler</font>报错了，我们之前已经处理过一次红线报错，回想一下，该怎么办呢？
+</p> <p>没错！<font color="DarkRed">鼠标放上去导入包</font>！
+ </p> <p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_3.png" /> 
+</p> <p>然后看到还有其他三个地方也报错了，不怕，导入~
+</p> <p>偷偷告诉你<font color="DarkRed">ctrl+shift+o</font>可以<font color="DarkRed">快速导包</font>~
+</p> <p>这时我们CommonProxy类已经不报错了。
+
+</p> <p>
+</p> <p>我们来看看这个类里面有什么：
+</p> <p><font color="DarkRed">[注解]@eventHandler</font> 初始化的注解，提供了三个方法，<b>在初始的时候加载一些东西</b>。
+</p> <p><font color="DarkRed">[方法]preInit();init();postInit()</font>;↑这货提供的三个初始化方法。
+</p> <p><font color="DarkRed">[对象(类)]FMLPreInitializationEvent</font>：预初始化事件，一般在这里<b>注册物品</b>。
+</p> <p><font color="DarkRed">[对象(类)]FMLInitializationEvent</font>：初始化事件，一般在这里<b>注册合成表、配方</b>。
+</p> <p><font color="DarkRed">[对象(类)]FMLPostInitializationEvent</font>：初始化后期，我没用过，特意去查了下，<b>用来与其他mod联动</b>。
+
+
+
+</p> <p>
+</p> <p>现在可以创建<font color="DarkRed">ClientProxy</font>类了。
+</p> <p><b>ClientProxy客户端代理类的代码</b>：
+</p> <p><pre>
+public class ClientProxy extends CommonProxy
+{
+    @eventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+    }
+
+    @eventHandler
+    public void init(FMLInitializationEvent event)
+    {
+    }
+
+    @eventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {    
+        }
+}
+
+
+ </pre>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_4.png" /> 
+</p> <p>我们发现了一个我们不认得的单词：<font color="DarkRed">extends</font>，在这里是<b>继承</b>的意思。
+</p> <p>客户端代理继承自服务端代理。这里不详细介绍继承的作用，稍后章节详解。
+
+
+
+
+</p> <h2>mcmod.info</h2><p>
+ <b>里面存放模组的信息，将会显示在客户端mod信息列表里。</b>
+</p> <p>
+</p> <p>此文件放置在<font color="DarkRed">src/main/resources</font>下
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_5.png" /> 
+</p> <p>
+</p> <p>*如果没有可以自行创建
+<pre>
+[
+{
+  "modid": "模组ID",
+  "name": "模组名",
+  "description": "介绍",
+  "version": "模组版本",
+  "mcversion": "MC版本",
+  "url": "链接",
+  "updateUrl": "更新链接",
+  "authorList": ["开发者1"],
+  "credits": "创建者",
+  "logoFile": "LOGO文件位置",
+  "screenshots": [图片截图],
+  "dependencies": [附属]
+}
+]
+ 
+</pre>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_6.png" /> 
+</p> <p><b>这里模组ID、模组名、模组版本、MC版本最好填写，其他随意</b>
+</p> <p>
+</p> <p>这时我们的配置已完成，打开<font color="DarkRed">CMD</font>，切换到工作环境下，<code>gradlew.bat build</code>来构建mod。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_7.png" /> 
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_8.png" /> 
+ </p> <p>
+</p> <p>乱入的锟斤拷（划掉）
+</p> <p>构建完成后出现<code>BuildSuccessful</code>，
+</p> <p>
+</p> <p>使用<code>gradlew.bat runClient</code>来运行客户端。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_9.png" /> 
+</p> <p>运行ING...
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_10.png" /> 
+</p> <p>运行成功~
+</p> <p>
+</p> <p>点击mods信息可以看到我们刚刚写的modinfo显示了出来，
+</p> <p>证明了客户端已经识别了我们的文件为mod文件
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_28_11.png" /> 
+</p> <p>接下来的章节我们就可以开始添加物品啦。
+</p> <p><s>但不是下一章（再次划掉）</s>
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

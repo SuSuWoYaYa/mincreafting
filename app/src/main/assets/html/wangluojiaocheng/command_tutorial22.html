@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>3.2 命令方块简介</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="命令方块">命令方块</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+
+<p>命令方块（Command Block, 简写: CB）就是一种能设置命令、执行命令的方块。<br>命令方块只能通过命令给予物品/放置。<br>常用命令:</p>
+<pre><code>/give @p command_block
+</code></pre><p>命令方块执行命令与玩家/实体执行类似，也会储存命令执行统计。<br>然而某些默认针对执行玩家的命令（如<code>clear</code>命令）在命令方块执行时必须指定执行玩家，否则无效。</p>
+<p>命令方块执行命令可以避免每次执行时手动输入的麻烦。(当然，第一次你还是得人手输入，除非是OOC)<br>也能在短时间执行大量命令，比如在1 gt内执行上千条命令。</p>
+<blockquote>
+<p>然而已经逐渐被命令函数取代。<br>如果实际上需要运行大量命令的话，还是建议用function的。</p>
+</blockquote>
+<p>有三种命令方块:脉冲命令方块（Impulse Command Block，简写: ICB），链锁命令方块（Chain Command Block，简写: CCB），及循环命令方块(Repeating Command Block，简写: RCB)。<br>三种命令方块具有不同的性质，但能够在命令方块的GUI里切换模式，不需要独立获取别的命令方块物品。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_cb_mode.jpg" alt="chagne mode"></p>
+<h2 id="计划刻">计划刻</h2>
+<p>要理解命令方块的运作，你需要先了解计划刻(Next Tick Entry)。</p>
+<p>计划刻其实就是一个列表，里面储存着“预期在未来应当行动”的方块的坐标。当然，我们在大多数情况下只关心命令方块在其中的顺序。<br>比如有3个命令方块，我依次激活a、b、c，列表就会依次储存a，b，c。<br>然后下一个游戏刻的时候，mc就会根据计划刻里的位置，依次执行a，b，c里的命令。</p>
+<h2 id="三种命令方块">三种命令方块</h2>
+<p>概念澄清: 激活≠执行。<br>激活是命令方块收到红石信号，或从auto:0b变为auto:1b的时候。<br>执行是命令方块执行命令的时候。<br>从时间的角度来看，对ICB及RCB来说，两者是相差1gt的（激活后1gt才执行）<br>对CCB来说，激活了也不知道会不会执行，得看是否满足执行条件。</p>
+<h3 id="脉冲命令方块">脉冲命令方块</h3>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_Impulse_Command_Block.gif" alt="icb"><br>脉冲命令方块（Impulse Command Block，简写: ICB）<strong>被激活之后1gt</strong>会尝试执行里面的命令<strong>一次</strong>（视乎是否条件制约）。激活的时候也会让指向的链锁命令方块加入计划刻。</p>
+<p>注意: ICB在<strong>本gt</strong>会否执行命令是看<strong>前1gt</strong>有没有被激活而<strong>不是本gt</strong>。这和计划刻有关。其运作原理如下。</p>
+<p>首先，ICB在被激活的时候，mc会将其坐标加入计划刻。<br>下一gt的时候，mc会根据计划刻依次让指定坐标的cb执行命令。</p>
+<p>因此，ICB的执行顺序并不是视乎坐标，而是看激活次序。这个可以通过一个简单的实验证明:<br>把一串ICB排成一行，每个里面的命令为say (第几个cb)，并放进marker实体(tag=marker)。然后分别在第一个cb和最后的cb的位置执行</p>
+<pre><code>execute @e[tag=marker] ~ ~ ~ blockdata ~ ~ ~ {auto:1b}
+</code></pre><p>之&#x540E#x540E;会发现两次的执行顺序刚好相反，分别是1 2 3 4 5 6...n和n n-1 ... 3 2 1。</p>
+<blockquote>
+<p>原理是：execute是根据选择到的实体顺序执行命令的，而选择器是根据距离选择实体的。而加入计划刻的时间也是视乎激活时间，也就是执行<code>blockdata</code>的时间<br>故此在第一个命令方块的位置执行时，会先激活第一个，然后第二个，如此类推到最后一个<br>在最后一个命令方块的位置执行时，会先激活最后一个，然后倒数第二个，如此类推到第一个。</p>
+</blockquote>
+<h3 id="链锁命令方块">链锁命令方块</h3>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_Chain_Command_Block.gif" alt="ccb"><br>链锁命令方块（Chain Command Block，简写: ccb）会在接收到来自指向它的命令方块的信号后（icb及rcb激活/循环后也会向着指着的方向发送信号），会尝试执行命令并传递信号给指向的链锁命令方块。<br>CCB执行命令时会:</p>
+<ol>
+<li>将指向的下一个CCB加入执行命令的检查链</li>
+<li>检查是否激活，条件制约等限制条件</li>
+<li>如果前者满足执行条件则执行命令</li>
+</ol>
+<blockquote>
+<p>不过，默认每个CCB在1gt只能执行一次命令</p>
+</blockquote>
+<p>进阶: 我们能够在执行的时候在后方接上CCB，以达到瞬间调用模组或循环等的需求。(默认一个信息只能传递65536次，可以通过修改<code>gamerule maxCommandChainLength</code>改变)<br>有两种方法: 使用结构方块放置或<code>clone</code>命令。<br>clone的好处为只需要一条命令，而结构方块的好处是不需要绝对坐标。</p>
+<p>而且我们能够让CCB做成循环，方法就是让CCB链的尾端指向第一个CB，而且将CB的<code>UpdateLastExecution</code>设置为0b（即命令链的环）。</p>
+<blockquote>
+<p>不过，由于function的出现，我们能更方便的做到这些事情，详情请见下一页</p>
+</blockquote>
+<h3 id="循环命令方块">循环命令方块</h3>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_Repeating_Command_Block.gif" alt="rcb"><br>循环命令方块（Repeating Command Block，缩写: rcb）被激活时会把自己加入计划刻，之后的1gt执行，执行后检查自己是否激活，是的话就加入计划刻，不停循环。<br>因此，可以看成被激活时（被激活后1gt开始）会不停执行命令，速度为每gt一次，也就是20hz（20次每秒，理想情况下）<br>所以，rcb适合使用在高频的系统里。</p>
+<p>然而，这导致了一个问题: 在rcb之后执行的cb如果关掉了rcb，rcb由于计划刻不会删除，因此还会执行多一次。<br>因此一些需要检查条件决定是否继续执行的系统，或许需要使用icb以确保不会出现意料之外的执行。</p>
+<h2 id="条件制约">条件制约</h2>
+<p>当命令方块是条件制约（conditional，简写: cond，block states: <code>conditional:true</code>）的时候，它会检查指着它箭头尾部的命令方块在<strong>本gt有没有成功执行命令</strong>。</p>
+<blockquote>
+<p>当左边的成功，右边的也能执行</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_legal_cccb_placement.png" alt="legal"></p>
+<hr>
+<blockquote>
+<p>即使左边的成功，右边的也不能执行，因为左边的没有指着右边的cb的箭头尾部</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_illegal_cccb_placement.png" alt="illegal"></p>
+<p>如果<strong>本gt</strong>指着它箭头尾部的命令方块<strong>没有执行过</strong>或是<strong>执行失败</strong>(消失了也不行...)，则不会执行。</p>
+<blockquote>
+<p>避免使用长串的条件制约以模拟if，以免中间某些命令因某些原因失败导致后面的全部都不能执行。详见基础逻辑中的布尔逻辑运算。<br>使用条件制约时，请确保自己清楚里面的命令的成功、失败条件是什么，以免出现意外情况。</p>
+</blockquote>
+<h2 id="保持开启">保持开启</h2>
+<blockquote>
+<p>NBT相关知识请参阅后方NBT章节</p>
+</blockquote>
+<p>保持开启（NBT: <code>auto:1b</code>）就是模拟命令方块被红石激活的状态，能够激活命令方块。<br>ICB只会在auto从0b转为1b之后1gt执行命令（可以是1gt内先设置为0b然后1b）。<br>RCB就是当auto为1b的时候（当然，算上计划刻的话会有点延迟）就会执行命令。<br>CCB则是在检查是否执行的时候检查auto/激活，只要auto为1b或者被红石激活了就会执行命令（可以在执行前的瞬间激活，不需要提早1gt）</p>
+<p>因此，CCB经常会设置为auto:1b（实际上CCB的默认模式就是auto：1b），因为这比较方便而且能节省空间（ccb能拐弯叠在一起而之间不需要有空隙放置红石块）。<br>除此以外，某些系统会以marker定位cb的位置，并以auto来控制CCB是否执行及ICB是否在下1gt执行。</p>
+<h2 id="ooc">*OOC</h2>
+<p>即Only One Command，通过一条命令执行大量命令/放置大量命令方块。能够方便的导入命令到世界里。<br>这里只会简单的讲解一下其原理。实际做法可以有很多, 也有很多优化的方法。</p>
+<p>OOC一般是通过矿车骑矿车骑矿车...一直骑下去（或者是一堆矿车骑着掉落沙）, 每个矿车都是命令方块矿车, 而里面有着需要执行的命令, 而最底下是掉落沙状态的红石块和激活铁轨。<br>OOC是一条summon命令, 上面骑着那么一大堆东西。在生成时, 掉落沙很快会掉到地上变成方块, 而上面的矿车就会掉到方块上, 被激活并执行命令。</p>
+<p>OOC充分利用了MC每条命令最多有32767（虽然经常没达到这个极限就炸了）的字数极限, 一次导入一大堆命令, 很大程度上方便了在文字档案里写命令而不是在MC里直接写的玩家。同时，也有不少玩家利用这个特性来分享命令模块。</p>
+<h2 id="设置">设置</h2>
+<p>需要设置部分游戏规则以让玩家能愉快的玩命令方块。</p>
+<pre><code>gamerule commandBlockOutput false
+</code></pre><p>避免命令方块执行结果刷屏</p>
+<hr>
+<pre><code>gamerule logAdminCommands false
+</code></pre><p>避免在服务器里刷爆log...</p>
+  
+<p><br/></p></div>
+</body>
+
+</html>

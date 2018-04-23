@@ -53,9 +53,9 @@ public class DbManage {
 
 //    }
 
-    public void insertBlocksToTable(String TableName, String jsonfileName) {
+    public void insertBlocksToTable(String TableName, String jsonfileName, boolean is_simplified_chinese) {
         List<Block> blocks = null;
-        blocks = ReadJsonData.ReadBlockformJsonFile(context, jsonfileName);
+        blocks = ReadJsonData.ReadBlockformJsonFile(context, jsonfileName, is_simplified_chinese);
         for (int i = 0; i < blocks.size(); i++) {
 
             Block item = blocks.get(i);

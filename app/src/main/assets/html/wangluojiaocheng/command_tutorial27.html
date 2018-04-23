@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.3 记分板标签</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="记分板标签">记分板标签</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+ 
+<p>标签(tag)，本质上就是NBT 字串的List。<br>每个<strong>实体</strong>（不是对象，假名无法拥有tag）可以有一组标签，而那些标签不需要事先定义（这是和变量最大的分别之一）。</p>
+<p>每个实体都有两种状态：有某个标签和没有某个标签。<br>标签一般是当做布尔值使用，也就是有没有做过一件事情/符合某个要求。<br>比如是否已经被系统处理过，或者某个NBT标签符合条件，等等。</p>
+<p><strong>变量</strong> 能够储存分数，也就是说我们能用分数当作状态。<br>如我要记录一名玩家出发的状态，我们可以以0代表还没出发，1代表在a段路上，2代表在b段路上，如此类推直到最后一个数值代表完成路程。</p>
+<p>但是标签，就<strong>无法</strong>方便地做到这项功能，因为只能判断在与不在。然而，如果要判断一些能够同时存在的东西并且只有两种可能（是与不是）的时候，则可以使用标签。比如说判断玩家在沙漠，和判断玩家在沙漠神殿，两者可能同时出现（沙漠神殿自然在沙漠）并且只有两种可能（在那地方和不在那地方），那么我们就可以使用tag了。</p>
+<p>此外，标签也能在实体生成时加上，十分方便。NBT为: <code>Tags:[&quot;标签1&quot;...]</code>。例子：</p>
+<pre><code>summon armor_stand ~ ~ ~ {Tags:[tag1]}
+</code></pre><p>如果要检查多个标签的话，我们需要execute。如我们要检查有tag1、tag2、tag3的实体，让它们<code>say hi</code></p>
+<pre><code>execute @e[tag=tag1] ~ ~ ~ execute @s[tag=tag2] ~ ~ ~ execute @s[tag=tag3] ~ ~ ~ say hi
+</code></pre><p>标签有一点比变量好的地方：不用初始化。对象没有分数是没法检测的，而没有标签直接<code>tag=!标签</code>就能检测，省却了初始化的步骤（对象需要+0分来初始化分数）</p>
+<blockquote>
+<p>注意: 很重要的一点是，玩家死了之后标签还是不会改变的，就像分数一样</p>
+</blockquote>
+<p>然而有时候我们会选择使用记分板，就是当玩家可能下线并且我们要对该玩家的状态进行操作时。本教程最后的例子中的<b> 6.3.6 皇冠系统 </b>就有这情况了。</p>
+<p>使用tag的例子可以参见 <b> 6.3.3 下雨检测 </b>。里面展示了怎么以tag标记有特定NBT的实体。</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

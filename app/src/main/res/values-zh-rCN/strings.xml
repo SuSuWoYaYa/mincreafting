@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">我的世界合成表大全</string>
-    <string name="versionCode">v9.3</string>
+    <string name="versionCode">v9.4</string>
     <string name="action_settings">Settings</string>
     <string name="toolbar_search">搜索</string>
     <string name="menu_change_theme">切换主题</string>
@@ -80,7 +80,7 @@
     <string name="tip_you_are_vip_now">广告已经没有啦</string>
     <string name="tip_you_are_not_a_vip">亲, 没查询到你的状态</string>
     <string name="tip_check_vip_error">查询的时候出错了</string>
-    <string name="tip_dashang1">打赏后请联系作者</string>
+    <string name="tip_dashang1">为人民服务也要吃饭\n打赏后请联系作者</string>
     <string name="tip_dashang2">打赏后请把留言和昵称发给作者</string>
     <string name="tip_email">cuisanzhang@163.com</string>
     <string name="tip_qq">QQ: 1135899918</string>

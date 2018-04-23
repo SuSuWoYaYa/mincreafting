@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.1.4 JSON分项</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >    <h1 id="分项与数组">分项与数组</h1>
+
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+ 
+                            
+<p><strong>extra-分项</strong> 以及 <strong>JSON array-JSON数组</strong> 提供了让多个不同的文本对象同时存在的可能性<br>例如想让一条<code>tellraw</code>命令中使用多个不同样式的文本对象，或者是组合多个JSON结构时使用</p>
+<p>同时它们在<strong>告示牌</strong>和<strong>成书</strong>之中也有重要的角色<br>并且<strong>继承</strong>的特性有时能让一些样式上的设定变得方便</p>
+<h2 id="基础">基础</h2>
+<p>extra-分项是一个附加在JSON文本中的数组对象<br>其格式为</p>
+<pre><code>extra:[{&lt;JSON文本1&gt;},{&lt;JSON文本2&gt;},......]
+</code></pre><p>JSON文本1、JSON文本2...等等的文本对象会被放在当前对象之后。</p>
+<hr>
+<p>而JSON array则是由<code>[]</code>包围的JSON文本，在需求JSON文本的命令/NBT中，可以直接使用<code>[]</code>输入一个JSON数组，取代使用<code>{}</code>来输入单一对象</p>
+<p>使用一个简单的例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons1.png" alt="1"></p>
+<p>最基础的一条<code>tellraw</code>命令也可以分别以<code>extra</code>和<code>array</code>的形式重写<br>array:</p>
+<pre><code>tellraw @a [{&quot;text&quot;:&quot;Hello&quot;},{&quot;text&quot;:&quot; World&quot;}]
+</code></pre><p>或者</p>
+<pre><code>tellraw @a [&quot;Hello&quot;,&quot; World&quot;]
+</code></pre><p>（在array中，可以用双引号直接取代简单的<code>text</code>对象，可以和完整的JSON文本混合使用）</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons1.png" alt="1"></p>
+<p>extra:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello&quot;,&quot;extra&quot;:[{&quot;text&quot;:&quot; World&quot;}]}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons1.png" alt="1"></p>
+<p>三者效果是完全一样的</p>
+<hr>
+<p>extra内也可以添加多个JSON文本</p>
+<p>例如：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello&quot;,&quot;extra&quot;:[{&quot;text&quot;:&quot; Minecraft&quot;},{&quot;text&quot;:&quot; World&quot;}]}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons41.png" alt="41"></p>
+<hr>
+<p>不过由于<code>extra</code>和<code>array</code>的效果和特性基本一致，出于<code>array</code>比<code>extra</code>使用上方便一点，以及格式上比较方便阅读和美观，个人推荐尽量使用<code>array</code>。</p>
+<blockquote>
+<p>然而在进度里，文件只能够使用Compound，因此只能使用extra。</p>
+</blockquote>
+<h2 id="应用">应用</h2>
+<p>extra及array最大的应用，就是可以分别设置每一个JSON文本的属性<br>例如：<br>array:</p>
+<pre><code>tellraw @a [{&quot;text&quot;:&quot;Hello&quot;,&quot;color&quot;:&quot;red&quot;},{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;},{&quot;text&quot;:&quot; World&quot;,&quot;color&quot;:&quot;blue&quot;}]
+</code></pre><p>extra:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello&quot;,&quot;color&quot;:&quot;red&quot;,&quot;extra&quot;:[{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;},{&quot;text&quot;:&quot; World&quot;,&quot;color&quot;:&quot;blue&quot;}]}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons42.png" alt="42"></p>
+<p>不仅仅是颜色之类的样式代码，还可以是CE(clickEvent)和HE(hoverEvent)</p>
+<p>例如：<br>array:</p>
+<pre><code>tellraw @a [{&quot;text&quot;:&quot;Hello&quot;,&quot;color&quot;:&quot;red&quot;},{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;/say Minecraft&quot;}},{&quot;text&quot;:&quot; World&quot;,&quot;color&quot;:&quot;blue&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_text&quot;,&quot;value&quot;:&quot;World&quot;}}]
+</code></pre><p>extra:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello&quot;,&quot;color&quot;:&quot;red&quot;,&quot;extra&quot;:[{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;/say Minecraft&quot;}},{&quot;text&quot;:&quot; World&quot;,&quot;color&quot;:&quot;blue&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_text&quot;,&quot;value&quot;:&quot;World&quot;}}]}
+</code></pre><p>由于命令比较长，下面将会把命令分解出来说明</p>
+<p>这条<code>/tellraw</code>命令分别有3个JSON文本：</p>
+<ul>
+<li><p>第一个JSON文本（array内首个对象，或者是带有extra列表的那个对象），我们可称之为主项：</p>
+<pre><code>{&quot;text&quot;:&quot;Hello&quot;,&quot;color&quot;:red}
+</code></pre><p>其设定为红色的&quot;Hello&quot;</p>
+</li>
+<li><p>第二个对象：</p>
+<pre><code>{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;/say Minecraft&quot;}}
+</code></pre><p>其设定为绿色的&quot; Minecraft&quot;，点击执行<strong>/say Minecraft</strong></p>
+</li>
+<li><p>第三个对象：</p>
+<pre><code>{&quot;text&quot;:&quot; World&quot;,&quot;color&quot;:&quot;blue&quot;,&quot;hoverEvent&quot;:{&quot;action&quot;:&quot;show_text&quot;,&quot;value&quot;:&quot;World&quot;}}
+</code></pre><p>其设定为蓝色的&quot; World&quot;，悬浮时显示&quot;World&quot;</p>
+</li>
+</ul>
+<p>效果就会是：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons43.png" alt="43"></p>
+<hr>
+<p>不仅如此，它们还可以设置不同结构的JSON（例如组合text,score和selector）</p>
+<p>例如：<br>array:</p>
+<pre><code>tellraw @a [{&quot;text&quot;:&quot;Nearest Player:&quot;},{&quot;selector&quot;:&quot;@p&quot;}]
+</code></pre><p>extra:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Nearest Player:&quot;,&quot;extra&quot;:[{&quot;selector&quot;:&quot;@p&quot;}]}
+</code></pre><p>这里有两个对象：</p>
+<ul>
+<li><p>主项的文本:<strong>&quot;Nearest Player:&quot;</strong></p>
+</li>
+<li><p>和第二项的<code>@p</code>选择符</p>
+</li>
+</ul>
+<p>效果就是：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons44.png" alt="44"></p>
+<h2 id="继承">继承</h2>
+<p><code>extra</code>和<code>array</code>都拥有继承的特性<br>所有<code>分项</code>（array里面首个之后的对象/extra列表里面的所有对象）都会继承到<code>主项</code>（array里面首个对象/带有extra列表的那个对象）的设定</p>
+<p>举个例子帮助理解：<br>array:</p>
+<pre><code>tellraw @a [{&quot;text&quot;:&quot;Hello&quot;,&quot;bold&quot;:true},{&quot;text&quot;:&quot; World&quot;}]
+</code></pre><p>extra:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello&quot;,&quot;bold&quot;:true,&quot;extra&quot;:[{&quot;text&quot;:&quot; World&quot;}]}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons45.png" alt="45"></p>
+<p>在本例中，只有主项设置了<code>bold</code>属性，但是由于继承的特性，分项也同时拥有了粗体的样式</p>
+<p>但是反之，分项的设定并不会影响主项，例如：<br>array:</p>
+<pre><code>tellraw @a [{&quot;text&quot;:&quot;Hello&quot;},{&quot;text&quot;:&quot; World&quot;,&quot;bold&quot;:true}]
+</code></pre><p>extra:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello&quot;,&quot;bold&quot;:true,&quot;extra&quot;:[{&quot;text&quot;:&quot; World&quot;,&quot;bold&quot;:true}]}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons46.png" alt="46"></p>
+<p>同时，分项之间并不会互相影响，并且继承而来的属性可以被覆盖<br>例如:<br>array:</p>
+<pre><code>tellraw @a [{&quot;text&quot;:&quot;Hello&quot;,&quot;bold&quot;:true},{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;},{&quot;text&quot;:&quot; World&quot;,&quot;bold&quot;:false}]
+</code></pre><p>extra:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello&quot;,&quot;bold&quot;:true,&quot;extra&quot;:[{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;},{&quot;text&quot;:&quot; World&quot;,&quot;bold&quot;:false}]}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons47.png" alt="47"></p>
+<p>详细分析一下以上的命令，以上的<code>/tellraw</code>拥有三个对象</p>
+<ul>
+<li><p>主项为&quot;Hello&quot;，拥有<code>bold</code>属性</p>
+</li>
+<li><p>第二项&quot; Minecraft&quot;，继承了<code>bold</code>属性，并且设定了颜色为绿色</p>
+</li>
+<li><p>第三项&quot; World&quot;，虽然应该继承主项的<code>bold</code>属性，但是<code>bold:false</code>设定覆盖了继承而来的属性，同时也不受第二项的颜色属性影响</p>
+</li>
+</ul>
+<p>虽然本节没有使用CE/HE作为例子，但它们也是可以如同<code>样式代码</code>一样被继承的，规则相同。但如果子对象也有设置CE/HE，继承下来的事件会被取代。</p>
+<hr>
+<p>如果有时需要设定一段格式差异较大的JSON文本，例如只想将第一段文字设定为粗体，其他都不要，那么后面的文本是不是都要设定<code>bold:false</code>这么麻烦？</p>
+<p>一个方便的做法为，将主项设置为空项，例如：<br>array:</p>
+<pre><code>tellraw @a [&quot;&quot;,{&quot;text&quot;:&quot;Hello&quot;,&quot;bold&quot;:true},{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;},{&quot;text&quot;:&quot; World&quot;,&quot;italic&quot;:true}]
+</code></pre><p>extra:</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;&quot;,&quot;extra&quot;:[{&quot;text&quot;:&quot;Hello&quot;,&quot;bold&quot;:true},{&quot;text&quot;:&quot; Minecraft&quot;,&quot;color&quot;:&quot;green&quot;},{&quot;text&quot;:&quot; World&quot;,&quot;italic&quot;:true}]}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons48.png" alt="48"></p>
+<p>这样即可确保每一个JSON文本的独立性，减少互相干扰</p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>
