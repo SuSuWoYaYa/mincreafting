@@ -359,7 +359,7 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
         tipTextView.setText("你已經升級為PRO了\n所有廣告都已去除\n\ncuisanzhang@163.com");
         Button btnbuy = findViewById(R.id.btn_buy);
         btnbuy.setText("繼續支持作者");
-        btnbuy.setClickable(false);
+//        btnbuy.setClickable(false);
     }
 
 
@@ -392,7 +392,7 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
         });
 
         ImageView otherpay = (ImageView) findViewById(R.id.other_pay);
-        imageViewMenu.setOnClickListener(new View.OnClickListener() {
+        otherpay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityTipByGoogle.this, ActivityTip.class);
