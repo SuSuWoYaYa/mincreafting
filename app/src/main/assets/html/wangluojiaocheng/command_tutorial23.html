@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>3.3 命令函数</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="命令函数">命令函数</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>命令函数（Function，Wiki译名为函数），是1.12新加入的功能。用途为在被调用的gt执行命令函数文件内的全部命令，且支持无延迟调用别的命令函数。</p>
+<p>本章节将会分为三部分：</p>
+<ul>
+<li>命令函数<strong>文件</strong></li>
+<li>命令函数<strong>命令</strong></li>
+<li>命令函数<strong>常用逻辑</strong></li>
+</ul>
+<h2 id="文件">文件</h2>
+<p>命令函数是一个文本文件，编码为UTF-8<strong>无BOM</strong>，后缀为<code>.mcfunction</code>。<br>放在<code>/.minecraft/(存档)/data/functions/(命名空间)/(任意路径)/(名称).mcfunction</code>（任意路径可以为空）。<br>命名空间、文件夹名称、文件名称建议为小写英文字符（游戏无论大小写也一律会当作小写），字词之间以<code>_</code>分隔。</p>
+<p>例子（从<code>functions</code>文件夹开始）:</p>
+<ul>
+<li><code>/test/a/b/c.mcfunction</code>。即命名空间为<code>test</code>，路径为<code>a/b/c.mcfunction</code>。</li>
+<li><code>/test2/a.mcfunction</code>。即命名空间为<code>test2</code>，路径为<code>a.mcfunction</code>。</li>
+<li><code>/a.mcfunction</code>。<strong>错误</strong>，必须放在某个命名空间之内。</li>
+</ul>
+<blockquote>
+<p>可以通过在cmd里输入<code>type 文件名称</code>，查看输出，来分辨文件是否无BOM<br>如果有BOM，第一个字符会为<code>?</code>或者是乱码，无Bom则为正常的字符。</p>
+</blockquote>
+<h3 id="函数名称">函数名称</h3>
+<p>命令里经常需要使用函数名称，由命名空间及路径组成。格式为:</p>
+<pre><code>(命名空间):(路径，删去后缀名)
+</code></pre><p>在上方的例子中，前两个命令函数的函数名称分别为：</p>
+<ul>
+<li><code>test:a/b/c</code></li>
+<li><code>test2:a</code></li>
+</ul>
+<p>在命令中使用时，函数名称无视命名空间和函数名的大小写。</p>
+<blockquote>
+<p>战利品表(Loot table)以及进度(Advancement)也是使用这个格式。</p>
+</blockquote>
+<h3 id="文件内容">文件内容</h3>
+<p>文件内容为多条命令，每条命令占据一行（<strong>不能</strong> 以<code>/</code>符号作开始），空行及注释会被忽略。</p>
+<p>注释:以<code>#</code>作开始的行，如<code>#这是一条注释</code><br>空行会被忽略</p>
+<p>例子：</p>
+<pre><code># test:1
+say test
+say 1
+
+setblock ~ ~-1 ~ stone
+</code></pre><h2 id="命令">命令</h2>
+<blockquote>
+<p>关于执行点，请参见 <b>命令执行</b></p>
+</blockquote>
+<h3 id="高频执行函数">高频执行函数</h3>
+<pre><code>gamerule gameLoopFunction &lt;函数名称&gt;
+</code></pre><p>每gt执行一次指定命令函数（于gt完结时执行，故一些数值如<code>HurtTime</code>只能检测到9）。</p>
+<blockquote>
+<p>注意，执行坐标为(0, 0, 0)，权限等级为2，即无法执行<code>op</code>这类命令。</p>
+</blockquote>
+<h3 id="执行单一函数一次">执行单一函数一次</h3>
+<pre><code>function &lt;函数名称&gt; [&lt;if|unless&gt; &lt;选择器&gt;]
+</code></pre><ul>
+<li>函数名称: 需要执行的命令函数的函数名称（见上方）。</li>
+<li>if: 如果后方选择器选择到<strong>任何</strong>目标就执行命令函数。</li>
+<li>unless: 如果后方选择器<strong>选择不到</strong>目标就执行命令函数。</li>
+<li>没有if/unless: 执行命令函数。</li>
+</ul>
+<p>可以在一个命令函数中无延迟调用别的命令函数，命令函数里的命令的执行坐标为当前这条<code>function</code>命令的执行坐标。</p>
+<blockquote>
+<p>即使命令函数里曾经利用如<code>tp</code>命令修&#x6#x6539;执行者坐标，其他命令的执行坐标也不会改变。要确保能获得执行者最新坐标的话请使用<code>execute</code>命令。</p>
+</blockquote>
+<p>也能够调用自己（递归，recursion），然而切记添加跳出条件，否则便会出现无限循环（仍受<code>gamerule maxCommandChainLength</code>执行命令数限制，然而终究是不好的）。<br>当目标命令函数执行完毕后会回归到本命令调用后的位置然后继续执行。执行顺序如下图所示（从左上方开始）：</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_func.png" alt=""><br>所以输出为</p>
+<pre><code>start a
+start b
+start b (这是recursion的部分)
+end b (这是recursion的部分)
+end b
+end a
+</code></pre><h3 id="进度reward">进度Reward</h3>
+<p>可以通过进度(Advancement)的reward对目标玩家执行一次命令函数。这会在进度章节说明。</p>
+<h3 id="限制命令执行数量">限制命令执行数量</h3>
+<p>可以通过命令限制1次命令函数执行的总命令数量。</p>
+<pre><code>gamerule maxCommandChainLength &lt;数量&gt;
+</code></pre><blockquote>
+<p><del>或许你们能够用这个来干掉别人的反作弊吧...</del> 你们能够用这个来关掉失控了的系统。<br>除了这个以外我也没想到啥用途了。</p>
+</blockquote>
+<h2 id="逻辑">逻辑</h2>
+<p>其实也没啥逻辑可言...就模块化而已，玩多了就熟了。</p>
+<p>部分人生经验:</p>
+<ul>
+<li>类似功能的弄成一个命名空间</li>
+<li>一组达成一个功能的命令就放在一个命令函数里。经常需要调用的也可以放在一个命令函数里。</li>
+<li>尽量不要在主要高频的命令函数里写太多命令，最好是调用别的命令函数，这样会更容易维护。</li>
+<li>部分需要特定时候才执行的命令可以把那部分的命令放在单一命令函数，使用<code>if|unless</code>，以实体的tag/分数作控制。</li>
+<li>如果一个命令函数会被经常调用，但中间某部分命令会被替换：把前后的命令放进新的函数。</li>
+<li>递归（调用自己）切记要以<code>if|unless</code>进行调用。</li>
+<li>部分事件可以考虑使用进度(Advancement)，详情见之后的<strong>事件</strong>章节。</li>
+</ul>
+<hr>
+<blockquote>
+<p>这部分是给会编程的玩家看的。</p>
+</blockquote>
+<p>命令函数是没有回传(Return)的，所以你不能提早完结命令函数。你只能把后面的放进别的命令函数放进别的命令函数里，看情况进行调用。</p>
+<hr>
+<h2 id="例子">例子</h2>
+<p>本教程里需要使用命令函数的部分会在命令开始标识这是一个函数文件，比如：</p>
+<pre><code># test:test1
+
+say 这是一条命令
+</code></pre><p>这个就是放在<code>data/functions/test/test1.mcfunction</code>里的函数内容了。</p>
+<hr>
+<p>详细例子可以参见 <b>记分板登录系统</b> 及 <b>进阶登录系统</b>（递归地狱，不建议新手马上阅读）。</p>
+
+                                
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

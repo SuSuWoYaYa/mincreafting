@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>7.2 Loot table</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="loot-table">Loot table</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>战利品表(Loot table)，是一个对地图制作非常有用的功能。<br>它能够随机物品，作为生物掉落、箱子随机生成以及进度奖励。<br>最重要的地方在于Loot table拥有很多的函数(Function)，可以随机一些NBT属性，如附魔、Attributes等。这些如果需要命令来给予的话会非常的繁复。</p>
+<p>战利品表可以自定义，只需要根据下文指出的架构编写JSON文件并将JSON文件放于<code>(地图)/data/loot_tables/(命名空间)/路径</code>里，这方式和命令函数类似。</p>
+<p>如果把战利品放在命名空间为<code>minecraft</code>，路径和原版相同名称的战利品表一样的地方，则会<strong>覆盖</strong>该原版战利品表。</p>
+<p>这文件需要使用<b> 2.1 JSON文本 </b>教程。</p>
+<h2 id="结构">结构</h2>
+<ul>
+<li>（Loot table根标签）<ul>
+<li><code>pools</code>: 随机池列表。使用此战利品表的时候<strong>每个随机池都会执行一次</strong>。<ul>
+<li>一个随机池（见下）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>调用战利品表生成物品时，游戏会尝试逐个随机池执行。</p>
+<h3 id="随机池">随机池</h3>
+<ul>
+<li>（一个随机池）<ul>
+<li><code>conditions</code>: 一堆使用此随机池的条件。必须全部符合才会执行本池。List。<ul>
+<li>一个condition（见下）</li>
+</ul>
+</li>
+<li><code>rolls</code>: 指定会在entries里随机抽取多少次。（每次只会抽取符合条件的entry。）整数。</li>
+<li><code>rolls</code>: 在下方范围内选择一个随机数，决定会在entries里随机抽取多少次。<ul>
+<li><code>min</code>: 随机数的下限，也就是说随机数不会小于这个数（但可以等于）。整数。</li>
+<li><code>max</code>: 随机数的上限，也就是说随机数不会大于这个数（但可以等于）。整数。</li>
+</ul>
+</li>
+<li><code>bonus_rolls</code>: 每点幸运值增加roll的次数，向下取整数。浮点数。默认为0。可以为负数。</li>
+<li><code>bonus_rolls</code>: 在下方范围内选择一个随机数，决定每点幸运值增加roll的次数，向下取整数。浮点数。可以为负数。<ul>
+<li><code>min</code>: 随机数的下限。浮点数。</li>
+<li><code>max</code>: 随机数的上限。浮点数。</li>
+</ul>
+</li>
+<li><code>entries</code>: 随机项目列表。<ul>
+<li>一个entry。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>逐个随机池执行时，游戏会首先看看是否符合此随机池指定的所有条件，如果符合则继续，不符合则继续下一个随机池（或完成执行，如果已经没有其他随机池）。</p>
+<p>游戏会根据指定玩家的幸运值计算出额外的rolls(<code>bonus_rolls*luck</code>)，然后随机执行<code>roll + bonus_rolls*luck</code>次选择合适的随机项目（不会选择到不符合条件的随机项目，可以重复选择）。</p>
+<h3 id="随机项目">随机项目</h3>
+<ul>
+<li>（一个随机项目）<ul>
+<li><code>conditions</code>: 一堆使用此随机项目的条件。必须全部符合才会选择本项目。List。</li>
+<li><code>type</code>: 指定此随机项目的类型。字串。可能数值有：<ul>
+<li><code>loot_table</code>: 调用别的战利品表。（把该战利品表随机出来的物品当此项目的奖励）</li>
+<li><code>item</code>: 随机物品。最常用的类型。</li>
+<li><code>empty</code>: 就是抽到空箱子了，不给任何奖励。这个#x4E2A;看似无用，实际上可以用此来做到加权的随机rolls数量。</li>
+</ul>
+</li>
+<li><code>name</code>:<ul>
+<li>如果<code>type</code>为<code>item</code>，则填写给予的物品id，如<code>minecraft:stone</code>。默认物品数量为1。</li>
+<li>如果<code>type</code>为<code>loot_table</code>，则填写调用的战利品表名称。<code>(命名空间):路径</code>。请看战利品表名称部分，</li>
+</ul>
+</li>
+<li><code>functions</code>: 如果<code>type</code>为<code>item</code>，则对给予的物品执行特定函数，随机附魔、attributes、数量等等。注意函数的次序非常重要，游戏会顺序执行函数，所以一些修改物品数据的函数应该在如<code>set_count</code>函数后执行，否则便会出错。<ul>
+<li>一个函数（见下）</li>
+</ul>
+</li>
+<li><code>weight</code>: 此随机项目的权重。随机项目被选择的几率=<code>此项目权重/整个随机池的所有随机项目权重的加总</code>。整数。</li>
+<li><code>quality</code>: 每点幸运值对该项目的权重增值，加完后向下取整数。整数。</li>
+</ul>
+</li>
+</ul>
+<h3 id="条件condition">条件(Condition)</h3>
+<ul>
+<li>（一个条件）<ul>
+<li><code>condition</code>: 条件的名称，如<code>entity_properties</code>。</li>
+<li>...: 其他条件的标签。</li>
+</ul>
+</li>
+</ul>
+<p>比如有一个条件叫作<code>entity_scores</code>。其描述是这样的：</p>
+<ul>
+<li><code>entity_scores</code> - 检测一个实体的记分板分数。<ul>
+<li><code>entity</code>: 需要检测的实体。<code>this</code>为这个死掉的实体（如果这是生物掉落的战利品表），<code>killer</code>为检测杀死该实体的实体，<code>killer_player</code>为检测杀死该实体的玩家。<br>  如果指定了<code>killer</code>或<code>killer_player</code>但不存在这实体，则此条件不满足。</li>
+<li><code>scores</code>: 需要检测的分数。所有分数都需要满足才算满足此条件。如果指定变量不存在的话则算作不满足。<ul>
+<li><code><记分板变量名称></code>: 标签名称为记分板变量名称。指定实体的分数必须为此分数才算满足此条件。整数</li>
+<li><code><记分板变量名称></code>: 标签名称为记分板变量名称。指定实体的分数必须在此范围才算满足此条件。<ul>
+<li><code>min</code>: 最小分数。</li>
+<li><code>max</code>: 最大分数。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>里面的<code>entity</code>以及<code>scores</code>就是条件的其他标签。</p>
+<p>假设我们要检测杀死生物的玩家的分数<code>test</code>为30-40，<code>test2</code>为1分，我们可以这么写：（只写出一个condition）</p>
+<pre><code>{
+    "condition": "entity_scores",
+    "entity": "killer_player",
+    "scores": {
+        "test": {
+            "max": 40,
+            "min": 30
+        },
+        "test2": 1
+    }
+}
+</code></pre><blockquote>
+<p>那些条件的详细列表还请参照 <a href="https://minecraft.gamepedia.com/Loot_table#Conditions" target="_blank">https://minecraft.gamepedia.com/Loot_table#Conditions</a></p>
+</blockquote>
+<h3 id="函数function">函数(Function)</h3>
+<ul>
+<li>一个函数<ul>
+<li><code>function</code>: 函数名称。</li>
+<li><code>conditions</code>: 使用此函数的条件列表。<ul>
+<li>一个condition。</li>
+</ul>
+</li>
+<li>...其他的函数标签。</li>
+</ul>
+</li>
+</ul>
+<p>举个例子。</p>
+<ul>
+<li><code>enchant_randomly</code>: 随机选择一个附魔，如果该附魔拥有多个等级（玩家能够附魔的等级）则随机选择一个等级。<ul>
+<li><code>enchantments</code>: 可供选择的<a href="https://minecraft.gamepedia.com/Enchantments#Data_values" target="_blank">附魔名称</a>。如果被忽略，则从所有附魔中随机附魔。</li>
+</ul>
+</li>
+</ul>
+<p>其中的<code>enchantments</code>就是其他的函数标签。</p>
+<p>假设我们需要随机附魔<strong>保护或火焰保护</strong>，我们可以这么写：（只写出一个函数）</p>
+<pre><code>{
+    "function": "enchant_randomly",
+    "enchantments": [
+        "protection",
+        "fire_protection"
+    ]
+}
+</code></pre><blockquote>
+<p>那些函数的详细列表还请参照: <a href="https://minecraft.gamepedia.com/Loot_table#Functions" target="_blank">https://minecraft.gamepedia.com/Loot_table#Functions</a></p>
+</blockquote>
+<h2 id="战利品表名称">战利品表名称</h2>
+<p>战利品表的名称为<code>(命名空间):路径</code>，路径不包括文件扩展名。与命令函数类似。</p>
+<p>比如路径在<code>data/loot_tables/test/test1.json</code>的战利品表，调用时其名称为<code>test:test1</code>。</p>
+<h2 id="使用">使用</h2>
+<p>生物掉落可以设置<code>DeathLootTable</code>，数值为战利品表名称。这样生物死亡时就会掉落指定战利品表的奖品。</p>
+<p>箱子和箱子矿车可以设置<code>LootTable</code>，数值为战利品表名称。这样箱子打开时就会生成指定战利品表的物品（物品会被随机放置在不同格子内），<strong>取代原先的物品</strong>。</p>
+<p>注意: 箱子和箱子矿车被打开时，战利品表会被设置为无，如果这时候被重新设置战利品表的话就会马上刷新箱子内容。高频的话甚至会造成以下情况：</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/1.gif" alt=""></p>
+<h2 id="参见">参见</h2>
+<p>本章不是一个详细讲解战利品表的章节，因为目前已经有很详细的教程覆盖了战利品表的各种使用。</p>
+<p>请参见2b的教程: <a href="http://www.mcbbs.net/thread-619468-1-1.html" target="_blank">http://www.mcbbs.net/thread-619468-1-1.html</a></p>
+<script>
+var a = document.querySelectorAll(".page-wrapper ul");
+for (var i = 0; i < a.length; i++) if (a[i].parentNode.nodeName != "LI") a[i].className = "tree";
+</script>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

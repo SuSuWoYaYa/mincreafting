@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.1 记分板变量</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="记分板变量">记分板变量</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<blockquote>
+<p>本文采用以下译名：</p>
+<ul>
+<li>Objective-&gt;变量</li>
+<li>Criteria-&gt;判据</li>
+</ul>
+<p>在本文中，<strong>对象</strong>指的是<strong>玩家名称（真实玩家及假名）与UUID</strong>。<br>同时，本文前部以概念介绍为主，具体的命令与应用在后部介绍。</p>
+</blockquote>
+<p><strong>变量</strong> 是记分板系统的基本组成部分。记分板系统上可以同时存在多个变量。</p>
+<p>一个变量包含以下内容：</p>
+<ul>
+<li><strong>名称(Name)</strong>。名称是一个变量在系统内部使用的名称。不同变量之间的名称<strong>不能重复</strong>，且名称<strong>区分大小写</strong>。也就是说，名称为&quot;name&quot;的变量和名称为&quot;NAME&quot;的变量是不同的。名称最长可为16个字符。为了便于他人阅读命令，我们建议用<code>CamelCase原则</code>命名，即单词第一个字母大写。（当然，这不是游戏的必须要求）</li>
+<li><strong>显示名称(Display name)</strong>。显示名称是一个变量用于展示的名称。与名称相反，不同变量之间的显示名称可以重复。</li>
+<li><strong>判据(Criterion)</strong>。判据是一个变量的分数改变方式。不同变量之间的判据可以重复。</li>
+<li><strong>追踪的对象与其分数(Target and Score)</strong>。变量可以同时追踪多个对象，并记录对象的相应分数。</li>
+</ul>
+<p>下面让我们具体了解变量的各个组成部分。</p>
+<h2 id="判据">判据</h2>
+<p>判据作为变量分数的改变方式，一般是针对于玩家而言的。当玩家以外的实体等对象与变量关联起来时，判据效果都与<code>dummy</code>等同，即只能通过命令修改。</p>
+<p>判据分为简单判据和复合判据。简单判据只有一个单词，复合判据则是在基础判据之上加入次级判据。下面先介绍简单判据。</p>
+<p>在简单判据中，有一种判据称为<strong>只读型判据</strong>。它们是根据一些<strong>系统内部的数值来确定相关分数</strong>的，因而不可修改。同时只读型判据与玩家信息相关，因此玩家之外的对象不适用只读型判据。在只读型判据外，其它类型的判据只是<strong>在条件满足时增加分数</strong>，不对应内部数值，所以都能通过命令修改分数。复合判据没有只读型，即只读型判据都是简单判据。<br>在下文中，<strong>粗体</strong>的判据就是只读型判据。</p>
+<p>以下是简单判据略表：</p>
+<ul>
+<li>dummy: <strong>虚拟型</strong>，只能由命令修改</li>
+<li>trigger: <strong>触发型</strong>，配合/trigger命令使用</li>
+<li>deathCount: 统计<strong>死亡次数</strong></li>
+<li>playerKillCount: 统计你的<strong>击杀次数</strong></li>
+<li>totalKillCount: 统计你的<strong>杀怪次数</strong></li>
+<li><strong>health</strong>: 对应你的<strong>生命值</strong></li>
+<li><strong>xp</strong>: 对应你的<strong>经验值</strong></li>
+<li><strong>level</strong>: 对应你的<strong>等级</strong></li>
+<li><strong>food</strong>: 对应你的<strong>饱食度</strong></li>
+<li><strong>air</strong>: 对应你潜水时的<strong>空气值</strong></li>
+<li><strong>armor</strong>: 对应你的<strong>盔甲值</strong></li>
+</ul>
+<p>相比于简单判据，复合判据(Compound criteria)能够更精细地检测玩家行为。复合判据的结构为：<strong>基础判据.次级判据</strong>，例如<code>stat.craftItem.minecraft.stone</code>。&#x4#x4E0D;同部分之间以<code>.</code>分隔。所有的复合判据都可以通过命令进行分数的修改。</p>
+<p>以下是复合判据可用的基础判据略表：</p>
+<ul>
+<li>stat: 当玩家<strong>完成</strong>指定的<strong>统计项目</strong>时，加上对应的分数。不会从内部的统计中拉取数据</li>
+<li>stat.craftItem: 玩家<strong>合成</strong>指定的物品时分数+1</li>
+<li>stat.useItem: 玩家<strong>使用</strong>指定物品时分数+1</li>
+<li>stat.breakItem: 玩家因<strong>耐久度耗尽而破坏</strong>指定物品时分数+1</li>
+<li>stat.mineBlock: 玩家<strong>挖掘</strong>指定方块时分数+1</li>
+<li>stat.killEntity: 玩家<strong>杀死</strong>指定<strong>生物</strong>时分数+1</li>
+<li>stat.entityKilledBy: 玩家<strong>被</strong>指定<strong>生物杀死</strong>时分数+1   </li>
+<li>stat.drop: 玩家<strong>丢出</strong>指定物品时分数+1</li>
+<li>stat.pickup: 玩家<strong>拾取</strong>指定物品时分数+1   </li>
+<li>teamkill: 玩家<strong>杀死</strong>指定<strong>队伍的成员</strong>时分数+1</li>
+<li>killedByTeam: 玩家<strong>被</strong>指定<strong>队伍的成员杀死</strong>时分数+1</li>
+</ul>
+<p>全部的次级准则请参见Wiki的Criteria部分<a href="https://minecraft.gamepedia.com/Scoreboard#Criteria" target="_blank">https://minecraft.gamepedia.com/Scoreboard#Criteria</a>。</p>
+<p>使用复合判据时应当注意：</p>
+<ol>
+<li>在基础准则后加ID名时，需要添加.minecraft前缀。例如：stat.craftItem.<strong>minecraft</strong>.stone。而</li>
+<li>使用物品有着很详细的规则。一般来说，与生物的互动都<strong>不属于</strong>使用，例如驯服、喂养、繁殖、挤奶、剪羊毛等。</li>
+</ol>
+<h2 id="显示位置">显示位置</h2>
+<p>记分板的分数是可以在游戏画面中显示出来的。显示位置共有三处：<strong>名称下方，侧边栏，在线玩家菜单</strong>。在显示变量名称时，使用的是<strong>显示名称</strong>（若添加变量时未填写显示名称，则默认使用<strong>名称</strong>）。一个显示位置只能显示一个目标，但一个目标可以显示在多个位置上。不同的显示位置，分数的显示方式是不同的。各个显示位置的具体介绍如下：</p>
+<ul>
+<li>list: 分数显示于在线玩家菜单中玩家名称的后面，颜色为黄色。这个显示位置不显示变量名。</li>
+<li>sidebar: 在侧边栏显示变量名、对象名称（UUID/玩家名），及对象对应的分数。<ul>
+<li>sidebar.team.队伍颜色: 在指定队伍成员的侧边栏显示分数，形式如上。</li>
+</ul>
+</li>
+<li>belowName: 在玩家名称牌的下方显示变量名与分数。分数在变量名之前。</li>
+</ul>
+<p>在下面这张图片中，<code>list</code>、<code>belowname</code>、<code>sidebar</code>在这里是玩家的名称，同时也对应显示位置的名称；<code>0</code>、<code>3</code>是不带变量名的分数；<code>1</code>是分数值；<code>Morts</code>、<code>Score</code>是变量名。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scb_obj_display.png" alt=""></p>
+<h2 id="对象、分数与检测">对象、分数与检测</h2>
+<p>前面已经说到，对象指的是<strong>玩家名称或UUID</strong>。UUID是记录<strong>实体</strong>的，而玩家名就是记录玩家的。玩家不需要在线，甚至不需要存在，也可以在记分板上有分数。如果使用了不存在的玩家名，我们就把这种玩家名称为 <strong>假名(Fake name)</strong>。</p>
+<p>一般我们会使用假名来显示分数。如果是记录分数作探测之用，一般我们会使用实体marker，因为我们能够以选择器选择实体marker，但不能选择假名。</p>
+<p>使用假名时，只需要按照一般的方法在命令中输入假名即可，不需要进行声明操作。例如，设置分数的命令为：</p>
+<pre><code>scoreboard players set &lt;玩家名&gt; &lt;变量的名称&gt; &lt;分数值&gt; [数据标签]
+</code></pre><p>现在有一个虚拟型变量<code>obj</code>，给一个叫<code>Faker</code>的假名设置分数为<code>10</code>，则命令为：</p>
+<pre><code>scoreboard players set Faker obj 10
+</code></pre><p>如果不希望假名出现在侧边栏，则可以在假名前添加<code>#</code>前缀：</p>
+<pre><code>scoreboard players set #Faker obj 10
+</code></pre><blockquote>
+<p>不过玩家名的长度也是有限制的，不能长于40个字符。</p>
+</blockquote>
+<hr>
+<p>在填写玩家名的参数中，可以用<code>*</code>代表所有对象（所有被记分板系统追踪的对象）。不过此写法<strong>只适用于记分板命令</strong>。</p>
+<hr>
+<p>如果实体有分数，那么可以通过目标选择器，利用相关参数进行检测。具体的参数有两个，分别是<code>score_name</code>和<code>score_name_min</code>。其中<code>name</code>是变量名称。前者代表大于等于，后者代表小于等于。例如，设变量<code>deaths</code>的判据为<code>deathCount</code>，则如果要选出至少死亡一次，至多死亡5次的玩家，则目标选择器的写法为<code>@p[score_deaths=5,score_deaths_min=1]</code>。</p>
+<p>除了分数，我们也能使用记分板的 <strong>标签(tag)</strong> 对实体进行标记，这会在之后的章节讲解。</p>
+<p>记分板分数有限制的，范围为-2147483648到2147483647。<br>如果分数在加减的过程中超出范围则会<strong>溢出</strong>，这方面请自行搜寻，不建议使用这个特性。</p>
+<p>记分板中<strong>分数为0</strong>和<strong>没有分数</strong>是两个概念：前者能被检测分数，而后者不能被检测分数，即不在记分板系统上。（然而分数+0 -0也能自动把没有分数变为0分。）<br>我们可以使用<code>score_obj_min=-2147483648</code>或者<code>score_obj=2147483647</code>检查有没有分数。由于分数范围的限制，没有分数则必然不会被此参数选中。</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

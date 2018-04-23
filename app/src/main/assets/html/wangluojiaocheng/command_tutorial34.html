@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.5.5 简单登入系统|function与综合运用</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+
+
+  <h1 id="实例5：简单登入系统——function与综合运用">实例5：简单登入系统——function与综合运用</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+ <blockquote>
+<p>本例子将会使用function<br>代码块第一行如果为<code># xxx:xxx</code>就代表是function</p>
+</blockquote>
+<h2 id="准备工作">准备工作</h2>
+<p>首先我们来分析一下记分板登入系统需要什么：</p>
+<ul>
+<li>检测用户第一次出现以注册，我们会使用tag。</li>
+<li>注册系统，我们会使用<code>trigger</code>命令记录用户分数，分数即密码。</li>
+<li>检测登入，我们会使用<code>stat.leaveGame</code>判据。（玩家登出了再进来就是登入了）</li>
+<li>获取玩家输入，我们也会使用<code>trigger</code>命令记录输入的“密码”。</li>
+<li>比较密码是否正确，我们会使用<code>scoreboard players operation</code>。</li>
+</ul>
+<p>变量：</p>
+<ul>
+<li>password: trigger。记录用户密码</li>
+<li>leaveGame: stat.leaveGame。记录玩家登出次数，登入密码正确后重置。（&gt;=1就是登入了）</li>
+<li>input: trigger。记录用户密码输入</li>
+</ul>
+<p>标签：</p>
+<ul>
+<li>registered: 记录玩家有没有注册过。</li>
+</ul>
+<h2 id="初次实现">初次实现</h2>
+<p>首先我们先加上那堆变量</p>
+<pre><code># login:init
+scoreboard objectives add password trigger
+scoreboard objectives add leaveGame stat.leaveGame
+scoreboard objectives add input trigger
+
+# 高频执行高频function
+gamerule gameLoopFunction login:main
+</code></pre><p>然后我们编写注册系统。（将会高频执行）</p>
+<pre><code># login:register
+
+# 如果有了分数，那就是注册好了，因为默认没有分数
+# 显示注册成功信息
+tellraw @a[tag=!registered,score_password_min=-2147483648] [&quot;注册完毕！&quot;]
+
+# 加上注册成功的tag
+scoreboard players tag @a[tag=!registered,score_password_min=-2147483648] add registered
+
+# 让玩家可以注册
+# 放在前面的话，会让玩家重新注册
+# 放在这里的话就能保证注册过的玩家必定拥有标签，不会再次enable
+scoreboard players enable @a[tag=!registered] password
+</code></pre><p>接着到密码检测系统（假设是让还没登入，并且有input分数的玩家执行）</p>
+<pre><code># login:check_pw
+
+# 如果a=b，a-b=0
+scoreboard players operation @s input -= @s password
+
+function login:succ if @s[score_input=0,score_input_min=0]
+function login:failed unless @s[score_input=0,score_input_min=0]
+</code></pre><pre><code># login:succ
+
+# 登入成功
+tellraw @s [&quot;登入成功&quot;]
+scoreboard players set @s leaveGame 0
+scoreboard players reset @s input
+</code></pre><pre><code># login:failed
+
+# 登入失败
+tellraw @s [&quot;登入失败，请再次尝试&quot;]
+# 重置使玩家重新进入待输入密码状态
+scoreboard players reset @s input
+</code></pre><blockquote>
+<p>不使用execute的原因：<br>如果我们不分开function的话，我们需要不停execute来实现function if的功能，无疑是让命令可读性降低很多的；<br>而且我们需要在每条命令加上参数，每次都要重新选择实体，损害了命令的可读性之余更让命令的效率降低。（总之不是为了偷懒少写一些字符啦）</p>
+<p>你可以试试写一个不用function的，相信会多了很多execute命令。</p>
+</blockquote>
+<p>然后我们来写高频的系统了，大部分东西都在这里进行。</p>
+<pre><code># login:main
+
+function login:register
+
+# 如果leaveGame&gt;0的话就代表这玩家重新登入了。（如果登入失败的话这分数还是&gt;0所以能让他们再次尝试）
+scoreboard players enable @a[score_leaveGame_min=1] input
+
+# 如果leaveGame&gt;0同时input有分数的话就代表那玩家输入了密码
+execute @a[score_leaveGame_min=1,score_input_min=-2147483648] ~ ~ ~ function login:check_pw
+</code></pre><p>然后，开始的时候运行一次以下命令，初始化系统</p>
+<pre><code>function login:init
+</code></pre><p>大功告成！</p>
+<h2 id="再次实现">再次实现</h2>
+<p>看着这系统是不是觉得很简单呢？没错，确实简单的过分——因为我们没加入限制未登入玩家的操作等功能（在简单的系统在，限制功能可以和leaveGame的分数联动）。让我们试试优化这系统吧！</p>
+<p>但不是现在。由于难度提升，在之后实战章节将才会有一个完整版本的登录系统哦！不只是分数，而是能够输入一些英文字符，不容错过！</p>
+<p>那个完整版只会展示输入和检查的部分，其他部分和这例子类同。</p>
+<hr>
+<p><strong>这么简单的系统可没有章末效果图哦</strong></p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

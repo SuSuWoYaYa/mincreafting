@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>3.1 聊天栏</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="聊天栏">聊天栏</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_1.png" alt=""></p>
+<p>这个在屏幕左下角的就是聊天栏。</p>
+<p>上方部分为聊天记录，实际上除了玩家之间的聊天以外也会记录很多不同资讯，如命令执行信息、错误，<code>tellraw</code>命令信息等等。<br>当信息出现了一段时间之后就会慢慢消失，如果消息过多、过长也会导致之前的消息消失，需要玩家打开聊天栏（默认按<code>t</code>或<code>/</code>也能打开聊天栏）查看之前的信息。聊天记录的上翻条数是有限制的，超过限制的信息无法直接查阅，只会保存在log里，之后将会简介log。</p>
+<p>下面该部分为输入框，默认可以按<code>t</code>或<code>/</code>唤出，你可以在其中输入文字。<br>输入文字之后按enter发送。如果文字以<code>/</code>开始则为命令（不理会开头那<code>/</code>执行），否则则为聊天信息，会被直接写进聊天栏并发布给其他玩家。</p>
+<blockquote>
+<p>聊天栏是支持全选、复制等功能的。<br>比如Windows的话，全选为<code>Ctrl + A</code>，复制为<code>Ctrl + C</code>，黏贴为<code>Ctrl + V</code></p>
+<p>MC内不允许直接输入<code>§</code>字符，请使用别的方式输入（如JSON内的<code>§</code>，或使用命令函数等外部输入方式）</p>
+</blockquote>
+<h2 id="自动补全">自动补全</h2>
+<p>输入命令时，按下<code>Tab</code>按钮可补全当前参数（选择器、NBT、JSON文本不支持补全）。</p>
+<p>比如说在输入框里输入了<code>/</code>，然后按<code>Tab</code>，会出现这样的输出:<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_2.png" alt=""></p>
+<p>只要玩家没有按下其他按钮（切换视窗也是按下了其他按钮），再次按<code>Tab</code>时就会切换为下一个选项，比如上方的例子则从<code>/?</code>变为<code>/advancement</code>。<br>当玩家已经选择到最后一个选项了，再次按<code>Tab</code>按钮则会回到第一个选项。</p>
+<p>如果玩家在按<code>Tab</code>前已经在当前参数输入了部分字符，按<code>Tab</code>则会寻找那些以当前字符开始的选项。<br>如输入了<code>/test</code>然后按<code>Tab</code>的话则只会出现<code>/testfor</code>、<code>/testforblock</code>、<code>/testforblocks</code>这几个选项。<br>这样的自动补全功能在需要输入较长的参数时是十分有效的。</p>
+<blockquote>
+<p>适当使用自动补全可以加快命令编辑速度，并减少错误。<br>比如输入gamerule是超级容易出现大小写错误的。</p>
+</blockquote>
+<h2 id="命令执行失败信息">命令执行失败信息</h2>
+<p>在聊天栏执行的命令如果出错就会显示执行失败信息。<br>有时它会直接指出命令中的错误，比如：</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_3.png" alt=""></p>
+<p>当命令无法找到目标实体时也会显示失败信息。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_4.png" alt=""></p>
+<hr>
+<p>执行失败信息也有一种特别用途：查看NBT。<br><code>entitydata</code>及<code>blockdata</code>命令在没有修改目标NBT时会当作执行失败并显示目标的NBT标签，因此我们能够如此查看NBT：</p>
+<pre><code>/entitydata @e {}
+</code></pre><p>输出:<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/command_5.png" alt=""></p>
+<blockquote>
+<p>红色一大片，幸好NBT不算太复杂还能看。<br>之后的章节将会介绍怎么把这输出抽取：使用Log及&##x547D;令方块。</p>
+</blockquote>
+<h1 id="log">Log</h1>
+<p>Log文件位于<code>/.minecraft/logs/</code>里，一般我们要看最新的记录的话都会看<code>latest.log</code>。</p>
+<p>Log文件本质上是一个纯文本文件。Log文件记录了游戏内各类输出和重要事情的详细资料、时间，比如说是加载文件错误、聊天信息、命令输出等等。</p>
+<hr>
+<p>比如加载文件错误，可能会出现类似这样的信息（太长了只放上面一部分）：</p>
+<pre><code>[19:20:09] [Server thread/ERROR]: Couldn&apos;t read custom function abcd:test2 from C:\Administrator\AppData\Roaming\.minecraft\saves\TEST\data\functions\abcd\test2.mcfunction
+java.lang.IllegalArgumentException: Unknown or invalid command &apos;?scoreboard&apos;
+    at bm.a(SourceFile:39) ...
+</code></pre><p>看上去挺吓人的，其实资料非常容易看：</p>
+<ul>
+<li>时间：时间就是[19:20:09]，也就是当天的晚上七点二十分</li>
+<li>这是一个错误：[Server thread/ERROR] 这里都写着是Error了</li>
+<li>啥错误：Couldn&apos;t read custom function abcd:test2 from （路径）。也就是说不能加载在（路径）的自定义命令函数<code>abcd:test2</code></li>
+<li>错误原因： Unknown or invalid command &apos;?scoreboard&apos;。未知或错误命令<code>?scoreboard</code>。</li>
+</ul>
+<blockquote>
+<p>其实这是一个挺常见的问题。这是因为命令函数文件选择了<code>UTF-8 with BOM</code>，然后文件开头多了3个Byte，游戏就不认了。解决方法为...用<code>UTF-8 without BOM</code>储存。</p>
+</blockquote>
+<hr>
+<p>命令输出、错误及所有聊天栏输出都是这样的：</p>
+<pre><code>[13:18:21] [Client thread/INFO]: [CHAT] The data tag did not change: {HurtByTimestamp:0,Attributes:[{Base:30.0d,Name:&quot;generic.maxHealth&quot;},{Base:0.0d,Name:&quot;generic.knockbackResistance&quot;},{Base:0.699999988079071d,Name:&quot;generic.movementSpeed&quot;},{Base:0.0d,Name:&quot;generic.armor&quot;},{Base:0.0d,Name:&quot;generic.armorToughness&quot;},{Base:16.0d,Name:&quot;generic.followRange&quot;}],APX:5,Invulnerable:0b,FallFlying:0b,APY:81,APZ:6,PortalCooldown:0,AbsorptionAmount:0.0f,FallDistance:0.0f,DeathTime:0s,AttachFace:2b,HandDropChances:[0.085f,0.085f],PersistenceRequired:0b,Peek:0b,Motion:[0.0d,0.0d,0.0d],Leashed:0b,UUIDLeast:-7415565809278513862L,Health:30.0f,Color:0b,LeftHanded:0b,Air:300s,OnGround:0b,Dimension:0,NoAI:1b,Rotation:[180.0f,0.0f],HandItems:[{},{}],ArmorDropChances:[0.085f,0.085f,0.085f,0.085f],UUIDMost:-2813612295629749725L,Pos:[5.5d,81.0d,6.5d],Fire:0s,ArmorItems:[{},{},{},{}],CanPickUpLoot:0b,HurtTime:0s}
+</code></pre><p><code>[Client thread/INFO]: [CHAT]</code>代表了后面这段信息是在聊天栏里的。</p>
+<p>由于是在文件里，我们可以直接复制这段文字然后去做别的处理。</p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

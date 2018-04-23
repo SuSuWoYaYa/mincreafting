@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>5.5 事件</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="事件">事件</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>制作地图、原版模组时，我们常常要<strong>回应</strong>不同的行为、转变。<br>比如是玩家点击了牌子，玩家使用了某个物品，进入了黑夜等等。<br>这些我们成为事件(Event)。本部分将会介绍几个常用检测事件的方法。</p>
+<h2 id="高频">高频</h2>
+<p>大部分地图的命令系统都基于高频。<br>高频就是说，每游戏刻都执行一堆命令一次。一般是一秒20次。</p>
+<p>主要原因是除了Advancement以外我们没有别的方法能够在<strong>事件发生时调用命令</strong>。因为我们没法调用命令，我们只好不停执行命令，当某些事情发生时去进行工作。</p>
+<p>除了检测事件以外，也有一个原因需要使用高频：我们需要不停进行某个工作。比如说是设置一个计时器(Timer)，我们一般会使用记分板变量来储存计时器的数值，高频+1/-1，达到某个数值的时候停止更改并且进行处理。</p>
+<p>对于事件来说，我们一般只会高频执行一些判断的命令，判断到某个事情发生再调用指定的命令函数。</p>
+<h3 id="检测数值变化">检测数值变化</h3>
+<p>有时候我们想检测NBT变化，我们会把NBT数值放进记分板变量（怎么放？穷举呗！），然后检测记分板数值变化。<br>对于某些特殊判据也是如此，比如air，我们要检测变化也是使用这方式。</p>
+<p>其核心就是，如果 <strong>旧数 - 新数 = 0</strong>，那么新数=旧数；否则则不一样，也就是有变化。<br>我们一般会用一个主要记分板储存新数值，一个记分板储存旧数值，然后后者-=前者。</p>
+<p>例子：（old为旧数，new为新数，只有新数会被其他东西改变）</p>
+<pre><code># 高频
+
+execute @e[name=marker] ~ ~ ~ scoreboard players operation @s old -= @s new
+execute @e[name=marker,score_old_min=1] ~ ~ ~ say 有改变
+execute @e[name=marker,score_old=-1] ~ ~ ~ say 有改变
+execute @e[name=marker] ~ ~ ~ scoreboard players operation @s old = @s new
+</code></pre><h3 id="检测判据">检测判据</h3>
+<p>大部分判据，都是<strong>增加</strong>分数的。<br>比如是记分板例子中的<code>stat.leaveGame</code>，就是一个例子：当玩家离开游戏时会为其分数+1。<br>因此我们可以采用上方方式的变种：先把分数设置为0。如果分数不是0就代表发生变化了。</p>
+<p>例子：(leaveGame的判据为stat.leaveGame)</p>
+<pre><code># 高频
+
+# 只会加分不会减分，故此不需要检测负数
+# 如果stat.leaveGame为1就代表那玩家曾经离开这游戏/服务器。然而由于我们是没法选择离开了的玩家的，所以检测到他就代表他回来了。
+execute @a[score_leaveGame_min=1] ~ ~ ~ say 我回来了！
+scoreboard players set @a leaveGame 0
+</code></pre><h2 id="进度">进度</h2>
+<p>进度(Advancement)提供了一些方便的方法检测玩家行为，如检测玩家用了什么物品，到了哪里，被谁攻击或攻击了谁等等。<br>而进度的rewards能够调用命令函数，故进度是一个不错的检测方式。</p>
+<p>详情请参见之后的进度教程。</p>
+<blockquote>
+<p>进度的<code>rewards</code>是十分有效率的，因为不需要高频执行命令，只是在需要时执行。</p>
+</blockquote>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

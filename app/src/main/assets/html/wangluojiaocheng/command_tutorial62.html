@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>7.3.1 Advancement例子</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="进度例子">进度例子</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+
+<p>ova里的进度为模仿以前部分的原版进度（其实大部分当前的版本也都加回来了）。感谢玄素的贡献。<br>rpg里的进度为部分RPG地图里可能使用的进度（不过只有很少）。详细列表为：</p>
+<ul>
+<li><code>root.json</code>: 冒险的开始，执行命令函数<code>rpg:give_init_money</code>。</li>
+<li><code>buy_sword</code>: 购买任何一把剑</li>
+<li><code>kill_entity</code>: 杀死任意生物</li>
+<li><code>hurt_boss</code>: 被名为<code>僵尸Boss</code>的僵尸攻击或攻击名为<code>僵尸Boss</code>的僵尸。后者需要命令的配合（进度没法检查攻击了什么）</li>
+<li><code>kill_boss</code>: 杀死名为<code>僵尸Boss</code>的僵尸。</li>
+<li><code>kill_by_boss</code>: 被名为<code>僵尸Boss</code>的僵尸杀死。隐藏进度（获得前无法得知此进度的存在）。</li>
+</ul>
+<h1 id="文件列表">文件列表</h1>
+<p><b>rpg:</b>
+<br />buy_sword.json<br />
+hurt_boss.json<br />
+kill_boss.json<br />
+kill_by_boss.json<br />
+kill_entity.json<br />
+root.json</p>
+<p><b>ova:</b><br />
+adventuring_time.json<br />
+apple.json<br />
+beacon.json<br />
+bread.json<br />
+bred.json<br />
+cake.json<br />
+craft_furnace.json<br />
+diamond.json<br />
+enchanter.json<br />
+end1.json<br />
+end2.json<br />
+into_fire.json<br />
+iron_ingot.json<br />
+kill_enemy.json<br />
+kill_ghast.json<br />
+leather.json<br />
+librarian.json<br />
+nether.json<br />
+overkill.json<br />
+pickaxe_upgrade.json<br />
+potion.json<br />
+root.json<br />
+sniper_duel.json<br />
+start1.json<br />
+start2.json<br />
+time_to_farm.json<br />
+time_to_fight.json<br />
+time_to_mine.json<br />
+workbench.json
+
+</p><p>下面附所有JSON源代码
+</p>
+<h1 id="JSON代码">JSON源代码</h1>
+<h2>rpg</h2>
+<h3>buy_sword.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item":"minecraft:emerald",
+            "data": 0
+        },
+        "title": "购买第一把剑",
+        "frame":"goal",
+        "description": {"text":"作为一个冒险者，怎么可以没有剑呢？\n快点跟贩剑的村民购买一把剑吧！\n注: 或许会有点贵"}
+    },
+    "parent":"rpg:root",
+    "criteria": {
+        "wood": {
+            "trigger": "minecraft:villager_trade",
+            "conditions": {
+                "item": {
+                    "item": "minecraft:wooden_sword"
+                }
+            }
+        },
+        "stone": {
+            "trigger": "minecraft:villager_trade",
+            "conditions": {
+                "item": {
+                    "item": "minecraft:stone_sword"
+                }
+            }
+        },
+        "iron": {
+            "trigger": "minecraft:villager_trade",
+            "conditions": {
+                "item": {
+                    "item": "minecraft:iron_sword"
+                }
+            }
+        },
+        "gold": {
+            "trigger": "minecraft:villager_trade",
+            "conditions": {
+                "item": {
+                    "item": "minecraft:golden_sword"
+                }
+            }
+        },
+        "diamond": {
+            "trigger": "minecraft:villager_trade",
+            "conditions": {
+                "item": {
+                    "item": "minecraft:diamond_sword"
+                }
+            }
+        }
+    },
+    "requirements": [
+        ["wood","stone","iron","gold","diamond"]
+    ]
+}
+</pre></p>
+<h3>hurt_boss.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item":"minecraft:diamond_sword",
+            "data": 0
+        },
+        "title": "挑战僵尸Boss",
+        "description": "被僵尸Boss攻击/攻击僵尸Boss"
+    },
+    "parent":"rpg:kill_entity",
+    "criteria": {
+        "get_hurt": {
+            "trigger": "minecraft:entity_hurt_player",
+            "conditions": {
+                "damage": {
+                    "source_entity": {
+                        "type": "minecraft:zombie",
+                        "nbt": "{CustomName:\"僵尸Boss\"}"
+                    }
+                }
+            }
+        },
+        "hurt_boss": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        ["get_hurt", "hurt_boss"]
+    ]
+}</pre></p>
+<h3>kill_boss.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item":"minecraft:diamond_sword",
+            "data": 0
+        },
+        "title": "击杀僵尸Boss",
+        "description": "成功击杀僵尸Boss",
+        "frame": "challenge"
+    },
+    "parent": "rpg:hurt_boss",
+    "criteria": {
+        "kill": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "minecraft:zombie",
+                    "nbt": "{CustomName:\"僵尸Boss\"}"
+                }
+            }
+        }
+    }
+}</pre></p>
+<h3>kill_by_boss.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item":"minecraft:item_frame",
+            "data": 0
+        },
+        "title": "被僵尸Boss击杀",
+        "description": "勇士，我们会永远怀念你的",
+        "frame": "challenge",
+        "hidden": true
+    },
+    "parent": "rpg:hurt_boss",
+    "criteria": {
+        "die": {
+            "trigger": "minecraft:entity_killed_player",
+            "conditions": {
+                "entity": {
+                    "type": "minecraft:zombie",
+                    "nbt": "{CustomName:\"僵尸Boss\"}"
+                }
+            }
+        }
+    }
+}</pre></p>
+<h3>kill_entity.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item":"minecraft:skull",
+            "data": 2
+        },
+        "title": "杀死一只生物",
+        "description": "冒险途中会遇到很多危险，冒险者需要学习如何杀敌"
+    },
+    "parent":"rpg:buy_sword",
+    "criteria": {
+        "kill": {
+            "trigger":"player_killed_entity"
+        }
+    }
+}</pre></p>
+<h3>root.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item":"minecraft:wooden_sword",
+            "data": 0
+        },
+        "title": "冒险的开始！",
+        "description": "年轻的冒险者，踏上冒险的征途吧！",
+        "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+    },
+    "criteria": {
+        "immediate": {
+            "trigger": "minecraft:tick"
+        }
+    },
+    "rewards": {
+        "function": "rpg:give_init_money"
+    }
+}</pre></p>
+<h2>ova:</h2>
+<h3>adventuring_time.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:diamond_boots"
+        },
+        "title": "Adventuring Time",
+        "description": "Discover all biomes",
+        "frame": "challenge"
+    },
+    "parent": "ova:end2",
+    "criteria": {
+        "Beach": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:beaches"
+            }
+        },
+        "Birch_Forest": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:birch_forest"
+            }
+        },
+        "Birch_Forest_Hills": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:birch_forest_hills"
+            }
+        },
+        "Cold_Beach": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:cold_beach"
+            }
+        },
+        "Cold_Taiga": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:taiga_cold"
+            }
+        },
+        "Cold_Taiga_Hills": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:taiga_cold_hills"
+            }
+        },
+        "Deep_Ocean": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:deep_ocean"
+            }
+        },
+        "Desert": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:desert"
+            }
+        },
+        "Desert_Hills": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:desert_hills"
+            }
+        },
+        "Extreme_Hills": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:extreme_hills"
+            }
+        },
+        "Extreme_Hills+": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:extreme_hills_with_trees"
+            }
+        },
+        "Forest": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:forest"
+            }
+        },
+        "ForestHills": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:forest_hills"
+            }
+        },
+        "FrozenRiver": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:frozen_river"
+            }
+        },
+        "Ice_Mountains": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:ice_mountains"
+            }
+        },
+        "Ice_Plains": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:ice_flats"
+            }
+        },
+        "Jungle": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:jungle"
+            }
+        },
+        "Jungle_Edge": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:jungle_edge"
+            }
+        },
+        "Jungle_Hills": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:jungle_hills"
+            }
+        },
+        "Mega_Taiga": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:redwood_taiga"
+            }
+        },
+        "Mega_Taiga_Hills": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:redwood_taiga_hills"
+            }
+        },
+        "Mesa": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:mesa"
+            }
+        },
+        "Mesa_Plateau": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:mesa_clear_rock"
+            }
+        },
+        "Mesa_Plateau_F": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:mesa_rock"
+            }
+        },
+        "Mushroom_Island": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:mushroom_island"
+            }
+        },
+        "MushroomIslandShore": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:mushroom_island_shore"
+            }
+        },
+        "Ocean": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:ocean"
+            }
+        },
+        "Plains": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:plains"
+            }
+        },
+        "River": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:river"
+            }
+        },
+        "Roofed_Forest": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:roofed_forest"
+            }
+        },
+        "Savanna": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:savanna"
+            }
+        },
+        "Savanna_Plateau": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:savanna_rock"
+            }
+        },
+        "Stone_Beach": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:stone_beach"
+            }
+        },
+        "Swampland": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:swampland"
+            }
+        },
+        "Taiga": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:taiga"
+            }
+        },
+        "Taiga_Hills": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "biome": "minecraft:taiga_hills"
+            }
+        }
+    }
+}</pre></p>
+<h3>apple.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:golden_apple",
+            "data": 1
+        },
+        "title": "Overpowered",
+        "description": "Get a Notch apple",
+        "frame": "challenge"
+    },
+    "parent": "ova:pickaxe_upgrade",
+    "criteria": {
+        "notch_apple": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:golden_apple",
+                        "data": 1
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>beacon.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:beacon"
+        },
+        "title": "Beaconator",
+        "description": "Create a full beacon",
+        "frame": "challenge"
+    },
+    "parent": "ova:start2",
+    "criteria": {
+        "beacon": {
+            "trigger": "minecraft:construct_beacon",
+            "conditions": {
+                "level": 4
+            }
+        }
+    }
+}</pre></p>
+<h3>bread.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:bread"
+        },
+        "description": "Turn wheat into bread",
+        "title": "Bake Bread"
+    },
+    "parent": "ova:time_to_farm",
+    "criteria": {
+        "bake": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:bread"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>bred.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:wheat"
+        },
+        "description": "Breed two cows with wheat",
+        "title": "Repopulation"
+    },
+    "parent": "ova:leather",
+    "criteria": {
+        "bred_cow": {
+            "trigger": "minecraft:bred_animals",
+            "conditions": {
+                "parents": [
+                    {
+                        "type": "cow"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>cake.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:cake"
+        },
+        "description": "Wheat, sugar, milk, and eggs",
+        "title": "The Lie"
+    },
+    "parent": "ova:time_to_farm",
+    "criteria": {
+        "cakes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:cake"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>craft_furnace.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:furnace"
+        },
+        "description": "Construct a furnace out of eight cobblestone blocks",
+        "title": "Hot Topic"
+    },
+    "parent": "ova:time_to_mine",
+    "criteria": {
+        "get_furnace": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:furnace"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>diamond.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:diamond_ore"
+        },
+        "description": "Acquire diamonds with your iron tools",
+        "title": "DIAMONDS!"
+    },
+    "parent": "ova:iron_ingot",
+    "criteria": {
+        "get_diamond": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:diamond"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>enchanter.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:enchanting_table"
+        },
+        "description": "Use a book, obsidian and diamonds to construct an enchantment table",
+        "title": "Enchanter"
+    },
+    "parent": "ova:diamond",
+    "criteria": {
+        "enchanted_item": {
+            "trigger": "minecraft:enchanted_item"
+        }
+    }
+}</pre></p>
+<h3>end1.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:ender_eye"
+        },
+        "description": "Locate the End",
+        "title": "The End?"
+    },
+    "parent": "ova:into_fire",
+    "criteria": {
+        "entered_end_portal": {
+            "trigger": "minecraft:enter_block",
+            "conditions": {
+                "block": "minecraft:end_portal"
+            }
+        }
+    }
+}</pre></p>
+<h3>end2.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:dragon_egg"
+        },
+        "title": "The End.",
+        "description": "Defeat the Ender Dragon",
+        "frame": "challenge"
+    },
+    "parent": "ova:end1",
+    "criteria": {
+        "killed_dragon": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "ender_dragon"
+                }
+            }
+        }
+    }
+}</pre></p>
+<h3>into_fire.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:blaze_rod"
+        },
+        "description": "Relieve a Blaze of its rod",
+        "title": "Into Fire"
+    },
+    "parent": "ova:nether",
+    "criteria": {
+        "get_blaze_rod": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:blaze_rod"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>iron_ingot.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:iron_ingot"
+        },
+        "description": "Smelt an iron ingot",
+        "title": "Acquire Hardware"
+    },
+    "parent": "ova:craft_furnace",
+    "criteria": {
+        "get_iron": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:iron_ingot"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>kill_enemy.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:bone"
+        },
+        "description": "Attack and destroy a monster",
+        "title": "Monster Hunter"
+    },
+    "parent": "ova:time_to_fight",
+    "criteria": {
+        "cave_spider": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "cave_spider"
+                }
+            }
+        },
+        "spider": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "spider"
+                }
+            }
+        },
+        "zombie_pigman": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "zombie_pigman"
+                }
+            }
+        },
+        "enderman": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "enderman"
+                }
+            }
+        },
+        "polar_bear": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "polar_bear"
+                }
+            }
+        },
+        "blaze": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "blaze"
+                }
+            }
+        },
+        "creeper": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "creeper"
+                }
+            }
+        },
+        "evoker": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "evocation_illager"
+                }
+            }
+        },
+        "ghast": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "ghast"
+                }
+            }
+        },
+        "guardian": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "guardian"
+                }
+            }
+        },
+        "husk": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "husk"
+                }
+            }
+        },
+        "magma_cube": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "magma_cube"
+                }
+            }
+        },
+        "shulker": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "shulker"
+                }
+            }
+        },
+        "silverfish": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "silverfish"
+                }
+            }
+        },
+        "skeleton": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "skeleton"
+                }
+            }
+        },
+        "slime": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "slime"
+                }
+            }
+        },
+        "stray": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "stray"
+                }
+            }
+        },
+        "vindicator": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "vindication_illager"
+                }
+            }
+        },
+        "witch": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "witch"
+                }
+            }
+        },
+        "wither_skeleton": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "wither_skeleton"
+                }
+            }
+        },
+        "zombie": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "zombie"
+                }
+            }
+        },
+        "zombie_villager": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "zombie_villager"
+                }
+            }
+        }
+    },
+    "requirements": [
+        ["cave_spider"],
+        ["spider"],
+        ["zombie_pigman"],
+        ["enderman"],
+        ["polar_bear"],
+        ["blaze"],
+        ["creeper"],
+        ["evoker"],
+        ["ghast"],
+        ["guardian"],
+        ["husk"],
+        ["magma_cube"],
+        ["shulker"],
+        ["silverfish"],
+        ["skeleton"],
+        ["slime"],
+        ["stray"],
+        ["vindicator"],
+        ["witch"],
+        ["wither_skeleton"],
+        ["zombie"],
+        ["zombie_villager"]
+    ]
+}</pre></p>
+<h3>kill_ghast.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:ghast_tear"
+        },
+        "title": "Return to Sender",
+        "description": "Destroy a Ghast with a fireball",
+        "frame": "challenge"
+    },
+    "parent": "ova:nether",
+    "criteria": {
+        "killed_ghast": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "minecraft:ghast"
+                },
+                "killing_blow": {
+                    "is_projectile": true,
+                    "direct_entity": {
+                        "type": "minecraft:fireball"
+                    }
+                }
+            }
+        }
+    }
+}</pre></p>
+<h3>leather.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:leather"
+        },
+        "description": "Harvest some leather",
+        "title": "Cow Tipper"
+    },
+    "parent": "ova:time_to_fight",
+    "criteria": {
+        "get_leather": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:leather"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>librarian.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:bookshelf"
+        },
+        "description": "Build some bookshelves to improve your enchantment table",
+        "title": "Librarian"
+    },
+    "parent": "ova:enchanter",
+    "criteria": {
+        "bookshelf": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:bookshelf"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>nether.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:obsidian"
+        },
+        "description": "Build a portal to the Nether",
+        "title": "We Need to Go Deeper"
+    },
+    "parent": "ova:diamond",
+    "criteria": {
+        "entered_nether_portal": {
+            "trigger": "minecraft:enter_block",
+            "conditions": {
+                "block": "minecraft:portal"
+            }
+        }
+    }
+}</pre></p>
+<h3>overkill.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:diamond_sword"
+        },
+        "title": "Overkill",
+        "description": "Deal nine hearts of damage in a single hit",
+        "frame": "challenge"
+    },
+    "parent": "ova:enchanter",
+    "criteria": {
+        "damage": {
+            "trigger": "minecraft:player_hurt_entity",
+            "conditions": {
+                "dealt": {
+                    "min": 18
+                }
+            }
+        }
+    }
+}</pre></p>
+<h3>pickaxe_upgrade.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:stone_pickaxe"
+        },
+        "description": "Construct a better pickaxe",
+        "title": "Getting an Upgrade!"
+    },
+    "parent": "ova:time_to_mine",
+    "criteria": {
+        "get_stone_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:stone_pickaxe"
+                    }
+                ]
+            }
+        },
+        "get_golden_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:golden_pickaxe"
+                    }
+                ]
+            }
+        },
+        "get_iron_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:iron_pickaxe"
+                    }
+                ]
+            }
+        },
+        "get_diamond_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:diamond_pickaxe"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+    [
+      "get_stone_pickaxe"
+    ],
+    [
+      "get_golden_pickaxe"
+    ],
+    [
+      "get_iron_pickaxe"
+    ],
+    [
+      "get_diamond_pickaxe"
+    ]
+  ]
+}</pre></p>
+<h3>potion.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:potion"
+        },
+        "description": "Brew a potion",
+        "title": "Local Brewery"
+    },
+    "parent": "ova:into_fire",
+    "criteria": {
+        "potion": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:potion"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+<h3>root.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:log"
+        },
+        "title": "Getting Wood",
+        "description": "Attack a tree until a block of wood pops out",
+        "background": "minecraft:textures/blocks/dirt.png"
+    },
+    "criteria": {
+        "get_log": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:log"
+                    }
+                ]
+            }
+        },
+        "get_log2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:log2"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+    [
+      "get_log"
+    ],
+    [
+      "get_log2"
+    ]
+  ]
+}</pre></p>
+<h3>sniper_duel.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:arrow"
+        },
+        "title": "Sniper duel",
+        "description": "Kill a skeleton with an arrow from more than 50 meters",
+        "frame": "challenge"
+    },
+    "parent": "ova:kill_enemy",
+    "criteria": {
+        "killed_skeleton": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "killing_blow": {
+                    "is_projectile": true
+                },
+                "entity": {
+                    "distance": {
+                        "min": 50
+                    }
+                }
+            }
+        }
+    }
+}</pre></p>
+<h3>start1.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:skull",
+            "data": 1
+        },
+        "description": "Spawn the Wither",
+        "title": "The Beginning?"
+    },
+    "parent": "ova:end2",
+    "criteria": {
+        "summon_wither": {
+            "trigger": "minecraft:summoned_entity",
+            "conditions": {
+                "entity": {
+                    "type": "wither"
+                }
+            }
+        }
+    }
+}</pre></p>
+<h3>start2.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:nether_star"
+        },
+        "description": "Kill the Wither",
+        "title": "The Beginning."
+    },
+    "parent": "ova:start1",
+    "criteria": {
+        "killed_wither": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity":{
+                    "type": "wither"
+                }
+            }
+        }
+    }
+}</pre></p>
+<h3>time_to_farm.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:wooden_hoe"
+        },
+        "description": "Use planks and sticks to make a hoe",
+        "title": "Time to Farm!"
+    },
+    "parent": "ova:workbench",
+    "criteria": {
+        "get_wooden_hoe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:wooden_hoe"
+                    }
+                ]
+            }
+        },
+        "get_stone_hoe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:stone_hoe"
+                    }
+                ]
+            }
+        },
+        "get_golden_hoe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:golden_hoe"
+                    }
+                ]
+            }
+        },
+        "get_iron_hoe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:iron_hoe"
+                    }
+                ]
+            }
+        },
+        "get_diamond_hoe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:diamond_hoe"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+    [
+      "get_wooden_hoe"
+    ],
+    [
+      "get_stone_hoe"
+    ],
+    [
+      "get_golden_hoe"
+    ],
+    [
+      "get_iron_hoe"
+    ],
+    [
+      "get_diamond_hoe"
+    ]
+  ]
+}</pre></p>
+<h3>time_to_fight.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:wooden_sword"
+        },
+        "description": "Use planks and sticks to make a sword",
+        "title": "Time to Strike!"
+    },
+    "parent": "ova:workbench",
+    "criteria": {
+        "get_wooden_sword": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:wooden_sword"
+                    }
+                ]
+            }
+        },
+        "get_stone_sword": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:stone_sword"
+                    }
+                ]
+            }
+        },
+        "get_golden_sword": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:golden_sword"
+                    }
+                ]
+            }
+        },
+        "get_iron_sword": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:iron_sword"
+                    }
+                ]
+            }
+        },
+        "get_diamond_sword": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:diamond_sword"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+    [
+      "get_wooden_sword"
+    ],
+    [
+      "get_stone_sword"
+    ],
+    [
+      "get_golden_sword"
+    ],
+    [
+      "get_iron_sword"
+    ],
+    [
+      "get_diamond_sword"
+    ]
+  ]
+}</pre></p>
+<h3>time_to_mine.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:wooden_pickaxe"
+        },
+        "description": "Use planks and sticks to make a pickaxe",
+        "title": "Time to Mine!"
+    },
+    "parent": "ova:workbench",
+    "criteria": {
+        "get_wooden_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:wooden_pickaxe"
+                    }
+                ]
+            }
+        },
+        "get_stone_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:stone_pickaxe"
+                    }
+                ]
+            }
+        },
+        "get_golden_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:golden_pickaxe"
+                    }
+                ]
+            }
+        },
+        "get_iron_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:iron_pickaxe"
+                    }
+                ]
+            }
+        },
+        "get_diamond_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:diamond_pickaxe"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+    [
+      "get_wooden_pickaxe"
+    ],
+    [
+      "get_stone_pickaxe"
+    ],
+    [
+      "get_golden_pickaxe"
+    ],
+    [
+      "get_iron_pickaxe"
+    ],
+    [
+      "get_diamond_pickaxe"
+    ]
+  ]
+}</pre></p>
+<h3>workbench.json</h3><p><pre>
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:crafting_table"
+        },
+        "description": "Craft a workbench with four blocks of planks",
+        "title": "Benchmarking"
+    },
+    "parent": "ova:root",
+    "criteria": {
+        "craft_crafting_table": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:crafting_table"
+                    }
+                ]
+            }
+        }
+    }
+}</pre></p>
+ 
+  
+<p><br/></p></div>
+</body>
+
+</html>

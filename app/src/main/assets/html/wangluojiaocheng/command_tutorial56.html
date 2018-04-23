@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>7.1 资源包</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="资源包">资源包</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>资源包是游戏的重要部分，能够修改贴图、音效，甚至模型、语言等是它的一大特色。其强大的自由度能够为游戏增色不少。<br>本章节将会介绍资源包内各部分的用途，及其在地图创作中的作用。</p>
+<p>本章中若无特殊说明，文件路径默认使用 <strong>正斜杠</strong>(<code>/</code>) 分隔。默认从资源包中开始索引。</p>
+<h2 id="快速入门：体验制作一个资源包">快速入门：体验制作一个资源包</h2>
+<p>第一步，找到你的资源包文件夹（<code>.minecraft\resourcepacks</code>），并在其中新建一个文件夹，文件夹的名字即为资源包的名字。在这里，我们以<code>newPack</code>为例。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/make1.png" alt=""></p>
+<p>第二步，打开这个文件夹，然后新建一个文件，名为<code>pack.mcmeta</code>。注意，这个文件的扩展名是<code>.mcmeta</code>而不是<code>.txt</code>（虽然也是一个纯文字档案），你可以在文件夹选项中选择展示文件的扩展名。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/make2.png" alt=""></p>
+<p>第三步，打开<code>pack.mcmeta</code>。你可以使用Windows自带的写字板，最好使用一些专业点的编辑器，比如Notepad++。然后，向其中添加一下文字：</p>
+<pre><code>{
+   "pack": {
+      "pack_format": 3,
+      "description": "A Tutorial Resource Pack"
+   }
+}
+</code></pre><p>注意，除了<code>A Tutorial Resource Pack</code>作为资源包描述可以修改，其它各个字符都不能进行增减和替换。（<code>pack_format</code>是1.12的时候为3，其他版本请见本文底部的pack.mcmeta格式）</p>
+<p>添加之后记得保存。</p>
+<p>第四步：创建一个.png图片文件，设置图片大小为128x128，并保存为<code>pack.png</code>。这个图片就是你的资源包图标。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/make4.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/make5.png" alt=""></p>
+<p>第四步：在版本文件夹找到当前版本的jar，解压并找到<code>assets\minecraft\textures</code>。原版的所有材质都在这个文件夹内。选择一个你想要修改的材质，并按原路径复制到刚才的资源包文件夹内。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/make3.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/make6.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/make7.png" alt=""></p>
+<p>第五步：打开游戏，看看你的新资源包是否制作成功。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/make8.png" alt=""></p>
+<blockquote>
+<p>温馨提示：<br>这只是最最简单的入门，接下来会更进一步地介绍资源包制作以及其应用。</p>
+</blockquote>
+<h2 id="一些注意事项：">一些注意事项：</h2>
+<ul>
+<li>资源包中图片必须是*.png格式，且扩展名使用小写。</li>
+<li>除资源包名外，资源包内的文件/文件夹名不能有中文。</li>
+<li>(资源包名)的下级文件夹是<code>assets</code>文件夹，注意不要打包两次造成资源包无法读取。</li>
+<li>(资源包名)的下的pack.mcmeta文件是必须的。</li>
+<li>配置文件里的所有 文件路径，都不需要写扩展名（如<code>.ogg</code>, <code>.json</code>），路径使用斜杠<code>/</code>而不是反斜杠<code>\</code>，如应该是<code>test/a/b</code>而不是<code>test\a\b</code>。</li>
+<li>小心资源包错误！若出现紫黑色方块，则为资源包错误。可能由模型，状态文件，材质错误，材质不存W#x5728;导致：
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/errorblock.png" alt="error"></li>
+</ul>
+<h2 id="packmcmeta文件格式">pack.mcmeta文件格式</h2>
+<ul>
+<li><code>(The root tag)</code>(Compound)<ul>
+<li><code>pack</code>：储存资源包信息(Compound)<ul>
+<li><code>pack_format</code>：资源包版本号，必须同游戏版本匹配（游戏版本1.9之前设置为<code>1</code>，1.9和1.10设置为<code>2</code>，1.11和1.12设置为<code>3</code>）。(Int)</li>
+<li><code>description</code>：资源包的描述，在选择资源包时显示，中文需转unicode编码。(String)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>本教程只会讲解资源包的作用，以及大致介绍资源包。如果需要详细研究，请参照该方面的教程以及wiki。</p>
+<p>地图里可以加入资源包，方式为在地图的文件里<code>.minecraft/saves/(地图名)/</code>里加入一个<code>resources.zip</code>，内容为（不是放在子文件内）<code>pack.mcmeta</code>、<code>pack.png</code>、<code>assets</code>文件夹等。<br>也可以在服务器里指定资源包（但需要等待下载），方式为在<code>server.properties</code>里加入<code>resource-pack=<资源包zip的URL></code>。</p>
+<p>更多关于资源包的资料请参见 <a href="https://minecraft.gamepedia.com/Resource_pack" target="_blank">https://minecraft.gamepedia.com/Resource_pack</a></p>
+</blockquote>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

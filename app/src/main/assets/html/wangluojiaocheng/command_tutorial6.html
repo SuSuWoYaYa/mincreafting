@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>1.4 目标选择器</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div > <h1 id="目标选择器">目标选择器</h1>
+
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+ 
+                                
+                               
+<h2 id="用途">用途</h2>
+<p>命令很多时候是需要针对实体去执行的，比如<code>tp</code>命令。如果你使用玩家名来指定传送的玩家，比如<code>tp pca006132 0 5 0</code>，你就需要针对每个玩家写一个命令。<br>这方法在很多情况下是不可能使用的，因为我们不一定会知道被传送的玩家是谁，而且就算知道所有玩家，我们也需要举出所有的可能（穷举），不然就有些玩家无法传送，这样做需要的命令数就会非常多。对于实体就更恐怖了，实体的UUID除非是特地指定，不然都是随机的，难道我们要穷举UUID？所以穷举玩家名的方法是接近不可能的。</p>
+<p>所以，在针对实体执行命令的情况下，我们通常会使用目标选择器。<br>选择器的用途，就是根据某些条件（用选择器参数指定）来选择实体，所以选择到的数量可以是没有/一个/多个。</p>
+<blockquote>
+<p>如果是想选择 <em>血量 &lt;= 0.0f</em> 的生物（但DeathTime尚未到达20），则必须使用UUID。这是一个比较高级的课题故此就不在此讨论。</p>
+</blockquote>
+<h2 id="格式">格式</h2>
+<pre><code>
+@选择器名称
+@选择器名称[参数1=值,参数2=值]
+</code></pre><table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>选择器名称</td>
+<td>决定选择器行为</td>
+</tr>
+<tr>
+<td>参数</td>
+<td>额外选择条件。不一定要存在，但如果存在一个或多个参数则必须用方括号括住，并且以逗号分隔开不同的参数（所有符号都是英文符号，如<code>,</code>和<code>[]</code>）。选择器将会选择符合一切参数的目标</td>
+</tr>
+<tr>
+<td>值</td>
+<td>参数所对应的数值，用来确定参数所对应的数据，与参数结合使用来选择实体。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注: 每个参数只能出现一次，不然会被覆盖<br>选择器内不能出现空格</p>
+</blockquote>
+<h3 id="选择器名称">选择器名称</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>最近的一个玩家（type参数在此无效）</td>
+</tr>
+<tr>
+<td>a</td>
+<td>全部玩家（包括死去的玩家, type参数在此无效）</td>
+</tr>
+<tr>
+<td>r</td>
+<td>随机实体（默认为玩家）<br>当参数<code>c</code>多于一个的时候，会把选择顺序打乱，对部分随机选择系统十分重要。</td>
+</tr>
+<tr>
+<td>e</td>
+<td>所有实体（包括玩家）</td>
+</tr>
+<tr>
+<td>s</td>
+<td>执行者（实体，当执行者不符合要求时则不选择任何实体）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="参数">参数</h3>
+<p>格式： <code>参数名=数值</code><br>文字类的数值前加上!则代表选择所有非该数值的目标<br>数值不能出现小数。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x,y,z</td>
+<td>以该坐标作为<strong>判定的起始点</strong>（默认为执行坐标）<br> 比如你填写x=1,y=1，而你执行命令的坐标是x=5,y=5,z=5，那么那个判定的起始点就是x=1,y=1,z=5<br> 如果<strong>只是填写其中一个/两个参数</strong>，<strong>&#x52#x5269;下的就会默认为执行坐标</strong>(比如x=5，而执行坐标是100 5 200，那么那个判定的起始点就是 5 5 200)</td>
+</tr>
+<tr>
+<td>r,rm</td>
+<td>离判定的起始点(参见上方x, y, z参数)的<strong>距离</strong> (r就是判定区域的<strong>半径</strong>，rm就是<strong>不包括在</strong>判定区域内的圆形半径)<br> 比如r=5就是选择所有在5格范围内的实体，rm=5就是选择所有5格范围外的实体<br> 比如<code>@p[r=10,rm=3]</code>就是离判定的起始点的距离小于等于10米，大于3米的最近玩家</td>
+</tr>
+<tr>
+<td>m</td>
+<td>玩家的游戏模式<br> <code>s</code>=生存，<code>c</code>=创造，<code>a</code>=冒险，<code>sp</code>=旁观</td>
+</tr>
+<tr>
+<td>c</td>
+<td>数量（最多选择多少个）<br> 这个是根据选择顺序来选择的<br> 正数的话就是选择最先选择到的n个实体，负数就是选择最后选择到的n个实体<br> 所以请参见下方的选择优先规则<br> 比如@e[c=5]就是最近的5个实体，@e[c=-5]就是最远的5个实体<br><br><strong>重要</strong>：当c=1、选择器名称不为<code>r</code>并且命令执行者的类型符合选择器选择到的实体类型，选择器将会选择执行者</td>
+</tr>
+<tr>
+<td>l,lm</td>
+<td>经验等级，l是小于等于，lm是大于等于</td>
+</tr>
+<tr>
+<td>score_变量</td>
+<td>该变量(objective)的<strong>分数范围</strong>（小于<strong>等于</strong>）<br>我们可以使用<code>score_obj=2147483647</code>检测对象在该变量上有无分数</td>
+</tr>
+<tr>
+<td>score_变量_min</td>
+<td>该变量(objective)的<strong>分数范围</strong>（大于<strong>等于</strong>）<br>我们也可以使用<code>score_obj_min=-2147483648</code>进行有无分数的检测</td>
+</tr>
+<tr>
+<td>team</td>
+<td>队伍名称(可以使用<code>!</code>表示不等于, 如team=!blue就是选择不在blue队伍里的)<br> team= 就是代表没有队伍的实体(比如@e[team=])<br> team=!就是代表有队伍的实体</td>
+</tr>
+<tr>
+<td>name</td>
+<td>实体的名称(可以使用<code>!</code>表示不等于, 如name=!pca就是选择名称不是pca的实体)</td>
+</tr>
+<tr>
+<td>dx,dy,dz</td>
+<td>长方体的范围<br> 由起始点(参见上方x, y, z参数)延伸出去（dx就是沿着x轴延伸的格数，如此类推。正数就向正的方向，负数就向负的方向，范围必定是完整的格子，没有任何偏移，即使执行位置不是整数）的范围内的实体<br> *注意: 只要实体的碰撞箱接触到这范围就会被选中，而不是看其坐标<br> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/dxdydz.png" alt="dxdydz.png"></td>
+</tr>
+<tr>
+<td>rx,rxm</td>
+<td>实体垂直朝向（看的方向）<br> 0：水平；-90：向上；90：向下<br> rx：最大的角度；rxm：最小的角度<br>只会视乎角度的整数部分, 比如实体的实际方向是1.1, rx=1,rxm=0和rx=2,rxm=1都会选择到那个实体<br>当rx&gt;rxm的时候, 选择到的角度范围就是rx-rxm;<br> 当rx&lt;rxm的时候, 范围就会断开, 也就是上一个情况的相反, 详见下方例子</td>
+</tr>
+<tr>
+<td>ry,rym</td>
+<td>实体水平朝向（看的方向）<br> 0：+Z方向；90：-X方向；180（-180）：-Z方向；-90：+X方向<br> (可以使用大于180的度数)<br> ry：最大的角度；rym：最小的角度(如ry=50, rym=0就是50度的范围；ry=0, rym=50就是310度的范围)<br>当ry&gt;rym, 选择到的角度范围=ry-rym;<br> 当rym&gt;ry, <strong>选择到不到</strong>的角度范围就是ry-rym, 也就是上一个情况的相反, 详见下放例子<br> <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/rxry.png" alt="rxry.png"></td>
+</tr>
+<tr>
+<td>type</td>
+<td>实体种类(所有summon的实体种类+player。可以使用<code>!</code>表示不等于，如type=!player就是所有不是玩家的实体)<br>  type=!lightning_bolt则代表所有类型的实体(对@r相当有用)</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>选择拥有此标签的实体，<br> 在数值前添加<code>!</code>将只选择不拥有此标签的实体，<br> 提供空的标签名将选择所有没有标签的实体，<br> 只填写“!”将选择任何拥有标签的实体。<br> 注意: 只能检查一个tag</td>
+</tr>
+</tbody>
+</table>
+<h2 id="空间限制">空间限制</h2>
+<p>如果选择器里有任何关于坐标的参数（比如r/rm/dx），那个参数的作用范围就是执行的世界（其他世界的不会被选择到）</p>
+<p>如果那个选择器里同时有dx/dy/dz和r/rm，那么选择到的范围就是dx/dy/dz和r/rm重叠的范围</p>
+<p>如果那个选择器里有dx/dy/dz任何一个/两个，那么剩余未声明的会默认为0</p>
+<blockquote>
+<p>关于死去的玩家：<br>死去的玩家能够被<code>@a</code>选择器选择到，然而当我们加入了任何空间限制后就无法选择<br><del>故此我们认为死去的玩家是存在于第四维的【严肃脸】</del></p>
+</blockquote>
+<h2 id="选择顺序">选择顺序</h2>
+<p>选择器会优先选择在执行的世界的加载范围内的实体/玩家（先选择离判定的起始点最近的实体，当那些实体的距离一样时，它就会优先选择存在最久的），然后就是别的世界距离你现在坐标最近的实体。</p>
+<h2 id="选择器运行概念">选择器运行概念</h2>
+<p>选择器会首先 <strong>筛选</strong> 出符合要求的 <strong>所有</strong> 目标（实体，如果是<code>@a</code>的话则包括死去的玩家）。然后对那些目标根据距离进行<strong>排序</strong>（这一步造成了所谓的选择顺序）。</p>
+<p>故此，只写数量而不写其他要求的话，如果当前加载了的实体数量很多的话，就需要排序极多的实体，十分没有效率。故此建议使用选择器的时候加上别的限制。</p>
+<h2 id="常见错误">常见错误</h2>
+<ul>
+<li>重复的选择器参数，比如两个<code>type</code></li>
+<li>以为<code>score_变量名称=数值</code>代表选择分数 <em>等于</em> 数值的实体，然而事实是选择分数<strong>小于等于</strong>数值的实体</li>
+<li>大小写/全型半型错误。实际上那些参数的名称都是小写，而那些数值也是大小写敏感的</li>
+<li>把实体NBT当作选择器参数一样写，然而选择器参数就那几个，NBT并不是选择器参数，选择器参数也不是NBT</li>
+<li>以为物品名称就是它扔出来之后的名称，然而并不是（原因:物品名称的NBT是 <code>{Item:{tag:{display:{Name:名称}}}}</code>，而实体名称的NBT是 <code>{CustomName:名称}</code>）</li>
+<li>逻辑相关错误，比如在执行这个指令的时候分数不可能在指定范围内</li>
+<li><code>@a</code>写成<code>@e[type=player]</code>。严格来说并不是错误，然而这个是不好的习惯
+因为这样子你的命令可读性就会减低，而且会导致命令长度增加，自己写也累不是？</li>
+<li>开括号之后需要关括号，比如 <code>@e[type=armor_stand,r=3</code> 就会判断为@e，相差会很远</li>
+<li>以为<code>testfor @a[c=x]</code>当人数少于x个人的时候就会失败。其实SuccessCount是即使只检测到一个人也会成功的。应该要把人数放进记分板里然后检测。</li>
+<li><code>@a</code>和<code>@p</code>混用。前者代表的是所有玩家，包括死去了的玩家。而后者不包括死去的玩家。</li>
+</ul>
+<h2 id="特殊情况">特殊情况</h2>
+<ul>
+<li><p><code>c=1</code>时并且执行者的类型和选择器选择的实体类型吻合时，MC会有特别的选择实体方法。比如牌子点击的话就会选择点击者（尽管点击者未必与执行坐标，也就是牌子的位置最近），或者UUID碰撞/因特殊原因无法选择时能选择到该实体。然而注意，要使用此功能的话请不要填写其他参数，否则可能会导致MC不采取此方法选择实体。</p>
+</li>
+<li><p>部分命令参数的选择器 <strong>最多只能选择一个目标</strong> ，比如是<code>scoreboard players operation</code>之后两个实体参数，其中的一个必须只选择一个目标。这种情况我们需要：</p>
+<ul>
+<li>使用<code>@p</code> <code>@r</code>（不设置<code>c</code>参数）<code>@s</code>选择器，这样选择到的就是最多一个目标。</li>
+<li>或，设置<code>c=1</code>。比如<code>@a</code>就不只选择一个目标，但<code>@a[c=1]</code>就只选择一个目标。但<code>@r</code>只选择一个目标，<code>@r[c=10]</code>就不只选择一个目标。</li>
+</ul>
+</li>
+</ul>
+<h2 id="例子">例子</h2>
+<p>选择一个距离执行点5格以外，最近的实体</p>
+<pre><code>@e[rm=5,c=1]
+</code></pre><hr>
+<p>选择所有变量(objective) X分数大于50、小于100，变量Y分数大于等于-200，小于等于0，目标Z分数等于200的实体</p>
+<pre><code>@e[score_X_min=51,score_X=99,score_Y_min=-200,score_Y=0,score_Z_min=200,score_Z=200]
+</code></pre><hr>
+<p>选择随机5个实体</p>
+<pre><code>@r[c=5,type=!lightning_bolt]
+</code></pre><hr>
+<p>选择ry=0至ry=90的实体(0≤ry≤90)<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/small.png" alt="0-90"></p>
+<pre><code>@e[ry=90,rym=0]
+</code></pre><hr>
+<p>选择ry=90至ry=0的实体(0≤ry≤90)<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/big.png" alt="90-0"></p>
+<pre><code>@e[ry=0,rym=90]
+</code></pre><hr>
+<p>选择rx=20至rx=-20的实体(-20≤rx≤20)<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/rx_small.png" alt="-20-20"></p>
+<pre><code>@e[rx=20,rxm=-20]
+</code></pre><hr>
+<p>选择rx&gt;=20和rx&lt;=-20的实体(rx≤-20 or rx≥20)<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/rx_large.png" alt="-20-20"></p>
+<pre><code>@e[rxm=20,rx=-20]
+</code></pre>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

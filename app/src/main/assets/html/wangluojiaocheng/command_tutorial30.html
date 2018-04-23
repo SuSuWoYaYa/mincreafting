@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.5.1 循环电路|记分板的基础操作</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="实例1：循环电路——记分板的基础操作">实例1：循环电路——记分板的基础操作</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+  
+<p>在将来使用命令的过程中，会有很多使用到循环电路的地方：时钟、刷新事件、做迷宫。接下来会详细地介绍记分板的基础操作，并在这个过程中实现循环电路的制作。</p>
+<h2 id="准备工作">准备工作</h2>
+<p>首先，你需要设立一个虚拟型（<strong>dummy</strong>）变量，名称为<strong>loop</strong>，用它来记录分数加减：</p>
+<p><code>scoreboard objectives add loop dummy</code></p>
+<p> 为了直观地看到分数的变化，把这个变量设在侧边栏（<strong>sidebar</strong>）显示：</p>
+<p><code>scoreboard objectives setdisplay sidebar loop</code></p>
+<p>由于<strong>loop</strong>上还没有任何的分数，所以你应该不会看到屏幕上的任何变化。别急，你现在需要往这个变量添加一个玩家。但现在我们不准备把你添加上去，因此我们设一个虚拟的玩家（也就是之前提到的假名），名字为<strong>Loopman</strong>：</p>
+<p><code>scoreboard players set Loopman loop 0</code></p>
+<p>好了，现在你应该会看到你的屏幕旁边出现了一个侧边栏，标题是目标名<strong>loop</strong>，列表中的是目标正在追踪的玩家：<strong>Loopman</strong>，其分数为<strong>0</strong>——这就是我们要的东西。</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt1.1.png" alt=""></p>
+<h2 id="初次实现">初次实现</h2>
+<p>作为一个循环结构，我们的流程大概是这个样子：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt1.2.png" alt=""></p>
+<p>那么我们试着按这个流程做一个200刻间隔的“雷电发生器”。</p>
+<ol>
+<li><p>设置一个加分的循环型命令方块，输入命令：给变量<strong>loop</strong>中的玩家<strong>Loopman</strong>分数<strong>加1</strong>：</p>
+<p><code>scoreboard players add Loopman loop 1</code></p>
+</li>
+<li><p>先别急着激活，在它的指向处放一个连锁型命令方块，输入命令：<strong>检测</strong> 变量<strong>loop</strong>中<strong>Loopman</strong>的分数是否<strong>处于200到201之间</strong>：</p>
+<p><code>scoreboard players test Loopman loop 200 201</code></p>
+<blockquote>
+<p>你也可以不填后面的201，那么这个命令就会检测分数是否在200到2147483647之间。</p>
+</blockquote>
+</li>
+<li><p>再连接两个连锁方块，第一个负责将<strong>Loopman</strong>在<strong>loop</strong>上的分数<strong>减去200</strong>以将分数归零：</p>
+<p><code>scoreboard players remove Loopman loop 200</code></p>
+<p>你也可以直接<strong>将分数设为0</strong>：</p>
+<p><code>scoreboard players set Loopman loop 0</code></p>
+<p>第二个执行对任意非玩家生物雷击的操作：</p>
+<p><code>execute @e[type=!Player] ~ ~ ~ summon LightningBolt</code></p>
+<p>然后把以上两个命令方块调到条件制约和保持开启模式。</p>
+</li>
+</ol>
+<p>好了，现在你的命令方块电路应该长这样：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt1.3.png" alt=""><br>然后往那个循环方块的旁边放红石块来激活（也可以调成保持开启模式），大功告成！</p>
+<h2 id="再次实现">再次实现</h2>
+<p>事实上，在刚才的例子中，还可以有更简便的制作方法：把你放上记分板。但这样在你把地图分发给伙伴时可能会出问题，这就要看你的意愿了。</p>
+<p>如果要这么做的话：</p>
+<ol>
+<li><p>在准备工作中要把假名换成你的名字。</p>
+<p><code>scoreboard players set 你的名字 loop 0</code></p>
+</li>
+<li><p>从第二&#x6B#x6B65;的检测开始，把命令改为：</p>
+<p><code>execute @e[score_loop_min=200] ~ ~ ~ scoreboard players set 你的名字 loop 0</code></p>
+</li>
+</ol>
+<p>这样你就能省去那个归零分数的命令方块了。</p>
+<hr>
+<p>循环电路能做的当然不止这些。想象一下，你现在需要复制出一块很大的地盘，但是clone命令最多只能同时复制32767个方块，这时候一个一个地去复制的话就太麻烦了点。使用一下嵌套循环的小技巧，你就可以在几分钟内完成这项工作。</p>
+<p>准备工作也是需要设置目标、假名、侧边栏，但是你还需要再设置一个新的假名。相信你可以自己完成这项添加工作。我们设这个假名为<code>Tpman</code>。</p>
+<p>准备工作完成，接下来干什么？想象一栋小房子，坐标为0 4 0到4 8 4，我们要把这座房子复制成一座小区。流程图如下：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt1.4.png" alt=""></p>
+<p>因为要确定复制的坐标，所以需要有一个标志物。大多数玩家选择盔甲架作为标志物，有时候一些玩家还会选择药水云。为了方便观察，我们这里使用盔甲架。把这个盔甲架放在[0 4 -1]的位置。</p>
+<ol>
+<li><p>第一个方块，循环方块中的加分命令同上面一样。</p>
+<p><code>scoreboard players add Loopman loop 1</code></p>
+</li>
+<li><p>接着的命令方块是移动标志物与复制房子的命令：</p>
+<p><code>tp @e[type=minecraft:armor_stand] ~8 ~ ~</code></p>
+<p><code>execute @e[type=minecraft:armor_stand] ~ ~ ~ clone 0 4 0 4 8 4 ~ ~ ~1</code></p>
+</li>
+<li><p>到了检测的时候，命令也是和上面的一样，稍微改一下数值就行了。</p>
+<p><code>scoreboard players test loop Loopman 20 20</code></p>
+</li>
+<li><p>当条件成立，接着归零Loopman的命令与转行的移位命令：</p>
+<p><code>scoreboard players set loop Loopman 0</code></p>
+<p><code>tp @e[type=minecraft:armor_stand] ~-160 ~ ~8</code></p>
+</li>
+<li><p>然后Tpman加分，检测Tpman分数：</p>
+<p><code>scoreboard players add loop Tpman 1</code></p>
+<p><code>scoreboard players test loop Tpman 20 20</code></p>
+</li>
+<li><p>当条件成立，直接删除开启循环方块的红石块：</p>
+<p><code>setblock &lt;x&gt; &lt;y&gt; &lt;z&gt; air</code></p>
+<p>坐标由你自己决定。</p>
+</li>
+</ol>
+<p>大功告成！现在放下红石块吧！你的电路应该是这样的：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt1.5.png" alt=""></p>
+<p>如果你发现出错，看看你有没有新建Tpman，或者有没有重置Loopman的分数。</p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt1.6.png" alt=""></p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

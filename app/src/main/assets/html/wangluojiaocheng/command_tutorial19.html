@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.2.2 NBT实战</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+                                <h1 id="nbt实战">NBT实战</h1>
+
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<blockquote>
+<p>这部分会涉及不少英语...<br>而且玩NBT必须会点英语...因为都是英语词语<br>英语不好的读者...请自行找个命令群问吧，并且得学好点英语啊23333</p>
+</blockquote>
+<h2 id="阅读树视图treeview">阅读树视图(Treeview)</h2>
+<p>Wiki 主要NBT页面：<br><a href="https://minecraft.gamepedia.com/Chunk_format" target="_blank">实体、方块NBT</a><br><a href="https://minecraft.gamepedia.com/Player.dat_format" target="_blank">玩家、物品NBT</a></p>
+<p>Wiki中以树视图来表达NBT的继承关系（父compound/list与子标签）。<br>标签左边的图标会标识每个标签的类型（看不清楚的话可以把鼠标放在那图标上面）。<br>那格式相信已经非常清楚了，然而还是有点需要解释的。</p>
+<h3 id="阅读子compound">阅读子Compound</h3>
+<p>首先，大家需要明白一个很重要的事实: Compound是分种类的。<br>Compound根据子标签的不同，是有不同的&quot;种类&quot;的。我们一般会把常用的compound分类。类别如下（子类别为在父类别<strong>加上</strong>一些别的标签）:</p>
+<ul>
+<li>Entity （实体）<ul>
+<li>Mob （生，实体的子类别）</li>
+<li>Projectile （弹射物，实体的子类别）</li>
+<li>Block Entity （动态方块，实体的子类别）</li>
+<li>...</li>
+</ul>
+</li>
+<li>Item （物品）</li>
+<li>Block （方块）</li>
+<li>Tag （物品内的Tag）</li>
+<li>Attribute</li>
+<li>...</li>
+</ul>
+<p>我们会在之后的部分简述其中一些标签。</p>
+<blockquote>
+<p>其实命令里的<code>Data tag</code>（数据标签）也是有分&quot;种类&quot;的，实体相关的大部分为Entity，物品相关的为Tag，方块相关的为Block</p>
+</blockquote>
+<hr>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/nbt1.png" alt=""></p>
+<p>有时候会看到这种<code>See this format (recursive)</code>（中文为<code>参见这个格式（递归）</code>）。<br>这代表里面这个Compound，就是这个部分最&quot;大&quot;的标签（在这个例子中，最大的标签就是<strong>Entity data</strong>，中文为<strong>实体数据</strong>）。</p>
+<p>那个部分在wiki里其实是这样的</p>
+<pre><code>Entity data
+    id: string ...
+    Pos: list of 3 TAG_Doubles ...
+    ...
+    Passengers: list of the data of the entity riding...
+        see this format (recursive)
+</code></pre><p>我们看最&quot;大&quot;的tag，就是看没有父标签的那个，在这情况就是<code>Entity data</code>。</p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/nbt2.png" alt=""></p>
+<p>有时候也会看见这种：The list of items .... （中文：....物品的列表）<br>这说明下面的compound为item。</p>
+<h3 id="阅读list元素">阅读List元素</h3>
+<p>List元素有两种，分别为有限（且顺序敏感）元素数量及不限制元素数量的。</p>
+<p>有限元素的分别有两种写法。第一种就如同上方的HandItems一样，就是List下面有<strong>多于一个</strong>标签，那些标签<strong>必须</strong>放在相应的位置。</p>
+<p>以HandItems作例子</p>
+<pre><code>HandItems:[{id:&quot;minecraft:stone&quot;,Count:1b},{id:&quot;minecraft:glass&quot;,Count:1b}]
+</code></pre><p>石头就是放在主手，而玻璃就是放在副手。</p>
+<hr>
+<p>对于非Compound的有限元素，有时候就会这么写：<em>数字 TAG_&lt;类型&gt;....</em>，说明了元素数量及类型，如：</p>
+<blockquote>
+<p>Motion: <em>3 TAG_Doubles</em> describing the current <strong>dX,dY,dZ</strong> velocity of the entity in meters per tick.</p>
+</blockquote>
+<p>这句讲解了List里的元素类型以及用途。而粗体的那三个字就是你要写的元素了。以下是一个例子：</p>
+<pre><code>Motion:[1d,2d,3d]
+</code></pre><p>x轴上的速度为1m/s，y轴为2m/s，z轴为3m/s。</p>
+<hr>
+<p>不限制元素数量的写法有两种：第一种为在List下面有<strong>一个</strong>标签，第二种为只写着<code>List of ...</code>而之后的部分不是种类而是子标签用途。</p>
+<p>例子:</p>
+<blockquote>
+<p>1: <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/nbt1.png" alt=""></p>
+<p>2: <code>Tags: List of custom string data.</code></p>
+</blockquote>
+<p>这代表了子标签数量不设限制，而子标签次序<strong>一般</strong>并无影响。</p>
+<p>例子：</p>
+<pre><code>Passengers:[{id:&quot;minecraft:pig&quot;},{id:&quot;minecraft:armor_stand&quot;}]
+
+Tags:[abc,def,ghjdfs,sfdsfsdf,sadasdsad]
+</code></pre><blockquote>
+<p>注: 是一般并无影响而不是绝对没有影响。<br>在Passengers的例子里，如果根实体（被Passengers骑着的实体）为船，那么第一个及第二个实体的位置会有分别。只有一个实体和有两个甚至更多实体的位置也不同。</p>
+<p>List是<strong>无法</strong>直接修改指定索引值的标签的。赋值时也无法不覆盖掉原先的所有标签。</p>
+</blockquote>
+<h3 id="阅读数组">阅读数组</h3>
+<p>其实数组方面和List的不限制元素数量写法也十分相近，就是<code>Array of ...</code>。</p>
+<p>例子：</p>
+<blockquote>
+<p>Colors: Array of integer values corresponding to the primary colors of this firework&apos;s explosion...</p>
+</blockquote>
+<p>简单来说就是一堆数字，代表了那烟花的颜色。所以NBT的例子为：</p>
+<pre><code>Colors:[I;123,456,789,123,456,789]
+</code></pre><blockquote>
+<p>1.12后数组有类型分别，分号前的值即代表其类别。</p>
+</blockquote>
+<h2 id="例子1——给予物品">例子1——给予物品</h2>
+<p><code>give</code>命令的功能为给予物品，其格式为</p>
+<pre><code>give &lt;玩家&gt; &lt;物品id&gt; [数量] [伤害值] [NBT]
+</code></pre><p>NBT（有时亦作<strong>数据标签</strong>，其实就是NBT）部分，其<strong>base tag</strong>为<strong>tag</strong>。</p>
+<p>什么是Base tag呢？其实这是一个概念，说的是这段NBT最外层的Compound是什么。</p>
+<p>上面我们说到，Compound也有分为不同种类的。有一些是Entity，一些是Item，一些是Tag。而不同命令使用的NBT也有所不同。</p>
+<p>比如是物品类的命令，如<code>give</code>命令，它们的NBT那里就是物品的额外NBT，其Base tag就是<code>tag</code>，意思就是最外层的compound类型为<code>tag</code>。</p>
+<p>而tag的（部分）子标签为</p>
+<pre><code> tag: compound
+ └── display：compound
+      ├── Name: 物品名称，string
+      └── Lore: 物品描述，string的list，每个string代表一行
+</code></pre><p>故此我们命令里的NBT就能这么写：</p>
+<pre><code>{display:{Name:&quot;物品名称&quot;,Lore:[&quot;第一行&quot;,&quot;第二行&quot;]}}
+</code></pre><p>例子命令：</p>
+<pre><code>give @p nether_star 1 0 {display:{Name:&quot;原谅之星&quot;,Lore:[&quot;爱是一道光&quot;,&quot;如此美妙&quot;]}}
+</code></pre><p>这命令给予玩家一个下界之星，名称为 原谅之星，描述为 爱是一道光 （下一行）如此美妙。</p>
+<h2 id="例子2——物品自定义nbt">例子2——物品自定义NBT</h2>
+<blockquote>
+<p>只有物品的tag能有这个操作</p>
+</blockquote>
+<p>物品的tag里能够自定义NBT，通过自定义NBT，玩家能够方便的把物品分类并且选择物品的实体/持有物品的实体等。</p>
+<pre><code>tag: compound
+├── 自定义NBT1: 种类自定
+├── 自定义NBT2: 种类自定
+├── ...
+└── 自定义NBTn: 种类自定
+</code></pre><p>假设我们要给予玩家一些特别的物品，我们需要统一进行检查。（检测有没有持有那类的物品，给予buff或者避免重复给予玩家那类型物品）<br>如果我们不使用自定义NBT，就需要逐个物品来检查，那就会十分麻烦，故此我们可以使用自定义NBT。</p>
+<pre><code>#这是第一类，编程的别问我为啥从1开始数
+give @p diamond_axe 1 0 {CustomNBT:1b}
+give @p diamond_sword 1 0 {CustomNBT:1b}
+
+#这是第二类
+give @p iron_axe 1 0 {CustomNBT:2b}
+give @p iron_sword 1 0 {CustomNBT:2b}
+</code></pre><p>这样，比如我们要检查拿着第一类物品的玩家，我们可以通过以下命令：</p>
+<pre><code>testfor @p {SelectedItem:{tag:{CustomNBT:1b}}}
+</code></pre><p>相比两条命令（分别检测<code>{SelectedItem:{id:&quot;minecraft:diamond_axe&quot;}}</code>和<code>{SelectedItem:{id:&quot;minecraft:diamond_sword&quot;}}</code>）明显方便了许多，而且这只是因为一个种类里的物品比较少：比较多物品的时候能更方便。</p>
+<blockquote>
+<p>提示：NBT里检测id的时候，无论是实体名称、方块id或者是物品id都得写<code>minecraft:</code>。</p>
+<p>检查NBT时，如果是同样精准度的话，我们会使用较少NBT的那个，因为效率会更高。而就物品来说，我们就可以使用自定义NBT，简单方便的进行检查。</p>
+</blockquote>
+<h3 id="高级用法">高级用法</h3>
+<p>我们可以用大类小类的方式更有系统的分类，对小游戏地图特别有用。<br>然而我们不必写很多特殊标签，我们只需要：Compound。</p>
+<p>比如说，以上两类都属于工具类别，那么我们就命名这个大类为<code>tools</code><br>NBT改为<code>{tools:{CustomNBT:1b}}</code>及<code>{tools:{CustomNBT:2b}}</code><br>假设我们要检测小类，则正常方式也行。如果要检测大类，则可以只写<code>{SelectedItem:{tags:{tools:{}}}}</code><br>是不是方便很多呢？2333</p>
+<h2 id="例子3——天降补给">例子3——天降补给</h2>
+<p>生成一个掉落中的方块(Falling block)，类型为箱子，里面装着一把剑。</p>
+<p>首先我们看看<code>falling_block</code>的NBT。</p>
+<pre><code>falling_block
+├──Block: 方块ID。字串。
+├──TileEntityData: 方块实体的NBT。
+├──Data: 方块的元数据。Byte。
+└──Time: 这掉落中的方块的存在时间（单位为游戏刻）。如果设置为0，过了1游戏刻后如果方块发现所处位置的方块id和此实体的方块id不同，就会消失。...（省却了和这部分无关系的描述）。当数值超过600或y坐标=0，这个实体就会消失。Int。
+</code></pre><p>至于箱子（一种方块实体）的NBT就是这样的</p>
+<pre><code>chest
+└──Items: 箱子内的物品列表。
+</code></pre><p>而物品的格式就是</p>
+<pre><code>Item
+├──Count: 物品数量。byte。
+├──Slot: 物品所处格子编号。byte。
+├──Damage: 物品数据值。short。
+├──id: 物品id。字串。
+└──tag: 物品的其他tag。
+</code></pre><p>首先我们写出这剑的NBT，假设我们希望是一把钻石剑，在箱子的第一格（编号从0开始）。</p>
+<pre><code>{Count:1b,Slot:0b,Damage:0s,id:&quot;minecraft:diamond_sword&quot;}
+</code></pre><p>然后编写箱子的NBT（物品列表内的物品就是剑的NBT）</p>
+<pre><code>{Items:[{Count:1b,Slot:0b,Damage:0s,id:&quot;minecraft:diamond_sword&quot;}]}
+</code></pre><p>最后编写掉落方块的NBT（<code>TileEntityData</code>里的就是箱子的NBT）</p>
+<pre><code>{Block:&quot;minecraft:chest&quot;,Data:0b,Time:1,TileEntityData:{Items:[{Count:1b,Slot:0b,Damage:0s,id:&quot;minecraft:diamond_sword&quot;}]}}
+</code></pre><blockquote>
+<p>这例子显示了NBT格式是怎么引用别的NBT的。</p>
+</blockquote>
+<h2 id="例子4——小僵尸boss">例子4——小僵尸Boss</h2>
+<p>首先我们希望Boss的名字叫Boss。这和实体格式有关：</p>
+<p>然后如何定义一只小僵尸呢？我们就得看僵尸的NBT。</p>
+<pre><code>zombie
+└──IsBaby: 僵尸是否婴儿。Byte。
+</code></pre><p>那么僵尸有没有定义名称的NBT呢？看起来是没有的。？？？</p>
+<p>其实僵尸(zombie)是实体(entity)的一个子类，因此僵尸里会继承所有属于实体的tag，比如是<code>CustomName</code>。</p>
+<pre><code>Entity
+├──CustomName: 实体的名称。字串。
+└──CustomNameVisible: 实体名称是否可见。Byte。
+</code></pre><p>可以这么想，僵尸有的NBT为：</p>
+<pre><code>zombie
+├── 一切实体的NBT
+└── 僵尸独有的NBT
+</code></pre><p>也就是</p>
+<pre><code>zombie
+├──CustomName
+├──CustomNameVisible
+├──IsBaby
+└──...
+</code></pre><hr>
+<p>好了我们怎么弄一只boss呢？我们可以修改属性，也就是Attribute。然而在僵尸的NBT里看不到Attribute啊！是不是代表没有呢？</p>
+<p>不是的，其实僵尸也属于生物(Mob)，而Mob就有我们需要的Attribute了。<br>僵尸的继承体系是：</p>
+<ul>
+<li>entity<ul>
+<li>mob<ul>
+<li>怪物monster, 不死类生物 Undead （这里不影响NBT，但影响其行为）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Mob的格式是这样的：</p>
+<pre><code>Mob
+├──Attributes: Attributes列表。
+│   └┬─ 一个Attribute
+│    ├──Name: attribute的名称（我们改血量，写generic.maxHealth）
+│    ├──Base: attribute的数值（写30），类型为byte。
+│    ├──...
+├──Health: 血量（只改maxHealth只会修改最大血量，实际血量还是20）。float。
+└──...
+</code></pre><p>所以NBT可以这么写：</p>
+<pre><code>{CustomName:Boss,CustomNameVisible:1b,IsBaby:1b,Attributes:[{Name:&quot;generic.maxHealth&quot;,Base:30b}],Health:30.0f}
+</code></pre><blockquote>
+<p>注意: 使用<code>summon</code>命令生成实体时我们不是在指定实体的<strong>所有标签</strong>，我们只是修改特定的标签，其他标签还是会自动赋予的，其中一些会被随机生成。有一些NBT只能在实体生成时设置，生成后就会消失。</p>
+</blockquote>
+<h2 id="样式代码">样式代码</h2>
+<p>有时候我们会希望在NBT加入样式代码，来为比如是物品名称或描述加上颜色等样式。</p>
+<p>样式代码其实就是<code>§&lt;符号&gt;</code>，之后的字符根据会加上特定样式。样式决定于<code>§</code>后的符号，和JSON那些样式类似。也能够混合使用（效果会叠加直至<code>§r</code>的出现）。</p>
+<p>颜色：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/colors.png" alt=""></p>
+<p>特殊样式：</p>
+<table>
+<thead>
+<tr>
+<th>样式代码</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§k</td>
+<td>混淆(obfuscated)</td>
+</tr>
+<tr>
+<td>§l</td>
+<td>粗体(bold)</td>
+</tr>
+<tr>
+<td>§m</td>
+<td>删除线(strikethrough)</td>
+</tr>
+<tr>
+<td>§n</td>
+<td>下划线(underline)</td>
+</tr>
+<tr>
+<td>§o</td>
+<td>斜体(italic)</td>
+</tr>
+<tr>
+<td>§r</td>
+<td>重置(reset)，即前方样式不会对后方有作用</td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<pre><code>{CustomName:&quot;§a123456§r&quot;}
+
+{display:{Lore:[&quot;§a§l粗体原谅&quot;]}}
+</code></pre><blockquote>
+<p>然而是无法以正常方式向游戏内输入<code>§</code>字符的。<br>最方便的方式为通过命令函数输入，如果不能使用命令函数的话可以使用牌子点击黑科技，链接：<a href="http://www.mcbbs.net/thread-443181-1-1.html" target="_blank">http://www.mcbbs.net/thread-443181-1-1.html</a><br>除了NBT以外，其他地方也会使用<code>§</code>字符代表颜色，比如存档名称、advancement、记分板假名等等。</p>
+</blockquote>
+<hr>
+<p><strong>例子</strong></p>
+<p>命令:</p>
+<pre><code>give @p nether_star 1 0 {display:{Name:&quot;§a§l爱是一道光&quot;,Lore:[&quot;如此美妙&quot;]}}
+</code></pre><p>效果：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/example_format.png" alt=""></p>
+<p>你们是不是以为<strong>如此美妙</strong>的部分也是绿色和粗体？不是说好的<code>之后的字符根据会加上特定样式</code>么？</p>
+<p>其实是这样的，那句<code>之后的字符根据会加上特定样式</code>其实说的是<strong>同一个NBT内</strong>，比如是Name里面，或者是Lore里面的一个子标签里面。<br>故此，Lore部分是独立于Name部分的，也不会获得那原谅Buff。</p>
+<h2 id="其他">其他</h2>
+<blockquote>
+<p>这里会说一些NBT的额外资料。</p>
+</blockquote>
+<p>部分NBT是生成后就会消失的，如UUID，别想着要改了。<br>部分NBT是只读(Read only)不能修改的，如OnGround这些，而且你修改了也没用。</p>
+<p>有时候会看见别人写<em>错</em>类型的，如Item: <code>{id:&quot;minecraft:stone&quot;,Count:1}</code>。<br>然而其实这并不是错的，这是利用了NBT的型别转换(Type casting)，也就是说<strong>修改NBT</strong>时能自动把类型转为正确类型。（当然，超出了正确类型范围的时候就不会自动转换了）<br>不过我们并不建议这种写法，因为有很大几率会出现错误，并且在检测NBT的时候不允许使用这种写法。</p>
+<p>生物的ActiveEffects<strong>不建议直接修改</strong>。部分和attribute有关的状态效果需要attribute modifier。故此只声明ActiveEffects是无效的。</p>
+<p>生物的Attribute很坑（包括AttributeModifier，比如史莱姆的maxHealth改了也没用...）...建议使用前多测试。</p>
+<p>检测生物有没有受到攻击可以检测生物<code>HurtTime</code>。（function的话可以考虑检测<code>9s</code>，命令方块的话得+1s，检测<code>10s</code>。这是由于gameLoopFunction在生物更新后执行。原则上<code>10s</code>到<code>1s</code>都可以用于检测，但一般我们都需要即时获取状态。）</p>
+<p>别试图检测Float/Double，你往往不要指望恰好能达到你所检测的值...例如检查实体视角时更常见的是使用选择器参数而不是相应NBT。</p>
+<p>处理火球的时候记着设置direction。motion对它是没用的，并且不设置direction根本生成不了。</p>
+<p>重要！！！<br>村民的<code>Inventory</code>设置的时候只会增加物品，不会覆盖。<br>比如原先有<code>[{id:&quot;minecraft:stone&quot;,Count:1b,Damage:0s}]</code>，我们设置<code>Inventory:[{id:&quot;minecraft:stone&quot;,Count:1b,Damage:0s}]</code>，村民的Inventory NBT会变为<code>[{id:&quot;minecraft:stone&quot;,Count:2b,Damage:0s}]</code>。<br>假如我们在以上的基础上设置<code>[{id:&quot;minecraft:stone&quot;,Count:1b,Damage:1s}]</code>，村民的Inventory会变为<code>[{id:&quot;minecraft:stone&quot;,Count:2b,Damage:0s},{id:&quot;minecraft:stone&quot;,Count:1b,Damage:1s}]</code>。<br>而且村民的<code>replaceitem</code>命令中的<code>slot.villager.数字</code>是基于这个列表里的物品位置的，第一个的数字就是<code>0</code>，第二个就是<code>1</code>，如此类推。但实际上在村民的Inventory里是不会有<code>Slot</code>这个NBT的。我们需要移除物品就只能靠<code>replaceitem</code>为<code>air</code>了。<code>replaceitem</code>为<code>air</code>之后物品会向前补充那空缺。<br>幸好这奇奇怪怪的特性不常见...</p>
+<blockquote>
+<p>此特性由Yaossg发现</p>
+</blockquote>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

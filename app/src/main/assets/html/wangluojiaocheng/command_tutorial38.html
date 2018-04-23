@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>5.3 布尔逻辑</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+
+ 
+<h1 id="逻辑运算---and-or-not">逻辑运算---And, or, not</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<p>什么是逻辑运算呢？就是对布尔值（boolean，有两个值true/false）进行运算<br>常用的就是要多个条件同时符合(and)，或者是任何一个条件符合(or)，或是不能符合某个条件(not)</p>
+<h2 id="真值表">真值表</h2>
+<p>以下表格可以拓展至n个不同输入/输出</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>and</th>
+<th>or</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>True, True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True, False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>False, True</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>False, False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mc实现and">MC实现And</h2>
+<h3 id="记分板选择器">记分板+选择器</h3>
+<p>选择器的规则就是选择到的实体必须是<strong>符合所有条件</strong>的<br>由于记分板的选择器参数是<code>score_XXX</code>或者是<code>score_XXX_min</code>，因此可以同时有多个参数<br>因此，你可以用多个参数来指定同时拥有多个分数的实体<br>举个例子，<code>@e[score_a=5,score_a_min=5,score_b=6,score_b_min=6]</code>，就是选择所有记分板a=5、b=6的实体</p>
+<blockquote>
+<p>需要注意的是，除了记分板以外的参数都不能重复出现（<code>score_a</code>和<code>score_b</code>实为不同参数，因此可“重复”），详见<b> 1.4 目标选择器 </b>教程</p>
+</blockquote>
+<h3 id="execute命令">execute命令</h3>
+<p>如果是同时需要多个tag，我们可以通过execute+@s来选择。<br>如我们需要同时有a, b, c tag，我们可以：</p>
+<pre><code>execute @e[tag=a] ~ ~ ~ execute @s[tag=b] ~ ~ ~ execute @s[tag=c] ~ ~ ~ 命令
+</code></pre><blockquote>
+<p>也可以做到多反选</p>
+</blockquote>
+<h3 id="stats">Stats</h3>
+<p>通过检测SuccessCount，我们可以得知之前的命令有没有成功，然后执行别的命令。这样在命令函数里也能做到条件制约。<br>如果命令a之后的命令需要SuccessCount大于等于1才能继续执行（通过<code>execute</code>命令），那就代表了如果前面任何一个命令出现错误，后面的命令就没法执行，这也是and的一种。</p>
+<p>例子（命令函数，假设由实体执行并且有一个变量叫scb）：</p>
+<pre><code>scoreboard players set @s scb 0
+stats entity @s set SuccessCount @s scb
+
+# 检测命令
+testfor @s[score_test=3]
+# 如果不成功的话下面这条命令也不会执行
+execute @s[score_scb_min=1] ~ ~ ~ testfor @s[score_test_min=3]
+
+# 如果上面任意一条命令失败了的话这条命令也不会执行
+# 如果是第一条检测失败了，那么scb还是0，执行不了
+# 如果是第二条检测失败了，那么scb就会变为0，执行不了
+execute @s[score_scb_min=1] ~ ~ ~ say test = 3
+</code></pre><h2 id="mc实现or">MC实现Or</h2>
+<h3 id="多条命令">多条命令</h3>
+<p>这...简单到我都不知道有啥可以说明的了。<br>不过注意，要小心重复执行命令，多条命令的条件尽量不要重复。</p>
+<h3 id="记分板tag">记分板tag</h3>
+<p>方法很简单，分别检测不同情况是否符合，符合就给实体一个分数/标签。然后针对那个分数/标签的实体执行命令</p>
+<p>例子:</p>
+<pre><code>scoreboard players set @a[tag=a] tagScb 1
+scoreboard players set @a[tag=b] tagScb 1
+execute @a[score_tagScb_min=1,score_tagScb=1] ~ ~ ~ say 我有a/b标签
+</code></pre><p>这方法看起来需要的命令多一点，然而有两个好处：</p>
+<ul>
+<li>不会重复执行命令。就算条件重复了，被选择到的实体还是那个</li>
+<li>重复使用该条件时这方式能节省命令&#x6570#x6570;量。</li>
+</ul>
+<h2 id="mc实现not">MC实现Not</h2>
+<p>not就是当条件不满足的时候才执行命令(为了方便，下面会用!代表not)<br>举个例子，分数a!=5的时候say hi，就是分数不等于5的时候才say hi</p>
+<h3 id="记分板分数">记分板分数</h3>
+<p>首先给所有实体一个初始分数，然后给符合条件的实体另一个分数<br>还维持着原来分数的实体就自然是不符合那些条件的实体了</p>
+<pre><code>scoreboard players set @e notSlime 1
+scoreboard players set @e[type=Slime] notSlime 0
+scoreboard players set @e[type=LavaSlime] notSlime 0
+execute @e[score_notSlime_min=1] ~ ~ ~ say i am not slime
+</code></pre><blockquote>
+<p>注意: 记分板的好处在于能够在大量逻辑的时候进行简化, 而且如果不止是not一种的话, 记分板就能做到特殊优化</p>
+</blockquote>
+<h3 id="tag">tag</h3>
+<p>原理就是这样，给符合要求的实体一个tag，然后用=!tag选择没那个tag的实体</p>
+<pre><code>scoreboard players tag @e[type=Slime] add Slime
+scoreboard players tag @e[type=LavaSlime] add Slime
+execute @e[tag=!Slime] ~ ~ ~ say i am not slime
+</code></pre><blockquote>
+<p>注意: tag的话则不能做到and。如果需要复杂逻辑的话建议使用记分板分数，因为那比较方便优化</p>
+</blockquote>
+<h3 id="stats">Stats</h3>
+<p>和And的部分类似，我们检测SuccessCount=0就好，所以这里就不多加以描述了。</p>
+<p>然而注意多个条件，比如</p>
+<pre><code># 绑定stats的就不写了
+
+testfor @s[score_test=0]
+execute @s[score_stats=0] ~ ~ ~ testfor @s[score_test_min=10]
+execute @s[score_stats=0] ~ ~ ~ say 1-9
+</code></pre><p>这是错的。<br>因为如果满足了第一条命令，第二条命令自然就会失败，而stats就会变为0，满足了第三条命令。<br>上面的命令其实是 <strong>not ((not a) and b)</strong>，也就是<code>a or (not b)</code>。</p>
+<h3 id="命令函数">命令函数</h3>
+<p>命令函数能够很方便的做到if 和 unless(else)。<br>故此复杂的条件可以拆成if else部分放进不同命令函数进行调用。</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.5.4 漂亮的排名|显示与队伍</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+
+ 
+<h1 id="实例4：漂亮的排名——显示与队伍">实例4：漂亮的排名——显示与队伍</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+<p>不得不说，玩家之间的竞技是Minecraft的一个重要组成部分。而在记分板系统的帮助下，组织这类竞赛将会更加方便，也更具观赏性。现在假设一个情境——在迷宫中进行的死亡竞赛。</p>
+<h2 id="准备工作">准备工作</h2>
+<p>很遗憾，这个教程并不准备教你如何搭建一个迷宫。这个工作留给你自己。</p>
+<p>现在来构思一下，除了迷宫本身，完成这个地图需要什么：</p>
+<ul>
+<li>一个变量，记录击杀得分</li>
+<li>侧边栏，将分数显示出来</li>
+<li>两个队伍，这两个队伍互相之间进行对抗</li>
+</ul>
+<p>前两个任务在前面的实例中已经介绍过了，现在只需要回顾一下队伍的命令就可以了。</p>
+<p>好，让我们开始吧！</p>
+<h2 id="初次实现">初次实现</h2>
+<p>现在创建两个队伍，一个叫CT，一个叫T：</p>
+<pre><code>scoreboard teams add CT
+scoreboard teams add T
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt4.1.png" alt=""><br>这两个队伍使用不同的颜色，那么就需要用修改color：</p>
+<pre><code>scoreboard teams option CT color blue
+scoreboard teams option T color gold
+</code></pre><p>同时因为友军火力默认开启，我们又不希望友军之间误伤，所以要修改friendlyfire：</p>
+<pre><code>scoreboard teams option CT friendlyfire false
+scoreboard teams option T friendlyfire false
+</code></pre><p>名称牌在迷宫中是个问题——它会带来透视一样的效果。所以要把名称牌隐藏起来：</p>
+<pre><code>scoreboard teams option CT nametagVisibility hideForOtherTeams
+scoreboard teams option T nametagVisibility hideForOtherTeams
+</code></pre><p>当然也可以把hideForOtherTeams换成never，这个由你自己决定。</p>
+<p>接下来是碰撞的问题。在这种娱乐竞赛中同队玩家一般不采用碰撞，但是和其他队伍之间应该保留碰撞。所以修改一下collisionRule：</p>
+<pre><code>scoreboard teams option CT collisionRule pushOtherTeams
+scoreboard teams option T collisionRule pushOtherTeams
+</code></pre><p>好了，队伍的基本设置完成了。现在还差一样，修改前缀。但是option里并不提供前缀修改，怎么办呢？</p>
+<blockquote>
+<p>这里提供一个NBT修改器的下载地址：<br><a href="http://www.mcbbs.net/thread-306895-1-1.html" target="_blank">http://www.mcbbs.net/thread-306895-1-1.html</a></p>
+</blockquote>
+<p>打开NBT Explorer，按照<b>4.2 记分板队伍</b>提供的路径，找到前缀并修改、保存。打开游戏，你就能看到类似这样的效果了：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt4.2.png" alt=""><br><br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt4.3.png" alt=""></p>
+<p>（这里使用的前缀是<code>[T]</code>。这个例子只修改了前缀，如果你要添加后缀，务必记得在末尾加上<code>§r</code>。）</p>
+<p>到这里队伍的设置就结束了。接下来是设置变量和显示在侧边栏：</p>
+<pre><code>scoreboard objectives add dmscore playerKillCount #因为friendlyfire已经关闭，所以可以直接统计击杀玩家的次数
+scoreboard objectives setdisplay sidebar dmscore
+</code></pre><p>完成！要开始游戏，还得把小伙伴加入队伍中。</p>
+<pre><code>scoreboard teams join T @p
+scoreboard teams join CT @p
+</code></pre><p>关于人数平衡的解决方法就请你自己探究了。</p>
+<blockquote>
+<p>在这里提供一个人数平衡问题的解决思路：</p>
+<ol>
+<li>设置命令方块，附上按钮或者踏板，让玩家自己选择队伍</li>
+<li>每有一个玩家加入一个队伍则给对应变量加分</li>
+<li>如果分数达到限定值则更改加入队伍命令方块的命令，比如显示“队伍已满”</li>
+<li>还有很多种方法，你可以自己发挥想象！</li>
+</ol>
+</blockquote>
+<p>你还可以给游戏计时，时间到了以后把所有玩家移出队伍并传送到指定位置。可以使用的选择器参数为<code>team</code>。</p>
+<h2 id="再次实现">再次实现</h2>
+<p>实际上刚才的装置比较简陋，适合小伙伴之间的小型比赛，如果要拿来作为地图发布或许是拿不出手的。因此我们还可以对现有的系统进行进一步的优化。</p>
+<h3 id="给名字加上颜色">给名字加上颜色</h3>
+<p>如果单单设置前缀为队伍名称可能有些单调，我们可以用样式代码修改前缀。例如，前缀<code>§6[T]</code>可以使队伍拥有如下效果：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt4.4.png" alt=""><br>有关样式代码的更多信息见<b> 2.2.2 NBT实战 </b >的<strong>样式代码</strong>部分</p>
+<h3 id="只统计游戏参与者的击杀数">只统计游戏参与者的击杀数</h3>
+<p>在上面的实例中使用了playerKillCount这个判据，然而如果在一个大服务器中运行这样的游戏，可能会出现<strong>无关人士上榜</strong>的现象。因此可以结合teamkill.<color>判据和operation命令实现只统计游戏参与者的击杀数。具体命令如下：</color></p>
+<pre><code>#新建变量
+scoreboard objectives add dmscoreT teamkill.blue
+scoreboard objectives add dmscoreCT teamkill.gold
+
+#高频运行赋分命令
+execute @e[team=T] ~ ~ ~ scoreboard players operation @s dmscore = @s dmscoreT
+execute @e[team=CT] ~ ~ ~ scoreboard players operation @s dmscore = @s dmscoreCT
+</code></pre><h3 id="美化的侧边栏">美化的侧边栏</h3>
+<p>侧边栏的功能并不只是显示玩家和分数，利用侧边栏，你甚至可以做出一个显示屏！现在我们利用侧边栏做一个加入队伍的信息提示。</p>
+<p>首先要添加变量：</p>
+<pre><code>scoreboard objectives add info dummy 公告栏
+</code></pre><p>MC里不能直接输入样式代码，所以我们用function来制作带颜色的假名：</p>
+<pre><code># 以下命令使用function运行
+# 分数用来排序信息
+# 第四行输入两次§4是为了区分假名。reset命令清除一个带样式代码的假名时，也需要带上相同的样式代码
+scoreboard players set §4============ info 3
+scoreboard players set §6加入T队请到红区 info 2
+scoreboard players set §1加入CT队请到蓝区 info 1
+scoreboard players set §4§4============ info 0
+</code></pre><p>效果如下：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt4.5.png" alt=""></p>
+<h3 id="统计队伍总分">统计队伍总分</h3>
+<p>这个只需要每个队伍一条命令就可以了（但是此方法不适用于假名）：</p>
+<pre><code>scoreboard players operation TotalT dmscore += @e[team=T] dmscore
+scoreboard players operation TotalCT dmscore += @e[team=CT] dmscore
+</code></pre><p>如果在function中运行，你还可以顺便为这两个总分计数器加上颜色。</p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt4.6.png" alt=""></p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

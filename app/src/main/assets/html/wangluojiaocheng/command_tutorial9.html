@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.1 JSON文本</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="json概观">JSON概观</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+
+<h2 id="简介">简介</h2>
+<p>什么是JSON？引用术语来说</p>
+<blockquote>
+<p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript等）。 这些特性使JSON成为理想的数据交换语言</p>
+</blockquote>
+<p>简单来说</p>
+<blockquote>
+<p>JSON就是一种易于阅读以及交换信息的语言格式</p>
+</blockquote>
+<p>而Minecraft也看中了JSON这种便于阅读及读取的格式，以JSON格式来定义不同功能。<br>这里我们将会介绍JSON文本，这是一个经常用于各种命令的格式。</p>
+<p>首先我们需要学习JSON的基本格式。</p>
+<h2 id="格式">格式</h2>
+<p>首先，JSON标准的格式为：</p>
+<pre><code>&quot;&lt;名称&gt;&quot;: &lt;值&gt;
+</code></pre><p>值可以为一个数字（分为整数以及浮点数，浮点数即有小数），布尔值（只有 真(True)和假(False)的数值）等。<br>例如：</p>
+<pre><code>&quot;Number&quot;:1
+&quot;Answer&quot;:true
+</code></pre><p>对字符串（可以理解为普通文字）来说，值需要被双引号括起来，即：</p>
+<pre><code>&quot;&lt;名称&gt;&quot;:&quot;&lt;值&gt;&quot;
+</code></pre><p>例如：</p>
+<pre><code>&quot;Name&quot;:&quot;SYL&quot;
+</code></pre><hr>
+<p>如果是描述一个对象(Compound)的话，把内容（属性）书写在花括号<code>{}</code>中，以<code>,</code>分隔内容。<br>例如:</p>
+<pre><code>{&quot;Name&quot;:&quot;SYL&quot;,&quot;Gender&quot;:&quot;Male&quot;}
+</code></pre><p>其中<code>Name</code>和<code>Gender</code>就是这个对象的<strong>属性</strong>。<br>这对象表达了名为SYL，性别为男的意思。</p>
+<hr>
+<p>如果是一个集合/数组(Array/List)，那么用<code>[]</code>把对象括起来<br>例如：</p>
+<pre><code>{&quot;CBL&quot;:[{&quot;Name&quot;:&quot;SYL&quot;,&quot;Gender&quot;:&quot;Male&quot;},{&quot;Name&quot;:&quot;Woody_Mo&quot;,&quot;Gender&quot;:&quot;Male&quot;}]}
+</code></pre><p>这里描述了名为CBL的对象集合，包含了SYL和Woody_Mo这两个对象。</p>
+<h2 id="转义">转义</h2>
+<p>转义是JSON应用中十分重要的课题。在此我们只会大约说明转义的用法，详细例子将会在之后章节给出例子。</p>
+<p>当我们在字符串里使用某些特别的字符，如<code>&quot;</code>字符的时候，情况会变得稍微复杂。举个例子</p>
+<pre><code>&quot;abc&quot;:&quot;这个JSON的名称为&quot;abc&quot;&quot;
+</code></pre><p>就我们现在所学，<code>&quot;</code>字符代表的是字串的开始和结尾啊！这样的话哪个<code>&quot;</code>字符是开始哪个才是结束？<br>答案是：没人知道。我们不能这么写JSON的。</p>
+<blockquote>
+<p>如果我们要在字串里填写一些特殊符号，我们需要对它们进行转义(escape)。<br>转义即在<strong>特殊字符前方</strong>加入一个名为<strong>转义字符</strong>的字符，表示这个字符和原来的意思不同。（当作普通字符处理）。<br>在JSON里，转义字符为<code>\</code>，而需要转义的特殊字符为<code>\</code>及<code>&quot;</code> （为何转义字符也需要转义？因为它独自出现的时候代表的是转义，而不是一个普通字符。因此当我们需要在文本内使用此字符时需要将其转义。）。</p>
+</blockquote>
+<p>以上方的例子来说，我们希望abc的数值为<code>&#x8FD9#x8FD9;个JSON的名称为&quot;abc&quot;</code>，因此我们会这么写:</p>
+<pre><code>&quot;abc&quot;:&quot;这个JSON的名称为\&quot;abc\&quot;&quot;
+</code></pre><p>如果我们要一个数值为上方这JSON字串的JSON呢？我们需要这么写：</p>
+<pre><code>&quot;foo&quot;:&quot;\&quot;abc\&quot;:\&quot;这个JSON的名称为\\\&quot;abc\\\&quot;\&quot;&quot;
+</code></pre><blockquote>
+<p>注意:<br>转义本来是没有&quot;多重转义&quot;的概念的。转义是一层一层，每次在<code>\</code>及<code>&quot;</code>符号前方加入<code>\</code>字符。<br>记住这个最基本的原则可以避免出现错误。</p>
+</blockquote>
+<h2 id="json除错">JSON除错</h2>
+<p>JSON常见错误有几个：</p>
+<ul>
+<li>标签名称忘记加上引号。如<code>{test:1}</code>是错的，<code>{&quot;test&quot;:1}</code>才是对的。</li>
+<li>额外的逗号<code>,</code>。如<code>[1,2,3,]</code>或<code>{&quot;test&quot;:1,&quot;test2&quot;:2,}</code>。因为<code>,</code>代表之后还有东西，记得之后没东西的时候要删掉那个逗号。</li>
+<li>忘记转义。比如<code>&quot;tellraw @a [&quot;bla&quot;]&quot;</code>这可是错的，得转义成<code>&quot;tellraw @a [\&quot;bla\&quot;]&quot;</code>。</li>
+<li>括号不匹配。比如<code>{&quot;a&quot;:{&quot;test&quot;:&quot;testing&quot;}</code>，这个缺了最后的<code>}</code>符号。<br>  这个最好的办法是一开始就别错，而输入<code>{</code>或<code>[</code>符号时顺便输入<code>}</code>或<code>]</code>符号是一个好习惯。</li>
+<li>错字，如<code>true</code>写成<code>ture</code>。这样你就没救了（误。</li>
+</ul>
+<h1 id="json文本">JSON文本</h1>
+<p>在MC里面，目前用到JSON文本(Text component)的地方有5个，<code>tellraw</code>命令，<code>title</code>命令，<code>告示牌</code>，<code>成书</code>以及<code>advancement</code>命令，用于记录文字的样式和功能。</p>
+<p>比起传统的<code>say</code>命令，JSON可以自由编辑样式，甚至提供了交互功能，所以很适合作为信息输出/用户交互界面。</p>
+<p>其中最基本的概念是：<br>每一段文字被视作为一个<strong>文本对象</strong>，由<code>{}</code>括起来。<br>文本对象内可设置<strong>属性</strong>，决定了文字的内容，样式，功能等等（内容只能设置一种，但可以设置多个其他属性）。<br>以下章节将一步步解释JSON文本的格式及在游戏内的应用。</p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

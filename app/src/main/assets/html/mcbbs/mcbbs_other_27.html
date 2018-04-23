@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从MC开始的java入门 p5.mainmod</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >从MC开始的java入门 p5.mainmod</h1>
+            <!-- End Title -->
+        
+<div >
+   <p class="red">本文章转载自网易论坛<br />作者-Namefind</p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_Namefind_mc.png" /> 
+</p><p>哇麻麻快看这个人终于更新了！
+</p><p>继续来学mod吧~！
+</p><p>终于可以缓慢讲解知识点了...
+</p><p>
+
+</p><p><b>本章目标</b>
+</p><p>初识<b>Mod主类</b>
+</p><p>理解<b>@注解</b>、使用<b>@Mod</b></p>
+
+<h2>JAVA常识</h2><p>
+
+<font color="DarkRed">
+代码是如何被执行的呢？</font></p><p>我们写的类文件以.java为后缀，这时计算
+机并不能识别我们写出的代码，因为我们的代码是给人看的。
+</p><p>那么
+</p><p>想要计算机读懂我们的语言，我们就需要一个人进行翻译，这个人
+</p><p>就是编译器。
+</p><p>经过编译器进行翻译后生成了以.class为后缀的文件，
+</p><p>计算机(java虚拟机)可以识别，然后计算机识别class文件来执行。
+</p><p>
+</p><p><b>写好代码>编译成Class>执行</b>
+</p><p>
+</p><p>
+</p><p>我们学习了一个普通的java项目，需要一个带有main的主类才能运行，那么在mod中我们同样需要一个主类来运行。
+</p><p>现在我们来了解一下一个mod主类的基本构造：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_27_1.png" /> 
+ </p><p>
+
+
+</p><p>@Mod
+</p><p><font color="DarkRed">带有@符号的表示这个是一个注解。</font>（跟注释不一样的！）
+</p><p>注解用来标识下方的方法或类，<font color="DarkRed">告诉编译器这是一个怎样的东西。</font>
+</p><p>譬如在mod开发中我们在一个类上方使用@Mod，表示告诉了编译器这是一个mod主类。
+</p><p>
+</p><p>那么我们来开始操作吧，<b>首先在src下创建包，再创建一个普通类</b>（也就是不需要勾选main）
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_27_2.png" /> 
+</p><p> 
+</p><p>然后在类名上方使用@Mod注解：
+</p><p></p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_27_3.png" /> </p><p> 
+
+</p><p>在一个class前面加上@Mod后，<font color="DarkRed">代码会红线报错</font>，这时候我们把鼠
+</p><p>标移动到错误处，会提示：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_27_4.png" /> 
+</p><p>  
+</p><p>看到这里我们知道，我们可能缺少了什么东西，
+</p><p>导致软件不能识别我们的<b>@Mod</b>（因为这个注解是MC里面的）。
+</p><p>点击<font color="DarkRed">import Mod</font><b>导入MC所需要的包</b>。
+</p><p>
+</p><p>导入完毕后还是会红线报错，这时我们将
+</p><p><font color="DarkRed">(modid = 类名.MODID, name = 类名.NAME, version = 类名.VERSION, acceptedMinecraftVersions = "1.7.10")</font>
+</p><p>这段代码复制到@Mod后面，告诉@Mod我们已经按它的格式写好了modid、名字、版本号、可运行的MC版本。
+</p><p><font color="DarkRed">（*请将类名替换成自己写的类名）</font>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_27_5.png" /> 
+ </p><p> 
+</p><p>万分艰辛的第一步做好了，看到编译器还是红线报错，接下来我们
+</p><p>
+</p><p>将以下代码放入类中。<pre>
+
+    public static final String MODID = "模组ID名";
+    public static final String NAME = "模组ID名";
+    public static final String VERSION = "1.0.0";
+	</pre>
+</p><p><font color="DarkRed">（模组ID名请使用英文、全小写）</font>
+</p><p>
+</p><p>它看起来现在是这个样子：
+  
+ </p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_27_6.png" /> 
+</p><p><font color="DarkRed">*这里的Version</font>表示你当前模组的版本，
+</p><p><font color="DarkRed">上方的Version</font>表示MC版本。
+</p><p>
+</p><p>恭喜你现在已经有了一个最最基础的mod主类，当然还不能用233，
+</p><p>我们会在大概后两章讲解mod主类里的其他代码结构。
+
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

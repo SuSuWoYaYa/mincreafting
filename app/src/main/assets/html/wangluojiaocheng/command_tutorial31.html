@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.5.2 自定义命令|stats与记分板</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+
+ <h1 id="实例2：自定义命令——stats与记分板">实例2：自定义命令——stats与记分板</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+ <p> 在制作地图的时候，你想让玩家随时随地都可以触发一段预设好的命令——比如在玩家所处的位置放一簇烟花。但你总不能让玩家带着一个命令方块，也不能一直提示玩家打一条放置红石块的<code>setblock</code>命令吧？下面就介绍一下如何制作一条“自定义命令”，让玩家轻松地开烟火大会。</p>
+<h2 id="初次实现">初次实现</h2>
+<p>有了实例1的经验，这一节就应该轻松一些了。</p>
+<p>之前在介绍命令时我们提到过，普通玩家不能使用<code>scoreboard</code>命令，但可以通过<code>trigger</code>命令修改触发器，所以我们先用触发器实现自定义命令。</p>
+<p>先新建一个触发器，名字叫Firework：</p>
+<p><code>scoreboard objectives set Firework trigger</code></p>
+<p>接着往一个单独的循环方块中放入让所有玩家能够操作触发器的enable命令：</p>
+<p><code>scoreboard players enable @a Firework</code></p>
+<p>然后把这个方块调成保持开启模式。一旦玩家用<code>trigger</code>操作了触发器，要想再次操作，就得重新使用enable命令。这就是把enable放入循环方块的原因。</p>
+<p>到这里准备工作就结束了，提示玩家使用<code>trigger</code>吧。提示方式随你选择，木牌或是<code>say</code>都可以。</p>
+<p>最后的实现就是检测玩家的分数以执行相关操作了，同循环电路中的那样，检测，检测成立时复位，召唤烟火。</p>
+<p>方块的模式设置也很简单，检测命令放入保持开启的循环方块，剩下的命令全部放入连接循环方块的条件制约连锁方块。别忘了开启连锁方块！</p>
+<p>具体操作相信你能自己完成，不懂的话可以再看看第一个实例。</p>
+<p>如果你需要放烟花的命令，可以看看社区的教程。</p>
+<h2 id="再次实现">再次实现</h2>
+<p>如果你曾经接触过自定义命令，你会发现它们大多是用Json文本中的点击事件（clickEvent）或者<code>gamerule</code>制作的。因为使用<code>trigger</code>需要<strong>两个</strong>持续执行命令的循环方块，会占用一定的游戏资源。而<code>gamerule</code>只用到<strong>一个</strong>循环方块——持续地检测而已。至于点击事件，更是<strong>不需要</strong>循环方块。<br>这里介绍与记分板相关的<code>gamerule</code>实现，如果你对点击事件的实现方法有兴趣，可以看看<b>2.1 JSON文本</b>的介绍。</p>
+<h3 id="关于stats">关于<code>stats</code></h3>
+<p><code>stats</code>命令的功能是根据某个命令的执行情况，将有关数据推送到记分板上。你可以在<b>1.5 命令执行统计</b>以及<b>4.4 记分板命令</b>了解<code>stats</code>的更多信息。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt2.1.png" alt=""><br>/stats一共有五种模式，这次我们要用到的是QueryResult。这种模式将命令查询得到的返回值立即推送到记分板上。</p>
+<p>举个例子，如果命令方块中的命令是<code>time query daytime</code>，&##x4F7F;用/stats将记分板与命令方块绑定后，记分板上的分数会在命令执行时更改为当前的时间值。如果命令方块是循环型且开启中的，则相关分数在每一游戏刻都会改变。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt2.2.png" alt=""></p>
+<h3 id="关于gamerule">关于<code>gamerule</code></h3>
+<p><code>gamerule</code>命令可以用以管理世界的规则，比如是否进行日夜交替，生物是否生成等。</p>
+<p>规则是可以自定义的，这正是<code>gamerule</code>可以用来制作自定义命令的原因。</p>
+<p>自定义规则很简单，它和假名一样不必声明，直接输入<code>gamerule 自定义规则名 数值</code>进行设置即可。输入后游戏会自动创建新规则且将对应数值存入其中。</p>
+<p><code>gamerule</code>如果只填规则名，不填写将要修改的数值，就会返回这个规则当前的值。如果用<code>stats</code>加以联系，这个值就会存到记分板。太好了，着手制作电路吧！</p>
+<blockquote>
+<p>注意，游戏规则的数值需要为 数字/true/false 才能返回分数。true为1，false为0。</p>
+</blockquote>
+<h3 id="制作系统">制作系统</h3>
+<ol>
+<li><p>首先新建一个虚拟型变量<code>Firework</code>。命令就由你自己去输入了。</p>
+<p>为了储存分数，还要新建一个假名，在这里设为<code>Result</code>。命令同样由你自己完成，不知道的话可以复习前一个实例。</p>
+</li>
+<li><p>然后新建自定义一个名为HaveFun的规则，值设为0：</p>
+<p><code>gamerule HaveFun 0</code></p>
+</li>
+<li><p>放置一个循环方块，输入查询HaveFun值的命令：</p>
+<p><code>gamerule HaveFun</code></p>
+</li>
+<li><p>离开命令方块界面，用<code>stats</code>将这个循环方块与刚才的<code>Result</code>连接，使接下来命令查询到的值能推送到<code>Result</code>在<code>Firework</code>上的分数。</p>
+<p><code>stats block &lt;x&gt; &lt;y&gt; &lt;z&gt; set QueryResult Result Firework</code></p>
+<p>坐标的值就是命令方块的值了，如果你的准心指向命令方块，还可以用Tab键对命令自动补全。</p>
+</li>
+</ol>
+<p>到这里核心内容就结束了，有了记分板的值，你就可以按 检测-&gt;执行命令-&gt;对分数复位 的流程继续构造你的电路。</p>
+<blockquote>
+<p>复位不能像循环电路那样直接修改记分板，应该使用<code>gamerule HaveFun 0</code>修改规则值！</p>
+</blockquote>
+<p>另外，如果你想实现不同的值对应不同的效果，可以设置多个检测线路，这就留给你自己去尝试了。</p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbt2.3.png" alt=""></p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

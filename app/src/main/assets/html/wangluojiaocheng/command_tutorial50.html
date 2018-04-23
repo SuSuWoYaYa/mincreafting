@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6.3.4 替换方块实体</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="替换方块实体">替换方块实体</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+  
+<blockquote>
+<p>原先作者为Max，<a href="http://www.bilibili.com/video/av6427008" target="_blank">http://www.bilibili.com/video/av6427008</a></p>
+</blockquote>
+<p>如果我们希望把一些方块替换为一个方块实体，比如是箱子，我们会发现我们没法使用<code>fill</code>命令。</p>
+<p>因为<code>fill</code>命令的<code>replace</code>模式，如果替换成的方块是一个方块实体，那么<code>replace</code>参数后的数据就是NBT而不是被替换方块的数据，故此是不可行的。<br>在这种情况下，我们可以采取间接的方法：<code>fill</code>一些不能独立存在的方块（并且被破坏时会产生掉落物），提供方块更新让它们掉落，然后<code>execute</code>那些掉落物设置方块。</p>
+<h2 id="产生掉落物">产生掉落物</h2>
+<p>首先我们需要把目标地区（x1, y1, z1到x2, y2, z2，其中x1, y1, z1为区域内x, y, z最小的坐标）的指定方块，以石头为例子，替换为不能独立存在的方块，我们以半道门（就是<strong>一个</strong>木门方块，完整的木门需要两个方块）做替换的东西。</p>
+<pre><code>fill x1 y1 z1 x2 y2 z2 minecraft:wooden_door 0 replace minecraft:stone 0
+</code></pre><p>然后我们需要产生方块更新。我们之前说过，我们可以使用<code>clone</code>的<code>force</code>模式来为整个区域产生方块更新。</p>
+<pre><code>clone x1 y1 z1 x2 y2 z2 x1 y1 z1 replace force
+</code></pre><p>然后我们就能产生掉落物了。</p>
+<h2 id="替换为箱子">替换为箱子</h2>
+<p>这个就很简单了，我们首先<code>execute</code>掉落物设置方块，然后杀掉那些掉落物。</p>
+<pre><code>scoreboard players tag @e[type=item] add temp {Item:{id:&quot;minecraft:wooden_door&quot;}}
+execute @e[type=item,tag=temp] ~ ~ ~ setblock ~ ~ ~ minecraft:chest
+kill @e[type=item,tag=temp]
+</code></pre><hr>
+<p>这例子看似很容易，其实还是挺难想出来的，而且其中搞方块更新的部分还是比较麻烦的。如果不特地产生一次方块更新，如果石头不是连续的，那么其中的一些木门就会没法获得更新，不会自我破坏，令整个检测不成功。</p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

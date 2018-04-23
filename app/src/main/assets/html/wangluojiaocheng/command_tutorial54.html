@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>如何在我的世界中度过第一天</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+ 
+ 
+                                <h1 id="登录系统">登录系统</h1>
+
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<p>我们这个例子会制作一个登录系统，也就是密码系统。<br>这个密码系统支持4种字符(<code>abcd</code>)。而且我只会写出重点的逻辑部分。（密码部分）<br>这限制是为了偷懒，并且缩减篇幅长度。要扩展是绝对可以实现的，并且会相当容易。</p>
+<blockquote>
+<p>建议对记分板及命令函数递归机制有认识的读者阅读。<br>如果不懂这两方面的话还是先看看之前的章节吧...</p>
+<p>这是作者在头疼的时候写出来的，或许会有点小遗漏，如果发现请告诉作者。</p>
+</blockquote>
+<h2 id="需求分析及系统设计">需求分析及系统设计</h2>
+<p>登录系统需要两部分：注册、验证。</p>
+<p>注册，就是当玩家<strong>第一次</strong>进入该世界，就要求玩家输入密码，作为以后验证之用。<br>验证，就是当玩家<strong>之后</strong>进入该世界，就先<strong>禁止玩家行动</strong>，要求玩家输入密码，错误则需要重新输入密码，正确则容许行动。</p>
+<p>禁止玩家行动啊，检查第一次进入世界啊，多次进入世界啊那些不是太简单就是曾经在之前记分板的例子说了，这里就不写了。<br>我们就写密码输入和验证系统。</p>
+<p>由此可见我们需要几个系统：</p>
+<ul>
+<li>输入密码（注册）系统: <code>system:register</code></li>
+<li>输入密码（验证）系统: <code>system:login_password</code></li>
+<li>密码检测: <code>system:password_check</code></li>
+</ul>
+<h2 id="数据储存">数据储存</h2>
+<p>由于我们需要输入的不是一般数字，我们需要使用分数以外的方式储存密码。<br>我的选择是使用一堆实体：每个实体代表密码中的一个字符（<code>CustomName:password_char</code>）。</p>
+<p>每个实体有两个分数：</p>
+<ul>
+<li>字符类型(char)。比如1代表<code>a</code>，2代表<code>b</code>，3代表<code>c</code>，4代表<code>d</code>。</li>
+<li>字符位置(pos)，比如<code>abcd</code>中的<code>a</code>的位置是1。</li>
+</ul>
+<p>注册的时候，实体会被tp到位于出生点的marker那里，这是为了避免这些marker不被加载。<br>然后验证的时候我们会逐个字符检查，看看密码是否正确。</p>
+<p>相信聪明的读者已经发现了：我们怎么分辨这些密码是谁的？<br>没错，我们根本<strong>无法分辨</strong>。因为我们设计的时候根本不知道密码系统竟然需要特别去分辨玩家。</p>
+<p>没关系，我们可以现在想。<br>如何让储存密码的实体，和玩家之间弄一个连接呢？<br>我们可以使用分数：定义一个编号(ID)，每个玩家的编号都是<strong>独一无二</strong>的，然后让储存密码的实体的编号和玩家一样，检查的时候检查编号是否相同即可。</p>
+<p>所以我们目前有三个记分板变量：</p>
+<ul>
+<li>char</li>
+<li>pos</li>
+<li>id</li>
+</ul>
+<h2 id="输入密码">输入密码</h2>
+<p>我设计系统时喜欢从难的地方思考，因为如果发现根本没法搞就可以及早避免这个方法。如果从简单的地方开始设计，则发现没法搞的时候就已经#x7ECF;太晚了。<br>而这系统里明显密码是最困难的，我们就先思考密码了。</p>
+<p>输入密码可以分为三部分：</p>
+<ul>
+<li>输入一个字符</li>
+<li>删除一个字符</li>
+<li>完成输入</li>
+</ul>
+<h3 id="输入字符">输入字符</h3>
+<p>先从输入一个字符开始思考。<br>我们输入一个字符需要干什么呢？</p>
+<ol>
+<li>生成实体</li>
+<li>设置char为指定分数</li>
+<li>设置id为玩家的编号</li>
+<li>设置pos为当前密码长度+1</li>
+</ol>
+<p>看起来挺简单的对吧？然而我不喜欢，准确来说，我不喜欢第四个步骤，因为这太麻烦了。<br>在命令里要做到第四步是十分麻烦的，因为我们需要一个储存当前密码数量的marker，这marker需要生成，需要删除，需要和别的玩家的分开等等。</p>
+<p>所以，我们不如改改我们pos的表达方式？<br>现在是1代表第一个字符，2代表第二个字符，如此类推。<br>如果我们改成1代表最后一个字符，2代表从后数上的第二个字符，如此类推。<br>这样我们的工作就会变为：</p>
+<ol>
+<li>生成实体（设置tag以得知这是新的）</li>
+<li>设置char为指定分数</li>
+<li>设置id为玩家的编号</li>
+<li>所有当前的密码实体的pos分数+1</li>
+</ol>
+<p>这样第四个步骤就简单多了。</p>
+<h3 id="删除字符">删除字符</h3>
+<p>然后我们需要看看删除一个字符得咋办。<br>删除一个字符需要的工作为：</p>
+<ol>
+<li>删除pos分数为1的当前密码实体（最后一个）</li>
+<li>所有当前的密码实体的pos分数-1</li>
+</ol>
+<p>不错对吧？所以这个就不需要改了</p>
+<h3 id="完成输入">完成输入</h3>
+<p>最后是完成输入。</p>
+<ol>
+<li>如果找不到任何当前密码实体就告诉玩家还没输入密码</li>
+<li>如果能找到当前密码实体的话，就继续</li>
+</ol>
+<h4 id="注册">注册</h4>
+<p>注册就非常简单，加上个tag叫<code>raw</code>然后tp到出生点就好了。（注册是一开始就注册的，所以不应该会出现玩家到了别的世界才注册的情况...）</p>
+<h4 id="注册">注册</h4>
+<p>验证其实就是逐个字符验证，也非常简单。<br>如果字符不相同就整个密码不同；如果密码长度不同就整个密码不同。</p>
+<h3 id="当前密码实体">当前密码实体</h3>
+<p>好了，如果读者还是觉得没问题的话，那就让我问你们一个问题吧！<br>什么叫<code>当前的密码实体</code>？</p>
+<p>很明显我们是没有定义这个的。<br>那么我们<code>当前的密码实体</code>是啥呢？</p>
+<p>就是我们当前在输入密码的，<strong>属于当前这个玩家</strong> 的 <strong>当前输入</strong> 的实体。因为我们的系统需要兼容多人，因此可能有多个人在输入密码。而且我们的系统需要有两组密码: 一组储存以供验证，一组检查，所以需要检测啥是当前输入的。</p>
+<p>我们采取的方法是:</p>
+<ol>
+<li>所有当前输入（tag <code>password_input</code>）密码实体的id分数-=当前玩家id分数</li>
+<li>处理一切</li>
+<li>加上当前玩家id分数</li>
+</ol>
+<h2 id="实现">实现</h2>
+<p>写这个的时候突然想起我们是使用JSON按键的，也就是说会使用trigger，那么让玩家的char分数=要输入的字符分数就好了，那样就可以operation完成分数赋值，不需要分开不同符号。</p>
+<pre><code># input:add_char
+# 必须由玩家执行
+
+# 生成实体，有new tag是因为我们需要一个方法记认这个新生成的实体
+summon area_effect_cloud ~ ~ ~ {Duration:2147483647,CustomName:"password_char",Tags:["new","password_input"]}
+scoreboard players operation @e[tag=new,name=password_char] char = @s char
+scoreboard players operation @e[tag=new,name=password_char] id = @s id
+
+# 移除new tag
+scoreboard players tag @e[tag=new,name=password_char] remove new
+
+# 找出当前输入的密码字符
+scoreboard players operation @e[tag=password_input,name=password_char] id -= @s id
+# id = 0的就是当前输入的密码字符
+scoreboard players add @e[score_id=0,score_id_min=0,tag=password_input,name=password_char] pos 1
+# 重置id
+scoreboard players operation @e[tag=password_input,name=password_char] id += @s id
+</code></pre><hr>
+<pre><code># input:delete
+# 还是需要由玩家执行
+
+# 找出当前输入的密码字符，id = 0的就是当前输入的密码字符
+scoreboard players operation @e[tag=password_input,name=password_char] id -= @s id
+# 移除pos=1的
+kill @e[score_id=0,score_id_min=0,tag=password_input,name=password_char,score_pos=1,score_pos_min=1]
+# 一起减分
+scoreboard players remove @e[score_id=0,score_id_min=0,tag=password_input,name=password_char] pos 1
+# 重置id
+scoreboard players operation @e[tag=password_input,name=password_char] id += @s id
+</code></pre><hr>
+<pre><code># input:try_register
+
+# 找出当前输入的密码字符，id = 0的就是当前输入的密码字符
+scoreboard players operation @e[tag=password_input,name=password_char] id -= @s id
+
+# 如果存在当前密码实体才执行input:register_complete
+function input:register_complete if @e[score_id=0,score_id_min=0,tag=password_input]
+</code></pre><pre><code># input:register_complete
+
+# 一早已经找出了当前输入的密码字符，所以id=0
+scoreboard players tag @e[score_id=0,score_id_min=0,tag=password_input] add raw
+# 先重置id，因为重置id依赖于password_input tag
+scoreboard players operation @e[tag=password_input,name=password_char] id += @s id
+# 然后移除那个tag
+scoreboard players tag @e[tag=raw] remove password_input
+
+# 先当出生点有个叫spawn_marker的marker好了
+tp @e[tag=raw] @e[name=spawn_marker]
+</code></pre><hr>
+<pre><code># input:check_password
+
+# 这里我们会使用递归，如果成功则为玩家加上tag success
+
+# 先找出id为当前玩家的所有password_char。
+scoreboard players operation @e[name=password_char] id -= @s id
+
+# 调用check_char
+function input:check_char
+
+# 检查完毕，删除输入
+kill @e[score_id=0,score_id_min=0,tag=password_input]
+
+# 恢复id
+scoreboard players operation @e[name=password_char] id += @s id
+</code></pre><pre><code># input:check_char
+
+# 逐个字符进行检查，先把最小的（最后的）拉到pos=0，进行检查
+scoreboard players remove @e[score_id=0,score_id_min=0] pos 1
+
+# 如果输入的char=0就代表相同
+scoreboard players operation @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0] char -= @e[score_id=0,score_id_min=0,tag=raw,score_pos=0,score_pos_min=0] char
+
+# 如果@e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char=0,score_char_min=0]存在，那就代表还能继续检查下去，因为到目前为止的密码都是正确的
+function input:check_char if @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char=0,score_char_min=0]
+
+# 如果@e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char=0,score_char_min=0]不存在，那可能代表几个情况：
+# * 不存在这个字符（输入）
+# * 不存在对应的字符（原始密码）
+# * 字符不同
+
+# 如果目前这个输入字符存在，则代表密码错误（无论是不存在对应的原始密码字符，还是字符不同） （这是错的，看下方Debug部分）
+function input:password_wrong if @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char=0,score_char_min=0]
+
+
+# 如果不存在这个输入字符，就去检查有没有相应的原始密码字符。如果都不存在就代表成功
+function input:check_raw unless @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0]
+
+# 递归完毕的时候每层加上pos
+scoreboard players add @e[score_id=0,score_id_min=0] pos 1
+</code></pre><pre><code># input:check_raw
+
+function input:password_correct unless @e[score_id=0,score_id_min=0,tag=raw,score_pos_min=0]
+
+function input:password_wrong if @e[score_id=0,score_id_min=0,tag=raw,score_pos_min=0]
+</code></pre><pre><code># input:password_wrong
+tellraw @s ["错误密码"]
+</code></pre><pre><code># input:password_correct
+# 这也是错的，看下方debug部分
+tellraw @s["密码正确"]
+scoreboard players tag @s add success
+# 其他处理...
+</code></pre><h2 id="debug">Debug</h2>
+<p>测试的时候发现:</p>
+<p><code>password_correct</code>里的tellraw写错了，应该是<code>tellraw @s ["密码正确"]</code>，写少了个空格</p>
+<p><code>check_char</code>中的</p>
+<pre><code># 如果目前这个输入字符存在，则代表密码错误（无论是不存在对应的原始密码字符，还是字符不同）
+function input:password_wrong if @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char=0,score_char_min=0]
+</code></pre><p>是错的，不小心写成检查正确的（char = 0），应该是检查错误的（char != 0）。以下是改进</p>
+<pre><code># 如果目前这个输入字符存在，并且分数不等于0，则代表密码错误（无论是不存在对应的原始密码字符，还是字符不同）
+function input:password_wrong if @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char=-1]
+function input:password_wrong if @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char_min=1]
+</code></pre><p>所以各位记住，写了系统之后还得测试运行一次...<br>发现结果和想象中不同就猜测哪儿错了，然后看看是不是真的错了。</p>
+<h2 id="密码检查详解">密码检查详解</h2>
+<p>我的这个写法或许会让很多人感到困惑，所以就在这里写一下那个的运作原理。</p>
+<blockquote>
+<p>如果懂的话就不用看这里了，这里写得很差。</p>
+</blockquote>
+<p>比如我的id是1，我的密码是<code>abc</code>，输入的也是<code>abc</code>。<br>其中比如a的<code>pos</code>就是3（从后数上来第四个），<code>id</code>就是1（和我的<code>id</code>一样），<code>char</code>就是1（a）。</p>
+<p>然后我们来运行<code>input:check_password</code>，期间我们会这样做的：</p>
+<p>所有属于我的（<code>id</code>=1）<code>password_char</code>的<code>id</code>变为0。然后调用<code>input:check_char</code>。</p>
+<p>首先所有这些<code>password_char</code>的<code>pos</code>会-1。现在<code>a</code>的<code>pos</code>为2，<code>b</code>的为1，<code>c</code>的为0。<br>然后我输入的那个<code>c</code>(tag=<code>password_input</code>)的<code>char</code>分数(3)就会减去以前储存的那个<code>c</code>(tag=<code>raw</code>)的<code>char</code>分数(3)。所以现在我输入的那个<code>c</code>的<code>char</code>分数就会是0。<br>由于这个东西存在并且分数为0，所以我们会再次调用<code>input:check_password</code>。</p>
+<p>然后下一次基本上是<code>b</code>和<code>a</code>的处理，和<code>c</code>的类近，因此就不详细写了。</p>
+<p>最后一次，我们发现连<code>pos</code>分数最大的<code>a</code>的<code>pos</code>分数也是负数了，没东西的分数是0，那么会发生什么情况呢？很简单，没法继续递归，并且落入下方的条件里。（因为我们不存在任何东西的<code>pos</code>分数为0）</p>
+<pre><code>function input:check_raw unless @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0]
+</code></pre><p>然后到了<code>input:check_raw</code>了。因为我们原始密码(tag=<code>raw</code>)那里也没有一个的<code>pos</code>分数为0，因此就是密码正确。</p>
+<p>完了！！？？</p>
+<p>不，还没完。因为递归完会回去之前的执行点，执行那些命令。</p>
+<pre><code># 递归完毕的时候每层加上pos
+scoreboard players add @e[score_id=0,score_id_min=0] pos 1
+</code></pre><p>这个就是用作重置<code>pos</code>的，每层+1回去，于是最后就会没有改变。</p>
+<pre><code># 检查完毕，删除输入
+kill @e[score_id=0,score_id_min=0,tag=password_input]
+
+# 恢复id
+scoreboard players operation @e[name=password_char] id += @s id
+</code></pre><p>这里就是删除输入和恢复id，非常清晰也不多说了。</p>
+<hr>
+<p>或许读者会感到困惑，那么如果有字符不对咋办呢？<br>字符不对就调用不了递归，因为<code>char</code>分数不为0。<br>然后就掉入</p>
+<pre><code># 如果目前这个输入字符存在，并且分数不等于0，则代表密码错误（无论是不存在对应的原始密码字符，还是字符不同）
+function input:password_wrong if @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char=-1]
+function input:password_wrong if @e[score_id=0,score_id_min=0,tag=password_input,score_pos=0,score_pos_min=0,score_char_min=1]
+</code></pre><p>如果字符长度不对呢？<br>那就有两个可能：输入过长，原始密码过长。</p>
+<p>假如是输入过长，那么就会发生没有原始密码字符配对的情况，也就是那个检查是否相同的scoreboard players operation命令不能执行，也就是说<code>char</code>分数不会改变。由于我们限制了<code>char</code>分数不能为0，因此没改变的话<code>char</code>分数不可能为0，故此也会如同上面一样当作错误密码处理。</p>
+<p>如果是原始密码过长，那么就会发生没有输入字符的情况，就会调用<code>input:check_raw</code>。<code>input:check_raw</code>里会检查有没有剩余(<code>pos</code> >= 0)的原始密码字符存在，这情况下是肯定存在的，因此就会报错。</p>
+<h2 id="最后">最后</h2>
+<p>可能读者会觉得这例子十分乱，特别是对比之前的例子。<br>没错，这例子确实很乱，因为我几乎是直接往下写，不对之前的部分进行修改（逻辑）。<br>虽然这样会比较乱，但这也表示了我的思路：每一个部分详细思考，发现不足就增加然后进行修改。</p>
+<p>这例子也展现了记分板以及是递归的一些特别应用，特别是处理一堆实体的时候应该怎么使用。</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

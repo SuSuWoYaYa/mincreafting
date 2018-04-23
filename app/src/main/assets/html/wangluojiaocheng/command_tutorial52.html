@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6.3.6 皇冠系统</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="皇冠系统">皇冠系统</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+
+<h1 id="前言">前言</h1>
+<p>作者: 空白dalao。</p>
+<p>首先我能被邀请参与大教程这个项目，我感到十分荣幸。pca领着一帮人克服重重困难能把教程写的如此完善，还克服了外界的种种压力，实在是可歌可泣。我也就在此做出一点微小的贡献，写一个有关系统制作的事例。这里为了方便，我就选择了燃烧的子弹中的皇冠系统来讲解。</p>
+<p>说是地图中的一个模式，其实也是可以完全独立出来作为一个完整游戏的。因此我选择这个来作为事例，书写一下我平时做地图时的思路和想法。</p>
+<h1 id="核心目的">核心目的</h1>
+<p>制作一个系统，首先要明确的就是你的目的，也就是要去用命令实现什么。而在皇冠模式这个系统中，有以下两个核心功能是要去首先实现的：</p>
+<ul>
+<li>玩家死亡掉落皇冠</li>
+<li>玩家捡起皇冠后带上皇冠</li>
+<li>玩家死亡后的重生</li>
+</ul>
+<p>明确了目的，就可以制作核心玩法用来进行初步的测试了。只有做好了核心部分，其他协助它的部分才能根据核心的需要来撰写。
+</p><p>下面是我具体实现的想法。以下这些内容在游戏进行过程中要高频执行。保存在system:loop下。</p>
+<h2 id="死亡掉落">死亡掉落</h2>
+<p>对于有一定命令基础的玩家来说，这一个部分比较容易实现。</p>
+<p>首先要判定玩家死亡。</p>
+<p>建立记分板</p>
+<pre><code>scoreboard objectives add playerDeath deathCount 玩家死亡次数
+scoreboard objectives add crown dummy 谁拥有皇冠
+</code></pre><p>一般玩家的crown分数为0，拥有皇冠者的分数则为1。</p>
+<blockquote>
+<p>一看也觉得能够用tag代替，然而为何使用记分板变量呢？<br>其实因为tag在玩家离线的时候没法清除，后面有个模块用到了。</p>
+</blockquote>
+<p>只要playerDeath大于1并且拥有皇冠，那么死亡的时候就会掉落一个皇冠。掉落后重置玩家的crown记分板。</p>
+<pre><code>execute @a[score_playerDeath_min=1,score_crown_min=1] ~ ~ ~ summon item ~ ~ ~ {Item:{id:&quot;minecraft:golden_helmet&quot;,Count:1,CustomName:&quot;皇冠&quot;,CustomNameVisible:1}
+scoreboard players set @a[score_playerDeath_min=1,score_crown_min=1] crown 0
+</code></pre><p>可以注意到，核心部分制作的时候，一些细节先不用考虑。比如物品是否无敌、是否会消失等等NBT先不用考虑。甚至先弄一个默认不加nbt的都可以。因为现在只需要制作出一个原型即可，不需要加特技。</p>
+<h2 id="玩家捡起皇冠后带上">玩家捡起皇冠后带上</h2>
+<p>这一部分也同样不难，直接给命令。</p>
+<p>建立记分板，这里用到了捡起物品的记分板判据</p>
+<pre><code>scoreboard objectives add pickCrownUp stat.pickup.minecraft.golden_helmet 捡起皇冠
+</code></pre><p>清除捡起的皇冠并加分</p>
+<pre><code>clear @a[score_pickCrownUp_min=1] golden_helmet
+scoreboard players set @a[score_pickCrownUp_min=1] crown 1
+scoreboard players set @a[score_pickCrownUp_min=1] pickCrownUp 0
+</code></pre><h2 id="死亡重生">死亡重生</h2>
+<p>这一部分可能较为复杂，我会根据我的思路来讲解。</p>
+<p>MC中的死亡是这样一种奇怪的操作：玩家死亡后，进入一个界面，可以点击按钮重生会出生点。但是如果玩家不点击按钮，那么玩家的位置仍然是在死亡的位置，并且用<strong>@a</strong>可以选择的到（@p则不行）。如果此时对玩家进行tp等移动位置的操作，在点击重生之后就不会有效果了。因此我们需要在玩家点击重生之后再开始对玩家死亡复活的计时。玩家点击重生按钮后，就会出现在他的出生点。因此可以用玩家出现在出生点作为玩家点击了重生按钮的判断依据。</p>
+<p>首先建立记分板</p>
+<pre><code>scoreboard objectives add spawnTime dummy 重生等待时间
+</code></pre><p>假设玩家的出生点在<code>@a[x=22,y=200,z=22,dx=30,dy=20,dz=30]</code>选择器的范围之内，玩家等待重生的小黑屋在 (12, 15, 12) 的位置，那么在玩家点击重生按钮后，将其传送至等待重生的小黑屋并开始计时。</p>
+<pre><code>scoreboard players set @a[x=22,y=200,z=22,dx=30,dy=20,dz=30,score_playerDeath_min=1] spawnTime 1
+tp @a[x=22,y=200,z=22,dx=30,dy=20,dz=30,score_playerDeath_min=1] 15 12 15
+</code></pre><p>计时：</p>
+<pre><code>scoreboard players add @a[score_spawnTime_min=1] spawnTime 1
+</code></pre><p>重生时间到了之后（假设5秒也就是100ticks），将玩家传送回场地（假设坐标为 (-32, 18, 32)）。</p>
+<pre><code>tp @a[score_spawnTime_min=100] -32 18 32
+scoreboard players set @a[score_spawnTime_min=100] spawnTime 0
+</code></pre><p>以上重生部分就完成了。</p>
+<h1 id="添加系统的开始与结束">添加系统的开始与结束</h1>
+<p>核心功能完成之后，就要开始考虑系统是怎样开始与结束的。</p>
+<p>以这个皇冠模式的系统为例，开始时要随机给一个玩家皇冠、传送玩家至场地、开始游戏计时。结束游戏的判定就是时间到，并且在游戏结束后重置各种记分板，将玩家传送回出生点。</p>
+<h2 id="游戏开始部分">游戏开始部分</h2>
+<p>以下内容仅在游戏开始时执行一次。保存在system:start下。首先建立记分板和一个实体用于计时：</p>
+<pre><code>scoreboard objectives add system_time dummy 记录游戏时间
+summon area_effect_cloud 4 2 4 {Duration:999999,CustomName:&quot;gaming&quot;}
+</code></pre><p>设置游戏时间（假设3分钟也就是3600ticks）并随机给玩家一个皇冠。</p>
+<pre><code>scoreboard players set @e[name=gaming] system_time 3600
+scoreboard players set @r[m=2] crown 1
+</code></pre><p>可以看到，由于核心部分的设定，只要将随机玩家的crown设为1，那么玩家在死亡之后就会掉落皇冠。同时由于要计时，所以要在系统高频的部分添加下面这条命令用来倒计时：</p>
+<pre><code>scoreboard players remove @e[name=gaming] system_time 1
+</code></pre><h2 id="游戏结束部分">游戏结束部分</h2>
+<p>以下内容仅在游戏结束时执行一次。</p>
+<p>重置各种记分板、删除实体、传送玩家回出生点。保存在system:end下。</p>
+<pre><code>scoreboard players reset *
+kill @e[type=!player]
+tp @a 22 200 22
+</code></pre><h2 id="游戏结束的判定">游戏结束的判定</h2>
+<p>这一部分很简单，就是判定游戏剩余时间是否为零。添加在system:loop结尾处。</p>
+<pre><code>function system:end if @e[name=gaming,score_system_time=0]
+</code></pre><h1 id="初步总结">初步总结</h1>
+<p>现将以上全部命令集合在一起，将得到如下的文件结构：</p>
+<pre><code>system
+  |-- _init.mcfunction
+  |-- loop.mcfunction
+  |-- start.mcfunction
+  |-- end.mcfunction
+</code></pre><p>所有命令函数文件如下：<br>（<code>_init</code>为初始化地图需要执行的命令函数。<code>loop</code>为系统高频执行的命令函数。）</p>
+<pre><code># system:_init
+
+scoreboard objectives add playerDeath deathCount 玩家死亡次数
+scoreboard objectives add crown dummy 谁拥有皇冠
+scoreboard objectives add pickCrownUp stat.pickup.minecraft.golden_helmet 捡起皇冠
+scoreboard objectives add spawnTime dummy 重生等待时间
+scoreboard objectives add system_time dummy 记录游戏时间
+</code></pre><pre><code># system:loop
+
+#死亡掉落
+execute @a[score_playerDeath_min=1,score_crown_min=1] ~ ~ ~ summon item ~ ~ ~ {Item:{id:&quot;minecraft:golden_helmet&quot;,Count:1,CustomName:&quot;皇冠&quot;,CustomNameVisible:1}
+scoreboard players set @a[score_playerDeath_min=1,score_crown_min=1] crown 0
+
+#玩家捡起皇冠后带上
+clear @a[score_pickCrownUp_min=1] golden_helmet
+scoreboard players set @a[score_pickCrownUp_min=1] crown 1
+scoreboard players set @a[score_pickCrownUp_min=1] pickCrownUp 0
+
+#死亡重生
+scoreboard players set @a[x=22,y=200,z=22,dx=30,dy=20,dz=30,score_playerDeath_min=1] spawnTime 1
+tp @a[x=22,y=200,z=22,dx=30,dy=20,dz=30,score_playerDeath_min=1] 15 12 15
+scoreboard players add @a[score_spawnTime_min=1] spawnTime 1
+tp @a[score_spawnTime_min=100] -32 18 32
+scoreboard players set @a[score_spawnTime_min=100] spawnTime 0
+
+#增加时间
+scoreboard players remove @e[name=gaming] system_time 1
+
+#死亡判定
+function system:end if @e[name=gaming,score_system_time=0]
+</code></pre><pre><code># system:start
+
+summon area_effect_cloud 4 2 4 {Duration:999999,CustomName:&quot;gaming&quot;}
+scoreboard players set @e[name=gaming] system_time 3600
+scoreboard players set @r[m=2] crown 1
+</code></pre><pre><code># system:end
+
+scoreboard players reset *
+kill @e[type=!player]
+tp @a 22 200 22
+</code></pre><h1 id="对系统内容和体验的优化">对系统内容和体验的优化</h1>
+<p>整个游戏系统可用之后，我们就可以增加一些花里胡哨的增加游戏体验的东西了。下面一个列表大致写了一下可以添加的内容。</p>
+<ul>
+<li>开始阶段<ul>
+<li>开始游戏的title提示</li>
+<li>侧边栏显示剩余时间</li>
+<li>tab栏显示玩家血量</li>
+</ul>
+</li>
+<li>游戏阶段<ul>
+<li>有皇冠的人带黄色高亮</li>
+<li>有皇冠的人头顶有一个向日葵</li>
+<li>皇冠掉地上之后有黄色高亮</li>
+<li>玩家捡到皇冠后全员提示</li>
+</ul>
+</li>
+<li>结束阶段<ul>
+<li>title提示</li>
+<li>subtitle提示谁是最后赢家或没有赢家</li>
+<li>全员tellraw提示每个人分别戴着皇冠多少秒</li>
+</ul>
+</li>
+</ul>
+<h2 id="开始阶段">开始阶段</h2>
+<p>在system:start中添加几条命令即可</p>
+<pre><code>scoreboard objectives setdisplay sidebar crown
+title @a time 10 100 10
+title @a subtitle [&quot;拿到皇冠你才能变得更屌!&quot;]
+</code></pre><h2 id="游戏阶段">游戏阶段</h2>
+<h3 id="有皇冠的人带黄色高亮">有皇冠的人带黄色高亮</h3>
+<p>新建一个队伍，并且改队伍颜色为黄色</p>
+<pre><code>scoreboard teams add crownTeam 皇冠
+scoreboard teams option crownTeam color yellow
+</code></pre><p>在system:loop中添加以下命令，把戴着皇冠且不在crownTeam中的人加入队伍，让队伍里的人发光</p>
+<pre><code>scoreboard teams join crownTeam @a[score_crown_min=1,team=!crownTeam]
+effect @a[score_crown_min=1] glowing 2 1 true
+</code></pre><p>在system:loop的玩家掉落皇冠部分加入以下命令，让掉落皇冠的人也退出队伍</p>
+<pre><code>scoreboard teams leave @a[score_crown=0,team=crownTeam]
+</code></pre><h3 id="有皇冠的人头顶有一个向日葵">有皇冠的人头顶有一个向日葵</h3>
+<p>在system:loop内加入以下命令</p>
+<pre><code>scoreboard players add crown 0
+scoreboard players tag @a add haveCrown {Inventory:[{id:&quot;minecraft:double_plant&quot;,Slot:103b}]}
+replaceitem entity @a[score_crown_min=1,tag=!haveCrown] slot.armor.head minecraft:double_plant
+replaceitem entity @p[tag=haveCrown,score_crown=0] slot.armor.head air
+scoreboard players tag @a[tag=haveCrown] remove haveCrown
+</code></pre><p>首先这段命令的目的是让有皇冠的（也就是score_crown_min=1的人）却没戴着向日葵的人带上向日葵，没皇冠的（也就是score_crown=0的人）戴上向日葵。tag=haveCrown表示玩家戴着向日葵。此时若玩家score_crown_min=1，但却没有haveCrown这个tag，就获得一个向日葵。如果玩家有haveCrown这个tag而crown=0，则去掉向日葵。这个是一种通过每一tick都添加再删除tag，来判定玩家是否穿装备的方法，简便易行。但是如果要判断的装备数量较大，则一般不使用这种方法。</p>
+<h3 id="皇冠掉地上有高亮">皇冠掉地上有高亮</h3>
+<p>在system:loop中的掉落皇冠部分修改掉落的皇冠实体。修改后的命令如下：</p>
+<pre><code>execute @a[score_playerDeath_min=1,score_respawnTime_min=1,score_respawnTime=1,score_crown_min=1] ~ ~ ~ summon item ~ ~ ~ {Item:{id:&quot;minecraft:golden_helmet&quot;,Count:1},PickupDelay:20,Invulnerable:1,Glowing:1,Team:&quot;crownTeam&quot;,CustomName:&quot;皇冠&quot;,CustomNameVisible:1,Age:-32768}
+</code></pre><h3 id="玩家捡到皇冠后全员提示">玩家捡到皇冠后全员提示</h3>
+<p>在system:loop的玩家掉落皇冠部分加入以下命令，通知全员</p>
+<pre><code>execute @a[score_pickCrownUp_min=1] ~ ~ ~ tellraw @a [&quot; &gt;&gt; &quot;,{&quot;selector&quot;:&quot;@a[score_pickCrownUp_min=1]&quot;},&quot; 拾起了一顶皇冠&quot;]
+</code></pre><h2 id="结束阶段">结束阶段</h2>
+<h3 id="title提示">title提示</h3>
+<p>在游戏结束模块加入以下命令</p>
+<pre><code>title @a times 0 200 10
+title @a title [&quot;游戏结束&quot;]
+title @a subtitle [&quot;你们都是笨蛋, 皇冠也能丢？&quot;]
+execute @p[score_crown_min=1,r=1000] ~ ~ ~ title @a subtitle [{&quot;selector&quot;:&quot;@a[score_crown_min=1,r=1000]&quot;},&quot;特别的屌&quot;]
+</code></pre><p>subtitle部分首先显示没人拿着皇冠的内容。如果有人拿着皇冠，第三条命令就会覆盖上去。</p>
+<h3 id="全员tellraw提示每个人分别戴着皇冠多少秒">全员tellraw提示每个人分别戴着皇冠多少秒</h3>
+<p>首先添加记分板统计戴皇冠时间</p>
+<pre><code>scoreboard objectives add crownTime dummy 持有皇冠时间
+</code></pre><p>在system:loop中加入以下命令统计戴皇冠时间</p>
+<pre><code>scoreboard players add @a[score_crown_min=1] crownTime 1
+</code></pre><p>在游戏结束模块加入以下命令</p>
+<pre><code>tellraw @a [&quot;====================&quot;]
+execute @a[m=2] ~ ~ ~ tellraw @a [{&quot;selector&quot;:&quot;@a[c=1]&quot;},&quot; 带着皇冠跑了&quot;,{&quot;score&quot;:{&quot;name&quot;:&quot;@a[c=1]&quot;,&quot;objective&quot;:&quot;crownTime&quot;}},&quot; 秒.&quot;]
+tellraw @a [&quot;====================&quot;]
+</code></pre><p>其中第二条命令表示，每个处在游戏中的玩家，也就是m=2的玩家都发送一条关于自己戴皇冠时间的消息。</p>
+<h1 id="二次总结">二次总结</h1>
+<p>经过以上的美化处理，系统变得更完善了，同时也没有失去其易于维护、模块化的特性。下面是二次总结的命令。</p>
+<pre><code># system:_init
+
+scoreboard objectives add playerDeath deathCount 玩家死亡次数
+scoreboard objectives add crown dummy 谁拥有皇冠
+scoreboard objectives add pickCrownUp stat.pickup.minecraft.golden_helmet 捡起皇冠
+scoreboard objectives add spawnTime dummy 重生等待时间
+scoreboard objectives add system_time dummy 记录游戏时间
+scoreboard objectives add crownTime dummy 持有皇冠时间
+
+scoreboard teams add crownTeam 皇冠
+scoreboard teams option crownTeam color yellow
+</code></pre><pre><code># system:loop
+
+#死亡掉落
+execute @a[score_playerDeath_min=1,score_respawnTime_min=1,score_respawnTime=1,score_crown_min=1] ~ ~ ~ summon item ~ ~ ~ {Item:{id:&quot;minecraft:golden_helmet&quot;,Count:1},PickupDelay:20,Invulnerable:1,Glowing:1,Team:&quot;crownTeam&quot;,CustomName:&quot;皇冠&quot;,CustomNameVisible:1,Age:-32768}
+scoreboard players set @a[score_playerDeath_min=1,score_crown_min=1] crown 0
+scoreboard teams leave @a[score_crown=0,team=crownTeam]
+
+#玩家捡起皇冠后带上
+clear @a[score_pickCrownUp_min=1] golden_helmet
+scoreboard players set @a[score_pickCrownUp_min=1] crown 1
+execute @a[score_pickCrownUp_min=1] ~ ~ ~ tellraw @a [&quot; &gt;&gt; &quot;,{&quot;selector&quot;:&quot;@a[score_pickCrownUp_min=1]&quot;},&quot; 拾起了一顶皇冠&quot;]
+scoreboard players set @a[score_pickCrownUp_min=1] pickCrownUp 0
+
+#死亡重生
+scoreboard players set @a[x=22,y=200,z=22,dx=30,dy=20,dz=30,score_playerDeath_min=1] spawnTime 1
+tp @a[x=22,y=200,z=22,dx=30,dy=20,dz=30,score_playerDeath_min=1] 15 12 15
+scoreboard players add @a[score_spawnTime_min=1] spawnTime 1
+tp @a[score_spawnTime_min=100] -32 18 32
+scoreboard players set @a[score_spawnTime_min=100] spawnTime 0
+
+#增加时间
+scoreboard players remove @e[name=gaming] system_time 1
+
+#死亡判定
+function system:end if @e[name=gaming,score_system_time=0]
+
+#玩家发光
+scoreboard teams join crownTeam @a[score_crown_min=1,team=!crownTeam]
+effect @a[score_crown_min=1] glowing 2 1 true
+
+#刷新向日葵
+scoreboard players add crown 0
+scoreboard players tag @a add haveCrown {Inventory:[{id:&quot;minecraft:double_plant&quot;,Slot:103b}]}
+replaceitem entity @a[score_crown_min=1,tag=!haveCrown] slot.armor.head minecraft:double_plant
+replaceitem entity @p[tag=haveCrown,score_crown=0] slot.armor.head air
+scoreboard players tag @a[tag=haveCrown] remove haveCrown
+
+#统计戴皇冠时间
+scoreboard players add @a[score_crown_min=1] crownTime 1
+</code></pre><pre><code># system:start
+
+summon area_effect_cloud 4 2 4 {Duration:999999,CustomName:&quot;gaming&quot;}
+scoreboard players set @e[name=gaming] system_time 3600
+scoreboard players set @r[m=2] crown 1
+</code></pre><pre><code># system:end
+
+kill @e[type=!player]
+tp @a 22 200 22
+
+title @a times 0 200 10
+title @a title [&quot;游戏结束&quot;]
+title @a subtitle [&quot;你们都是笨蛋, 皇冠也能丢？&quot;]
+execute @p[score_crown_min=1,r=1000] ~ ~ ~ title @a subtitle [{&quot;selector&quot;:&quot;@a[score_crown_min=1,r=1000]&quot;},&quot;特别的屌&quot;]
+
+tellraw @a [&quot;====================&quot;]
+execute @a[m=2] ~ ~ ~ tellraw @a [{&quot;selector&quot;:&quot;@a[c=1]&quot;},&quot; 带着皇冠跑了&quot;,{&quot;score&quot;:{&quot;name&quot;:&quot;@a[c=1]&quot;,&quot;objective&quot;:&quot;crownTime&quot;}},&quot; 秒.&quot;]
+tellraw @a [&quot;====================&quot;]
+
+scoreboard players reset *
+</code></pre><h1 id="对系统瑕疵的优化">对系统瑕疵的优化</h1>
+<p>经过了上述三个步骤，可以说整个系统已经可以正常的开始、结束、游玩了，但是仍然有一些瑕疵。这些瑕疵或者说叫bug，是需要进行不断的测试来发现的。下面这一部分难度相比上面更加复杂，对于刚刚接触命令的新玩家可以略过。由于这部分面向较高水平玩家，我将讲解的比较概略。下面是我们在测试中发现的瑕疵，并不保证完全。</p>
+<ul>
+<li>玩家带着皇冠下线会导致游戏无法进行</li>
+<li>有皇冠的玩家死在岩浆里，导致皇冠落在岩浆里，致其他玩家无法捡起</li>
+</ul>
+<p>解决以上两个问题，我的思路是计算玩家带的与地面上不在岩浆里的皇冠数量，如果小于1，那么就重新分配皇冠。以下是我的具体解决方案：</p>
+<h2 id="判定玩家是否掉线">判定玩家是否掉线</h2>
+<p>首先将玩家掉落皇冠的皇冠中加入一个tag(crownItem)方便统计。修改后的命令如下：</p>
+<pre><code>execute @a[score_playerDeath_min=1,score_respawnTime_min=1,score_respawnTime=1,score_crown_min=1] ~ ~ ~ summon item ~ ~ ~ {Item:{id:&quot;minecraft:golden_helmet&quot;,Count:1},PickupDelay:20,Invulnerable:1,Glowing:1,Team:&quot;crownTeam&quot;,CustomName:&quot;皇冠&quot;,CustomNameVisible:1,Age:-32768,Tags:[&quot;crownItem&quot;]}
+</code></pre><p>新建一个记分板用于保存假名的记分板值：</p>
+<pre><code>scoreboard objectives add system dummy 系统
+</code></pre><p>在system:loop中加入以下命令来统计皇冠数量</p>
+<pre><code>scoreboard players set @e[name=gaming] system 0
+execute @a[score_crown_min=1] ~ ~ ~ scoreboard players add @e[name=gaming] system 1
+execute @e[type=item,tag=crownItem] ~ ~ ~ scoreboard players add @e[name=gaming] system 1
+</code></pre><p>这样<code>@e[name=gaming]</code>的system记分板值就是玩家身上和地面上的皇冠数量了。若皇冠数量为0，则说明有玩家戴着皇冠掉线了。新建一个函数<code>system:leave_game</code>用于处理玩家掉线</p>
+<pre><code># system:leave_game
+
+scoreboard players reset * crown
+scoreboard teams empty crownTeam
+scoreboard players add @r[m=2,score_spawnTime=0] crown 1
+tellraw @a [&quot; &gt;&gt; &quot;,&quot;有个笨蛋戴着皇冠跑了！我们果断把皇冠抢了回来重新分配了一下&quot;]
+</code></pre><p>前两条命令清空crown记分板和队伍，这两条无论被清空玩家在不在线，其数据都会被清空。然后再随机分配给另一个人（这个人不能处于复活进程中，也就是score_spawnTime=0）并提示。</p>
+<p>最后在system:loop中加入以下命令来调用leave_game函数</p>
+<pre><code>function system:leave_game if @e[name=gaming,score_system=0]
+</code></pre><h2 id="判定皇冠是否在岩浆中">判定皇冠是否在岩浆中</h2>
+<pre><code>execute @e[type=item,tag=crownItem] ~ ~ ~ detect ~ ~ ~ lava -1 scoreboard players set @s system 1
+execute @e[type=item,tag=crownItem] ~ ~ ~ detect ~ ~ ~ flowing_lava -1 scoreboard players set @s system 1
+execute @e[type=item,tag=crownItem,score_system_min=1] ~ ~ ~ scoreboard players add @r[m=2,score_spawnTime=0] crown 1
+execute @e[type=item,tag=crownItem,score_system_min=1] ~ ~ ~ tellraw @a [&quot; &gt;&gt; &quot;,&quot;皇冠进了岩浆, biu的一下跑到了一个玩家的身上&quot;]
+kill @e[type=item,tag=crownItem,score_system_min=1]
+</code></pre><p>前两条命令判断皇冠是否在岩浆中（包括流动的），第三条随机分配给一个玩家，然后提示并删除皇冠实体。</p>
+<h1 id="最终总结">最终总结</h1>
+<p>由上可见，完成一个完整的系统可以从易到难一步步分析完成。要在设想阶段把一个系统简单化，把大问题化成小问题来解决。这种模块化的思维有助于清醒头脑，把注意力集中在一个点上，更少的犯错误。</p>
+<p>在细节的考虑方面，我们把握一个度，不能太粗犷，也不能太细致。比如在第三部分以后的部分，我们如果不考虑玩家掉线的情况（实际上这经常发生），那么其他玩家的游戏体验就会较差，对于这种小品游戏，这种情况还是要考虑到的。但是有心的玩家也能从我写的命令中看出问题，如果所有玩家都在重生，唯一戴皇冠活着的玩家掉线了，那么皇冠就无处分配，游戏也无法进行下去。但是这种情况实在是少之又少，因此此时对细节的考虑就不能太细致，否则会大大增加自己的工作量。</p>
+<p>在系统的大小方面，我们也要控制一个度。由于每个模块之间的交互&##xFF0C;越大的系统越难完成。举一个模块之间交互的例子，如果在玩家掉线后，需要注意皇冠不能分配给一个房间复活的人。本来两个不相干的模块，却有一个交叉点需要注意。模块越多，这样的交叉点就越多。我对这种情况的处理方式就是，写一个文档，描述每一个记分板，每一个tag的作用，甚至是一些关键的坐标，每次写命令之前都去看一看，尽量记住这些东西的作用，这样能最大限度减少交互方面带来的小bug。</p>
+<p>最后，感谢各位读完这篇又臭又长的系统编写事例，希望不会让你一头雾水。下面是总结好的所有命令，请收下。</p>
+<p>最后的最后，提出一个小小的挑战：使系统支持多个皇冠同时存在于场上。游戏开始分配一个以上的皇冠，死亡只掉落一个皇冠。在更多人游玩时多皇冠更加适合。正式的燃烧的子弹游戏里是支持多皇冠的（只是没有启用），有兴趣的读者可以翻翻function源码，看看和自己的构思是否一致。</p>
+<pre><code>system
+  |-- _init.mcfunction
+  |-- loop.mcfunction
+  |-- start.mcfunction
+  |-- end.mcfunction
+  |-- leave_game.mcfunction
+</code></pre><pre><code># system:_init
+
+scoreboard objectives add system dummy 系统
+scoreboard objectives add playerDeath deathCount 玩家死亡次数
+scoreboard objectives add crown dummy 谁拥有皇冠
+scoreboard objectives add pickCrownUp stat.pickup.minecraft.golden_helmet 捡起皇冠
+scoreboard objectives add spawnTime dummy 重生等待时间
+scoreboard objectives add system_time dummy 记录游戏时间
+scoreboard objectives add crownTime dummy 持有皇冠时间
+
+scoreboard teams add crownTeam 皇冠
+scoreboard teams option crownTeam color yellow
+</code></pre><pre><code># system:loop
+
+#死亡掉落
+execute @a[score_playerDeath_min=1,score_respawnTime_min=1,score_respawnTime=1,score_crown_min=1] ~ ~ ~ summon item ~ ~ ~ {Item:{id:&quot;minecraft:golden_helmet&quot;,Count:1},PickupDelay:20,Invulnerable:1,Glowing:1,Team:&quot;crownTeam&quot;,CustomName:&quot;皇冠&quot;,CustomNameVisible:1,Age:-32768,Tags:[&quot;crownItem&quot;]}
+scoreboard players set @a[score_playerDeath_min=1,score_crown_min=1] crown 0
+scoreboard teams leave @a[score_crown=0,team=crownTeam]
+
+#玩家捡起皇冠后带上
+clear @a[score_pickCrownUp_min=1] golden_helmet
+scoreboard players set @a[score_pickCrownUp_min=1] crown 1
+execute @a[score_pickCrownUp_min=1] ~ ~ ~ tellraw @a [&quot; &gt;&gt; &quot;,{&quot;selector&quot;:&quot;@a[score_pickCrownUp_min=1]&quot;},&quot; 拾起了一顶皇冠&quot;]
+scoreboard players set @a[score_pickCrownUp_min=1] pickCrownUp 0
+
+#死亡重生
+scoreboard players set @a[x=22,y=200,z=22,dx=30,dy=20,dz=30,score_playerDeath_min=1] spawnTime 1
+tp @a[x=22,y=200,z=22,dx=30,dy=20,dz=30,score_playerDeath_min=1] 15 12 15
+scoreboard players add @a[score_spawnTime_min=1] spawnTime 1
+tp @a[score_spawnTime_min=100] -32 18 32
+scoreboard players set @a[score_spawnTime_min=100] spawnTime 0
+
+#增加时间
+scoreboard players remove @e[name=gaming] system_time 1
+
+#死亡判定
+function system:end if @e[name=gaming,score_system_time=0]
+
+#玩家发光
+scoreboard teams join crownTeam @a[score_crown_min=1,team=!crownTeam]
+effect @a[score_crown_min=1] glowing 2 1 true
+
+#刷新向日葵
+scoreboard players add crown 0
+scoreboard players tag @a add haveCrown {Inventory:[{id:&quot;minecraft:double_plant&quot;,Slot:103b}]}
+replaceitem entity @a[score_crown_min=1,tag=!haveCrown] slot.armor.head minecraft:double_plant
+replaceitem entity @p[tag=haveCrown,score_crown=0] slot.armor.head air
+scoreboard players tag @a[tag=haveCrown] remove haveCrown
+
+#统计戴皇冠时间
+scoreboard players add @a[score_crown_min=1] crownTime 1
+
+#判定是否有玩家掉线
+scoreboard players set @e[name=gaming] system 0
+execute @a[score_crown_min=1] ~ ~ ~ scoreboard players add @e[name=gaming] system 1
+execute @e[type=item,tag=crownItem] ~ ~ ~ scoreboard players add @e[name=gaming] system 1
+function system:leave_game if @e[name=gaming,score_system=0]
+
+#处理皇冠掉岩浆
+execute @e[type=item,tag=crownItem] ~ ~ ~ detect ~ ~ ~ lava -1 scoreboard players set @s system 1
+execute @e[type=item,tag=crownItem] ~ ~ ~ detect ~ ~ ~ flowing_lava -1 scoreboard players set @s system 1
+execute @e[type=item,tag=crownItem,score_system_min=1] ~ ~ ~ scoreboard players add @r[m=2,score_spawnTime=0] crown 1
+execute @e[type=item,tag=crownItem,score_system_min=1] ~ ~ ~ tellraw @a [&quot; &gt;&gt; &quot;,&quot;皇冠进了岩浆, biu的一下跑到了一个玩家的身上&quot;]
+kill @e[type=item,tag=crownItem,score_system_min=1]
+</code></pre><pre><code># system:start
+
+summon area_effect_cloud 4 2 4 {Duration:999999,CustomName:&quot;gaming&quot;}
+scoreboard players set @e[name=gaming] system_time 3600
+scoreboard players set @r[m=2] crown 1
+</code></pre><pre><code># system:end
+
+kill @e[type=!player]
+tp @a 22 200 22
+
+title @a times 0 200 10
+title @a title [&quot;游戏结束&quot;]
+title @a subtitle [&quot;你们都是笨蛋, 皇冠也能丢？&quot;]
+execute @p[score_crown_min=1,r=1000] ~ ~ ~ title @a subtitle [{&quot;selector&quot;:&quot;@a[score_crown_min=1,r=1000]&quot;},&quot;特别的屌&quot;]
+
+tellraw @a [&quot;====================&quot;]
+execute @a[m=2] ~ ~ ~ tellraw @a [{&quot;selector&quot;:&quot;@a[c=1]&quot;},&quot; 带着皇冠跑了&quot;,{&quot;score&quot;:{&quot;name&quot;:&quot;@a[c=1]&quot;,&quot;objective&quot;:&quot;crownTime&quot;}},&quot; 秒.&quot;]
+tellraw @a [&quot;====================&quot;]
+
+scoreboard players reset *
+</code></pre><pre><code># system:leave_game
+
+scoreboard players reset * crown
+scoreboard teams empty crownTeam
+scoreboard players add @r[m=2,score_spawnTime=0] crown 1
+tellraw @a [&quot; &gt;&gt; &quot;,&quot;有个笨蛋戴着皇冠跑了！我们果断把皇冠抢了回来重新分配了一下&quot;]
+</code></pre>
+  
+<p><br/></p></div>
+</body>
+
+</html>

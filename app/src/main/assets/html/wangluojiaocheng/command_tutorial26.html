@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>4.2 记分板队伍</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="记分板队伍">记分板队伍</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+<p>队伍可以为<strong>玩家与生物</strong>分组。这项功能主要用于玩家间的组队竞技，同时队伍系统中的一些独特功能也可以用来实现其它意想不到的效果。</p>
+<p>注意，每个玩家最多只能加入一个队伍。如果已加入队伍的玩家试图加入新的队伍，这个玩家就会自动离开原队伍。<br>生物之间在同一队的时候就不会互相攻击，并且怪物不会攻击同队玩家，即便friendlyfire是true时也是如此。</p>
+<p>下面介绍一下队伍的组成元素：</p>
+<ul>
+<li><strong>名称</strong>：队伍的名称，用于命令操作。区分大小写，不可重复。</li>
+<li><strong>显示名称</strong>：在显示时用到的名称。可以重复。</li>
+<li><p><strong>前缀与后缀(Prefix and Suffix)</strong>：应用于队伍成员名字的显示。需要利用外部编辑器，无法在游戏内修改。可以通过NBT编辑软件编辑<br>（路径见下图。修改Suffix的同时记得在最后加上<code>§r</code>，避免前方的样式影响后方的文字。）</p>
+<p>  <img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/scbteam1.png" alt=""></p>
+</li>
+<li><strong>队伍设置</strong>：见下。</li>
+</ul>
+<p>生物生成时可以通过NBT指定其队伍，NBT为：</p>
+<pre><code>Mob
+└── Team: 队伍名称。(string)
+</code></pre><p>生成一只在队伍<code>test</code>的僵尸：</p>
+<pre><code>summon zombie ~ ~ ~ {Team:&quot;test&quot;}
+</code></pre><h2 id="队伍设置">队伍设置</h2>
+<table>
+<thead>
+<tr>
+<th>设置</th>
+<th>选项</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>颜色(color)</td>
+<td>具体颜色对应名称参考 <b>JSON样式</b> <br>reset，清除颜色，变为白色</td>
+<td>决定队伍颜色。一个颜色可以应用于多个队伍。队伍颜色对记分板很多设置都有用途，如显示位置的<code>sidebar.team.颜色</code>、判据中和队伍有关的部分，以及控制发光效果颜色等</td>
+</tr>
+<tr>
+<td>友军火力(friendlyfire)</td>
+<td>true, false</td>
+<td>默认为true，即队友间可以互相伤害。控制队友间能不能互相<strong>直接</strong>伤害，但对药水、TNT等一类非直接伤害无效。</td>
+</tr>
+<tr>
+<td>队友隐身可见(seeFriendlyInvisibles)</td>
+<td>true, false</td>
+<td>默认为false，即不可以看到隐身队友。如果为true则能看见隐身队友（半透明）。</td>
+</tr>
+<tr>
+<td>名称牌可见(nametagVisibility)</td>
+<td>never, hideForOtherTeams, hideForOwnTeam, always</td>
+<td>决定给谁看到自己的名牌。由于名牌能在短距离内通过方块看到，因此对竞技十分重要。<br>never就是没人看到，hideForOtherTeams就是只有队友能看见自己的名牌，hideForOwnTeam就是只有对手才能看到自己名牌，默认always就是谁也能看到名牌。</td>
+</tr>
+<tr>
+<td>死亡信息可见(deathMessageVisibility)</td>
+<td>同上</td>
+<td>决定谁能看到自己的死亡信息。选项用途类似上方名称牌</td>
+</tr>
+<tr>
+<td>碰撞规则(collisionRule)</td>
+<td>always, never, pushOwnTeam, pushOtherTeams</td>
+<td>默认always。<br>即队员对哪些实体展现自己的碰撞箱。always就是对着所有实体都会展现碰撞箱，never就是永远都不会展现碰撞箱，pushOwnTeam就是只对着自己队伍的人展现碰撞箱，pushOtherTeams就是只对其他队伍的人展现碰撞箱。<br>当两个实体接触的时候都有展现碰撞箱就可碰撞（相互推动）。故never的永远不会被人撞到，pushOwnTeam的不会被别的队伍撞到&#xFF0#xFF0C;pushOtherTeams不会被队友撞到，always<strong>未必</strong>会被人撞到</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p> 有关队伍的具体的使用方法将在后文的实例中介绍。</p>
+
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

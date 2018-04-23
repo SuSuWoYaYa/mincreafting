@@ -83,12 +83,15 @@ h6 {
 
 }
 
+
+
 p ,dl{
     margin: 1px;
     padding: 4px 8px 4px 8px;
 }
 pre,code {
-    background-color: #efefef;
+	 /*background-color: #EADDE0;*/
+   background-color: #efefef;
     margin: 1px 1px 1px 6px;
     padding: 1px 8px 2px 8px;
 }
@@ -139,4 +142,30 @@ img {
 
     height: auto; /* Make sure images are scaled correctly. */
     max-width: 100%; /* Adhere to container width. */
+}
+
+.darkBlue {
+	color: #00008B;
+}
+
+.darkRed {
+	color: #8B0000;
+}
+
+.number, .hljs-number{
+	color: #e78c45;
+}
+.keyword, .hljs-keyword{
+	  color: #859900;
+}
+
+.string, .hljs-string {
+	color: #718c00;
+}
+
+blockquote {
+	background-color: #FFE4CC;
+	/*background-color: #eeeeee;*/
+    margin: 2px 4px 4px 2px;
+    padding: 4px 8px 5px 8px;
 }

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>7.1.3 声音</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+
+ 
+
+ 
+                                <h1 id="音效">音效</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<p>音效(Sounds)文件储存在<code>(资源包名)/assets/minecraft/sounds</code>中。如果你没有找到这个文件夹，你可以自己创建。</p>
+<p>音效文件以<code>*.ogg</code>的格式储存。需要用转换软件（网上很多）对其它格式的音效进行转换。</p>
+<p>同时，可以使用<code>playsound</code>命令来播放任意音效，来增进游戏气氛，达到特殊效果（枪声，拾取音效等）。</p>
+<h2 id="原版音效">原版音效</h2>
+<h3 id="替换原版音效">替换原版音效</h3>
+<p>若要替换原版的音效，请参照以下网址，按照树状图创建文件夹或命名ogg文件。<br>sounds 文件夹顺序：<a href="http://minecraft.gamepedia.com/Resource_pack/Folders" target="_blank">http://minecraft.gamepedia.com/Resource_pack/Folders</a>  </p>
+<p></p><p><b>原版sounds文件夹下载。</b></p>
+<p>可直接放入资源包中，替换需要的音效文件。（感谢 pca006132 的提供）<br><a href="http://pan.baidu.com/s/1pLNpgPd" target="_blank">http://pan.baidu.com/s/1pLNpgPd</a>  </p>
+<h3 id="提取原版音效">提取原版音效</h3>
+<p>原版的音效文件存放在<code>(游戏目录)/.minecraft/assets</code>下</p>
+<ul>
+<li><code>indexes</code>文件夹储存音效文件的索引。</li>
+<li><code>objects</code>文件夹储存音效文件。</li>
+</ul>
+<p>打开indexes文件夹中<code>(版本号).json</code>：</p>
+<pre><code>{
+  "objects": {
+    "minecraft/sounds/mob/stray/death2.ogg": {
+      "hash": "d48940aeab2d4068bd157e6810406c882503a813",
+      "size": 18817
+    },
+    "minecraft/sounds/mob/husk/step4.ogg": {
+      "hash": "70a1c99c314a134027988106a3b61b15389d5f2f",
+      "size": 9398
+    },
+ ...
+</code></pre><p>稍作分析可以得知，</p>
+<blockquote>
+<p>音效文件路径：<code>(资源包名)/assets/minecraft/sounds/mob/stray/death2.ogg</code><br>hash 值：<code>d48940aeab2d4068bd157e6810406c882503a813</code><br>文件大小：<code>18817 B</code></p>
+</blockquote>
+<p>知道这些信息后，我们就可以在objects文件夹中寻找音效文件了。</p>
+<ul>
+<li>1.取 hash 值的前两位作为objects文件夹的二级目录。（如<code>sounds/mob/stray/death2.ogg</code>的hash值前两位是<code>d4</code>，那么音效文件就在<code>objects/d4</code>中）</li>
+<li>2.找到以hash值命名的文件，修改扩展名为ogg则为音效文件。</li>
+</ul>
+<p>同理，<code>sounds/mob/husk/step4.ogg</code>则是<code>objects/70/70a1c99c314a134027988106a3b61b15389d5f2f</code>文件。</p>
+<h2 id="添加自定义的音效">添加自定义的音效</h2>
+<p>自定义的音效存放在<code>(资源包名)/assets/minecraft/sounds</code>中，以*.ogg格式保存，文件名随意，但要和<code>sounds.json</code>文件对应。</p>
+<h3 id="soundsjson-文件">sounds.json 文件</h3>
+<p><code>sounds.json</code>文件储存<code>(资源包名)/assets/minecraft</code>下。如果有自定义音效，就需要自己创建此文件。</p>
+<p>主要JSON格式：</p>
+<ul>
+<li><code>(The root object)</code>(Compound)<ul>
+<li><code>(A sound event)</code>：单个音效事件，标签名称为音效时间名称。确定音效事件(Sound Event)名。通常为<code>储存路径.文件名</code>。详见WIKI.(Compound)<ul>
+<li><code>category</code>：规定音效文件的种类，以便在游戏中使用。(String) *</li>
+<li><code>sounds</code>：确定此音效事件使用的音效文件，触发音效事件后随机选取一个音效播放。(List)<ul>
+<li><code>(A sound file)</code>：单个音效文件。(Compound)<ul>
+<li><code>name</code>：<code>assets/minecraft/sounds</code>下的音效文件路径（不包括扩展名）。(String)</li>
+<li><code>stream</code>：值为 <code>true/false</code>，确定音效是否以流(Stream)的形式从文件中读取。推荐设置为true防止音效卡顿。默认为false.(String)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>注意，<code>category</code>标签只允许以下Ԟ#x51E0;个值：</p>
+<ul>
+<li>ambient</li>
+<li>weather</li>
+<li>player</li>
+<li>neutral</li>
+<li>hostile</li>
+<li>block</li>
+<li>record</li>
+<li>music</li>
+<li>master</li>
+<li>voice</li>
+</ul>
+<p>推荐阅读：</p>
+<blockquote>
+<p>WIKI <a href="http://minecraft.gamepedia.com/Sounds.json" target="_blank">http://minecraft.gamepedia.com/Sounds.json</a></p>
+</blockquote>
+<h3 id="playsound-命令">playsound 命令</h3>
+<p>主要格式：</p>
+<pre><code>playsound <sound> <source> <player> [x] [y] [z] [volume] [pitch] [minimumVolume]
+</code></pre><p>其中，<code><sound></code>是音效事件名，即上文<code>(A sound event)</code>标签的名称，<br><code><source></code>则是音效种类，即上文<code>category</code>标签的值。</p>
+<p>简单的例子：<br>现在在<code>(资源包名)/assets/minecraft/sounds</code>下存有一 <strong>自定义的</strong> 音效文件<code>european.ogg</code><br>我们想让它在游戏中播放，作为中奖音效。那么<code>assets/minecraft</code>下的<code>sounds.json</code>可以这样写:</p>
+<pre><code>{
+    "getprize": {
+        "category": "record",
+        "sounds": [
+            {
+                "name": "european",
+                "stream": true
+            }
+        ]
+    }
+}
+</code></pre><p>然后在游戏中，使用<code>playsound</code>命令向玩家<code>Steve</code>播放：</p>
+<pre><code>playsound getprize record Steve
+</code></pre><p>这样玩家<code>Steve</code>就能听到中奖后的音效了。playsound命令其它部分参数的作用可详见WIKI.</p>
+<p>推荐阅读：</p>
+<blockquote>
+<p>WIKI <a href="http://minecraft.gamepedia.com/Commands#playsound" target="_blank">http://minecraft.gamepedia.com/Commands#playsound</a>   playsound命令</p>
+</blockquote>
+<p>同样，也可使用<code>stopsound</code>命令关闭音效：</p>
+<pre><code>stopsound <player> [source] [sound]
+</code></pre><p>其中的<code>[source]</code>,<code>[sound]</code>必须和<code>playsound</code>命令中（或sounds.json中）的一致。</p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

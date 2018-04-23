@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从MC开始的java入门 p9.objectMethod</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >从MC开始的java入门 p9.objectMethod</h1>
+            <!-- End Title -->
+        
+<div >
+   <p class="red">本文章转载自网易论坛<br />作者-Namefind</p>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_Namefind_mc.png" /> 
+</p><p>
+缓慢更新ing....
+</p><p>
+</p><p><b>本章目标</b>
+</p><p>定义、使用<b>方法。创建对象</b>。
+</p><p>使用<b>构造方法</b>设置值。</p> 
+<h2>Java常识</h2><p>
+既然类可以定义，那么int、String、boolean算不算类呢？
+</p><p>int和boolean不是类，是数据类型。
+</p><p>而java为这两种数据类型提供了相对应的“包装类”。
+</p><p><b>Integer</b>：int的包装类。
+</p><p><b>Boolean</b>：boolean的包装类。
+</p><p><b>String</b> 就比较特殊，它就是一个类。
+</p>
+<h2>实体方法</h2><p>
+ 看实体类代码，方法是这个样子：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_1.png" /> 
+ 
+</p><p>
+</p><p>语法：<b><font color="DarkRed">访问修饰符 返回值 方法名(参数){代码块}</font></b>
+</p><p><b>public</b>：跟private一样 是访问修饰符。public是公共的，也就是创建对象之后可以使用。
+</p><p><b>void</b>：<font color="DarkRed">返回值。使用完此方法，返回一个值，可以是任意数据类型，或者是对象，数组</font>
+。在这里返回值为空。
+</p><p><b>setMaxStackSize</b>：自己定义的方法名
+</p><p><b>int maxStackSize</b>：<font color="DarkRed">括号里的参数，从使用者那里传来的值，可以给方法用的数值。</font>
+</p><p>
+</p><p>[请使用普通项目，不要使用forge项目]
+</p><p><b>我们定义一个跟示例不一样的代码，攻击：</b>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_2.png" /> 
+ 
+</p><p>
+</p><p>然后在方法内的代码块<b>写上输出一句话：挥动物品攻击</b>
+</p><p>现在我们的物品类是这个样子：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_3.png" /> 
+ 
+</p><p>
+</p><p>现在我们来在主类中使用我们的物品模拟攻击。
+</p><p><b>需要在主类中创建对象。</b>
+</p><p>那么怎么创建一个对象呢？
+</p><p>我们在主类中写下如下代码：
+</p><p><font color="DarkRed">Item a=new Item();</font>
+</p><p>定义一个Item类型的a变量。并使用new Item（）将创建的Item对象当做一个值，赋值给左边的a。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_4.png" /> 
+ 
+</p><p>
+</p><p><font color="DarkRed">*记得导包</font>
+</p><p>
+</p><p>这时我们创建了一个变量名为a的物品的对象的实例，我们可以<font color="DarkRed">a.attack（属性名或方法名）来使用对象实例里面的东西。</font>
+</p><p>例如：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_5.png" /> 
+ 
+</p><p>
+</p><p>此刻我们已经调用了a物品对象，并且使用了a物品对象包含的方法。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_6.png" /> 
+ 
+</p><p>
+</p><p>我们可以运行这段代码来看看控制台会不会输出刚刚我们写的那段话。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_7.png" /> 
+ 
+</p><p>
+</p><p>可以看到代码正常运行。
+
+</p><p>
+</p><p>Q:我可以定义两个叫a的Item吗？
+</p><p>A:不行！之前说过啦！名字不能一样！
+</p><p>Q:我可以new两个Item对象给a吗？
+</p><p>A：可以，但代码从上到下执行，前面的会被覆盖。
+</p><p>
+</p><p>类似这样的代码很多，通过一个“物品类”来调用它所拥有的功能。
+</p><p>在MC中，我们需要创建这么一个类吗？
+</p><p>那我怎么知道原版的物品类该怎么写才会一样呢？
+</p><p>其实很简单，只要使用关键字来继承MC物品类就可以。
+
+
+</p> <h2>通过getter和setter获取设置物品属性</h2><p>
+ 我们在上一章讲了，如何给物品创建属性、并设置getter和setter。
+</p><p>那么，我们来尝试使用一下物品的getset方法。
+</p><p>现在我们<b>重新创建一个对象Item，并赋值给新的b变量。</b>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_8.png" /> 
+ 
+</p><p>
+</p><p>使用<font color="DarkRed">b.getItemattack</font>可以获取B的攻击属性。
+
+</p><p>
+</p><p>这里我们简单的计算一下，<font color="DarkRed">我们想让b的攻击变成原来攻击+2。</font>
+</p><p>那么我们可以列出一个式子：
+</p><p><font color="DarkRed">b的新攻击=b的原攻击+2</font>
+</p><p>得出b.setxxxx=b.getxxxx+2。
+</p><p>但这不是正确的写法，应该写作：
+
+ 
+</p><p>
+</p><p>现在再次获取b的攻击，是不是变了？
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_9.png" /> 
+ 
+</p><p>
+</p><p>但这时会有一个问题，如果每一个对象都需要在创建之后才能给属性，
+</p><p>那岂不是很麻烦？
+</p><p>我可不可以在创建的时候给属性？
+</p><p>嗯，可以！
+
+
+
+</p> <h2>构造方法</h2><p>
+ <b><font color="DarkRed">在创建对象的时候设置对象的属性。 </b>
+</p><p>构造方法分为<b>无参</b>和<b>有参</b>两种，</font>
+
+</p><p>无参的就是new Item()这种，有参就是new Item(参数)，这里参数根据定义的数量来填写。
+</p><p><font color="DarkRed">一个类的无参构造只能有一个</font>
+（也就是不包含参数的构造方法，当然只有一个！）
+</p><p><font color="DarkRed">有参的构造可以有多个</font>
+，根据参数数量，参数类型来分别。
+</p><p>
+</p><p>构造方法是什么样子的呢？
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_10.png" /> 
+
+</p><p>我们可以发现，<font color="DarkRed">构造方法的方法名跟类名相同，并且没有返回值。</font>
+</p><p>如果我们这样定义一个方法，java将会识别这个方法为构造方法。
+</p><p>构造方法里面可以没有任何东西，
+</p><p>也可以如下图方式赋值：在对象创建的时候，同时设置属性。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_11.png" /> 
+ 
+
+</p> <h2>this</h2><p>
+ 可以使用<font color="DarkRed"><b>关键字this来表示是当前类</b></font>，譬如this.属性名=值。
+</p><p>即可在当前类里赋值。
+</p><p>那么我们来试一试：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_12.png" /> 
+ 
+
+</p><p>
+</p><p>那么我<b>把this写在构造方法里，就可以在创建的时候给当前类赋值</b>。
+</p><p>
+</p><p>但是这样会有个问题，值是固定的，写死在构造方法里面的，
+</p><p>那么为了代码的灵活，我们在<font color="DarkRed">构造函数的括号里定义一个变量。</font>
+</p><p>众：还有这种操作？
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_13.png" /> 
+ 
+</p><p>
+</p><p>现在把<font color="DarkRed">this.属性名=值   的值改成你在括号里定义的变量名。</font>
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_14.png" /> 
+ 
+</p><p>
+</p><p></p><p>完成了OWO 我们来创建一个对象试试吧！
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_15.png" /> 
+ 
+</p><p>
+</p><p>可以发现，当new出来的类里没有无参构造的时候，使用new Item()就会报错，但为什么在一个构造方法都没有的时候，
+</p><p>new Item()就不会报错了呢？
+</p><p><b>这是因为在java中，默认类为无参构造，当你自己创建了构造方法，默认的构造方法就会消失。
+</b></p><p><font color="DarkRed">这时如果需要无参构造，需要自己定义。</font>
+</p><p>
+</p><p>当你new一个类出来，但不知道里面的构造也没关系，红线报错会提示缺少什么。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_16.png" /> 
+ 
+</p><p>
+</p><p>点击第一个提示<font color="DarkRed">add argument to match'对象名(构造方法定义的参数)'</font>
+会自动生成，然后再填入需要传入的属性就OK了！
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_17.png" /> 
+ 
+</p><p>
+</p><p>我们在控制台输出一下，可以看到属性是我们定义的值。
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_31_18.png" /> 
+ 
+
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

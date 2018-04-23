@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>5.1 穷举</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+  <h1 id="穷举">穷举</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<p>穷举(Enumerating)是一个命令中常见的做法。<br>就是把一切可能性列出。</p>
+<p>比如说我们要把一个掉落物的数量(Count)写进其count分数里，我们可以怎么做呢？<br>由于没有一个方法可以检测掉落物的数量，也没法直接把NBT换为分数，我们只能穷举。</p>
+<pre><code>scoreboard players set @e[type=item] count 1 {Item:{Count:1b}}
+scoreboard players set @e[type=item] count 2 {Item:{Count:2b}}
+# ...
+scoreboard players set @e[type=item] count 64 {Item:{Count:64b}}
+</code></pre><hr>
+<p>其实大部分命令都是穷举的，只是我们一般不把那些视为穷举而已，我们只是把这种特别多<del>而且看上去特别蠢</del>的列举说是穷举。</p>
+<h2 id="二分法">二分法</h2>
+<p>二分法是穷举的一个特殊情况，就是比较聪明的穷举。<br>我们没法直接获得某个数值，然而我们可以<strong>改变</strong>（不是直接设置）这个数值并且知道该数值所在的范围，这种情况就可以用二分法了。</p>
+<p>使用二分法能把穷举量大幅减少，方法就是每次把数值范围减半进行处理，直到范围已经足够精确。<br>比如要知道一个随机数的数值，我们只知道它是否等于/大于/小于某个数，那么我们就可以用二分法，先猜50，如果大于的话范围就变为51-100，小于就变为0-49，如此类推。</p>
+<p>NBT我们没法用二分法，因为我们没法改变数值。然而我们可以用二分法获取坐标。</p>
+<p>获取marker的x坐标。例子：（为了方便，例子里只容许x坐标为0-8，假设y及z坐标为1）</p>
+<pre><code>scoreboard players set @e[name=marker] x 0
+
+# 检查是否x &gt;= 4，是的话就x分数+4然后tp x - 4
+scoreboard players add @e[name=marker,x=4,y=1,z=1,dx=4] x 4
+tp @e[name=marker,x=4,y=1,z=1,dx=4] ~-4 ~ ~
+
+# 检查是否x &gt;= 2，是的话就x分数+2然后tp x - 2
+scoreboard players add @e[name=marker,x=2,y=1,z=1,dx=2] x 2
+tp @e[name=marker,x=2,y=1,z=1,dx=2] ~-2 ~ ~
+
+# 检查是否x &gt;= 1，是的话就x分数+2然后tp x - 1
+scoreboard players add @e[name=marker,x=1,y=1,z=1,dx=1] x 1
+tp @e[name=marker,x=1,y=1,z=1,dx=1] ~-1 ~ ~
+
+# 最后的分数就是该marker的x坐标了，因为范围已经足够精确了。
+</code></pre><h2 id="通过代码进行穷举">通过代码进行穷举</h2>
+<p>穷举这活真不是人干的，而且大部分穷举都是有其规律的，我们有时候会使用一些非常简单的代码来进行穷举。</p>
+<p>我们这里使用的是JavaScript，这是一种脚本语言，使用还是蛮方便的。读者可以按F12然后找<strong>控制台</strong>（或者是Console）执行代码。</p>
+<p>有兴趣朋友可以去看看相关教程，因为我也不太会，教不了。</p>
+<hr>
+<p>我们一般都是先找出命令的模板（用template string），然后看看哪些地方是一个不停改变的数值，找出那数值改变的规律然后计算、放进那模板里。</p>
+<p>比如这是上方那对应NBT的代码</p>
+<pre><code class="lang-js"><span class="hljs-comment">//一般也是用for，把一堆选项扔进去</span>
+
+<span class="hljs-keyword">var</span> commands = [];
+
+<span class="hljs-comment">//生成命令</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">64</span>; i++)
+    commands.push(<span class="hljs-string">`scoreboard players set @e[type=item] count <span class="hljs-subst">${i}</span> \{Item:\{Count:<span class="hljs-subst">${i}</span>b\}\}`</span>);
+<span class="hljs-comment">//显示命令</span>
+<span class="hljs-built_in">console</span>.log(commands.join(<span class="hljs-string">&apos;\n&apos;</span>));
+</code></pre>
+<p>比如这是上方那二分法的代码</p>
+<pre><code class="lang-js"><span class="hljs-comment">//二分一般都是用2的n次方，从大到小</span>
+<span class="hljs-keyword">var</span> commands = [];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; i--) {
+    commands.push(<span class="hljs-string">`scoreboard players add @e[name=marker,x=<span class="hljs-subst">${Math.pow(2,i)}</span>,y=1,z=1,dx=<span class="hljs-subst">${Math.pow(2,i)}</span>] x <span class="hljs-subst">${Math.pow(2,i)}</span>`</span>);
+    commands.push(<span class="hljs-string">`tp @e[name=marker,x=<span class="hljs-subst">${Math.pow(2,i)}</span>,y=1,z=1,dx=<span class="hljs-subst">${Math.pow(2,i)}</span>] ~-<span class="hljs-subst">${Math.pow(2,i)}</span> ~ ~`</span>);
+}
+<span class="hljs-built_in">console</span>.log(commands.join(<span class="hljs-string">&apos;\n&apos;</span>));
+</code></pre>
+
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

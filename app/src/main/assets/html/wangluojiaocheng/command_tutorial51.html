@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6.3.5 技能系统</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+                                <h1 id="技能道具范例">技能道具范例</h1>
+
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+
+<h2 id="前言">前言</h2>
+<p>在 MC 中，所谓的技能，实际上只不过也是一个道具，通过某种方式触发（如按Q丢弃触发、F副手触发等）相应的事件达到想要的效果，就是我们平常所看到的“技能”效果。</p>
+<p>这类系统一般分为三个部分。</p>
+<ol>
+<li>检测道具（技能）是否被触发，</li>
+<li>触发相应的事件，</li>
+<li>技能冷却和再补给。</li>
+</ol>
+<p>我们将通过一个实例来讲解这三部分内容的组成。其中如果有错误，还请读者指正。</p>
+<p>例如，在一个只有红队和蓝队PVP的小游戏中，我们希望<strong>通过F键触发</strong>一个技能，这个技能可以让我们瞬移到敌方一名玩家背后，同时触发1秒钟的力量加成效果。</p>
+<p>所涉及到的记分板:</p>
+<ul>
+<li>名称: 技能1的冷却时间</li>
+<li>Objective: skill1CD</li>
+<li>Criteria: dummy`</li>
+</ul>
+<blockquote>
+<p>本教程的命令都会放在一个高频里循环运行。</p>
+</blockquote>
+<h2 id="道具触发">道具触发</h2>
+<p>就像上面说的那样，首先我们要检测道具的触发，那么我们先设定这样一个道具。我们使用染料作为技能图标，其带有一个{AssSkill:1}的标签（自定义NBT），以便我们检测。</p>
+<blockquote>
+<p>当检测到副手的位置有这个技能的时候，视为触发。（F键为切换当前物品到副手）<br>副手Slot为-106</p>
+</blockquote>
+<pre><code>scoreboard players tag @a[m=2] add skillSpell1 {Inventory:[{Slot:-106b,id:&quot;minecraft:dye&quot;,Count:1b,Damage:5s,tag:{AssSkill:1}}]}
+</code></pre><p>从这里我们可以看到检测副手位的方法就是检测玩家的Inventory中-106b这个Slot，如果这个位置有技能道具，那么给玩家加上一个标签；然后，因为使用了技能，所以这个道具要被清掉。</p>
+<pre><code>clear @a[tag=skillSpell1] dye 5 1 {AssSkill:1}
+</code></pre><p>到这里，我们就完成了第一步。接下来是第二部分。</p>
+<h2 id="技能事件">技能事件</h2>
+<p>从前面的条件看出，我们要对红蓝两队分开讨论（因为我们要知道谁是敌方玩家，故此要分别比对）。每一个队伍中使用了这个技能的玩家，要标记一个不是自己队伍的附近玩家以便进行下一步操作。</p>
+<pre><code>execute @a[tag=skillSpell1,team=red] ~ ~ ~ scoreboard players tag @p[r=15,team=!red,m=2] add SkillTag1
+execute @a[tag=skillSpell1,team=blue] ~ ~ ~ scoreboard players tag @p[r=15,team=!blue,m=2] add SkillTag1
+</code></pre><p>如果说有符合相应条件的玩家，那么现在就是触发技能的时候了。需要完成的效果是瞬移到对方背后。因此我们需要小小地动一下脑筋，分两步来完成，第一步是直接tp</p>
+<pre><code>execute @a[tag=skillSpell1,team=red] ~ ~ ~ tp @s @p[team=!red,tag=SkillTag1]
+execute @a[tag=skillSpell1,team=blue] ~ ~ ~ tp @s @p[team=!blue,tag=SkillTag1]
+execute @a[tag=SkillTag1] ~ ~ ~ scoreboard players tag @p[r=0,tag=skillSpell1] add Skill1Success
+</code></pre><p>这一步的标记，表示第一步传送成功，如果成功了则执行后续的操作（因为稍微有点多呢）</p>
+<p>紧接着是根据视角来向后tp，由于目前MC没有自带以视角建立坐标系的功能，所以要进行简单<strong>穷举面向</strong>，来实现这个功能。</p>
+<pre id="clicker"><code>点击展开命令</code></pre>
+
+<pre><code>
+tp @a[tag=Skill1Success,rym=-180,ry=-178] ~-0.0087262 ~ ~0.4999239
+tp @a[tag=Skill1Success,rym=-178,ry=-176] ~-0.02616798 ~ ~0.4993148
+tp @a[tag=Skill1Success,rym=-176,ry=-174] ~-0.04357787 ~ ~0.4980974
+tp @a[tag=Skill1Success,rym=-174,ry=-172] ~-0.06093467 ~ ~0.4962731
+tp @a[tag=Skill1Success,rym=-172,ry=-170] ~-0.07821723 ~ ~0.4938442
+tp @a[tag=Skill1Success,rym=-170,ry=-168] ~-0.0954045 ~ ~0.4908136
+tp @a[tag=Skill1Success,rym=-168,ry=-166] ~-0.1124755 ~ ~0.487185
+tp @a[tag=Skill1Success,rym=-166,ry=-164] ~-0.1294095 ~ ~0.4829629
+tp @a[tag=Skill1Success,rym=-164,ry=-162] ~-0.1461858 ~ ~0.4781524
+tp @a[tag=Skill1Success,rym=-162,ry=-160] ~-0.1627841 ~ ~0.4727593
+tp @a[tag=Skill1Success,rym=-160,ry=-158] ~-0.179184 ~ ~0.4667902
+tp @a[tag=Skill1Success,rym=-158,ry=-156] ~-0.1953656 ~ ~0.4602524
+tp @a[tag=Skill1Success,rym=-156,ry=-154] ~-0.2113091 ~ ~0.4531539
+tp @a[tag=Skill1Success,rym=-154,ry=-152] ~-0.2269952 ~ ~0.4455033
+tp @a[tag=Skill1Success,rym=-152,ry=-150] ~-0.2424048 ~ ~0.4373099
+tp @a[tag=Skill1Success,rym=-150,ry=-148] ~-0.257519 ~ ~0.4285837
+tp @a[tag=Skill1Success,rym=-148,ry=-146] ~-0.2723195 ~ ~0.4193353
+tp @a[tag=Skill1Success,rym=-146,ry=-144] ~-0.2867882 ~ ~0.409576
+tp @a[tag=Skill1Success,rym=-144,ry=-142] ~-0.3009075 ~ ~0.3993177
+tp @a[tag=Skill1Success,rym=-142,ry=-140] ~-0.3146602 ~ ~0.388573
+tp @a[tag=Skill1Success,rym=-140,ry=-138] ~-0.3280295 ~ ~0.3773548
+tp @a[tag=Skill1Success,rym=-138,ry=-136] ~-0.3409992 ~ ~0.3656769
+tp @a[tag=Skill1Success,rym=-136,ry=-134] ~-0.3535534 ~ ~0.3535534
+tp @a[tag=Skill1Success,rym=-134,ry=-132] ~-0.3656769 ~ ~0.3409992
+tp @a[tag=Skill1Success,rym=-132,ry=-130] ~-0.3773548 ~ ~0.3280295
+tp @a[tag=Skill1Success,rym=-130,ry=-128] ~-0.388573 ~ ~0.3146602
+tp @a[tag=Skill1Success,rym=-128,ry=-126] ~-0.3993177 ~ ~0.3009075
+tp @a[tag=Skill1Success,rym=-126,ry=-124] ~-0.409576 ~ ~0.2867882
+tp @a[tag=Skill1Success,rym=-124,ry=-122] ~-0.4193353 ~ ~0.2723195
+tp @a[tag=Skill1Success,rym=-122,ry=-120] ~-0.4285837 ~ ~0.257519
+tp @a[tag=Skill1Success,rym=-120,ry=-118] ~-0.4373099 ~ ~0.2424048
+tp @a[tag=Skill1Success,rym=-118,ry=-116] ~-0.4455033 ~ ~0.2269952
+tp @a[tag=Skill1Success,rym=-116,ry=-114] ~-0.4531539 ~ ~0.2113091
+tp @a[tag=Skill1Success,rym=-114,ry=-112] ~-0.4602524 ~ ~0.1953656
+tp @a[tag=Skill1Success,rym=-112,ry=-110] ~-0.4667902 ~ ~0.179184
+tp @a[tag=Skill1Success,rym=-110,ry=-108] ~-0.4727593 ~ ~0.1627841
+tp @a[tag=Skill1Success,rym=-108,ry=-106] ~-0.4781524 ~ ~0.1461858
+tp @a[tag=Skill1Success,rym=-106,ry=-104] ~-0.4829629 ~ ~0.1294095
+tp @a[tag=Skill1Success,rym=-104,ry=-102] ~-0.487185 ~ ~0.1124755
+tp @a[tag=Skill1Success,rym=-102,ry=-100] ~-0.4908136 ~ ~0.0954045
+tp @a[tag=Skill1Success,rym=-100,ry=-98] ~-0.4938442 ~ ~0.07821723
+tp @a[tag=Skill1Success,rym=-98,ry=-96] ~-0.4962731 ~ ~0.06093467
+tp @a[tag=Skill1Success,rym=-96,ry=-94] ~-0.4980974 ~ ~0.04357787
+tp @a[tag=Skill1Success,rym=-94,ry=-92] ~-0.4993148 ~ ~0.02616798
+tp @a[tag=Skill1Success,rym=-92,ry=-90] ~-0.4999239 ~ ~0.0087262
+tp @a[tag=Skill1Success,rym=-90,ry=-88] ~-0.4999239 ~ ~-0.0087262
+tp @a[tag=Skill1Success,rym=-88,ry=-86] ~-0.4993148 ~ ~-0.02616798
+tp @a[tag=Skill1Success,rym=-86,ry=-84] ~-0.4980974 ~ ~-0.04357787
+tp @a[tag=Skill1Success,rym=-84,ry=-82] ~-0.4962731 ~ ~-0.06093467
+tp @a[tag=Skill1Success,rym=-82,ry=-80] ~-0.4938442 ~ ~-0.07821723
+tp @a[tag=Skill1Success,rym=-80,ry=-78] ~-0.4908136 ~ ~-0.0954045
+tp @a[tag=Skill1Success,rym=-78,ry=-76] ~-0.487185 ~ ~-0.1124755
+tp @a[tag=Skill1Success,rym=-76,ry=-74] ~-0.4829629 ~ ~-0.1294095
+tp @a[tag=Skill1Success,rym=-74,ry=-72] ~-0.4781524 ~ ~-0.1461858
+tp @a[tag=Skill1Success,rym=-72,ry=-70] ~-0.4727593 ~ ~-0.1627841
+tp @a[tag=Skill1Success,rym=-70,ry=-68] ~-0.4667902 ~ ~-0.179184
+tp @a[tag=Skill1Success,rym=-68,ry=-66] ~-0.4602524 ~ ~-0.1953656
+tp @a[tag=Skill1Success,rym=-66,ry=-64] ~-0.4531539 ~ ~-0.2113091
+tp @a[tag=Skill1Success,rym=-64,ry=-62] ~-0.4455033 ~ ~-0.2269952
+tp @a[tag=Skill1Success,rym=-62,ry=-60] ~-0.4373099 ~ ~-0.2424048
+tp @a[tag=Skill1Success,rym=-60,ry=-58] ~-0.4285837 ~ ~-0.257519
+tp @a[tag=Skill1Success,rym=-58,ry=-56] ~-0.4193353 ~ ~-0.2723195
+tp @a[tag=Skill1Success,rym=-56,ry=-54] ~-0.409576 ~ ~-0.2867882
+tp @a[tag=Skill1Success,rym=-54,ry=-52] ~-0.3993177 ~ ~-0.3009075
+tp @a[tag=Skill1Success,rym=-52,ry=-50] ~-0.388573 ~ ~-0.3146602
+tp @a[tag=Skill1Success,rym=-50,ry=-48] ~-0.3773548 ~ ~-0.3280295
+tp @a[tag=Skill1Success,rym=-48,ry=-46] ~-0.3656769 ~ ~-0.3409992
+tp @a[tag=Skill1Success,rym=-46,ry=-44] ~-0.3535534 ~ ~-0.3535534
+tp @a[tag=Skill1Success,rym=-44,ry=-42] ~-0.3409992 ~ ~-0.3656769
+tp @a[tag=Skill1Success,rym=-42,ry=-40] ~-0.3280295 ~ ~-0.3773548
+tp @a[tag=Skill1Success,rym=-40,ry=-38] ~-0.3146602 ~ ~-0.388573
+tp @a[tag=Skill1Success,rym=-38,ry=-36] ~-0.3009075 ~ ~-0.3993177
+tp @a[tag=Skill1Success,rym=-36,ry=-34] ~-0.2867882 ~ ~-0.409576
+tp @a[tag=Skill1Success,rym=-34,ry=-32] ~-0.2723195 ~ ~-0.4193353
+tp @a[tag=Skill1Success,rym=-32,ry=-30] ~-0.257519 ~ ~-0.4285837
+tp @a[tag=Skill1Success,rym=-30,ry=-28] ~-0.2424048 ~ ~-0.4373099
+tp @a[tag=Skill1Success,rym=-28,ry=-26] ~-0.2269952 ~ ~-0.4455033
+tp @a[tag=Skill1Success,rym=-26,ry=-24] ~-0.2113091 ~ ~-0.4531539
+tp @a[tag=Skill1Success,rym=-24,ry=-22] ~-0.1953656 ~ ~-0.4602524
+tp @a[tag=Skill1Success,rym=-22,ry=-20] ~-0.179184 ~ ~-0.4667902
+tp @a[tag=Skill1Success,rym=-20,ry=-18] ~-0.1627841 ~ ~-0.4727593
+tp @a[tag=Skill1Success,rym=-18,ry=-16] ~-0.1461858 ~ ~-0.4781524
+tp @a[tag=Skill1Success,rym=-16,ry=-14] ~-0.1294095 ~ ~-0.4829629
+tp @a[tag=Skill1Success,rym=-14,ry=-12] ~-0.1124755 ~ ~-0.487185
+tp @a[tag=Skill1Success,rym=-12,ry=-10] ~-0.0954045 ~ ~-0.4908136
+tp @a[tag=Skill1Success,rym=-10,ry=-8] ~-0.07821723 ~ ~-0.4938442
+tp @a[tag=Skill1Success,rym=-8,ry=-6] ~-0.06093467 ~ ~-0.4962731
+tp @a[tag=Skill1Success,rym=-6,ry=-4] ~-0.04357787 ~ ~-0.4980974
+tp @a[tag=Skill1Success,rym=-4,ry=-2] ~-0.02616798 ~ ~-0.4993148
+tp @a[tag=Skill1Success,rym=-2,ry=0] ~-0.0087262 ~ ~-0.4999239
+tp @a[tag=Skill1Success,rym=0,ry=2] ~0.0087262 ~ ~-0.4999239
+tp @a[tag=Skill1Success,rym=2,ry=4] ~0.02616798 ~ ~-0.4993148
+tp @a[tag=Skill1Success,rym=4,ry=6] ~0.04357787 ~ ~-0.4980974
+tp @a[tag=Skill1Success,rym=6,ry=8] ~0.06093467 ~ ~-0.4962731
+tp @a[tag=Skill1Success,rym=8,ry=10] ~0.07821723 ~ ~-0.4938442
+tp @a[tag=Skill1Success,rym=10,ry=12] ~0.0954045 ~ ~-0.4908136
+tp @a[tag=Skill1Success,rym=12,ry=14] ~0.1124755 ~ ~-0.487185
+tp @a[tag=Skill1Success,rym=14,ry=16] ~0.1294095 ~ ~-0.4829629
+tp @a[tag=Skill1Success,rym=16,ry=18] ~0.1461858 ~ ~-0.4781524
+tp @a[tag=Skill1Success,rym=18,ry=20] ~0.1627841 ~ ~-0.4727593
+tp @a[tag=Skill1Success,rym=20,ry=22] ~0.179184 ~ ~-0.4667902
+tp @a[tag=Skill1Success,rym=22,ry=24] ~0.1953656 ~ ~-0.4602524
+tp @a[tag=Skill1Success,rym=24,ry=26] ~0.2113091 ~ ~-0.4531539
+tp @a[tag=Skill1Success,rym=26,ry=28] ~0.2269952 ~ ~-0.4455033
+tp @a[tag=Skill1Success,rym=28,ry=30] ~0.2424048 ~ ~-0.4373099
+tp @a[tag=Skill1Success,rym=30,ry=32] ~0.257519 ~ ~-0.4285837
+tp @a[tag=Skill1Success,rym=32,ry=34] ~0.2723195 ~ ~-0.4193353
+tp @a[tag=Skill1Success,rym=34,ry=36] ~0.2867882 ~ ~-0.409576
+tp @a[tag=Skill1Success,rym=36,ry=38] ~0.3009075 ~ ~-0.3993177
+tp @a[tag=Skill1Success,rym=38,ry=40] ~0.3146602 ~ ~-0.388573
+tp @a[tag=Skill1Success,rym=40,ry=42] ~0.3280295 ~ ~-0.3773548
+tp @a[tag=Skill1Success,rym=42,ry=44] ~0.3409992 ~ ~-0.3656769
+tp @a[tag=Skill1Success,rym=44,ry=46] ~0.3535534 ~ ~-0.3535534
+tp @a[tag=Skill1Success,rym=46,ry=48] ~0.3656769 ~ ~-0.3409992
+tp @a[tag=Skill1Success,rym=48,ry=50] ~0.3773548 ~ ~-0.3280295
+tp @a[tag=Skill1Success,rym=50,ry=52] ~0.388573 ~ ~-0.3146602
+tp @a[tag=Skill1Success,rym=52,ry=54] ~0.3993177 ~ ~-0.3009075
+tp @a[tag=Skill1Success,rym=54,ry=56] ~0.409576 ~ ~-0.2867882
+tp @a[tag=Skill1Success,rym=56,ry=58] ~0.4193353 ~ ~-0.2723195
+tp @a[tag=Skill1Success,rym=58,ry=60] ~0.4285837 ~ ~-0.257519
+tp @a[tag=Skill1Success,rym=60,ry=62] ~0.4373099 ~ ~-0.2424048
+tp @a[tag=Skill1Success,rym=62,ry=64] ~0.4455033 ~ ~-0.2269952
+tp @a[tag=Skill1Success,rym=64,ry=66] ~0.4531539 ~ ~-0.2113091
+tp @a[tag=Skill1Success,rym=66,ry=68] ~0.4602524 ~ ~-0.1953656
+tp @a[tag=Skill1Success,rym=68,ry=70] ~0.4667902 ~ ~-0.179184
+tp @a[tag=Skill1Success,rym=70,ry=72] ~0.4727593 ~ ~-0.1627841
+tp @a[tag=Skill1Success,rym=72,ry=74] ~0.4781524 ~ ~-0.1461858
+tp @a[tag=Skill1Success,rym=74,ry=76] ~0.4829629 ~ ~-0.1294095
+tp @a[tag=Skill1Success,rym=76,ry=78] ~0.487185 ~ ~-0.1124755
+tp @a[tag=Skill1Success,rym=78,ry=80] ~0.4908136 ~ ~-0.0954045
+tp @a[tag=Skill1Success,rym=80,ry=82] ~0.4938442 ~ ~-0.07821723
+tp @a[tag=Skill1Success,rym=82,ry=84] ~0.4962731 ~ ~-0.06093467
+tp @a[tag=Skill1Success,rym=84,ry=86] ~0.4980974 ~ ~-0.04357787
+tp @a[tag=Skill1Success,rym=86,ry=88] ~0.4993148 ~ ~-0.02616798
+tp @a[tag=Skill1Success,rym=88,ry=90] ~0.4999239 ~ ~-0.0087262
+tp @a[tag=Skill1Success,rym=90,ry=92] ~0.4999239 ~ ~0.0087262
+tp @a[tag=Skill1Success,rym=92,ry=94] ~0.4993148 ~ ~0.02616798
+tp @a[tag=Skill1Success,rym=94,ry=96] ~0.4980974 ~ ~0.04357787
+tp @a[tag=Skill1Success,rym=96,ry=98] ~0.4962731 ~ ~0.06093467
+tp @a[tag=Skill1Success,rym=98,ry=100] ~0.4938442 ~ ~0.07821723
+tp @a[tag=Skill1Success,rym=100,ry=102] ~0.4908136 ~ ~0.0954045
+tp @a[tag=Skill1Success,rym=102,ry=104] ~0.487185 ~ ~0.1124755
+tp @a[tag=Skill1Success,rym=104,ry=106] ~0.4829629 ~ ~0.1294095
+tp @a[tag=Skill1Success,rym=106,ry=108] ~0.4781524 ~ ~0.1461858
+tp @a[tag=Skill1Success,rym=108,ry=110] ~0.4727593 ~ ~0.1627841
+tp @a[tag=Skill1Success,rym=110,ry=112] ~0.4667902 ~ ~0.179184
+tp @a[tag=Skill1Success,rym=112,ry=114] ~0.4602524 ~ ~0.1953656
+tp @a[tag=Skill1Success,rym=114,ry=116] ~0.4531539 ~ ~0.2113091
+tp @a[tag=Skill1Success,rym=116,ry=118] ~0.4455033 ~ ~0.2269952
+tp @a[tag=Skill1Success,rym=118,ry=120] ~0.4373099 ~ ~0.2424048
+tp @a[tag=Skill1Success,rym=120,ry=122] ~0.4285837 ~ ~0.257519
+tp @a[tag=Skill1Success,rym=122,ry=124] ~0.4193353 ~ ~0.2723195
+tp @a[tag=Skill1Success,rym=124,ry=126] ~0.409576 ~ ~0.2867882
+tp @a[tag=Skill1Success,rym=126,ry=128] ~0.3993177 ~ ~0.3009075
+tp @a[tag=Skill1Success,rym=128,ry=130] ~0.388573 ~ ~0.3146602
+tp @a[tag=Skill1Success,rym=130,ry=132] ~0.3773548 ~ ~0.3280295
+tp @a[tag=Skill1Success,rym=132,ry=134] ~0.3656769 ~ ~0.3409992
+tp @a[tag=Skill1Success,rym=134,ry=136] ~0.3535534 ~ ~0.3535534
+tp @a[tag=Skill1Success,rym=136,ry=138] ~0.3409992 ~ ~0.3656769
+tp @a[tag=Skill1Success,rym=138,ry=140] ~0.3280295 ~ ~0.3773548
+tp @a[tag=Skill1Success,rym=140,ry=142] ~0.3146602 ~ ~0.388573
+tp @a[tag=Skill1Success,rym=142,ry=144] ~0.3009075 ~ ~0.3993177
+tp @a[tag=Skill1Success,rym=144,ry=146] ~0.2867882 ~ ~0.409576
+tp @a[tag=Skill1Success,rym=146,ry=148] ~0.2723195 ~ ~0.4193353
+tp @a[tag=Skill1Success,rym=148,ry=150] ~0.257519 ~ ~0.4285837
+tp @a[tag=Skill1Success,rym=150,ry=152] ~0.2424048 ~ ~0.4373099
+tp @a[tag=Skill1Success,rym=152,ry=154] ~0.2269952 ~ ~0.4455033
+tp @a[tag=Skill1Success,rym=154,ry=156] ~0.2113091 ~ ~0.4531539
+tp @a[tag=Skill1Success,rym=156,ry=158] ~0.1953656 ~ ~0.4602524
+tp @a[tag=Skill1Success,rym=158,ry=160] ~0.179184 ~ ~0.4667902
+tp @a[tag=Skill1Success,rym=160,ry=162] ~0.1627841 ~ ~0.4727593
+tp @a[tag=Skill1Success,rym=162,ry=164] ~0.1461858 ~ ~0.4781524
+tp @a[tag=Skill1Success,rym=164,ry=166] ~0.1294095 ~ ~0.4829629
+tp @a[tag=Skill1Success,rym=166,ry=168] ~0.1124755 ~ ~0.487185
+tp @a[tag=Skill1Success,rym=168,ry=170] ~0.0954045 ~ ~0.4908136
+tp @a[tag=Skill1Success,rym=170,ry=172] ~0.07821723 ~ ~0.4938442
+tp @a[tag=Skill1Success,rym=172,ry=174] ~0.06093467 ~ ~0.4962731
+tp @a[tag=Skill1Success,rym=174,ry=176] ~0.04357787 ~ ~0.4980974
+tp @a[tag=Skill1Success,rym=176,ry=178] ~0.02616798 ~ ~0.4993148
+tp @a[tag=Skill1Success,rym=178,ry=180] ~0.0087262 ~ ~0.4999239
+</code></pre><p>到这里，我们就实现了TP的功能。实现完功能以后，我们需要清除掉整个事件中使用到的tag。当然了。在清除tag之前，我们先为玩家设定一下技能冷却，假如是15秒，换算成游戏刻则是300。</p>
+<pre><code>scoreboard players set @a[tag=skillSpell1] skill1CD 300
+</code></pre><p>然后清tag</p>
+<pre><code>scoreboard players tag @a[tag=skillSpell1] remove skillSpell1
+scoreboard players tag @a[tag=SkillTag1] remove SkillTag1
+scoreboard players tag @a[tag=Skill1Success] remove Skill1Success
+</code></pre><p>至此，第二部分已经完成。</p>
+<h2 id="技能冷却、补给">技能冷却、补给</h2>
+<p>在前面我们已经为玩家设定好了CD时间那么只需要进行计时以及在需要的时间进行补给即可。</p>
+<pre><code>scoreboard players remove @a[score_skill1CD_min=0] skill1CD 1
+replaceitem entity @a[score_skill1CD_min=0,score_skill1CD=0] slot.hotbar.2 dye 1 5 {AssSkill:1,display:{Name:&quot;§b背刺&quot;,Lore:[&quot;§a神不知鬼不觉出现在敌人后面！&quot;,&quot;§c·将该技能置于副手瞬间触发&quot;,&quot;请勿修改道具快捷键&quot;,&quot;§c·冷却时间15秒&quot;]},ench:[{id:0,lvl:0}],HideFlags:63}
+</code></pre><p>这就是第三部分的内容，非常简单。但是，如果你是一个细心的玩家，你一定会思考这样一个问题：如果玩家直接丢了技能或者进行了别的错误操作，该怎么办？<br>那么，你就需要特别处理额外的这些情况，这部分会教你如何锁住技能的位置，一旦发生异常，则会强行重置CD。</p>
+<pre><code># 在正确位置就给tag
+scoreboard players tag @a[m=2,score_skill1CD=-1] add withSkill1 {Inventory:[{Slot:2b,tag:{AssSkill:1}}]}
+scoreboard players tag @a[m=2,score_skill1CD=-1] add withSkill1 {Inventory:[{Slot:-106b,tag:{AssSkill:1}}]}
+
+# 没有指定的tag就代表不在指定位置，情况异常
+clear @a[m=2,score_skill1CD=-1,tag=!withSkill1] dye -1 64 {AssSkill:1}
+tellraw @a[m=2,score_skill1CD=-1,tag=!withSkill1] [&quot;[§6提示§r]§b背刺§a道具异常，正在重新计算§b冷却时间§r&quot;]
+scoreboard players set @a[m=2,score_skill1CD=-1,tag=!withSkill1] skill1CD 300
+scoreboard players tag @a[tag=withSkill1] remove withSkill1
+</code></pre><p>通过这个例子，我们可以发现，其实所谓的技能系统，并不复杂，只要你能够把系统拆分成我所说的这几个部分，并逐一完善，你就能写出很棒的技能系统来。</p>
+  <script>
+var c = document.getElementById("clicker");
+c.nextElementSibling.style.display = "none";
+c.addEventListener("click", function() {
+    c.nextElementSibling.style.display = "block";
+    c.style.display = "none";
+});
+</script>
+
+<p><br/></p></div>
+</body>
+
+</html>

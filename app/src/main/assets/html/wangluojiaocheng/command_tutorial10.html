@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.1.1 JSON文本类型</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ <h1 id="json文本类型">JSON文本类型</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>最基础的JSON文本类型可被分为5类：</p>
+<ul>
+<li>text-文本</li>
+<li>selector-目标选择器</li>
+<li>score-分数</li>
+<li>translate-翻译</li>
+<li>keybind-显示按钮</li>
+</ul>
+<p>值得注意的是，虽然这五个都是文本对象中的属性，这5类文本类型在单个对象（同一段文字）中只能设置一个。<br>不然会互相覆盖，只有一个能生效。<br>关于同时使用多个文本类型的情况，我们会在之后的章节进行讨论。</p>
+<h2 id="text-文本">text-文本</h2>
+<p>text可谓是游戏内最基本的类型。<br>功能十分简单，就是显示你指定的文字。</p>
+<p>最基本的格式为：</p>
+<pre><code>&quot;text&quot;:&quot;&lt;文本内容&gt;&quot;
+</code></pre><p>例如：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons1.png" alt="1"></p>
+<p>顺带一提，在内容中插入<code>\n</code>可以让文字换行（只限于<code>成书</code>和<code>tellraw</code>命令）</p>
+<p>例如：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello\nWorld&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons3.png" alt="2"></p>
+<h2 id="selector-目标选择器">selector-目标选择器</h2>
+<p>selector的作用就是显示选择器选择到的实体名称，与命令中的选择器格式一致</p>
+<p>基本格式为</p>
+<pre><code>&quot;selector&quot;:&quot;&lt;目标选择器&gt;&quot;
+</code></pre><p>选择符就如平时使用一般输入就可以了<br>例如：</p>
+<pre><code>tellraw @a {&quot;selector&quot;:&quot;@p&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons4.png" alt="4"></p>
+<p>如果世界内只有我和一只名为GGG的猪：</p>
+<pre><code>tellraw @a {&quot;selector&quot;:&quot;@e&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons5.png" alt="5"></p>
+<p>值得注意的是，选择器参数（即跟随在选择符后的[]部分）也可使用：</p>
+<pre><code>tellraw @a {&quot;selector&quot;:&quot;@e[type=Pig]&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons6.png" alt="6"></p>
+<blockquote>
+<p>注意:<br>JSON文本里的选择器，包括接下来的score中name使用的选择器，大部分都是以命令执行位置作为原点。<br>如<code>tellraw</code>及<code>title</code>命令以命令执行点为原点，书本以打开的玩家的位置为原点，只有牌子是以牌子坐标为原点</p>
+</blockquote>
+<h2 id="score-分数">score-分数</h2>
+<p>score用于显示<strong>特定目标的特定分数</strong>，需要对记分板的知识（详见之后的章节）。</p>
+<p>格式为：</p>
+<pre><code>&quot;score&quot;:{&quot;name&quot;:&quot;&lt;对象名&gt;&quot;,&quot;objective&quot;:&quot;&lt;变量名&gt;&quot;}
+</code></pre><p><strong>对象名</strong> 即为需要选中的对象，如指定玩家名称<br><strong>分数名</strong> 就是来自哪一个记分板变量</p>
+<p>例如我们创建了一个名为<code>test</code>的记分板变量，里面有两个玩家：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons7.png" alt="7"></p>
+<p>输入：</p>
+<pre><code>tellraw @a {&quot;score&quot;:{&quot;name&quot;:&quot;Tester&quot;,&quot;objective&quot;:&quot;test&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons9.png" alt="9"></p>
+<p><code>name</code>支持选择符（但不能为多选，如<code>@a</code>），我们放置了一个命令方块，并让SYL接近他</p>
+<p>输入：</p>
+<pre><code>tellraw @a {&quot;score&quot;:{&quot;name&quot;:&quot;@p&quot;,&quot;objective&quot;:&quot;test&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons8.png" alt="8"></p>
+<p><code>score</code>在<code>tellraw</code>命令中还有一个特殊功能，<code>name</code>部分输入<code>*</code>的话<br>那么<strong>观察者自己</strong>将会作为对象，显示观察者的分数（这在做地图的时候十分有用）</p>
+<p>例如：</p>
+<pre><code>tellraw @a {&quot;score&quot;:{&quot;name&quot;:&quot;*&quot;,&quot;objective&quot;:&quot;test&quot;}}
+</code></pre><p>SYL的视角：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons8.png" alt="8"></p>
+<p>Tester的视角：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons9.png" alt="9"></p>
+<h3 id="translate-翻译文件">translate-翻译文件</h3>
+<p>translate其实就是在文本JSON里引用翻译文件的文字，格式为:</p>
+<pre><code>&quoquot;translate&quot;:&quot;翻译识别器&quot;
+</code></pre><p>如</p>
+<pre><code>&quot;translate&quot;:&quot;chat.link.warning&quot;
+</code></pre><p>然而翻译文件的文字可以有参数（那些<code>%s</code>），这个时候我们就可以用with来传入参数（顺序对应翻译文件内的<code>%s</code>），格式为:</p>
+<pre><code>&quot;with&quot;:[&lt;参数字串列表&gt;]
+</code></pre><p>注意with的参数可以为JSON文本。</p>
+<p>如</p>
+<pre><code>假设翻译文件中有一行为
+custom.a=第一个参数: %s，第二个参数: %s
+
+JSON文本为
+{&quot;translate&quot;:&quot;custom.a&quot;,&quot;with&quot;:[&quot;a&quot;,&quot;b&quot;]}
+
+输出则为
+第一个参数: a，第二个参数: b
+</code></pre><hr>
+<p>translate除了能够用作翻译以外，亦能用作检查资源包，如</p>
+<pre><code>{&quot;translate&quot;:&quot;custom.1&quot;,&quot;with&quot;:[{&quot;text&quot;:&quot;请点击这里&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;/say 用了自定义的材质包&quot;}}]}
+</code></pre><p>原版很明显是没有<code>custom.1</code>这个翻译识别器的，故此没加载资源包的用户看到的就是<code>custom.1</code>，也没法点击。而地图的自定义资源包则能够添加此翻译识别器，如</p>
+<pre><code>custom.1=%s
+</code></pre><p>然后玩家就能点击<code>请点击这里</code>并触发命令了。如果玩家没有使用该资源包，则只能看着<code>custom.1</code>在那里干瞪眼了。</p>
+<h2 id="keybind-显示按钮">Keybind-显示按钮</h2>
+<p>Keybind就是引用某些特殊按钮，如果玩家修改了的话就显示玩家修改为的按钮。对地图制作十分有用，因为有时候需要让玩家按某个按钮然而玩家可能会修改默认键位。（比如<code>按F装填</code>）</p>
+<p>格式:</p>
+<pre><code>{&quot;keybind&quot;:&quot;&lt;按键&gt;&quot;}
+</code></pre><p>按键比如是<code>key.drop</code>, <code>key.forward</code>等等。<br>完整的按键列表在这：<a href="keys.html">按键列表</a></p>
+<p>例子:</p>
+<pre><code>{&quot;keybind&quot;:&quot;key.drop&quot;}
+{&quot;keybind&quot;:&quot;key.forward&quot;}
+</code></pre><blockquote>
+<p>注意: 如果没有设置该键位，则会显示为<code>None</code></p>
+</blockquote>
+<hr>
+<p>知道了如何定义内容后，我们就得为我们的内容搞点新意思了。<br>接下来将会介绍如何为文本对象加入颜色、粗体等样式</p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

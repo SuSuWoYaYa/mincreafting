@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6.3.7 黑洞</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+ 
+ <h1 id="黑洞">黑洞</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<blockquote>
+<p>数学不好不会写，请dalao多多体谅</p>
+</blockquote>
+<p>本题目出自CBL前新手群（现技术<del>摸鱼</del>交流群）问答比赛。</p>
+<p>题目:</p>
+<blockquote>
+<p>32*32的场地有一个确定的中点，范围内玩家均会受到值为每秒0.5格，方向对准这个中心点的速度分量。</p>
+</blockquote>
+<p>目前已经有船黑科技，然而船黑科技比较难以控制速度（一层=0.2米，不可能0.5米），所以我们还是需要用别的方法的。</p>
+<p>而我们选择的方法就是穷举。</p>
+<h2 id="穷举">穷举</h2>
+<p>我们首先要解决的问题就是，如何得知中心在哪个角度。</p>
+<p>我们可以穷举不同坐标，穷举出每个坐标分别在中心的哪个方位，然后穷举传送的值。<br>然而这方法的精度不足（一个方块里也能有不同位置），我们不会使用这个方法。</p>
+<p>我们可以在中心四周（圆形）放一大堆marker实体，每个代表一个相应角度，让玩家选择最近的那个。很难解释直接上图算了。</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/angle.png" alt=""></p>
+<p>绿色代表黑洞中心。黑色圆形外框代表我们穷举生成的marker，注意marker的位置必须精准测量，间隔相同以及距离中心的位置相同。<br>ABCD这四点代表不同的玩家位置。红色的点代表玩家选择到最接近他们的marker。<br>可以看到玩家选择的离他们最近的marker，就代表他们的角度是θ。（解释啥的已经懒得写了）</p>
+<p>我们要得知玩家当前角度的方法十分简单：把角度分数放进marker记分板里，然后赋值就行了。于是我们穷举的工作有这几个部分：</p>
+<ol>
+<li>每个角度：<ol>
+<li>在<strong>指定坐标</strong>（根据角度和中心位置进行计算）生成marker</li>
+<li>给新生成的marker一个角度分数</li>
+</ol>
+</li>
+<li><code>tp</code>指定分数（角度）的玩家一定距离（水平距离为0.5米）<br> 由于我们是向着圆心传送的，因此我们的角度是 <code>180°-θ</code>。然而为了方便，我们直接把marker和圆心的距离设为0.5，然后tp的坐标就是 <code>-marker和圆心的相对坐标</code> 就行了。</li>
+</ol>
+<p>穷举部分（直接上js代码，没人会手算。辣鸡代码请dalao手下留情）:</p>
+<pre onclick="testclick(this);"><code>点击显示命令（代码和下方JS一样）</code></pre>
+
+<pre><code class="lang-js"><span class="hljs-comment">//初始化的命令，在中心的位置执行</span>
+<span class="hljs-keyword">var</span> init = [];
+<span class="hljs-comment">//main的命令</span>
+<span class="hljs-keyword">var</span> main = [<span class="hljs-string">"execute @a ~ ~ ~ scoreboard players operation @s angle = @e[c=1,tag=circle] angle"</span>];
+
+<span class="hljs-comment">//i为角度</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i < <span class="hljs-number">360</span>; i+=<span class="hljs-number">3</span>) {
+    <span class="hljs-comment">//x偏移</span>
+    <span class="hljs-keyword">var</span> x = <span class="hljs-number">0.5</span> * <span class="hljs-built_in">Math</span>.cos(i / <span class="hljs-number">180</span> * <span class="hljs-built_in">Math</span>.PI); <span class="hljs-comment">//角度转rad</span>
+    <span class="hljs-keyword">var</span> z = <span class="hljs-number">0.5</span> * <span class="hljs-built_in">Math</span>.sin(i / <span class="hljs-number">180</span> * <span class="hljs-built_in">Math</span>.PI);
+
+    init.push(<span class="hljs-string">'summon area_effect_cloud ~'</span> + x.toFixed(<span class="hljs-number">3</span>) + <span class="hljs-string">' ~ ~'</span> + z.toFixed(<span class="hljs-number">3</span>) + <span class="hljs-string">' {Duration:2147483647,Tags:[circle,new]}'</span>);
+    init.push(<span class="hljs-string">'scoreboard players set @e[tag=new] angle '</span> + i);
+    init.push(<span class="hljs-string">'scoreboard players tag @e[tag=new] remove new'</span>);
+    main.push(<span class="hljs-string">'tp @a[score_angle_min='</span> + i + <span class="hljs-string">',score_angle='</span> + i + <span class="hljs-string">'] ~'</span> + (-x).toFixed(<span class="hljs-number">3</span>) + <span class="hljs-string">' ~ ~'</span> + (-z).toFixed(<span class="hljs-number">3</span>));
+}
+</code></pre>
+<script>
+function testclick(o) {
+    var init = [];
+    var main = ["execute @a ~ ~ ~ scoreboard players operation @s angle = @e[c=1,tag=circle] angle"];
+    for (var i = 0; i < 360; i+=3) {
+        var x = 0.5 * Math.cos(i / 180 * Math.PI);
+        var z = 0.5 * Math.sin(i / 180 * Math.PI);
+        init.push('summon area_effect_cloud ~' + x.toFixed(3) + ' ~ ~' + z.toFixed(3) + ' {Duration:2147483647,Tags:[circle,new]}');
+        init.push('scoreboard players set @e[tag=new] angle ' + i);
+        init.push('scoreboard players tag @e[tag=new] remove new');
+        main.push('tp @a[score_angle_min=' + i + ',score_angle=' + i + '] ~' + (-x).toFixed(3) + ' ~ ~' + (-z).toFixed(3));
+    }
+    $(o).text("# _init\n" + init.join("\n") + "\n\n\n" + "# main\n" + main.join("\n"));
+    $(o).attr("onclick","");
+}
+</script>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

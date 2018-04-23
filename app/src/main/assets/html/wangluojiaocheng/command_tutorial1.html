@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>命令进阶-引言</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+     
+<div >
+
+                              <h1 id="引言">引言</h1>   <p class="red">本文章转载自 - 命令方块新人手册<br />
+		https://commandtutorials.neocities.org/</p>
+<p>欢迎阅读《命令进阶》，一份Minecraft命令的简单教程。<br>命令是一种玩法，如同建筑和红石一样，我们十分重视创意，因为我们要创造自己的作品。我们的目的就是在Minecraft里实现我们想做到的事情，如实现某个游戏、实现某些算法、实现某些功能等等。和编程不同的是，命令有很多限制，而研究如何绕过、突破这些限制就是我们的主要工作和快乐来源。</p>
+<p>命令虽然叫作命令，然而涉及的范畴却远远不止命令这么简单。<br>我们当然需要知道命令的格式、运作原理，因为命令就是我们的工具，熟悉了工具才能干活。然而，我们也得有清晰的逻辑以及解决问题的方法，这些就像是我们的脑袋，让我们知道该如何使用我们的工具，而不是拿着工具在蛮干，浪费力气。此外，我们也得明白游戏的不同机制、bug，才能知道能做什么、不能做什么，减少Bug的可能及做到更多的事情。</p>
+<p>命令除了单一命令的使用之外，命令的配搭是更为重要的。通过一组命令，我们可以做到一些更为强大的功能，如技能系统等等。<br>而我们这些喜欢研究、使用命令的玩家，我们自称为<strong>CBer</strong>。（这名字是因为历史遗留原因，虽然CB代表的命令方块已经逐渐被命令函数取代，然而我们还是懒得改简称。）</p>
+<p>本教程中我们只会讲解一些概念、思路以及技巧，实际的命令及NBT并不会被详细讲解。我们的目的是为了弥补目前教程概念的不足，以及提供一个概观让新人明白应该如何学习命令。</p>
+<p>本教程<strong>不会马上让你成为一个好的命令玩家</strong>，不过我们相信本教程能够让你明白怎么成为一个命令玩家，并且在这条路上走少一些弯路。</p>
+<p>重要：玩命令必须会英语，起码要会看一点点英语（其实不难）。不然你看着那堆NBT和命令会很头疼的，而且你也很难看wiki。</p>
+<p>命令格式里会使用<code><参数></code>代表必须输入的参数，<code>[参数]</code>代表可选参数。</p>
+<blockquote>
+<p>本教程是进阶，希望读者有点命令的知识，不懂的就先跳过然后之后看完一遍再看。（<strong>建议看两遍</strong>，第一遍大约看概念，第二遍仔细看，因为一开始的章节也和后面的概念有联系，先知道相关概念对理解十分重要）</p>
+<p>本文目标版本为<strong>1.12原版</strong>，版本不为1.12的朋友请勿询问为何不能使用...</p>
+<p>如果阅读的时候出现了啥404，或许是gitbook bug了，请手动在url那里删到剩下<code>http://mc-command.oschina.io/command-tutorial/output/</code>，然后再点击指定章节。如果还是bug了，那就告诉我们吧。</p>
+<p>如果有任何疑问或建议，欢迎来到我们的群讨论。<br>CBL命令技术交流群: 334519425<br>CBL新手群（适合新手发问）: 198491714</p>
+</blockquote>
+<h1 id="鸣谢">鸣谢</h1>
+<ul>
+<li>SYL_qiuyifeng，2.1章里主要内容来自他的JSON圣典。</li>
+<li>玄素，2.1.1章里有关translate的特殊用法是来自她的帖子的，提供了Advancement的例子，以及帮忙检查错误。</li>
+<li>Chyx，做了一点微小的工作</li>
+<li>Kakagou，记分板部分主要由他编写，以及帮忙修正了很多错误。</li>
+<li>719，资源包部分由他编写。</li>
+<li>空白，他提供了皇冠系统的例子。</li>
+<li>BK，他提供了熔炉系统的例子。</li>
+<li>秋一，他提供了技能系统的例子。</li>
+<li>Ray，我们的灵魂画师。</li>
+<li>白天，卖萌。</li>
+</ul>
+<p>ヽ(∀ﾟ )人(ﾟ∀ﾟ)人( ﾟ∀)人(∀ﾟ )人(ﾟ∀ﾟ)人( ﾟ∀)ﾉ</p>
+<p>并且感谢一直支持我这个计划的朋友以及CBL的成员！</p>
+<blockquote>
+<p>我都忘了我是多久前立下的flag，要做一个大教程了。现在终于弄了个像样的阉割版了。<br>大部分内容由一群从未做过地图的辣鸡编写。</p>
+</blockquote>
+<p>部分内容引用自Minecraft 中文及英文wiki:<br><a href="https://minecraft-zh.gamepedia.com/" target="_blank">https://minecraft-zh.gamepedia.com/</a><br><a href="https://minecraft.gamepedia.com/" target="_blank">https://minecraft.gamepedia.com/</a></p>
+<p>本文件采用知识共享 署名-非商业性使用-相同方式分享 4.0 协议（CC BY-NC-SA 4.0）授权<br><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh</a></p>
+
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

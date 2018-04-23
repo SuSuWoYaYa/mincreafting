@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>5.4 循环</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="循环">循环</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+   
+<p>如果读者曾经学过编程，相信也知道循环对程序是多么重要的了。<br>通过循环，我们可以为每个实体执行动作，或是执行一些动作到某个条件不成立等等。</p>
+<p>这里说的循环是1gt内的循环。我们会使用命令函数。</p>
+<h2 id="foreach——对每个实体循环">Foreach——对每个实体循环</h2>
+<p>对于单一命令，我们可以很简单的使用<code>execute</code>命令。因为execute就是让每个实体执行的，而执行顺序是根据选择器选择玩家的顺序。</p>
+<p>不过如果我们需要执行多条命令呢？我们可以使用命令函数和<code>execute</code>命令。</p>
+<h3 id="例子">例子</h3>
+<p>把每个marker（id分数都不同）传送到id分数相同的玩家身上。</p>
+<p>首先我们先写一下每个marker应该执行的命令</p>
+<pre><code># tp:match
+
+# 首先检查分数
+scoreboard players operation @a id -= @s id
+# tp过去0分的玩家那里
+# 使用@p是因为你根本不可能tp到一个死人那里...所以就没差了
+tp @s @p[score_id_min=0,score_id=0]
+# 重置分数
+scoreboard players operation @a id += @s id
+</code></pre><p>然后我们可以直接execute所有marker执行这条命令</p>
+<pre><code>execute @e[name=marker] ~ ~ ~ function tp:match
+</code></pre><p>就是这样，超级简单的说，不过基本上不用function就无法做到了。</p>
+<h2 id="while——当条件成立就一直循环">While——当条件成立就一直循环</h2>
+<p>有时候我们需要循环到某个条件成立/不成立，这时候我们就需要while了。</p>
+<p>while简单来说就是当某个条件成立，就一直循环某些命令，直至条件不成立。<br>我们在命令函数里会使用尾递归的方式，类似函数编程。</p>
+<h3 id="例子">例子</h3>
+<p>生成n个marker。我们把条件设置为</p>
+<blockquote>
+<p>当count &gt;= 1的时候就不停生成marker，每次count -1，直至count &lt; 1 (count = 0)</p>
+</blockquote>
+<pre><code># util:summon_while
+
+scoreboard players remove @s count 1
+summon armor_stand ~ ~ ~ {CustomName:marker}
+function util:summon_while if @s[score_count_min=1]
+</code></pre><p>比如说我们要生成两个marker，我们会执行：</p>
+<pre><code>scoreboard players set @s count 2
+function util:summon_while
+</code></pre><p>第一次调用那命令函数的时候，count会-1，变为1。<br>由于count &gt;= 1，因此会第二次调用那命令函数</p>
+<p>第二次调用的时候，count会-1，变为0。<br>由于count &lt; 1，因此不会再调用自己，循环停止。</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

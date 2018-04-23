@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.1.6 杂项</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+   <h1 id="杂项">杂项</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+<p>本部分将收纳应用方面的补充说明，他们可能是难以归纳进以上架构或者是平日甚少使用，所以收纳于此部分</p>
+<h2 id="unicode-万国码">unicode-万国码</h2>
+<p>JSON支援显示Unicode，格式为：<br><code>\u####</code></p>
+<p><code>####</code>就是4个位的Unicode代码，具体请参考Unicode代码的网页<a href="http://www.unicode.org/charts/" target="_blank"> http://www.unicode.org/charts/</a><br>不过MC字库并不保证所有的Unicode都能正常显示</p>
+<p>使用例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;☢&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons38.png" alt="38"></p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;☢⚛&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons39.png" alt="39"></p>
+<h2 id="转义">转义</h2>
+<p>这里是接着首章的例子。</p>
+<p>比如需要输出<code>&quot;Hello World&quot;</code>，我使用了以下命令：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;&quot;Hello World&quot;&quot;}
+</code></pre><p>但由于配对的问题，标识<code>值</code>部分的引号和内容所需的引号配对了，系统无法正确识别命令，导致无法执行<br>JSON规定的转义方式为，将<code>&quot;</code>转为<code>\&quot;</code>,将<code>\</code>转为<code>\\</code><br>正确的命令为：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;\&quot;Hello World\&quot;&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons49.png" alt="49"></p>
+<p>这样我们便能告知系统，<code>&quot;Hello World&quot;</code>的引号和包围<code>值</code>的引号如何正确配对</p>
+<hr>
+<p>然后是需要更多转义的例子<br>例如我们需要修改以下命令：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;/tellraw @a {\&quot;text\&quot;:\&quot;Hello World\&quot;}&quot;}}
+</code></pre><p>这是一个包含了CE的<code>/tellraw</code>，点击会再次输出<code>Hello World</code><br>如果我们需要修改成输出<code>&quot;Hello World&quot;</code>，我们便需要在已经转义一次的引号内再加入一对引号<br>按照正确的转义方式，命令将修改为：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;clickEvent&quot;:{&quot;action&quot;:&quot;run_command&quot;,&quot;value&quot;:&quot;/tellraw @a {\&quot;text\&quot;:\&quot;\\\&quot;Hello World\\\&quot;\&quot;}&quot;}}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsonsN1.png" alt="N1"></p>
+<p>需要注意，因为第二次转义，<code>\</code>也需要被转义，所以正确的写法为<code>\\\&quot;</code>而非<code>\\&quot;</code>，三次转义为<code>\\\\\\\&quot;</code>，如此类推</p>
+<hr>
+<p>最后需要提醒的一点是，并非一见到引号内的引号就需要额外转义多一次<br>而是需要小心分辨他们是否处于同一层次<br>例如我要输出<code>&quot;&quot;Hello World&quot;&quot;</code><br>使用：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;\&quot;\\\&quot;Hello World\\\&quot;\&quot;&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsonsN3.png" alt="N3"></p>
+<p>将会造成错误的输出</p>
+<p>正确的写法应为：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;\&quot;\&quot;Hello World\&quot;\&quot;&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsonsN2.png" alt="N2"></p>
+<h2 id="与资源包的配合">与资源包的配合</h2>
+<p>有些地图把部分不常用的文字改为图片（没错，Minecraft里的文字是图片来的），然后用JSON来做到在聊天栏打印合成配方的特技。<br>当然，这需要牺牲，就是玩家如果输入那些字符就会变为物品。不过只要用生僻字的话一般还是没有问题的。</p>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.1.2 JSON样式</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+    <h1 id="样式代码">样式代码</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+
+<p>样式代码即为帮文字添加样式的代码。<br>例如加粗，斜体，颜色等等。<br>这些都是文本对象里的属性。</p>
+<p>同时，样式代码不像<code>text</code>/<code>selector</code>/<code>score</code>并不能重复。<br>每个对象都可以使用多个样式代码，以达成多种效果叠加。</p>
+<h2 id="color-颜色">color-颜色</h2>
+<p>color代码，就是帮文字添加颜色的代码。<br>基本格式为：</p>
+<pre><code>&quot;color&quot;:&quot;&lt;颜色代码&gt;&quot;
+</code></pre><p>实际使用时，添加在文本类型后方，使用<code>,</code>分隔即可。<br>所有的样式代码都是如此使用的，可以添加多于一个样式代码。</p>
+<p>例如：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;color&quot;:&quot;dark_blue&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsonsN4.png" alt="N4"></p>
+<blockquote>
+<p>颜色表格<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsonscolor.png" alt=""></p>
+</blockquote>
+<h2 id="bold-加粗">bold-加粗</h2>
+<p>bold，加粗文字。<br>基本格式：</p>
+<pre><code>&quot;bold&quot;:true
+</code></pre><p>如果是后方的数值不为<code>true</code>而是<code>false</code>的话，文字就不会加粗。<br>将样式代码设置为false的用途主要体现在 <strong>extra-分项</strong>/<strong>JSON array</strong> 中，后续将有说明。</p>
+<p>使用例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;bold&quot;:true}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons11.png" alt="11"></p>
+<p>如果是想搭配其他样式代码，如颜色使用的话：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;bold&quot;:true,&quot;color&quot;:&quot;dark_red&quot;}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons12.png" alt="12"></p>
+<p>请注意，样式代码的先后顺序并无影响。<br>其他样式代码同理，不再作示范。</p>
+<h2 id="italic-斜体">italic-斜体</h2>
+<p>italic，斜体，与bold的使用方式类近<br>基本格式：</p>
+<pre><code>&quot;italic&quot;:true
+</code></pre><p>使用例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;italic&quot;:true}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons13.png" alt="13"></p>
+<h2 id="underlined-下划线">underlined-下划线</h2>
+<p>underlined，下划线，与bold的使用方式类近<br>基本格式：</p>
+<pre><code>&quot;underlined&quot;:true
+</code></pre><p>使用例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;underlined&quot;:true}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons14.png" alt="14"></p>
+<h2 id="strikethrough-删除线">strikethrough-删除线</h2>
+<p>strikethrough，删除线，与bold的使用方式类近<br>基本格式：</p>
+<pre><code>&quot;strikethrough&quot;:true
+</code></pre><p>使用例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;strikethrough&quot;:true}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons15.png" alt="15"></p>
+<h2 id="obfuscated-混淆文字">obfuscated-混淆文字</h2>
+<p>obfuscated，混淆文字</p>
+<p>这个是一个特别的样式代码<br>生效条件是文本内容<strong>必须为英文</strong><br>效果为不断跳动变换的乱码文字</p>
+<p>基本格式：</p>
+<pre><code>&quot;obfuscated&quot;:true
+</code></pre><p>使用例子：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;Hello World&quot;,&quot;obfuscated&quot;:true}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons16.gif" alt="16"></p>
+<p>如果不是英文的话不会起效，例如：</p>
+<pre><code>tellraw @a {&quot;text&quot;:&quot;世界你好&quot;,&quot;obfuscated&quot;:true}
+</code></pre><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/jsons17.png" alt="17"></p>
+<hr>
+<p>现在我们懂得为JSON文本加入不同的样式了，那么还有没有别的可以玩玩呢？<br>JSON文本除了能看以外，还能与玩家互动，这也是JSON文本一个非常重要的特点。<br>接下来的章节我们将会介绍点击及悬浮事件，让JSON文本变得更生动有趣！</p>
+
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

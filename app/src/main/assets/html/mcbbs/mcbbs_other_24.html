@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从MC开始的java入门 p2.setting!</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+<h1 >从MC开始的java入门 p2.setting!</h1>
+            <!-- End Title -->
+        
+<div >
+   <p class="red">本文章转载自网易论坛<br />作者-Namefind</p>
+	
+<p>
+<img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_Namefind_mc.png" /> 
+</p><p>
+p2来啦~把配置分了两个p，因为1p的话实在太长了...
+</p><p>不知道有人跟着做没有23333
+</p><p><b>本章目标：</b>
+</p><p>配置好环境变量，部署好文件。
+</p><p>{:滑稽S:}
+</p><p>（看到这个表情有没有想到上个教程最后被我坑了233）</p> 
+<h2>环境变量与配置</h2><p>
+①打开我的电脑->控制面板->高级系统设置
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_2.png" /> 
+</p><p>②系统属性->高级->环境变量设置
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_3.png" /> 
+</p><p>③可以看到新建变量、编辑变量、删除变量的选项
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_4.png" /> 
+</p><p>
+
+</p><p>新建系统变量，
+</p><p>
+</p><p>变量名<code>JAVA_HOME</code>，
+</p><p>变量值为安装的jdk路径。
+</p><p>例：<code>C:\Program Files (x86)\Java\jdk1.8.0_91</code>
+</p><p>
+</p><p>在变量<code>Path</code>增加一句<code>;%JAVA_HOME%\bin; </code>
+</p><p>注意前面和后面是英文分号
+</p><p>
+</p><p>新建系统变量，
+</p><p>变量名<code>CLASSPATH</code>，
+</p><p>变量值为已安装下<code>jdk\lib\tools.jar</code>，和已安装jdk下的<code>\lib\dt.jar</code>。
+</p><p>你可以填写jdk的绝对路径，
+</p><p>例：<code>D:\JDK\lib\dt.jar</code>，
+</p><p>也可以填写<code>JAVA_HOME</code>，例：<code>%JAVA_HOME%\lib\dt.jar</code>。  
+   </p><p>  </p><p><font color="DarkRed">
+*记得用分号;将新的变量值和旧的变量值隔开。
+    </p><p>*感谢16L 疑问的化名 补充：Win10尽量的Path变量尽量直接指向路径，否则视win10版本可能会产生bug
+</font></p>
+
+<h2>eclipse工作环境配置</h2><p>
+ 
+<font color="DarkRed">
+打开一次eclipse</font>，设置工作环境位置(workspace)。
+</p><p><font color="DarkRed">解压mdk成文件夹</font>，放入Eclipse的<font color="DarkRed">workspace</font>下。（建议小伙伴改成方便输入的文件名）
+</p><p>还记得mdk里面都有什么吗？
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_5.png" /> 
+</p><p><b>build</b> 里存放我们构建好的mod。
+</p><p><b>src</b> 里存放我们的源代码。
+</p><p><b>gradlew.bat</b> <font color="DarkRed"> 用它来构建我们的mod！</font>
+</p>
+<h2>CMD设置工作环境：</h2><p>
+</p><p>CMD是什么？CMD就是这个黑黑的东西。
+</p><p>你可以通过<font color="DarkRed">开始->运行->输入cmd</font>找到它
+</p>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_6.png" /> 
+</p><p>打开后它是这个样子：
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_7.png" /> 
+<br />黑不溜秋的就像N年前的电脑一样...
+</p><p>
+接下来我们要学两个简单的CMD命令，一个是切换盘符，一个是进入文件夹。
+</p><p><font color="DarkRed"> 【切换盘符】直接输入D:即可切换到D盘下</font>，其他盘同理。
+</p><p><font color="DarkRed"> 【进入文件夹】cd 文件夹名</font> 或 cd 文件夹名\文件夹名\文件夹名
+</p><p>譬如我的workspace在d盘下，那么输入d：后回车进入d盘，
+</p><p>然后输入 cd workspace 进入工作环境下，
+</p><p>再输入 cd mdk文件夹名进入mdk包中。
+</p><p> 使用命令<font color="DarkRed">gradlew.bat setupdecompworkspace</font> 设置工作环境。
+
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_8.png" /> 
+</p><p>出现<font color="DarkRed"><b>Build Successful</b></font>为构建成功。
+</p><p>
+</p><p><font color="DarkRed"> Q&A卡住了怎么办？</font>
+</p><p>·等待一会，可能在下载。
+</p><p>·打开任务栏管理器，后台结束java进程，然后重新输入命令。
+</p><p>
+</p><p><font color="DarkRed"> 失败怎么办？</font>
+</p><p>·确保有网。·确保电脑内存足够。·
+</p><p>
+</p><p>实在不行请贴出报错并说明详细经过，我会回答的。
+</p>
+
+
+<h2>导入mdk到你的Eclipse</h2><p>
+终于可以打开Eclipse啦开心！打开之后如图所示重点分为三个区域~
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_9.png" /> 
+</p><p><b>项目</b>：存放你的项目文件夹
+</p><p><b>码代码</b>：就是码代码用的
+</p><p><b>控制台</b>：程序出错会在这提示
+</p><p>接下来在项目区<font color="DarkRed">右键</font>，可以看到一个import（导入）
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_10.png" /> 
+</p><p>在这里我们选择已经构建好并放置在workspace的选项
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_11.png" /> 
+</p><p>在画红线处选择<font color="DarkRed">workspace</font>位置，
+</p><p>并在project处勾选项目，然后点击Finish
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_12.png" /> 
+</p><p>导入成功后你的项目就会是这个样子，
+</p><p><font color="DarkRed">Referenced Libraries</font>如果有以下引用，即为配置正确！
+</p><p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/mcbbs/mcbbs_other_24_13.png" /> 
+</p><p>恭喜你已配置完成！XD下一章重头戏来了233
+ 
+</p><p>
+
+</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>如何在我的世界中度过第一天</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+                                <h1 id="记分板分数运算">记分板分数运算</h1>
+
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+ 
+<h2 id="比较分数大小">比较分数大小</h2>
+<p>比较分数大小其实十分简单, 其核心逻辑就是:<br>a-=b（a = a - b）</p>
+<p>如果a&gt;0，原先的a &gt; b。<br>如果a&lt;0，原先的a &lt; b。<br>如果a=0，原先的a = b。</p>
+<p>因此用<code>scoreboard players operation</code>就可以了（需要注意的是，如果分数a不希望被改变，则可以调换ab的次序，相应逻辑需要被调换。如果两个都不希望被改变，则可以把一个分数赋值到另外一个分数，如c，然后在那边处理）</p>
+<h2 id="记分板取最高、最低分数">记分板取最高、最低分数</h2>
+<h3 id="取最高分数">取最高分数</h3>
+<p>分数储存在marker的scb里</p>
+<p>命令:</p>
+<pre><code>scoreboard players set marker scb -2147483648
+execute 所有要比较分数的实体 ~ ~ ~ scoreboard players operation marker scb &gt; @e[c=1] scb
+</code></pre><h3 id="取最低分数">取最低分数</h3>
+<p>分数储存在marker的scb里</p>
+<p>命令:</p>
+<pre><code>scoreboard players set marker scb 2147483647
+execute 所有要比较分数的实体 ~ ~ ~ scoreboard players operation marker scb &lt; @e[c=1] scb
+</code></pre><h3 id="原理解释">原理解释</h3>
+<p>execute部分，是用来确保每个分数都会获得比较<br>而operation部分，就是<strong>当前最高/低分数</strong>和<strong>实体分数</strong>比较，如果<strong>实体分数更高/低</strong>，替换掉当前marker的分数</p>
+<p>至于那初始分数, 求最大的时候就设置为记分板下限, 求最小的时候就设置为记分板上限，是为了保证会替换为第一个实体的分数。不替换的可能性只有一个: 等于当前marker的分数。</p>
+<p>伪代码</p>
+<pre><code>//最大分数初始化为最小分数，那么任何分数都会比这个大，然后替换掉这个分数
+最大分数 = -2147483648
+每一个分数:
+    如果当前分数 &gt; 最大分数:
+        最大分数 = 当前分数
+</code></pre><h2 id="随机分数">随机分数</h2>
+<blockquote>
+<p>以下的方法一般生成比较小的分数, 如果需要比较大的分数则可以运行多次, 获得几个随机分数然后进行移位运算(比如a, b都小于10, 这可以a*10+b这样得出小于100的随机数)。</p>
+</blockquote>
+<h3 id="spreadplayers命令"> spreadplayers 命令</h3>
+<p>基本上就是在一个n*n的平面里(方块, 上方不可以有方块遮挡)放置压力板和命令方块, 然后用<code>spreadplayers</code>命令把一个实体随机放在n*n的平面里的某个位置, 接触到压力板然后就让命令方块执行命令(<code>scoreboard players set</code>)</p>
+<p>这方法较少使用, 因为比较麻烦</p>
+<h3 id="r">@r</h3>
+<p>生成n个Marker(<code>type=area_effect_cloud,tag=rnd</code>), 有不同分数(可以设置多个同一个分数的来调整选中的几率), 选择其中一个的分数。</p>
+<pre><code>scoreboard players operation @e[name=储存分数的marker] scb = @r[type=marker的类型,tag=rnd] scb
+</code></pre><blockquote>
+<p>高级用法<br>你真的想生成上百个AEC来随机0-99么？<br>当然不用了！只需要10个AEC，随机两次，第一次*10 + 第二次的数值就行了。</p>
+</blockquote>
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

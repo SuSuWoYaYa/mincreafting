@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>5.6 标记实体(Marker)</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="标记实体marker">标记实体(Marker)</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>命令里有很多地方都需要使用实体，如<code>execute</code>命令，相对坐标（作为参照点），储存数据等等。<br>我们会使用标记实体(Marker)做到两个主要用途：标记坐标以及储存数据。当然，有时候是同时进行的。</p>
+<h2 id="标记坐标">标记坐标</h2>
+<p>命令系统里一般不会有太多绝对坐标，这是为了让系统更有弹性，能应付各种情况。<br>然而我们使用相对坐标的时候也需要有一个参照点啊！没法用别的参照点的话就和绝对坐标没分别了，甚至更为复杂。<br>因此，我们会使用marker标记某些坐标，然后<code>execute</code>那个marker执行某些命令，那样相对坐标就是相对于那个marker了。</p>
+<h3 id="例子">例子</h3>
+<p>我们以自定义“合成台”为例子，其实就是个投掷器(Dropper)。</p>
+<p>我们如果要检测“合成台”内的物品，我们需要得知该方块坐标，一般我们会在方块的位置放置marker，然后执行以下命令：</p>
+<pre><code>execute @e[type=area_effect_cloud,name=craft] ~ ~ ~ testforblock ~ ~ ~ minecraft:dropper * {Items:[]}
+</code></pre><p>其实就是让marker检测自己位置的方块。</p>
+<blockquote>
+<p>进阶<br>有时候我们会让marker移动来检测不同地方，达到类似<em>扫描</em>的效果。</p>
+</blockquote>
+<h2 id="储存数据">储存数据</h2>
+<p>虽然假名也能储存分数，然而假名不能批量操作（并且要通过筛选），也不能execute命令。故此有时候我们是会用marker来储存分数的。<br>比如之前循环的部分，我们很多时是使用一个marker来储存分数的，因为我们能够很方便的选择到那个marker和检测分数。</p>
+<h3 id="例子">例子</h3>
+<p>我们可以利用marker来实现Stack，不停放资料进去，最早放进去的最迟被人移除。（想知道更多有关stack的资料可以去百度/Google）</p>
+<p>我们会有个变量叫id，id越大越早放进去，1分就是当前最后一个marker。（这是为了方便）<br>所有marker都是area_effect_cloud，叫marker</p>
+<p>首先我们要写加入数据的</p>
+<pre><code># stack:push
+summon area_effect_cloud ~ ~ ~ {CustomName:marker}
+scoreboard players add @e[type=area_effect_cloud,name=marker] id 1
+
+# 慢慢为id=1的marker加入数据
+</code></pre><p>然后写移除数据的...</p>
+<pre><code># stack:pop
+kill @e[type=area_effect_cloud,name=marker,score_id=1,score_id_min=1]
+scoreboard players remove @e[type=area_effect_cloud,name=marker] id 1
+</code></pre><p>之后的 <b>6.3.8 登录系统</b> 例子 就是使用了这个概念。</p>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

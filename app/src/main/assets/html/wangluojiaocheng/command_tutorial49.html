@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6.3.3 下雨检测</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+
+ <h1 id="下雨检测">下雨检测</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>我们要怎么检测下雨呢？<br>我们可以使用 <strong>实体着火时淋雨会被扑灭</strong> 的特性。（这说明了玩命令也得会其他游戏机制。）</p>
+<p>我们会使用盔甲架(<code>armor_stand</code>)为检测用的实体。</p>
+<blockquote>
+<p>作者: hqqaazz</p>
+</blockquote>
+<h2 id="着火">着火</h2>
+<p>实体里有一个这样的标签：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/fire.png" alt=""></p>
+<p>这个<code>Fire</code>标签就是该实体是否在着火的状态，不是的话数值就是-20，否则就是一个正数。</p>
+<p>我们可以高频，首先检查是否着火，然后让它继续（或重新）着火。<br>当下雨的时候，火焰就会被扑灭，<code>Fire</code>就会等于-20，那么我们就得重新点火继续监测。<br>没有下雨的时候，<code>Fire</code>就会慢慢减少，所以我们得继续让实体持续下去。</p>
+<p>为了避免这盔甲架被烧坏，我们需要设置<code>Invulnerable:1b</code>，代表这个玩意不会死亡。</p>
+<pre><code># rain:_init
+
+summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,CustomName:&quot;FireDetector&quot;}
+</code></pre><pre><code># rain:main
+# 移除之前可能加上的tag
+scoreboard players tag @e[name=FireDetector] remove rain
+scoreboard players tag @e[name=FireDetector] add rain {Fire:-20s}
+entitydata @e[name=FireDetector] {Fire:15s}
+</code></pre><h3 id="debug">Debug</h3>
+<p>然后我就跑去游戏跑了一下，发现这玩意是<strong>不成功</strong>的。<br>为啥呢？我检查了一下NBT，发现原来扑灭了以后的<code>Fire</code>数值是-1，或许wiki说的是之前没着火的情况吧。（尽信书不如无书啊，wiki也会有错的）<br>所以我们需要改改</p>
+<pre><code># rain:main
+# 移除之前可能加上的tag
+scoreboard players tag @e[name=FireDetector] remove rain
+scoreboard players tag @e[name=FireDetector] add rain {Fire:-1s}
+entitydata @e[name=FireDetector] {Fire:15s}
+</code></pre><p>这就很棒棒了。</p>
+<h2 id="放置位置">放置位置</h2>
+<p>要淋雨嘛，位置自然得露天了，这一点我们可以通过<code>spreadplayers</code>命令来做到。</p>
+<pre><code># rain:new_place
+
+spreadplayers ~ ~ 0 10 false @e[name=FireDetector]
+</code></pre><p>然而什么情况下才需要重新找位置呢？就是当实体的位置上方有方块，也就是不露天了。<br>这个我们可以通过<code>stats</code> + <code>clone</code>来做到</p>
+<pre><code>scoreboard players set @e[name=FireDetector] stats 0
+stats entity @e[name=FireDetector] set AffectedBlocks @s stats
+execute @e[name=FireDetector] ~ ~ ~ clone ~ ~ ~ ~ 255 ~ ~ ~ ~ masked force
+
+function rain:new_place if @e[name=FireDetector,score_stats_min=1]
+</code></pre><p>那条<code>clone</code>的作用就是，把那FireDetector头顶到方块最高点（Y=255）的<strong>非空气方块强制复制到原位</strong>。其实对方块是没有任何影响的，然而当头顶有非空气方块的话，就会把它们复制到原位，故此能够统计头顶非空气方块的数量。</p>
+<p>然后我们需要改改<code>_init</code>和<code>main</code></p>
+<pre><code># rain:_init
+
+scoreboard objectives add stats dummy
+summon armor_stand ~ ~ ~ {Invisible:1b,Invulnerable:1b,CustomName:&quot;FireDetector&quot;}
+</code></pre><pre><code># rain:main
+# 检查位置是否正确，不是的话就重新放置
+scoreboard players set @e[name=FireDetector] stats 0
+stats entity @e[name=FireDetector] set AffectedBlocks @s stats
+execute @e[name=FireDetector] ~ ~ ~ clone ~ ~ ~ ~ 255 ~ ~ ~ ~ masked force
+function rain:new_place if @e[name=FireDetector,score_stats_min=1]
+
+# 移除之前可能加上的tag
+scoreboard players tag @e[name=FireDetector] remove rain
+scoreboard players tag @e[name=FireDetector] add rain {Fire:-1s}
+entitydata @e[name=FireDetector] {Fire:15s}
+</code></pre>
+  
+<p><br/></p></div>
+</body>
+
+</html>

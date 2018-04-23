@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.2.1 基本类型</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="基本类型">基本类型</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<h2 id="数字类型">数字类型</h2>
+<p>NBT把数字分为两大种，分别为整数及浮点数，然后再细分为不同储存大小、精度的种类。</p>
+<ul>
+<li>整数<ul>
+<li>Byte （数值范围为 -128 到 127 ）</li>
+<li>Short （数值范围为 -32,768 到 32,767 )</li>
+<li>Int （数值范围为 -2,147,483,648 到 2,147,483,647）</li>
+<li>Long (数值范围为 -9,223,372,036,854,775,808 到 9,223,372,036,854,775,807)</li>
+</ul>
+</li>
+<li>浮点数（类似科学计数法，能储存小数及很大的数值，然而精度有限，数值越小精度越高，反之亦然）<ul>
+<li>Float （精度较低）</li>
+<li>Double （精度较高）</li>
+</ul>
+</li>
+</ul>
+<h3 id="整数格式">整数格式</h3>
+<pre><code>&lt;数值&gt;&lt;后缀&gt;
+</code></pre><p>数值部分必须为纯数字或纯数字且前方有个<code>+</code>/<code>-</code>号。<br>纯数字不能以0开头，也就是不能有前导零(Leading zeros)，除非那个数字就是0。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>后缀（大小写皆可）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Byte</td>
+<td>b</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>s</td>
+</tr>
+<tr>
+<td>Int</td>
+<td>无后缀</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>l</td>
+</tr>
+</tbody>
+</table>
+<p>例子: (前方为+的就是正确，-的就是错误)</p>
+<pre><code>+ 123b
++ 123B
++ 123
++ -123b
++ 0
++ +0
++ -0
+
+- 0123b
+（前导零）
+- 00
+（前导零）
+- +-123
+（只能出现一个`+`/`-`号）
+- 1e3
+（不支持科学记数法）
+- 133b
+（超出范围）
+</code></pre><blockquote>
+<p>命令NBT更改NBT时能够做自动类型变换，只要数值没有超出范围就可以<br>然而建议全部都写上类型后缀，因为类型变换有时候可能会出问题，而且检测的时候也必须加上类型后缀</p>
+</blockquote>
+<h4 id="布尔值">布尔值</h4>
+<p>布尔值是整数格式的一个特殊情况，只储存1 (True)及 0 (False)值。<br>布尔值使用 Byte储存，比如是 <code>NoAI:1b</code>、<code>IsBaby:0b</code>这类。<br>由于其实根本就是byte，所以一般也不会特别介绍。</p>
+<h3 id="浮点数格式">浮点数格式</h3>
+<pre><code>&lt;数值&gt;&lt;后缀&gt;
+</code></pre><p>数值部分可以是</p>
+<ul>
+<li>整数，可以有前导零</li>
+<li>小数，可以有前导零</li>
+<li>科学记数法，如<code>1.23e123</code>或<code>1.23e-123</code>
+格式就是<code>&lt;数值1&gt;e&lt;数值2&gt;</code>，数值就是<code>&lt;数值1&gt;*10^&lt;数值2&gt;</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>后缀（大小写皆可）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Float</td>
+<td>f</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+<p>例子</p>
+<pre><code>123f
+123d
+1.23e2f
+1.23e2d
+-1.23e-2d
+1.23e-2d
+</code></pre><blockquote>
+<p>注意，浮点数的数值不太准确，一般到4个位就差不多了<br>别试图检查浮点数的NBT了...<strong>检查不了</strong> 的</p>
+</blockquote>
+<h2 id="字串类型">字串类型</h2>
+<p>字串(String)类型，顾名思义就是储存字串（文字）的类型。</p>
+<p>数据并不总全是数字，比如物品的名称。为了方便使用，NBT里有字符类型可以储存字符。</p>
+<p>格式：</p>
+<pre><code>字符
+或
+&quot;字符&quot;
+</code></pre><p>当字符出现了不属于<code>a-z A-Z 0-9 _ .</code>（空格、中文字符也是不属于这些字符）里的字符，就需要使用第二个格式，也就是以<code>&quot;&quot;</code>括住，表示这是一个完整的字串。<br>或者当该字符可能被当作是其他类型的时候（如纯数字或数字结尾为<code>bsldf</code>等字符（大小写皆可）），也需要使用第二个格式。</p>
+<p>如同Compound子标签的名字一样（Compound子标&##x7B7E;的名字其实就是一个字串类型），当字串里出现了<code>\</code>或<code>&quot;</code>字符时就需要将这两个字符进行转义，方式为在字符前方加上<code>\</code>号。转义方式可以参见之前JSON的介绍，大致一样。</p>
+<p>例子:</p>
+<table>
+<thead>
+<tr>
+<th>NBT表示</th>
+<th>实际显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>abcd</code></td>
+<td>abcd</td>
+</tr>
+<tr>
+<td><code>&quot;abcd&quot;</code></td>
+<td>abcd</td>
+</tr>
+<tr>
+<td><code>&quot;123&quot;</code></td>
+<td>123</td>
+</tr>
+<tr>
+<td><code>123</code></td>
+<td><strong>这个不是字符串</strong></td>
+</tr>
+<tr>
+<td><code>&quot;ab cd&quot;</code></td>
+<td>ab cd</td>
+</tr>
+<tr>
+<td><code>&quot;say \&quot;hi\&quot;&quot;</code></td>
+<td>say &quot;hi&quot;</td>
+</tr>
+<tr>
+<td><code>&quot;中文&quot;</code></td>
+<td>中文</td>
+</tr>
+<tr>
+<td><code>minecraft:stone</code></td>
+<td><strong>这会出错</strong></td>
+</tr>
+<tr>
+<td><code>&quot;minecraft:stone&quot;</code></td>
+<td>minecraft:stone</td>
+</tr>
+<tr>
+<td><code>&quot;{\&quot;abcd\&quot;:\&quot;{\\\&quot;abc\\\&quot;:\\\&quot;第一行\\\\\\\\n第二行\\\&quot;}\&quot;}&quot;</code></td>
+<td>{&quot;abcd&quot;:&quot;{\&quot;abc\&quot;:\&quot;第一行\\n\&quot;}&quot;}</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>\n</code>及<code></code>的<code>\</code>字符都需要转义，因为这两个格式是JSON的而不是NBT的。</p>
+<p>注意，部分NBT，如实体ID，在生成时容许使用<code>id:实体id</code>的方式写，比如是<code>id:armor_stand</code><br>然而，检测的时候是必须全写，也就是实体id前方得加上<code>minecraft:</code>，如<code>id:&quot;minecraft:armor_stand&quot;</code></p>
+</blockquote>
+<h2 id="数组类型">数组类型</h2>
+<p>数组(Array)类型能储存多个数字，那些数字就是该数组的类型。<br>和List类似，我们会叫特定类型的数组为 <strong>&lt;类型&gt;数组</strong>(array of &lt;类型&gt;)。<br>数组和List最大的分别在于，List是查看子标签里是否存在那些检测的标签，而数组则是检查<strong>整个数组</strong>看看是否符合指定要求，检查包括<strong>该标签所在位置、顺序</strong>等等。</p>
+<p>目前支持的类型包括：</p>
+<ul>
+<li>Byte</li>
+<li>Int</li>
+<li>Long</li>
+</ul>
+<p>格式:</p>
+<pre><code>[类型前缀;子标签]
+</code></pre><p>子标签和List类似，都是只有数值的标签，之间以<code>,</code>分隔</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>字符（必须大写）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Byte</td>
+<td><code>B</code></td>
+</tr>
+<tr>
+<td>Int</td>
+<td><code>I</code></td>
+</tr>
+<tr>
+<td>Long</td>
+<td><code>L</code></td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<pre><code>[I;]
+空的Int array
+
+[I;123,456]
+
+[B;12b,13b,14b]
+
+[L;123l,456l,789l]
+</code></pre><blockquote>
+<p>只有很少的地方需要用到数组...</p>
+</blockquote>
+
+
+  
+<p><br/></p></div>
+</body>
+
+</html>

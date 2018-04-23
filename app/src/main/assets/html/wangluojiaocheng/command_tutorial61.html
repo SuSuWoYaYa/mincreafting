@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>7.3 进度(Advancement)</title>
+
+  <link rel='stylesheet' id='publishable-mag-style-css' href='mycss1.css' type='text/css' media='all' />
+
+
+</head>
+
+<body>
+  
+
+            <!-- Start Title -->
+ 
+            <!-- End Title -->
+        
+<div >
+<h1 id="进度">进度</h1>
+<p class="red">本文章转载自 - 命令方块新人手册<br />
+https://commandtutorials.neocities.org/</p>
+ 
+
+<p>进度(Advancements)是Minecraft在1.12加入的新系统，替代了旧有的成就(Achievement)系统。<br>进度除了能引导玩家进行游戏外，有以下特别的地方：</p>
+<ul>
+<li>能够自定义。玩家能够自定义进度，只需要根据下文指出的架构编写JSON文件并将JSON文件放于<code>(地图)/data/advancements/(命名空间)/路径</code>里，这方式和命令函数类似。自定义的功能也非常强大，详见下方的介绍。</li>
+<li>更为精美的界面。进度有一个独立的界面，里面有不同的选项卡(Tab)，显示进度树(Tree)，每个进度都有图标、标题、描述，选项卡的背景也能自定义。</li>
+<li>完成奖励。能够定义完成进度时获得的奖励。</li>
+</ul>
+<p>进度虽然是以树(Tree)形式显示的，大部分进度也有其父进度，然而不需要先达成父进度也能达成之后的子进度。换句话说，玩家能以任何次序获得进度。<br>每个玩家的每个进度<strong>只能获得一次</strong>，除非被人使用命令删除了该玩家的该进度。<br>进度的判据(Criteria)不在乎完成时间，只要完成的判据符合要求(Requirements)，就可以完成该进度。</p>
+<p>如果把进度放在命名空间为<code>minecraft</code>，路径和原版相同名称的进度一样的地方，则会<strong>覆盖</strong>该原版进度。</p>
+<p>地图制作中，我们除了利用进度<strong>引导玩家游戏</strong>以外，我们也会使用进度当作检测方法，<strong>检测玩家行为</strong>。</p>
+ <blockquote>警告！
+本章节部分图片可能会令密集恐惧症患者及强迫症患者感到不适。<br />
+如果读者患有以上两种疾病，请关掉页面或者扔掉手机。</blockquote> 
+
+<h2 id="常见类型">常见类型</h2>
+<p>本章节的JSON格式将会以列表方式列出，类型会在描述里说明（compound除外）。</p>
+<p>温馨提示：别直接使用浮点数检查数值，如果那是一个浮点数，请使用其范围（浮点数）版本。</p>
+<h3 id="范围">范围</h3>
+<ul>
+<li><code>key name</code>（标签名称）<ul>
+<li><code>max</code>: 最大数值，类型为（类型）。</li>
+<li><code>min</code>: 最小数值，类型为（类型）。</li>
+</ul>
+</li>
+</ul>
+<p>（类型）代表了视乎引用时怎么写。比如<code>类型为 范围（整数）</code>，则类型为整数；<code>类型为 范围（浮点数）</code>，则类型为浮点数。</p>
+<h3 id="实体格式entity">实体格式(Entity)</h3>
+<ul>
+<li>Entity<ul>
+<li><code>distance</code><ul>
+<li><code>absolute</code>: 绝对距离，即 <code>距离^2 = x^2 + y^2 + z^2</code>，其中<code>^</code>代表次方，x y z 代表相应轴上的距离。类型为 范围（整数）。</li>
+<li><code>horizontal</code>: 平面距离，即 <code>距离^2 = x^2 + z^2</code>。类型为 范围（整数）。</li>
+<li><code>x</code>: x轴上的距离。类型为 范围（整数）。</li>
+<li><code>y</code>: y轴上的距离。类&#x#x578B;为 范围（整数）。</li>
+<li><code>z</code>: z轴上的距离。类型为 范围（整数）。</li>
+</ul>
+</li>
+<li><code>effects</code><ul>
+<li><code>&lt;minecraft:效果名称&gt;</code>，一个效果，以其效果名称为标签名称。（需要<code>minecraft:</code>前缀）<ul>
+<li><code>amplifier</code>: 效果倍率，整数int。（如果需要检测范围请使用下一个标签）</li>
+<li><code>amplifier</code>: 效果倍率。类型为 范围（整数）。</li>
+<li><code>duration</code>: 时间（秒数），整数int。</li>
+<li><code>duration</code>: 时间（秒数）。类型为 范围（整数）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>location</code>: 检测实体位置相关信息。类型为 位置。</li>
+<li><code>nbt</code>: 检测实体NBT，类型为字串。（NBT的格式就是命令里的检测格式，Base tag为 entity ，如<code>&quot;{CustomName:\&quot;test\&quot;}&quot;</code>）</li>
+<li><code>type</code>: 实体ID，需要<code>minecraft:</code>前缀，类型为字串。</li>
+</ul>
+</li>
+</ul>
+<h3 id="物品格式item">物品格式(Item)</h3>
+<ul>
+<li>Item<ul>
+<li><code>count</code>: 物品数量。整数int。</li>
+<li><code>count</code>: 物品数量。范围（整数）。</li>
+<li><code>data</code>: 物品数据值。整数int。</li>
+<li><code>durability</code>: 物品耐久度。整数int。</li>
+<li><code>durability</code>: 物品耐久度。范围（整数）。</li>
+<li><code>enchantments</code>: 附魔列表。子标签为compound。<ul>
+<li>（一个附魔）<ul>
+<li><code>enchantment</code>: 附魔id（需要加上<code>minecraft:</code>前缀）。字串。</li>
+<li><code>level</code>: 附魔等级。整数int。</li>
+<li><code>level</code>: 附魔等级。范围（整数）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>item</code>: 物品ID。（需要加上<code>minecraft:</code>前缀）。字串。</li>
+<li><code>nbt</code>: 物品NBT。Base tag为<code>tag</code>，如<code>&quot;{display:{Name:\&quot;distilled water\&quot;}&quot;}</code>。字串。</li>
+<li><code>potion</code>: 药水ID。参见<a href="https://minecraft.gamepedia.com/Potion#Item_data。字串。" target="_blank">https://minecraft.gamepedia.com/Potion#Item_data。字串。</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="位置格式location">位置格式(Location)</h3>
+<ul>
+<li>location<ul>
+<li><code>biome</code>: 实体在于的生态群系ID。类型为字串。</li>
+<li><code>dimension</code>: 实体在于的世界。类型为字串。<br>  只接受 <code>overworld</code>, <code>the_end</code> 及 <code>the_nether。</code></li>
+<li><code>feature</code>: 实体在于的结构。类型为字串。<br>  只接受<code>EndCity</code>, <code>Fortress</code>, <code>Mansion</code>, <code>Mineshaft</code>, <code>Monument</code>, <code>Stronghold</code>, <code>Temple</code> 及 <code>Village。</code></li>
+<li><code>position</code><ul>
+<li><code>x</code>: 实体的x坐标。类型为浮点数。</li>
+<li><code>x</code>: 实体的x坐标。类型为 范围（浮点数）。</li>
+<li><code>y</code>: 实体的y坐标。类型为浮点数。</li>
+<li><code>y</code>: 实体的y坐标。类型为 范围（浮点数）。</li>
+<li><code>z</code>: 实体的z坐标。类型为浮点数。</li>
+<li><code>z</code>: 实体的z坐标。类型为 范围（浮点数）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="伤害类型damage-type">伤害类型(Damage type)</h3>
+<ul>
+<li>damage type<ul>
+<li><code>bypasses_armor</code>: 伤害是否不能被阻挡。类型为布尔值(True/False)。<br>  伤害来源包括: 火焰，窒息(方块及世界边界)，实体挤压(范围内太多实体)，溺水，饥饿，掉落，撞墙(飞行时)，虚空(掉落虚空及/kill命令)，重新计算血量(比如超出了上限)，魔法伤害，凋零伤害。</li>
+<li><code>bypasses_invulnerability</code>: 伤害是否能伤害无敌的玩家(创造模式)。类型为布尔值。<br>  伤害来源只有虚空伤害(包括掉落虚空及<code>kill</code>命令)。</li>
+<li><code>bypasses_magic</code>: 伤害是否来自饥饿。类型为布尔值。</li>
+<li><code>direct_entity</code>: 直接伤害来源（实体，如 箭、火球等，不在乎是谁射出的）。类型为 实体。</li>
+<li><code>is_explosion</code>: 检查伤害是否来自爆炸。类型为布尔值。<br>  伤害来源包括: 爬行者，TNT，矿车TNT，地狱幽灵火球，床(在地狱睡时会爆炸)，凋灵，凋灵之首。</li>
+<li><code>is_fire</code>: 检查伤害是否来自火焰。类型为布尔值。
+  伤害来源包括: 站在火焰方块里，整个人着火，在熔岩里，在岩浆块上，恶魂火球，烈焰人火球。</li>
+<li><code>is_magic</code>: 检查伤害是否来自魔法。类型为布尔值。<br>  伤害来源包括: 闪电，瞬间伤害，中毒，守卫者的部分射线伤害(部分算作生物伤害)，唤魔者的尖牙攻击，无主的凋灵之首（unowned wither skulls, 通过<code>summon</code>命令生成的, 因为凋灵发射的凋灵之首算作生物伤害）</li>
+<li><code>is_projectile</code>: 检查伤害是否来自投射物。类型为布尔值。<br>  投射物包括: 烈焰人火球 ，末影龙火球，恶魂火球，羊驼的口水，箭(所有)，射出的火焰弹，丢出的蛋，丢出的雪球，凋灵之首。</li>
+<li><code>source_entity</code>: 伤害来源（实体）。类型为 实体。<br>  如果是投射物的伤害，则需要视乎该投射物有没有&quot;主人&quot;，也就是射出此投射物的实体。如果有，则算作该主人造成的伤害，否则则算作该投射物的伤害。
+  如果是中毒这类伤害，则不会被算作是实体造成的伤害(即使是由女巫扔出的药水)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="伤害damage">伤害(Damage)</h3>
+<ul>
+<li>damage<ul>
+<li><code>blocked</code>: 检查伤害有没有被成功阻挡。类型为布尔值。</li>
+<li><code>dealt</code>: 检查<strong>原始</strong>伤害数值（不计算伤害减免）。类型为浮点数。</li>
+<li><code>dealt</code>: 检查<strong>原始</strong>伤害数值（不计算伤害减免）。类型为范围（浮点数）。</li>
+<li><code>direct_entity</code>: 直接伤害来源（实体，如 箭、火球等，不在乎是谁射出的）。类型为 实体。</li>
+<li><code>source_entity</code>: 伤害来源（实体）。类型为 实体。<br>  如果是投射物的伤害，则需要视乎该投射物有没有&quot;主人&quot;，也就是射出此投射物的实体。如果有，则算作该主人造成的伤害，否则则算作该投射物的伤害。<br>  如果是中毒这类伤害，则不会被算作是实体造成的伤害(即使是由女巫扔出的药水)。</li>
+<li><code>taken</code>: 检查实际受到的伤害（计算伤害减免后）。类型为浮点数。</li>
+<li><code>taken</code>: 检查实际受到的伤害（计算伤害减免后）。类型为范围（浮点数）。</li>
+<li><code>type</code>: 检查伤害的类型。类型为 伤害类型。</li>
+</ul>
+</li>
+</ul>
+<h2 id="criteria及requirements">criteria及requirements</h2>
+<blockquote>
+<p>Advancement 里也使用criteria及trigger，翻译也和记分板变量里的一样，然而这些<strong>并不是</strong>记分板的元素。</p>
+</blockquote>
+<h3 id="criteria格式">criteria格式</h3>
+<p>criteria（判据）格式:</p>
+<ul>
+<li>（Advancement根标签）<ul>
+<li><code>criteria</code>: 一堆判据，类型为compound。<ul>
+<li><code>&lt;criteria name&gt;</code>: 一个判据。标签名称为自定义判据名称（命令里及requirements可能需要使用，建议使用有意义的名称），类型为compound。<ul>
+<li><code>trigger</code>: 判据的<strong>触发器</strong>，指定这判据会检查什么。类型为字串</li>
+<li><code>conditions</code>: 判据的<strong>详细条件</strong>。不同触发器会有不同条件，此处就不详细列出。类型为compound。<br>  不一定存在。比如<code>minecraft:impossible</code>这个trigger并没有conditions。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>触发器及其详细条件可以在 <a href="https://minecraft.gamepedia.com/Advancements#List_of_triggers" target="_blank">https://minecraft.gamepedia.com/Advancements#List_of_triggers</a> 找到。<br>Conditions里可能使用上述常见格式，如<code>Damage tags</code>代表伤害，<code>Tags common to all items</code>代表物品格式等。<br>阅读wiki的JSON架构和阅读NBT类似，标签左边都会有个图标表示标签类型，如果分不清则可以把鼠标悬浮在该图标上，这样会显示该标签类型。</p>
+</blockquote>
+<p>我们以以下两个触发器为例子：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/trigger1.png" alt=""><br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/trigger2.png" alt=""></p>
+<p>比方说第一个我们希望检查吃了一个名字为<code>毒苹果</code>的苹果。<br>我们会这样写（假设判据名称为<code>ate_poison_apple</code>）：</p>
+<pre><code>{
+    &quot;criteria&quot;: {
+        &quot;ate_poison_apple&quot;: {
+            &quot;trigger&quot;: &quot;minecraft:consume_item&quot;,
+            &quot;conditions&quot;: {
+                &quot;item&quot;: &quot;minecraft:apple&quot;,
+                &quot;nbt&quot;: &quot;{display:{Name:\&quot;毒苹果\&quot;}}&quot;
+            }
+        }
+    }
+}
+</code></pre><hr>
+<p>然后如果我们只想让命令能够给予这进度，我们会使用<code>minecraft:impossible</code>这触发器。</p>
+<pre><code>{
+    &quot;criteria&quot;: {
+        &quot;impossible&quot;: {
+            &quot;trigger&quot;: &quot;minecraft:impossible&quot;
+        }
+    }
+}
+</code></pre><h3 id="requirements">requirements</h3>
+<p>如果我们想做复杂一些的判断，比如说有多个选项，每个选项需要达成一堆条件，那么我们应该怎么做呢？<br>方法就是使用requirements。（不过如果是全部判据都需要达成的话就不需要写requirements）。</p>
+<ul>
+<li>（Advancement根标签）<ul>
+<li><code>requirements</code>: （<strong>所有</strong> 子列表都要符合要求才算完成）<ul>
+<li>（一个列表）。（<strong>任何</strong> 一个子标签符合就算整个列表符合要求）<ul>
+<li>一个判据名称，字串。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>其实requirements是一个 <strong>合取范式</strong>，也就是一堆or的and。<br>比如说</p>
+<pre><code>(a or b) and (c or d or e)
+</code></pre><p>这就是一个合取范式了。<br>写成requirements就是</p>
+<pre><code>{
+    &quot;requirements&quot;: [
+        [&quot;a&quot;, &quot;b&quot;],
+        [&quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+    ]
+}
+</code></pre><p>这样，我们只需要达成a或b其中一个判据，以及c或d或e其中一个判据，就能获得该进度。<br>如我们达成了a和c就能获得该进度。然而获得a和b就无法获得该进度。</p>
+<hr>
+<p>注意，我们写<code>a and (b or c)</code>这种式子的时候，a是得放进独立的一个列表里的，即使式子里并没有任何括号</p>
+<pre><code>{
+    &quot;requirements&quot;: [
+        [&quot;a&quot;],
+        [&quot;b&quot;, &quot;c&quot;]
+    ]
+}
+</code></pre><p>理论上所有逻辑式子都能写成合取范式，然而我们有两个主要限制：</p>
+<ul>
+<li>Advancements没有not</li>
+<li>写出来的合取范式多长就不知道了</li>
+</ul>
+<p>所以建议如果那逻辑比较复杂，发现很难写成合取范式甚至里面就有not的运算，那么就可以试试使用命令检查条件然后手动添加进度。</p>
+<h2 id="显示相关">显示相关</h2>
+<p>显示格式</p>
+<ul>
+<li>（advancement根标签）<ul>
+<li><code>display</code>（可选，不存在则该进度不会以任何方式显示）<br>  注意，如果填写了display，里面的标签除非有默认数值或特别指明可选，否则都必须填写。<ul>
+<li><code>icon</code>: 进度的图标，在弹出提示及进度界面里显示。（其实就是个物品贴图）<ul>
+<li><code>item</code>: 物品ID，需要有<code>minecraft:</code>前缀。字串。</li>
+<li><code>data</code>: 物品数据值。整数。</li>
+</ul>
+</li>
+<li><code>title</code>: 进度的标题。字串。（如果需要使用样式请使用下一个类型）</li>
+<li><code>title</code>: 进度的标题。<strong>Compound</strong>（<b> 2.1 JSON文本 </b>）。<br>  可以使用样式及点击事件。（点击事件只会在聊天栏公布玩家获得进度时点击生效）</li>
+<li><code>description</code>: 进度的描述。字串。（如果需要使用样式请使用下一个类型）</li>
+<li><code>description</code>: 进度的描述。<strong>Compound</strong>（<b> 2.1 JSON文本 </b>）。<br>  可以使用样式，但不能使用点击事件。</li>
+<li><code>frame</code>: 进度图标的外框，默认为<code>task</code>。外框将会在下文详细列出。</li>
+<li><code>background</code>: 指定此进度选项卡背景的路径。只对根进度有效（即无parent标签）。将会在下文讲解。字串。</li>
+<li><code>show_toast</code>: 是否在完成此进度后在屏幕右上方显示提示信息。默认为显示(True)。布尔值。</li>
+<li><code>announce_to_chat</code>: 是否在完成此进度后在聊天栏广播信息。默认为显示(True)。布尔值。</li>
+<li><code>hidden</code>: 是否在进度选项卡里隐藏此进度及之后的子进度（直至完成此进度才会被显示）。对根进度无效。默认为False。布尔值。</li>
+</ul>
+</li>
+<li><code>parent</code>: 指定进度的<em>父进度</em>名称（只对显示有作用）。字串。可选。</li>
+</ul>
+</li>
+</ul>
+<h3 id="进度提示信息">进度提示信息</h3>
+<p>获得进度时，如果<code>show_toast</code>为<code>true</code>，则会在窗口右上方显示一条信息，很快便会消失。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/popup.png" alt=""></p>
+<hr>
+<p>而如果<code>announce_to_chat</code>为<code>true</code>，则会在聊天栏显示信息。有颜色的部分为进度的标题，颜色因<code>frame</code>的不同而改变，把鼠标悬浮在进度标题上能显示进度描述，点击能触发<code>title</code>的<code>clickEvent</code>。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/chat.png" alt=""></p>
+<h3 id="进度界面">进度界面</h3>
+<p><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/tab.png" alt=""><br>这是进度的界面。最大的部分展示的是选择了的进度选项卡(Tab)。<br>每个根进度都会有其独立选项卡。<br>选项卡界面上方有一个个按钮，其图标就是该选项卡根进度的图标，悬浮会显示其标题，点击即能切换选项卡。选项卡名称为根进度的<code>title</code>。</p>
+<h4 id="背景">背景</h4>
+<p>选项卡的背景能够被根进度自定义，会使用指定路径的图片把背景<strong>重复填满</strong>整个背景。<br>路径为：<code>namespace:path</code>，如果无指定namespace则默认<code>minecraft</code>。<br>Namespace，即命名空间，为资源包<code>assets</code>下的文件夹名称，一般情况下为<code>minecraft</code>。不过其实是可以加入别的命名空间的。<br>而path即资源包<code>assets/(namespace)/</code>后的路径，包括文件扩展名（如<code>.png</code>等）。<br>如果我们不指定命名空间，或使用<code>minecraft</code>命名空间，我们可以使用游戏原有资源作为背景图片，如物品材质。</p>
+<p>如background为<code>test:1.png</code>，而地图文件里有一个<code>resources.zip</code>的内容为</p>
+<pre><code>+ resources.zip
+    + pack.mcmeta
+    + assets
+        + test
+            + 1.png
+</code></pre><p>假设<code>1.png</code>为黑人问号，我们会有以下结果：<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/toxic-background.png" alt=""></p>
+<p>图片在进度背景里会被<strong>缩小</strong>并且<strong>重复填满</strong>整个背景，所以请小心使用，建议使用一些简单点的背景。</p>
+<h4 id="图标外框">图标外框</h4>
+<table>
+<thead>
+<tr>
+<th>图标</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/frame-normal.png" alt=""></td>
+<td>task</td>
+</tr>
+<tr>
+<td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/frame-goal.png" alt=""></td>
+<td>goal</td>
+</tr>
+<tr>
+<td><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/frame-challenge.png" alt=""></td>
+<td>challenge</td>
+</tr>
+</tbody>
+</table>
+<p>未完成则灰色，完成则咖啡色</p>
+<h4 id="父进度">父进度</h4>
+<p>进度可以指定父进度。<br>父进度在进度选项卡里会放在子进度的左边，并以线连着子进度。<br>多个子进度可以有同一父进度，换句话说就是一个父进度可以有很多个子进度。<br>不过一个子进度不可以有很多个父进度。</p>
+<p>当我们说一个进度<strong>前</strong>的进&#x#x5EA6;，我们是说该进度的<strong>父进度</strong>。当我们说<strong>前的所有进度</strong>，我们是说该进度的父进度、父进度的父进度，如此类推，但<strong>不包括前方进度的其他子进度</strong>。简单点来说就是前方一条直线直至根进度（没有父进度的进度）。</p>
+<p>从钻石剑图示的进度开始，其<strong>所有前方</strong>的进度。可见是不会有分支的。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/toxic-before.png" alt=""></p>
+<p>而我们说之后的所有进度，就代表从此进度出发，此进度的子进度、子进度的子进度，如此类推。当中是<strong>包括分支</strong>的。而之后第n层进度就代表我们看多少次子进度。比如说之后的两层进度，就包括此进度的子进度，以及子进度的子进度。</p>
+<p>从铁锭图示开始，之后的所有进度。假如是之后的两层进度，则只包括6个进度（到了图示为盾牌、黑曜石及钻石的进度即停止）。<br><img src="https://raw.githubusercontent.com/wiki/hesuxiang/mincreafting/wangluojiaocheng/images/toxic-from.png" alt=""></p>
+<p>当一个父进度被完成时，进度面板中就会显示该父进度前的所有进度（除了<code>hidden</code>的）及后两层的进度。</p>
+<p>如果父进度设置了<code>hidden:true</code>，自己以及之后所有子进度都会从界面中隐藏，直至父进度被完成，或子进度被完成（会显示前方没<code>hidden</code>的进度以及出现一条线跨越父进度的位置，只有父进度仍然会被隐藏）。假如一个父进度没有<code>display</code>标签，表现则和<code>hidden</code>类似，只是父进度永远也不可能被显示。</p>
+<p>没有父进度的进度就是根进度。会自己拥有一个选项卡。<br>选项卡只有当玩家拥有根进度的时候才会被显示，不论是否<code>hidden</code>。<br>如果根进度没有<code>display</code>标签，则整个选项卡都不会被显示，换句话说就是我们不能看到其子进度在进度的面板出现。</p>
+<h2 id="rewards">rewards</h2>
+<p>进度奖励格式</p>
+<ul>
+<li>（进度根标签）<ul>
+<li><code>rewards</code><ul>
+<li><code>recipes</code>: 一列表的合成配方名称。类型为字串列表。<br>  即为玩家解锁指定列表的<strong>所有</strong>合成配方。</li>
+<li><code>loot</code>: 一列表的loot table名称。类型为字串列表。<br>  即执行loot table，抽取奖励。</li>
+<li><code>experience</code>: 给予玩家一定数量（固定不是随机）的经验。类型为整数。</li>
+<li><code>function</code>: 命令函数名称。字串。<br>  即以获得进度的玩家为执行者，在当前坐标执行命令函数。<br>  除了可以用作给予奖励，还可以当作事件使用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="命令">命令</h2>
+<pre><code>advancement &lt;grant|revoke&gt; &lt;玩家&gt; &lt;only|until|from|through&gt; &lt;进度名称&gt; [判据]
+</code></pre><ul>
+<li><code>&lt;grant|revoke&gt;</code><ul>
+<li><code>grant</code>就是给予进度/判据。</li>
+<li><code>revoke</code>就是移除进度/判据。</li>
+</ul>
+</li>
+<li><code>&lt;玩家&gt;</code>: 需要给予/移除进度/判据的玩家。</li>
+<li><code>&lt;only|until|from|through&gt;</code><ul>
+<li><code>only</code>: 只给予相应的进度/判据。</li>
+<li><code>until</code>: 给予指定进度及之前的所有进度，也就是所有左边连着此进度的进度。<br>  顺序为: 进度的父进度，进度的父进度的父进度...根进度，此进度。</li>
+<li><code>from</code>: 给予指定进度及之后的所有进度。<br>  顺序为: 指定进度，进度的子进度，进度的子进度的子进度...<br>  然而由于一个进度可以有多个子进度，而子进度间的顺序在不同作业系统所有不同，所以顺序不能被确定。</li>
+<li><code>through</code>: 给予制定进度之前及之后的所有进度。类似分别执行<code>until</code>及<code>from</code>。次序为先执行<code>until</code>，然后执行<code>from</code>。</li>
+</ul>
+</li>
+<li><code>&lt;进度名称&gt;</code>: 指定的进度（用途看上方参数）。<br>  和命令函数的命名方法类似，<code>(命名空间):(路径)</code>，路径不需要写上文件扩展名。如<code>minecraft:adventure/adventuring_time</code>。</li>
+<li><code>[判据]</code>: 可选。如果指定则只给予/移除指定进度的指定判据。否则则直接给予/移除指定进度。</li>
+</ul>
+<hr>
+<pre><code>advancement &lt;grant|revoke&gt; &lt;玩家&gt; everything
+</code></pre><p>这个就不用多说了，给予或移除指定玩家的所有进度，不论命名空间。</p>
+<hr>
+<pre><code>advancement test &lt;玩家&gt; &lt;进度名称&gt; [判据]
+</code></pre><p>检测指定玩家有没有获得指定进度。如果指定了判据则只检测玩家有没有达成指定判据（如果获得了进度则肯定达成了指定判据）。<br>当玩家获得了指定进度/判据时成功，没有则失败。</p>
+ 
+
+  
+<p><br/></p></div>
+</body>
+
+</html>
