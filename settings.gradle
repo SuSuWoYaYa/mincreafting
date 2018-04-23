@@ -1,1 +1,1 @@
-include ':app', ':chineseuitls'
+include ':app'
