@@ -24,17 +24,17 @@ import com.luhuiguo.chinese.ChineseUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityTipByGoogle extends AppCompatActivity  {
+public class ActivityTipByGoogle extends AppCompatActivity {
 
     private static String TAG = "ActivityTipByGoogle";
 
 
     private String language;
-    private boolean is_simplified_chinese  = true;
+    private boolean is_simplified_chinese = true;
 
     private static String SKU_099 = "buy_099";
     private static final int RC_REQUEST = 1207;
-    private  String buy99payload = "buy_pay_load";
+    private String buy99payload = "buy_pay_load";
 
 
     // The helper object
@@ -57,8 +57,8 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
         language = LanguageUtil.getLocaleLanguage(ActivityTipByGoogle.this);
         if (language.equals(LanguageUtil.SIMPLIFIED_CHINESE)) {
             is_simplified_chinese = true;
-        }else {
-            is_simplified_chinese =false;
+        } else {
+            is_simplified_chinese = false;
         }
 
         initActionBar();
@@ -122,20 +122,20 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
             }
         });
 
-        if(SettingUtils.ChangeTheme.getVipState(ActivityTipByGoogle.this)){
+        if (SettingUtils.ChangeTheme.getVipState(ActivityTipByGoogle.this)) {
             updateUi();
-        }else {
-            Button btnBuy = findViewById(R.id.btn_buy);
-            btnBuy.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mHelper.launchPurchaseFlow(ActivityTipByGoogle.this, SKU_099, RC_REQUEST, mPurchaseFinishedListener, buy99payload + 1207 + "_" + "n" + "o" + "w");
-                }
-            });
         }
 
-    }
+        Button btnBuy = findViewById(R.id.btn_buy);
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mHelper.launchPurchaseFlow(ActivityTipByGoogle.this, SKU_099, RC_REQUEST, mPurchaseFinishedListener, buy99payload + 1207 + "_" + "n" + "o" + "w");
+            }
+        });
 
+
+    }
 
 
     IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
@@ -156,12 +156,12 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
             Log.e(TAG, "Query inventory was successful.");
 
             // Do we have the premium upgrade?
-            if(!inventory.hasPurchase(SKU_099)){
+            if (!inventory.hasPurchase(SKU_099)) {
                 Log.e(TAG, "Query inventory was don't hasPurchase.");
                 return;
             }
             Purchase premiumPurchase = inventory.getPurchase(SKU_099);
-            if (premiumPurchase != null && verifyDeveloperPayload(premiumPurchase)){
+            if (premiumPurchase != null && verifyDeveloperPayload(premiumPurchase)) {
                 Log.e(TAG, "Query inventory was verifyDeveloperPayload.");
 //                Log.d(TAG, "We hasPurchase. Consuming it.");
 //                mHelper.consumeAsync(inventory.getPurchase(SKU_099), mConsumeFinishedListener);
@@ -200,11 +200,11 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
                 // bought 1/4 tank of gas. So consume it.
                 Log.e(TAG, "Purchase is gas. Starting gas consumption.");
 //                mHelper.consumeAsync(purchase, mConsumeFinishedListener);
-            }else {
+            } else {
                 return;
             }
 
-            if(verifyDeveloperPayload(purchase)){
+            if (verifyDeveloperPayload(purchase)) {
                 Log.e(TAG, "OnIabPurchaseFinishedListener was verifyDeveloperPayload.");
 
 //                mHelper.consumeAsync(purchase, mConsumeFinishedListener);
@@ -253,8 +253,7 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
 //                mTank = mTank == TANK_MAX ? TANK_MAX : mTank + 1;
 //                saveData();
 //                alert("You filled 1/4 tank. Your tank is now " + String.valueOf(mTank) + "/4 full!");
-            }
-            else {
+            } else {
                 Log.d(TAG, "發生錯誤: " + result);
             }
 
@@ -278,12 +277,12 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
     boolean verifyDeveloperPayload(Purchase p) {
         String payload = p.getDeveloperPayload();
 
-        if(payload.endsWith("load")){
+        if (payload.endsWith("load")) {
             Log.e(TAG, "payload IS " + payload);
             return false;
         }
 
-        if (!payload.equals(buy99payload+1207+"_"+"n"+"o"+"w")) {
+        if (!payload.equals(buy99payload + 1207 + "_" + "n" + "o" + "w")) {
             Log.e(TAG, "payload IS " + payload);
             return false;
         }
@@ -292,7 +291,7 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
             // bought 1/4 tank of gas. So consume it.
             Log.e(TAG, "Purchase is gas. Starting gas consumption.");
 //                mHelper.consumeAsync(purchase, mConsumeFinishedListener);
-        }else {
+        } else {
             return false;
         }
 
@@ -321,8 +320,7 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
 
         Log.e(TAG, "PACKAGENAME IS " + getPackageName());
 
-        if(!getPackageName().equals("com.cuisanzhang.mincreafting"))
-        {
+        if (!getPackageName().equals("com.cuisanzhang.mincreafting")) {
             Log.e(TAG, "getPackageName not equals.");
             return false;
         }
@@ -348,13 +346,12 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
             // perform any handling of activity results not related to in-app
             // billing...
             super.onActivityResult(requestCode, resultCode, data);
-        }
-        else {
+        } else {
             Log.e(TAG, "onActivityResult handled by IABUtil.");
         }
     }
 
-    void  updateUi(){
+    void updateUi() {
         TextView tipTextView = findViewById(R.id.textView2);
         tipTextView.setText("你已經升級為PRO了\n所有廣告都已去除\n\ncuisanzhang@163.com");
         Button btnbuy = findViewById(R.id.btn_buy);
@@ -379,7 +376,7 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
 
     public void initActionBar() {
         TextView title = findViewById(R.id.title);
-        if(!is_simplified_chinese){
+        if (!is_simplified_chinese) {
             title.setText(ChineseUtils.toTraditional("Minecraft合成表大全"));
         }
 
