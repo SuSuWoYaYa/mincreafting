@@ -85,7 +85,8 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
 
                 if (!result.isSuccess()) {
                     // Oh noes, there was a problem.
-                    complain("Problem setting up in-app billing: " + result);
+                    complain("Setup 發生錯誤");
+
                     return;
                 }
 
@@ -116,33 +117,26 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
                     mHelper.queryInventoryAsync(true, productList, mGotInventoryListener);
 
                 } catch (Exception e) {
-                    complain("Error querying inventory. Another async operation in progress.");
+                    complain("查詢失敗");
                 }
             }
         });
 
-        Button btnBuy = findViewById(R.id.btn_buy);
-        btnBuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mHelper.launchPurchaseFlow(ActivityTipByGoogle.this, SKU_099, RC_REQUEST, mPurchaseFinishedListener, buy99payload+1207+"_"+"n"+"o"+"w");
-            }
-        });
+        if(SettingUtils.ChangeTheme.getVipState(ActivityTipByGoogle.this)){
+            updateUi();
+        }else {
+            Button btnBuy = findViewById(R.id.btn_buy);
+            btnBuy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mHelper.launchPurchaseFlow(ActivityTipByGoogle.this, SKU_099, RC_REQUEST, mPurchaseFinishedListener, buy99payload + 1207 + "_" + "n" + "o" + "w");
+                }
+            });
+        }
 
     }
 
-    void complain(String message) {
-        Log.e(TAG, "**** TrivialDrive Error: " + message);
-        alert("Error: " + message);
-    }
 
-    void alert(String message) {
-        AlertDialog.Builder bld = new AlertDialog.Builder(this);
-        bld.setMessage(message);
-        bld.setNeutralButton("OK", null);
-        Log.e(TAG, "Showing alert dialog: " + message);
-        bld.create().show();
-    }
 
     IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
         @Override
@@ -155,7 +149,7 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
 
             // Is it a failure?
             if (result.isFailure()) {
-                complain("Failed to query inventory: " + result);
+                Log.e(TAG, "Failed to query inventory: " + result);
                 return;
             }
 
@@ -169,7 +163,12 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
             Purchase premiumPurchase = inventory.getPurchase(SKU_099);
             if (premiumPurchase != null && verifyDeveloperPayload(premiumPurchase)){
                 Log.e(TAG, "Query inventory was verifyDeveloperPayload.");
+//                Log.d(TAG, "We hasPurchase. Consuming it.");
+//                mHelper.consumeAsync(inventory.getPurchase(SKU_099), mConsumeFinishedListener);
+
                 SettingUtils.ChangeTheme.setVipState(ActivityTipByGoogle.this, true);
+                alert("你已經升級為PRO版了");
+                updateUi();
             }
 //            mIsPremium = (premiumPurchase != null && verifyDeveloperPayload(premiumPurchase));
 //            Log.e(TAG, "User is " + (mIsPremium ? "PREMIUM" : "NOT PREMIUM"));
@@ -185,12 +184,12 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
             if (mHelper == null) return;
 
             if (result.isFailure()) {
-                complain("Error purchasing: " + result);
+                complain("支付失敗: " + result);
 //                setWaitScreen(false);
                 return;
             }
             if (!verifyDeveloperPayload(purchase)) {
-                complain("Error purchasing. Authenticity verification failed.");
+                complain("支付錯誤, 檢查失敗");
 //                setWaitScreen(false);
                 return;
             }
@@ -207,7 +206,12 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
 
             if(verifyDeveloperPayload(purchase)){
                 Log.e(TAG, "OnIabPurchaseFinishedListener was verifyDeveloperPayload.");
+
+//                mHelper.consumeAsync(purchase, mConsumeFinishedListener);
+
                 SettingUtils.ChangeTheme.setVipState(ActivityTipByGoogle.this, true);
+                alert("你已經升級為PRO版了");
+                updateUi();
             }
 //            else if (purchase.getSku().equals(SKU_PREMIUM)) {
 //                // bought the premium upgrade!
@@ -229,6 +233,35 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
         }
     };
 
+
+    // Called when consumption is complete
+    IabHelper.OnConsumeFinishedListener mConsumeFinishedListener = new IabHelper.OnConsumeFinishedListener() {
+        public void onConsumeFinished(Purchase purchase, IabResult result) {
+            Log.d(TAG, "Consumption finished. Purchase: " + purchase + ", result: " + result);
+
+            // if we were disposed of in the meantime, quit.
+            if (mHelper == null) return;
+
+            // We know this is the "gas" sku because it's the only one we consume,
+            // so we don't check which sku was consumed. If you have more than one
+            // sku, you probably should check...
+            if (result.isSuccess()) {
+                // successfully consumed, so we apply the effects of the item in our
+                // game world's logic, which in our case means filling the gas tank a bit
+                Log.e(TAG, "Consumption successful. Provisioning.");
+//                complain("支付失敗: " + result);
+//                mTank = mTank == TANK_MAX ? TANK_MAX : mTank + 1;
+//                saveData();
+//                alert("You filled 1/4 tank. Your tank is now " + String.valueOf(mTank) + "/4 full!");
+            }
+            else {
+                Log.d(TAG, "發生錯誤: " + result);
+            }
+
+//            setWaitScreen(false);
+            Log.e(TAG, "End consumption flow.");
+        }
+    };
 
 //    @Override
 //    public void receivedBroadcast() {
@@ -294,14 +327,15 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
             return false;
         }
 
+
+        //效应购买成功, 消费掉订单
+        Log.d(TAG, "We hasPurchase. Consuming it.");
+        mHelper.consumeAsync(p, mConsumeFinishedListener);
+
         Log.e(TAG, "verifyDeveloperPayload was true.");
         return true;
     }
 
-    void  updateUi(){
-        Button btnbuy = findViewById(R.id.btn_buy);
-        btnbuy.setText("升级成功");
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -320,6 +354,29 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
         }
     }
 
+    void  updateUi(){
+        TextView tipTextView = findViewById(R.id.textView2);
+        tipTextView.setText("你已經升級為PRO了\n所有廣告都已去除\n\ncuisanzhang@163.com");
+        Button btnbuy = findViewById(R.id.btn_buy);
+        btnbuy.setText("繼續支持作者");
+        btnbuy.setClickable(false);
+    }
+
+
+    void complain(String message) {
+        Log.e(TAG, "**** Mincreafting complain ****: " + message);
+        alert("Error: " + message);
+    }
+
+    void alert(String message) {
+        AlertDialog.Builder bld = new AlertDialog.Builder(this);
+        bld.setMessage(message);
+        bld.setNeutralButton("OK", null);
+        Log.e(TAG, "Showing alert dialog: " + message);
+        bld.create().show();
+    }
+
+
     public void initActionBar() {
         TextView title = findViewById(R.id.title);
         if(!is_simplified_chinese){
@@ -331,6 +388,15 @@ public class ActivityTipByGoogle extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        ImageView otherpay = (ImageView) findViewById(R.id.other_pay);
+        imageViewMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityTipByGoogle.this, ActivityTip.class);
+                startActivity(intent);
             }
         });
 
