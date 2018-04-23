@@ -133,6 +133,25 @@ public class TutorialListData {
             "虚空",
             "树木",
 
+            "浮岛",
+            "山丘",
+            "海滩",
+            "盆地",
+            "海洋",
+            "湖泊",
+            "洞穴",
+            "峡谷",
+            "废弃矿井",
+            "巨型蘑菇",
+            "涌泉",
+            "生苔的巨石",
+            "冰刺",
+            "化石",
+            "宝藏",
+            "珊瑚礁",
+            "冰山",
+            "荧石堆",
+
             "沉船",
             "水下遗迹",
 
@@ -178,6 +197,25 @@ public class TutorialListData {
             "html/wiki/qukuai.html",
             "html/wiki/xukong.html",
             "html/wiki/shumu.html",
+
+            "html/wiki/fudao.html", //浮岛
+            "html/wiki/shanqiu.html", //山丘
+            "html/wiki/haitang.html", //海滩
+            "html/wiki/pengdi.html", //盆地
+            "html/wiki/haiyang.html", //海洋
+            "html/wiki/hubo.html", //湖泊
+            "html/wiki/dongxue.html", //洞穴
+            "html/wiki/xiagu.html", //峡谷
+            "html/wiki/feiqikuangjing.html", //废弃矿井
+            "html/wiki/juxingmogu.html", //巨型蘑菇
+            "html/wiki/yongquang.html",// 涌泉
+            "html/wiki/shengtaidejushi.html",// 生苔的巨石
+            "html/wiki/bingchi.html", //冰刺
+            "html/wiki/huashi.html", //化石
+            "html/wiki/baozhang.html", //宝藏
+            "html/wiki/shanghujiao.html", //珊瑚礁
+            "html/wiki/bingshang.html", //冰山
+            "html/wiki/yingshidui.html", //荧石堆
 
             "html/wiki/chenchuan.html",
             "html/wiki/shuixiayiji.html",
@@ -872,6 +910,7 @@ public class TutorialListData {
             "教你做一个能坐的椅子",
             "教你制作一棵爆炸树",
             "爆炸树教程 ",
+            "{全版本通用}两种游荡式刷怪塔【服务器可用】",
 
             "如何在我的世界中度过第一天",
             "我的世界怪物大盘点",

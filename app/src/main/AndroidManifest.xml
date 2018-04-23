@@ -64,7 +64,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityTipByGoogle"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
 
     </application>
 
