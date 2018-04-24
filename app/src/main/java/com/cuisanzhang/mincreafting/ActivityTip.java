@@ -23,6 +23,7 @@ public class ActivityTip extends AppCompatActivity {
     static String URL = "http://cuisanzhang.u.qiniudn.com/vip.txt";
 
     ImageView TipimageView;
+    TextView tip_dashang1;
     Button btnCheckVip ;
     Button btn_weixin;
     Button btn_zhifubao;
@@ -63,6 +64,7 @@ public class ActivityTip extends AppCompatActivity {
 
 
         TipimageView = (ImageView) findViewById(R.id.ImageViewTip);
+        tip_dashang1 = (TextView) findViewById(R.id.tip_dashang1);
 
         btn_weixin = (Button) findViewById(R.id.btn_weixin);
         btn_weixin.setOnClickListener(new View.OnClickListener() {
@@ -87,16 +89,17 @@ public class ActivityTip extends AppCompatActivity {
 
         if (is_simplified_chinese)
         {
+            tip_dashang1.setText("为人民服务也要吃饭\n打赏后请联系作者");
             noAd = "广告已经没有了";
             notVip = "嗯! 一定是你点错了";
             btn_zhifubao.setText("支付宝");
-            btnCheckVip.setText("去广告");
+            btnCheckVip.setText("去除广告");
         }else {
-
+            tip_dashang1.setText("為人民服務也要吃飯\n打賞後請聯繫作者");
             noAd = "廣告已經沒有啦";
             notVip = "嗯! 一定是你點錯了";
             btn_zhifubao.setText("支付寶");
-            btnCheckVip.setText("去廣告");
+            btnCheckVip.setText("去除廣告");
         }
 
 

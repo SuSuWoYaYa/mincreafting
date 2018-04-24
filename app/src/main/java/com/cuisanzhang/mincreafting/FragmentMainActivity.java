@@ -160,8 +160,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         if (is_language_of_traditional_chinese) {
             menu_changeTheme.setTitle("切換主題");
             menu_feedback.setTitle("意見反饋");
-            menu_settingcache.setTitle("緩存設置");
-            menu_tip.setTitle("去除广告");
+            menu_settingcache.setTitle("快取設置");
+            menu_tip.setTitle("去除廣告");
             menu_about.setTitle("關於");
             menu_changelanguage.setTitle("切換語言");
             menu_downgame.setTitle("遊戲下載");

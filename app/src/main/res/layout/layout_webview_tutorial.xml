@@ -36,8 +36,9 @@
             android:layout_gravity="center"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
-            android:src="?attr/navigationIcon_refresh"
             android:scaleType="centerInside"/>
+            <!--android:src="?attr/navigationIcon_refresh"-->
+
     </LinearLayout>
     <!--<android.support.v7.widget.Toolbar-->
         <!--android:id="@+id/webView_toolbar"-->

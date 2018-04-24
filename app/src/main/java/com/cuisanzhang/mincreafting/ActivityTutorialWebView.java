@@ -77,7 +77,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
     private boolean isVip;
     private boolean is_simplified_chinese  = true;
     private AdView mAdView;
-
+    private String stringData = null;
 
     private boolean showAd = false;
 
@@ -123,10 +123,10 @@ public class ActivityTutorialWebView extends AppCompatActivity {
         mAdView = (AdView) findViewById(R.id.adView);
 
 
-        //3分之一的几率广告
-        int random = new Random().nextInt(6);
+        //2分之一的几率广告
+        int random = new Random().nextInt(10);
 
-        if (random < 2) {
+        if (random < 5) {
             showAd = true;
         }
 
@@ -199,8 +199,8 @@ public class ActivityTutorialWebView extends AppCompatActivity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        String string = null;
-        string = builder.toString();
+
+        stringData = builder.toString();
 
         //webview.loadUrl(htmlurl);
         mWebview.getSettings().setDefaultTextEncodingName("UTF-8");//设置默认为utf-8
@@ -213,10 +213,10 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 //			  webview.loadDataWithBaseURL("file:///android_asset/", ChineseUtils.toTraditional(string),  "text/html; charset=UTF-8", null,null);
 //		  }
         if(is_simplified_chinese){
-            mWebview.loadDataWithBaseURL("file:///android_asset/html/",string,  "text/html", "UTF-8",null);
+            mWebview.loadDataWithBaseURL("file:///android_asset/html/",stringData,  "text/html", "UTF-8",null);
         }else{
             mWebview.loadDataWithBaseURL("file:///android_asset/html/",
-                    ChineseUtils.toTraditional(string),
+                    ChineseUtils.toTraditional(stringData),
 //                    string,
                     "text/html", "UTF-8",null);
         }
@@ -246,7 +246,7 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            view.loadUrl(HtmlUrl);
+//            view.loadUrl(HtmlUrl);
             return super.shouldOverrideUrlLoading(view, request);
         }
 
@@ -449,6 +449,11 @@ public class ActivityTutorialWebView extends AppCompatActivity {
         if(url.startsWith("file")){
             return  false;
         }
+        //本地图片
+        if(url.startsWith("local")){
+            return  false;
+        }
+
 
         //网络图片
         if (url.endsWith(".jpg")
@@ -541,12 +546,20 @@ public class ActivityTutorialWebView extends AppCompatActivity {
 
 
 //        setSupportActionBar(toolbar);
-        ImageView imageViewRefresh_menu = (ImageView) findViewById(R.id.imageViewRefresh_menu);
-        imageViewRefresh_menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mWebview.reload();
-            }
-        });
+//        ImageView imageViewRefresh_menu = (ImageView) findViewById(R.id.imageViewRefresh_menu);
+//        imageViewRefresh_menu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(is_simplified_chinese){
+//                    mWebview.loadDataWithBaseURL("file:///android_asset/html/",stringData,  "text/html", "UTF-8",null);
+//                }else{
+//                    mWebview.loadDataWithBaseURL("file:///android_asset/html/",
+//                            ChineseUtils.toTraditional(stringData),
+////                    string,
+//                            "text/html", "UTF-8",null);
+//                }
+//
+//            }
+//        });
     }
 }
